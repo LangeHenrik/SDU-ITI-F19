@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Universities</h1>
+<p><b><i>This is a paragraph.</b></i></p>
+<p>
+I want to use &amp
+</p>
+
+<element class="firstClass" id="id3">
+	<p> First Element </p>
+</element>
+
+<h2>
+My Sub Header
+</h2>
+<p>Content and stuff</p>
+<hr> </hr>
+
+<table>
+	<tr>
+    	<th>University</th>
+        <th>Rank</th>
+    </tr>
+    <tr>
+    	<td>University of Cyprus</td>
+        <td>300-400</td>
+    </tr>
+    <tr>
+    	<td>University of Southern Denmark</td>
+        <td>
+        300-400
+        </td>
+    </tr>
+</table>
+
+<hr> </hr>
+
+<form>
+<fieldset>
+	<legend>Fieldset Legend</legend>
+    Name
+	<input type="text" placeholder="Type here" name = "Name" tabindex="1" autofocus>
+    <br> <br>
+   	Email
+  	<input type="text" placeholder="Type here">
+    <br> <br>
+    Date of Birth
+  	<input type="text" placeholder="Type here">
+    <br> <br>
+    <button> Submit button <i class="far fa-share-square"></i>
+    </button>
+   
+</fieldset>
+</form>
+
+</body>
+</html>
