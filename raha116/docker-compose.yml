@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  php:
+    image: php:7.3-apache
+    volumes:
+      - ./src:/var/www/html/
+    networks:
+      - php
+    ports:
+      - 8456:80
+  database:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: pw
+    ports:
+      - 3306:3306
+    volumes:
+      - php-db:/var/lib/mysql
+    networks:
+      - php
+
+
+
+
+volumes:
+  php-db:
+
+networks:
+  php:
