@@ -1,8 +1,6 @@
 <?php
-$db_server = "db";
-$db_user = "foobar";
-$db_pass = "foobar123";
-$db_name = "assignment1";
+
+require "config.php";
 
 try {
     $conn = new PDO("mysql:host=$db_server;dbname=$db_name", $db_user, $db_pass);

@@ -3,7 +3,7 @@ session_start();
 
 // check whether user is logged in
 if (!isset($_SESSION['username'])) {
-    die("Failed: you need to log in first.")
+    die("Failed: you need to log in first.");
 }
 
 // establish sql connection
@@ -19,19 +19,11 @@ function generateRandomString($length = 10) {
     return $randomString;
 }
 
-// Allowed filetypes listed in the array below
-$allowed_filetypes = array(".jpg",".jpeg",".JPG",".gif",".GIF",".png",".PNG");
-// Define maximum file size in BYTES
-$max_filesize = 10485760; // = 10MB
-// Dierctory for file uploads - HAS TO END WITH TRAILING SLASH
-//$upload_path = getcwd() . "/uploads/"; // TODO change me back!
-$upload_path = '/tmp/uploads/';
 if(!is_dir($upload_path)) {
     if (!mkdir($upload_path, 0700, true)) {
         die('Failed to create upload folder');
     }
 }
-
 
 // TODO: sanitize input!
 $header = $_POST['header'];
@@ -78,7 +70,8 @@ try  {
 
 // Copy the file from PHP's buffer to the server
 if(move_uploaded_file($_FILES["userfile"]["tmp_name"], $upload_path . $filename)) {
-    echo "OK: " . $filename;
+    // send url of image back to user
+    echo "OK: " . '/serve.php?filename=' . $filename;
 } else {
     die("Failed to PHP move file. Please try again.");
 }
