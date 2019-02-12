@@ -3,7 +3,7 @@
 ## Task
 
 Build a website where users can:
-* [ ] Create a user and log in
+* [X] Create a user and log in
 * [ ] Upload an image with a header and some text
 * [ ] See all users images on a feed when logged in
 * [ ] See and delete own pictures
