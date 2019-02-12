@@ -28,7 +28,7 @@ try {
     // create table 'Images'
     $sql = "CREATE TABLE IF NOT EXISTS Images (
     id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    imagepath VARCHAR(30) NOT NULL,
+    filename VARCHAR(30) NOT NULL,
     user VARCHAR(30) NOT NULL,
     header VARCHAR(50),
     text LONGTEXT

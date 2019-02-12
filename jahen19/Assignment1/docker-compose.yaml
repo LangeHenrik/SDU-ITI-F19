@@ -11,8 +11,6 @@ web:
 db:
   image: 'mariadb:10.4'
   restart: always
-  volumes:
-    - './mysql:/var/lib/mysql'
   environment:
     MYSQL_ROOT_PASSWORD: root
     MYSQL_USER: foobar
