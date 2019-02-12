@@ -61,12 +61,38 @@ if (isset($_SESSION['username'])) {
   <br>
 <video loop muted autoplay height="300"
                     src="https://files.mastodon.social/media_attachments/files/010/470/067/original/f208c1e49ef2c4bc.mp4">
-  Sorry, your browser doesn't support embedded videos.
+  Sorry, your browser does not support embedded videos.
 </video>
 
 </div>
 <div id="finished" class="text block">
   Success!
+</div>
+
+<hr>
+
+<div id='feed'>
+
+<?php
+require "sql.php";
+try  {
+    $sql = "SELECT filename, header, text FROM Images LIMIT 10";
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    if ($result && $statement->rowCount() > 0) {
+        foreach ($result as $row) { ?>
+            <figure>
+            <figcaption><?php echo $row["header"]; ?></figcaption>
+            <img src="./serve.php?filename=<?php echo $row["filename"]; ?>">
+            <blockquote><?php echo $row["text"]; ?></blockquote>
+            </figure>
+<?php }
+    }
+} catch(PDOException $error) {
+    echo $sql . "<br>" . $error->getMessage();
+}
+?>
 </div>
 
 </body>

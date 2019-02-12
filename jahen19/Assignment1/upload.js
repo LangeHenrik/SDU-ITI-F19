@@ -38,7 +38,8 @@ function uploadFinished(event) {
         document.getElementById("finished").innerHTML = "Sorry, something went wrong. Please try again.<br>" + response;
     } else {
         // all good, nothing went wrong
-        var text = "Link to your file: " + response;
+        var link = response.split('OK: ', 2)[1];
+        var text = '<a href="' + link + '">Click here to view your file</a>';
 	    document.getElementById("finished").innerHTML += text;
     }
 
