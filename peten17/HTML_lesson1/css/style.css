@@ -31,11 +31,7 @@ body {
 
 /* Adds a background color to the topmenu */
 .topmenu{
-  background-color: #3333;
-  overflow: hidden;
-  margin: auto;
-  padding: 10px;
-  border: 10px;
+
 }
 /* Style the links inside the nav bar */
 .topmenu a{
