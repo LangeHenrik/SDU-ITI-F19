@@ -10,17 +10,13 @@ body {
     font-size: 1.5em;
 }
 
-#userform, #logout-button {
+#userform {
     float: right;
     margin-left: 5px;
     font-size: 0.9em;
 }
 
 #userform input {
-    font-size: 0.9em;
-}
-
-#logout-button {
     font-size: 0.9em;
 }
 

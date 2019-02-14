@@ -19,7 +19,9 @@ session_start();
           <span id="hello-message">
               Hello <?php echo $_SESSION['username']; ?>!
           </span>
-          <button id="logout-button" name="logout" type="submit" value="1">Logout</button>
+          <form id="userform" method="post" action="user.php">
+            <input id="logout-button" type="submit" name="logout" value="Logout">
+          </form>
       <?php } else { ?>
           <form id="userform" method="post" action="user.php">
               <input type="text" name="username" placeholder="Username..." required>

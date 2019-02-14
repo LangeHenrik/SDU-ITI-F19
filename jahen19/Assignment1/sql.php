@@ -17,8 +17,8 @@ try {
     // create table 'Users'
     $sql = "CREATE TABLE IF NOT EXISTS Users (
     id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(30) NOT NULL,
-    password VARCHAR(30) NOT NULL
+    username VARCHAR(31) NOT NULL,
+    password VARCHAR(128) NOT NULL
     )";
     $conn->exec($sql);
     // echo "Table 'Users' created successfully;<br>";
@@ -27,7 +27,7 @@ try {
     $sql = "CREATE TABLE IF NOT EXISTS Images (
     id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     filename VARCHAR(30) NOT NULL,
-    user VARCHAR(30) NOT NULL,
+    user VARCHAR(31) NOT NULL,
     header VARCHAR(50),
     text LONGTEXT
     )";
