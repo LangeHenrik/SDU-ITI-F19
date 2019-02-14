@@ -68,6 +68,14 @@ try  {
         die("Failed: Internal server error");
     }
 
+    // Copy the file from PHP's buffer to the server
+    if(move_uploaded_file($_FILES["userfile"]["tmp_name"], $upload_path . $filename)) {
+        // send url of image back to user
+        echo "OK: " . '/serve.php?filename=' . $filename;
+    } else {
+        die("Failed to PHP move file. Please try again.");
+    }
+
     // add entry to database
     // use prepared statement to avoid any SQL injections
     // https://www.w3schools.com/php/php_mysql_prepared_statements.asp
@@ -83,11 +91,4 @@ try  {
     echo $sql . "<br>" . $error->getMessage();
 }
 
-// Copy the file from PHP's buffer to the server
-if(move_uploaded_file($_FILES["userfile"]["tmp_name"], $upload_path . $filename)) {
-    // send url of image back to user
-    echo "OK: " . '/serve.php?filename=' . $filename;
-} else {
-    die("Failed to PHP move file. Please try again.");
-}
 ?>
