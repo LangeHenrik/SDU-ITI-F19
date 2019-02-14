@@ -25,9 +25,18 @@ if(!is_dir($upload_path)) {
     }
 }
 
-// TODO: sanitize input!
 $header = $_POST['header'];
 $subtext = $_POST['subtext'];
+
+// if the header is too long, only use the first 50 chars (database does not support more)
+if (strlen($header) > 50) {
+    $header = substr($header,0,50);
+}
+
+// arbitrarily limit the subtext size (otherwise the user may submit an infinitely long text, filing up the database)
+if (strlen($subtext) > 1000) {
+    $subtext = substr($subtext,0,1000);
+}
 
 // PHP temporary saves the files submitted in the form in the associative array $_FILES
 $filename = $_FILES["userfile"]["name"];
@@ -49,8 +58,9 @@ $filename =  generateRandomString(12) . $extension;
 
 // check if filename already used
 try  {
-    $sql = "SELECT filename FROM Images WHERE filename = '$filename'";
+    $sql = "SELECT filename FROM Images WHERE filename = :filename";
     $statement = $conn->prepare($sql);
+    $statement->bindParam(":filename", $filename);
     $statement->execute();
     $result = $statement->fetchAll();
     if ($result && $statement->rowCount() > 0) {
@@ -59,10 +69,15 @@ try  {
     }
 
     // add entry to database
-    // TODO: input sanitization
+    // use prepared statement to avoid any SQL injections
+    // https://www.w3schools.com/php/php_mysql_prepared_statements.asp
     $user = $_SESSION['username'];
-    $sql = "INSERT INTO Images (filename, user, header, text) values ('$filename', '$user', '$header', '$subtext')";
+    $sql = "INSERT INTO Images (filename, user, header, text, date) values (:filename,:user,:header,:subtext, NOW())";
     $statement = $conn->prepare($sql);
+    $statement->bindParam(":filename", $filename);
+    $statement->bindParam(":user", $user);
+    $statement->bindParam(":header", $header);
+    $statement->bindParam(":subtext", $subtext);
     $statement->execute();
 } catch(PDOException $error) {
     echo $sql . "<br>" . $error->getMessage();

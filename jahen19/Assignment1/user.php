@@ -46,8 +46,9 @@ try  {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // check if username is already in use
-        $sql = "SELECT username FROM Users WHERE username = '$username'";
+        $sql = "SELECT username FROM Users WHERE username = :username";
         $statement = $conn->prepare($sql);
+        $statement->bind_param(":username", $username);
         $statement->execute();
         $result = $statement->fetchAll();
         if ($result && $statement->rowCount() > 0) {
@@ -55,8 +56,9 @@ try  {
             echo "Please choose a different username.<br>";
         } else {
             // create new entry for user
-            $sql = "INSERT INTO Users (username, password) values ('$username', '$hashed_password')";
+            $sql = "INSERT INTO Users (username, password) values (?,?)";
             $statement = $conn->prepare($sql);
+            $statement->bind_param("ss", $username, $hashed_password);
             $statement->execute();
 
             // automatically log user in
@@ -78,8 +80,9 @@ try  {
         }
 
         // fetch username and password from database
-        $sql = "SELECT username, password FROM Users WHERE username = '$username'";
+        $sql = "SELECT username, password FROM Users WHERE username = ?";
         $statement = $conn->prepare($sql);
+        $statement->bind_param("s", $username);
         $statement->execute();
         $result = $statement->fetchAll();
         // check password

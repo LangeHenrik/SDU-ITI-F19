@@ -80,7 +80,8 @@ session_start();
 
     require "sql.php";
     try  {
-        $sql = "SELECT filename, header, text FROM Images"; // should probably LIMIT here
+        $sql = "SELECT filename, header, text FROM Images ORDER BY date DESC";
+        // should probably LIMIT here
         $statement = $conn->prepare($sql);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -88,9 +89,10 @@ session_start();
             foreach ($result as $row) {
     ?>
         <figure>
-            <figcaption><?php echo $row["header"]; ?></figcaption>
+            <!-- htmlspecialchars avois XSS attacks etc., see http://php.net/manual/en/function.htmlspecialchars.php -->
+            <figcaption><?php echo htmlspecialchars($row["header"]); ?></figcaption>
             <img src="./serve.php?filename=<?php echo $row["filename"]; ?>">
-            <blockquote><?php echo $row["text"]; ?></blockquote>
+            <blockquote><?php echo htmlspecialchars($row["text"]); ?></blockquote>
         </figure>
     <?php
              }

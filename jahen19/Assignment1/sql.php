@@ -29,7 +29,8 @@ try {
     filename VARCHAR(30) NOT NULL,
     user VARCHAR(31) NOT NULL,
     header VARCHAR(50),
-    text LONGTEXT
+    text LONGTEXT,
+    date DATETIME
     )";
     $conn->exec($sql);
     //echo "Table 'Images' created successfully;<br>";
