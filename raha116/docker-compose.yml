@@ -4,7 +4,7 @@ services:
   php:
     image: php:7.3-apache
     volumes:
-      - ./src:/var/www/html/
+      - ./src:/var/www/
     networks:
       - php
     ports:
