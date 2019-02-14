@@ -26,26 +26,35 @@ function send() {
 }
 
 function uploadBar(event) {
-    document.getElementById("wrapper-form").style.display = "none";
-    document.getElementById("loading").style.display = "block";
-    document.getElementById("finished").style.display = "none";
+    if (event.lengthComputable) {
+        var percentComplete = Math.round(event.loaded / event.total * 100);
+        document.getElementById("fileform").submit.value = percentComplete + "%";
+    }
 }
 
 function uploadFinished(event) {
     var response = event.target.responseText;
     if(response.search("OK") == -1) {
         // oops, something went wrong
-        document.getElementById("finished").innerHTML = "Sorry, something went wrong. Please try again.<br>" + response;
+        alert("Sorry, something went wrong. Please try again.<br>" + response);
     } else {
         // all good, nothing went wrong
         var link = response.split('OK: ', 2)[1];
-        var text = '<a href="' + link + '">Click here to view your file</a>';
-	    document.getElementById("finished").innerHTML += text;
+//        var text = '<a href="' + link + '">Click here to view your file</a>';
+
+        // TODO: create new node in feed
+
+        document.getElementById("fileform").submit.value = "Finished";
+
+        // clear upload form after 3 seconds
+        setTimeout(clearUploadForm, 3000);
     }
 
-    document.getElementById("wrapper-form").style.display = "none";
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("finished").style.display = "block";
+}
+
+function clearUploadForm() {
+    document.getElementById("fileform").reset();
+    document.getElementById("fileform").submit.value = "Upload";
 }
 
 function uploadError(event) {
