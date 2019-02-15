@@ -2,7 +2,7 @@ version: '3'
 
 services:
   php:
-    image: php:7.3-apache
+    image: zlepper/php:7.3-apache
     volumes:
       - ./src:/var/www/
     networks:

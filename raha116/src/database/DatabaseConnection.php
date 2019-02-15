@@ -3,7 +3,9 @@ declare (strict_types=1);
 
 namespace database;
 
+use Exception;
 use mysqli;
+use mysqli_result;
 
 /**
  * Manages all connections to the database
@@ -22,8 +24,6 @@ class DatabaseConnection
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
-
-        echo "Connected to database!";
     }
 
     /**
@@ -44,5 +44,134 @@ class DatabaseConnection
     public function run_query(string $query)
     {
         return $this->conn->query($query);
+    }
+
+    /**
+     * @param string $query
+     * @param string $param_types
+     * @param string ...$params
+     * @return bool|mysqli_result
+     */
+    public function execute_prepared_query(string $query, string $param_types, string ...$params)
+    {
+        $stmt = $this->prepare($query);
+        $stmt->bind_param($param_types, ...$params);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Failed to execute query: " . $stmt->error);
+        }
+
+        return $stmt->get_result();
+    }
+
+    /**
+     * Executes a query for a single row
+     *
+     * @param string $query
+     * @param string $class The class to convert the result into
+     * @param string $param_types
+     * @param string[] $params
+     * @return object
+     */
+    public function query_single_row(string $query, string $class, string $param_types, string ...$params)
+    {
+        $result = $this->execute_prepared_query($query, $param_types, ...$params);
+
+        if ($result == null) {
+            return null;
+        }
+
+        return $result->fetch_object($class);
+    }
+
+    /**
+     * Queries for all the rows in the collection
+     *
+     * @param string $query
+     * @param string $class
+     * @param string $param_types
+     * @param string[] $params
+     * @return array of whatever class was passed
+     */
+    public function query_multiple_rows(string $query, string $class, string $param_types, string ...$params)
+    {
+        $result = $this->execute_prepared_query($query, $param_types, ...$params);
+
+        if ($result == null) {
+            return array();
+        }
+
+        $results = array();
+
+        while ($row = $result->fetch_object($class)) {
+            $results[] = $row;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Indicates if there is currently a running transaction.
+     * Used to avoid nested transaction
+     *
+     * @var bool
+     */
+    private $running_transaction = false;
+
+    /**
+     * Starts a new transaction
+     *
+     * @param bool $read_only
+     * @return bool
+     */
+    public function begin_transaction()
+    {
+        if ($this->running_transaction) {
+            throw new Exception('Attempted to start transaction, while another transaction is already in progress');
+        }
+
+        $this->running_transaction = true;
+
+        return $this->conn->begin_transaction();
+    }
+
+    /**
+     * Commits the updates from an in progress transaction
+     */
+    public function commit_transaction(): bool
+    {
+        if (!$this->running_transaction) {
+            throw new Exception("No in progress transaction to commit");
+        }
+
+        $this->running_transaction = false;
+
+        return $this->conn->commit();
+    }
+
+    /**
+     * Rolls back the in progress transaction
+     *
+     * @return bool
+     */
+    public function rollback_transaction(): bool
+    {
+        if (!$this->running_transaction) {
+            throw new Exception("No in progress transaction to rollback");
+        }
+
+        $this->running_transaction = false;
+
+        return $this->conn->rollback();
+    }
+
+    /**
+     * Gets the last error that happened
+     *
+     * @return string
+     */
+    public function get_last_error(): string
+    {
+        return $this->conn->error;
     }
 }

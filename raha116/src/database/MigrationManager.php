@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace database;
 
-use mysql_xdevapi\Exception;
+use Exception;
 use utilities\IO;
+use utilities\strings;
 
 
 class MigrationManager
 {
-    private const MIGRATION_DIRECTORY = "./migrations";
+    private const MIGRATION_DIRECTORY = "migrations";
     /**
      * @var DatabaseConnection
      */
@@ -33,60 +34,74 @@ class MigrationManager
 
     private function create_migration_table()
     {
-        $stmt = $this->connection->prepare("
+        $result = $this->connection->run_query("
 CREATE TABLE IF NOT EXISTS migrations(
       name varchar(200) primary key,
       date timestamp default (now())
     );");
 
-        if (!$stmt->execute()) {
-            throw new \Exception("Failed to create migration table");
+        if ($result == false) {
+            throw new Exception("Failed to create migration table: " . $this->connection->get_last_error());
         }
     }
 
     private function get_migration_files()
     {
-        $files = scandir(self::MIGRATION_DIRECTORY);
+        $files = scandir(IO::join_paths(__DIR__, self::MIGRATION_DIRECTORY));
+
+        $files = array_filter($files, function ($file) {
+            return strings::ends_with($file, ".sql");
+        });
+
+        if (!$files) {
+            die("No migration files found");
+        }
 
         sort($files);
 
         return $files;
     }
 
-    private function execute_migration($file)
+    private function execute_migration(string $file)
     {
-        $file_path = IO::join_paths(self::MIGRATION_DIRECTORY, $file);
-        $migration_content = file_get_contents($file_path);
-
-        $migration_stmt = $this->wrap_migration_statement($migration_content, $file);
-
-        if (!$migration_stmt->execute()) {
-            $err = $migration_stmt->error;
-            throw new Exception("Failed to run migration: $err");
+        if (!$this->connection->begin_transaction()) {
+            throw new Exception("Failed to begin transaction for migration: " . $this->connection->get_last_error());
         }
 
+        // Check if we need to run the given migration
+        $migration = $this->connection->query_single_row("select name from migrations where name = ?", Migration::class, "s", $file);
+
+        if ($migration != null) {
+            error_log("Migration already run: $file");
+            $this->connection->rollback_transaction();
+            return;
+        }
+
+
+        // Actually load the migration to run
+        $file_path = IO::join_paths(__DIR__, self::MIGRATION_DIRECTORY, $file);
+
+
+        // Run the migration
+        $migration_content = file_get_contents($file_path);
+
+        $result = $this->connection->run_query($migration_content);
+        if ($result == false) {
+            $message = "Failed to run migration $file: " . $this->connection->get_last_error();
+            error_log($message);
+            throw new Exception($message);
+        }
+
+        $this->connection->execute_prepared_query("insert into migrations(name) values(?)", "s", $file);
+
+        // Commit the changes
+        if (!$this->connection->commit_transaction()) {
+            $message = "Failed to commit migration transaction: " . $this->connection->get_last_error();
+            error_log($message);
+            throw new Exception($message);
+        }
+
+        error_log("Ran migration $file");
     }
 
-    private function wrap_migration_statement(string $sql, string $migration_name)
-    {
-        //language=sql
-        $query = "
-START TRANSACTION;
-
-case when ((select null from migrations where name = ?) is empty)
-  then
--- Run the action migration query
-$sql
-
--- Add the migration to the migration table, so we don't run it the next time
-insert into migrations(name) values (?);
-  end;
-
-COMMIT;";
-
-        $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("ss", $migration_name);
-
-        return $stmt;
-    }
 }
