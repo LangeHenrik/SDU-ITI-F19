@@ -31,6 +31,7 @@ p{
 .username{
   display: inline-block;
   margin: 20px;
+  align-content: center;
 
 }
 .user_text{
@@ -38,7 +39,10 @@ p{
   border: top right;
   margin-top: 20px;
 }
-
+.item{
+  width: auto;
+  height: auto;
+}
 
 
 #header2{
@@ -46,7 +50,7 @@ p{
 }
 
 body{
-  background: url(1200px-Greek_letter_uppercase_Phi.svg) no-repeat top left ;
+  background: midnightblue;
 
 
 }
