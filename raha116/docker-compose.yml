@@ -10,7 +10,7 @@ services:
     ports:
       - 8456:80
   database:
-    image: mariadb:latest
+    image: mariadb:10.3.12
     environment:
       MYSQL_ROOT_PASSWORD: pw
     ports:

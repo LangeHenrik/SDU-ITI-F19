@@ -23,11 +23,13 @@ class RequestResolver
      */
     public function register_handler(string $path, string $verb, callable $callback)
     {
+        $verb = strtolower($verb);
+
         $verbs = $this->handlers[$path] ?? array();
 
         $verbs[$verb] = $callback;
 
-        $this->handlers = $verbs;
+        $this->handlers[$path] = $verbs;
     }
 
     /**

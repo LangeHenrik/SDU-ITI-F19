@@ -29,7 +29,8 @@ class Router
         $this->auto_discover_controllers();
 
         $path = $_SERVER['REQUEST_URI'];
-        $verb = $_SERVER['REQUEST_METHOD'];
+        $verb = strtolower($_SERVER['REQUEST_METHOD']);
+
 
         $handler = $this->resolver->get_handler($path, $verb);
 
@@ -38,6 +39,26 @@ class Router
             return;
         }
 
+
+        /**
+         * @var ActionResult $result
+         */
+        $result = $handler();
+
+        $this->respond($result);
+
+
+
+
+    }
+
+    private function respond(ActionResult $result)
+    {
+
+        http_response_code($result->get_status());
+        header("Content-Type: application/json");
+        echo $result->to_json();
+        echo "\n";
     }
 
     /**
@@ -85,7 +106,7 @@ class Router
         $handled_verbs = $this->get_handled_verbs($controller);
 
         foreach ($handled_verbs as $verb) {
-            $this->resolver->register_handler("api/$handle", $verb, new HandlerCallback($controller, $verb));
+            $this->resolver->register_handler("/api/$handle/", $verb, new HandlerCallback($controller, $verb));
         }
     }
 

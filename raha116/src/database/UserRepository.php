@@ -7,11 +7,11 @@ namespace database;
 class UserRepository
 {
     /**
-     * @var \database\DatabaseConnection
+     * @var DatabaseConnection
      */
     private $conn;
 
-    function __construct(\database\DatabaseConnection $conn)
+    function __construct(DatabaseConnection $conn)
     {
         $this->conn = $conn;
     }

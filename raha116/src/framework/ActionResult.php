@@ -24,4 +24,8 @@ class ActionResult
         return json_encode($this->value);
     }
 
+    public function get_status(): int
+    {
+        return $this->status;
+    }
 }
