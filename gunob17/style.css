@@ -1,0 +1,52 @@
+p{
+  color: red;
+
+}
+#header1{
+  text-align: center;
+  font-family: "Arial";
+  border: dotted;
+  background-color: orangered;
+  border-radius: 25px;
+  margin-top: 50px;
+}
+#para1{
+  color: green;
+
+
+}
+#tab1{
+  border: 2px solid;
+
+}
+
+.user_box{
+  text-align: center;
+  font-family: "Arial";
+  border: solid blue;
+  background-color: lightgray;
+  border-radius: 25px;
+  margin:auto;
+}
+.username{
+  display: inline-block;
+  margin: 20px;
+
+}
+.user_text{
+  display: inline-block;
+  border: top right;
+  margin-top: 20px;
+}
+
+
+
+#header2{
+  text-align: justify;
+}
+
+body{
+  background: url(1200px-Greek_letter_uppercase_Phi.svg) no-repeat top left ;
+
+
+}
