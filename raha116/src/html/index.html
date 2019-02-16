@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            --main-color: #2ecc71;
+            --hovered-main-color: #27ae60;
+            --main-text-color: white;
+            font-weight: 500;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<zl-application>
+    <!-- Show a very simple loading animation, while the rest of the js is loading -->
+    <style>
+        @keyframes loading-fade {
+            from {
+                opacity: 0.2;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        zl-application {
+            animation-name: loading-fade;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+            animation-duration: 1s;
+        }
+    </style>
+
+    Loading...
+</zl-application>
+
+<script src="/js/application.js" type="module"></script>
+
+</body>
+
+
+</html>

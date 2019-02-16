@@ -4,3 +4,8 @@ CREATE TABLE users
   username CHAR(20),
   password VARCHAR(255)
 );
+
+CREATE TABLE feed_entries
+(
+
+)
