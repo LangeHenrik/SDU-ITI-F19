@@ -7,7 +7,7 @@ header {
 body {
     margin: 0px;
     padding: 0px;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 #userform {
@@ -90,6 +90,13 @@ img {
 
 blockquote {
     font-family: monospace;
+}
+
+.delete-button {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    display: block;
 }
 
 /* /\* Full Width below 768 pixels *\/ */

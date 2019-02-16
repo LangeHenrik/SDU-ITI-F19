@@ -1,5 +1,5 @@
 function send() {
-    var form = document.getElementById("fileform")
+    var form = document.getElementById("fileform");
     var file = form.file.files[0];
     var filename = file.name; // filename without path
     var size = file.length; // size in bytes
@@ -36,13 +36,15 @@ function uploadFinished(event) {
     var response = event.target.responseText;
     if(response.search("OK") == -1) {
         // oops, something went wrong
-        alert("Sorry, something went wrong. Please try again.<br>" + response);
+        alert("Sorry, something went wrong: " + response);
+        document.getElementById("fileform").submit.value = "Upload";
     } else {
         // all good, nothing went wrong
         var link = response.split('OK: ', 2)[1];
 //        var text = '<a href="' + link + '">Click here to view your file</a>';
 
-        // TODO: create new node in feed
+        // reload page to update content
+        location.reload();
 
         document.getElementById("fileform").submit.value = "Finished";
 
@@ -58,6 +60,40 @@ function clearUploadForm() {
 }
 
 function uploadError(event) {
+    console.log("Error: " + event);
+    document.getElementById("fileform").submit.value = "Upload";
+    alert("Sorry, something went wrong.");
+}
+
+function deletePicture(obj) {
+    var filename = obj.value;
+
+    // submit query to server
+    var formdata = new FormData();
+    formdata.append("filename", filename);
+
+    var request = new XMLHttpRequest();
+    request.addEventListener("load", deleteFinished, false);
+    request.addEventListener("error", deleteError, false);
+    request.open("POST", "delete.php", true);
+    request.send(formdata);
+}
+
+function deleteFinished(event) {
+    var response = event.target.responseText;
+    if(response.search("OK") == -1) {
+        // oops, something went wrong
+        alert("Sorry, something went wrong: " + response);
+    } else {
+        // all good, nothing went wrong
+        alert("Successfully deleted.");
+
+        // reload page to update content
+        location.reload();
+    }
+}
+
+function deleteError(event) {
     console.log("Error: " + event);
     alert("Sorry, something went wrong.");
 }

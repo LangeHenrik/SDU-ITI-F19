@@ -11,7 +11,7 @@ session_start();
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no">
     <link href="main.css" rel="stylesheet">
-    <script type="text/javascript" src="upload.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body>
       <header>
@@ -80,19 +80,29 @@ session_start();
 
     require "sql.php";
     try  {
-        $sql = "SELECT filename, header, text FROM Images ORDER BY date DESC";
-        // should probably LIMIT here
+        if (isset($_GET['user'])) {
+            // show only the images by $user
+            $user = $_SESSION['username'];
+            $sql = "SELECT filename, user, header, text FROM Images WHERE user = '$user' ORDER BY date DESC";
+            echo "Your Images:<br> (<a href='./'>Go to global feed</a>)";
+        } else {
+            echo "Global Feed:<br> (<a href='?user=1'>Go to your feed</a>)";
+            $sql = "SELECT filename, user, header, text FROM Images ORDER BY date DESC";
+        }
         $statement = $conn->prepare($sql);
         $statement->execute();
         $result = $statement->fetchAll();
         if ($result && $statement->rowCount() > 0) {
             foreach ($result as $row) {
     ?>
-        <figure>
-            <!-- htmlspecialchars avois XSS attacks etc., see http://php.net/manual/en/function.htmlspecialchars.php -->
+        <figure id="<?php echo $row["filename"]; ?>">
+            <!-- htmlspecialchars() avoids XSS attacks etc., see http://php.net/manual/en/function.htmlspecialchars.php -->
             <figcaption><?php echo htmlspecialchars($row["header"]); ?></figcaption>
             <img src="./serve.php?filename=<?php echo $row["filename"]; ?>">
             <blockquote><?php echo htmlspecialchars($row["text"]); ?></blockquote>
+            <?php if ($row["user"] == $_SESSION["username"]) { ?>
+            <button class="delete-button" type="submit" onclick="deletePicture(this)" value="<?php echo $row["filename"]; ?>">Delete</button>
+            <?php } ?>
         </figure>
     <?php
              }

@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Failed: 400 - Bad Request");
+}
+
 // check whether user is logged in
 if (!isset($_SESSION['username'])) {
     die("Failed: you need to log in first.");
@@ -25,6 +29,7 @@ if(!is_dir($upload_path)) {
     }
 }
 
+// these may be empty
 $header = $_POST['header'];
 $subtext = $_POST['subtext'];
 
@@ -36,6 +41,10 @@ if (strlen($header) > 50) {
 // arbitrarily limit the subtext size (otherwise the user may submit an infinitely long text, filing up the database)
 if (strlen($subtext) > 1000) {
     $subtext = substr($subtext,0,1000);
+}
+
+if(!isset($_FILES["userfile"]) || $_FILES["userfile"]['error'] == UPLOAD_ERR_NO_FILE) {
+    echo "Failed: no file selected";
 }
 
 // PHP temporary saves the files submitted in the form in the associative array $_FILES
@@ -51,6 +60,11 @@ if(!in_array($extension, $allowed_filetypes)) {
 // Check if file size is below the limit
 if(filesize($_FILES["userfile"]["tmp_name"]) > $max_filesize) {
   die("Failed: File too big");
+}
+
+// probably just a transmission error
+if(filesize($_FILES["userfile"]["tmp_name"]) < 100) {
+  die("Failed: No file received");
 }
 
 // generate new filename based on random string and extension
