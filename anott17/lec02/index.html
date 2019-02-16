@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>formCheck</title>
+  </head>
+  <body>
+    <form onsubmit="return checkFields()" method="post" action="index.html">
+      <label for="name" style="color: black">name</label>
+      <br>
+      <input type="text" name="name" id="name">
+      <br>
+
+      <label for="password">password</label>
+      <br>
+      <input type="password" name="password" id="password">
+      <br>
+
+      <label for="phone">phone number</label>
+      <br>
+      <input type="text" name="phone" id="phone">
+      <br>
+
+      <label for="email">email adress</label>
+      <br>
+      <input type="text" name="email" id="email">
+      <br>
+
+      <label for="zip">zip code</label>
+      <br>
+      <input type="text" name="zip" id="zip">
+      <br>
+
+      <input type="submit" name="submit" id="submit">
+    </form>
+    <script>
+      function checkFields() {
+        var names = document.getElementById("name").value.split(" ");
+        var nameCount = 0;
+
+        var password = document.getElementById("password").value;
+        var validPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(password);
+
+        var phoneNr = document.getElementById("phone").value;
+        var phoneNrArray = document.getElementById("phone").value.split('');
+        var validPhoneNr = /^\d+$/.test(phone);
+
+        var zip = document.getElementById("zip").value;
+        var validZipCode = /^\d+$/.test(zip);
+
+        names.forEach(function(name) {
+          if (name.length > 0){
+            nameCount++
+          }
+        });
+
+        if (nameCount < 2) {
+          alert("You need two names")
+          return false;
+        }
+
+        if (!(password.length >= 8 && validPassword)) {
+          alert("Your password must be atleast 8 characters long, have an upper case"
+          + ", a lower case and a number");
+          return false;
+        }
+
+        if (!(validPhoneNr && phoneNrArray[0] == '+' && phoneNr.length >= 9 && phoneNr.length < 30)) {
+          alert("Your phonenumber must be between 8 and 30 digits and start with +.");
+          return false;
+        }
+
+        if(!(zip.length == 4 && validZipCode)) {
+          alert("Your zip code must be digits and exactly 4 long.")
+          return false;
+        }
+      }
+    </script>
+
+  </body>
+</html>
