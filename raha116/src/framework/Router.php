@@ -47,9 +47,6 @@ class Router
 
         $this->respond($result);
 
-
-
-
     }
 
     private function respond(ActionResult $result)
