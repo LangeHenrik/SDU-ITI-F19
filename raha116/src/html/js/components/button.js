@@ -1,5 +1,8 @@
+import {BaseComponent} from "../framework/base-component.js";
+
 const template = `<style>
     :host {
+        background-color: var(--main-color);
         color: var(--main-text-color);
         padding: 0.3rem;
         cursor: pointer;
@@ -19,13 +22,9 @@ const template = `<style>
 <slot></slot>
 `;
 
-export class Button extends HTMLElement {
+export class Button extends BaseComponent {
     constructor() {
-        super();
-
-        const shadow = this.attachShadow({mode: 'open'});
-
-        shadow.innerHTML = template;
+        super(template);
     }
 }
 

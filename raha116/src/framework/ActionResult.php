@@ -28,4 +28,9 @@ class ActionResult
     {
         return $this->status;
     }
+
+    public function has_body(): bool
+    {
+        return !!$this->value;
+    }
 }

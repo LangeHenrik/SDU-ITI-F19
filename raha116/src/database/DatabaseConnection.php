@@ -55,7 +55,12 @@ class DatabaseConnection
     public function execute_prepared_query(string $query, string $param_types, string ...$params)
     {
         $stmt = $this->prepare($query);
+        if ($stmt === false) {
+            throw new Exception("Failed to prepare query: " . $this->get_last_error());
+        }
+
         $stmt->bind_param($param_types, ...$params);
+
 
         if (!$stmt->execute()) {
             throw new Exception("Failed to execute query: " . $stmt->error);
@@ -71,7 +76,7 @@ class DatabaseConnection
      * @param string $class The class to convert the result into
      * @param string $param_types
      * @param string[] $params
-     * @return object
+     * @return mixed
      */
     public function query_single_row(string $query, string $class, string $param_types, string ...$params)
     {

@@ -25,6 +25,8 @@ class Framework
      */
     public function handle()
     {
+        session_start();
+
         $this->connect_to_database();
 
         $router = $this->di->get_service(Router::class);

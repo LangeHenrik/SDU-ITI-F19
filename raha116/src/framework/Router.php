@@ -51,11 +51,13 @@ class Router
 
     private function respond(ActionResult $result)
     {
-
         http_response_code($result->get_status());
-        header("Content-Type: application/json");
-        echo $result->to_json();
-        echo "\n";
+
+        if ($result->has_body()) {
+            header("Content-Type: application/json");
+            echo $result->to_json();
+            echo "\n";
+        }
     }
 
     /**
@@ -121,19 +123,14 @@ class Router
         try {
             $reflection = new ReflectionClass($controller);
 
-
-            foreach (self::VERBS as $verb) {
-
-                $lowerVerb = strtolower($verb);
-
-                $methods = $reflection->getMethods();
-                foreach ($methods as $method) {
-                    if ($method->getName() == $lowerVerb) {
-                        $matchedVerbs[] = $verb;
-                    }
+            $methods = $reflection->getMethods();
+            foreach ($methods as $method) {
+                if ($method->isPublic()
+                    && $method->getReturnType() == ActionResult::class
+                ) {
+                    $matchedVerbs[] = $method->getName();
                 }
             }
-
         } catch (ReflectionException $e) {
             die("Failed to reflect on $controller: $e");
         }
@@ -145,6 +142,6 @@ class Router
     {
         http_response_code(404);
         header("Content-Type: application/json");
-        die('{"status": "Not Found"}' . "\n");
+        die('{"message": "Not Found"}' . "\n");
     }
 }

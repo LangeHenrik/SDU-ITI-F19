@@ -9,21 +9,15 @@ class User
     /**
      * @var int
      */
-    public $user_id;
+    public $user_id = -1;
 
     /**
      * @var string
      */
-    public $username;
+    public $username = '';
 
     /**
      * @var string
      */
-    public $password;
-
-    public function __construct(string $username, string $password)
-    {
-        $this->username = $username;
-        $this->password = $password;
-    }
+    public $password = '';
 }

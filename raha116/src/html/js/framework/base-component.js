@@ -5,7 +5,27 @@ export class BaseComponent extends HTMLElement {
      */
     _windowListeners = {};
 
-    // This methods are here, so they are easier to overwrite,
+    /**
+     * The template to use in the component
+     * @param template
+     */
+    constructor(template) {
+        super();
+
+        if (!template) {
+            throw new Error("No template provided for component");
+        }
+
+        /**
+         * The shadow root for this component
+         * @type {ShadowRoot}
+         */
+        this.shadow = this.attachShadow({mode: 'open'});
+
+        this.shadow.innerHTML = template;
+    }
+
+// This methods are here, so they are easier to overwrite,
     // since they aren't in the definition of HTMLElement
     connectedCallback() {
 
@@ -19,7 +39,7 @@ export class BaseComponent extends HTMLElement {
     }
 
     _cleanupWindowHandlers() {
-        for (const [eventName, callbacks] of this._windowListeners) {
+        for (const [eventName, callbacks] of Object.entries(this._windowListeners)) {
             for (const callback of callbacks) {
                 window.removeEventListener(eventName, callback);
             }

@@ -20,7 +20,7 @@ abstract class ControllerBase
 
     /**
      * Gets the path handle
-     * e.g. "/api/foo" for FooController
+     * e.g. "/api/foo/" for FooController
      *
      * @return string
      */
@@ -47,5 +47,15 @@ abstract class ControllerBase
     protected function NotFound(): ActionResult
     {
         return new ActionResult(new stdClass(), 404);
+    }
+
+    protected function BadRequest($response): ActionResult
+    {
+        return new ActionResult($response, 400);
+    }
+
+    protected function NoContent(): ActionResult
+    {
+        return new ActionResult(null, 204);
     }
 }

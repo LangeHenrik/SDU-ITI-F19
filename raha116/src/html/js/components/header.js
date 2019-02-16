@@ -1,6 +1,9 @@
+import {BaseComponent} from "../framework/base-component.js";
+import {UserState} from "../services/user-state.js";
 import './button.js';
 import {LoginDialog} from './login-dialog.js';
 import './menu-icon.js';
+import {SignupDialog} from "./signup-dialog.js";
 
 const template = `<style>
     :host {
@@ -50,6 +53,10 @@ const template = `<style>
         outline: none !important;
     }
     
+    .hidden {
+        display: none;
+    }
+    
     
 
     @media screen and (min-width: 576px) {
@@ -93,33 +100,39 @@ const template = `<style>
 <div class="menu-content">
     <span class="filler"></span>
     
-    <zl-button class="button" id="login-button">
+    <zl-button class="button hidden" id="login-button">
         Login
     </zl-button>
     
-    <zl-button class="button" id="logout-button">
+    <zl-button class="button hidden" id="signup-button">
+        Sign up
+    </zl-button>
+    
+    <zl-button class="button hidden" id="logout-button">
         Logout
     </zl-button>
 </div>
 `;
 
-export class Header extends HTMLElement {
+export class Header extends BaseComponent {
     menuOpen = false;
 
     constructor() {
-        super();
+        super(template);
 
-        const shadow = this.attachShadow({mode: 'open'});
+        this.updateAuthenticationButtons = this.updateAuthenticationButtons.bind(this);
 
-        shadow.innerHTML = template;
+        this.mobileToggleButton = this.shadow.querySelector('#mobile-toggle-button');
 
-        this.mobileToggleButton = shadow.querySelector('#mobile-toggle-button');
+        this.mobileToggleButtonIcon = this.shadow.querySelector('zl-menu-icon');
 
-        this.mobileToggleButtonIcon = shadow.querySelector('zl-menu-icon');
+        this.menuContent = this.shadow.querySelector('.menu-content');
 
-        this.menuContent = shadow.querySelector('.menu-content');
+        this.loginButton = this.shadow.querySelector('#login-button');
 
-        this.loginButton = shadow.querySelector('#login-button');
+        this.logoutButton = this.shadow.querySelector('#logout-button');
+
+        this.signupButton = this.shadow.querySelector('#signup-button');
     }
 
     connectedCallback() {
@@ -131,11 +144,41 @@ export class Header extends HTMLElement {
 
         this.loginButton.addEventListener('click', () => {
             this.openLoginDialog();
-        })
+        });
+
+        this.signupButton.addEventListener('click', () => {
+            this.openSignupDialog();
+        });
+
+        this.logoutButton.addEventListener('click', () => {
+            UserState.instance.logout();
+        });
+
+        UserState.instance.addEventListener(UserState.IS_LOGGED_IN_CHANGED_EVENT_NAME, this.updateAuthenticationButtons);
+    }
+
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+
+        UserState.instance.removeEventListener(UserState.IS_LOGGED_IN_CHANGED_EVENT_NAME, this.updateAuthenticationButtons);
+    }
+
+    updateAuthenticationButtons() {
+        const isLoggedIn = UserState.instance.isLoggedIn;
+
+        this.loginButton.classList.toggle('hidden', isLoggedIn);
+        this.signupButton.classList.toggle('hidden', isLoggedIn);
+        this.logoutButton.classList.toggle('hidden', !isLoggedIn);
     }
 
     openLoginDialog() {
         const dialog = new LoginDialog();
+        dialog.show();
+    }
+
+    openSignupDialog() {
+        const dialog = new SignupDialog();
         dialog.show();
     }
 }

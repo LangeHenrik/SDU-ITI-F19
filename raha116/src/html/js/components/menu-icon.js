@@ -1,3 +1,4 @@
+import {BaseComponent} from "../framework/base-component.js";
 import {coerceBooleanValue} from "../utilities/types.js";
 
 const template = `
@@ -44,15 +45,11 @@ const template = `
 </svg>
 `;
 
-export class MenuIcon extends HTMLElement {
+export class MenuIcon extends BaseComponent {
     constructor() {
-        super();
+        super(template);
 
-        const shadow = this.attachShadow({mode: 'open'});
-
-        shadow.innerHTML = template;
-
-        this.toggleIcon = shadow.querySelector('.toggle-icon');
+        this.toggleIcon = this.shadow.querySelector('.toggle-icon');
     }
 
     static get observedAttributes() {

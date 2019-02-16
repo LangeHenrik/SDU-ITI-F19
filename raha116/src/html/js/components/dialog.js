@@ -2,81 +2,93 @@ import {BaseComponent} from "../framework/base-component.js";
 import './button.js';
 
 const template = `<style>
+    
     :host {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    
+    .container {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 3em min-content 3em;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         filter: drop-shadow(0 0 1rem rgba(0, 0, 0, 0.3));
     }
     
-    :host(.opening) {
-        animation-name: dialog-appear;
-        animation-duration: 250ms;
-        animation-timing-function: cubic-bezier(.17,.67,.7,1.50);
-    }
-    
-    :host(.closing) {
-        animation-name: dialog-appear;
-        animation-duration: 250ms;
-        animation-timing-function: cubic-bezier(.17,.67,.7,1.50);
-        animation-direction: reverse;
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 
     .header {
         display: grid;
-        grid-template-columns: 3em min-content 3em;
+        grid-template-columns: 3em auto 3em;
         background-color: var(--main-color);
         color: var(--main-text-color);
         place-items: stretch;
     }
 
     .title {
-        justify-content: center;
+        justify-self: center;
         align-self: center;
     }
 
     .footer {
 
     }
-    
+
     .body {
         background-color: white;
     }
 
 </style>
 
-<div class="header">
-    <span><!-- Filler --></span>
-    <span class="title">
+<div class="background">
+    
+</div>
+
+<div class="container">
+
+    <div class="header">
+        <span><!-- Filler --></span>
+        <span class="title">
         <slot name="title"></slot>
     </span>
-    <zl-button id="close-dialog-button">X</zl-button>
+        <zl-button id="close-dialog-button">X</zl-button>
+    </div>
+
+    <div class="body">
+        <slot name="body"></slot>
+    </div>
+
+    <div class="footer">
+        <slot name="footer"></slot>
+    </div>
+
 </div>
 
-<div class="body">
-    <slot name="body"></slot>
-</div>
-
-<div class="footer">
-    <slot name="footer"></slot>
-</div>
 `;
 
 export class Dialog extends BaseComponent {
     constructor() {
-        super();
+        super(template);
 
-        const shadow = this.attachShadow({mode: 'open'});
-
-        shadow.innerHTML = template;
-
-        this.closeDialogButton = shadow.querySelector('#close-dialog-button');
+        this.closeDialogButton = this.shadow.querySelector('#close-dialog-button');
 
         this.handleWindowKeydown = this.handleWindowKeydown.bind(this);
+
+        this.container = this.shadow.querySelector('.container');
+
+        this.background = this.shadow.querySelector('.background');
     }
 
     handleWindowKeydown(event) {
@@ -97,7 +109,15 @@ export class Dialog extends BaseComponent {
             this.close();
         });
 
-        window.addEventListener('keyup', this.handleWindowKeydown)
+        window.addEventListener('keyup', this.handleWindowKeydown);
+
+        this.background.addEventListener('click', event => {
+            if (event.defaultPrevented) {
+                return;
+            }
+            event.preventDefault();
+            this.close();
+        })
     }
 
     disconnectedCallback() {
@@ -112,16 +132,18 @@ export class Dialog extends BaseComponent {
     }
 
     animateOpening() {
-        const animation = this.getOpeningAnimation();
-        animation.play();
+        const containerAnimation = this.getOpeningAnimation();
+        containerAnimation.play();
+        const backgroundAnimation = this.getBackgroundOpeningAnimation();
+        backgroundAnimation.play();
     }
 
     getOpeningAnimation() {
-        const animation = this.animate([{
-            transform: 'translate(-50%, -50%) scale(0.5)',
+        const animation = this.container.animate([{
+            transform: 'scale(0.5)',
             opacity: '0',
         }, {
-            transform: 'translate(-50%, -50%) scale(1)',
+            transform: 'scale(1)',
             opacity: '1',
         }], {
             duration: 250,
@@ -131,11 +153,24 @@ export class Dialog extends BaseComponent {
         return animation;
     }
 
+    getBackgroundOpeningAnimation() {
+        const animation = this.background.animate([
+            {opacity: '0'},
+            {opacity: '1'}
+        ], {duration: 250, easing: 'ease-in-out'});
+        animation.pause();
+        return animation;
+    }
+
     animateClosing() {
-        const animation = this.getOpeningAnimation();
-        animation.reverse();
+        const containerAnimation = this.getOpeningAnimation();
+        containerAnimation.reverse();
+
+        const backgroundAnimation = this.getBackgroundOpeningAnimation();
+        backgroundAnimation.reverse();
+
         return new Promise(resolve => {
-            animation.onfinish = resolve;
+            containerAnimation.onfinish = resolve;
         });
     }
 }
