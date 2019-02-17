@@ -7,11 +7,12 @@ const template = `<style>
     :host {
         display: grid;
 
-        grid-template-columns: 1fr 560px 1fr;
+        grid-template-columns: 1fr var(--feed-width) 1fr;
         grid-template-rows: min-content 1fr;
 
         /* Enforce a certain size of the application */
-        width: 100vw;
+        width: 100%;
+        background-color: var(--main-background);
     }
 
     zl-header {

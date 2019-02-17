@@ -8,7 +8,7 @@ use Exception;
 
 class URI
 {
-    private const UriSchemeRegex = "/(\/[\w\d\_\-\/]+)(?:\?([\w\d\_\-\/\=&]+))/";
+    private const UriSchemeRegex = "/(\/[\w\d\_\-\/]+)(?:\?([\w\d\_\-\/\=&]+)?)?/";
 
     /**
      * @var string

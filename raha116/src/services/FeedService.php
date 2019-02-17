@@ -5,6 +5,7 @@ namespace services;
 
 
 use models\FeedEntry;
+use models\ImageDatabaseEntry;
 use models\UploadedFile;
 use repositories\FeedRepository;
 
@@ -55,11 +56,52 @@ class FeedService
         $feed_entry = $this->feedRepository->create_feed_entry($user_id, $image_entry->image_id, $description, $title);
 
         return new FeedEntry(
+            $feed_entry->entry_id,
             $this->imageService->get_image_url($image_entry),
             $feed_entry->title,
             $feed_entry->description,
             $user_id,
             $feed_entry->user_id == $user_id
         );
+    }
+
+    /**
+     * Loads the full feed
+     *
+     * @return FeedEntry[]
+     */
+    public function get_feed(): array
+    {
+        $feed_entries = $this->feedRepository->get_full_feed();
+
+        $image_ids = array_unique(array_map(function ($entry) {
+            return $entry->image_id;
+        }, $feed_entries));
+
+        /**
+         * @var ImageDatabaseEntry[] $images
+         */
+        $images = array();
+
+        foreach ($image_ids as $image_id) {
+            $images[$image_id] = $this->imageService->get_image_entry($image_id);
+        }
+
+        $user_id = $this->sessionService->get_active_user_id();
+
+        $filled_feed_entries = array();
+
+        foreach ($feed_entries as $entry) {
+            $filled_feed_entries[] = new FeedEntry(
+                $entry->entry_id,
+                $images[$entry->image_id]->get_image_url(),
+                $entry->title,
+                $entry->description,
+                $user_id,
+                $entry->user_id == $user_id
+            );
+        }
+
+        return $filled_feed_entries;
     }
 }

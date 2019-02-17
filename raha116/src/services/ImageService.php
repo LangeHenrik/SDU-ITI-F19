@@ -47,11 +47,7 @@ class ImageService
 
         $output_path = IO::join_paths($this->STORAGE_PATH, "$hash.$extension");
 
-        echo "Saving file to: $output_path\n";
-
         move_uploaded_file($image->tmp_name, $output_path);
-
-        echo "Saved file\n";
 
         return $this->imageRepository->add_image($hash, $extension);
     }
@@ -61,9 +57,14 @@ class ImageService
         return hash_file("sha256", $image->tmp_name);
     }
 
-    public function get_image_url(ImageDatabaseEntry $image): string
+
+    /**
+     * @param int $image_id
+     * @return ImageDatabaseEntry|null
+     */
+    public function get_image_entry(int $image_id)
     {
-        return "/api/image/?id=$image->image_id";
+        return $this->imageRepository->get_image($image_id);
     }
 
     /**

@@ -1,10 +1,16 @@
-import {isSuccess, postFormData} from "./http-client.js";
+import {get, isSuccess, postFormData} from "./http-client.js";
 
 export class FeedService {
     static instance = new FeedService();
 
-    async getFeeds() {
+    async getFeed() {
+        const res = await get('/api/feed/');
 
+        if (isSuccess(res)) {
+            return res.item.reverse();
+        } else {
+            throw new Error("Failed to load feed.");
+        }
     }
 
     /**
@@ -21,7 +27,6 @@ export class FeedService {
         data.append('title', title);
         data.append('description', description);
 
-        console.log('adding feed entry');
         const res = await postFormData('/api/feed/', data, updateCallback);
 
         if (isSuccess(res)) {

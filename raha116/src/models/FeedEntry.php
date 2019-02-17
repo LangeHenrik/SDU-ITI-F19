@@ -6,6 +6,8 @@ namespace models;
 
 class FeedEntry
 {
+    public $entryId;
+
     /**
      * @var string
      */
@@ -37,14 +39,16 @@ class FeedEntry
 
     /**
      * FeedEntry constructor.
+     * @param int $entryId
      * @param string $imageUrl
      * @param string $title
      * @param string $description
      * @param int $userId
      * @param bool $byThisUser
      */
-    public function __construct(string $imageUrl, string $title, string $description, int $userId, bool $byThisUser)
+    public function __construct(int $entryId, string $imageUrl, string $title, string $description, int $userId, bool $byThisUser)
     {
+        $this->entryId = $entryId;
         $this->imageUrl = $imageUrl;
         $this->title = $title;
         $this->description = $description;

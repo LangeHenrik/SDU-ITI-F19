@@ -25,4 +25,9 @@ class ImageDatabaseEntry
     {
         return "$this->filehash.$this->extension";
     }
+
+    public function get_image_url(): string
+    {
+        return "/api/image/?id=$this->image_id";
+    }
 }

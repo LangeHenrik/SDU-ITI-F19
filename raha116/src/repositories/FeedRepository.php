@@ -23,7 +23,7 @@ class FeedRepository
 
     /**
      * Get the full feed
-     * @return array<FeedDatabaseEntry>
+     * @return FeedDatabaseEntry[]
      */
     public function get_full_feed(): array
     {

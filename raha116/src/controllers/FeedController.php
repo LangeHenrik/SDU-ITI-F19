@@ -32,7 +32,9 @@ class FeedController extends ControllerBase
 
     public function get(): ActionResult
     {
+        $entries = $this->feedService->get_feed();
 
+        return $this->Ok($entries);
     }
 
     public function post(CreateFeedEntryRequest $body): ActionResult

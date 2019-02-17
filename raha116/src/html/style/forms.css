@@ -14,7 +14,6 @@
 .input {
     height: 2rem;
     padding: 0.5rem;
-    line-height: 2rem;
     font-family: var(--font);
     box-sizing: border-box;
     outline-offset: 0;
