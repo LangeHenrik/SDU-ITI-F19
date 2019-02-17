@@ -44,6 +44,21 @@ export async function post(path, body = null) {
 }
 
 /**
+ * Sends a new delete request
+ * @param path
+ * @return {Promise<{status: number}>}
+ */
+export async function sendDelete(path) {
+    const res = await fetch(path, {
+        method: 'DELETE',
+    });
+
+    return {
+        status: res.status,
+    };
+}
+
+/**
  * Posts form data
  * @param {string} path
  * @param {FormData} data

@@ -32,6 +32,7 @@ export class Feed extends BaseComponent {
         this.loadFeed = this.loadFeed.bind(this);
 
         this.handleAddedEntry = this.handleAddedEntry.bind(this);
+        this.handleDeletedEntry = this.handleDeletedEntry.bind(this);
     }
 
     connectedCallback() {
@@ -63,6 +64,7 @@ export class Feed extends BaseComponent {
         for (const entry of entries) {
             const feedEntry = new FeedEntry();
             feedEntry.entry = entry;
+            feedEntry.addEventListener(FeedEntry.FEED_ENTRY_DELETED_EVENT_NAME, this.handleDeletedEntry);
             this.feedList.appendChild(feedEntry);
         }
     }
@@ -80,9 +82,18 @@ export class Feed extends BaseComponent {
 
         const feedEntry = new FeedEntry();
         feedEntry.entry = entry;
+        feedEntry.addEventListener(FeedEntry.FEED_ENTRY_DELETED_EVENT_NAME, this.handleDeletedEntry);
         this.feedList.insertBefore(feedEntry, this.feedList.firstChild);
 
         this.animateNewFeedEntry(feedEntry);
+        this.runExistingEntryMoving();
+    }
+
+    handleDeletedEntry(event) {
+        const element = event.detail.element;
+
+        this.prepareExistingEntryMoving();
+        element.remove();
         this.runExistingEntryMoving();
     }
 

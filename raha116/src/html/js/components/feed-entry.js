@@ -1,4 +1,5 @@
 import {BaseComponent} from "../framework/base-component.js";
+import {FeedService} from "../services/feed-service.js";
 import './button.js';
 
 const template = `<style>
@@ -57,6 +58,8 @@ const template = `<style>
 `;
 
 export class FeedEntry extends BaseComponent {
+    static FEED_ENTRY_DELETED_EVENT_NAME = 'feedEntryDeleted';
+
     constructor() {
         super(template);
 
@@ -64,6 +67,21 @@ export class FeedEntry extends BaseComponent {
         this.image = this.shadow.querySelector('.image');
         this.description = this.shadow.querySelector('.description');
         this.deleteButton = this.shadow.querySelector('.delete-button');
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.deleteButton.addEventListener('click', async () => {
+            FeedService.instance.deleteEntry(this._entry.entryId);
+
+            // Assume the network requests succeeds
+            this.dispatchEvent(new CustomEvent(FeedEntry.FEED_ENTRY_DELETED_EVENT_NAME, {
+                detail: {
+                    element: this,
+                }
+            }));
+        });
     }
 
     /**

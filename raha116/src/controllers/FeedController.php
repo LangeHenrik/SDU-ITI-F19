@@ -65,6 +65,6 @@ class FeedController extends ControllerBase
 
     public function delete(): ActionResult
     {
-
+        return $this->NoContent();
     }
 }

@@ -1,4 +1,4 @@
-import {get, isSuccess, postFormData} from "./http-client.js";
+import {get, isSuccess, postFormData, sendDelete} from "./http-client.js";
 
 export class FeedService {
     static instance = new FeedService();
@@ -34,6 +34,21 @@ export class FeedService {
         }
 
         throw new Error("Failed to create feed entry: " + res.item.message);
+    }
+
+    /**
+     * Deletes the specified entry
+     * @param entryId
+     * @return {Promise<void>}
+     */
+    async deleteEntry(entryId) {
+        const res = await sendDelete(`/api/feed/?id=${entryId}`);
+
+        if (isSuccess(res)) {
+            return null;
+        }
+
+        throw new Error("Failed to delete entry");
     }
 
 }
