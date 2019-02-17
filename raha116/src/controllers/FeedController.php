@@ -63,8 +63,14 @@ class FeedController extends ControllerBase
         return $this->Ok($result);
     }
 
-    public function delete(): ActionResult
+    public function delete(int $query_id): ActionResult
     {
+        $error = $this->feedService->delete_feed_entry($query_id);
+
+        if ($error) {
+            return $this->BadRequest(new ValidationError($error));
+        }
+
         return $this->NoContent();
     }
 }

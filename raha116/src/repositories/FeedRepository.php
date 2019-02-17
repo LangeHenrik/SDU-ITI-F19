@@ -68,4 +68,25 @@ class FeedRepository
     {
         return $this->conn->query_single_row("select entry_id, user_id, image_id, description, title from feed_entries where entry_id = ?", FeedDatabaseEntry::class, "i", $entry_id);
     }
+
+    /**
+     * Gets all the entries that refers the given image
+     *
+     * @param int $image_id
+     * @return FeedDatabaseEntry[]
+     */
+    public function get_entries_referring_image_id(int $image_id): array
+    {
+        return $this->conn->query_multiple_rows("select entry_id, user_id, image_id, description, title  from feed_entries where image_id = ?", FeedDatabaseEntry::class, "i", $image_id);
+    }
+
+    /**
+     * Deletes the given entry
+     *
+     * @param int $entry_id
+     */
+    public function delete_entry(int $entry_id)
+    {
+        $this->conn->execute_prepared_query("delete from feed_entries where entry_id = ?", "i", $entry_id);
+    }
 }

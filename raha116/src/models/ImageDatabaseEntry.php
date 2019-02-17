@@ -21,7 +21,7 @@ class ImageDatabaseEntry
      */
     public $image_id;
 
-    public function getFilename(): string
+    public function get_filename(): string
     {
         return "$this->filehash.$this->extension";
     }

@@ -104,4 +104,26 @@ class FeedService
 
         return $filled_feed_entries;
     }
+
+    /**
+     * @param int $entry_id
+     *
+     * @return string|null A string with an error message if the image could not be deleted, null if successful
+     */
+    public function delete_feed_entry(int $entry_id)
+    {
+        $entry = $this->feedRepository->get_feed_entry($entry_id);
+
+        if ($entry->user_id != $this->sessionService->get_active_user_id()) {
+            return "User doesn't own entry";
+        }
+
+        $this->feedRepository->delete_entry($entry->entry_id);
+
+        // If no more entries refers the image, we can safely delete it
+        if (count($this->feedRepository->get_entries_referring_image_id($entry->image_id)) == 0) {
+            $this->imageService->delete_image($entry->image_id);
+        }
+    }
+
 }

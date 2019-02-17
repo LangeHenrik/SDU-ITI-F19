@@ -57,4 +57,9 @@ class ImageRepository
     {
         return $this->conn->query_single_row("select image_id, filehash, extension from images where filehash = ?", ImageDatabaseEntry::class, "s", $filehash);
     }
+
+    public function delete_image(int $image_id)
+    {
+        $this->conn->execute_prepared_query("delete from images where image_id = ?", "i", $image_id);
+    }
 }

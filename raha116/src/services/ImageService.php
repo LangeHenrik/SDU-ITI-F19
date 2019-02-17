@@ -68,6 +68,20 @@ class ImageService
     }
 
     /**
+     * Deletes the specified image
+     *
+     * @param int $image_id
+     */
+    public function delete_image(int $image_id)
+    {
+        $entry = $this->get_image_entry($image_id);
+
+        unlink(IO::join_paths($this->STORAGE_PATH, $entry->get_filename()));
+
+        $this->imageRepository->delete_image($image_id);
+    }
+
+    /**
      * Prints the refered image to stdout
      *
      * @param int $image_id
@@ -82,7 +96,7 @@ class ImageService
             return false;
         }
 
-        $image_path = IO::join_paths($this->STORAGE_PATH, $entry->getFilename());
+        $image_path = IO::join_paths($this->STORAGE_PATH, $entry->get_filename());
 
         $image_info = getimagesize($image_path);
 
