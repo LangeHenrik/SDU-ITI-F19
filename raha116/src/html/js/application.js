@@ -33,12 +33,7 @@ const template = `<style>
         display: none;
     }
 
-    @media screen and (max-width: 576px) {
-        :host {
-            grid-template-columns: 1fr 95vw 1fr;
-            
-        }
-        
+    @media screen and (max-width: 576px) {        
         .sidebar {
             display: none;
         }
