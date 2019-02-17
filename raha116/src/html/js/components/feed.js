@@ -1,6 +1,8 @@
 import {BaseComponent} from "../framework/base-component.js";
 import {FeedService} from "../services/feed-service.js";
+import {UserState} from "../services/user-state.js";
 import './feed-creator.js';
+import {FeedCreator} from "./feed-creator.js";
 import './feed-entry.js';
 import {FeedEntry} from "./feed-entry.js";
 
@@ -24,6 +26,12 @@ export class Feed extends BaseComponent {
         super(template);
 
         this.feedList = this.shadow.querySelector('.feed-list');
+
+        this.feedCreator = this.shadow.querySelector('zl-feed-creator');
+
+        this.loadFeed = this.loadFeed.bind(this);
+
+        this.handleAddedEntry = this.handleAddedEntry.bind(this);
     }
 
     connectedCallback() {
@@ -31,18 +39,41 @@ export class Feed extends BaseComponent {
 
         this.loadFeed();
 
+        UserState.instance.addEventListener(UserState.IS_LOGGED_IN_CHANGED_EVENT_NAME, this.loadFeed);
+
+        this.feedCreator.addEventListener(FeedCreator.FEED_ENTRY_CREATED_EVENT_NAME, this.handleAddedEntry);
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+
+        UserState.instance.removeEventListener(UserState.IS_LOGGED_IN_CHANGED_EVENT_NAME, this.loadFeed);
     }
 
     async loadFeed() {
-        const entries = await FeedService.instance.getFeed();
+        this.feedList.innerHTML = '';
 
-        console.log(entries);
+        if (!UserState.instance.isLoggedIn) {
+            console.log('user is not authenticated. Ignoring feed');
+            return;
+        }
+
+        const entries = await FeedService.instance.getFeed();
 
         for (const entry of entries) {
             const feedEntry = new FeedEntry();
             feedEntry.entry = entry;
             this.feedList.appendChild(feedEntry);
         }
+    }
+
+    handleAddedEntry(event) {
+        const entry = event.detail.entry;
+        console.log('entry was added', event, entry);
+
+        const feedEntry = new FeedEntry();
+        feedEntry.entry = entry;
+        this.feedList.insertBefore(feedEntry, this.feedList.firstChild);
     }
 }
 

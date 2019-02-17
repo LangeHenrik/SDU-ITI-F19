@@ -19,7 +19,7 @@ export class FeedService {
      * @param {string} title
      * @param {string} description
      * @param updateCallback - A callback that will be invoked whenever the upload progresses
-     * @return {Promise<void>}
+     * @return {Promise<{byThisUser: boolean, description: string, title: string, entryId: number, userId: number, imageUrl: string}>}
      */
     async addFeedEntry(image, title, description, updateCallback) {
         const data = new FormData();

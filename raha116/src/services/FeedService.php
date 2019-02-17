@@ -57,7 +57,7 @@ class FeedService
 
         return new FeedEntry(
             $feed_entry->entry_id,
-            $this->imageService->get_image_url($image_entry),
+            $image_entry->get_image_url(),
             $feed_entry->title,
             $feed_entry->description,
             $user_id,

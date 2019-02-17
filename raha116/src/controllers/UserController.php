@@ -10,6 +10,7 @@ use models\CreateUserRequest;
 use models\IsLoggedInResponse;
 use models\LoginUserRequest;
 use models\ValidationError;
+use services\SessionService;
 use services\UserService;
 
 class UserController extends ControllerBase
@@ -20,8 +21,9 @@ class UserController extends ControllerBase
      */
     private $service;
 
-    public function __construct(UserService $service)
+    public function __construct(UserService $service, SessionService $sessionService)
     {
+        parent::__construct($sessionService);
         $this->service = $service;
     }
 

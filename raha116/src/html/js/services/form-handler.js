@@ -4,17 +4,23 @@ export class FormHandler {
      * @param {HTMLElement} fakeSubmitButton - An optional fake submit button
      */
     constructor(form, fakeSubmitButton = undefined) {
-        this.inputs = form.querySelectorAll('input, textarea');
+        this.form = form;
 
-        for (const input of this.inputs) {
-            this._addDirtyHandling(input);
-        }
+        this.inputs = this.form.querySelectorAll('input, textarea');
+
+        this._addAllDirtyHandling();
 
         // Redirect the fakeSubmitButton as a proper submit for the form
         if (fakeSubmitButton) {
             fakeSubmitButton.addEventListener('click', () => {
                 form.dispatchEvent(new Event('submit'));
             });
+        }
+    }
+
+    _addAllDirtyHandling() {
+        for (const input of this.inputs) {
+            this._addDirtyHandling(input);
         }
     }
 
@@ -31,6 +37,19 @@ export class FormHandler {
             }
         }
         return out;
+    }
+
+    /**
+     * Resets the entire form
+     */
+    clear() {
+        this.form.reset();
+
+        for (const input of this.inputs) {
+            input.classList.remove('dirty');
+        }
+
+        this._addAllDirtyHandling();
     }
 
 

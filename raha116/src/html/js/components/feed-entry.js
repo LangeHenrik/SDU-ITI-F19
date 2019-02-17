@@ -81,8 +81,6 @@ export class FeedEntry extends BaseComponent {
     }
 
     _renderEntry() {
-        console.log('rendering entry', this.entry);
-
         this.titleElement.innerText = this._entry.title;
         this.image.style.backgroundImage = `url(${this._entry.imageUrl})`;
         this.description.innerText = this._entry.description;

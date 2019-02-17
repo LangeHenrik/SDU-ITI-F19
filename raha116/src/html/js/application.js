@@ -1,5 +1,7 @@
 import './components/feed.js';
 import './components/header.js';
+import {BaseComponent} from "./framework/base-component.js";
+import {UserState} from "./services/user-state.js";
 
 console.log('application js loaded');
 
@@ -12,6 +14,7 @@ const template = `<style>
 
         /* Enforce a certain size of the application */
         width: 100%;
+        min-height: 100%;
         background-color: var(--main-background);
     }
 
@@ -20,10 +23,14 @@ const template = `<style>
     }
 
     .body {
-        margin: 2rem 0 0 0;
+        margin: 2rem 0;
         
         grid-column: 2 / span 1;
         
+    }
+    
+    .hidden {
+        display: none;
     }
 
     @media screen and (max-width: 576px) {
@@ -41,23 +48,34 @@ const template = `<style>
 
 <zl-header></zl-header>
 
-<div class="body">
+<div class="body hidden">
     <zl-feed></zl-feed>
 </div>
 
 `;
 
-class Application extends HTMLElement {
+class Application extends BaseComponent {
     constructor() {
-        super();
+        super(template);
 
-        // Clear the loading text
-        this.innerHTML = '';
-
-        const shadow = this.attachShadow({mode: 'open'});
-
-        shadow.innerHTML = template;
+        this.body = this.shadow.querySelector('.body');
     }
+
+    connectedCallback() {
+        super.connectedCallback();
+
+        UserState.instance.addEventListener(UserState.IS_LOGGED_IN_CHANGED_EVENT_NAME, () => {
+            this._updateAuthentication();
+        });
+    }
+
+    _updateAuthentication() {
+        const authenticated = UserState.instance.isLoggedIn;
+
+        this.body.classList.toggle('hidden', !authenticated);
+    }
+
+
 }
 
 customElements.define('zl-application', Application);

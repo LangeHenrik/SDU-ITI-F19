@@ -11,6 +11,7 @@ use models\CreateFeedEntryRequest;
 use models\UploadedFile;
 use models\ValidationError;
 use services\FeedService;
+use services\SessionService;
 
 class FeedController extends ControllerBase
 {
@@ -23,15 +24,21 @@ class FeedController extends ControllerBase
     /**
      * FeedController constructor.
      * @param FeedService $feedService
+     * @param SessionService $sessionService
      */
-    public function __construct(FeedService $feedService)
+    public function __construct(FeedService $feedService, SessionService $sessionService)
     {
+        parent::__construct($sessionService);
         $this->feedService = $feedService;
     }
 
 
     public function get(): ActionResult
     {
+        if ($authentication_required = $this->required_authentication()) {
+            return $authentication_required;
+        }
+
         $entries = $this->feedService->get_feed();
 
         return $this->Ok($entries);
@@ -39,6 +46,10 @@ class FeedController extends ControllerBase
 
     public function post(CreateFeedEntryRequest $body): ActionResult
     {
+        if ($authentication_required = $this->required_authentication()) {
+            return $authentication_required;
+        }
+
         $error = $body->validate();
 
         if ($error) {
