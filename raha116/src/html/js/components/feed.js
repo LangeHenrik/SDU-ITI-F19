@@ -67,13 +67,67 @@ export class Feed extends BaseComponent {
         }
     }
 
+    /**
+     * A map of all the existing positions. Initialized before a move
+     * @type Map<HTMLElement, {top: number, left: number}>
+     */
+    existingEntryPosition;
+
     handleAddedEntry(event) {
         const entry = event.detail.entry;
-        console.log('entry was added', event, entry);
+
+        this.prepareExistingEntryMoving();
 
         const feedEntry = new FeedEntry();
         feedEntry.entry = entry;
         this.feedList.insertBefore(feedEntry, this.feedList.firstChild);
+
+        this.animateNewFeedEntry(feedEntry);
+        this.runExistingEntryMoving();
+    }
+
+    prepareExistingEntryMoving() {
+        const map = new Map();
+
+        const entries = this.shadow.querySelectorAll('zl-feed-entry');
+
+        for (const entry of entries) {
+            const {offsetTop, offsetLeft} = entry;
+            map.set(entry, {top: offsetTop, left: offsetLeft});
+        }
+
+        this.existingEntryPosition = map;
+    }
+
+    runExistingEntryMoving() {
+        if (!this.existingEntryPosition) {
+            return;
+        }
+
+        for (const [element, {top, left}] of this.existingEntryPosition) {
+            const {offsetTop, offsetLeft} = element;
+
+            element.animate([
+                {transform: `translate(${left - offsetLeft}px, ${top - offsetTop}px)`},
+                {transform: 'translate(0, 0)'}
+            ], {
+                duration: 250,
+                easing: 'ease-in-out'
+            });
+        }
+
+        this.existingEntryPosition = null;
+    }
+
+    animateNewFeedEntry(feedEntry) {
+        console.log('animating feed entry', feedEntry);
+        feedEntry.animate([
+            {transform: 'translateY(-100%)', opacity: '0'},
+            {transform: 'translateY(0)', opacity: '1'},
+        ], {
+            duration: 250,
+            easing: 'ease-in-out',
+        });
     }
 }
 
