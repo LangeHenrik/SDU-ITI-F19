@@ -3,7 +3,7 @@
 
 namespace framework;
 
-use stdClass;
+use models\NotFoundResponse;
 
 /**
  * A base for other controllers to implement and expand on
@@ -46,7 +46,7 @@ abstract class ControllerBase
 
     protected function NotFound(): ActionResult
     {
-        return new ActionResult(new stdClass(), 404);
+        return new ActionResult(new NotFoundResponse(), 404);
     }
 
     protected function BadRequest($response): ActionResult
@@ -57,5 +57,15 @@ abstract class ControllerBase
     protected function NoContent(): ActionResult
     {
         return new ActionResult(null, 204);
+    }
+
+    /**
+     * Call to manually handle the network response
+     *
+     * @return ActionResult
+     */
+    protected function ManuallyHandled(): ActionResult
+    {
+        return new ActionResult(null, -1);
     }
 }

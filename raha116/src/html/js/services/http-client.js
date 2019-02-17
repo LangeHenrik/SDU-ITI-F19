@@ -26,6 +26,9 @@ export async function get(path) {
 export async function post(path, body = null) {
     const res = await fetch(path, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: body ? JSON.stringify(body) : '',
     });
 
@@ -38,6 +41,45 @@ export async function post(path, body = null) {
         status: res.status,
         item,
     };
+}
+
+/**
+ * Posts form data
+ * @param {string} path
+ * @param {FormData} data
+ * @param progressUpdateCallback - A callback that is invoked whenever the uploaded progresses
+ */
+export function postFormData(path, data, progressUpdateCallback) {
+    return new Promise((resolve, reject) => {
+
+        const request = new XMLHttpRequest();
+
+        request.addEventListener('progress', event => {
+            if (event.lengthComputable) {
+                progressUpdateCallback({
+                    loaded: event.loaded,
+                    total: event.total,
+                    percent: event.loaded / event.total,
+                });
+            }
+        });
+
+        request.addEventListener('load', event => {
+            const res = {
+                status: request.status,
+                item: JSON.parse(request.responseText),
+            };
+
+            resolve(res);
+        });
+
+        request.addEventListener('error', event => {
+            reject(new Error(request.statusText));
+        });
+
+        request.open('POST', path, true);
+        request.send(data);
+    });
 }
 
 /**

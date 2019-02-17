@@ -46,21 +46,32 @@ class DatabaseConnection
         return $this->conn->query($query);
     }
 
+    public function run_multi_query(string $query)
+    {
+        $result = $this->conn->multi_query($query);
+        if ($result) {
+            // multi_query does buffering, so we have to clear the buffer
+            while ($this->conn->next_result()) ;
+        }
+        return $result;
+    }
+
     /**
      * @param string $query
      * @param string $param_types
-     * @param string ...$params
+     * @param mixed ...$params
      * @return bool|mysqli_result
      */
-    public function execute_prepared_query(string $query, string $param_types, string ...$params)
+    public function execute_prepared_query(string $query, string $param_types, ...$params)
     {
         $stmt = $this->prepare($query);
         if ($stmt === false) {
             throw new Exception("Failed to prepare query: " . $this->get_last_error());
         }
 
-        $stmt->bind_param($param_types, ...$params);
-
+        if ($param_types) {
+            $stmt->bind_param($param_types, ...$params);
+        }
 
         if (!$stmt->execute()) {
             throw new Exception("Failed to execute query: " . $stmt->error);
@@ -78,8 +89,11 @@ class DatabaseConnection
      * @param string[] $params
      * @return mixed
      */
-    public function query_single_row(string $query, string $class, string $param_types, string ...$params)
+    public function query_single_row(string $query, string $class, string $param_types, ...$params)
     {
+        if (!$params) {
+            $params = array();
+        }
         $result = $this->execute_prepared_query($query, $param_types, ...$params);
 
         if ($result == null) {

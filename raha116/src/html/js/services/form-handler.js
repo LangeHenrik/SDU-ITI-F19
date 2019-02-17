@@ -4,7 +4,7 @@ export class FormHandler {
      * @param {HTMLElement} fakeSubmitButton - An optional fake submit button
      */
     constructor(form, fakeSubmitButton = undefined) {
-        this.inputs = form.querySelectorAll('input');
+        this.inputs = form.querySelectorAll('input, textarea');
 
         for (const input of this.inputs) {
             this._addDirtyHandling(input);
@@ -24,7 +24,11 @@ export class FormHandler {
     getValues() {
         const out = {};
         for (const input of this.inputs) {
-            out[input.name] = input.value || '';
+            if (input.type === 'file') {
+                out[input.name] = input.multiple ? Array.from(input.files) : input.files[0];
+            } else {
+                out[input.name] = input.value || '';
+            }
         }
         return out;
     }

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace database;
+namespace repositories;
 
 
+use database\DatabaseConnection;
 use Exception;
-use models\CreatedUserModel;
 use models\User;
 
 class UserRepository
@@ -37,7 +37,7 @@ class UserRepository
      *
      * @param string $username
      * @param string $hash
-     * @return CreatedUserModel|null
+     * @return User|null
      */
     public function create_user(string $username, string $hash)
     {

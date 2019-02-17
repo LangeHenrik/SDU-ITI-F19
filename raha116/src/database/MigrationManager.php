@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS migrations(
         // Run the migration
         $migration_content = file_get_contents($file_path);
 
-        $result = $this->connection->run_query($migration_content);
+        $result = $this->connection->run_multi_query($migration_content);
         if ($result == false) {
             $message = "Failed to run migration $file: " . $this->connection->get_last_error();
             error_log($message);

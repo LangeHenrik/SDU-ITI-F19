@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace services;
 
-use database\UserRepository;
+use repositories\UserRepository;
 
 class UserService
 {
@@ -11,10 +11,15 @@ class UserService
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var SessionService
+     */
+    private $sessionService;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, SessionService $sessionService)
     {
         $this->userRepository = $userRepository;
+        $this->sessionService = $sessionService;
     }
 
     /**
@@ -39,7 +44,7 @@ class UserService
         $user = $this->userRepository->create_user($username, $hash);
 
         if ($user) {
-            $_SESSION['user'] = $user->user_id;
+            $this->sessionService->set_active_user_id($user->user_id);
             return null;
         }
         return null;
@@ -66,19 +71,18 @@ class UserService
             return "Login failed";
         }
 
-        $_SESSION['user'] = $user->user_id;
+        $this->sessionService->set_active_user_id($user->user_id);
 
         return null;
     }
 
     public function logout()
     {
-        session_unset();
-        session_destroy();
+        $this->sessionService->destroy_session();
     }
 
     public function is_logged_in(): bool
     {
-        return !!$_SESSION['user'];
+        return !!$this->sessionService->get_active_user_id();
     }
 }

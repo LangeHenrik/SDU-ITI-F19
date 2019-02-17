@@ -78,10 +78,26 @@ class HandlerCallback
 
     private function get_body(ReflectionType $type)
     {
-        $inputJSON = file_get_contents('php://input');
-        $input = json_decode($inputJSON, TRUE);
+        $content_type = explode(";", $_SERVER['CONTENT_TYPE'])[0];
 
-        return JsonConverter::convert_to_object($input, $type);
+        if ($content_type == "application/json") {
+
+            $inputJSON = file_get_contents('php://input');
+            $input = json_decode($inputJSON, TRUE);
+
+            return JsonConverter::convert_to_object($input, $type->getName());
+        } else if ($content_type == "multipart/form-data") {
+            $name = $type->getName();
+            $instance = new $name;
+
+            JsonConverter::fill_instance($_FILES, $instance);
+
+            JsonConverter::fill_instance($_REQUEST, $instance);
+
+            return $instance;
+        } else {
+            die("unknown content type $content_type");
+        }
     }
 
     /**

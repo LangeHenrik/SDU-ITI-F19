@@ -25,6 +25,11 @@
     font-size: 1rem;
 }
 
+textarea.input {
+    resize: vertical;
+    height: 5rem;
+}
+
 .input:focus {
     border-color: var(--main-color);
 }

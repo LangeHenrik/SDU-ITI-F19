@@ -14,16 +14,15 @@ const template = `<style>
 
     .menu-content {
         flex: 0 0 0;
-        flex-basis: 0;
         flex-direction: column;
         display: flex;
-        transition: flex-basis 200ms ease-in-out;
+        overflow: hidden;
     }
     
     .menu-content.open {
-        flex-basis: 3rem;
+        flex-basis: auto;
     }
-
+    
     .button {
         flex: 0 0 3rem;
     }
@@ -135,11 +134,11 @@ export class Header extends BaseComponent {
         this.signupButton = this.shadow.querySelector('#signup-button');
     }
 
+    previousMenuAnimation = null;
+
     connectedCallback() {
         this.mobileToggleButton.addEventListener('click', () => {
-            this.menuOpen = !this.menuOpen;
-            this.mobileToggleButtonIcon.open = this.menuOpen;
-            this.menuContent.classList.toggle('open', this.menuOpen);
+            this.toggleMenu();
         });
 
         this.loginButton.addEventListener('click', () => {
@@ -155,6 +154,55 @@ export class Header extends BaseComponent {
         });
 
         UserState.instance.addEventListener(UserState.IS_LOGGED_IN_CHANGED_EVENT_NAME, this.updateAuthenticationButtons);
+    }
+
+    toggleMenu() {
+        this.menuOpen = !this.menuOpen;
+        this.mobileToggleButtonIcon.open = this.menuOpen;
+        // this.menuContent.classList.toggle('open', this.menuOpen);
+
+        if (this.menuOpen) {
+            this.animateMenuOpen();
+        } else {
+            this.animateMenuClosed();
+        }
+    }
+
+    animateMenuOpen() {
+        const currentHeight = this.menuContent.offsetHeight;
+        this.menuContent.style.flexBasis = 'auto';
+        const maxHeight = this.menuContent.offsetHeight;
+        this.menuContent.style.flexBasis = '';
+
+        this.animateMenu([
+            {flexBasis: `${currentHeight}px`},
+            {flexBasis: `${maxHeight}px`}
+        ]);
+    }
+
+    async animateMenu(keyframes) {
+        if (this.previousMenuAnimation) {
+            this.previousMenuAnimation.cancel();
+        }
+
+        this.previousMenuAnimation = this.menuContent.animate(keyframes, {
+            duration: 200,
+            easing: 'ease-in-out',
+        });
+
+        await this.previousMenuAnimation.finished;
+
+        this.menuContent.classList.toggle('open', this.menuOpen);
+
+    }
+
+    animateMenuClosed() {
+        const currentHeight = this.menuContent.offsetHeight;
+
+        this.animateMenu([
+            {flexBasis: `${currentHeight}px`},
+            {flexBasis: `0px`}
+        ]);
     }
 
 

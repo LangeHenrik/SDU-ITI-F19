@@ -22,24 +22,29 @@ class JsonConverter
      * @param ReflectionType $type
      * @return mixed
      */
-    public static function convert_to_object(array $arr, ReflectionType $type)
+    public static function convert_to_object(array $arr, string $type)
     {
-        $className = $type->getName();
-        $instance = new $className;
+        $instance = new $type;
 
+        return self::fill_instance($arr, $instance);
+    }
 
+    public static function fill_instance(array $arr, object $instance)
+    {
         try {
-            $reflection = new ReflectionClass($className);
+            $reflection = new ReflectionClass($instance);
 
             $props = $reflection->getProperties();
-
 
             foreach ($props as $prop) {
                 $key = $prop->getName();
 
-                $value = $arr[$key];
 
-                $prop->setValue($instance, $value);
+                if (array_key_exists($key, $arr)) {
+                    $value = $arr[$key];
+
+                    $prop->setValue($instance, $value);
+                }
             }
 
 

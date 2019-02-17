@@ -28,9 +28,10 @@ class Router
     {
         $this->auto_discover_controllers();
 
-        $path = $_SERVER['REQUEST_URI'];
-        $verb = strtolower($_SERVER['REQUEST_METHOD']);
+        $url = new URI($_SERVER['REQUEST_URI']);
 
+        $path = $url->path;
+        $verb = strtolower($_SERVER['REQUEST_METHOD']);
 
         $handler = $this->resolver->get_handler($path, $verb);
 
@@ -49,8 +50,14 @@ class Router
 
     }
 
+
     private function respond(ActionResult $result)
     {
+        // Manually handled
+        if ($result->get_status() == -1) {
+            return;
+        }
+
         http_response_code($result->get_status());
 
         if ($result->has_body()) {
