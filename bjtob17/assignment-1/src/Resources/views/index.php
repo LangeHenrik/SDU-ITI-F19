@@ -1,3 +1,6 @@
+<?php
+use Services\Auth;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +10,15 @@
 </head>
 <body>
 <div id="test">
-    <?php
-    echo $data["msg"];
-    ?>
+bla
 </div>
 <?php
-
+if (Auth::isLoggedIn()) {
+    echo '<a href="/logout">logout</a>';
+} else {
+    echo '<a href="/login">login</a>';
+}
 ?>
-<a href="/logout">logout</a>
 <script src="/Resources/js/js.js"></script>
 </body>
 </html>

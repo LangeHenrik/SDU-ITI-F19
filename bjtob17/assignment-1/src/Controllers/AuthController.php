@@ -3,14 +3,27 @@
 namespace Controllers;
 
 
+use Repositories\UserRepository;
 use Routing\IRequest;
 
 class AuthController extends BaseController
 {
+    private $userRepo;
+
+    /**
+     * AuthController constructor.
+     * @param $userRepo UserRepository
+     */
+    public function __construct($userRepo)
+    {
+        $this->userRepo = $userRepo;
+    }
+
     public function postLogin(IRequest $request)
     {
         $body = $request->getBody();
-        if ($body["username"] === "bob" && $body["password"] === "secret") {
+        $user = $this->userRepo->getByUsername($body["username"]);
+        if ($user !== null && $user->hashedPassword === $body["password"]) {
             $_SESSION["loggedin"] = true;
             $_SESSION["username"] = $body["username"];
             $this->redirect("/");

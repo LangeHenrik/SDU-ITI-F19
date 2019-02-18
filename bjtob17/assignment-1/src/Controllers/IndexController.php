@@ -9,4 +9,9 @@ class IndexController extends BaseController
     {
         return $this->html("index", ["msg" => "hello!!!"]);
     }
+
+    public function upload(IRequest $request): string
+    {
+        return $this->json($request->getBody());
+    }
 }

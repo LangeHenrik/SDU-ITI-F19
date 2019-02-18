@@ -1,9 +1,9 @@
 <?php
 
-namespace Helpers;
+namespace Services;
 
 
-class AuthHelper
+class Auth
 {
     public static function startSession()
     {
@@ -15,4 +15,4 @@ class AuthHelper
         return (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true);
     }
 }
-AuthHelper::startSession();
+Auth::startSession();

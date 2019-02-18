@@ -42,6 +42,9 @@ class Request implements IRequest
             {
                 $result[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
+            if (count($_FILES) > 0) {
+                $result["_FILES"] = $_FILES;
+            }
             return $result;
         }
 
