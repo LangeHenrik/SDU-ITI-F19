@@ -1,7 +1,8 @@
 <?php
 namespace Controllers;
 
-use Repositories\PhotoRepository;
+use DependencyInjector\DependencyInjectionContainer;
+use Repositories\Interfaces\IPhotoRepository;
 use Routing\IRequest;
 
 class IndexController extends BaseController
@@ -11,13 +12,13 @@ class IndexController extends BaseController
 
     /**
      * IndexController constructor.
+     * @param DependencyInjectionContainer $di
      * @param $config
-     * @param $photoRepository
      */
-    public function __construct($config, PhotoRepository $photoRepository)
+    public function __construct(DependencyInjectionContainer $di, $config)
     {
         parent::__construct($config);
-        $this->photoRepository = $photoRepository;
+        $this->photoRepository = $di->get(IPhotoRepository::class);
     }
 
     public function index(IRequest $request): string

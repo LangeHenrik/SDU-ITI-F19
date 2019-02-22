@@ -8,7 +8,7 @@ class DependencyInjectionContainer
 {
     private $interfaceImplementationMap;
 
-    public function set($interfaceClass, $impl)
+    public function register($interfaceClass, $impl)
     {
         $this->interfaceImplementationMap[$interfaceClass] = $impl;
     }

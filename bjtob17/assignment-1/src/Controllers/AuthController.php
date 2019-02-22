@@ -3,6 +3,8 @@
 namespace Controllers;
 
 
+use DependencyInjector\DependencyInjectionContainer;
+use Repositories\Interfaces\IUserRepository;
 use Repositories\UserRepository;
 use Routing\IRequest;
 
@@ -11,14 +13,13 @@ class AuthController extends BaseController
     private $userRepo;
 
     /**
-     * AuthController constructor.
-     * @param $userRepo UserRepository
+     * @param DependencyInjectionContainer $di
      * @param $config
      */
-    public function __construct(UserRepository $userRepo, $config)
+    public function __construct(DependencyInjectionContainer $di, $config)
     {
         parent::__construct($config);
-        $this->userRepo = $userRepo;
+        $this->userRepo = $di->get(IUserRepository::class);
     }
 
     public function postLogin(IRequest $request)

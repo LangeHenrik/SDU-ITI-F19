@@ -22,19 +22,16 @@ use Middleware\RequiresAuthMiddleware;
 
 $diContainer = new DependencyInjectionContainer();
 
-$userRepo = new UserRepository();
-$photoRepo = new PhotoRepository();
+$router = new Router(new Request(), $diContainer, $config);
 
-$router = new Router(new Request(), $diContainer);
+$diContainer->register(IUserRepository::class,  new UserRepository());
+$diContainer->register(IPhotoRepository::class, new PhotoRepository());
 
-$diContainer->set(IUserRepository::class, $userRepo);
-$diContainer->set(IPhotoRepository::class, $photoRepo);
+// Parameters: route, "Fully\\Namespaced\\Controller@method", [middlewareObjects]
+$router->get("/", "Controllers\\IndexController@index", [] );
+$router->get("/photos", "Controllers\\PhotoController@index", [] );
+$router->get("/users", "Controllers\\UserController@users", [new RequiresAuthMiddleware()] );
 
-// Parameters: route, [controllerObject, controllerMethod], [middlewareObjects]
-$router->get("/", [new IndexController($config, $photoRepo), "index"], [] );
-$router->get("/photos", [new PhotoController($config), "index"], [] );
-$router->get("/users", [new UserController($userRepo, $config), "users"], [new RequiresAuthMiddleware()] );
-
-$router->get("/login", [new AuthController($userRepo, $config), "getLogin"], [] );
-$router->get("/logout", [new AuthController($userRepo, $config), "logout"], [] );
-$router->post("/login", [new AuthController($userRepo, $config), "postLogin"], [] );
+$router->get("/login", "Controllers\\AuthController@getLogin", [] );
+$router->get("/logout", "Controllers\\AuthController@logout", [] );
+$router->post("/login", "Controllers\\AuthController@postLogin", [] );

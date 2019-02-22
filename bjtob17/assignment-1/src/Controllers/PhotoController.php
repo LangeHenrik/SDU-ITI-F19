@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 
+use DependencyInjector\DependencyInjectionContainer;
 use Routing\IRequest;
 
 class PhotoController extends BaseController
@@ -8,9 +9,10 @@ class PhotoController extends BaseController
 
     /**
      * PhotoController constructor.
+     * @param DependencyInjectionContainer $di
      * @param $config
      */
-    public function __construct($config)
+    public function __construct(DependencyInjectionContainer $di, $config)
     {
         parent::__construct($config);
     }

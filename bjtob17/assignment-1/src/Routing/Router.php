@@ -1,23 +1,30 @@
 <?php
 namespace Routing;
 
+use DependencyInjector\DependencyInjectionContainer;
+
 class Router
 {
     private $request;
     private $supportedMethods = [
         "GET", "POST"
     ];
-    private $dependencyContainer;
+    private $di;
+    private $config;
 
-    function __construct(IRequest $request, $dependencyContainer)
+    function __construct(IRequest $request, DependencyInjectionContainer $di, $config)
     {
         $this->request = $request;
-        $this->dependencyContainer = $dependencyContainer;
+        $this->di = $di;
+        $this->config = $config;
     }
 
     function __call($name, $args)
     {
-        list($route, $method, $middlewares) = $args;
+        list($route, $classMethodName, $middlewares) = $args;
+        $objectMethod = explode("@", $classMethodName);
+
+        $method = [new $objectMethod[0]($this->di, $this->config), $objectMethod[1]];
 
         if (!in_array(strtoupper($name), $this->supportedMethods))
         {
