@@ -1,0 +1,32 @@
+.btnUploadImage{
+    display: none;
+    background-color: #4CAF50; /* Green */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3vw;
+    bottom: -3px;
+    right: 10px;
+    transition: 0.2s;
+    position: fixed;
+    transition: all .2s ease-in-out;
+}
+
+.btnUploadImage:hover{
+    background-color: darkgreen;
+    transform: scale(1.1);
+
+}
+
+.btnUploadImage:focus {
+    outline: 0;
+}
+
+input[type=file] {
+    display: none;
+}

@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "url": "https://i.imgur.com/SBUbHHN.gif",
+    "header": "Gul mand",
+    "text": "Det her er en gul mand i en trækvogn",
+    "user_id": 1,
+    "comments": [
+      {
+        "author": "Benny Andersen",
+        "comment": "Det er en flot gul man. Hvor har du fundet den flotte gule mand? På internettet?"
+      },
+      {
+        "author": "Claus Hjort",
+        "comment": "Jeg hader arbejdsløse"
+      },
+      {
+        "author": "Norbert Krüger",
+        "comment": "The yellow man is riding in ze wagon"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "url": "https://theintercept.imgix.net/wp-uploads/sites/1/2018/09/American-Dissident-Noam-Chomsky-on-the-State-of-the-Empire-1537928785.jpg",
+    "header": "Noam Chomsky",
+    "text": "En fucking helt",
+    "user_id": 2,
+    "comments": [
+      {
+        "author": "Lone Borgersen",
+        "comment": "Det kan vi godt rette lidt mere på"
+      },
+      {
+        "author": "Cæcilie Norby",
+        "comment": "Du har ret. Han er sgu en fucking helt"
+      },
+      {
+        "author": "Journalist #341001",
+        "comment": "I am not selfcensoring! How dare you :''''("
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "url": "https://www.geek.com/wp-content/uploads/2018/07/confusedsaitama1-625x352.png",
+    "header": "One punch man",
+    "text": "Han er skaldet og styrketræner",
+    "user_id": 3,
+    "comments": [
+      {
+        "author": "Mads Norby",
+        "comment": "Han er for fed. Men Mumen Rider er federe!"
+      },
+      {
+        "author": "Jens Navne",
+        "comment": "Jeg elsker også Mumen rider mere"
+      },
+      {
+        "author": "Casper Kølbæk",
+        "comment": "Lol"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "url": "https://buckoffblog.files.wordpress.com/2017/05/mumen-rider-2.jpg",
+    "header": "Mumen rider!",
+    "text": "Stående cykling!",
+    "user_id": 4,
+    "comments": [
+      {
+        "author": "Lasse Klevang",
+        "comment": "Han gør mig altså hård ham Mumen Rider!"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "url": "https://images.interactives.dk/files/bonnier-ngm/pictures/haj.jpg",
+    "header": "En hvid haj",
+    "text": "Den er stor og farlig",
+    "user_id": 5,
+    "comments": [
+      {
+        "author": "Martin Dreymann",
+        "comment": "Uuuuh jeg er altså lidt bange for hajer"
+      },
+      {
+        "author": "Sif Kølbæk",
+        "comment": "Hajer er for bangeren. Meget sejere end Mumen Rider"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Elefant_%282%29.jpg/1600px-Elefant_%282%29.jpg",
+    "header": "Elefant",
+    "text": "Den er stor og grå",
+    "user_id": 6,
+    "comments": [
+      {
+        "author": "Donald Trump",
+        "comment": "Kæft den er sej man. Jeg elsker elefanter"
+      },
+      {
+        "author": "Martin Henriksen",
+        "comment": "Så længe den bliver i Afrika! Elefanter hører ikke hjemme i DANMARK"
+      },
+      {
+        "author": "",
+        "comment": ""
+      },
+      {
+        "author": "",
+        "comment": ""
+      },
+      {
+        "author": "",
+        "comment": ""
+      },
+      {
+        "author": "",
+        "comment": ""
+      },
+      {
+        "author": "",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "url": "https://www.asiatours.dk/wp-content/uploads/2018/08/elefant-bader-i-flod.jpg",
+    "header": "En elefant der tager et bad",
+    "text": "Det er en elefant som vasker sig selv med sin snabel",
+    "user_id": 7,
+    "comments": [
+      {
+        "author": "",
+        "comment": ""
+      }
+    ]
+  }
+]

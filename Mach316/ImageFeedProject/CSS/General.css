@@ -10,27 +10,28 @@
 
 .comment {
     border-bottom: 1px solid black;
+    font-size: 1vw;
 }
 
 
 .image-feed-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(auto, 2fr);
+    grid-row-gap: 20px;
 }
 
 
 .feed-image {
     border-radius: 5px;
     max-width: 100%;
-    max-height: 100%;
 }
 
 .image-item-container{
-    max-width: 70%;
+    height: 900px;
+    max-width: 100%;
     padding: 2%;
-    margin-bottom: 15%;
-    margin-left: 2%;
+    margin-bottom: 20%;
+    margin-left: 1%;
 }
 
 .image-item {
@@ -53,6 +54,7 @@
 }
 textarea {
     resize: none;
+    width: 100%;
 }
 
 .image-description-container{
@@ -66,5 +68,5 @@ textarea {
 
 
 .image-content-container{
-    height: 650px;
+    height: 60%;
 }
