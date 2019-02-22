@@ -12,9 +12,11 @@ class UserController extends BaseController
 
     /**
      * @param $userRepo UserRepository
+     * @param $config
      */
-    public function __construct($userRepo)
+    public function __construct(UserRepository $userRepo, $config)
     {
+        parent::__construct($config);
         $this->userRepo = $userRepo;
     }
 

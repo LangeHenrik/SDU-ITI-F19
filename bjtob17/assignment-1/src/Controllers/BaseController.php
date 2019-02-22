@@ -5,11 +5,22 @@ namespace Controllers;
 
 class BaseController
 {
-    private $data = [];
-    protected function html(string $viewName, $data = []) : string
+    private $config;
+
+    /**
+     * BaseController constructor.
+     * @param $config
+     */
+    public function __construct($config)
     {
+        $this->config = $config;
+    }
+
+    protected function html(string $viewName, $viewData = []) : string
+    {
+        $viewData["_app_title"] = $this->config["app_title"];
+
         header('Content-Type: text/html');
-        $this->data = $data;
         include __DIR__ . "/../" . "/Resources/views/".$viewName.".php";
         return "";
     }

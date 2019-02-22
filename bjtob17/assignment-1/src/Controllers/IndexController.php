@@ -1,17 +1,27 @@
 <?php
 namespace Controllers;
 
+use Repositories\PhotoRepository;
 use Routing\IRequest;
 
 class IndexController extends BaseController
 {
-    public function index(IRequest $request): string
+
+    private $photoRepository;
+
+    /**
+     * IndexController constructor.
+     * @param $config
+     * @param $photoRepository
+     */
+    public function __construct($config, PhotoRepository $photoRepository)
     {
-        return $this->html("index", ["msg" => "hello!!!"]);
+        parent::__construct($config);
+        $this->photoRepository = $photoRepository;
     }
 
-    public function upload(IRequest $request): string
+    public function index(IRequest $request): string
     {
-        return $this->json($request->getBody());
+        return $this->html("index", ["photos" => $this->photoRepository->getAll()]);
     }
 }
