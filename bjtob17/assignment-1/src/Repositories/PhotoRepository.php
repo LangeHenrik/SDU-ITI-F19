@@ -6,8 +6,9 @@ namespace Repositories;
 use DateTime;
 use Models\Photo;
 use Models\User;
+use Repositories\Interfaces\IPhotoRepository;
 
-class PhotoRepository
+class PhotoRepository implements IPhotoRepository
 {
     private $photos;
 

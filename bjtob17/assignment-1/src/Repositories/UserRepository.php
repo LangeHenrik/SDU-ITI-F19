@@ -4,8 +4,9 @@
 namespace Repositories;
 
 use Models\User;
+use Repositories\Interfaces\IUserRepository;
 
-class UserRepository
+class UserRepository implements IUserRepository
 {
     private $users;
 

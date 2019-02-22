@@ -7,10 +7,12 @@ class Router
     private $supportedMethods = [
         "GET", "POST"
     ];
+    private $dependencyContainer;
 
-    function __construct(IRequest $request)
+    function __construct(IRequest $request, $dependencyContainer)
     {
         $this->request = $request;
+        $this->dependencyContainer = $dependencyContainer;
     }
 
     function __call($name, $args)
