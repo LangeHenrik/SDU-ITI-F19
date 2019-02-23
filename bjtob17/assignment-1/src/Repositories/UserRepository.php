@@ -3,43 +3,75 @@
 
 namespace Repositories;
 
+use Database\Interfaces\IDatabaseConnection;
+use DependencyInjector\DependencyInjectionContainer;
+use Models\Dto\UserDto;
 use Models\User;
 use Repositories\Interfaces\IUserRepository;
 
 class UserRepository implements IUserRepository
 {
-    private $users;
+    private $di;
+    private $config;
+    /**
+     * @var IDatabaseConnection;
+     */
+    private $db;
 
-    public function __construct()
+    public function __construct($config, DependencyInjectionContainer $di)
     {
-        $this->users = [new User(1, "bob", "secret")];
+        $this->config = $config;
+        $this->di = $di;
+        $this->db = $di->get(IDatabaseConnection::class);
     }
 
     public function getAll(): array
     {
-        return $this->users;
+        $stmt = $this->db->getPDO()->prepare("SELECT id, username, hashedPassword FROM users");
+        $stmt->execute();
+        $dbData = $stmt->fetchAll();
+
+        $users = [];
+        foreach($dbData as $user) {
+            array_push($users, new User($user["id"], $user["username"], $user["hashedPassword"]));
+        }
+
+        return $users;
     }
 
-    public function getById($id): User
+    public function getById(int $id): ?User
     {
-        return $this->users[$id];
+        $user = null;
+
+        $stmt = $this->db->getPDO()->prepare("SELECT id, username, hashedPassword FROM users WHERE id = ?");
+        $stmt->execute([$id]);
+        $dbData = $stmt->fetch();
+
+        if (count($dbData) > 0) {
+            $user = new User($dbData["id"], $dbData["username"], $dbData["hashedPassword"]);
+        }
+
+        return $user;
     }
 
-    public function getByUsername($username): User
+    public function getByUsername(string $username): ?User
     {
         $returnUser = null;
-        foreach($this->users as $user) {
-            if ($user->username === $username) {
-                $returnUser = $user;
-                break;
-            }
+
+        $stmt = $this->db->getPDO()->prepare("SELECT id, username, hashedPassword FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        $dbData = $stmt->fetch();
+        if ($dbData) {
+            $returnUser = new User($dbData["id"], $dbData["username"], $dbData["hashedPassword"]);
         }
 
         return $returnUser;
     }
 
-    public function add($user)
+    public function add(UserDto $userDto): bool
     {
-        $this->users[$user->id] = $user;
+        $stmt = $this->db->getPDO()->prepare("INSERT INTO users (username, hashedPassword) VALUES (?, ?)");
+        $success = $stmt->execute([$userDto->username, $userDto->hashedPassword]);
+        return $success;
     }
 }

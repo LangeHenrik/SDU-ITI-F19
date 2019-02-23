@@ -7,10 +7,21 @@ namespace DependencyInjector;
 class DependencyInjectionContainer
 {
     private $interfaceImplementationMap;
+    private $config;
 
-    public function register($interfaceClass, $impl)
+    /**
+     * DependencyInjectionContainer constructor.
+     * @param $config
+     */
+    public function __construct($config)
     {
-        $this->interfaceImplementationMap[$interfaceClass] = $impl;
+        $this->config = $config;
+    }
+
+
+    public function register($interfaceClass, $implString)
+    {
+        $this->interfaceImplementationMap[$interfaceClass] = new $implString($this->config, $this);
     }
 
     public function get($interfaceClass)

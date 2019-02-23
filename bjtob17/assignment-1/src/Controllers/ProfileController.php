@@ -1,24 +1,18 @@
 <?php
+
 namespace Controllers;
 
+
 use DependencyInjector\DependencyInjectionContainer;
-use Models\Dto\UserDto;
 use Repositories\Interfaces\IPhotoRepository;
-use Repositories\Interfaces\IUserRepository;
-use Routing\IRequest;
+use Services\Auth;
 
-class IndexController extends BaseController
+class ProfileController extends BaseController
 {
-
     /**
-     * @var IPhotoRepository;
+     * @var IPhotoRepository
      */
     private $photoRepository;
-
-    /**
-     * @var IUserRepository
-     */
-    private $userRepository;
 
     /**
      * IndexController constructor.
@@ -28,12 +22,12 @@ class IndexController extends BaseController
     public function __construct(DependencyInjectionContainer $di, $config)
     {
         parent::__construct($config);
+
         $this->photoRepository = $di->get(IPhotoRepository::class);
-        $this->userRepository = $di->get(IUserRepository::class);
     }
 
-    public function index(IRequest $request): string
+    public function index()
     {
-        return $this->html("index", ["page_title" => "Home", "photos" => $this->photoRepository->getAll(3)]);
+        return $this->html("profile", ["page_title" => "Profile", "photos" => $this->photoRepository->getPhotoForUser(Auth::getLoggedinUsername())]);
     }
 }

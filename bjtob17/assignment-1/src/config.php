@@ -1,11 +1,13 @@
 <?php
 return [
-    "db_name" => "bla",
-    "db_user" => "bla",
-    "db_password" => "bla",
-    "db_database" => "bla",
+    "db_host" => "db",
+    "db_port" => "3306",
+    "db_username" => "root",
+    "db_password" => "password",
+    "db_database" => "assignment_1",
 
     "app_title" => "Photo Website",
+    "app_upload_dir" => $_SERVER["DOCUMENT_ROOT"] . "/Resources/img/",
 
     "timezone" => "Europe/Copenhagen",
 

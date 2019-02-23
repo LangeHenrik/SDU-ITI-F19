@@ -1,3 +1,5 @@
+src/Resources/img/*
+!src/Resources/img/.gitkeep
 /node_modules
 /public/hot
 /public/storage

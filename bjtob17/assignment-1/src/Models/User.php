@@ -22,4 +22,14 @@ class User extends Entity
         $this->username = $username;
         $this->hashedPassword = $hashedPassword;
     }
+
+    public static function generateHash(string $plaintextPassword): string
+    {
+        return password_hash($plaintextPassword, PASSWORD_BCRYPT);
+    }
+
+    public function verifyPassword(string $plaintextPassword): bool
+    {
+        return password_verify($plaintextPassword, $this->hashedPassword);
+    }
 }

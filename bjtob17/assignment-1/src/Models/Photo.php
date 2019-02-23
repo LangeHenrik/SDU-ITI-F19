@@ -5,6 +5,7 @@ use DateTime;
 
 class Photo extends Entity
 {
+    public $title;
     public $caption;
     public $imgName;
     public $uploadDate;
@@ -12,15 +13,17 @@ class Photo extends Entity
 
     /**
      * Photo constructor.
-     * @param $id
-     * @param $caption
-     * @param $imgName
-     * @param $uploadDate
+     * @param int $id
+     * @param string $title
+     * @param string $caption
+     * @param string $imgName
+     * @param int $uploadDate
      * @param User $author
      */
-    public function __construct(int $id, string $caption, string $imgName, int $uploadDate, User $author)
+    public function __construct(int $id, string $title, string $caption, string $imgName, int $uploadDate, User $author)
     {
         $this->id = $id;
+        $this->title = $title;
         $this->caption = $caption;
         $this->imgName = $imgName;
         $this->uploadDate = $uploadDate;

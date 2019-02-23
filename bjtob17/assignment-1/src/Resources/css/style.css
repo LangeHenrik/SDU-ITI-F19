@@ -22,6 +22,7 @@ RESET
 html, body {
     width: 100%;
     height: 100%;
+    min-width: 387px;
 }
 
 body {
@@ -85,6 +86,7 @@ CARD
 }
 
 .card article .author p {
+    font-weight: 600;
 }
 
 .card article .image {
@@ -98,11 +100,47 @@ CARD
     padding: 0 20px 20px;
 }
 
+.card article .text .title {
+    font-size: 1.1em;
+}
+.card article .text .caption {
+    font-size: 0.8em;
+}
 .card article .date {
     color: #747474;
     font-size: 0.8em;
     padding: 0 20px 20px;
 }
+
+/**
+FORMS
+ */
+.form-group {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5em;
+}
+.form-group > label {
+    padding: .5em 1em .5em 0;
+    flex: 1;
+}
+.form-group > input {
+    flex: 2;
+}
+.form-group > input,
+.form-group > button {
+    padding: .5em;
+}
+.form-group > button {
+    background: hsl(204, 86%, 53%);
+    color: white;
+    border: 0;
+}
+
+.profile-image-form {
+    border-bottom: 1px #000 groove;
+}
+
 
 /**
 WEATHER

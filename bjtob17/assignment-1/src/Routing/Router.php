@@ -22,8 +22,8 @@ class Router
     function __call($name, $args)
     {
         list($route, $classMethodName, $middlewares) = $args;
-        $objectMethod = explode("@", $classMethodName);
 
+        $objectMethod = explode("@", $classMethodName);
         $method = [new $objectMethod[0]($this->di, $this->config), $objectMethod[1]];
 
         if (!in_array(strtoupper($name), $this->supportedMethods))

@@ -5,7 +5,7 @@ namespace Controllers;
 
 class BaseController
 {
-    private $config;
+    protected $config;
 
     /**
      * BaseController constructor.

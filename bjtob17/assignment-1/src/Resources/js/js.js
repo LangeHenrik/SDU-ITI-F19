@@ -19,9 +19,7 @@ function setWeather() {
 
 function getWeatherData(location) {
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ef681ac49df64e02a154f4ee4bf3591c&units=metric`;
-    const options = {
-    };
-    return window.fetch(apiUrl, options).then(res => res.json())
+    return window.fetch(apiUrl).then(res => res.json())
     .then(response => {
         const sunrise = new Date(response["sys"]["sunrise"]*1000);
         const sunset = new Date(response["sys"]["sunset"]*1000);
@@ -38,4 +36,24 @@ function getWeatherData(location) {
             "icon": `http://openweathermap.org/img/w/${response["weather"][0]["icon"]}.png`
         };
     }).catch(err => console.log(err));
+}
+
+function deletePhoto(photoId) {
+    const data = new FormData();
+    data.append("id", photoId);
+
+    const options = {
+        method: "post",
+        body: data
+    };
+    window.fetch("/photos/delete", options)
+        .then(res => res.json())
+        .then(res => {
+            if (res.success) {
+                window.location.reload();
+            }
+        })
+        .catch(err => {
+            console.log(err);
+    });
 }

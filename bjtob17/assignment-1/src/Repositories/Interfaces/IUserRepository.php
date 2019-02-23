@@ -9,15 +9,16 @@
 namespace Repositories\Interfaces;
 
 
+use Models\Dto\UserDto;
 use Models\User;
 
 interface IUserRepository
 {
     public function getAll(): array;
 
-    public function getById($id): User;
+    public function getById(int $id): ?User;
 
-    public function getByUsername($username): User;
+    public function getByUsername(string $username): ?User;
 
-    public function add($user);
+    public function add(UserDto $user): bool;
 }

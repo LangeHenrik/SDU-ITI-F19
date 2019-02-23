@@ -1,10 +1,11 @@
 <?php
 
+namespace Resources\views\partials;
 use Models\Photo;
 
 class PhotoPartial
 {
-    public static function show(Photo $photo)
+    public static function show(Photo $photo, bool $showDelete = false)
     {
         $date = $photo->formatDate();
         $username = $photo->author->username;
@@ -16,15 +17,20 @@ class PhotoPartial
         <p>$username</p>
     </div>
     <div class="image">
-        <img src="$photo->imgName" alt="">
+        <img src="/Resources/img/$photo->imgName" alt="">
     </div>
     <div class="text">
+        <h4 class="title">$photo->title</h4>
         <p class="caption">$photo->caption</p>
     </div>
     <span class="date">$date</span>
-</article>
-</div>
 EOL;
+    if ($showDelete) {
+        echo '<button onclick="deletePhoto(' . $photo->id . ')"><i class="fas fa-trash-alt"></i></button>';
+    }
+        echo '
+</article>
+</div>';
 
     }
 }

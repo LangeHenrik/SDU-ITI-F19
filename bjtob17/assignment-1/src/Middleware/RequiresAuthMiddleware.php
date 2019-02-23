@@ -13,7 +13,7 @@ class RequiresAuthMiddleware extends AbstractMiddleware
         if (Auth::isLoggedIn()) {
             return $this->next($request, "Logged in");
         } else {
-            return $this->stop($request, "Not logged in");
+            return $this->stop($request, "Not logged in<br><a href='/login'>Login</a>");
         }
     }
 }
