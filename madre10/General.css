@@ -1,0 +1,74 @@
+*{
+    //border: 1px solid black;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.navigation_bar__wrapper{
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.navigation_bar__button{
+    margin-bottom: 5px;
+    padding-top: 20px;
+    height: 30px;
+    width: 150px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #253454;
+}
+
+.navigation_bar__button:hover {
+    background-color: #ed2d2d;
+}
+
+
+.feed_container {
+    width: 80%;
+    margin: auto;
+}
+
+.feed__item {
+    margin-top: 25px;
+}
+
+.feed__image {
+    height: 300px;
+}
+
+.feed__comment {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.feed__comment_author {
+    color: #303030;
+    font-weight: 900;
+}
+
+.feed__comment_content{
+
+}
+
+.feed__comment_input{
+    margin-top: 10px;
+    margin-left: 30px;
+
+}
+
+feed__comment_input_textarea {
+}
+
+.feed__comment_submit_button {
+
+}
+
