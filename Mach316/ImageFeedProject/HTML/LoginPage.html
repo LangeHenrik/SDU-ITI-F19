@@ -6,16 +6,57 @@
     <link rel="stylesheet" href="../CSS/Navbar.css">
     <link rel="stylesheet" href="../CSS/General.css">
     <script src="../JS/navbar.js"></script>
+    <script src="../JS/LoginPage.js"></script>
 
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
+
 <div class="page-container">
     <navbar id="navbar"></navbar>
     <div class="main-content">
-        <h1>THIS IS WHERE YOU LOGIN</h1>
+        <div id="background-overlay">
+            <div class="loginform">
+                <h2>Login to your account</h2>
+                <form action="">
+                    <input type="text" title="username" placeholder="username"/>
+                    <input type="password" title="username" placeholder="password"/>
+                    <button type="submit" class="btn" id="btnLogin">Login</button>
+                   </form>
+            </div>
+        </div>
+
+        <div class="login-page-form-container">
+            <h1>Begin your adventure on Æκóνæς!</h1>
+
+            <form action=”this.html” method="post">
+                <label for="name" style="color: blue;">Name</label>
+                <br>
+                <input type="text" name="name" id="name"/>
+                <br>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" name="Password" id="password"/>
+                <br>
+                <label for="phone">Phone number</label>
+                <br>
+                <input type="text" name="phone" id="phone"/>
+                <br>
+                <label for="email">Email adress</label>
+                <br>
+                <input type="text" name="email" id="email"/>
+                <br>
+                <label for="zip">Zip code</label>
+                <br>
+                <input type="text" name="zip" id="zip"/>
+                <br>
+                <input type="submit" name="submit" id="btnSubmit"/>
+            </form>
+            <button id="btnAlreadyMember">Already a member?</button>
+
+        </div>
     </div>
-</div>s
+</div>
 </body>
 </html>

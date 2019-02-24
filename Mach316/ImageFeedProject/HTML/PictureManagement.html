@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../CSS/Navbar.css">
     <link rel="stylesheet" type="text/css" href="../CSS/PictureManagement.css">
     <link rel="stylesheet" type="text/css" href="../CSS/General.css">
-    <script src="../JS/PictureManagementController.js"></script>
+    <script src="../JS/PictureManagement.js"></script>
     <script src="../JS/navbar.js"></script>
 
     <meta charset="UTF-8">
@@ -17,11 +17,23 @@
     <navbar id="navbar"></navbar>
 
     <div class="main-content">
-        <h1>THIS IS THE PLACE FOR YOUR IMAGES</h1>
+        <div class="top-content">
+        <h1 class="titlePictureManagement">Welcome, add a picture!</h1>
+            <div id="new-image-input-container">
+                <div id="dropZone"></div>
+                <div id="new-image-input-form">
+                    <input type="text" id="txtInputHeader" placeholder="Image name....">
+                    <textarea rows="10" placeholder="Description of image..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="user-images-container" class="image-feed-container">
+
+        </div>
     </div>
 
     <input type="file" id="theFile" />
-    <button class="btnUploadImage" onclick="performClick('theFile')" >Upload</button>
+    <button id="btnUploadImage" >Upload</button>
 </div>
 
 </body>

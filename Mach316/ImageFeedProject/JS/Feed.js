@@ -1,25 +1,62 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    function loadFeedJSON(callback) {
 
-        var xmlRequest = new XMLHttpRequest();
-        xmlRequest.overrideMimeType("application/json");
-        xmlRequest.open('GET', 'https://api.myjson.com/bins/177o26', true);
-        xmlRequest.onreadystatechange = function () {
-            if (xmlRequest.readyState == 4 && xmlRequest.status == "200") {
-                callback(xmlRequest.responseText);
-            }
-        };
-        xmlRequest.send(null);
+
+    function loadFeedData() {
+        fetch("https://api.myjson.com/bins/177o26")
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function (response) {
+                buildFeedContent(response)
+            })
+            .catch((e) => console.log(e))
     }
 
-
-    loadFeedJSON(function (response) {
-        // Parsing JSON string into object
+    loadFeedData(function (response) {
         let imageData = JSON.parse(response);
         buildFeedContent(imageData)
     });
 
+
+
+    function loadRequestLoginPage() {
+        let backgroundOverlay = document.getElementById("background-overlay")
+        backgroundOverlay.style.display = "block";
+    }
+
+    function initFeedPage() {
+        let loggedIn = false;
+        if(loggedIn) {
+            loadFeedData();
+        }
+        else{
+            loadFeedData();
+            loadRequestLoginPage();
+        }
+    }
+
+
+    initFeedPage()
+
+
+    function addComment(e) {
+
+        let targetImageContainer = e.target.parentElement.parentElement;
+        let imageItemId = targetImageContainer.getElementsByClassName("image-item")[0].id;
+        let commentList = targetImageContainer.getElementsByClassName("comment-list-container")[0];
+        let newComment = createCommentItem(getCommentObject(targetImageContainer));
+        commentList.innerHTML += newComment
+        clearCommentArea(targetImageContainer)
+
+    }
+
+    function clearCommentArea(container) {
+        let textArea =container.getElementsByTagName("textarea")[0]
+        let authorInput = container.getElementsByTagName("input")[0]
+        textArea.value = "";
+        authorInput.value= "";
+    }
 
     function buildFeedContent(imageData) {
         let feedRenderString = ""
@@ -70,24 +107,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
 
-    function addComment(e) {
-
-        let targetImageContainer = e.target.parentElement.parentElement;
-        let imageItemId = targetImageContainer.getElementsByClassName("image-item")[0].id;
-        let commentList = targetImageContainer.getElementsByClassName("comment-list-container")[0];
-        let newComment = createCommentItem(getCommentObject(targetImageContainer));
-        commentList.innerHTML += newComment
-        clearCommentArea(targetImageContainer)
-
-    }
-
-    function clearCommentArea(container) {
-        let textArea =container.getElementsByTagName("textarea")[0]
-        let authorInput = container.getElementsByTagName("input")[0]
-        textArea.value = "";
-        authorInput.value= "";
-    }
-
     function getCommentObject(container) {
 
         let authorInput = container.getElementsByTagName("input")[0]
@@ -107,6 +126,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
         return "<div class=\"comment-container\"><h3 class=\"comment-author-name\">" + author + "</h3><div class=\"comment\">" + commentContent + "</div></div>"
 
     }
-
-
 });

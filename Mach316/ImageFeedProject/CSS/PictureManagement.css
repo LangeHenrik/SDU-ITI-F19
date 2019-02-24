@@ -1,4 +1,7 @@
-.btnUploadImage{
+
+
+
+#btnUploadImage{
     display: none;
     background-color: #4CAF50; /* Green */
     border-top-left-radius: 10px;
@@ -9,7 +12,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 3vw;
+    font-size: 2vw;
     bottom: -3px;
     right: 10px;
     transition: 0.2s;
@@ -17,16 +20,57 @@
     transition: all .2s ease-in-out;
 }
 
-.btnUploadImage:hover{
+#btnUploadImage:hover{
     background-color: darkgreen;
     transform: scale(1.1);
 
 }
 
-.btnUploadImage:focus {
+#btnUploadImage:focus {
     outline: 0;
 }
 
 input[type=file] {
     display: none;
 }
+
+#txtInputHeader{
+    margin-left: 0;
+}
+
+
+#dropZone  {
+    display: inline-block;
+    float: left;
+    border: 2px solid rgba(0,0,100, 0.4);
+    border-radius: 8px;
+    width:  500px;
+    height: 250px;
+}
+
+.top-content{
+    display: inline-block;
+    width:100%;
+    height: 500px;
+    margin-top: 1%;
+    border-bottom: 3px solid rgba(0,0,0,0.2);
+}
+
+#user-images-container{
+
+}
+
+#new-image-input-form{
+    display: inline-block;
+    float:left;
+    width: 30%;
+    margin-left: 1%;
+
+}
+
+
+#new-image-input-container{
+
+
+}
+

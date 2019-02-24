@@ -1,9 +1,9 @@
-.feed-title{
+.feed-title {
     font-family: 'Indie Flower', cursive;
     text-align: center;
     font-size: 4vw;
     border-bottom: 5px solid darkred;
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 
@@ -12,6 +12,11 @@
     height: 880px;
     overflow-y: scroll;
 }
+
+
+
+
+
 
 
 
