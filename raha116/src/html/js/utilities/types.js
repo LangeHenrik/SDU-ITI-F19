@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 export function coerceBooleanValue(b) {
-    if (b === 'true' || b === true || b === 1) {
+    if (b === 'true' || b === true || b === 1 || b === '1') {
         return true;
     }
     return false;

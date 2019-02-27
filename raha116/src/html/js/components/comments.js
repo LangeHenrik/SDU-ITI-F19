@@ -101,7 +101,8 @@ export class Comments extends BaseComponent {
 
         await CommentService.instance.createComment(text, this.entryId);
 
-        console.log('created comment');
+        this.form.clear();
+
     }
 
 }

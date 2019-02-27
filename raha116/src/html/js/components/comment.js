@@ -46,18 +46,18 @@ export class Comment extends BaseComponent {
     connectedCallback() {
         super.connectedCallback();
 
-        this._onUserIdChanged();
+        this._onByThisUserChanged();
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
-            case 'user-id':
-                this._onUserIdChanged();
+            case 'by-this-user':
+                this._onByThisUserChanged();
                 break;
         }
     }
 
-    _onUserIdChanged() {
+    _onByThisUserChanged() {
         this.classList.toggle('by-this-user', this.byThisUser)
     }
 }
