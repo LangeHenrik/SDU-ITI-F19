@@ -104,6 +104,16 @@ class DatabaseConnection
     }
 
     /**
+     * Gets the id of the last inserted entry for this connection
+     *
+     * @return int
+     */
+    public function get_last_inserted_id(): int
+    {
+        return $this->query_single_row("select LAST_INSERT_ID() as id", EntryId::class, "")->id;
+    }
+
+    /**
      * Queries for all the rows in the collection
      *
      * @param string $query

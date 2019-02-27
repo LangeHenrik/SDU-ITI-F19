@@ -4,6 +4,10 @@ export class UserState extends EventTarget {
 
     static IS_LOGGED_IN_CHANGED_EVENT_NAME = 'isLoggedInChanged';
 
+    /**
+     * An active instance of user state
+     * @type {UserState}
+     */
     static instance = new UserState();
 
     constructor() {

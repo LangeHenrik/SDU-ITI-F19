@@ -38,6 +38,12 @@ class FeedEntry
     public $byThisUser;
 
     /**
+     * The comments on this entry
+     * @var Comment[]
+     */
+    public $comments;
+
+    /**
      * FeedEntry constructor.
      * @param int $entryId
      * @param string $imageUrl
@@ -45,8 +51,9 @@ class FeedEntry
      * @param string $description
      * @param int $userId
      * @param bool $byThisUser
+     * @param Comment[] $comments
      */
-    public function __construct(int $entryId, string $imageUrl, string $title, string $description, int $userId, bool $byThisUser)
+    public function __construct(int $entryId, string $imageUrl, string $title, string $description, int $userId, bool $byThisUser, array $comments)
     {
         $this->entryId = $entryId;
         $this->imageUrl = $imageUrl;
@@ -54,6 +61,7 @@ class FeedEntry
         $this->description = $description;
         $this->userId = $userId;
         $this->byThisUser = $byThisUser;
+        $this->comments = $comments;
     }
 
 

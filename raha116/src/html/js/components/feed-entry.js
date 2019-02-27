@@ -1,11 +1,12 @@
 import {BaseComponent} from "../framework/base-component.js";
 import {FeedService} from "../services/feed-service.js";
 import './button.js';
+import './comments.js';
 
 const template = `<style>
     :host {
         display: grid;
-        grid-template-rows: 2rem auto auto 2rem;
+        grid-template-rows: 2rem auto auto 2rem auto;
         grid-template-columns: repeat(4, 1fr);
         background-color: white;
         border: 1px solid var(--blurred-input);
@@ -43,6 +44,12 @@ const template = `<style>
     .delete-button {
         grid-column: 4 / 5;
     }
+    
+    zl-comments {
+        border-top: 1px solid var(--blurred-input);
+        grid-column: 1 / 5;
+        grid-row: 5 / 6;
+    }
 </style>
 
 <h3 class="title"></h3>
@@ -55,19 +62,19 @@ const template = `<style>
     Delete
 </zl-button>
 
+<zl-comments>
+
+</zl-comments>
+
 `;
 
 export class FeedEntry extends BaseComponent {
     static FEED_ENTRY_DELETED_EVENT_NAME = 'feedEntryDeleted';
 
-    constructor() {
-        super(template);
-
-        this.titleElement = this.shadow.querySelector('.title');
-        this.image = this.shadow.querySelector('.image');
-        this.description = this.shadow.querySelector('.description');
-        this.deleteButton = this.shadow.querySelector('.delete-button');
-    }
+    /**
+     * @type {{byThisUser: boolean, description: string, title: string, entryId: number, userId: number, imageUrl: string, comments: []}}
+     */
+    _entry;
 
     connectedCallback() {
         super.connectedCallback();
@@ -84,10 +91,19 @@ export class FeedEntry extends BaseComponent {
         });
     }
 
-    /**
-     * @type {{byThisUser: boolean, description: string, title: string, entryId: number, userId: number, imageUrl: string}}
-     */
-    _entry;
+    constructor() {
+        super(template);
+
+        this.titleElement = this.shadow.querySelector('.title');
+        this.image = this.shadow.querySelector('.image');
+        this.description = this.shadow.querySelector('.description');
+        this.deleteButton = this.shadow.querySelector('.delete-button');
+        /**
+         *
+         * @type {Comments}
+         */
+        this.comments = this.shadow.querySelector('zl-comments');
+    }
 
     get entry() {
         return this._entry;
@@ -96,6 +112,8 @@ export class FeedEntry extends BaseComponent {
     set entry(value) {
         this._entry = value;
         this._renderEntry();
+        this.comments.entryId = this._entry.entryId;
+        this.comments.comments = this._entry.comments;
     }
 
     _renderEntry() {

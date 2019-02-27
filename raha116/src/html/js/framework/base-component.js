@@ -1,3 +1,4 @@
+
 export class BaseComponent extends HTMLElement {
     /**
      * Handlers that needs to be cleaned up, when the component gets detached

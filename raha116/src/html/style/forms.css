@@ -27,6 +27,7 @@
 textarea.input {
     resize: vertical;
     height: 5rem;
+    min-height: 4rem;
 }
 
 .input:focus {

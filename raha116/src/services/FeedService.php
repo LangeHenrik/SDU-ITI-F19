@@ -26,16 +26,22 @@ class FeedService
     private $sessionService;
 
     /**
+     * @var CommentService
+     */
+    private $commentService;
+
+    /**
      * FeedService constructor.
      * @param FeedRepository $feedRepository
      * @param ImageService $imageService
      * @param SessionService $sessionService
      */
-    public function __construct(FeedRepository $feedRepository, ImageService $imageService, SessionService $sessionService)
+    public function __construct(FeedRepository $feedRepository, ImageService $imageService, SessionService $sessionService, CommentService $commentService)
     {
         $this->feedRepository = $feedRepository;
         $this->imageService = $imageService;
         $this->sessionService = $sessionService;
+        $this->commentService = $commentService;
     }
 
 
@@ -61,7 +67,8 @@ class FeedService
             $feed_entry->title,
             $feed_entry->description,
             $user_id,
-            $feed_entry->user_id == $user_id
+            $feed_entry->user_id == $user_id,
+            array(),
         );
     }
 
@@ -92,13 +99,16 @@ class FeedService
         $filled_feed_entries = array();
 
         foreach ($feed_entries as $entry) {
+            $comments = $this->commentService->get_comments_for_feed_entry($entry->entry_id);
+
             $filled_feed_entries[] = new FeedEntry(
                 $entry->entry_id,
                 $images[$entry->image_id]->get_image_url(),
                 $entry->title,
                 $entry->description,
                 $user_id,
-                $entry->user_id == $user_id
+                $entry->user_id == $user_id,
+                $comments,
             );
         }
 
