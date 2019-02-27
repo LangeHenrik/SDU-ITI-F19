@@ -28,7 +28,7 @@ export class UserState extends EventTarget {
     }
 
     async _checkIsLoggedIn() {
-        const {status, item: {isLoggedIn}} = await get('/api/user/isLoggedIn');
+        const {status, item: {isLoggedIn}} = await get('/api/user/isLoggedIn/');
 
         if (status !== 200) {
             alert("Something just went horribly wrong, please get support...");

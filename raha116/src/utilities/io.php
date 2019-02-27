@@ -23,7 +23,7 @@ class IO
             }
         }
 
-        return preg_replace('#/+#', '/', join('/', $paths));
+        return preg_replace('#/+#', DIRECTORY_SEPARATOR, join(DIRECTORY_SEPARATOR, $paths));
     }
 }
 

@@ -19,7 +19,7 @@ class Settings
                 die("No settings file available");
             }
 
-            $this->cached_settings = json_decode($json);
+            $this->cached_settings = JsonDecoder::DecodeJson($json);
         }
 
         return $this->cached_settings;

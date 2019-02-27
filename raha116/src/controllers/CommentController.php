@@ -20,6 +20,7 @@ class CommentController extends ControllerBase
     /**
      * CommentController constructor.
      * @param CommentService $comment_service
+     * @param SessionService $session_service
      */
     public function __construct(CommentService $comment_service, SessionService $session_service)
     {

@@ -83,7 +83,7 @@ class HandlerCallback
         if ($content_type == "application/json") {
 
             $inputJSON = file_get_contents('php://input');
-            $input = json_decode($inputJSON, TRUE);
+            $input = JsonDecoder::DecodeJson($inputJSON, TRUE);
 
             return JsonConverter::convert_to_object($input, $type->getName());
         } else if ($content_type == "multipart/form-data") {
