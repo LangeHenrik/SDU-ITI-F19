@@ -5,12 +5,15 @@ const template = `
 <style>
     
     :host {
-        margin: 1rem 4rem 1rem 1rem;
+        margin-right: 4rem;
+        margin-left: 1rem;
         
         border: 2px solid var(--main-color);
         border-radius: 3px;
         display: block;
         padding: 0.2rem;
+        box-sizing: border-box;
+        background-color: white;
     }
     
     :host(.by-this-user) {
