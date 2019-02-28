@@ -145,20 +145,17 @@ display: inline-block;
 
 .form1{
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-gap: 16px;
+
 }
 .form1 label{
   float: left;
   padding-right: 20px;
   width: 200px;
-  grid-column: 1/2;
+
 }
 
 .form1 input, button{
-  float: left;
-  /* width: calc(100%-200px); */
-  grid-column: 2/3;
+
+
 
 }
