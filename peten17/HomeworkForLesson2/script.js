@@ -1,15 +1,14 @@
-function party() {
-  //  document.body.style.backgroundColor = "red";
-
-  //document.getElementById('partybutt').innerHTML = "Make it snow!";
-
-  console.log("Hello");
-  alert("Color changed!");
 
 
 
+function checkName(){
+
+  var name = document.getElementById('name').value;
+  var nameRe = /\S[a-z]|[A-Z]\s[a-z]|[A-Z]\S/g;
+  if (nameRe.) {
+
+  }
 }
-
 
 
 
