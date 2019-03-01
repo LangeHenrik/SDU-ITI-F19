@@ -56,13 +56,15 @@ class Router
 
     private function invalidMethodHandler()
     {
-        header("{$this->request->serverProtocol} 405 Method Not Allowed");
-        echo "Method not allowed";
+        header($this->request->serverProtocol." 405 Method Not Allowed", true, 405);
+        header("Location: /405");
+        die();
     }
     private function defaultRequestHandler()
     {
-        header("{$this->request->serverProtocol} 404 Not Found");
-        echo "Not found";
+        header($this->request->serverProtocol." 404 Not Found", true, 404);
+        header("Location: /404");
+        die();
     }
 
     /**
@@ -70,16 +72,24 @@ class Router
      */
     function resolve()
     {
-        $methodDictionary = $this->{strtolower($this->request->requestMethod)};
-        $middlewaresDictionary = $this->{strtolower($this->request->requestMethod."-middleware")};
-        $formattedRoute = $this->formatRoute($this->request->requestUri);
-        $method = $methodDictionary[$formattedRoute];
-        $middlewares = $middlewaresDictionary[$formattedRoute];
+        $method = $this->getMethod($this->request);
         if(is_null($method))
         {
             $this->defaultRequestHandler();
             return;
         }
+
+        $middlewares = $this->getMiddlewares($this->request);
+        list($middlewaresPassed, $middlewaresFailed) = $this->middlewareHandler($middlewares);
+        if ($middlewaresPassed) {
+            echo call_user_func_array($method, array($this->request));
+        } else {
+            die($middlewaresFailed);
+        }
+    }
+
+    private function middlewareHandler($middlewares)
+    {
         $middlewaresPassed = true;
         $middlewareFailed = "Middleware failed";
         if (!is_null($middlewares) && is_array($middlewares)) {
@@ -93,11 +103,33 @@ class Router
             }
         }
 
-        if ($middlewaresPassed) {
-            echo call_user_func_array($method, array($this->request));
-        } else {
-            die($middlewareFailed);
+       return [$middlewaresPassed, $middlewareFailed];
+    }
+
+    private function getMiddlewares($request)
+    {
+        $middlewaresDictionary = $this->{strtolower($this->request->requestMethod."-middleware")};
+        $formattedRoute = $this->formatRoute(strtok($request->requestUri, "?"));
+        $middlewares = $middlewaresDictionary[$formattedRoute];
+
+        return $middlewares;
+    }
+
+    private function getMethod($request)
+    {
+        $methodDictionary = $this->{strtolower($request->requestMethod)};
+        $formattedRoute = $this->formatRoute(strtok($request->requestUri, "?"));
+        $regexedFiendlyRoute = preg_quote($formattedRoute, "/");
+        $regex = "/($regexedFiendlyRoute)(\/)?(\?((.*=.*)(&?))+)?/";
+        $method = null;
+        foreach ($methodDictionary as $k => $v) {
+            if (preg_match($regex, $k)) {
+                $method = $v;
+                break;
+            }
         }
+
+        return $method;
     }
 
     function __destruct()

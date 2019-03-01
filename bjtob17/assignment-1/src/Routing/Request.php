@@ -33,7 +33,7 @@ class Request implements IRequest
     {
         if($this->requestMethod === "GET")
         {
-            return $argv;
+            return $_GET;
         }
         if ($this->requestMethod == "POST")
         {

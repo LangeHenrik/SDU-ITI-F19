@@ -36,3 +36,7 @@ $router->get("/logout", "Controllers\\AuthController@logout", [] );
 
 $router->get("/register", "Controllers\\AuthController@getRegister", [] );
 $router->post("/register", "Controllers\\AuthController@postregister", [] );
+
+$router->get("/404", "Controllers\\ErrorController@notFound", [] );
+$router->get("/405", "Controllers\\ErrorController@methodNotAllowed", [] );
+

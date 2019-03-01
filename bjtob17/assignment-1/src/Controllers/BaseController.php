@@ -16,10 +16,11 @@ class BaseController
         $this->config = $config;
     }
 
-    protected function html(string $viewName, $viewData = []) : string
+    protected function html(string $viewName, $viewData = [], $responseCode = 200) : string
     {
         $viewData["_app_title"] = $this->config["app_title"];
 
+        http_response_code($responseCode);
         header('Content-Type: text/html');
         include __DIR__ . "/../" . "/Resources/views/".$viewName.".php";
         return "";
