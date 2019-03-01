@@ -43,6 +43,10 @@ class CreateFeedEntryRequest
             return "Missing image file";
         }
 
+        if (!getimagesize($this->image['tmp_name'])) {
+            return "Image was not an image";
+        }
+
         return null;
     }
 }
