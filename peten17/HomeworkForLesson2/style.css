@@ -142,23 +142,21 @@ display: inline-block;
   border: 1px solid black;
   margin-top: 10px;
 }
-<<<<<<< HEAD
 
-.form1{
-  overflow: hidden;
-
+.form1 {
+  text-align: center;
 }
 .form1 label{
-  float: left;
-  padding-right: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-family: sans-serif;
+  margin: 8px;
+  padding: 10px;
+
+
+}
+
+.form1 input{
   width: 200px;
-
+  padding: 10px;
 }
-
-.form1 input, button{
-
-
-
-}
-=======
->>>>>>> 456228972190f14294a9e1aade75de0c8e0bdb09
