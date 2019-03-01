@@ -21,7 +21,7 @@ function createFeedItem(item) {
         '<div class="feed__item">' +
         '<h2>'+ item.header +'</h2>' +
         '<image class="feed__image" src="'+ item.url +'"></image>' +
-        '<p>'+ item.text +'</p>'+
+        '<div class="feed__caption"><p>'+ item.text +'</p></div>'+
         '<div class="feed_comments">'+createFeedItemComments(item.comments)+ '</div>' +
         createCommentInputSection() +
         '</div>';

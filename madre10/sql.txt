@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS my_db;
+USE my_db;
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(250) NOT NULL DEFAULT '',
+  password VARCHAR(250) NOT NULL DEFAULT '',
+  name VARCHAR(250)
+);
+
+INSERT INTO users(email, password, name) VALUES
+('phoellen@gmail.com', 'password', 'Martin Dreymann');

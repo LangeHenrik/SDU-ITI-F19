@@ -6,10 +6,11 @@
     <link rel="stylesheet" type="text/css" href="General.css">
 </head>
 <body>
+
 <div class="container">
     <div id="navbar"></div>
 
-    <div id="feed_container">
+    <div class="feed_container" id="feed_container">
 
     </div>
 </div>

@@ -2,6 +2,13 @@
     //border: 1px solid black;
 }
 
+h1 {
+    text-align: center;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+}
+
 .container{
     width: 80%;
     margin: auto;
@@ -37,12 +44,34 @@
     margin: auto;
 }
 
+.feed_container h2 {
+    text-align: center;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.feed_container img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+
 .feed__item {
-    margin-top: 25px;
+    margin: 15px 2% 15px 2%;
+    border: 1px dotted #adccff;
+    background-color: whitesmoke;
 }
 
 .feed__image {
     height: 300px;
+}
+
+.feed__caption {
+    margin-left: 15px;
+    font-size: 20px;
 }
 
 .feed__comment {
