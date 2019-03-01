@@ -30,7 +30,13 @@ class UserController extends ControllerBase
 
     public function get(): ActionResult
     {
-        return $this->Ok(null);
+        if ($result = $this->required_authentication()) {
+            return $result;
+        }
+
+        $users = $this->service->getUsers();
+
+        return $this->Ok($users);
     }
 
     public function post(CreateUserRequest $body): ActionResult

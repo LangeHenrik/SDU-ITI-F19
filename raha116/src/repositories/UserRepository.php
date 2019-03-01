@@ -55,4 +55,13 @@ class UserRepository
 
         return $user;
     }
+
+    /**
+     * Gets all the users from the database
+     * @return User[]
+     */
+    public function getUsers(): array
+    {
+        return $this->conn->query_multiple_rows("select user_id, username, password from users", User::class, "");
+    }
 }

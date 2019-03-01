@@ -97,6 +97,15 @@ const template = `<style>
 
 
 <div class="menu-content">
+
+    <zl-button class="button hidden" id="feed-link">
+        Feed
+    </zl-button>
+
+    <zl-button class="button hidden" id="user-list-link">
+        Users
+    </zl-button>
+
     <span class="filler"></span>
     
     <zl-button class="button hidden" id="login-button">
@@ -132,6 +141,8 @@ export class Header extends BaseComponent {
         this.logoutButton = this.shadow.querySelector('#logout-button');
 
         this.signupButton = this.shadow.querySelector('#signup-button');
+        this.feedLinkButton = this.shadow.querySelector('#feed-link');
+        this.userListLinkButton = this.shadow.querySelector('#user-list-link');
     }
 
     previousMenuAnimation = null;
@@ -151,6 +162,14 @@ export class Header extends BaseComponent {
 
         this.logoutButton.addEventListener('click', () => {
             UserState.instance.logout();
+        });
+
+        this.feedLinkButton.addEventListener('click', () => {
+            this.dispatchEvent(new CustomEvent('feedLink'))
+        });
+
+        this.userListLinkButton.addEventListener('click', () => {
+            this.dispatchEvent(new CustomEvent('userListLink'))
         });
 
         UserState.instance.addEventListener(UserState.IS_LOGGED_IN_CHANGED_EVENT_NAME, this.updateAuthenticationButtons);
@@ -218,6 +237,8 @@ export class Header extends BaseComponent {
         this.loginButton.classList.toggle('hidden', isLoggedIn);
         this.signupButton.classList.toggle('hidden', isLoggedIn);
         this.logoutButton.classList.toggle('hidden', !isLoggedIn);
+        this.userListLinkButton.classList.toggle('hidden', !isLoggedIn);
+        this.feedLinkButton.classList.toggle('hidden', !isLoggedIn);
     }
 
     openLoginDialog() {

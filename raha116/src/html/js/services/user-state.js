@@ -81,4 +81,17 @@ export class UserState extends EventTarget {
 
         return res.item.message;
     }
+
+    /**
+     * Loads all the users that currently exists
+     * @returns {Promise<Array<{userId: number, username: string}>>}
+     */
+    async getAllUsers() {
+        const res = await get('/api/user/');
+        if (isSuccess(res)) {
+            return res.item;
+        }
+
+        throw new Error(res.item.message);
+    }
 }

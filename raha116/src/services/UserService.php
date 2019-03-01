@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace services;
 
+use models\UserResponse;
 use repositories\UserRepository;
 
 class UserService
@@ -84,5 +85,23 @@ class UserService
     public function is_logged_in(): bool
     {
         return !!$this->sessionService->get_active_user_id();
+    }
+
+    /**
+     * Loads all the users available
+     *
+     * @return UserResponse[]
+     */
+    public function getUsers(): array
+    {
+        $users = $this->userRepository->getUsers();
+
+        $response = array();
+
+        foreach ($users as $user) {
+            $response[] = new UserResponse($user->user_id, $user->username);
+        }
+
+        return $response;
     }
 }
