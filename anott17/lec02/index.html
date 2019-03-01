@@ -41,12 +41,11 @@
         var password = document.getElementById("password").value;
         var validPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(password);
 
-        var phoneNr = document.getElementById("phone").value;
-        var phoneNrArray = document.getElementById("phone").value.split('');
-        var validPhoneNr = /^\d+$/.test(phone);
+        var phone = document.getElementById("phone").value;
+        var validPhoneNr = /^\+[0-9]{8,30}/.test(phone);
 
         var zip = document.getElementById("zip").value;
-        var validZipCode = /^\d+$/.test(zip);
+        var validZipCode = /[0-9]{4}/.test(zip);
 
         names.forEach(function(name) {
           if (name.length > 0){
@@ -65,17 +64,16 @@
           return false;
         }
 
-        if (!(validPhoneNr && phoneNrArray[0] == '+' && phoneNr.length >= 9 && phoneNr.length < 30)) {
-          alert("Your phonenumber must be between 8 and 30 digits and start with +.");
+        if (!(validPhoneNr)) {
+          alert("Your phonenumber must be between 8 and 30 digits and start with +.")
           return false;
         }
 
-        if(!(zip.length == 4 && validZipCode)) {
+        if(!(validZipCode)) {
           alert("Your zip code must be digits and exactly 4 long.")
           return false;
         }
       }
     </script>
-
   </body>
 </html>
