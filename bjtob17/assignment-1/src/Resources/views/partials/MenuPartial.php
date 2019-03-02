@@ -7,7 +7,7 @@ class MenuPartial
 {
     private static $topUrls = [
         ["Home", "/"],
-        ["Photos", "/photos"],
+        ["Users", "/users"],
     ];
 
     public static function show()
@@ -16,7 +16,9 @@ class MenuPartial
         foreach(MenuPartial::$topUrls as $url) {
             $h = $h . '<li><a class="'.MenuPartial::isActive($url[1]).'" href="'.$url[1].'">'.$url[0].'</a></li>';
         }
-        $h = $h . '<li><a class="'.MenuPartial::isActive('/profile').'" href="/profile">Profile</a></li>';
+        if (Auth::isLoggedIn()) {
+            $h = $h . '<li><a class="'.MenuPartial::isActive('/profile').'" href="/profile">Profile</a></li>';
+        }
         $h = $h . "</div>";
 
         $h = $h . "<div class='last'>";

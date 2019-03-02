@@ -24,7 +24,7 @@ $router = new Router(new Request(), $diContainer, $config);
 
 // Parameters: route, "Fully\\Namespaced\\Controller@method", [middlewareObjects]
 $router->get("/", "Controllers\\IndexController@index", [] );
-$router->get("/photos", "Controllers\\PhotoController@index", [new RequiresAuthMiddleware()] );
+$router->get("/users", "Controllers\\UsersController@index", [/*new RequiresAuthMiddleware()*/] );
 $router->get("/profile", "Controllers\\ProfileController@index", [new RequiresAuthMiddleware()] );
 
 $router->post("/photos/delete", "Controllers\\PhotoController@deletePhoto", [new RequiresAuthMiddleware()] );

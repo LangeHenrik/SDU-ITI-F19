@@ -47,6 +47,26 @@ header.main-head {
 }
 
 /**
+ERROR
+ */
+.error {
+    background-color: hsl(348, 100%, 61%);
+    margin: 15px;
+    padding: 10px;
+}
+.error-inline {
+    background-color: hsl(348, 100%, 61%);
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.hidden {
+    display: none;
+}
+.error-border {
+    border: 2px solid hsl(348, 100%, 61%);
+}
+
+/**
 CARD
  */
 .cards {
@@ -117,6 +137,7 @@ FORMS
  */
 .form-group {
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     padding: .5em;
 }
@@ -195,6 +216,7 @@ nav ul .first {
 }
 .main-head {
     grid-area: header;
+    min-height: 101px;
 }
 .content {
     grid-area: content;

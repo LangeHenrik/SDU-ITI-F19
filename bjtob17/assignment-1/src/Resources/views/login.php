@@ -3,12 +3,14 @@
 ?>
 <article>
     <h2>Login</h2>
-
-    <?php
-    if (isset($viewData["_errors"]) && count($viewData["_errors"]) > 0) {
-        print_r($viewData["_errors"]);
-    }
-    ?>
+    <?php if(isset($viewData["_errors"])): ?>
+        <div class="error">
+            <h4>Please fix the following error:</h4>
+            <?php foreach ($viewData["_errors"] as $error): ?>
+            <p><?= $error ?></p>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
     <form action="/login" method="POST">
         <div class="form-group">
             <label for="username">Username:</label>

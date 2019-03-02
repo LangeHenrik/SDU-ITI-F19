@@ -59,7 +59,11 @@ class PhotoController extends BaseController
         $title = $body["title"];
         $caption = $body["caption"];
 
-        // todo: verify that the file isnt larger than 2mb, and that the mime type is jpeg, jpg, or png
+        $error = $this->validatePhoto($body);
+        if ($error !== -1000) {
+            $this->redirect("/profile?error=".$error);
+        }
+
         $ext = pathinfo($body["_FILES"]["image"]["name"], PATHINFO_EXTENSION);
         $imgName = hash("sha256", $body["_FILES"]["image"]["name"].$body["_FILES"]["image"]["size"].time()) . "." . $ext;
 
@@ -72,5 +76,18 @@ class PhotoController extends BaseController
         move_uploaded_file($body["_FILES"]["image"]["tmp_name"], $targetFile);
 
         $this->redirect("/profile");
+    }
+
+    private function validatePhoto($body) {
+        if ($body["_FILES"]["image"]["error"] > 0) {
+            $error = $body["_FILES"]["image"]["error"];
+            return $error;
+        }
+        else if (!in_array($body["_FILES"]["image"]["type"], ["image/jpg", "image/jpeg", "image/png"])) {
+            return -1;
+        }
+
+        return -1000;
+
     }
 }

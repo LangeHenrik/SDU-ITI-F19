@@ -6,7 +6,6 @@ namespace Controllers;
 use DependencyInjector\DependencyInjectionContainer;
 use Models\Dto\UserDto;
 use Repositories\Interfaces\IUserRepository;
-use Repositories\UserRepository;
 use Routing\IRequest;
 
 class AuthController extends BaseController
@@ -49,7 +48,7 @@ class AuthController extends BaseController
         session_destroy();
         unset($_SESSION["username"]);
         unset($_SESSION["loggedin"]);
-        $this->redirect("/login");
+        $this->redirect("/");
     }
 
     public function postRegister(IRequest $request)
@@ -58,21 +57,41 @@ class AuthController extends BaseController
         $user = $this->userRepo->getByUsername($body["username"]);
         if ($user !== null) {
             $errors = ["Username already taken"];
-            return $this->html("register", ["_errors" => $errors]);
-        } else if ($body["password"] !== $body["password2"]) {
-            $errors = ["Passwords must match"];
-            return $this->html("register", ["_errors" => $errors]);
-        } else if(strlen($body["username"]) < 2 || strlen($body["password"]) < 6) {
-            $errors = ["Username must be atleast 2 characters, and password must be atleast 6"];
-            return $this->html("register", ["_errors" => $errors]);
-        } else {
-            $userDto = new UserDto($body["username"], $body["password"]);
+            return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
+        }
+        else if (strlen($body["firstName"]) <= 1) {
+            $errors = ["First name must have at least two character"];
+            return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
+        }
+        else if (strlen($body["lastName"]) <= 1) {
+            $errors = ["Last name must have at least two character"];
+            return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
+        }
+        else if (strlen($body["zip"]) < 4) {
+            $errors = ["Zip must be 4 numbers"];
+            return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
+        }
+        else if (strlen($body["city"]) <= 1) {
+            $errors = ["City name must be at least two characters"];
+            return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
+        }
+        else if (strlen($body["email"]) <= 1 || strpos($body["email"], "@") === false) {
+            $errors = ["Email must be at least two characters, and contain the '@' character"];
+            return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
+        }
+        else if (strlen($body["phone"]) <= 8) {
+            $errors = ["Phone number must be at least eight characters"];
+            return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
+        }
+        else {
+            $userDto = new UserDto($body["username"], $body["password"], $body["firstName"],
+                $body["lastName"], $body["zip"], $body["city"], $body["email"], $body["phone"]);
             $success = $this->userRepo->add($userDto);
             if (!$success) {
                 $errors = ["An error occured"];
-                return $this->html("register", ["_errors" => $errors]);
+                return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
             } else {
-                $this->login($userDto->username);
+                $this->redirect("/login");
             }
         }
     }

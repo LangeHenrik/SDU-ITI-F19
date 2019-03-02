@@ -7,13 +7,8 @@ use Repositories\Interfaces\IPhotoRepository;
 use Repositories\Interfaces\IUserRepository;
 use Routing\IRequest;
 
-class IndexController extends BaseController
+class UsersController extends BaseController
 {
-
-    /**
-     * @var IPhotoRepository;
-     */
-    private $photoRepository;
 
     /**
      * @var IUserRepository
@@ -28,12 +23,11 @@ class IndexController extends BaseController
     public function __construct(DependencyInjectionContainer $di, $config)
     {
         parent::__construct($config);
-        $this->photoRepository = $di->get(IPhotoRepository::class);
         $this->userRepository = $di->get(IUserRepository::class);
     }
 
     public function index(IRequest $request): string
     {
-        return $this->html("index", ["page_title" => "Home", "photos" => $this->photoRepository->getAll(20)]);
+        return $this->html("users", ["page_title" => "Users", "users" => $this->userRepository->getAll()]);
     }
 }
