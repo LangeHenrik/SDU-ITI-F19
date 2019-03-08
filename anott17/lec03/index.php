@@ -11,6 +11,8 @@
       $_SESSION['userNameGlobal'] =  $_POST["userName"];
       $_SESSION['Login'] = true;
       header('Location: userpage.php');
+    } else {
+      echo 'Wrong username and/or password';
     }
   }
 ?>
