@@ -44,21 +44,49 @@
 
 .sign-content {
     margin: 0 auto;
+    width: 2fr;
+    padding: 10px;
+    background: #DDDDDD;
 }
 
-.sign-content > form {
+.sign-content form {
     display: grid;
-    grid-template-columns: max-content max-content;
+    grid-template-columns: minmax(80px, 1fr) min-content;
     grid-gap: 5px;
 }
 
-.sign-content > form label {
+.sign-content form label {
     text-align: right;
 }
 
-.sign-content > form label:after {
+.sign-content form label:after {
     content: ":";
 }
+
+.sign-content form div {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sign-content form button {
+    padding: 3px 6px;
+}
+
+.sign-content form + div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sign-content span {
+    font-size: 0.8em;
+}
+
+.hidden {
+    display: none;
+}
+
+
 
 
 

@@ -8,6 +8,7 @@
      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
      crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="sign-action.js"></script>
     <title>Project A01</title>
 </head>
 <body>
@@ -16,21 +17,35 @@
             <h1>Project A01</h1>
         </header>
         <div class="sign-container">
-            <div class="sign-action">
-                <div><a href="">Register</a></div>
-                <div><a href="">Login</a></div>
-            </div>
             <div class="sign-content">
-                <form method="POST">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" />
-                    <label for="password">Password</label>
-                    <input type="password" name="password" />
-                    <label for="firstname">First Name</label>
-                    <input type="text" name="firstname" />
-                    <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname" />
-                </form>
+                <div id="register">
+                    <form method="POST">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" />
+                        <label for="password">Password</label>
+                        <input type="password" name="password" />
+                        <label for="firstname">First Name</label>
+                        <input type="text" name="firstname" />
+                        <label for="lastname">Last Name</label>
+                        <input type="text" name="lastname" />
+                        <div><button type="submit">Register!</button></div>
+                    </form>
+                    <div>
+                        <span>Already a user? <a href="javascript:toggle()">Login!</a></span>
+                    </div>
+                </div>
+                <div id="login" class="hidden">
+                    <form method="POST">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" />
+                        <label for="password">Password</label>
+                        <input type="password" name="password" />
+                        <div><button type="submit">Login!</button></div>
+                    </form>
+                    <div>
+                        <span>Not a member? <a href="javascript:toggle()">Register!</a></span>
+                    </div>
+                </div>
             </div>
         </div>
         <footer class="main-footer">
