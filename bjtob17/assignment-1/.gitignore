@@ -1,5 +1,7 @@
 src/Resources/img/*
 !src/Resources/img/.gitkeep
+!src/Resources/img/a9817c182dfe552fd60948a698317ed000275875733b60b19080eca5015c5a4c.jpg
+!src/Resources/img/eb3bbfe64ecabcdb7ee8bab237b2ccc23ec6cbe6622411b7a3e24958c6ec0860.jpg
 /node_modules
 /public/hot
 /public/storage
