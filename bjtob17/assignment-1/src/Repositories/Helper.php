@@ -8,9 +8,9 @@ use Models\User;
 
 class Helper
 {
-    public static function createUser(array $dbRow, string $idColName = "id"): User
+    public static function createUser(array $dbRow): User
     {
-        return new User($dbRow[$idColName], $dbRow["username"], $dbRow["hashedPassword"], $dbRow["firstName"],
+        return new User($dbRow["user_id"], $dbRow["username"], $dbRow["hashedPassword"], $dbRow["firstName"],
             $dbRow["lastName"], $dbRow["zip"], $dbRow["city"], $dbRow["email"], $dbRow["phone"]);
     }
 

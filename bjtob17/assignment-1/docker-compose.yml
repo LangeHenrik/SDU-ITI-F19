@@ -16,7 +16,7 @@ services:
       - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: assignment_1
+      MYSQL_DATABASE: bjtob17
     ports:
         - "3306:3306"
 

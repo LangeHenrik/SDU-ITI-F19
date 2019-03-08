@@ -65,10 +65,10 @@ function validate(inputElem) {
         "password2": {fn: (input) => input.value === document.getElementById("password").value, msg: "Passwords must match"},
         "firstName": {fn: (input) => input.value.length > 0,msg: "First name must contain at least one character"},
         "lastName": {fn: (input) => input.value.length > 0, msg: "Last name must contain at least one character"},
-        "zip": {fn: (input) => Number.isInteger(parseInt(input)), msg: "Zip must be a number"},
+        "zip": {fn: (input) => Number.isInteger(parseInt(input.value)), msg: "Zip must be a number"},
         "city": {fn: (input) => input.value.length > 1, msg: "City must contain at least one character"},
         "email": {fn: (input) => /.+@.+/.test(input.value), msg: "Invalid email"},
-        "phone": {fn: (input) => input.value.length > 8, msg: "Phone must contain at least eight digits"},
+        "phone": {fn: (input) => input.value.length >= 8, msg: "Phone must contain at least eight digits"},
 
         "title": {fn: (input) => input.value.length > 0, msg: "Your image must have a title"},
         "caption": {fn: (input) => input.value.length > 0, msg: "Your image must have a caption"},

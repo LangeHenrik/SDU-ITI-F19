@@ -79,7 +79,7 @@ class AuthController extends BaseController
             $errors = ["Email must be at least two characters, and contain the '@' character"];
             return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
         }
-        else if (strlen($body["phone"]) <= 8) {
+        else if (strlen($body["phone"]) < 8) {
             $errors = ["Phone number must be at least eight characters"];
             return $this->html("register", ["page_title" => "Register", "_errors" => $errors]);
         }

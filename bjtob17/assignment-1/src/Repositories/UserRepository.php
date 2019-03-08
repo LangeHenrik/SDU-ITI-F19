@@ -27,7 +27,7 @@ class UserRepository implements IUserRepository
 
     public function getAll(): array
     {
-        $stmt = $this->db->getPDO()->prepare("SELECT id, username, hashedPassword, firstName, lastName, zip, city, email, phone FROM users ORDER BY created_at DESC");
+        $stmt = $this->db->getPDO()->prepare("SELECT user_id, username, hashedPassword, firstName, lastName, zip, city, email, phone FROM user ORDER BY created_at DESC");
         $stmt->execute();
         $dbData = $stmt->fetchAll();
 
@@ -43,7 +43,7 @@ class UserRepository implements IUserRepository
     {
         $user = null;
 
-        $stmt = $this->db->getPDO()->prepare("SELECT id, username, hashedPassword, firstName, lastName, zip, city, email, phone FROM users WHERE id = ?");
+        $stmt = $this->db->getPDO()->prepare("SELECT user_id, username, hashedPassword, firstName, lastName, zip, city, email, phone FROM user WHERE id = ?");
         $stmt->execute([$id]);
         $dbData = $stmt->fetch();
 
@@ -58,7 +58,7 @@ class UserRepository implements IUserRepository
     {
         $returnUser = null;
 
-        $stmt = $this->db->getPDO()->prepare("SELECT id, username, hashedPassword, firstName, lastName, zip, city, email, phone FROM users WHERE username = ?");
+        $stmt = $this->db->getPDO()->prepare("SELECT user_id, username, hashedPassword, firstName, lastName, zip, city, email, phone FROM user WHERE username = ?");
         $stmt->execute([$username]);
         $dbData = $stmt->fetch();
         if ($dbData) {
@@ -70,7 +70,7 @@ class UserRepository implements IUserRepository
 
     public function add(UserDto $userDto): bool
     {
-        $stmt = $this->db->getPDO()->prepare("INSERT INTO users (username, hashedPassword, firstName, lastName, zip, city, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->db->getPDO()->prepare("INSERT INTO user (username, hashedPassword, firstName, lastName, zip, city, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $success = $stmt->execute([$userDto->username, $userDto->hashedPassword, $userDto->firstName, $userDto->lastName,
             $userDto->zip, $userDto->city, $userDto->email, $userDto->phone]);
         return $success;
