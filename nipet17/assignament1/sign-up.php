@@ -26,7 +26,7 @@
 		<br><br><br>
 
 		<main>
-			<form method="post" action="index.php">
+			<form method="post" action="login.php">
 				<fieldset>
 				<legend><h3>Sign up</h3></legend>
 					<form action="login.php" method="post">
