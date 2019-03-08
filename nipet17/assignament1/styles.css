@@ -1,0 +1,110 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: darkgray;
+    background: #d4d4d4;
+    text-align: center;
+    font-family: fantasy;
+}
+
+h2{
+    color: #363435;
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+h3{
+    color: #363435;
+    margin: auto
+}
+
+text{
+  color: #363435;
+}
+
+
+/* The container centered in the middle */
+.container{
+    max-width: 960;
+    width: 96%;
+    margin: auto;
+}
+.container a:link {
+  color: ##D3D3D3;
+}
+
+/* visited link */
+.container a:visited {
+  color: #A9A9A9;
+}
+
+/* mouse over link */
+.container a:hover {
+  color: #C0C0C0;
+}
+
+/* selected link */
+.container a:active {
+  color: blue;
+}
+
+.container a:focus {
+  outline: none;
+}
+
+.container .content div {
+  border-radius: 5px;
+  padding: 20px;
+
+}
+
+.container .content form{
+  size: 200px;
+  display: inline-block;
+  /*background-color: #c0c0c0;*/
+
+}
+/*-------------HEADER-----------*/
+header{
+    background: #235885;
+    /*background: #fff;*/
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.logo{
+    float: left;
+    margin-top: 10px;
+}
+nav{
+    float: right;
+    line-height: 70px;
+    list-style: none;
+}
+
+nav li{
+    display: inline-block;
+    padding: 5px 20px;
+    margin-left: 10px;
+    background: #363435;
+    line-height: normal;
+}
+
+nav li a{
+  color: #151515;
+  padding: 12px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+main form{
+  text-align: left;
+}
+
+main section p{
+  text-align: justify;
+  padding: 5px 100px;
+
+}
