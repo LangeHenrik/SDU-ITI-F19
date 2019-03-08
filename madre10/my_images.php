@@ -12,17 +12,15 @@
     <div>
         <h1> Upload image </h1>
         <br/>
-        <input type="text" placeholder="Description">
-        <br/>
-        <h3> Select file</h3>
-        <input type="file" />
-        <div class="upload__preview_image"></div>
-
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            Select Image File to Upload:
+            <input type="file" name="file">
+            <input type="submit" name="submit" value="Upload">
+        </form>
     </div>
 
-</div>
 
 
-<script src="navbar.js"></script>
+    <script src="navbar.js"></script>
 </body>
 </html>
