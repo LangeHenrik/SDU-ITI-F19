@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS my_db;
 USE my_db;
 
+DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -10,5 +11,15 @@ CREATE TABLE users (
   name VARCHAR(250)
 );
 
+CREATE TABLE images (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  owner INT,
+  image_path VARCHAR(250),
+  FOREIGN KEY (owner) REFERENCES users(id)
+);
+
 INSERT INTO users(email, password, name) VALUES
 ('phoellen@gmail.com', 'password', 'Martin Dreymann');
+
+INSERT INTO images(owner, image) VALUES
+(1, LOAD_FILE('C:\Users\phoel\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\madre10\hackerman.jpg') );

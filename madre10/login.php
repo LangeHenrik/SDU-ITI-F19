@@ -11,7 +11,7 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
     $message = '';
-    if(count($results) > 0 && ($_POST['password'] == $results['password'] )){
+    if($results!=null && ($_POST['password'] == $results['password'] )){
         $_SESSION['user_id'] = $results['id'];
         header("Location: /");
     } else {
