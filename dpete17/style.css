@@ -22,37 +22,28 @@
 
 
 
-.sign-container {
-    grid-row: content;
-    display: flex;
-    flex-direction: column;
-}
-
-.sign-action {
-    display: flex;
-    margin: 0 auto;
-}
-
-.sign-action div {
-    background: #EFEFEF;
-    padding: 10px 15px;
-}
-
-.sign-action div:hover {
-    background: #CDCDCD;
-}
 
 .sign-content {
     margin: 0 auto;
     width: 2fr;
+    min-height: 140px;
     padding: 10px;
     background: #DDDDDD;
 }
 
 .sign-content form {
-    display: grid;
-    grid-template-columns: minmax(80px, 1fr) min-content;
-    grid-gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-content form div + div {
+    display: flex;
+    justify-content: flex-end;   
+}
+
+.sign-content form + div {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .sign-content form label {
@@ -62,24 +53,24 @@
 .sign-content form label:after {
     content: ":";
 }
-
-.sign-content form div {
-    grid-column: span 2;
-    display: flex;
-    justify-content: flex-end;
+.sign-content form button {
+    padding: 3px 6px;
 }
 
 .sign-content form button {
     padding: 3px 6px;
 }
 
-.sign-content form + div {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .sign-content span {
     font-size: 0.8em;
+}
+
+
+
+.input {
+    display: grid;
+    grid-template-columns: minmax(80px, 1fr) min-content;
+    grid-gap: 5px;
 }
 
 .hidden {

@@ -16,10 +16,10 @@
         <header class="main-header">
             <h1>Project A01</h1>
         </header>
-        <div class="sign-container">
-            <div class="sign-content">
-                <div id="register">
-                    <form method="POST">
+        <div class="sign-content">
+            <div id="register">
+                <form method="POST">
+                    <div class="input">
                         <label for="email">Email</label>
                         <input type="email" name="email" />
                         <label for="password">Password</label>
@@ -28,23 +28,25 @@
                         <input type="text" name="firstname" />
                         <label for="lastname">Last Name</label>
                         <input type="text" name="lastname" />
-                        <div><button type="submit">Register!</button></div>
-                    </form>
-                    <div>
-                        <span>Already a user? <a href="javascript:toggle()">Login!</a></span>
                     </div>
+                    <div><button type="submit">Register!</button></div>
+                </form>
+                <div>
+                    <span>Already a user? <a href="javascript:toggle()">Login!</a></span>
                 </div>
-                <div id="login" class="hidden">
-                    <form method="POST">
+            </div>
+            <div id="login" class="hidden">
+                <form method="POST">
+                    <div class="input">
                         <label for="email">Email</label>
                         <input type="email" name="email" />
                         <label for="password">Password</label>
                         <input type="password" name="password" />
-                        <div><button type="submit">Login!</button></div>
-                    </form>
-                    <div>
-                        <span>Not a member? <a href="javascript:toggle()">Register!</a></span>
                     </div>
+                    <div><button type="submit">Login!</button></div>
+                </form>
+                <div>
+                    <span>Not a member? <a href="javascript:toggle()">Register!</a></span>
                 </div>
             </div>
         </div>
