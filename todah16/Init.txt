@@ -1,3 +1,1 @@
-Hi everybody
-
-Welcome to the ITI GitHub repository
+The WWW folder contains all of the code for the project. The reason for the name 'WWW' is because it is run on a local Wamp server, which will is deployed on the localhost.
