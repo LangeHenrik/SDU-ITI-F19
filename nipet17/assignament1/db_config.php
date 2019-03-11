@@ -1,5 +1,4 @@
 <?php
-
 class db_config_class {
 
   private $servername;

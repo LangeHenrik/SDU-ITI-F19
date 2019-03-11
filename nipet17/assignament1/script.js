@@ -5,8 +5,8 @@ function checkName(){
         document.getElementById("lname").style.color = "red";
         return false;
     } else {
-        return true;
         document.getElementById("lname").style.color = "green";
+        return true;
     }
 }
 
@@ -35,5 +35,5 @@ function checkPassword() {
 }
 
 function saveUser() {
-  
+
 }

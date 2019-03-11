@@ -11,14 +11,11 @@
   $object = new db_config_class;
   $object->connect();
 
-
-
   if (isset($_POST['submit'])) {
     // Check if username and password is centered
     if (isset($_POST['username']) && isset($_POST['password'])) {
       if ($_POST['username'] === "admin" && $_POST['password'] === "password") {
         echo "Username and password are correct.";
-        //$_SESSION['login'] = TRUE;
         header('LOCATION:index.php');
 
       } else {
