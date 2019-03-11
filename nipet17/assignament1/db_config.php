@@ -9,7 +9,7 @@ class db_config_class {
   public function connect() {
     $this->servername = "localhost";
     $this->username = "root";
-    $this->password = "Kraider-1642";
+    $this->password = "mitkode";
     $this->dbname = "nipet17";
 
     try {
