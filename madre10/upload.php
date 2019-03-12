@@ -18,13 +18,13 @@ if(isset($_SESSION['user_id'])) {
             // Upload file to server
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                 // Insert image file name into database
-                $sql = "INSERT INTO images (owner, file_name) VALUES (:owner, :file_name)";
+                $sql = "INSERT INTO images (owner, file_name, uploaded_on) VALUES (:owner, :file_name, NOW())";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':owner', $_SESSION['user_id']);
                 $stmt->bindParam(':file_name', $fileName);
                 $insert = $stmt->execute();
                 if ($insert) {
-                    $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
+                    header("Location: /my_images.php");
                 } else {
                     $statusMsg = "File upload failed, please try again." . $insert;
                 }
@@ -40,6 +40,23 @@ if(isset($_SESSION['user_id'])) {
 } else {
     $statusMsg = 'Please login.';
 }
-// Display status message
-echo $statusMsg . "<br/> UserId: " .$_SESSION['user_id'];
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="General.css">
+    <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<?php if(!empty($statusMsg)): ?>
+    <p><?= $statusMsg ?></p>
+<?php endif; ?>
+
+
+<script src="navbar.js"></script>
+</body>
+</html>

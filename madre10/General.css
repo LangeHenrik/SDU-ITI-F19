@@ -9,6 +9,13 @@ h1 {
     font-size: 50px;
 }
 
+.alert_message {
+    color: #ed2d2d;
+    font-size: 15px;
+    text-align: center;
+
+}
+
 .container{
     width: 80%;
     margin: auto;

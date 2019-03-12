@@ -1,3 +1,8 @@
+<?php
+session_start();
+require 'database.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +23,19 @@
             <input type="submit" name="submit" value="Upload">
         </form>
     </div>
+
+    <?php
+    if(isset($_SESSION['user_id'])){
+        $image_names = getUserImagePaths($_SESSION['user_id'], $conn);
+        $image_folder= "images/";
+
+
+        foreach($image_names as $image) {
+            echo '<img src="'.$image_folder.$image["file_name"].'" /><br />';
+        }
+    }
+
+    ?>
 
 
 
