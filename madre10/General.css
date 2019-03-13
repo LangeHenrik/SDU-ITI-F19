@@ -9,11 +9,23 @@ h1 {
     font-size: 50px;
 }
 
+
+
 .alert_message {
     color: #ed2d2d;
     font-size: 15px;
     text-align: center;
+}
 
+.option {
+    font-size: 30px;
+    text-align: center;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    margin: 15px auto;
+}
+
+.option a {
+    text-decoration: none;
 }
 
 .container{
@@ -106,5 +118,24 @@ feed__comment_input_textarea {
 
 .feed__comment_submit_button {
 
+}
+
+.my_images__image-wrapper {
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+    border: 1px dotted grey;
+}
+
+.my_images__image-wrapper img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+}
+
+.my_images__form{
+    font-size: 20px;
+    text-align: center;
 }
 

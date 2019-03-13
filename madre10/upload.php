@@ -8,20 +8,24 @@ $targetDir = "images/";
 $fileName = basename($_FILES["file"]["name"]);
 $targetFilePath = $targetDir . $fileName;
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+$title = $_POST['title'];
+$description = $_POST['description'];
 
 
 if(isset($_SESSION['user_id'])) {
     if (isset($_POST["submit"]) && !empty($_FILES["file"]["name"])) {
         // Allow certain file formats
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-        if (in_array($fileType, $allowTypes)) {
+        if (in_array(strtolower($fileType), $allowTypes)) {
             // Upload file to server
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                 // Insert image file name into database
-                $sql = "INSERT INTO images (owner, file_name, uploaded_on) VALUES (:owner, :file_name, NOW())";
+                $sql = "INSERT INTO images (owner, file_name, uploaded_on, title, description) VALUES (:owner, :file_name, NOW(), :title, :description)";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':owner', $_SESSION['user_id']);
                 $stmt->bindParam(':file_name', $fileName);
+                $stmt->bindParam(':title', $title);
+                $stmt->bindParam(':description', $description);
                 $insert = $stmt->execute();
                 if ($insert) {
                     header("Location: /my_images.php");

@@ -29,12 +29,22 @@ CREATE TABLE images (
 
 CREATE TABLE comments (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  userId INT,
+  user_id INT,
+  image_id INT,
   content VARCHAR(1000),
   created_on datetime,
-  FOREIGN KEY (userId) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id),
+   FOREIGN KEY (image_id) REFERENCES images(id)
 );
 
 
 INSERT INTO users(username, password, firstname, lastname, zip, city, email, phone) VALUES
 ('phoellen','password', 'Martin', 'Dreymann', '5000', 'Odense', 'phoellen@gmail.com', '60641990');
+
+INSERT INTO images (id, owner, file_name, uploaded_on, title, description) VALUES
+(1, 1, 'example.jpg', NOW(), 'Example', 'This is an example description');
+
+INSERT INTO comments(id, user_id, image_id, content, created_on) VALUES
+(1,1,1,'First test comment from user 1', NOW()),
+(2,1,1,'Second test comment from user 1', NOW());
+

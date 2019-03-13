@@ -1,5 +1,5 @@
 <?php
-session_start();
+require 'util/logincheck.php';
 require 'database.php';
 ?>
 
@@ -17,21 +17,34 @@ require 'database.php';
     <div>
         <h1> Upload image </h1>
         <br/>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            Select Image File to Upload:
-            <input type="file" name="file">
+        <form action="upload.php" method="post" enctype="multipart/form-data" class="my_images__form">
+            Select Image File to Upload: <input type="file" name="file">
+            <br/>
+            <br/>
+            <input type="text" name="title" placeholder="Title" />
+            <br/>
+            <br/>
+            <textarea name="description" class="textarea" rows="4" cols="50" placeholder="Description.."></textarea>
+            <br/>
             <input type="submit" name="submit" value="Upload">
         </form>
     </div>
 
+    <br/>
+    <br/>
+
     <?php
     if(isset($_SESSION['user_id'])){
-        $image_names = getUserImagePaths($_SESSION['user_id'], $conn);
+        $images = getUserImages($_SESSION['user_id'], $conn);
         $image_folder= "images/";
 
 
-        foreach($image_names as $image) {
+        foreach($images as $image) {
+            echo '<div class="my_images__image-wrapper">';
+            echo '<h2>'.$image['title'].'</h2>';
             echo '<img src="'.$image_folder.$image["file_name"].'" /><br />';
+            echo '<p>'.$image['description'].'</p>';
+            echo '</div>';
         }
     }
 

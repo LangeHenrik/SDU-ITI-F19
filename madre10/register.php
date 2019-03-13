@@ -39,7 +39,7 @@ if ($all_fields_completed):
     $stmt->bindParam(':email', $_POST['email']);
     $stmt->bindParam(':password', $_POST['password']);
     if ($stmt->execute()):
-        $message = 'Successfully created new user';
+        $message = 'Successfully created new user. <a href="login.php"> Log in here.</a>';
     else:
         $message = 'Sorry there must have been an issue creating your account';
     endif;

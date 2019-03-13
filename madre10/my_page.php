@@ -1,8 +1,9 @@
 <?php
-session_start();
+require 'util/logincheck.php';
 require 'database.php';
+
 if( isset($_SESSION['user_id']) ){
-    $records = $conn->prepare('SELECT id,email,password FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT firstname, lastname, email FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -29,16 +30,20 @@ if( isset($_SESSION['user_id']) ){
 
         <?php if( !empty($user) ): ?>
 
-            <br />Welcome <?= $user['email']; ?>
-            <br /><br />You are successfully logged in!
-            <br /><br />
-            <a href="logout.php">Logout?</a>
+            <h1> Welcome <?= $user['firstname']; ?>!</h1>
+            <div class="option"><a href="logout.php">Logout?</a></div>
+
 
         <?php else: ?>
 
-            <h1>Please Login or Register</h1>
-            <a href="login.php">Login</a> or
-            <a href="register.php">Register</a>
+            <h1>You have to log in..</h1>
+            <div class="option">
+                <a href="login.php">Login</a>
+            </div>
+            <div class="option">
+                <a href="register.php">Register</a>
+            </div>
+
 
         <?php endif; ?>
 
