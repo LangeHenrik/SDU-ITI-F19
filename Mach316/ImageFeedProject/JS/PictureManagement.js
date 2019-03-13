@@ -71,80 +71,36 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
 
-    function dropHandler(e) {
+    //From stackoverflow  - https://stackoverflow.com/questions/18457340/how-to-preview-selected-image-in-input-type-file-in-popup-using-jquery
+    function PreviewImage() {
+        document.getElementById('preview').style.display = 'block';
+        document.getElementById('btn-submit-image').disabled = false;
+        let oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("theFile").files[0]);
 
-        e.stopPropagation();
-        e.preventDefault();
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("preview").src = oFREvent.target.result;
+        };
+    };
 
 
-        if (e.dataTransfer.items) {
-            for (let i = 0; i < e.dataTransfer.items.length; i++) {
-                if (e.dataTransfer.items[i].kind === 'file') {
-                    let file = e.dataTransfer.items[i].getAsFile();
-                    handleImagePreview(file)
-                }
-            }
-        }
+    function addPreviewImageListener() {
+        document.getElementById('theFile').addEventListener('change', PreviewImage);
     }
 
-    function handleImagePreview(file) {
-        let preview = document.getElementById("dropZone")
-        preview.style.border = "none"
-        const img = document.createElement("img");
-        img.classList.add("obj");
-        img.file = file;
-        img.style.maxHeight = "100%"
-        img.style.maxWidth = "100%"
-        preview.innerHTML = ""
-        preview.appendChild(img);
-
-        const reader = new FileReader();
-        reader.onload = (function (aImg) {
-            return function (e) {
-                aImg.src = e.target.result;
-            };
-        })(img);
-        reader.readAsDataURL(file);
-        appendImageInputForm()
-
-    }
-
-    function appendImageInputForm() {
-        document.getElementById("new-image-input-form").style.display = "block"
-    }
-
-
-    function dragOverHandler(e) {
-        e.preventDefault();
-        let dropzone = document.getElementById("dropZone")
-        // dropzone.style.backgroundColor = "rgba(0,0,100,0.3)"
-
-    }
-
-    function dragLeaveHandler(e) {
-        e.preventDefault();
-        let dropzone = document.getElementById('dropZone')
-        dropzone.style.backgroundColor = "none"
-    }
-
-    function addDragDropHandlers() {
-        let dropZone = document.getElementById("dropZone")
-        dropZone.addEventListener('dragleave', dragLeaveHandler, false)
-        dropZone.addEventListener('drop', dropHandler, false)
-        dropZone.addEventListener('dragover', dragOverHandler, false)
-    }
 
     function addUploadImageHandler() {
         let btnUpload = document.getElementById("btnUploadImage");
         btnUpload.addEventListener('click', performClick, false)
     }
 
+
     function addHandlers() {
-        addDragDropHandlers()
+        addPreviewImageListener()
         addUploadImageHandler()
     }
 
     addHandlers()
-    loadMyImages()
+   // loadMyImages()
 
 })

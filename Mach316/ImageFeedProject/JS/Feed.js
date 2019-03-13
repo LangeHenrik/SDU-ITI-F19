@@ -2,42 +2,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-    function loadFeedData() {
-        fetch("https://api.myjson.com/bins/177o26")
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function (response) {
-                buildFeedContent(response)
-            })
-            .catch((e) => console.log(e))
-    }
-
-    loadFeedData(function (response) {
-        let imageData = JSON.parse(response);
-        buildFeedContent(imageData)
-    });
-
-
-
-    function loadRequestLoginPage() {
-        let backgroundOverlay = document.getElementById("background-overlay")
-        backgroundOverlay.style.display = "block";
-    }
-
-    function initFeedPage() {
-        let loggedIn = false;
-        if(loggedIn) {
-            loadFeedData();
-        }
-        else{
-            loadFeedData();
-            loadRequestLoginPage();
-        }
-    }
-
-
-    initFeedPage()
 
 
     function addComment(e) {
