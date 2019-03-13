@@ -32,7 +32,7 @@ echo "
                     <button type=\"submit\" class=\"btn\" id=\"btnLogin\">Login</button>
                     <a class=\"btnCreateNewUser\"
                        id=\"btnSubmit\"
-                       href=\"file:///Users/bruger/Desktop/InternetTechnologiesRepo/Mach316/ImageFeedProject/PHP/LoginPage.html\">Create new user</a>
+                       href=\"LoginPage.php\">Create new user</a>
                 </form>
             </div>";
 ?>

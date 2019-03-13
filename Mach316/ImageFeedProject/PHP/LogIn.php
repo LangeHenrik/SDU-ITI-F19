@@ -1,5 +1,6 @@
 <?php
 
+
 $hostname = '127.0.0.1';
 $username = 'root';
 $password = 'nqg69yhk';
@@ -29,14 +30,16 @@ while ($row = mysqli_fetch_array($query)) {
     $rowid = $row["id"];
 
     if ($rowusername == $requsername) {
-        $usernameMatch = true;
 
         if ($rowpassword == $reqpassword) {
             session_start();
             $_SESSION["username"] = $requsername;
             $_SESSION["id"] = $rowid;
             header('Location: http://localhost:8000/PHP/Feed.php?');
+        } else {
+            echo "Username or password is incorrect..";
         }
+
 
     }
 

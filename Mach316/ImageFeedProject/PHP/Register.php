@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+require 'DatabaseManager.php';
+
+//Use the databasemanger instead of this!
 
 $hostname = '127.0.0.1';
 $username = 'root';
@@ -28,7 +33,10 @@ $zipcode = (int)$zipcode;
 $statement = $dbConnection->prepare("INSERT INTO users(firstname, lastname, username, password, zip, city, email, phonenumber) VALUES(?,?,?,?,?,?,?,?)");
 $statement->bind_param('ssssisss', $firstname, $lastname, $username, $password, $zipcode, $city, $email, $phonenumber);
 
-$statement->execute();
+$success = $statement->execute();
 
-
-header('Location: http://localhost:8000/PHP/PictureManagement.php?');
+if($success) {
+    header('Location: http://localhost:8000/PHP/PictureManagement.php?');
+} else {
+    echo "Something went wrong..";
+}

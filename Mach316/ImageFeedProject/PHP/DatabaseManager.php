@@ -10,7 +10,6 @@ include 'db_config.php';
 session_start();
 
 
-
 function getAllImages()
 {
     $conn = getConnection();
@@ -19,16 +18,12 @@ function getAllImages()
     $statement = $conn->prepare($query);
     $statement->execute();
     $images = $statement->fetchAll(PDO::FETCH_ASSOC);
-    if($images != null) {
+    if ($images != null) {
         return $images;
     }
 
 }
 
-function getImageComments($int)
-{
-    return "<p>comment for {$int}</p>";
-}
 
 function getUserImages()
 {
@@ -40,15 +35,62 @@ function getUserImages()
     $statement->bindParam(':userid', $userid);
     $statement->execute();
     $images = $statement->fetchAll(PDO::FETCH_ASSOC);
-    if($images != null) {
+    if ($images != null) {
         return $images;
     }
 }
 
-function getUserName($id) {
+function getUserImagesById($userid)
+{
+    $conn = getConnection();
 
-    print_r($id."\n");
+    $query = "SELECT * FROM images where user_id = :userid";
+    $statement = $conn->prepare($query);
+    $statement->bindParam(':userid', $userid);
+    $statement->execute();
+    $images = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if ($images != null) {
+        return $images;
+    }
+}
 
+
+function getImageComments($imageId)
+{
+    $conn = getConnection();
+
+    $query = "SELECT * FROM comments where image_id = :imageId";
+    $statement = $conn->prepare($query);
+    $statement->bindParam(':imageId', $imageId);
+    $statement->execute();
+    $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $comments;
+
+}
+
+function addImageComment($comment, $authorId, $imageId)
+{
+
+
+    $time = (string)strtotime("now");
+    $conn = getConnection();
+
+    $query = "INSERT INTO comments(comment, image_id, user_id, post_date) VALUES(:comment, :image_id,:user_id, now());";
+    $statement = $conn->prepare($query);
+    $statement->bindParam(':comment', $comment);
+    $statement->bindParam(':image_id', $imageId);
+    $statement->bindParam(':user_id', $authorId);
+   // $statement->bindParam(':post_date', $time);
+    $success = $statement->execute();
+
+    return $success;
+
+}
+
+
+function getUserName($id)
+{
 
     $conn = getConnection();
     $query = "SELECT username FROM users WHERE id = :id;";
@@ -60,6 +102,15 @@ function getUserName($id) {
     $username = $result['username'];
 
 
-
     return $username;
+}
+
+function getAllUsers() {
+    $conn = getConnection();
+    $query = "Select * from users";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $users = $statement->fetchAll();
+    return $users;
+
 }

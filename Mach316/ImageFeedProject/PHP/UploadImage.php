@@ -28,9 +28,9 @@ $dbConnection = getConnection();
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["theFile"]["name"]);
 
-$imageHeader = $_POST['imageHeader'];
-$imageText = $_POST['imageText'];
-$imageName = basename($_FILES['theFile']['name']);
+$imageHeader = htmlentities($_POST['imageHeader']);
+$imageText = htmlentities($_POST['imageText']);
+$imageName = htmlentities(basename($_FILES['theFile']['name']));
 $imageName = preg_replace('/\s+/', '', $imageName);
 $userId = $_SESSION['id'];
 $userName = $_SESSION['username'];

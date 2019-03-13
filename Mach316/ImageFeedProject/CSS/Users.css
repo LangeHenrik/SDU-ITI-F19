@@ -1,0 +1,31 @@
+.users-header {
+    margin-top: 5%;
+    margin-left: 1%;
+}
+
+.user-image {
+    margin-left: 1%;
+    width: 15%;
+}
+
+.users-container {
+    padding: 0px;
+}
+
+.user{
+    padding: 2%;
+    margin: 0px;
+}
+
+.odd {
+    background-color: rgba(0, 0,0, 0.3);
+}
+
+.even {
+    background-color: rgba(0,55,0,0.1);
+}
+
+
+body {
+    margin: 0px;
+}

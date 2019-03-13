@@ -21,29 +21,48 @@ function loadAllImages()
         $imageHeader = $image['header'];
         $imageText = $image['text'];
         $imageId = $image['id'];
-        $imageComments = getImageComments($imageId);
+        $imageComments = buildComments(getImageComments($imageId));
         $userid = $image['user_id'];
 
         $ownername = getUsername($userid);
 
         $imageElements .= "
-                <div class='image-item-container'>
+            <div class='image-item-container'>
                     <div class='image-item'>
                     <div class='image-container'>
                     <img class='feed-image' src='{$imagePath}'>
                     <h3 class='ownername'>{$ownername}</h3>
-                    </div>
-                </div>
+            </div>
+            </div>
                  <h2 class='image-title'>{$imageHeader}</h2>
                  <div class='image-description-container'>{$imageText}</div>
-                 <input class='input-comment-author' type='text' placeholder='name'>
-        <textarea cols='80' rows='5' placeholder='comment on the picture'></textarea>
-        <button class='btnComment'>Add comment</button>
-        <div class='comment-list-container'>{$imageComments}</div>
-</div>";
+                 <form action='addComment.php' method='post'>
+                 <textarea cols='80' rows='5' name='comment' placeholder='comment on the picture'></textarea>
+                 <button class='btnComment' name='submit'>Add comment</button>
+                 <input type='hidden' name='imageId' value='$imageId'/>
+                 </form>
+                 <div class='comment-list-container'>{$imageComments}</div>
+            </div>";
 
     }
     return $imageElements;
+}
+
+function buildComments($comments)
+{
+
+    $commentElements = '';
+
+    foreach ($comments as $comment) {
+        $authorName = getUserName($comment['user_id']);
+        $comment = $comment['comment'];
+
+        //$time = $comment['post_date'];//Someday this will work....
+
+        $commentElements .= "<div class='comment-container'><h3>{$authorName}</h3><span class='comment-time-stamp'></span><div class='comment'>{$comment}</div></div>";
+    }
+
+    return $commentElements;
 }
 
 

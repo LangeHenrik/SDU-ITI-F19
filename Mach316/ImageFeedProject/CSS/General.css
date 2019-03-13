@@ -10,7 +10,7 @@
 
 .comment {
     border-bottom: 1px solid black;
-    font-size: 1vw;
+    font-size: 0.8vw;
 }
 
 
@@ -23,7 +23,7 @@
 
 .feed-image {
     border-radius: 5px;
-    max-width: 100%;
+    width: 100%;
 }
 
 .image-item-container{
@@ -35,6 +35,7 @@
 }
 
 .image-item {
+    width: 100%;
     position: relative;
     text-align: center;
     color: white;
@@ -44,16 +45,20 @@
 .image-container {}
 
 .ownername {
-    color: lightseagreen;
+    color: white;
     position: absolute;
-    bottom: 8px;
-    right: 16px;
+    bottom: 0px;
+    right: 5px;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
 }
 
 
 .image-title{
     margin: 0px !important;
-    border-bottom: 1px solid orange;
     text-align: center;
     padding: 2%;
     
@@ -127,7 +132,6 @@ textarea {
 .image-description-container{
     text-align: center;
     font-size: 1vh;
-    border-bottom: 1px solid orange;
     margin-bottom: 1%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
