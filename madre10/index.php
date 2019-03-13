@@ -5,7 +5,7 @@ require 'database.php';
 $message = null;
 if (isset($_POST["submit"])){
     $user_id = $_SESSION['user_id'];
-    $comment_content = $_POST['comment_content'];
+    $comment_content = htmlentities($_POST['comment_content']);
     $image_id = $_POST['image_id'];
     addComment($conn, $user_id, $image_id, $comment_content);
     $message = "Comment added.. Or at least it should be.";

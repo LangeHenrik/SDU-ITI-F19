@@ -1,9 +1,10 @@
 CREATE DATABASE IF NOT EXISTS internet_technology;
 USE internet_technology;
 
+DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS comments;
+
 
 CREATE TABLE users (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

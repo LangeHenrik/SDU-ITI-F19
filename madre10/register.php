@@ -30,7 +30,8 @@ if ($all_fields_completed):
     $stmt = $conn->prepare($sql);
     foreach ($fields as $field) {
         if($field !== 'password_repeat') {
-            $stmt->bindParam(''.$field , $_POST[$field]);
+            $field_sanitized = htmlentities($field);
+            $stmt->bindParam(''.$field_sanitized , $_POST[$field]);
         }
     }
 
