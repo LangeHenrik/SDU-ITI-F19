@@ -1,0 +1,49 @@
+.form-register p {
+    margin: 2px;
+}
+
+form {
+    width: 200px;
+    margin: 0 auto;
+}
+
+form button {
+    background-color: #C3C3C3;
+}
+
+.form-login, .form-register {
+    text-align: center;
+}
+
+.form-login {
+    padding-bottom: 50px;
+}
+
+.form-login input{
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    font-family: Catamaran;
+    font-size: 32px;
+    font-weight: 600;
+    color: #111;
+    margin: 20px 0
+}
+
+@media only screen and (min-width: 1000px) {
+    .login {
+        width: 50%;
+        float: left;
+    }
+
+    .register {
+        width: 50%;
+        float: right;
+    }
+
+    .form-login {
+        padding-bottom: 0;
+    }
+}
