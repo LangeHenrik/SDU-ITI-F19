@@ -18,16 +18,18 @@ session_start();
       <?php if (isset($_SESSION['username'])) { ?>
           <span id="hello-message">
               Hello <?php echo $_SESSION['username']; ?>!
+              |
+              <a href="user.php">See all users</a>
           </span>
           <form id="userform" method="post" action="user.php">
             <input id="logout-button" type="submit" name="logout" value="Logout">
           </form>
       <?php } else { ?>
+          <a href="user.php">Create a new account</a>
           <form id="userform" method="post" action="user.php">
               <input type="text" name="username" placeholder="Username..." required>
               <input type="password" name="password" placeholder="Password..." required>
               <input id="login-button" name="login" type="submit" value="Login">
-              <input id="signup-button" name="signup" type="submit" value="Sign up">
           </form>
       <?php } ?>
       &nbsp;
