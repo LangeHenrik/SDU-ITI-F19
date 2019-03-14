@@ -9,7 +9,7 @@ Build a website where users can:
 * [X] See and delete own pictures
 * [X] Site must be somewhat scalable to desktop and mobile
 * [X] Must contain one AJAX call
-* [ ] Screenshots
+* [X] Screenshots
 * [X] Protect against XSS & SQL Injection
 * [X] Show latest 20 pictures
 * [X] User list
