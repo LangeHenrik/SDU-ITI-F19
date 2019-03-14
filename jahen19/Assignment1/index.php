@@ -85,11 +85,11 @@ session_start();
         if (isset($_GET['user'])) {
             // show only the images by $user
             $user = $_SESSION['username'];
-            $sql = "SELECT filename, user, header, text FROM Images WHERE user = '$user' ORDER BY date DESC";
+            $sql = "SELECT filename, user, header, text FROM Images WHERE user = '$user' ORDER BY date DESC LIMIT 20";
             echo "Your Images:<br> (<a href='./'>Go to global feed</a>)";
         } else {
             echo "Global Feed:<br> (<a href='?user=1'>Go to your feed</a>)";
-            $sql = "SELECT filename, user, header, text FROM Images ORDER BY date DESC";
+            $sql = "SELECT filename, user, header, text FROM Images ORDER BY date DESC LIMIT 20";
         }
         $statement = $conn->prepare($sql);
         $statement->execute();

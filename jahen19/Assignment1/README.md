@@ -11,7 +11,7 @@ Build a website where users can:
 * [X] Must contain one AJAX call
 * [ ] Screenshots
 * [X] Protect against XSS & SQL Injection
-* [ ] Show latest 20 pictures
+* [X] Show latest 20 pictures
 * [X] User list
 * [X] Sign up page: Username, Password, Repeat Password, Firstname, Lastname, Zip, City, Email address, phone number
 
