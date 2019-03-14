@@ -29,11 +29,10 @@
                         <label for="lastname">Last Name</label>
                         <input type="text" name="lastname" />
                     </div>
-                    <div><button type="submit">Register!</button></div>
+                    <div class="filler"></div>
+                    <div class="button-container"><button type="submit">Register!</button></div>
+                    <div class="sign-toggle"><span>Already a user? <a href="javascript:toggle()">Login!</a></span></div>
                 </form>
-                <div>
-                    <span>Already a user? <a href="javascript:toggle()">Login!</a></span>
-                </div>
             </div>
             <div id="login" class="hidden">
                 <form method="POST">
@@ -43,11 +42,10 @@
                         <label for="password">Password</label>
                         <input type="password" name="password" />
                     </div>
-                    <div><button type="submit">Login!</button></div>
+                    <div class="filler"></div>
+                    <div class="button-container"><button type="submit">Login!</button></div>
+                    <div class="sign-toggle"><span>Not a member? <a href="javascript:toggle()">Register!</a></span></div>
                 </form>
-                <div>
-                    <span>Not a member? <a href="javascript:toggle()">Register!</a></span>
-                </div>
             </div>
         </div>
         <footer class="main-footer">

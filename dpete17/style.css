@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+html,body {
+    height:100%;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -21,14 +25,15 @@
 }
 
 
-
-
 .sign-content {
     margin: 0 auto;
-    width: 2fr;
     min-height: 140px;
     padding: 10px;
     background: #DDDDDD;
+}
+
+#register, #login {
+
 }
 
 .sign-content form {
@@ -36,14 +41,9 @@
     flex-direction: column;
 }
 
-.sign-content form div + div {
+.sign-content .button-container, .sign-content .sign-toggle {
     display: flex;
     justify-content: flex-end;   
-}
-
-.sign-content form + div {
-    display: flex;
-    justify-content: flex-end;
 }
 
 .sign-content form label {
@@ -67,6 +67,10 @@
 
 
 
+.filler {
+    flex: 1;
+}
+
 .input {
     display: grid;
     grid-template-columns: minmax(80px, 1fr) min-content;
@@ -74,7 +78,7 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 
