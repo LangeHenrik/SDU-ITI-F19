@@ -88,6 +88,18 @@ function addImageComment($comment, $authorId, $imageId)
 
 }
 
+function deleteImage($imageId) {
+
+    $imageId = (int)$imageId;
+    $conn = getConnection();
+    $query = "DELETE FROM images where id = :imageId;";
+    $statement = $conn->prepare($query);
+    $statement->bindParam(':imageId', $imageId);
+    $success = $statement->execute();
+
+    return $success;
+}
+
 
 function getUserName($id)
 {

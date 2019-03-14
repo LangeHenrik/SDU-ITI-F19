@@ -9,8 +9,11 @@
 }
 
 .comment {
-    border-bottom: 1px solid black;
     font-size: 0.8vw;
+    white-space: pre-wrap;      /* CSS3 */
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    word-wrap: break-word;      /* IE */
 }
 
 
@@ -27,22 +30,25 @@
 }
 
 .image-item-container{
-    height: 900px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
     max-width: 100%;
     padding: 2%;
-    margin-bottom: 20%;
+    margin-bottom: 5%;
     margin-left: 1%;
+    background-color: rgba(0,0,0,0.1);
 }
 
 .image-item {
     width: 100%;
     position: relative;
-    text-align: center;
     color: white;
     border-radius: 15px;
 }
 
-.image-container {}
+.image-container {
+}
 
 .ownername {
     color: white;
@@ -59,9 +65,11 @@
 
 .image-title{
     margin: 0px !important;
-    text-align: center;
-    padding: 2%;
     
+}
+
+.loginform > form {
+    text-align: center;
 }
 
 
@@ -93,7 +101,6 @@ form {
     display: block;
     width: 100%;
     padding: 1em;
-    text-align: center;
 }
 
 .loginform > form > input {
@@ -117,20 +124,25 @@ input:focus {
 }
 
 .comment-list-container{
-    overflow-y: auto;
-    height: 75%;
+    overflow-y: scroll;
+    max-height: 200px;
+    padding: 0px;
 }
 
-.comment-container {	
+.even{
+    background-color: rgba(200,200,200,0.1);
+}
+
+.odd{
+    background-color: rgba(255,255,255,0.5);
 }
 
 textarea {
     resize: none;
-    width: 100%;
+    width: 85%;
 }
 
 .image-description-container{
-    text-align: center;
     font-size: 1vh;
     margin-bottom: 1%;
     padding-top: 0.5%;

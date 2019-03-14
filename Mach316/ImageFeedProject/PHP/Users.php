@@ -35,9 +35,11 @@ if (isset($_SESSION["username"])) {
     echo "<navbar id=\"navbar\"><a class=\"navbar-link\" href=\"LoginPage.php\">Register</a></navbar>";
 }
 
-$userElements = loadUserElements();
 
-echo "
+if(isset($_SESSION['username'])) {
+    $userElements = loadUserElements();
+
+    echo "
 
 <div class=\"page-container\">
     <div class=\"main-content\" id=\"main-content-users\">
@@ -45,8 +47,20 @@ echo "
         <div class='users-container'>{$userElements}</div>
        </div>
 </div>
-"
-
+";
+} else {
+    echo " <div class=\"loginform\">
+                <h2>Login to your account</h2>
+                <form action=\"LogIn.php\" method='post'>
+                    <input type=\"text\" name=\"username\" placeholder=\"username\"/>
+                    <input type=\"password\" name=\"password\" placeholder=\"password\"/>
+                    <button type=\"submit\" class=\"btn\" id=\"btnLogin\">Login</button>
+                    <a class=\"btnCreateNewUser\"
+                       id=\"btnSubmit\"
+                       href=\"LoginPage.php\">Create new user</a>
+                </form>
+            </div>";
+}
 
 ?>
 

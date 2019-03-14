@@ -12,13 +12,16 @@ include 'db_config.php';
 session_start();
 
 
-function renameFile($path_parts, $target_file, $target_dir, $imageName) {
-
-    $dirName = $path_parts['dirname'];
-    $fileName = $path_parts['filename'];
+function renameFile($target_file, $target_dir, $imageName) {
     $extension = pathinfo($target_file,PATHINFO_EXTENSION);
+    return $target_dir.explode('.', $imageName)[0] . rand (1 , 10000 ) . "." . $extension;
+}
 
-    return $target_dir . explode('.', $imageName)[0] . rand (1 , 10000 ) . "." . $extension;
+function shortenFileName($target_file, $target_dir, $imageName) {
+    $extension = pathinfo($target_file,PATHINFO_EXTENSION);
+    $newName = substr(explode('.',$imageName)[0], 0, 90);
+    return $target_dir.$newName.'.'.$extension;
+
 }
 
 
@@ -45,10 +48,14 @@ if(isset($_POST["submit"])) {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
+
+    if(strlen($imageName) > 100) {
+        $target_file = shortenFileName($target_file, $target_dir, $imageName);
+    }
+
     // Check if file already exists
     while (file_exists($target_file)) {
-        $pathParts = pathinfo($_FILES['theFile']['name']);
-        $target_file = renameFile($pathParts, $target_file, $target_dir, $imageName);
+        $target_file = renameFile($target_file, $target_dir, $imageName);
     }
 
 

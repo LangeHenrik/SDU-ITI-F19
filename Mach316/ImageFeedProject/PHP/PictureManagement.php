@@ -17,7 +17,7 @@ session_start();
     <title>My Images</title>
 </head>
 <body>
-<div class="page-container">
+
     <?php
 
     if (isset($_SESSION["username"])) {
@@ -31,38 +31,53 @@ session_start();
 
     include 'imageLoader.php';
     if (isset($_SESSION["username"])) {
+
+        $firstLogin = (int)$_SESSION['first_login'];
+
+        $btnUploadClass = '';
+        if($firstLogin != 1) {
+            $btnUploadClass = 'btn-upload-pulse';
+        } else {
+            $btnUploadClass = 'btn-upload-no-pulse';
+        }
+
         $imageElements = loadUsersImages();
         echo " 
-                  <div class=\"main-content\">
-                  <div class=\"top-content\">
-                    <h1 class=\"titlePictureManagement\">Welcome {$_SESSION['username']}, add a picture!</h1>
-                    <div id=\"new-image-input-container\">
+        <div class='page-container'>
+        <div class=\"main-content\" id=\"main-content-feed\">
+                <h1 class=\"feed-title\">Welcome {$_SESSION['username']}!</h1>
+                <div class='scroll-content'>
+                    <div class=\"top-content\">
+                   
+                        <div id=\"new-image-input-container\">
                     
-                        <div id=\"new-image-input-form-container\">
-                        <form id='submit-image-form' action='UploadImage.php' method='post' enctype=\"multipart/form-data\">
+                            <div id=\"new-image-input-form-container\">
+                                   <form id='submit-image-form' action='UploadImage.php' method='post' enctype=\"multipart/form-data\">
                         
-                            <input type=\"text\" name='imageHeader' id=\"txtInputHeader\" placeholder=\"Image name....\">
-                            <div id='desc-preview-container'>
-                            <textarea id=\"textarea-image-description\" name='imageText' rows=\"10\" placeholder=\"Description of image...\"></textarea>
-                            <img id='preview' src='#'/>
+                                        <input maxlength='30' type=\"text\" name='imageHeader' id=\"txtInputHeader\" placeholder=\"Image name....\">
+                                        <div id='desc-preview-container'>
+                                            <textarea maxlength='100' id=\"textarea-image-description\" name='imageText' rows=\"10\" placeholder=\"Description of image...\"></textarea>
+                                            <img id='preview' src='#'/>
+                                        </div>
+                                        <input type=\"file\" id=\"theFile\" name='theFile'/>
+                                        <input type=\"submit\" id='btn-submit-image' value=\"Upload Image\" name=\"submit\" disabled>
+                            
+                            
+                                    </form>
                             </div>
-                            <input type=\"file\" id=\"theFile\" name='theFile'/>
-                            <input type=\"submit\" id='btn-submit-image' value=\"Upload Image\" name=\"submit\" disabled>
-                            
-                            
-                        </form>
-                    </div>
+                        </div>
                     
                     
                 </div>
-            </div>
-            <div id=\"user-images-container\" class=\"image-feed-container\">
+                <div id=\"user-images-container\" class=\"image-feed-container\">
                     {$imageElements}
+                </div>
             </div>
-            
+           
+    
+        <button id=\"{$btnUploadClass}\" >Upload</button>
     </div>
-   <button id=\"btnUploadImage\" >Upload</button>
-</div>";
+    </div>";
 
     } else {
         echo "
@@ -74,7 +89,7 @@ session_start();
                     <button type=\"submit\" class=\"btn\" id=\"btnLogin\">Login</button>
                     <a class=\"btnCreateNewUser\"
                        id=\"btnSubmit\"
-                       href=\"file:///Users/bruger/Desktop/InternetTechnologiesRepo/Mach316/ImageFeedProject/PHP/LoginPage.html\">Create new user</a>
+                       href=\"LoginPage.php\">Create new user</a>
                 </form>
             </div>";
     };

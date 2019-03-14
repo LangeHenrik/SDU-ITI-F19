@@ -14,7 +14,6 @@
 .profile-header {
     font-size: 100px;
     color: white;
-    text-align: center;
     color: white;
     text-shadow:
             -1px -1px 0 #000,
@@ -67,7 +66,6 @@
 }
 
 .page-container {
-    background: url("https://www.rd.com/wp-content/uploads/2016/02/24-13-things-personal-organizers-wont-tell-you-photos.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

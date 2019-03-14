@@ -1,66 +1,11 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
 
-    function loadMyImages() {
-        let imageUrl = "https://api.myjson.com/bins/nkoo6"
-        fetch(imageUrl)
-            .then((response) =>
-            {
-                return response.json()
-            })
-            .then(response => buildMyImages(response))
-
-    }
-
-    function buildMyImages(images) {
-
-        let imagesString = ""
-
-        for(image of images) {
-            imagesString += createImageItem(image)
-        }
-
-        let userImagesContainer = document.getElementById("user-images-container")
-        userImagesContainer.innerHTML = imagesString;
-
-
-    }
-
-    function createImageItem(image) {
-
-        let id = image.id
-        let imageUrl = image.url;
-        let imageHeader = image.header;
-        let imageDescription = image.text;
-        let comments = image.comments;
-
-        let imageItemString = "" +
-            "<div class=\"image-item-container\">" +
-            "   <div class=\"image-item\" id=\"" + id + "\">" +
-            "       <img class=\"feed-image\" src=\"" + imageUrl + "\">" +
-            "   </div>" +
-            "   <div class=\"image-content-container\">\n" +
-            "        <h2 class=\"image-title\">" + imageHeader + "</h2>" +
-            "        <div class=\"image-description-container\">" + imageDescription + "" +
-            "   </div>" +
-            "   <div class=\"comment-list-container\">";
-        for (let i = 0; i < comments.length; i++) {
-            imageItemString += createCommentItem(comments[i])
-        }
-        imageItemString += "</div></div></div>"
-
-        return imageItemString;
-
-    }
-
-    function createCommentItem(comment) {
-        let author = comment.author;
-        let commentContent = comment.comment;
-        return "<div class=\"comment-container\"><h3 class=\"comment-author-name\">" + author + "</h3><div class=\"comment\">" + commentContent + "</div></div>"
-
-    }
 
     function performClick(e) {
+
+        console.log("CLICK")
+
         let elemId = 'theFile'
         let elem = document.getElementById(elemId);
         if (elem && document.createEvent) {
@@ -68,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             evt.initEvent("click", true, false);
             elem.dispatchEvent(evt);
         }
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
 
 
@@ -90,8 +36,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
     function addUploadImageHandler() {
-        let btnUpload = document.getElementById("btnUploadImage");
-        btnUpload.addEventListener('click', performClick, false)
+        if(document.getElementById('btn-upload-pulse') != null) {
+            let btnUploadPulse = document.getElementById('btn-upload-pulse')
+            btnUploadPulse.addEventListener('click', performClick, false)
+        }
+        if(document.getElementById('btn-upload-no-pulse') != null) {
+            let btnUpload = document.getElementById("btn-upload-no-pulse");
+            btnUpload.addEventListener('click', performClick, false)
+        }
+
     }
 
 

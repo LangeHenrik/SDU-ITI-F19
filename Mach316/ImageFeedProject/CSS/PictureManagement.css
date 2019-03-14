@@ -1,14 +1,21 @@
 #preview{
     display: none;
-    width: 400px;
-    height: 300px;
+    max-height: 300px;
+    margin-left: 2%;
 }
 
 #btn-submit-image {
 
 }
+.feed-title {
+    text-align: center;
+    font-size: 4vw;
+    border-bottom: 5px solid darkred;
+    margin: 0px;
+}
 
-#btnUploadImage{
+
+#btn-upload-no-pulse{
     display: none;
     background-color: #4CAF50; /* Green */
     border-top-left-radius: 10px;
@@ -22,23 +29,72 @@
     font-size: 2vw;
     bottom: -3px;
     right: 10px;
-    transition: 0.2s;
     position: fixed;
     transition: all .2s ease-in-out;
 }
 
+.scroll-content {
+    position: relative;
+    overflow-y: scroll;
+}
+
+
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+
+
+#btn-upload-pulse {
+    display: none;
+    background-color: #4CAF50; /* Green */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    color: white;
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vw;
+    bottom: -3px;
+    right: 10px;
+    position: fixed;
+    transition: all .2s ease-in-out;
+    -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+
 
 #textarea-image-description{
     width: 500px;
+    max-height: 200px;
 }
 
-#btnUploadImage:hover{
+#btn-upload-no-pulse:hover{
     background-color: darkgreen;
     transform: scale(1.1);
+    cursor: pointer;
 
 }
 
-#btnUploadImage:focus {
+#btn-upload-no-pulse:focus {
+    outline: 0;
+}
+
+#btn-upload-pulse:hover{
+    background-color: darkblue;
+    transform: scale(1.1);
+    cursor: pointer;
+
+}
+
+#btn-upload-pulse:focus {
     outline: 0;
 }
 
@@ -52,6 +108,7 @@ input[type=file] {
 
 #submit-image-form{
     text-align: left;
+    max-height: 100%;
 }
 
 
@@ -63,16 +120,20 @@ input[type=file] {
 }
 
 #user-images-container{
+    margin: 0px;
+    height: 500px;
 
 }
 
 #new-image-input-form-container{
-    width: 80%;
+    max-height: 10%;
     margin-left: 1%;
 
 }
 
 #desc-preview-container {
     display:flex;
+    width: 100%;
+    max-height: 15%;
 }
 

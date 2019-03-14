@@ -9,7 +9,7 @@ session_start();
 <head>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Coiny|Indie+Flower" rel="stylesheet">
-
+    <meta charset="UTF-8">
     <script src="../JS/Feed.js"></script>
     <script src="../JS/navbar.js"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/Navbar.css">
@@ -59,7 +59,7 @@ if (isset($_SESSION["username"])) {
                     <button type=\"submit\" class=\"btn\" id=\"btnLogin\">Login</button>
                     <a class=\"btnCreateNewUser\"
                        id=\"btnSubmit\"
-                       href=\"file:///Users/bruger/Desktop/InternetTechnologiesRepo/Mach316/ImageFeedProject/PHP/LoginPage.html\">Create new user</a>
+                       href=\"LoginPage.php\">Create new user</a>
                 </form>
             </div>";
 }

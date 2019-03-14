@@ -27,6 +27,9 @@ $city = $_POST["city"];
 $email = $_POST["email"];
 $phonenumber = $_POST["phonenumber"];
 
+$phonenumber = preg_replace("/[^0-9]/", "", $phonenumber );
+
+
 $zipcode = (int)$zipcode;
 
 

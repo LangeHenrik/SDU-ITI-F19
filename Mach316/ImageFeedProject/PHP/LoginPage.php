@@ -11,6 +11,7 @@ session_start();
     <link rel="stylesheet" href="../CSS/General.css">
     <script src="../JS/navbar.js"></script>
     <script src="../JS/LoginPage.js"></script>
+    <meta charset="UTF-8">
 
     <meta charset="UTF-8">
     <title>Login</title>
@@ -24,6 +25,7 @@ session_start();
         echo "<navbar id=\"navbar\"><a class=\"navbar-link\" href=\"LoginPage.php\">Register</a></navbar>";
     }
     ?>
+
 
     <div class="main-content">
 
@@ -44,39 +46,39 @@ session_start();
             <form id='registerform' action='Register.php' method=\"post\">
                 <label for=\"username\" style=\"color: blue;\">Username</label>
                 <br>
-                <input type=\"text\" name=\"username\" id=\"name\"/>
+                <input maxlength='30' type=\"text\" name=\"username\" id=\"name\"/>
                 <br>
                 <label for='firstname'>First name</label>
                 <br>
-                <input type='text' name='firstname'/>
+                <input maxlength='30' type='text' name='firstname'/>
                 <br>
                 <label for='lastname'>Last name</label>
                 <br>
-                <input type='text' name='lastname'/>
+                <input maxlength='30' type='text' name='lastname'/>
                 <br>
                 <label for=\"password\">Password</label>
                 <br>
-                <input type=\"password\" name=\"password\" id=\"password\"/>
+                <input maxlength='30' type=\"password\" name=\"password\" id=\"password\"/>
                 <br>
                 <label for=\"repeatPassword\" >Repeat Password</label>
                 <br>
-                <input type=\"password\" name='repeatPassword'/>
+                <input maxlength='30' type=\"password\" name='repeatPassword'/>
                 <br>
                 <label for=\"phone\">Phone number</label>
                 <br>
-                <input type=\"text\" name=\"phonenumber\" id=\"phonenumber\"/>
+                <input id='phone-input-box' maxlength='12' type=\"text\" name=\"phonenumber\" id=\"phonenumber\"/>
                 <br>
                 <label for=\"email\">Email adress</label>
                 <br>
-                <input type=\"text\" name=\"email\" id=\"email\"/>
+                <input maxlength='100' type=\"text\" name=\"email\" id=\"email\"/>
                 <br>
                 <label for=\"zip\">Zip code</label>
                 <br>
-                <input type=\"text\" name=\"zip\" id=\"zip\"/>
+                <input maxlength='4' id='zip-input-box' type=\"text\" name=\"zip\" id=\"zip\"/>
                 <br>
                 <label for='city'>City</label>
                 <br>
-                <input type='text' name='city'/>
+                <input maxlength='50' type='text' name='city'/>
                 <br>
                 <input type=\"submit\" name=\"submit\" id=\"btnSubmit\"/>
             </form>
