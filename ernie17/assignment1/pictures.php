@@ -1,1 +1,1 @@
-<h1>Pictures</h1>
+<h2 class="title">Pictures</h2>

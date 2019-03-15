@@ -1,3 +1,20 @@
+<?php
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+
+	if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
+		if($_POST["login-username"] === "Henrik" && $_POST["login-password"] === "Lange") {
+			$_SESSION["username"] = $_POST["user"];
+			$_SESSION["login"] = true;
+			header('location: pictures.php');
+		} else {
+			echo "wrong";
+			$_SESSION["loginResult"] = "Wrong username og password!";
+		}
+	}
+?>
+
 <html>
 	<head>
 		<title>Assignment 1</title>
@@ -19,18 +36,18 @@
                 </fieldset>
             </form>
 			<?php
-				if(isset($loginResult)/* && $_POST["login-username"] !== "" && $_POST["login-password"] !== ""*/) {
-					#echo $loginResult;
-					echo "<p>ERROR</p>";
+				if(isset($_SESSION["loginResult"])) {
+					echo "<p>" . $_SESSION["loginResult"] . "</p>";
+					#echo "<p>ERROR</p>";
 				}
 			?>
         </div>
         <div class="register">
-            <form class="form-register" method="post" onsubmit="checkRegisterFields()" action="/">
+            <form class="form-register" method="post" onsubmit="checkRegisterFields()">
                 <fieldset>
                     <legend>Register:</legend>
                     <p>Username</p>
-                    <input type="text" name="register-username" id="register-username"><br><br>
+                    <input type="text" name="register-username" id="register-username" required><br><br>
                     <p>Password</p>
                     <input type="password" name="register-password" id="register-password"><br><br>
                     <p>Password</p>
@@ -53,18 +70,3 @@
         </div>
 	</body>
 </html>
-
-<?php
-	if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
-		if($_POST["login-username"] === "Henrik" && $_POST["login-password"] === "Lange") {
-			if (session_status() == PHP_SESSION_NONE) {
-				session_start();
-			}
-			$_SESSION["username"] = $_POST["user"];
-			$_SESSION["login"] = true;
-			header('location: pictures.php');
-		} else {
-			$loginResult = "Wrong username og password!";
-		}
-	}
-?>

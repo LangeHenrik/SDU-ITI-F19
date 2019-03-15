@@ -15,12 +15,17 @@ form button {
     text-align: center;
 }
 
-.form-login {
+.login {
     padding-bottom: 50px;
 }
 
-.form-login input{
+.form-login input {
     text-align: center;
+}
+
+.login p {
+    text-align: center;
+    color: #F00;
 }
 
 .title {
@@ -43,7 +48,7 @@ form button {
         float: right;
     }
 
-    .form-login {
+    .login {
         padding-bottom: 0;
     }
 }
