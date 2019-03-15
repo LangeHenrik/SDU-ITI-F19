@@ -1,95 +1,113 @@
 <?php
 
+
+
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+$usernameOK = false;
+$passwordOK = false;
+
+
 require_once 'config.php';
+echo "Hello world";
+
+print_r($_POST);
+ // checks if the submitbutton have been pressed and if so, it checks inputs and posts to server.
+if (isset($_POST["register"])) {
+// Check username: checks if the username is empty and nothing else.
+  $username =htmlentities(filter_var($_POST["username"]),FILTER_SANITIZE_STRING);
+  $password = htmlentities(filter_var($_POST["password"]),FILTER_SANITIZE_STRING);
+  $confirm_password = htmlentities(filter_var($_POST["confirm_password"]),FILTER_SANITIZE_STRING);
+  $firsname = htmlentities(filter_var($_POST["firstname"]),FILTER_SANITIZE_STRING);
+  $lastname = htmlentities(filter_var($_POST["lastname"]),FILTER_SANITIZE_STRING);
+  $zipcode = htmlentities(filter_var($_POST["zipcode"]),FILTER_SANITIZE_STRING);
+  $city = htmlentities(filter_var($_POST["city"]),FILTER_SANITIZE_STRING);
+  $email = htmlentities(filter_var($_POST["email"]),FILTER_SANITIZE_EMAIL);
+  $phone = htmlentities(filter_var($_POST["phone"]),FILTER_SANITIZE_NUMBER_INT);
 
 
- // Define variables and initialize with empty values
- $username = $password = $confirm_password = "";
- $username_err = $password_err = $confirm_password_err = "";
+   if (empty($username)) {
+    // enter error handling
+    echo "Please fill in username";
 
- // Processing form data when form is submitted
- if($_SERVER["REQUEST_METHOD"] == "POST"){
+  }else {  // If the username is approved then it is prepared for the sql query.
 
-     // Validate username
-     if(empty(trim($_POST["username"]))){
-         $username_err = "Please enter a username.";
-     } else{
-         // Prepare a select statement
-         $sql = "SELECT id FROM users WHERE username = :username";
+    $sql = "SELECT id FROM users WHERE username = :username"; // query to get the id of users with this username.
 
-         if($stmt = $conn->prepare($sql)){
-             // Bind variables to the prepared statement as parameters
-             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+    if ($stmt = $conn->prepare($sql)) {
+      // bind username to to the statement on line 18.
+      $stmt->bindParam(":username", $username, PDO::PARAM_STR);
 
-             // Set parameters
-             $param_username = trim($_POST["username"]);
+      if ($stmt->execute()) {
+        if ($stmt->rowCount()== 1) {  // if this returns true, it means that there is another user with the same password and can not approve the username.
+          echo "This username is already taken.";
+        }else {
+          echo "Username is approved";
+          $usernameOK = true;
+        }
+      }
+      else {
+        echo "Something went wrong. Try again.";
+      }
+    }
+    unset($stmt);
 
-             // Attempt to execute the prepared statement
-             if($stmt->execute()){
-                 if($stmt->rowCount() == 1){
-                     $username_err = "This username is already taken.";
-                 } else{
-                     $username = trim($_POST["username"]);
-                 }
-             } else{
-                 echo "Oops! Something went wrong. Please try again later.";
-             }
-         }
+  }
 
-         // Close statement
-         unset($stmt);
-     }
+  if (empty($password)) {
+    echo "Please enter a password";
+  }elseif (strlen($password < 8)) {
+    echo "Password too short(Must be at least 8 characters)";
+  }else {
+    echo "Password approved";
+  }
 
-     // Validate password
-     if(empty(trim($_POST["password"]))){
-         $password_err = "Please enter a password.";
-     } elseif(strlen(trim($_POST["password"])) < 6){
-         $password_err = "Password must have atleast 6 characters.";
-     } else{
-         $password = trim($_POST["password"]);
-     }
+  if (empty($confirm_password)) {
+    echo "Please enter a password";
+  }elseif (strlen($confirm_password < 8)) {
+    echo "Password too short(Must be at least 8 characters)";
+  }else {
+    echo "Password approved";
+    if($password == $confirm_password){
+      $passwordOK = true;
+    }
+  }
 
-     // Validate confirm password
-     if(empty(trim($_POST["confirm_password"]))){
-         $confirm_password_err = "Please confirm password.";
-     } else{
-         $confirm_password = trim($_POST["confirm_password"]);
-         if(empty($password_err) && ($password != $confirm_password)){
-             $confirm_password_err = "Password did not match.";
-         }
-     }
 
-     // Check input errors before inserting in database
-     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+  $sql = "INSERT INTO users (username, password, firstname, lastname, zipcode, city, email, phonennumber) VALUES (:username, :password, :firstname, :lastname, :zipcode, :city, :email, :phonenumber);";
 
-         // Prepare an insert statement
-         $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
 
-         if($stmt = $conn->prepare($sql)){
-             // Bind variables to the prepared statement as parameters
-             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
+if ($stmt = $conn->prepare($sql)) {
+  // bind parameters from form
+  $param_pass = password_hash($password,PASSWORD_DEFAULT);
 
-             // Set parameters
-             $param_username = $username;
-             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+  $stmt->bindParam(":username",$username,PDO::PARAM_STR);
+  $stmt->bindParam(":password",$param_pass,PDO::PARAM_STR);  // Hashing the password for safety
+  $stmt->bindParam(":firstname",$firsname,PDO::PARAM_STR);
+  $stmt->bindParam(":lastname",$lastname,PDO::PARAM_STR);
+  $stmt->bindParam(":zipcode",$zipcode,PDO::PARAM_INT);
+  $stmt->bindParam(":city",$city,PDO::PARAM_STR);
+  $stmt->bindParam(":email",$email,PDO::PARAM_STR);
+  $stmt->bindParam(":phonenumber",$phone,PDO::PARAM_STR);
 
-             // Attempt to execute the prepared statement
-             if($stmt->execute()){
-                 // Redirect to login page
-                 header("location: login.php");
-             } else{
-                 echo "Something went wrong. Please try again later.";
-             }
-         }
+  if ($stmt->execute()) {
+    header("location:index.php");
+  }else {
+    echo "Something went wrong";
+  }
 
-         // Close statement
-         unset($stmt);
-     }
+}
+unset($stmt);
 
-     // Close connection
-     unset($conn);
- }
+
+unset($conn);
+}
+
+
+
+
+
  ?>
 
  <!DOCTYPE html>
@@ -97,38 +115,107 @@ require_once 'config.php';
  <head>
      <meta charset="UTF-8">
      <title>Sign Up</title>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-     <style type="text/css">
-         body{ font: 14px sans-serif; }
-         .wrapper{ width: 350px; padding: 20px; }
-     </style>
+     <link rel="stylesheet" href="/registerStyle.css">
+     <!-- <link rel="stylesheet" href=" "> -->
+
  </head>
  <body>
      <div class="wrapper">
-         <h2>Sign Up</h2>
-         <p>Please fill this form to create an account.</p>
-         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                 <label>Username</label>
-                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                 <span class="help-block"><?php echo $username_err; ?></span>
-             </div>
-             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                 <label>Password</label>
-                 <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                 <span class="help-block"><?php echo $password_err; ?></span>
-             </div>
-             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                 <label>Confirm Password</label>
-                 <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
-             </div>
-             <div class="form-group">
-                 <input type="submit" class="btn btn-primary" value="Submit">
-                 <input type="reset" class="btn btn-default" value="Reset">
-             </div>
-             <p>Already have an account? <a href="login.php">Login here</a>.</p>
-         </form>
-     </div>
+
+       <h1>Sign up here!</h1>
+       <p>Please fill up all the textfields.</p>
+
+       <form  action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+
+         <div class="row">
+           <div class="col_1">
+             <label>Username</label>
+           </div>
+           <div class="col_2">
+             <input type="text" name="username" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label>Password</label>
+           </div>
+           <div class="col_2">
+            <input type="password" name="password" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label>Confirm password</label>
+           </div>
+           <div class="col_2">
+             <input type="password" name="confirm_password" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label>Firstname</label>
+           </div>
+           <div class="col_2">
+             <input type="text" name="firstname" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label>Lastname</label>
+           </div>
+           <div class="col_2">
+             <input type="text" name="lastname" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label>Zip-code</label>
+           </div>
+           <div class="col_2">
+             <input type="text" name="zipcode" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label>City</label>
+           </div>
+           <div class="col_2">
+             <input type="text" name="city" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label> Email</label>
+           </div>
+           <div class="col_2">
+             <input type="email" name="email" value="">
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col_1">
+             <label>Phone</label>
+           </div>
+           <div class="col_2">
+             <input type="tel" name="phone" value="">
+           </div>
+         </div>
+
+         <div class="submit_button">
+           <input type="submit" name="register" value="Sign up!">
+
+         </div>
+         <p>I  have an account already! <a href="index.php">Click here!</a></p>
+       </form>
+
+    </div>
+
  </body>
  </html>
