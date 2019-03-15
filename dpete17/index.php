@@ -18,16 +18,12 @@
         </header>
         <div class="sign-content">
             <div id="register">
-                <form method="POST">
+                <form action="register.php" method="POST">
                     <div class="input">
                         <label for="email">Email</label>
                         <input type="email" name="email" />
                         <label for="password">Password</label>
                         <input type="password" name="password" />
-                        <label for="firstname">First Name</label>
-                        <input type="text" name="firstname" />
-                        <label for="lastname">Last Name</label>
-                        <input type="text" name="lastname" />
                     </div>
                     <div class="filler"></div>
                     <div class="button-container"><button type="submit">Register!</button></div>
@@ -35,7 +31,7 @@
                 </form>
             </div>
             <div id="login" class="hidden">
-                <form method="POST">
+                <form action="login.php" method="POST">
                     <div class="input">
                         <label for="email">Email</label>
                         <input type="email" name="email" />
