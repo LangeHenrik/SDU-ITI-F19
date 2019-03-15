@@ -1,0 +1,27 @@
+DROP DATABASE IF EXISTS dpete17;
+
+CREATE DATABASE dpete17;
+
+use dpete17;
+
+CREATE TABLE account (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE image (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    filename VARCHAR(255) UNIQUE NOT NULL,
+    uploaded_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE sent (
+    account_id BIGINT,
+    image_id BIGINT,
+    PRIMARY KEY (account_id, image_id),
+    FOREIGN KEY (account_id) REFERENCES account(id)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (image_id) REFERENCES account(id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
