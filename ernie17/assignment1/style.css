@@ -23,7 +23,7 @@ form button {
     text-align: center;
 }
 
-.login p {
+.error-response {
     text-align: center;
     color: #F00;
 }

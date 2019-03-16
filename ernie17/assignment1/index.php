@@ -59,6 +59,7 @@
 	if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
 		$inputUsername = htmlentities(filter_input(INPUT_POST, "login-username", FILTER_SANITIZE_STRING));
 		$inputPassword = htmlentities(filter_input(INPUT_POST, "login-password", FILTER_SANITIZE_STRING));
+
 		foreach ($resultGetUsers as $value) {
 			#print_r("<br>username: " . $value["username"] . " password: " . $value["pass"]);
 			if ($inputUsername === $value["username"] && $inputPassword === $value["pass"]) {
@@ -72,15 +73,35 @@
 	}
 
 	# Check register input
-	/*if(isset($_POST["register-username"]) && isset($_POST["login-password"])) {
-		if($_POST["login-username"] === "Henrik" && $_POST["login-password"] === "Lange") {
-			$_SESSION["username"] = $_POST["user"];
-			$_SESSION["login"] = true;
-			header('location: pictures.php');
-		} else {
-			$_SESSION["loginResult"] = "Wrong username og password!";
+	if(isset($_POST["register-username"])) {
+		$inputUsername = htmlentities(filter_input(INPUT_POST, "register-username", FILTER_SANITIZE_STRING));
+
+		foreach ($resultGetUsers as $value) {
+			if ($inputUsername === $value["username"]) {
+				$_SESSION["registerResult"] = "Username allready taken!";
+				break;
+			}
 		}
-	}*/
+
+		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-password", FILTER_SANITIZE_STRING));
+		$inputPasswordRepeat = htmlentities(filter_input(INPUT_POST, "register-password-repeat", FILTER_SANITIZE_STRING));
+
+		if (!isset($_SESSION["registerResult"]) && $inputPassword !== $inputPasswordRepeat) {
+			$_SESSION["registerResult"] = "Passwords doesn't match!";
+		}
+
+		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-firstname", FILTER_SANITIZE_STRING));
+		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-lastname", FILTER_SANITIZE_STRING));
+		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-zip", FILTER_SANITIZE_STRING));
+		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-city", FILTER_SANITIZE_STRING));
+		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-email", FILTER_SANITIZE_STRING));
+		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-phone", FILTER_SANITIZE_STRING));
+
+		if (!isset($_SESSION["registerResult"])) {
+
+		}
+
+	}
 
 	# Close db connection
 	$conn = null;
@@ -100,7 +121,7 @@
 		<div class="login">
 			<?php
 				if(isset($_SESSION["loginResult"])) {
-					echo "<p>" . $_SESSION["loginResult"] . "</p>";
+					echo "<p class='error-response'>" . $_SESSION["loginResult"] . "</p>";
 				}
 			?>
             <form class="form-login" method="post">
@@ -115,17 +136,18 @@
         <div class="register">
 			<?php
 				if(isset($_SESSION["registerResult"])) {
-					echo "<p>" . $_SESSION["registerResult"] . "</p>";
+					echo "<p class='error-response'>" . $_SESSION["registerResult"] . "</p>";
 				}
 			?>
-            <form class="form-register" method="post" onsubmit="checkRegisterFields()">
+			<p style="display: none" class="error-response" id="js-response" style="color: #F00">test</p>
+            <form class="form-register" method="post" onsubmit="return checkRegisterFields()" action="index.php">
                 <fieldset>
                     <legend>Register:</legend>
                     <p>Username</p>
                     <input type="text" name="register-username" id="register-username" required><br><br>
                     <p>Password</p>
                     <input type="password" name="register-password" id="register-password"><br><br>
-                    <p>Password</p>
+                    <p>Repeat Password</p>
                     <input type="password" name="register-password-repeat" id="register-password-repeat"><br><br>
                     <p>Firstname</p>
                     <input type="text" name="register-firstname" id="register-firstname"><br><br>
