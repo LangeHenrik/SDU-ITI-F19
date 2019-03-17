@@ -61,10 +61,47 @@ function getUsername($username){
     return ($data['username']);
 }
 
-function getUserImagePaths($userId, $conn) {
-    $records = $conn->prepare('SELECT file_name FROM images WHERE owner = :userId');
-    $records->bindParam(':userId', $userId);
-    $records->execute();
-    $results = $records->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
+function uploadImage($username, $headertext, $commenttext, $imagename){
+
+    $conn = connectToDb();
+    $statement = $conn->prepare("SELECT uuid FROM Users WHERE username = :username");
+    $statement->bindParam(':username', $username);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $statement->fetchAll();
+    $data = $result[0];
+    $userid = ($data['uuid']);
+
+    $statement = $conn->prepare("INSERT INTO images (userid, imagepath, headertext, imagetext) 
+    VALUES (:userid, :imagepath, :headertext, :imagetext)");
+
+    $statement->bindParam(':userid', $userid);
+    $statement->bindParam(':imagepath', $imagename);
+    $statement->bindParam(':headertext', $headertext);
+    $statement->bindParam(':imagetext', $commenttext);
+
+    $statement->execute();
+    return $statement;
+
 }
+
+function getallusers (){
+    $conn = connectToDb();
+    $statement = $conn->prepare("SELECT * FROM Users");
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $statement->fetchAll();
+    $conn = null;
+    return $result;
+}
+
+function getallimages (){
+    $conn = connectToDb();
+    $statement = $conn->prepare("SELECT * FROM images");
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $statement->fetchAll();
+    $conn = null;
+    return $result;
+}
+

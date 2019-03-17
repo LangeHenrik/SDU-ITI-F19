@@ -11,27 +11,42 @@ if (!isset($_SESSION['login_user'])){
 
 <head>
 
-<link href="css/global.css" type="text/css" rel="stylesheet">
-<script src="js/login.js"></script>
+
+    <link href="css/global.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#content').load("feed.php");
+
+        });
+    </script>
 
 </head>
 <body>
-
+<nav id="nav">
 <ul>
-    <li><a class="active" href="#feeds">Feeds</a></li>
-    <li><a href="#upload">Upload/View</a></li>
-    <li><a href="#">Users</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <li><a href="#" data-target="feed">Feeds</a></li>
+    <li><a href="#" data-target="upload">Upload/View</a></li>
+    <li><a href="#" data-target="users">Users</a></li>
+    <li><a href="logout.php" >Logout</a></li>
 </ul>
+</nav>
 
+<div id="content" class="container">
 
-
+</div>
+<!--
 <div>
 
-
+<div class="container">
 
 </div>
 
+</div>
+-->
 </body>
 
 
