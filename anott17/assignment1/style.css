@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mainDiv {
+  width: 100%;
+  background-color: lightblue;
+}
+
+.mainDiv h1 {
+  text-align: center;
+  padding: 30px 30px 20px;
+  font-family: arial;
+  font-size: 50px;
+  color: #111;
+  line-height: 44px;
+}
+
+.registerDiv {
+  background-color: white;
+
+}
+
+.registerErrorDiv {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 10px 10px 10px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.loginDiv {
+  background-color: white;
+}
+
+.form-register {
+  text-align: center;
+  padding: 50px 150px 50px 150px;
+}
+
+.form-login{
+  text-align: center;
+  padding: 50px 150px 50px 150px;
+}
+
+.fieldset-register {
+  background-color: white;
+}
+
+.fieldset-login {
+  background-color: white;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .registerDiv {
+    width: 50%;
+    float: left;
+  }
+
+  .loginDiv {
+    width: 50%;
+    float: right;
+  }
+
+  .form-register {
+    text-align: center;
+    padding: 50px 200px 50px 200px;
+  }
+
+  .form-login{
+    text-align: center;
+    padding: 50px 200px 50px 200px;
+  }
+}
