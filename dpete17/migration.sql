@@ -6,18 +6,26 @@ use dpete17;
 
 CREATE TABLE account (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(150) UNIQUE NOT NULL,
-    password VARCHAR(150) NOT NULL
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    firstname VARCHAR(100),
+    lastname VARCHAR(100),
+    zip CHAR(4),
+    city VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    phone CHAR(8) UNIQUE
 );
 
 CREATE TABLE image (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    filename VARCHAR(150) UNIQUE NOT NULL,
+    filename VARCHAR(100) UNIQUE NOT NULL,
+    header VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
     uploaded_at TIMESTAMP NOT NULL
 );
 
-CREATE TABLE sent (
+CREATE TABLE uploads (
     account_id BIGINT UNSIGNED,
-    id BIGINT UNSIGNED,
-    PRIMARY KEY (account_id, id)
+    image_id BIGINT UNSIGNED,
+    PRIMARY KEY (account_id, image_id)
 );

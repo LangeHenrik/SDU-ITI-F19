@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['ID'])) {
+        header('Location: /dashboard/account.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
      crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main-style.css">
     <script src="sign-action.js"></script>
     <title>Project A01</title>
 </head>
@@ -17,13 +25,40 @@
             <h1>Project A01</h1>
         </header>
         <div class="sign-content">
+            <div style="text-align: center;"><span id="message">
+                <?php
+
+                    if(isset($_SESSION['MESSAGE'])) {
+                        echo $_SESSION['MESSAGE'];
+                        unset($_SESSION['MESSAGE']);
+                    }
+
+                ?>
+            </span></div>
             <div id="register">
-                <form action="register.php" method="POST">
+                <form action="action/register.php" onsubmit="return validateRegisterForm()" method="POST">
                     <div class="input">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" />
+                        <label for="username">Username</label>
+                        <input id="regUsername" type="text" name="username" onkeyup="validateUsername('regUsername')" required />
                         <label for="password">Password</label>
-                        <input type="password" name="password" />
+                        <input id="regPassword" type="password" name="password" onkeyup="validatePassword('regPassword')" required />
+                        <label for="repeat_password">Repeat Password</label>
+                        <input id="regRepeat" type="password" name="repeat_password" onkeyup="validateRepeatPassword()" />
+
+                        <label for="firstname"">Firstname</label>
+                        <input id="regFirstname" type="text" name="firstname" onkeyup="validateFirstname()" />
+                        <label for="lastname">Lastname</label>
+                        <input id="regLastname" type="text" name="lastname" onkeyup="validateLastname()" />
+
+                        <label for="zip"">Zip</label>
+                        <input id="regZip" type="text" name="zip" onkeyup="validateZip()" />
+                        <label for="city">City</label>
+                        <input id="regCity" type="text" name="city" onkeyup="validateCity()" />
+                        
+                        <label for="email">Email</label>
+                        <input id="regEmail" type="email" name="email" onkeyup="validateEmail()"/>
+                        <label for="phone">Phone</label>
+                        <input id="regPhone" type="text" name="phone" onkeyup="validatePhone()"/>
                     </div>
                     <div class="filler"></div>
                     <div class="button-container"><button type="submit">Register!</button></div>
@@ -31,12 +66,12 @@
                 </form>
             </div>
             <div id="login" class="hidden">
-                <form action="login.php" method="POST">
+                <form action="action/login.php" onsubmit="return validateLoginForm()" method="POST">
                     <div class="input">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" />
+                        <label for="username">Username</label>
+                        <input id="logUsername" type="text" name="username" onkeyup="validateUsername('logUsername')" required />
                         <label for="password">Password</label>
-                        <input type="password" name="password" />
+                        <input id="logPassword" type="password" name="password" onkeyup="validatePassword('logPassword')" required />
                     </div>
                     <div class="filler"></div>
                     <div class="button-container"><button type="submit">Login!</button></div>
@@ -44,40 +79,7 @@
                 </form>
             </div>
         </div>
-        <footer class="main-footer">
-            <div class="footer-aboutus">
-                <h3>About Us</h3>
-                <ul>
-                    <li><a href="#">Category 1, 1</a></li>
-                    <li><a href="#">Category 1, 2</a></li>
-                    <li><a href="#">Category 1, 3</a></li>
-                    <li><a href="#">Category 1, 4</a></li>
-                </ul>
-            </div>
-            <div class="footer-usefullinks">
-                <h3>Useful Links</h3>
-                <ul>
-                    <li><a href="#">Category 2, 1</a></li>
-                    <li><a href="#">Category 2, 2</a></li>
-                    <li><a href="#">Category 2, 3</a></li>
-                    <li><a href="#">Category 2, 4</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact</h3>
-                <div>
-                    <div>+45 88 88 88 88</div>
-                    <br>
-                    <div>web@teknologi.com</div>
-                    <br>
-                    <div>
-                        Localhost <br>
-                        The Internet <br>
-                        The Earth
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <?php include('common/main-footer.php'); ?>
     </div>
 </body>
 </html>

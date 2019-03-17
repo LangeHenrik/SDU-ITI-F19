@@ -14,7 +14,7 @@ html,body {
     grid-template-areas: "header" "content" "footer";
     grid-gap: 10px;
     /* grid-template-columns: first auto; */
-    width: 960px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -26,14 +26,11 @@ html,body {
 
 
 .sign-content {
+    grid-row: content;
     margin: 0 auto;
-    min-height: 140px;
+    max-width: 250px;
+    min-height: 150px;
     padding: 10px;
-    background: #DDDDDD;
-}
-
-#register, #login {
-
 }
 
 .sign-content form {
@@ -43,11 +40,16 @@ html,body {
 
 .sign-content .button-container, .sign-content .sign-toggle {
     display: flex;
-    justify-content: flex-end;   
+    justify-content: flex-end;
+    margin: 5px 0 0 0;
+}
+
+.button-container button {
+    flex: 1;
 }
 
 .sign-content form label {
-    text-align: right;
+    text-align: left;
 }
 
 .sign-content form label:after {
@@ -65,26 +67,6 @@ html,body {
     font-size: 0.8em;
 }
 
-
-
-.filler {
-    flex: 1;
-}
-
-.input {
-    display: grid;
-    grid-template-columns: minmax(80px, 1fr) min-content;
-    grid-gap: 5px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-
-
-
-
 .main-footer {
     grid-row: footer;
     display: flex;
@@ -98,4 +80,34 @@ html,body {
 .main-footer a {
     color: darkslategray;
     text-decoration: none;
+}
+
+
+
+
+.filler {
+    flex: 1;
+}
+
+.input {
+    display: grid;
+    /* grid-template-columns: minmax(80px, 1fr)  min-content; */
+    grid-template-columns: minmax(200px, auto);
+    grid-gap: 1px;
+}
+
+input {
+    padding: 4px 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.valid {
+    outline-color: darkgreen;
+}
+
+.invalid {
+    outline-color: darkred;
 }
