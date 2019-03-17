@@ -23,26 +23,6 @@
 		$password,
 		array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-		/*$stmt = $conn->prepare("SELECT * FROM picture_user WHERE Book = :search OR Author = :search OR Publisher = :search");
-		$stmt->bindparam(':search', $searchInput);
-
-		$stmt->execute();
-		$stmt->setFetchMode(PDO::FETCH_ASSOC);
-		$result = $stmt->fetchAll();*/
-		#print_r($result);
-
-		/*$index = 0;
-		while (isset(array_values($result)[$index]))
-		{
-			$row = array_values($result)[$index];
-			echo '<tr>';
-			echo '<td>' . $row['Book'] . '</td>';
-			echo '<td>' . $row['Author'] . '</td>';
-			echo '<td>' . $row['Publisher'] . '</td>';
-			echo '</tr>';
-			$index++;
-		}*/
-
 		$stmtGetUsers = $conn->prepare("SELECT username, pass FROM picture_user");
 		$stmtAddUser = $conn->prepare("INSERT INTO picture_user (username, pass, firstname, lastname, zip, city, email, phone) VALUES (:username, :pass, :firstname, :lastname, :zip, :city, :email, :phone)");
 
@@ -90,15 +70,37 @@
 			$_SESSION["registerResult"] = "Passwords doesn't match!";
 		}
 
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-firstname", FILTER_SANITIZE_STRING));
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-lastname", FILTER_SANITIZE_STRING));
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-zip", FILTER_SANITIZE_STRING));
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-city", FILTER_SANITIZE_STRING));
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-email", FILTER_SANITIZE_STRING));
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-phone", FILTER_SANITIZE_STRING));
+		$inputFirstname = htmlentities(filter_input(INPUT_POST, "register-firstname", FILTER_SANITIZE_STRING));
+		$inputLastname = htmlentities(filter_input(INPUT_POST, "register-lastname", FILTER_SANITIZE_STRING));
+		$inputZip = htmlentities(filter_input(INPUT_POST, "register-zip", FILTER_SANITIZE_NUMBER_INT));
+		$inputCity = htmlentities(filter_input(INPUT_POST, "register-city", FILTER_SANITIZE_STRING));
+		$inputEmail = htmlentities(filter_input(INPUT_POST, "register-email", FILTER_SANITIZE_EMAIL));
+		$inputPhone = htmlentities(filter_input(INPUT_POST, "register-phone", FILTER_SANITIZE_NUMBER_INT));
 
+		// If input => create new user
 		if (!isset($_SESSION["registerResult"])) {
+			if ($inputUsername !== "" && $inputPassword !== "" && $inputFirstname !== ""
+			 && $inputLastname !== "" && $inputZip !== "" && $inputCity !== ""
+			  && $inputEmail !== "" && $inputPhone !== "") {
 
+				try {
+					$stmtAddUser->bindparam(':username', $inputUsername);
+					$stmtAddUser->bindparam(':pass', $inputPassword);
+					$stmtAddUser->bindparam(':firstname', $inputFirstname);
+					$stmtAddUser->bindparam(':lastname', $inputLastname);
+					$stmtAddUser->bindparam(':zip', $inputZip);
+					$stmtAddUser->bindparam(':city', $inputCity);
+					$stmtAddUser->bindparam(':email', $inputEmail);
+					$stmtAddUser->bindparam(':phone', $inputPhone);
+
+					$stmtAddUser->execute();
+					$stmtAddUser->setFetchMode(PDO::FETCH_ASSOC);
+					$resultAddUser = $stmtAddUser->fetchAll();
+
+				} catch (PDOexception $e) {
+					echo "Error: " . $e->getMessage();
+				}
+			}
 		}
 
 	}
@@ -146,21 +148,21 @@
                     <p>Username</p>
                     <input type="text" name="register-username" id="register-username" required><br><br>
                     <p>Password</p>
-                    <input type="password" name="register-password" id="register-password"><br><br>
+                    <input type="password" name="register-password" id="register-password" required><br><br>
                     <p>Repeat Password</p>
-                    <input type="password" name="register-password-repeat" id="register-password-repeat"><br><br>
+                    <input type="password" name="register-password-repeat" id="register-password-repeat" required><br><br>
                     <p>Firstname</p>
-                    <input type="text" name="register-firstname" id="register-firstname"><br><br>
+                    <input type="text" name="register-firstname" id="register-firstname" required><br><br>
                     <p>Lastname</p>
-                    <input type="text" name="register-lastname" id="register-lastname"><br><br>
+                    <input type="text" name="register-lastname" id="register-lastname" required><br><br>
                     <p>Zip</p>
-                    <input type="text" name="register-zip" id="register-zip"><br><br>
+                    <input type="text" name="register-zip" id="register-zip" required><br><br>
                     <p>City</p>
-                    <input type="text" name="register-city" id="register-city"><br><br>
+                    <input type="text" name="register-city" id="register-city" required><br><br>
                     <p>Email</p>
-                    <input type="text" name="register-email" id="register-email"><br><br>
+                    <input type="text" name="register-email" id="register-email" required><br><br>
                     <p>Phone number</p>
-                    <input type="text" name="register-phone" id="register-phone"><br><br>
+                    <input type="text" name="register-phone" id="register-phone" required><br><br>
 					<button name="btn-register">Register</button>
                 </fieldset>
             </form>
