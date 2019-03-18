@@ -31,22 +31,14 @@ if (!isset($_SESSION['login_user'])){
     <li><a href="#" data-target="feed">Feeds</a></li>
     <li><a href="#" data-target="upload">Upload/View</a></li>
     <li><a href="#" data-target="users">Users</a></li>
-    <li><a href="logout.php" >Logout</a></li>
+    <li><a href="logout.php" data-target="logout" >Logout</a></li>
 </ul>
 </nav>
 
 <div id="content" class="container">
 
 </div>
-<!--
-<div>
 
-<div class="container">
-
-</div>
-
-</div>
--->
 </body>
 
 

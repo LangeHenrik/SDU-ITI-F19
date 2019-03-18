@@ -9,6 +9,7 @@ div {
 }
 
 .container {
+    min-width: 450px;
     margin-top: 20px;
     margin-left:25%;
     width: 70%;
@@ -28,6 +29,15 @@ div {
     margin-bottom: 20px;
 }
 
+.fa {
+    font-size: 150px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fa:hover {
+    color: darkblue;
+}
 img{
     width: 100%;
     height: auto;

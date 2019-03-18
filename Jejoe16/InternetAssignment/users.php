@@ -16,6 +16,7 @@
 </head>
 <body>
 
+
 <h1>Username List</h1>
 <?php
 include("database.php");
@@ -33,6 +34,7 @@ for ($x = 0; $x < sizeof($users); $x++) {
 ?>
 
 </body>
+
 
 
 </html>

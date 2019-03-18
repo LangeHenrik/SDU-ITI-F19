@@ -105,3 +105,28 @@ function getallimages (){
     return $result;
 }
 
+
+
+function toggleLike ($image){
+
+    $conn = connectToDb();
+    $statement = $conn->prepare("SELECT * FROM images WHERE imagepath = :image");
+    $statement->bindParam(':image', $image);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $statement->fetchAll();
+    $data = $result[0];
+    $imagelikeS = ($data['likeS']);
+
+    if($imagelikeS == 0){
+        $imagelikeS = 1;
+    } else {
+        $imagelikeS = 0;
+    }
+
+    $statement = $conn->prepare("UPDATE images SET likeS = :imagelikeS WHERE imagepath = :image");
+    $statement->bindParam(':imagelikeS', $imagelikeS);
+    $statement->bindParam(':image', $image);
+    $statement->execute();
+    $conn = null;
+}
