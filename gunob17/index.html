@@ -2,42 +2,67 @@
 <html>
 
 
-	<head>
+<head>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css">
 	<script src="test.js"></script>
 	<title>
-	flobble
+		Exersice
 	</title>
 
-	</head>
-	<body>
-		<h1 id="header1">
-		Flobble social
-		</h1>
+</head>
 
-		<p id="para1">
+<body>
+	<h1 id="header1">
+		Exersice
+	</h1>
+
+	<p id="para1">
 		<b><i> test af italic og bold</i></b>
-		</p>
+	</p>
 
-    <div class="user_box">
-    <div class="username">
+	<div class="user_box">
+		<div class="username">
 			<div class="user_pic">
 
 			</div>
-      (user name here)
-    </div>
-    <div class="user_text">
-      <iframe class="item"  src="https://www.youtube.com/embed/wZZ7oFKsKzY?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
-    </div>
-    </div>
+			(user name here)
+		</div>
+		<div class="user_text">
+			<iframe class="item" src="https://www.youtube.com/embed/wZZ7oFKsKzY?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+		</div>
+	</div>
 
-		<!--<form>
-		width="560" height="315"
-			<fieldset id="field1">
-				<legend style="color:white"> legend </legend>
-				<input type= "text" placeholder= "randomtext"></input>
-		</form>
--->
-	</body>
+	<form id="field1" onsubmit="return test()" method="post">
+		<legend style="color:white"> legend </legend>
+		<input type="password" placeholder="randomtext" id="randomtext"></input>
+		<input type="submit" name="submit" id="submit"></input>
+	</form>
+	<form onsubmit="return submitionform()" method="post" id="form2">
+		<label class= "label" for="name">name</label>
+		<br>
+		<input type="text" name="name" id="name" />
+		<br>
+		<label class= "label" for="password">password</label>
+		<br>
+		<input type="password" name="password" id="password" />
+		<br>
+		<label class= "label" for="phone">phone number</label>
+		<br>
+		<input type="text" name="phone" id="phone" />
+		<br>
+		<label class= "label" for="email">email adress</label>
+		<br>
+		<input type="text" name="email" id="email" />
+		<br>
+		<label class= "label"  for="zip">zip code</label>
+		<br>
+		<input type="text" name="zip" id="zip" />
+		<br>
+		<input type="submit" name="submit" id="submit" />
+	</form>
+
+
+</body>
+
 </html>

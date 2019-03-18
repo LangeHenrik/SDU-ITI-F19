@@ -1,8 +1,8 @@
-p{
+p {
   color: red;
-
 }
-#header1{
+
+#header1 {
   text-align: center;
   font-family: "Arial";
   border: dotted;
@@ -10,47 +10,52 @@ p{
   border-radius: 25px;
   margin-top: 50px;
 }
-#para1{
+
+#para1 {
   color: green;
-
-
 }
-#tab1{
+
+#tab1 {
   border: 2px solid;
-
 }
 
-.user_box{
+.user_box {
   text-align: center;
   font-family: "Arial";
   border: solid blue;
   background-color: lightgray;
   border-radius: 25px;
-  margin:auto;
+  margin: auto;
 }
-.username{
+
+.username {
   display: inline-block;
   margin: 20px;
   align-content: center;
-
 }
-.user_text{
+
+.user_text {
   display: inline-block;
   border: top right;
   margin-top: 20px;
 }
-.item{
+
+.item {
   width: auto;
   height: auto;
 }
 
-
-#header2{
+#header2 {
   text-align: justify;
 }
 
-body{
+.label{
+  color: lightgray;
+}
+#form2{
+  margin-top: 30px;
+}
+
+body {
   background: midnightblue;
-
-
 }
