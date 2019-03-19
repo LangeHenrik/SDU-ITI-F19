@@ -39,6 +39,8 @@
 
             if(count($result) > 0 && $result[0]['opinion'] == $opinion) {
                 $sql = 'DELETE FROM opinion WHERE image_id = :id;';
+                $stmt = $conn -> prepare($sql);
+                $stmt -> bindParam(':id', $iid);
             } else {
                 
             }
