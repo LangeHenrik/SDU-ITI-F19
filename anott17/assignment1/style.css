@@ -17,6 +17,20 @@
   line-height: 44px;
 }
 
+.pictureDiv {
+  width: 100%;
+  background-color: lightblue;
+}
+
+.pictureDiv h1 {
+  text-align: center;
+  padding: 0px 30px 20px;
+  font-family: arial;
+  font-size: 50px;
+  color: #111;
+  line-height: 44px;
+}
+
 .registerDiv {
   background-color: white;
 
@@ -37,12 +51,17 @@
 
 .form-register {
   text-align: center;
-  padding: 50px 150px 50px 150px;
+  padding: 50px 50px 50px 50px;
+}
+
+.logOutForm {
+  text-align: right;
+  padding: 10px 10px 0px 0px;
 }
 
 .form-login{
   text-align: center;
-  padding: 50px 150px 50px 150px;
+  padding: 50px 50px 50px 50px;
 }
 
 .fieldset-register {
@@ -53,8 +72,54 @@
   background-color: white;
 }
 
+@media only screen and (min-width: 700px) {
+  .registerDiv {
+    width: 50%;
+    float: left;
+  }
 
-@media only screen and (min-width: 800px) {
+  .loginDiv {
+    width: 50%;
+    float: right;
+  }
+
+  .form-register {
+    text-align: center;
+    padding: 50px 50px 50px 50px;
+  }
+
+  .form-login{
+    text-align: center;
+    padding: 50px 50px 50px 50px;
+  }
+
+}
+
+
+@media only screen and (min-width: 1000px) {
+  .registerDiv {
+    width: 50%;
+    float: left;
+  }
+
+  .loginDiv {
+    width: 50%;
+    float: right;
+  }
+
+  .form-register {
+    text-align: center;
+    padding: 50px 100px 50px 100px;
+  }
+
+  .form-login{
+    text-align: center;
+    padding: 50px 100px 50px 100px;
+  }
+
+}
+
+@media only screen and (min-width: 1300px) {
   .registerDiv {
     width: 50%;
     float: left;

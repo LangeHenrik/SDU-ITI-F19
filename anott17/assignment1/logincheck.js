@@ -59,7 +59,7 @@ function checkFields() {
 
   if(!(validZipCode && zip.length == 4)) {
     console.log("Your zip code must be digits and exactly 4 long.");
-    document.getElementById("errorDiv").innerHTML = "Your zip code must be digits and 4 characters long.";
+    document.getElementById("errorDiv").innerHTML = "Your zip code must be 4 digits long.";
     return false;
   }
 
