@@ -37,6 +37,11 @@ form button {
     margin: 20px 0
 }
 
+/* Userpage */
+.table-user {
+    text-align: center;
+}
+
 @media only screen and (min-width: 1000px) {
     .login {
         width: 50%;
