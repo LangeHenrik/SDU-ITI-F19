@@ -21,7 +21,7 @@
     <ul class ="header">
       <li><a href="index.php">Home</a></li>
       <li><a href="login.php">Login</a></li>
-      <li><a href="uploade.php">Uploade</a></li>
+      <li><a href="uploade.php">Upload</a></li>
       <li><a href="users.php">Users</a></li>
       <?php
       if (isset($_SESSION['userid'])) {

@@ -32,6 +32,22 @@ color wheel
 
 }
 
+.single{
+
+  background-color: gray;
+  padding: 20px;
+  max-width: 100%;
+  margin: 10px;
+  border-radius: 2%;
+
+}
+
+.single_im{
+    border-radius: 2%;
+    max-width: 100%;
+    height: auto;
+  }
+
 li {
   float: left;
 }
@@ -51,7 +67,9 @@ li a {
   text-decoration: none;
 }
 
-
+.com{
+  padding-left: 30px;
+}
 
 p{
   font-family: 'Fira Sans', sans-serif;
@@ -84,4 +102,17 @@ li a:hover {
 }
 .upload_form{
   margin: 20px;
+}
+.comment{
+  display: block;
+  background-color: white;
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.newcomment{
+margin-left: 3%;
+  margin-top: 3%;
 }

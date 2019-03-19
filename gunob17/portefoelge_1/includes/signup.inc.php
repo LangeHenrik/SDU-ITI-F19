@@ -1,13 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "pass";
-$dbname = "gunob17";
+
 
 if (isset($_POST['signup_submit'])) {
   include 'dbh.php';
 
-  //require 'dbh.php';
+  $firstN = $_POST['firstname'];
+  $lastN = $_POST['lastname'];
+  $email = $_POST['email'];
+  $zip = $_POST['zip'];
+  $city = $_POST['city'];
+  $phoneN = $_POST['phonenumber'];
   $uid = $_POST['username'];
   $email = $_POST['email'];
   $pwd = $_POST['password'];
@@ -26,6 +28,26 @@ if (isset($_POST['signup_submit'])) {
   }
   elseif (!preg_match("/^[a-zA-Z0-9]*$/",$uid)) {
     header("Location: ../signup.php?error=invalidusername&email=".$email);
+    exit();
+  }
+  elseif (!preg_match("/^[a-zA-Z]*$/",$firstN)) {
+    header("Location: ../signup.php?error=invalidname");
+    exit();
+  }
+  elseif (!preg_match("/^[a-zA-Z]*$/",$lastN)) {
+    header("Location: ../signup.php?error=invalidname");
+    exit();
+  }
+  elseif (!preg_match("/^[0-9]*$/",$zip)) {
+    header("Location: ../signup.php?error=invalidzip");
+    exit();
+  }
+  elseif (!preg_match("/^[a-zA-ZÆØÅæøå]*$/",$city)) {
+    header("Location: ../signup.php?error=invalidcity");
+    exit();
+  }
+  elseif (!preg_match("/^[0-9]*$/",$phoneN)) {
+    header("Location: ../signup.php?error=invalidphoneNr");
     exit();
   }
   elseif ($pwd !== $repwd) {
@@ -48,13 +70,18 @@ if (isset($_POST['signup_submit'])) {
     }
   }
     try{
-    $stmt = $conn->prepare("INSERT INTO users (username, email, pwdusers)
-    VALUES (:username, :email, :password)");
+    $stmt = $conn->prepare("INSERT INTO users (fname, lname, zip, city, phoneN, username, email, pwdusers)
+    VALUES (:fname, :lname, :zip, :city, :phoneN, :username, :email, :password)");
     if (!$stmt) {
       header("Location: ../signup.php?error=sqlerror");
       exit();
     }
     $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $stmt->bindParam(':fname', $firstN);
+    $stmt->bindParam(':lname', $lastN);
+    $stmt->bindParam(':zip', $zip);
+    $stmt->bindParam(':city', $city);
+    $stmt->bindParam(':phoneN', $phoneN);
     $stmt->bindParam(':username', $uid);
     $stmt->bindParam(':password', $hashedpwd);
     $stmt->bindParam(':email', $email);

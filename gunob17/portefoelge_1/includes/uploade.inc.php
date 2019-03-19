@@ -33,7 +33,7 @@ if (isset($_POST['uploade_submit'])) {
             $stmt->bindParam(':name', $newnamefile);
 
             $res = $stmt->execute();
-
+            $conn = null;
             header("Location: ../index.php?uploade=success");
           }
           else {

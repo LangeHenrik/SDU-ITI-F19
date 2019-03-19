@@ -15,4 +15,7 @@ if (isset($_SESSION['userid'])) {
     }
   echo'</ul>';
 }}
+else {
+  header('Location: login.php');
+}
  ?>

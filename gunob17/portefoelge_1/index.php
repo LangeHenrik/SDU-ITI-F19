@@ -39,11 +39,13 @@
            if ($stmt->rowCount() > 0) {
              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                echo '<div class = "image">';
-               echo '<p>'.$row['username'];
+               echo '<p>'.$row['username'].'</p>';
                echo '<br>';
+               echo '<a href = "picture_site.php?path='.$row['name'].'">';
                echo '<img class="images" src="'.$row['path'].'" alt="'.$row['name'].'">';
-               echo '</div>';
+               echo '</a></div>';
              }
+             $conn = null;
            }
 
 
@@ -51,6 +53,7 @@
    }
    else {
      echo '<p class="login-status">You are corrently not logged in and can there for not se any files</p>';
+     header('Location: login.php');
    }
     ?>
 
