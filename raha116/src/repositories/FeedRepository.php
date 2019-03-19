@@ -27,7 +27,7 @@ class FeedRepository
      */
     public function get_full_feed(): array
     {
-        return $this->conn->query_multiple_rows("select entry_id, user_id, image_id, description, title from feed_entries", FeedDatabaseEntry::class, "");
+        return $this->conn->query_multiple_rows("select entry_id, user_id, image_id, description, title from feed_entries", FeedDatabaseEntry::class);
     }
 
     /**
@@ -45,9 +45,9 @@ class FeedRepository
             throw new Exception("Failed to create transaction: " . $this->conn->get_last_error());
         }
 
-        $this->conn->execute_prepared_query("insert into feed_entries(user_id, image_id, description, title) VALUES (?, ?, ?, ?)", "iiss", $user_id, $image_id, $description, $title);
+        $this->conn->execute_prepared_query("insert into feed_entries(user_id, image_id, description, title) VALUES (?, ?, ?, ?)", $user_id, $image_id, $description, $title);
 
-        $inserted_id = $this->conn->query_single_row("select LAST_INSERT_ID() as entry_id", FeedDatabaseEntry::class, "");
+        $inserted_id = $this->conn->query_single_row("select LAST_INSERT_ID() as entry_id", FeedDatabaseEntry::class);
 
         $inserted = $this->get_feed_entry($inserted_id->entry_id);
 
@@ -66,7 +66,7 @@ class FeedRepository
      */
     public function get_feed_entry(int $entry_id)
     {
-        return $this->conn->query_single_row("select entry_id, user_id, image_id, description, title from feed_entries where entry_id = ?", FeedDatabaseEntry::class, "i", $entry_id);
+        return $this->conn->query_single_row("select entry_id, user_id, image_id, description, title from feed_entries where entry_id = ?", FeedDatabaseEntry::class, $entry_id);
     }
 
     /**
@@ -77,7 +77,7 @@ class FeedRepository
      */
     public function get_entries_referring_image_id(int $image_id): array
     {
-        return $this->conn->query_multiple_rows("select entry_id, user_id, image_id, description, title  from feed_entries where image_id = ?", FeedDatabaseEntry::class, "i", $image_id);
+        return $this->conn->query_multiple_rows("select entry_id, user_id, image_id, description, title  from feed_entries where image_id = ?", FeedDatabaseEntry::class, $image_id);
     }
 
     /**
@@ -87,6 +87,6 @@ class FeedRepository
      */
     public function delete_entry(int $entry_id)
     {
-        $this->conn->execute_prepared_query("delete from feed_entries where entry_id = ?", "i", $entry_id);
+        $this->conn->execute_prepared_query("delete from feed_entries where entry_id = ?", $entry_id);
     }
 }

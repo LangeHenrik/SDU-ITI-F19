@@ -4,22 +4,28 @@ declare(strict_types=1);
 namespace framework;
 
 
-use utilities\IO;
+use models\Configuration;
+use models\DatabaseConfiguration;
 
 class Settings
 {
     private $cached_settings;
 
+    public $database;
+
     public function get_settings()
     {
         if (!$this->cached_settings) {
-            $json = file_get_contents(IO::join_paths(__DIR__, "..", "settings.json"));
 
-            if (!$json) {
-                die("No settings file available");
-            }
+            $this->cached_settings = new Configuration();
 
-            $this->cached_settings = JsonDecoder::DecodeJson($json);
+            $dbconf = new DatabaseConfiguration();
+            $dbconf->username = $GLOBALS['username'];
+            $dbconf->password = $GLOBALS['password'];
+            $dbconf->database = $GLOBALS['dbname'];
+            $dbconf->server = $GLOBALS['servername'];
+
+            $this->cached_settings->database = $dbconf;
         }
 
         return $this->cached_settings;

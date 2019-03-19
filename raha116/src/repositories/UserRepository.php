@@ -29,7 +29,7 @@ class UserRepository
      */
     public function get_user(string $username)
     {
-        return $this->conn->query_single_row("select user_id, username, password from users where users.username = ?", User::class, "s", $username);
+        return $this->conn->query_single_row("select user_id, username, password from users where users.username = ?", User::class, $username);
     }
 
     /**
@@ -37,15 +37,15 @@ class UserRepository
      *
      * @param string $username
      * @param string $hash
-     * @return User|null
+     * @return User
      */
-    public function create_user(string $username, string $hash)
+    public function create_user(string $username, string $hash, string $firstname, string $lastname, string $city, string $zip, string $email, string $phone): User
     {
         if (!$this->conn->begin_transaction()) {
             throw new Exception("Failed to start transaction: " . $this->conn->get_last_error());
         }
 
-        $this->conn->execute_prepared_query("insert into users(username, password) values (?, ?);", "ss", $username, $hash);
+        $this->conn->execute_prepared_query("insert into users(username, password, firstname, lastname, city, zip, email, phone) values (?, ?, ?, ?, ?, ?, ?, ?);", $username, $hash, $firstname, $lastname, $city, $zip, $email, $phone);
 
         $user = $this->get_user($username);
 
@@ -62,6 +62,6 @@ class UserRepository
      */
     public function getUsers(): array
     {
-        return $this->conn->query_multiple_rows("select user_id, username, password from users", User::class, "");
+        return $this->conn->query_multiple_rows("select user_id, username, password from users", User::class);
     }
 }

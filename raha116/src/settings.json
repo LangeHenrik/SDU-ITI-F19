@@ -1,8 +1,0 @@
-{
-  "database": {
-    "username": "root",
-    "password": "pw",
-    "database": "project",
-    "server": "database"
-  }
-}

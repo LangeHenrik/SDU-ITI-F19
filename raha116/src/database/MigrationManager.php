@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS migrations(
         if ($result == false) {
             throw new Exception("Failed to create migration table: " . $this->connection->get_last_error());
         }
+
+        $result->fetchAll();
     }
 
     private function get_migration_files()
@@ -69,7 +71,7 @@ CREATE TABLE IF NOT EXISTS migrations(
         }
 
         // Check if we need to run the given migration
-        $migration = $this->connection->query_single_row("select name from migrations where name = ?", Migration::class, "s", $file);
+        $migration = $this->connection->query_single_row("select name from migrations where name = ?", Migration::class, $file);
 
         if ($migration != null) {
             error_log("Migration already run: $file");
@@ -91,8 +93,10 @@ CREATE TABLE IF NOT EXISTS migrations(
             error_log($message);
             throw new Exception($message);
         }
+        $result->fetchAll();
 
-        $this->connection->execute_prepared_query("insert into migrations(name) values(?)", "s", $file);
+        $result = $this->connection->execute_prepared_query("insert into migrations(name) values(?)", $file);
+        $result->fetchAll();
 
         // Commit the changes
         if (!$this->connection->commit_transaction()) {

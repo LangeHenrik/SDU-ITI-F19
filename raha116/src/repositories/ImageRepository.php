@@ -29,7 +29,7 @@ class ImageRepository
      */
     public function get_image(int $id)
     {
-        return $this->conn->query_single_row("select image_id, filehash, extension from images where image_id = ?", ImageDatabaseEntry::class, "i", $id);
+        return $this->conn->query_single_row("select image_id, filehash, extension from images where image_id = ?", ImageDatabaseEntry::class, $id);
     }
 
     public function add_image(string $filehash, string $extension): ImageDatabaseEntry
@@ -38,7 +38,7 @@ class ImageRepository
             throw new Exception("Failed to begin transaction: " . $this->conn->get_last_error());
         }
 
-        $this->conn->execute_prepared_query("insert into images(filehash, extension) values(?, ?)", "ss", $filehash, $extension);
+        $this->conn->execute_prepared_query("insert into images(filehash, extension) values(?, ?)", $filehash, $extension);
 
         $image = $this->get_image_from_filehash($filehash);
 
@@ -55,11 +55,11 @@ class ImageRepository
      */
     public function get_image_from_filehash(string $filehash)
     {
-        return $this->conn->query_single_row("select image_id, filehash, extension from images where filehash = ?", ImageDatabaseEntry::class, "s", $filehash);
+        return $this->conn->query_single_row("select image_id, filehash, extension from images where filehash = ?", ImageDatabaseEntry::class, $filehash);
     }
 
     public function delete_image(int $image_id)
     {
-        $this->conn->execute_prepared_query("delete from images where image_id = ?", "i", $image_id);
+        $this->conn->execute_prepared_query("delete from images where image_id = ?", $image_id);
     }
 }

@@ -26,4 +26,16 @@ class FeedDatabaseEntry
      * @var string
      */
     public $title;
+
+    /**
+     * FeedDatabaseEntry constructor.
+     */
+    public function __construct()
+    {
+        settype($this->entry_id, 'int');
+        settype($this->user_id, 'int');
+        settype($this->image_id, 'int');
+    }
+
+
 }

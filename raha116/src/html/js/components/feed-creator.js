@@ -100,18 +100,22 @@ export class FeedCreator extends BaseComponent {
             }
 
 
-            const entry = await FeedService.instance.addFeedEntry(image, title, description, ({total, loaded, percent}) => {
-                console.log({total, loaded, percent});
-            });
+            try {
+                const entry = await FeedService.instance.addFeedEntry(image, title, description, ({total, loaded, percent}) => {
+                    console.log({total, loaded, percent});
+                });
+                this.dispatchEvent(new CustomEvent(FeedCreator.FEED_ENTRY_CREATED_EVENT_NAME, {
+                    detail: {entry}
+                }));
 
-            this.dispatchEvent(new CustomEvent(FeedCreator.FEED_ENTRY_CREATED_EVENT_NAME, {
-                detail: {entry}
-            }));
+                this.formHandler.clear();
+                this.imagePreview.innerHTML = '';
+                this.imagePreview.classList.remove('has-image');
+                this.imagePreview.style.backgroundImage = '';
+            } catch (e) {
+                alert(e);
+            }
 
-            this.formHandler.clear();
-            this.imagePreview.innerHTML = '';
-            this.imagePreview.classList.remove('has-image');
-            this.imagePreview.style.backgroundImage = '';
         });
     }
 

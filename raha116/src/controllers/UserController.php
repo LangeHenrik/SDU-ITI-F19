@@ -47,7 +47,7 @@ class UserController extends ControllerBase
             return $this->BadRequest(new ValidationError($validation_result));
         }
 
-        $error = $this->service->create_user($body->username, $body->password);
+        $error = $this->service->create_user($body->username, $body->password, $body->firstname, $body->lastname, $body->city, $body->zip, $body->email, $body->phone);
 
         if ($error) {
             return $this->BadRequest(new ValidationError($error));

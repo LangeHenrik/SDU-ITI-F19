@@ -11,11 +11,11 @@ const template = `<style>
         flex-direction: column;
         padding: 1rem;
     }
-    
+
     #signup-button {
         flex-basis: 2rem;
     }
-    
+
 
 </style>
 
@@ -26,21 +26,62 @@ const template = `<style>
 
         <div class="input-wrapper">
             <label for="username-input">Username</label>
-            
-            <input class="input" name="username" id="username-input" autofocus required placeholder="Username" maxlength="20">
+
+            <input class="input" name="username" id="username-input" autofocus required placeholder="Username"
+                   maxlength="20">
         </div>
-        
+
+
         <div class="input-wrapper">
             <label for="password-input">Password</label>
-            <input class="input" name="password" id="password-input" type="password" required placeholder="Password" minlength="6">
+            <input class="input" name="password" id="password-input" type="password" required placeholder="Password"
+                   minlength="6">
         </div>
-        
+
         <div class="input-wrapper">
             <label for="repeat-password-input">Repeat password</label>
-            <input class="input" name="repeatPassword" id="repeat-password-input" type="password" required placeholder="Repeat Password">
+            <input class="input" name="repeatPassword" id="repeat-password-input" type="password" required
+                   placeholder="Repeat Password">
             <span class="error hidden" id="repeat-password-error">
                 Passwords do not match
             </span>
+        </div>
+
+
+        <div class="input-wrapper">
+            <label for="firstname-input">Firstname</label>
+            
+            <input class="input" name="firstname" id="firstname-input" required placeholder="Firstname" maxlength="20">
+        </div>
+        
+        <div class="input-wrapper">
+            <label for="lastname-input">Lastname</label>
+            
+            <input class="input" name="lastname" id="lastname-input" required placeholder="Lastname" maxlength="20">
+        </div>
+        
+        <div class="input-wrapper">
+            <label for="zip-input">Zip</label>
+            
+            <input class="input" name="zip" id="zip-input" required placeholder="Zip" maxlength="4" type="number">
+        </div>
+        
+        <div class="input-wrapper">
+            <label for="city-input">City</label>
+            
+            <input class="input" name="city" id="city-input" required placeholder="City" maxlength="20">
+        </div>
+        
+        <div class="input-wrapper">
+            <label for="email-input">Email</label>
+            
+            <input class="input" name="email" id="email-input" required placeholder="Email" maxlength="20" type="email">
+        </div>
+        
+        <div class="input-wrapper">
+            <label for="phone-input">Phone</label>
+            
+            <input class="input" name="phone" id="phone-input" required placeholder="Phone" maxlength="20" type="tel">
         </div>
         
         <div class="error hidden" id="general-error"></div>
@@ -84,9 +125,9 @@ export class SignupDialog extends BaseDialog {
     }
 
     async doSignup() {
-        const {username, password, repeatPassword} = this.formHandler.getValues();
+        const {username, password, repeatPassword, firstname, lastname, zip, city, phone, email} = this.formHandler.getValues();
 
-        if (!username.trim() || password.trim().length < 6 || !repeatPassword.trim() || username.trim().length > 20) {
+        if (!username.trim() || password.trim().length < 6 || !repeatPassword.trim() || username.trim().length > 20 || !firstname.trim() || !lastname.trim() || !zip.trim() || !city.trim() || !phone.trim() || !email.trim()) {
             return;
         }
 
@@ -96,7 +137,7 @@ export class SignupDialog extends BaseDialog {
             this.repeatPasswordError.classList.add('hidden');
         }
 
-        const message = await UserState.instance.signup(username, password);
+        const message = await UserState.instance.signup(username, password, firstname, lastname, zip, city, phone, email);
 
         if (message) {
             this.generalError.classList.remove('hidden');

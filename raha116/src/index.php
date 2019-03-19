@@ -1,5 +1,7 @@
 <?php
 
+require 'db_config.php';
+
 use framework\Framework;
 
 // Setup a very simple auto loading, so we can use classes without having to

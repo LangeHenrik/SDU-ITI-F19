@@ -98,7 +98,7 @@ class ImageService
 
         $image_path = IO::join_paths($this->STORAGE_PATH, $entry->get_filename());
 
-        $image_info = getimagesize($image_path);
+        $image_info = @getimagesize($image_path);
 
         header("Content-Type: " . $image_info["mine"]);
         header("Content-Length: " . filesize($image_path));

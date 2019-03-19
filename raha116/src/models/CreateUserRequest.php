@@ -15,6 +15,20 @@ class CreateUserRequest
 
     public $password = "";
 
+    public $firstname = '';
+
+    public $lastname = '';
+
+    public $email = '';
+
+    public $zip = '';
+
+    public $phone = '';
+
+    public $city = '';
+
+
+
     public function __toString()
     {
         return "CreateUserRequest($this->username, $this->password)";
@@ -44,6 +58,30 @@ class CreateUserRequest
 
         if (strlen($this->username) > 20) {
             return "Username cannot be more than 20 characters";
+        }
+
+        if (empty($this->firstname)) {
+            return "Firstname was empty";
+        }
+
+        if (empty($this->lastname)) {
+            return "Lastname was empty";
+        }
+
+        if (empty($this->email)) {
+            return "Email was empty";
+        }
+
+        if (empty($this->zip)) {
+            return "Zip was empty";
+        }
+
+        if (empty($this->phone)) {
+            return "Phone was empty";
+        }
+
+        if (empty($this->city)) {
+            return "City was empty";
         }
 
         return null;

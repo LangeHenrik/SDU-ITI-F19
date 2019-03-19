@@ -43,7 +43,16 @@ class CreateFeedEntryRequest
             return "Missing image file";
         }
 
-        if (!getimagesize($this->image['tmp_name'])) {
+        if ($error = $this->image['error']) {
+            switch ($error) {
+                case '1':
+                    return "Image is too large";
+                default:
+                    return "Unknown upload error: " . $error;
+            }
+        }
+
+        if (!@getimagesize($this->image['tmp_name'])) {
             return "Image was not an image";
         }
 

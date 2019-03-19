@@ -31,7 +31,7 @@ class UserService
      * @return null|string null if everything went okay, and error in a string otherwise
      * @throws \Exception
      */
-    public function create_user(string $username, string $password)
+    public function create_user(string $username, string $password, string $firstname, string $lastname, string $city, string $zip, string $email, string $phone)
     {
         // Check if the user already exists
         $user = $this->userRepository->get_user($username);
@@ -42,7 +42,8 @@ class UserService
 
         $hash = password_hash($password, PASSWORD_BCRYPT);
 
-        $user = $this->userRepository->create_user($username, $hash);
+        $user = $this->userRepository->create_user($username, $hash, $firstname, $lastname, $city, $zip, $email, $phone);
+
 
         if ($user) {
             $this->sessionService->set_active_user_id($user->user_id);

@@ -41,10 +41,16 @@ export class UserState extends EventTarget {
      * Creates a new user with the given username and password
      * @param {string} username
      * @param {string} password
+     * @param {string} firstname
+     * @param {string} lastname
+     * @param {string} zip
+     * @param {string} city
+     * @param {string} phone
+     * @param {string} email
      * @return {Promise<string>}
      */
-    async signup(username, password) {
-        const res = await post('/api/user/', {username, password});
+    async signup(username, password, firstname, lastname, zip, city, phone, email) {
+        const res = await post('/api/user/', {username, password, firstname, lastname, zip, city, phone, email});
 
         if (isSuccess(res)) {
             this.isLoggedIn = true;

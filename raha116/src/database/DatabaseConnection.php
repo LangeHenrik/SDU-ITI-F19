@@ -4,8 +4,9 @@ declare (strict_types=1);
 namespace database;
 
 use Exception;
-use mysqli;
-use mysqli_result;
+use PDO;
+use PDOException;
+use PDOStatement;
 
 /**
  * Manages all connections to the database
@@ -14,32 +15,34 @@ use mysqli_result;
 class DatabaseConnection
 {
 
+    /**
+     * @var PDO $conn
+     */
     private $conn;
 
     function __construct(string $servername, string $username, string $password, string $database)
     {
-        $this->conn = new mysqli($servername, $username, $password, $database);
-
-        // Check connection
-        if ($this->conn->connect_error) {
-            die("Connection failed: " . $this->conn->connect_error);
+        try {
+            $this->conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password, array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
+        } catch (PDOException $e) {
+            die("Database connection failed: " . $e->getMessage());
         }
     }
 
     /**
      * Prepares a statement for execution
      * @param string $sql
-     * @return \mysqli_stmt
+     * @return PDOStatement
      */
     public function prepare(string $sql)
     {
-        return $this->conn->prepare($sql);
+        return $this->conn->prepare($sql, array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
     }
 
     /**
      * Executes the given query
      * @param string $query
-     * @return bool|\mysqli_result
+     * @return false|PDOStatement
      */
     public function run_query(string $query)
     {
@@ -48,36 +51,33 @@ class DatabaseConnection
 
     public function run_multi_query(string $query)
     {
-        $result = $this->conn->multi_query($query);
+        $result = $this->conn->query($query);
         if ($result) {
             // multi_query does buffering, so we have to clear the buffer
-            while ($this->conn->next_result()) ;
+            while ($result->fetchAll()) ;
         }
+        $result->closeCursor();
+
         return $result;
     }
 
     /**
      * @param string $query
-     * @param string $param_types
      * @param mixed ...$params
-     * @return bool|mysqli_result
+     * @return bool|PDOStatement
      */
-    public function execute_prepared_query(string $query, string $param_types, ...$params)
+    public function execute_prepared_query(string $query, ...$params)
     {
         $stmt = $this->prepare($query);
         if ($stmt === false) {
             throw new Exception("Failed to prepare query: " . $this->get_last_error());
         }
 
-        if ($param_types) {
-            $stmt->bind_param($param_types, ...$params);
+        if (!$stmt->execute($params)) {
+            throw new Exception("Failed to execute query: " . json_encode($stmt->errorInfo()));
         }
 
-        if (!$stmt->execute()) {
-            throw new Exception("Failed to execute query: " . $stmt->error);
-        }
-
-        return $stmt->get_result();
+        return $stmt;
     }
 
     /**
@@ -85,22 +85,21 @@ class DatabaseConnection
      *
      * @param string $query
      * @param string $class The class to convert the result into
-     * @param string $param_types
      * @param string[] $params
      * @return mixed
      */
-    public function query_single_row(string $query, string $class, string $param_types, ...$params)
+    public function query_single_row(string $query, string $class, ...$params)
     {
         if (!$params) {
             $params = array();
         }
-        $result = $this->execute_prepared_query($query, $param_types, ...$params);
+        $result = $this->execute_prepared_query($query, ...$params);
 
         if ($result == null) {
             return null;
         }
 
-        return $result->fetch_object($class);
+        return $result->fetchObject($class);
     }
 
     /**
@@ -110,7 +109,11 @@ class DatabaseConnection
      */
     public function get_last_inserted_id(): int
     {
-        return $this->query_single_row("select LAST_INSERT_ID() as id", EntryId::class, "")->id;
+        $id = $this->query_single_row("select LAST_INSERT_ID() as id", EntryId::class)->id;
+
+        settype($id, 'int');
+
+        return $id;
     }
 
     /**
@@ -118,13 +121,12 @@ class DatabaseConnection
      *
      * @param string $query
      * @param string $class
-     * @param string $param_types
      * @param string[] $params
      * @return array of whatever class was passed
      */
-    public function query_multiple_rows(string $query, string $class, string $param_types, string ...$params)
+    public function query_multiple_rows(string $query, string $class, string ...$params)
     {
-        $result = $this->execute_prepared_query($query, $param_types, ...$params);
+        $result = $this->execute_prepared_query($query, ...$params);
 
         if ($result == null) {
             return array();
@@ -132,7 +134,7 @@ class DatabaseConnection
 
         $results = array();
 
-        while ($row = $result->fetch_object($class)) {
+        while ($row = $result->fetchObject($class)) {
             $results[] = $row;
         }
 
@@ -161,7 +163,7 @@ class DatabaseConnection
 
         $this->running_transaction = true;
 
-        return $this->conn->begin_transaction();
+        return $this->conn->beginTransaction();
     }
 
     /**
@@ -201,6 +203,6 @@ class DatabaseConnection
      */
     public function get_last_error(): string
     {
-        return $this->conn->error;
+        return json_encode($this->conn->errorInfo());
     }
 }

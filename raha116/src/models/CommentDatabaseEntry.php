@@ -30,4 +30,13 @@ class CommentDatabaseEntry
      * @var int
      */
     public $feed_entry_id;
+
+    public function __construct()
+    {
+        settype($this->user_id, 'int');
+        settype($this->comment_id, 'int');
+        settype($this->feed_entry_id, 'int');
+    }
+
+
 }
