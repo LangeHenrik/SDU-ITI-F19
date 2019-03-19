@@ -31,7 +31,7 @@ function validatePassword(id) {
     let element = document.getElementById(id);
 
     let valid = regex.test(element.value);
-    toggleTitle(valid, element, 'Atleast one Capital letter, one numbers and 2-64 characters.');
+    toggleTitle(valid, element, 'Atleast one Capital letter, one number and 2-64 characters.');
 
     return toggleValidation(regex.test(element.value), element);
 }

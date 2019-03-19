@@ -49,8 +49,20 @@
 
                     foreach ($result as $row) {
                         $path = $target_dir . $row['filename'];
-                        echo "<div><p>Created by: {$row['username']}</p><h2>{$row['header']}</h2><span>{$row['content']}</span><br><img src=\"{$path}\" alt=\"Error..\" ></div>";
-                        echo '<hr>';
+                        echo <<<EOL
+                            <div>
+                                <p><p>Created by: {$row['username']}</p>
+                                <h2>{$row['header']}</h2>
+                                <span>{$row['content']}</span>
+                                <br>
+                                <img src="{$path}" alt="Error.." >
+                                <div>
+                                    <i class="fas fa-heart"></i><p id="likes"></p><i class="fas fa-heart-broken"></i><p id="dislikes"></p>
+                                </div>
+                            </div>
+                            <hr>
+                        EOL;
+                    
                     }
                 } catch (PDOException $e) {
                     $_SESSION['MESSAGE'] = "ERROR: " . $e -> getMessage();

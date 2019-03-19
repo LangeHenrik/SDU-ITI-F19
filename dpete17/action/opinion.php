@@ -5,7 +5,7 @@
         header('Location: /index.php');
     }
 
-    $iid = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+    $iid = filter_input(INPUT_POST, 'iid', FILTER_SANITIZE_NUMBER_INT);
     $opinion = $_POST['opinion'];
 
     $opinions = array('LIKES', 'DISLIKES');
@@ -27,22 +27,25 @@
             
             if(count($result) > 0) {
                 if($result[0]['opinion'] == $opinion) {
+                    $sql = 'DELETE FROM opinion WHERE account_id = :aid AND image_id = :iid;';
+                    $stmt = $conn -> prepare($sql);
+
+                    $stmt -> execute();
+                } else {
                     $sql = 'UPDATE opinion SET opinion = :opinion WHERE account_id = :aid AND image_id = :iid;';
                     $stmt = $conn -> prepare($sql);
                     $stmt -> bindParam(':opinion', $opinion);
-                    $stmt -> bindParam(':id', $_SESSION['ID']);
-                    $stmt -> bindParam(':id', $iid);
                 }
+
+                $stmt -> bindParam(':aid', $_SESSION['ID']);
+                $stmt -> bindParam(':iid', $iid);
+            
+                $stmt -> execute();
             } else {
                 $sql = 'INSERT INTO opinion(account_id, image_id, opinion) VALUES';
-            }
-
-            if(count($result) > 0 && $result[0]['opinion'] == $opinion) {
-                $sql = 'DELETE FROM opinion WHERE image_id = :id;';
                 $stmt = $conn -> prepare($sql);
-                $stmt -> bindParam(':id', $iid);
-            } else {
-                
+
+                $stmt -> execute();
             }
         } catch (PDOException $e) {
             $_SESSION['MESSAGE'] = 'ERROR: ' . $e -> getMessage();

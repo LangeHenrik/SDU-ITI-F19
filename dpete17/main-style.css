@@ -97,7 +97,20 @@ html,body {
 }
 
 input {
-    padding: 4px 0;
+    padding: 5px 5px;
+}
+
+.sign-content input {
+    padding: 5px 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+
+.sign-content input:focus {
+    outline-color: transparent;
+    box-shadow: 0 0 3px darkgray;
+    outline-color: transparent;
 }
 
 .hidden {
@@ -105,9 +118,13 @@ input {
 }
 
 .valid {
-    outline-color: darkgreen;
+    outline-color: transparent;
+    box-shadow: 0 0 3px green;
+    background-color: rgba(30, 220, 30, 0.75);
 }
 
 .invalid {
-    outline-color: darkred;
+    outline-color: transparent;
+    box-shadow: 0 0 3px red;
+    background-color: rgba(220, 30, 30, 0.75);
 }
