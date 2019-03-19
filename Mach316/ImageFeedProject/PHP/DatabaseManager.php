@@ -137,3 +137,48 @@ function getAllUsers() {
     return $users;
 
 }
+
+function searchUsers($nameSearch) {
+    
+    //Does not return the right result!
+    //Figure out how to bind wildcard parameter
+    $nameSearch = "%$nameSearch%";
+
+    $conn = getConnection();
+    $DBQuery = "select * from users where username LIKE :nameSearch;";
+    $statement = $conn->prepare($DBQuery);
+    $statement->bindParam(':nameSearch', $nameSearch);
+    $statement->execute();
+    $users = $statement->fetchAll();
+    return $users;
+}
+
+function registerUser($POST) {
+    $firstname = htmlentities($POST["firstname"]);
+    $lastname = htmlentities( $POST["lastname"]);
+    $password = htmlentities($POST["password"]);
+    $username =  htmlentities($POST["username"]);
+    $zipcode = htmlentities($POST["zip"]);
+    $city = htmlentities($POST["city"]);
+    $email = htmlentities($POST["email"]);
+    $phonenumber = htmlentities($POST["phonenumber"]);
+    $firstlogin = 0;
+
+    $conn = getConnection();
+    $query = 'INSERT INTO 
+                  users(firstname, lastname, username, password, zip, city, email, phonenumber, first_login) 
+                  VALUES(:firstname,:lastname,:username,:password,:zip,:city,:email,:phonenumber, :firstlogin)';
+    $statement = $conn->prepare($query);
+    $statement->bindParam(':firstname', $firstname);
+    $statement->bindParam(':lastname', $lastname);
+    $statement->bindParam(':username', $username);
+    $statement->bindParam(':password', $password);
+    $statement->bindParam(':zip', $zipcode);
+    $statement->bindParam(':city', $city);
+    $statement->bindParam(':email', $email);
+    $statement->bindParam(':phonenumber', $phonenumber);
+    $statement->bindParam('firstlogin', $firstlogin);
+    $success = $statement->execute();
+    return $success;
+
+}

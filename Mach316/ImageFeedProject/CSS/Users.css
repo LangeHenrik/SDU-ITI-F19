@@ -1,6 +1,6 @@
 .users-header {
     margin-top: 5%;
-    margin-left: 1%;
+    margin-left: 2%;
 }
 
 .user-image {
@@ -28,5 +28,20 @@
 
 body {
     margin: 0px;
+}
+
+#inputSearchUsers {
+    margin-left: 2%;
+}
+
+
+.user-search-result-even {
+    padding-left: 2%;
+    background-color: rgba(0, 200,0,0.2);
+
+}
+.user-search-result-odd {
+    padding-left: 2%;
+    background-color: rgba(0,0,200, 0.1);
 }
 

@@ -60,7 +60,6 @@ function buildComments($comments)
         $authorName = getUserName($comment['user_id']);
         $comment = $comment['comment'];
 
-        $classname = '';
 
         if($count%2 == 0 || $count == 0) {
             $classname = 'comment-container even';

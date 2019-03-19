@@ -11,7 +11,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Coiny|Indie+Flower" rel="stylesheet">
 
-    <script src="../JS/Feed.js"></script>
+    <script src="../JS/Users.js"></script>
     <script src="../JS/navbar.js"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/Users.css">
     <link rel="stylesheet" type="text/css" href="../CSS/Navbar.css">
@@ -42,9 +42,12 @@ if(isset($_SESSION['username'])) {
     echo "
 
 <div class=\"page-container\">
+    
     <div class=\"main-content\" id=\"main-content-users\">
         <h1 class='users-header'>Users</h1>
-        <div class='users-container'>{$userElements}</div>
+            <input  id='inputSearchUsers'  type='text' placeholder='Search for users...' name='searchParam'>
+            <input type='submit' value='Search' id='btnSearchUsers'>
+        <div class='users-container' id='users-container'></div>
        </div>
 </div>
 ";
