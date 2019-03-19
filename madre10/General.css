@@ -91,6 +91,7 @@ h1 {
 .feed__caption {
     margin-left: 15px;
     font-size: 20px;
+    text-align: center;
 }
 
 .feed__comment {
@@ -154,5 +155,19 @@ feed__comment_input_textarea {
 
 .ajax_button:hover {
     transform: scale(1.5);
+}
+
+.user {
+    display: flex;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.user__username{
+    width: 200px;
+}
+
+.user__password{
+
 }
 

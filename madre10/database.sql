@@ -40,7 +40,8 @@ CREATE TABLE comments (
 
 
 INSERT INTO users(username, password, firstname, lastname, zip, city, email, phone) VALUES
-('phoellen','password', 'Martin', 'Dreymann', '5000', 'Odense', 'madre10@student.sdu.dk', '60641990');
+('phoellen','password', 'Martin', 'Dreymann', '5000', 'Odense', 'madre10@student.sdu.dk', '60641990'),
+('trump','nukes', 'Donald', 'J. Trump', 'no idea', 'Washington', 'dtj@fakenews.com', '13371337');
 
 INSERT INTO images (id, owner, file_name, uploaded_on, title, description) VALUES
 (1, 1, 'php1.jpg', NOW(), 'Guide lines', 'This is an example description'),

@@ -42,3 +42,10 @@ function addComment($conn, $userId, $image_id, $comment){
     $statement->bindParam(':content', $comment);
     $statement->execute();
 }
+
+function getAllUsers($conn){
+    $records = $conn->prepare('SELECT * FROM users');
+    $records->execute();
+    $results = $records->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
