@@ -29,7 +29,7 @@
 		$stmtGetUsers->execute();
 		$stmtGetUsers->setFetchMode(PDO::FETCH_ASSOC);
 		$resultGetUsers = $stmtGetUsers->fetchAll();
-		#print_r($resultGetUsers);
+		// print_r($resultGetUsers);
 
 	} catch (PDOexception $e) {
 		echo "Error: " . $e->getMessage();
@@ -128,7 +128,7 @@
 			?>
             <form class="form-login" method="post">
                 <fieldset>
-                    <legend>Login:</legend>
+                    <legend>Login</legend>
                     <input type="text" name="login-username" id="login-username" placeholder="Username"><br><br>
                     <input type="password" name="login-password" id="login-password" placeholder="Password"><br><br>
 					<button name="btn-login">Login</button>
@@ -144,7 +144,7 @@
 			<p style="display: none" class="error-response" id="js-response" style="color: #F00">test</p>
             <form class="form-register" method="post" onsubmit="return checkRegisterFields()" action="index.php">
                 <fieldset>
-                    <legend>Register:</legend>
+                    <legend>Register</legend>
                     <p>Username</p>
                     <input type="text" name="register-username" id="register-username" required><br><br>
                     <p>Password</p>
