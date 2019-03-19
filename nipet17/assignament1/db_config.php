@@ -9,7 +9,7 @@ class db_config_class {
   public function connect() {
     $this->servername = "localhost";
     $this->username = "root";
-    $this->password = "mitkode";
+    $this->password = "password";
     $this->dbname = "nipet17";
 
     try {
@@ -18,14 +18,11 @@ class db_config_class {
 
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      return $PDO;
+      return $pdo;
 
     } catch (PDOException $e) {
       echo "Connection failed: ".$e->getMessage();
     }
   }
-
-
 }
-
 ?>

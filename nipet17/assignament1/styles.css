@@ -125,15 +125,41 @@ form div{
   margin-top: 5px;
 }
 
-#img div{
+#img_div{
   width: 80%;
   padding: 5px;
   margin: 15px auto;
   border: 1px solid #cbcbcb;
 }
 
-#img div:after{
+#img_div:after{
   content: "";
   display: block;
   clear: both;
+}
+
+#header label {
+  padding-left:50mm;
+
+}
+/*----------Users---------- */
+#users {
+  width: 80%;
+  padding: 5px;
+  margin: 15px auto;
+  border: 1px solid #cbcbcb;
+  padding: 20px 50px;
+}
+
+#users h3{
+    color: #363435;
+    text-align: left;
+    margin: auto;
+    padding: 5px 50px
+}
+
+#users p{
+    text-align: left;
+    margin: auto;
+    padding: 5px 20px
 }

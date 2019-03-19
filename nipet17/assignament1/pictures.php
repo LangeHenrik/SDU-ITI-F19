@@ -3,6 +3,11 @@
 <!-- ____________________________________PHP____________________________________-->
 <?php
 
+  session_start();
+  if (!isset($_SESSION["username"])) {
+    header("location:login.php");
+  }
+
   global $pdo;
 
   $msg = "";
@@ -19,12 +24,14 @@
     // Get all the sumbmitted data from the form
     $image = $_FILES['image']['name'];
     $text = $_POST['text'];
+    $header = $_POST['header'];
 
-    $sql = $db->prepare("INSERT INTO photo (photo_image, photo_text) VALUES ('$image', '$text')");
+    // prepare
+    $sql = $db->prepare("INSERT INTO photo (photo_image, photo_text, photo_header) VALUES ('$image', '$text', '$header')");
     $sql->execute(); // Stores the submitted data into the database table: photo
 
     // Move the uploaded image into the folder: images
-    if (move_uploaded_files($_FILES['image']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
       $msg = "Image uploaded succesfully";
     } else {
       $msg = "There was a problem uploading image";
@@ -50,17 +57,32 @@
 
         <nav>
           <li><a href="pictures.php">Pictures</a></li>
-          <li><a href="about.php">About</a></li>
+          <li><a href="users.php">Users</a></li>
+          <?php
+            if (isset($_SESSION["username"])) {
+              echo '<li><a href="logout.php">Logout</a>';
+            }
+          ?>
         </nav>
         </div>
       </div>
     </header>
 
     <div class="content" id="content">
+      <?php
+        echo '<h1>You are now logged in '.trim($_SESSION["name"]).'. Good for you!</h1><br>';
+      ?>
+
       <form class="upload" action="pictures.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="size" value="1000000">
         <div>
           <input type="file" name="image">
+          <br><br>
+        </div>
+        <div>
+          <label class="header" for="header">Header &nbsp; </label>
+          <input type="text" size="40" name="header" placeholder="Header here..">
+          <br><br>
         </div>
         <div>
           <textarea name="text" rows="4" cols="40" placeholder="Say something about this image..."></textarea>
@@ -77,17 +99,45 @@
           $object = new db_config_class;
           $db = $object->connect();
 
-          $sql = $db->prepare("SELECT * FROM photo");
-          $sql->execute();
 
-          $result = $sql->fetchAll();
+          $stmt = $db->prepare("SELECT * FROM photo;");
+          //$stmt->bindParam(":id", $id);
+          $stmt->execute();
 
-          while ($row = $result) {
+          $count = $stmt->rowCount();
+          if ($count >= 20) {
+            for ($i=0; $i < 20; $i++) {
+              $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+              echo "<div id='img_div'>";
+                echo "<h3>".$row['photo_header']."</h3>";
+                echo "<img src='images/".$row['photo_image']."'>";
+                echo "<p>".$row['photo_text']."</p>";
+              echo "</div>";
+
+              //echo "<";
+            }
+          } else {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<div id='img_div'>";
+                  echo "<h3>".$row['photo_header']."</h3>";
+                  echo "<img src='images/".$row['photo_image']."'>";
+                  echo "<p>".$row['photo_text']."</p>";
+                echo "</div>";
+
+                //echo "<";
+              }
+          }
+
+
+        /*  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo "<div id='img_div'>";
               echo "<img src='images/".$row['photo_image']."'>";
-              echo "<p>".$row['text']."</p>";
+              echo "<p>".$row['photo_text']."</p>";
             echo "</div>";
-          }
+
+            echo "<";
+          }*/
         ?>
 <!-- ____________________________________PHP____________________________________-->
     </div>
