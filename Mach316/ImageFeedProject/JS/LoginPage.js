@@ -1,25 +1,14 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    function enableLoginOverlay() {
-        document.getElementById("background-overlay").style.display = "block";
-    }
 
-
-
-    function addAlreadyMemberBtnEventListener() {
-        let  submitBtn= document.getElementById("btnAlreadyMember")
-        submitBtn.addEventListener('click', enableLoginOverlay, false)
-    }
-
-    addAlreadyMemberBtnEventListener();
 
 
 
 
     //From stackoverflow: https://stackoverflow.com/questions/469357/html-text-input-allow-only-numeric-input
     function setInputFilter(textbox, inputFilter) {
-        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-            textbox.addEventListener(event, function() {
+        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+            textbox.addEventListener(event, function () {
                 if (inputFilter(this.value)) {
                     this.oldValue = this.value;
                     this.oldSelectionStart = this.selectionStart;
@@ -36,20 +25,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
     function setInputFilters() {
         elements = getInputElements();
 
-        for(element of elements) {
-            setInputFilter(element, function(value) {
+        for (element of elements) {
+            setInputFilter(element, function (value) {
                 return /^\d*\.?\d*$/.test(value);
             });
         }
     }
 
     function getInputElements() {
-        inputElementIds = ["phone-input-box", "zip-input-box"];
+        inputElementIds = ["phone-input-box", "zip-input-box", "update-user-zip", "update-user-phonenumber"];
         inputElements = [];
-        for(id of inputElementIds) {
+        for (id of inputElementIds) {
+            console.log(id)
             element = document.getElementById(id);
 
-            inputElements.push(element)
+            if (element != null) {
+                inputElements.push(element)
+            }
         }
 
         console.log(inputElements)
@@ -57,9 +49,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
 
-
     setInputFilters();
-
-
 
 })

@@ -117,6 +117,17 @@ function getUserName($id)
     return $username;
 }
 
+function getCurrentUser() {
+    $conn = getConnection();
+    $userId = $_SESSION['id'];
+    $query = 'SELECT * FROM users where id =:id';
+    $statement = $conn->prepare($query);
+    $statement->bindParam(':id', $userId);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result;
+}
+
 function getAllUsers() {
     $conn = getConnection();
     $query = "Select * from users";

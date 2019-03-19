@@ -18,19 +18,18 @@ if ($dbConnection->connect_error) {
     die("Database connection failed: " . $dbConnection->connect_error);
 }
 
-$firstname = $_POST["firstname"];
+
+
+$firstname = $_POST["user"];
 $lastname =  $_POST["lastname"];
 $password = $_POST["password"];
 $username =  $_POST["username"];
-$zipcode = $_POST["zip"];
+$zipcode = (int)$_POST["zip"];
 $city = $_POST["city"];
 $email = $_POST["email"];
 $phonenumber = $_POST["phonenumber"];
 
 $phonenumber = preg_replace("/[^0-9]/", "", $phonenumber );
-
-
-$zipcode = (int)$zipcode;
 
 
 $statement = $dbConnection->prepare("INSERT INTO users(firstname, lastname, username, password, zip, city, email, phonenumber) VALUES(?,?,?,?,?,?,?,?)");
@@ -39,7 +38,7 @@ $statement->bind_param('ssssisss', $firstname, $lastname, $username, $password, 
 $success = $statement->execute();
 
 if($success) {
-    header('Location: http://localhost:8000/PHP/PictureManagement.php?');
+    header('Location: http://localhost:8000/PHP/PictureManagement.php');
 } else {
     echo "Something went wrong..";
 }

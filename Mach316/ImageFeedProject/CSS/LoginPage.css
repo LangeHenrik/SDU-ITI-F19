@@ -11,6 +11,13 @@
     width: 100%;
 }
 
+.update-user-block > label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    margin-right: 1%;
+}​
+
 .profile-header {
     font-size: 100px;
     color: white;
@@ -22,7 +29,13 @@
             1px 1px 0 #000;
 }
 
+ #registerform{
+     text-align: center;
+     width: 100%;
+ }
+
 #registerform > input {
+    width: 100%;
     padding: 0.5%;
     font-size: 20px;
 }
