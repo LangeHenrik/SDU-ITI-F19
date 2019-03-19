@@ -45,11 +45,11 @@ INSERT INTO users(username, password, firstname, lastname, zip, city, email, pho
 
 INSERT INTO images (id, owner, file_name, uploaded_on, title, description) VALUES
 (1, 1, 'php1.jpg', NOW(), 'Guide lines', 'This is an example description'),
-(2, 1, 'php2.jpg', NOW(), 'Headache', 'This is an example description'),
-(3, 1, 'php3.jpg', NOW(), 'Think of the future!', 'This is an example description');
+(2, 1, 'php2.jpg', NOW()+1, 'Headache', 'This is an example description'),
+(3, 1, 'php3.jpg', NOW()+2, 'Think of the future!', 'This is an example description');
 
 
 INSERT INTO comments(id, user_id, image_id, content, created_on) VALUES
 (1,1,1,'First test comment from user 1', NOW()),
-(2,1,1,'Second test comment from user 1', NOW());
+(2,1,1,'Second test comment from user 1', NOW()+1);
 
