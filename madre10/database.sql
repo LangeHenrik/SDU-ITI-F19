@@ -40,10 +40,13 @@ CREATE TABLE comments (
 
 
 INSERT INTO users(username, password, firstname, lastname, zip, city, email, phone) VALUES
-('phoellen','password', 'Martin', 'Dreymann', '5000', 'Odense', 'phoellen@gmail.com', '60641990');
+('phoellen','password', 'Martin', 'Dreymann', '5000', 'Odense', 'madre10@student.sdu.dk', '60641990');
 
 INSERT INTO images (id, owner, file_name, uploaded_on, title, description) VALUES
-(1, 1, 'example.jpg', NOW(), 'Example', 'This is an example description');
+(1, 1, 'php1.jpg', NOW(), 'Guide lines', 'This is an example description'),
+(2, 1, 'php2.jpg', NOW(), 'Headache', 'This is an example description'),
+(3, 1, 'php3.jpg', NOW(), 'Think of the future!', 'This is an example description');
+
 
 INSERT INTO comments(id, user_id, image_id, content, created_on) VALUES
 (1,1,1,'First test comment from user 1', NOW()),

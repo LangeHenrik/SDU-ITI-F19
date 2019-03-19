@@ -139,3 +139,20 @@ feed__comment_input_textarea {
     text-align: center;
 }
 
+.ajax_button {
+    width: 250px;
+    height: 70px;
+    background-color: #ed2d2d;
+    margin: 25px auto;
+    padding: 10px 0 0 5px;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 25px;
+    text-align: center;
+    display: flex;
+}
+
+.ajax_button:hover {
+    transform: scale(1.5);
+}
+

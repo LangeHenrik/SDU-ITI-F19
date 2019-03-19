@@ -1,6 +1,7 @@
 Run PHP server:
 1. Command prompt "cmd"
 2. Navigate to C:\Users\phoel\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\madre10
+                C:\Users\phoel\Documents\GitHub\SDU-ITI-F19\madre10 (Home)
 3. php -S localhost:8080
 
 
