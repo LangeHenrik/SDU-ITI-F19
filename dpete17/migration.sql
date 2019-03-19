@@ -21,7 +21,14 @@ CREATE TABLE image (
     filename VARCHAR(100) UNIQUE NOT NULL,
     header VARCHAR(100) NOT NULL,
     content TEXT NOT NULL,
-    uploaded_at TIMESTAMP NOT NULL
+    uploaded_at TIMESTAMP NOT NULL DEFAULT now()
+);
+
+CREATE TABLE opinion (
+    account_id BIGINT UNSIGNED,
+    image_id BIGINT UNSIGNED,
+    opinion ENUM('LIKES', 'DISLIKES'),
+    PRIMARY KEY (account_id, image_id)
 );
 
 CREATE TABLE uploads (
