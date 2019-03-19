@@ -6,14 +6,13 @@
    <h1>signup</h1>
    <?php
    if (isset($_GET['error'])) {
-     if ($_GET['error'] =="emptyfields") {
-       echo '<p>fields cannot be empty </p>';
-     }
-   }
-   elseif (isset($_GET['signup'])) {
+       if ($_GET['error'] =="emptyfields") {
+           echo '<p>fields cannot be empty </p>';
+       }
+   } elseif (isset($_GET['signup'])) {
        if ($_GET['signup']== 'success') {
-     echo '<p>signup successful!!</p>';
-   }
+           echo '<p>signup successful!!</p>';
+       }
    }
     ?>
 <body>
@@ -78,7 +77,7 @@
      if (!regUN.test(username)) {
        alert("only numbers are allowed");
      }}
-  
+
 
    </script>
   </body>

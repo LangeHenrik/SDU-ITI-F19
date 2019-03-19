@@ -53,7 +53,7 @@
    }
    else {
      echo '<p class="login-status">You are corrently not logged in and can there for not se any files</p>';
-     header('Location: login.php');
+     
    }
     ?>
 
