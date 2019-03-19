@@ -33,7 +33,7 @@ endif;
 <div id="navbar"></div>
 
 <?php if(!empty($message)): ?>
-    <p><?= $message ?></p>
+    <div class="alert_message"><?= $message ?></div>
 <?php endif; ?>
 
 
