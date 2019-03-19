@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS internet_technology;
-USE internet_technology;
+CREATE DATABASE IF NOT EXISTS madre10_iti;
+USE madre10_iti;
 
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS images;

@@ -2,7 +2,7 @@
 $server = 'localhost';
 $username = 'root';
 $password = 'root';
-$dsn =  'mysql:dbname=internet_technology;host=localhost;port=3306;charset=utf8';
+$dsn =  'mysql:dbname=madre10_iti;host=localhost;port=3306;charset=utf8';
 $image_folder= "images/";
 try{
     $conn = new PDO($dsn, $username, $password);
