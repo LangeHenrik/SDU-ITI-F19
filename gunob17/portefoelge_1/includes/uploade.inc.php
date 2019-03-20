@@ -47,3 +47,4 @@ if (isset($_POST['uploade_submit'])) {
         //echo "unable to uploade file of this type";
     }
 }
+exit();

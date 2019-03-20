@@ -49,13 +49,13 @@
      }}
      function tjekfname(){
        let username = document.getElementById('firstname').value;
-       let regUN = /^[a-zA-Z]*$/gm;
+       let regUN = /^[a-zA-ZÆØÅæøå]*$/gm;
      if (!regUN.test(username)) {
        alert("only letters are allowed");
      }}
      function tjeklname(){
        let username = document.getElementById('lastname').value;
-       let regUN = /^[a-zA-Z]*$/gm;
+       let regUN = /^[a-zA-ZÆØÅæøå]*$/gm;
      if (!regUN.test(username)) {
        alert("only letters are allowed");
      }}

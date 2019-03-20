@@ -1,8 +1,13 @@
 <?php
 if (isset($_POST['comment_submit'])) {
+    if (empty($_POST['comment'])) {
+      header('Location: ../picture_site.php?path='.$_GET['name'].'&error=comment_cannot_be_empty');
+      exit();
+    }
     session_start();
     include 'dbh.php';
     $comm = $_POST['comment'];
+
     $comment = htmlspecialchars($comm, ENT_QUOTES) ;
     $stmt = $conn->prepare("INSERT INTO comments(idus, picid, username, usercomment)
 VALUES (:iduser, :picid, :username, :usercomment)");
@@ -23,3 +28,4 @@ VALUES (:iduser, :picid, :username, :usercomment)");
     header('Location: ../picture_site.php?path='.$_GET['name'].'&addcomment=success');
     exit();
 }
+exit();

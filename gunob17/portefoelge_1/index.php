@@ -1,6 +1,6 @@
 <?php
   require "header.php";
-  include "includes/dbh.php";
+
  ?>
 
  <main>
@@ -21,7 +21,7 @@
            xmlhttp.send();
            xmlhttp.onreadystatechange = function() {
              if (this.readyState === 4 && this.status === 200) {
-               display.innerHTML = this.responseText;
+               display.innerHTML=this.responseText ;
              } else {
                display.innerHTML = "Loading...";
              };
@@ -31,6 +31,7 @@
    </script>
    <?php
    if (isset($_SESSION['userid'])) {
+     include "includes/dbh.php";
      echo '<div id="ajax" class="">';
 
 
@@ -50,10 +51,12 @@
 
 
      echo '</div> ';
+
    }
    else {
      echo '<p class="login-status">You are corrently not logged in and can there for not se any files</p>';
-     
+     header('Location: login.php');
+
    }
     ?>
 

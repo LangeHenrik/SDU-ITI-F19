@@ -17,4 +17,5 @@ if (isset($_SESSION['userid'])) {
     }
 } else {
     header('Location: login.php');
+    exit();
 }

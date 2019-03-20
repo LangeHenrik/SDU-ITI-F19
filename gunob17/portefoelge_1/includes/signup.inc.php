@@ -30,11 +30,11 @@ if (isset($_POST['signup_submit'])) {
     header("Location: ../signup.php?error=invalidusername&email=".$email);
     exit();
   }
-  elseif (!preg_match("/^[a-zA-Z]*$/",$firstN)) {
+  elseif (!preg_match("/^[a-zA-ZÆØÅæøå]*$/",$firstN)) {
     header("Location: ../signup.php?error=invalidname");
     exit();
   }
-  elseif (!preg_match("/^[a-zA-Z]*$/",$lastN)) {
+  elseif (!preg_match("/^[a-zA-ZÆØÅæøå]*$/",$lastN)) {
     header("Location: ../signup.php?error=invalidname");
     exit();
   }
