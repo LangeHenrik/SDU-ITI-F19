@@ -55,7 +55,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == 1){
     if (isset($_POST["logout"])) {
     session_unset();
     $_SESSION['login'] = 0;
-    header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . "/ITIProjCloned" . $location);
+    header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . "/ITICloned/omhaw16" . $location);
     // print_r($_POST["logout"]);
 }
 

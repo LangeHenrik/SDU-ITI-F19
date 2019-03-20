@@ -32,7 +32,7 @@
 
                 echo "Welcome!";
                 
-                header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . "/ITIProjCloned" . $location);
+                header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . "/ITICloned/omhaw16" . $location);
                 if(session_status() == PHP_SESSION_NONE) {
                 session_start();
                 }
