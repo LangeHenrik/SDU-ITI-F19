@@ -7,3 +7,4 @@ This should be updated later
  * ##### edit images(name, desc etc)
  * ##### check forms with js
  * ##### make images of the pages
+ * ##### make migaration file
