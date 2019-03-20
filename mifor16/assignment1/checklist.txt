@@ -38,6 +38,11 @@ Users
 ______________
 
 Done initial work for login and register pages need functional php to check information in DB
+Login done
+Reguster done
+can see a list of all users
+
+index.php has logout button
 
 
 

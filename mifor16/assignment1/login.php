@@ -10,7 +10,11 @@ if (!empty($_POST)) {
 
     if ($dbcheck) {
         /* The username exists in the database*/
-        echo '<script>alert("Real Shit")</script>';
+        if(checkCredentials($theusername, $thepassword)) {
+            session_start();
+            $_SESSION['login_user'] = $theusername;
+            header('location: index.php');
+        }
     } else {
         echo '<script>alert("Username doesn\'t exist, or password is incorrect.")</script>';
     }

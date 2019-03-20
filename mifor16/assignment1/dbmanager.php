@@ -57,3 +57,31 @@ function registerUser($username, $password, $firstname, $lastname, $city, $zip, 
     $statement->execute();
     $conn = null;
 }
+
+function checkCredentials($ausername, $apassword) {
+
+    $conn = getConnection();
+    $statement = $conn->prepare('select username, password from users where username = :username');
+
+
+
+    $statement->bindParam(':username', $ausername);
+
+
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $statement->execute();
+    $result = $statement->fetchAll();
+
+    $collectedusername = $result[0]["username"];
+    $collectedpassword = $result[0]["password"];
+    $unhashpw = password_verify($apassword, $collectedpassword);
+
+    if($ausername == $collectedusername && $unhashpw == 1) {
+        return true;
+    } else {
+        return false;
+    }
+
+    $conn = null;
+
+}
