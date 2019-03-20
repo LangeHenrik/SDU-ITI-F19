@@ -5,7 +5,7 @@
  * Date: 2019-03-19
  * Time: 18:08
  */
-include 'db_config.php';
+require 'db_config.php';
 
 
 function getUsers (){
@@ -16,4 +16,16 @@ function getUsers (){
     $result = $statement->fetchAll();
     $conn = null;
     return $result;
+}
+
+function checkUserExists($ausername) {
+    $conn = getConnection();
+    $statement = $conn->prepare('select username from users where username = :username;');
+    $statement->bindParam(':username', $ausername);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $conn = null;
+    return $result;
+
 }

@@ -2,6 +2,17 @@
 error_reporting(E_ALL);
 session_start();
 require 'dbmanager.php';
+
+if(!empty($_POST)) {
+    $un = $_POST['username']; $pw = $_POST['password'];
+    $fn = $_POST['firstname']; $ln = $_POST['lastname'];
+    $c = $_POST['city']; $z = $_POST['zip'];
+    $mail = $_POST['mail']; $phone = $_POST['phone'];
+
+
+
+}
+
 ?>
 
 <html>
@@ -41,7 +52,7 @@ require 'dbmanager.php';
         <input type="text" placeholder="Enter City" name="city" required>
 
         <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" required>
+        <input type="email" placeholder="Enter Email" name="mail" required>
 
         <label for="phone"><b>Phone</b></label>
         <input type="text" placeholder="Enter Phone" name="phone" required>

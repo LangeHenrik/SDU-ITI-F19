@@ -1,6 +1,22 @@
 <?php
 error_reporting(E_ALL);
-echo '<script>console.log("Is printed, vry cool")</script>';
+require 'dbmanager.php';
+if (!empty($_POST)) {
+    $theusername = $_POST['username'];
+    $thepassword = $_POST['password'];
+
+    /* First check if username exists in DB*/
+    $dbcheck = checkUserExists($theusername);
+    $count = count($dbcheck);
+
+    echo "\n" . $count;
+    if (count($dbcheck) >= 1) {
+        /* The username exists in the database*/
+    } else {
+        echo '<script>alert("Username doesn\'t exist, or password is incorrect.")</script>';
+    }
+
+}
 ?>
 
 <html lang="en">
