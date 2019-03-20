@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 
 <body>
 <form action="" method="post">
-    <div class="container">
+    <div class="box">
 
         <label for="username"><b>Username</b></label><br>
         <input type="text" placeholder="Enter Username" name="username" required>

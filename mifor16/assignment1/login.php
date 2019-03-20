@@ -13,7 +13,7 @@ echo '<script>console.log("Is printed, vry cool")</script>';
 <body>
 
 <form action="" method="post">
-    <div class="container">
+    <div class="box">
 
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="username" required>
@@ -28,7 +28,7 @@ echo '<script>console.log("Is printed, vry cool")</script>';
 </form>
 
 <form action="register.php" method="post">
-    <div class="container">
+    <div class="box">
         <button type="submit" value="Submit">Register User</button>
     </div>
 </form>
