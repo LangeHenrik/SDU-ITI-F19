@@ -110,7 +110,6 @@ input {
 .sign-content input:focus {
     outline-color: transparent;
     box-shadow: 0 0 3px darkgray;
-    outline-color: transparent;
 }
 
 .hidden {
@@ -118,13 +117,11 @@ input {
 }
 
 .valid {
-    outline-color: transparent;
     box-shadow: 0 0 3px green;
-    background-color: rgba(30, 220, 30, 0.75);
+    background-color: rgba(30, 220, 30, 0.75) !important;
 }
 
 .invalid {
-    outline-color: transparent;
     box-shadow: 0 0 3px red;
-    background-color: rgba(220, 30, 30, 0.75);
+    background-color: rgba(220, 30, 30, 0.75) !important;
 }

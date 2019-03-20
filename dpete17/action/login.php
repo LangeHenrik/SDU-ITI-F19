@@ -34,7 +34,4 @@
             $_SESSION['MESSAGE'] = 'Error: ' . $e -> getMessage();
         }
     }
-
-    $hashed = password_hash($u_password, PASSWORD_DEFAULT);
-    $_SESSION['MESSAGE'] = $hashed;
 ?>

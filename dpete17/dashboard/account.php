@@ -3,9 +3,32 @@
 
     if(!isset($_SESSION['ID'])) {
         header('Location: /index.php');
+    } else {
+        include('../action/pdo.php');
+
+        try {
+            # username
+            $sql = 'SELECT username FROM account WHERE id = :id;';
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindParam(':id', $_SESSION['ID']);
+            $executed = $stmt -> execute();
+    
+            $result = $stmt -> fetchAll();
+    
+            $username = $result[0]['username'];
+    
+            # images
+            $sql = 'SELECT filename, header, content FROM image WHERE id IN(SELECT image_id FROM uploads WHERE account_id = :id) LIMIT 20;';
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindParam(':id', $_SESSION['ID']);
+    
+            $executed = $stmt -> execute();
+            $result = $stmt -> fetchAll();
+        } catch (PDOException $e) {
+            $_SESSION['MESSAGE'] = "ERROR: " . $e -> getMessage();
+        }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +52,9 @@
                 <li><a href="allaccounts.php">View All Accounts</a></li>
                 <li><a href="../action/logout.php">Logout</a></li>
             </ul>
+            <?php 
+                echo "<h4>{$username}</h4>";
+            ?>
         </header>
         <div class="dashboard-body">
             <form action="../action/imageupload.php" method="POST" enctype="multipart/form-data">
@@ -42,18 +68,7 @@
             <hr>
             <div class="image-container">
                 <?php
-
-                include('../action/pdo.php');
-                        
-                try {
-                    $sql = 'SELECT filename, header, content FROM image WHERE id IN(SELECT image_id FROM uploads WHERE account_id = :id) LIMIT 20;';
-                    $stmt = $conn -> prepare($sql);
-                    $stmt -> bindParam(':id', $_SESSION['ID']);
-
-                    $executed = $stmt -> execute();
-
-                    $result = $stmt -> fetchAll();
-
+                
                     $target_dir = '../uploads/';
 
                     foreach ($result as $row) {
@@ -61,9 +76,6 @@
                         echo "<div><h2>{$row['header']}</h2><span>{$row['content']}</span><br><img src=\"{$path}\" alt=\"Error..\" ></div>";
                         echo '<hr>';
                     }
-                } catch (PDOException $e) {
-                    $_SESSION['MESSAGE'] = "ERROR: " . $e -> getMessage();
-                }
 
                 ?>
             </div>

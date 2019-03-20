@@ -17,6 +17,7 @@
      crossorigin="anonymous">
     <link rel="stylesheet" href="../main-style.css">
     <link rel="stylesheet" href="dashboard-style.css">
+    <script src="./../opinion-action.js"></script>
     <title>Project A01</title>
 </head>
 <body>
@@ -38,9 +39,12 @@
                 include('../action/pdo.php');
                         
                 try {
-                    $sql = 'SELECT account.username, image.filename, image.header, image.content FROM account, image, uploads WHERE account.id = uploads.account_id AND image.id = uploads.image_id LIMIT 20;';
+                    $sql = "SELECT (SELECT username FROM account, uploads WHERE account.id = uploads.account_id AND uploads.image_id = image.id) as username, image.id as image_id, image.filename, image.header, image.content,"
+                    ."(SELECT COALESCE(sum(opinion = 'LIKES'), 0) FROM opinion WHERE image_id = image.id) as 'likes', "
+                    ."(SELECT COALESCE(sum(opinion = 'DISLIKES'), 0) FROM opinion WHERE image_id = image.id) as 'dislikes' "
+                    ."FROM image;";
+
                     $stmt = $conn -> prepare($sql);
-                    $stmt -> bindParam(':id', $_SESSION['ID']);
 
                     $executed = $stmt -> execute();
                     $result = $stmt -> fetchAll();
@@ -51,13 +55,14 @@
                         $path = $target_dir . $row['filename'];
                         echo <<<EOL
                             <div>
-                                <p><p>Created by: {$row['username']}</p>
+                                <p>Created by: {$row['username']}</p>
                                 <h2>{$row['header']}</h2>
                                 <span>{$row['content']}</span>
                                 <br>
                                 <img src="{$path}" alt="Error.." >
-                                <div>
-                                    <i class="fas fa-heart"></i><p id="likes"></p><i class="fas fa-heart-broken"></i><p id="dislikes"></p>
+                                <div class="opinions">
+                                    <a href="#" onclick="onOpinion(this, 'LIKES')" data-id="{$row['image_id']}"><i class="fas fa-heart like"></i><p id="likes{$row['image_id']}">{$row['likes']}</p></a>
+                                    <a href="#" onclick="onOpinion(this, 'DISLIKES')" data-id="{$row['image_id']}"><i class="fas fa-heart dislike"></i><p id="dislikes{$row['image_id']}">{$row['dislikes']}</p></a>
                                 </div>
                             </div>
                             <hr>
