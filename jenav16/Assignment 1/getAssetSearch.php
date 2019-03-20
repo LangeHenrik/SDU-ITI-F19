@@ -42,8 +42,6 @@ if ($search !== "") {
     $stmt = $conn->prepare("SELECT fileID, username, headline, text FROM Assets ORDER BY date DESC LIMIT 20");
     $stmt->execute();
     $executed = $stmt->fetchAll();
-
-
     if ($executed != null) {
         foreach ($executed as $asset) {
             ?>

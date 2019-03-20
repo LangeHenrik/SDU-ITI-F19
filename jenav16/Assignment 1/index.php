@@ -6,7 +6,6 @@
     <title>ITI 1.0</title>
     <meta charset="UTF-8"/>
     <link href="CSS/main.css" rel="stylesheet">
-
 </head>
 <body>
 <?php if (isloggedIn()) { ?>
@@ -51,7 +50,8 @@
                 <?php echo $asset["text"]; ?> <br>
                 <?php if ($asset["username"] == $_SESSION["username"]) { ?>
                     <form action="upload.php" enctype="multipart/form-data" id="fileForm" method="post">
-                        <input type="hidden" name=fileID value='<?php echo $asset["fileID"]; ?>'/>
+                        <input type="hidden" name=fileID
+                               value='<?php echo $asset["fileID"]; ?>'/>
                         <br><input id="deleteAssetButton" name="deleteAsset" type="submit"
                                    value="Delete <?php echo $asset["headline"]; ?>"><br>
                     </form>
@@ -60,10 +60,6 @@
             <?php
         }
     }
-
-
-
-
     ?>
     <form action="login.php" id="loginForm" method="post">
         <input id="logoutButton" name="logout" type="submit" value="Logout">

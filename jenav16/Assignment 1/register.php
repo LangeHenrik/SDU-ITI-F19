@@ -15,23 +15,14 @@ if (isset($POSTSIGNUP)) {
 
     validateRegisterInput($POSTUSERNAME, $POSTPASSWORD, $POSTPASSWORD2, $POSTFIRSTNAME, $POSTLASTNAME, $POSTZIP, $POSTCITY, $POSTEMAILADRESS, $POSTPHONENUMBER);
 
-    //HASH THIS BAD-BOY
     $hash = password_hash($POSTPASSWORD, PASSWORD_DEFAULT);
 
-    //Pulls all usernames that's equal to POSTUSERNAME (Hopefully none...Fingers crossed)
     $stmt = $conn->prepare("SELECT username FROM Users WHERE username = :username");
     $stmt->bindParam(":username", $POSTUSERNAME);
     $stmt->execute();
     $executed = $stmt->fetchAll();
 
-    //Checks if the username already exists in the database
-    if ($executed != null) {
-        //TODO Do we really need this?
-        echo "Please choose a different username.<br>";
-        //TODO NAVIGATE TO FRONTPAGE
-        echo "<a href='./'>Click here to go to your feed</a>";
-    } else {
-        //Else create a new user
+
         $stmt = $conn->prepare("INSERT INTO Users (username,password,firstName,lastName,zip,city,emailAddress,phoneNumber,date) values (:username,:password,:firstName,:lastName,:zip,:city,:emailAddress,:phoneNumber,NOW())");
         $stmt->bindParam(":username", $POSTUSERNAME);
         $stmt->bindParam(":password", $hash);
@@ -44,11 +35,10 @@ if (isset($POSTSIGNUP)) {
         $stmt->execute();
 
 
-        //Signs the new user in
         $_SESSION['username'] = $POSTUSERNAME;
         header('location: ./');
     }
-}
+
 
 
 function validateRegisterInput($POSTUSERNAME, $POSTPASSWORD, $POSTPASSWORD2, $POSTFIRSTNAME, $POSTLASTNAME, $POSTZIP, $POSTCITY, $POSTEMAILADRESS, $POSTPHONENUMBER){
@@ -99,9 +89,6 @@ function validateRegisterInput($POSTUSERNAME, $POSTPASSWORD, $POSTPASSWORD2, $PO
     if ($POSTPASSWORD !== $POSTPASSWORD2) {
         die("Password mismatch");
     }
-}
-
-
-?>
+}?>
 </body>
 </html>
