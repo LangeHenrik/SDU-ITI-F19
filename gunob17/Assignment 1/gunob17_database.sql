@@ -16,25 +16,28 @@
 CREATE DATABASE IF NOT EXISTS `gunob17` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `gunob17`;
 
--- Dumping structure for tabel gunob17.comments
-CREATE TABLE IF NOT EXISTS `comments` (
-  `idcom` int(20) NOT NULL AUTO_INCREMENT,
-  `idus` int(11) NOT NULL,
-  `picid` int(20) NOT NULL,
+-- Dumping structure for tabel gunob17.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `idusers` int(11) NOT NULL AUTO_INCREMENT,
+  `fname` tinytext NOT NULL,
+  `lname` tinytext NOT NULL,
+  `zip` int(11) NOT NULL,
+  `city` tinytext NOT NULL,
+  `phoneN` varchar(50) NOT NULL,
   `username` tinytext NOT NULL,
-  `usercomment` longtext NOT NULL,
-  PRIMARY KEY (`idcom`),
-  KEY `idus` (`idus`),
-  KEY `picid` (`picid`),
-  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`idus`) REFERENCES `users` (`idusers`),
-  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`picid`) REFERENCES `pictures` (`idpic`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `email` tinytext NOT NULL,
+  `pwdusers` longtext NOT NULL,
+  PRIMARY KEY (`idusers`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table gunob17.comments: ~0 rows (approximately)
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` (`idcom`, `idus`, `picid`, `username`, `usercomment`) VALUES
-	(1, 3, 23, 'ralle', 'first comment  &lt;script&gt;  let testxss&lt;/script&gt;');
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+-- Dumping data for table gunob17.users: ~3 rows (approximately)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`idusers`, `fname`, `lname`, `zip`, `city`, `phoneN`, `username`, `email`, `pwdusers`) VALUES
+	(1, 'Gustav', 'Nobel', 4180, 'Soreo', '20246655', 'gunob', 'gustav@st-ladegaard.dk', '$2y$10$jdF0IO4hZIqT0sWGiT1wqe8Aiz3rBsV4GQk6J6AR1/jDL3wqMmLM2'),
+	(2, 'peter', 'nilsen', 5220, 'odense', '3451234', 'peten', 'ffff@gmail.com', '$2y$10$FWirChUJ/QaGHd.CdjxrQePsx7EzlvptmrjrRj.W7Nwo/1Y4EinZa'),
+	(3, 'rasmus', 'petersen', 1234, 'hÃ¸jby', '12345678', 'ralle', 'tets@gmail.com', '$2y$10$H/qbVEAyc9Dwgq.gKUlBK.3k3aUBKk3IVCjIH78P5AzvdzTAf4as2'),
+	(4, 'kim', 'nÃ¸rregaard', 5230, 'broby', '3333333', 'kirfa', 'kim@gmail.com', '$2y$10$JGhefAiDoUo7v1TGgvy4xurmyAk8soMNS1pHqfsQAI1ylH58xeygS');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for tabel gunob17.pictures
 CREATE TABLE IF NOT EXISTS `pictures` (
@@ -48,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `pictures` (
   CONSTRAINT `pictures_ibfk_1` FOREIGN KEY (`idus`) REFERENCES `users` (`idusers`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
--- Dumping data for table gunob17.pictures: ~23 rows (approximately)
+-- Dumping data for table gunob17.pictures: ~21 rows (approximately)
 /*!40000 ALTER TABLE `pictures` DISABLE KEYS */;
 INSERT INTO `pictures` (`idpic`, `idus`, `username`, `path`, `name`) VALUES
 	(1, 1, 'gunob', '../uploades/5c8fa7b0c8cd80.68466931.gif', '5c8fa7b0c8cd80.68466931.gif'),
@@ -75,27 +78,31 @@ INSERT INTO `pictures` (`idpic`, `idus`, `username`, `path`, `name`) VALUES
 	(23, 1, 'gunob', '../uploades/5c90d87cc6fea4.83484075.jpg', '5c90d87cc6fea4.83484075.jpg');
 /*!40000 ALTER TABLE `pictures` ENABLE KEYS */;
 
--- Dumping structure for tabel gunob17.users
-CREATE TABLE IF NOT EXISTS `users` (
-  `idusers` int(11) NOT NULL AUTO_INCREMENT,
-  `fname` tinytext NOT NULL,
-  `lname` tinytext NOT NULL,
-  `zip` int(11) NOT NULL,
-  `city` tinytext NOT NULL,
-  `phoneN` varchar(50) NOT NULL,
+-- Dumping structure for tabel gunob17.comments
+CREATE TABLE IF NOT EXISTS `comments` (
+  `idcom` int(20) NOT NULL AUTO_INCREMENT,
+  `idus` int(11) NOT NULL,
+  `picid` int(20) NOT NULL,
   `username` tinytext NOT NULL,
-  `email` tinytext NOT NULL,
-  `pwdusers` longtext NOT NULL,
-  PRIMARY KEY (`idusers`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `usercomment` longtext NOT NULL,
+  PRIMARY KEY (`idcom`),
+  KEY `idus` (`idus`),
+  KEY `picid` (`picid`),
+  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`idus`) REFERENCES `users` (`idusers`),
+  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`picid`) REFERENCES `pictures` (`idpic`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table gunob17.users: ~1 rows (approximately)
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`idusers`, `fname`, `lname`, `zip`, `city`, `phoneN`, `username`, `email`, `pwdusers`) VALUES
-	(1, 'Gustav', 'Nobel', 4180, 'Soreo', '20246655', 'gunob', 'gustav@st-ladegaard.dk', '$2y$10$jdF0IO4hZIqT0sWGiT1wqe8Aiz3rBsV4GQk6J6AR1/jDL3wqMmLM2'),
-	(2, 'peter', 'nilsen', 5220, 'odense', '3451234', 'peten', 'ffff@gmail.com', '$2y$10$FWirChUJ/QaGHd.CdjxrQePsx7EzlvptmrjrRj.W7Nwo/1Y4EinZa'),
-	(3, 'rasmus', 'petersen', 1234, 'hÃ¸jby', '12345678', 'ralle', 'tets@gmail.com', '$2y$10$H/qbVEAyc9Dwgq.gKUlBK.3k3aUBKk3IVCjIH78P5AzvdzTAf4as2');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+-- Dumping data for table gunob17.comments: ~3 rows (approximately)
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` (`idcom`, `idus`, `picid`, `username`, `usercomment`) VALUES
+	(1, 3, 23, 'ralle', 'first comment  &lt;script&gt;  let testxss&lt;/script&gt;'),
+	(2, 1, 21, 'gunob', 'ohÃ¸j test'),
+	(3, 1, 22, 'gunob', 'hejf afef\r\n');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+
+
+
+
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
