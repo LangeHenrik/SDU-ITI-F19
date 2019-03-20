@@ -1,5 +1,7 @@
 <?php
 error_reporting(E_ALL);
+session_start();
+require 'dbmanager.php';
 ?>
 
 <html>
