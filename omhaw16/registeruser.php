@@ -37,11 +37,19 @@
 
         $sqlcheck = "SELECT EXISTS (SELECT * FROM user WHERE userName = '$username')";
 
-        if ($sqlcheck = 0) {
+        echo $sqlcheck;
 
-        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email')";
+//        if ($sqlcheck == 0) {
+
+//         $sqlreg = "INSERT INTO user (SELECT * FROM (SELECT '$username','$password', '$firstname', '$lastname', '$zip', '$phone', '$email') AS tmp WHERE NOT EXISTS (SELECT userName FROM user WHERE userName = '$username'))";
+
+// TODO: Fix user check
+
+        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email') WHERE NOT EXISTS (SELECT * FROM user WHERE 'userName' = '$username')";
+
+//        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email')";
             
-            if ($conn->query($sqlreg) === TRUE) {
+            if ($conn->query($sqlreg)) {
                 $conn->close();
                 header("Location: login.php");
                 exit;
@@ -54,7 +62,7 @@
             echo "Username already exists. Please log in!";
 
         } 
-        }
+    //    }
     }
     
     ?>
