@@ -1,6 +1,7 @@
 <?php
 
   $_SESSION['globalRegisterMsg'] = ' ';
+  $_SESSION['globalLoginMsg'] = ' ';
 
   require_once 'db_config.php';
   try {
@@ -31,10 +32,11 @@
     $result = $getPasswordStmt->fetchAll();
     if (count($result) == 1) {
         session_start();
-        $_SESSION['userNameGlobal'] =  $_POST["userName"];
+        $_SESSION['userNameGlobal'] =  $_POST["userNameLogin"];
         $_SESSION['Login'] = true;
         header('Location: pictures.php');
     } else {
+      $_SESSION['globalLoginMsg'] = "Wrong password, username or both.";
     }
   }
 
@@ -166,7 +168,7 @@
               <input type="text" name="email" id="email" onkeyup="checkFields()" >
               <br>
 
-              <input type="submit" value="Register" name="submit" id="submit">
+              <input type="submit" value="Register" name="submit" class="mainButton">
 
               <div id ="errorDiv" class="registerErrorDiv">
                 <p></p>
@@ -192,7 +194,11 @@
             <input type="password" name="passwordLogin" id ="passwordLogin">
             <br>
 
-            <input type="submit" value="Login">
+            <input type="submit" value="Login" class="mainButton">
+            <div id ="errorDivLogin" class="loginErrorDiv">
+              <?php echo''.$_SESSION['globalLoginMsg'];
+              $_SESSION['globalLoginMsg'] = ' ';?>
+            </div>
           </fieldset>
         </form>
       </div>
