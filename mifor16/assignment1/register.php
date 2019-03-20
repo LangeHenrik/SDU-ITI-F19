@@ -22,7 +22,7 @@ if(!empty($_POST)) {
 ?>
 
 <html>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <title>Account Registration</title>
     <link href="mystylesheet.css" type="text/css" rel="stylesheet">

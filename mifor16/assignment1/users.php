@@ -7,7 +7,8 @@
  */
 ?>
 
-<html lang="en">
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <link href="mystylesheet.css" type="text/css" rel="stylesheet">
     <title>users</title>

@@ -83,3 +83,15 @@ input[type=text], input[type=password], input[type=email] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 400px){
+    .headertitle {
+        font-size: 2em;
+    }
+    .entry {
+        width: 100%;
+    }
+    .picturedescription, .picturetitle {
+        width: 100%;
+    }
+}
