@@ -59,9 +59,9 @@ INSERT INTO uploads(account_id, image_id) VALUES (1, 2);
 INSERT INTO uploads(account_id, image_id) VALUES (2, 3);
 INSERT INTO uploads(account_id, image_id) VALUES (4, 4);
 
-INSERT INTO opinion(account_id, image_id, opinion) VALUES (1, 1 'LIKES');
-INSERT INTO opinion(account_id, image_id, opinion) VALUES (1, 3 'LIKES');
-INSERT INTO opinion(account_id, image_id, opinion) VALUES (2, 2 'LIKES');
-INSERT INTO opinion(account_id, image_id, opinion) VALUES (2, 4 'LIKES');
-INSERT INTO opinion(account_id, image_id, opinion) VALUES (3, 3 'LIKES');
-INSERT INTO opinion(account_id, image_id, opinion) VALUES (3, 4 'LIKES');
+INSERT INTO opinion(account_id, image_id, opinion) VALUES (1, 1, 'LIKES');
+INSERT INTO opinion(account_id, image_id, opinion) VALUES (1, 3, 'LIKES');
+INSERT INTO opinion(account_id, image_id, opinion) VALUES (2, 2, 'LIKES');
+INSERT INTO opinion(account_id, image_id, opinion) VALUES (2, 4, 'LIKES');
+INSERT INTO opinion(account_id, image_id, opinion) VALUES (3, 3, 'LIKES');
+INSERT INTO opinion(account_id, image_id, opinion) VALUES (3, 4, 'LIKES');
