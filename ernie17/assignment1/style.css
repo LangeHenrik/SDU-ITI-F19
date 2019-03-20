@@ -89,20 +89,21 @@ header nav ul {
     margin: 0 auto;
     width: fit-content;
     padding: 0px;
+    line-height: 52px;
 }
 
 header nav ul li {
     display: inline-block;
     float: none;
     list-style: none;
-    padding: 10 16px;
-    margin: 0px 5px;
+    /* margin: 0px 5px; */
     border-radius: 4px;
 }
 
 header nav ul li a {
     font-family: Catamaran;
-    font-size: 16px;
+    font-size: 20px;
+    padding: 10px 16px;
     color: #111;
 }
 
@@ -124,11 +125,13 @@ header nav ul li:hover {
     font-family: Catamaran;
     font-size: 16px;
     color: #111!important;
-    padding: 5px;
+    padding: 10px;
+    line-height: 20px;
     border-radius: 4px;
 
     background-color: #F1F1F1;
     border: none;
+    cursor: pointer;
 }
 
 #btn-logout:hover {
@@ -147,6 +150,11 @@ header nav ul li:hover {
 
     header nav {
         float: right;
+        margin-right: 20px;
+    }
+
+    header nav ul li {
+        float: left;
     }
 }
 
