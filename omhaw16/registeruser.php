@@ -35,17 +35,23 @@
 
       if ($password === $confirmpw) {
 
-        $sqlcheck = "SELECT EXISTS (SELECT * FROM user WHERE userName = '$username')";
-
-        echo $sqlcheck;
-
 //        if ($sqlcheck == 0) {
 
 //         $sqlreg = "INSERT INTO user (SELECT * FROM (SELECT '$username','$password', '$firstname', '$lastname', '$zip', '$phone', '$email') AS tmp WHERE NOT EXISTS (SELECT userName FROM user WHERE userName = '$username'))";
 
-// TODO: Fix user check
+// TODO: Username check
 
-        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email') WHERE NOT EXISTS (SELECT * FROM user WHERE 'userName' = '$username')";
+        $sqlchecker = "SELECT userID FROM user WHERE userName = '$username'";
+
+        $result = mysqli_query($conn,$sqlchecker);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['active'];
+      
+        $countname = mysqli_num_rows($result);
+
+        if ($countname == 0) {
+
+        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email')";
 
 //        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email')";
             
@@ -62,7 +68,7 @@
             echo "Username already exists. Please log in!";
 
         } 
-    //    }
+        }
     }
     
     ?>
