@@ -7,11 +7,10 @@ if (!empty($_POST)) {
 
     /* First check if username exists in DB*/
     $dbcheck = checkUserExists($theusername);
-    $count = count($dbcheck);
 
-    echo "\n" . $count;
-    if (count($dbcheck) >= 1) {
+    if ($dbcheck) {
         /* The username exists in the database*/
+        echo '<script>alert("Real Shit")</script>';
     } else {
         echo '<script>alert("Username doesn\'t exist, or password is incorrect.")</script>';
     }

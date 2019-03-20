@@ -9,6 +9,12 @@ if(!empty($_POST)) {
     $c = $_POST['city']; $z = $_POST['zip'];
     $mail = $_POST['mail']; $phone = $_POST['phone'];
 
+    if(checkUserExists($un)) {
+        echo '<script>alert("Username is taken!")</script>';
+    } else {
+        registerUser($un, $pw, $fn, $ln, $c, $z, $mail, $phone);
+        header("location: login.php");
+    }
 
 
 }
