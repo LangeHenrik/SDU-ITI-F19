@@ -8,17 +8,15 @@ if (!isset($_SESSION['login_user'])) {
 
 <html>
 <head>
-    <title>PHP Test</title>
+    <title>Main Feed</title>
+    <link href="mystylesheet.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <?php echo '<p>Hello World</p>'; ?>
 <nav id="nav">
-    <ul>
-        <!--<li><a href="#" data-target="feed">Feeds</a></li>-->
-        <!--<li><a href="#" data-target="upload">Upload/View</a></li></ul>-->
-        <li><a href="users.php" data-target="users">Users</a></li>
-        <li><a href="logout.php" data-target="logout" >Logout</a></li>
-    </ul>
+    <a href="index.php">INDEX</a>
+    <a href="users.php">USERS</a>
+    <a href="logout.php">LOGOUT</a>
 </nav>
 </body>
 </html>
