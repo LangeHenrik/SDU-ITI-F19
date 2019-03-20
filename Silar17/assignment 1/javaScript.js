@@ -1,4 +1,4 @@
-function loginSubmit(fields){
+function loginSubmit(){
 
 	if (checkPassword(document.getElementById("password")) 
 		&& checkRepeatPassword(document.getElementById("repeatPassword"))
@@ -14,24 +14,34 @@ function loginSubmit(fields){
 }
 
 function checkUsername(username){ 
+		if ((username.value == "")||(username.value == null)) {
+			document.getElementById("usernameSpec").innerHTML = "";
+			document.getElementById("username").style.background = "white";
+			return false;
+		} else {
 		var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200){
-				if (this.responseText == 1){
+				if (this.responseText == "1"){
 					document.getElementById("username").style.background = "url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg)";
 					document.getElementById("username").style.backgroundRepeat = "no-repeat";
 					document.getElementById("username").style.backgroundPosition = "right top";
+					document.getElementById("usernameSpec").innerHTML = "";
+					return true;
 				} else {
 					document.getElementById("username").style.background = "white";
 					document.getElementById("usernameSpec").innerHTML = "Not avaiable";
+					return false;
 				}
 			}
 		};
-		xmlhttp.open("GET", "fun-check-username.php?user=" + username, true);
+		xmlhttp.open("GET", "fun-check-username.php?user=" + username.value, true);
 		xmlhttp.send();
+		}
 } 
 
 function checkPassword(password){
+	return true;
 	if ("password" == password.id){
 		if ((password.value == "")||(password.value == null)) {
 			document.getElementById("passwordSpec").innerHTML = "";
@@ -135,7 +145,7 @@ function checkEmail(email){
 			document.getElementById("email").style.background = "white";
 			document.getElementById("emailSpec").innerHTML = "";
 		} else {
-	let regex = new RegExp(/\S+\.{1}\S+@\S+\.{1}\S+\.{1}\S+/g);
+	let regex = new RegExp(/\S+@\S+\.{1}\S+/g);
 	if (regex.test(email.value)){
 		document.getElementById("email").style.background = "url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg)";
 		document.getElementById("email").style.backgroundRepeat = "no-repeat";

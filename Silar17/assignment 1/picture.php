@@ -5,6 +5,30 @@ if (isset($_SESSION['username'])){
 } else {
 	header('Location: login.php');
 }
+$index = 0;
+
+require_once 'db_config.php';
+
+try {
+    $sql = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	
+	$sql_code = "
+	SELECT picture_created, picture_user, picture_likes, picture_title, picture_comment 
+	FROM silar17.picture
+	order by picture_created desc"; 
+	$stmt = $sql->prepare($sql_code);
+	$stmt->execute();
+	$data = $stmt->fetchALL();
+	$type = 'picture_title';
+	} catch (PDOException $pe) {
+	echo "i die";
+    die("Could not connect to the database $dbname :" . $pe->getMessage());
+}
+$sql = null;
+
 ?>
 <html>
 <title>Silar17-assignment1</title>
@@ -38,79 +62,38 @@ if (isset($_SESSION['username'])){
   <div class="-container -padding-32" id="projects">
     <h3 class="-border-bottom -border-light-grey -padding-16">Pictures</h3>
 </div>
-    <div class="-row-padding" >
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team2.jpg" alt="John" style="width:100%; height:70%">
-      <h3>John Doe</h3>
-      <p>CEO & Founder</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-	</div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team1.jpg" alt="Jane" style="width:100%; height:70%">
-      <h3>Jane Doe</h3>
-      <p>Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team3.jpg" alt="Mike" style="width:100%; height:70%">
-      <h3>Mike Ross</h3>
-      <p>Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team4.jpg" alt="Dan" style="width:100%; height:70%">
-      <h3>Dan Star</h3>
-      <p>Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-  </div>
-  <div class="-divider">
-  
-  </div>
-   <div class="-row-padding" >
-    <div class="-col l3 m6 -margin-bottom -block" >
-      <img src="/images/team2.jpg" alt="John" style="width:100%; height:70% ">
-      <h3>John Doe</h3>
-      <p>CEO & Founder</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-	</div>
-    <div class="-col l3 m6 -margin-bottom ">
-      <img src="/images/team1.jpg" alt="Jane" style="width:100%; height:70%">
-      <h3>Jane Doe</h3>
-      <p">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team3.jpg" alt="Mike" style="width:100%; height:70%">
-      <h3>Mike Ross</h3>
-      <p>Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team4.jpg" alt="Dan" style="width:100%; height:70%">
-      <h3>Dan Star</h3>
-      <p>Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-  </div>
-  <div class="-divider">
-  </div>
-  
+
+<?php 
+if (isset($data[$index][$type])){
+  for ($row = 0; $row < 5; $row = $row + 1) {
+		echo "<div class=\"-row-padding\">";
+		for ($col = 0; $col < 4; $col = $col + 1) {
+		echo "<div class=\"-col l3 m6 -margin-bottom\">";
+		echo "<img src=\"fun-image.php?picture_index={$index}\" alt={$data[$index][$type]} style=\"width:auto; max-width:100%; max-height:70%\">"; 
+		echo "<h3>".$data[$index]['picture_title']."</h3>"; 
+		echo "<p>".$data[$index]['picture_comment']."</p>";
+		echo "<h3>".$data[$index]['picture_likes'];
+		echo "<button class=\"-button -light-grey -block\">Like</button></h3>";
+		echo "</div>";
+		if (isset($data[$index + 1]['picture_title'])) {$index = $index + 1;} else {break;}
+		}
+	if (isset($data[$index + 1]['picture_title'])) {} else {break;}	
+	echo "</div>";
+    echo "<div class=\"-divider\">";
+	echo "</div>";
+  }
+} else {
+	echo "<h3>There has not been any oploads yet use the link in upload to preload some pictures</h3>";
+}
+  ?>
+
 <!-- End page content -->
 </div>
 
 
 <!-- Footer -->
 <footer class="-center -black -padding-16">
-  <p>Powered by <a href="https://sso.sdu.dk/" title="Silar17-assignment1" target="_blank" class="-hover-text-green">.css</a></p>
+  <p>Powered by <a href="https://sso.sdu.dk/" title="Silar17-assignment1" target="_blank" class="-hover-text-green">Larsen</a></p>
 </footer>
 
 </body>

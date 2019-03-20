@@ -7,17 +7,27 @@ try {
     $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	$name = $_REQUEST['user'];
-	$sql_code = "select exists (
-	select user_username
-	from site_user
-	where user_username = ?)"; 
+	$sql_code = "
+	select * 
+	from silar17.site_user
+	where user_username = ?"; 
 	$stmt = $sql->prepare($sql_code);
 	$stmt->bindParam(1, $name);
-	$stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$stmt->execute();
+	$available = "";
+	
 	$result = $stmt->fetch();
-	echo $result;
-
+	$result2 = $result['user_username'];
+	if ($result2 == null){
+		$available="1";
+		echo $available; 
+	echo $result2;
+	} else {
+		$available="0";
+		echo $available;
+	}
 } catch (PDOException $pe) {
+	echo "i die";
     die("Could not connect to the database $dbname :" . $pe->getMessage());
 }
 $sql = null;

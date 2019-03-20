@@ -6,30 +6,30 @@ try {
     // set the PDO error mode to exception
     $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$user = $_POST['login_name'];
-	$password = $_POST['login_password'];
-	$sql_code = $sql->prepare("(select *
+	$user = htmlentities($_POST['login_name']);
+	$pass = htmlentities($_POST['login_password']);
+	$sql_code = $sql->prepare("select *
 	from silar17.site_user
-	where user_username = '{$user}' and user_password = '{$password}')");
+	where user_username = :user");
+	
+	$sql_code->bindparam(":user", $user);
 
 	$sql_code->execute();
-	$sql_code->setFetchMode(PDO::FETCH_ASSOC);
-	$result = $sql_code->fetchALL();
-
-	if ($result != NULL) {
-			//ob_start();
-			session_set_cookie_params(3600);
+	
+	$result = $sql_code->fetch(PDO::FETCH_ASSOC);
+	 
+	
+	if (password_verify($pass, $result['user_password'])) {
 			session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION["username"] = $user;
 			$sql = null;
-			$_SESSION['logintry'] = 0;
 			header('Location: picture.php');
+			$_SESSION['logintry'] = 0;
 		} else {
-			session_set_cookie_params(10);
 			session_start();
 			$sql = null;
-			$_SESSION['logintry'] = $_SESSION['logintry'] + 1; 
+			$_SESSION['logintry'] = $_SESSION['logintry'] + 1;
 			header('Location: login.php');
 			
 		}

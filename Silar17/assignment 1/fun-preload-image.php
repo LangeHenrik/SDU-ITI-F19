@@ -1,24 +1,29 @@
 <?php
 session_start();
+if (!isset($_SESSION['preload'])){
+	$_SESSION['preload'] = false;
 require_once 'db_config.php';
+echo $_SESSION['preload'];
 
 try {
     $sql = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-	//$image = addslashes(file_get_contents($_FILES['picture']['tmp_name'])); //SQL Injection defence!
-	$user = htmlentities($_SESSION['username']);
-	$created = date("Y-m-d H:i:s");
-	$title = htmlentities($_POST['title']);
-	$comment = htmlentities($_POST['comment']);
-	$likes = 0; 
-	$info = getimagesize($_FILES['picture']['tmp_name']);
-	$type = $info['mime'];
-	$image = fopen($_FILES['picture']['tmp_name'], 'rb');
+	// making dommy users-picuters with picture uploads
+	for ($i = 1; $i < 22; $i = $i + 1){
 	
-	//$picture = file_get_contents($image);
-	$sql_code = "INSERT INTO picture (picture_user, picture_created, picture_title, picture_comment, picture_likes, picture_type, picture) 
+	$user = "User{$i}";
+	$created = date("Y-m-d H:i:s");
+	$title = "title{$i}";
+	$comment = "comment{$i}";
+	$likes = $i;
+	$filename = "images/picture".$i.".jpg";
+	$picture = fopen($filename, "rb");
+	$image = fread($picture, filesize($filename));
+	fclose($picture);
+	$type = 'image/jpeg';
+	
+	$sql_code = "INSERT IGNORE INTO picture (picture_user, picture_created, picture_title, picture_comment, picture_likes, picture_type, picture) 
 	VALUES (:username, :created , :title, :comment, :likes, :image_type, :image)";
 	$stmt = $sql->prepare($sql_code);
 	
@@ -31,11 +36,13 @@ try {
 	$stmt->bindParam("image", $image, PDO::PARAM_LOB);
 	
 	$stmt->execute();
+	sleep(1);
+	}
 	
 } catch (PDOException $pe) {
     die("Could not connect to the database $dbname :" . $pe->getMessage());
 }
 $sql = null;
-
-header('Location: picture.php');	
+}
+header('Location: index.php');	
 ?>

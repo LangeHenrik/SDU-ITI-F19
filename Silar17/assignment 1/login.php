@@ -57,9 +57,9 @@ session_start();
   <div class="-container -padding-32" id="contact">
     <h3 class="-border-bottom -border-light-grey -padding-16">Register </h3>
     <p>something about register</p>
-    <form class="-checked" onsubmit="return loginSubmit(this)" action="fun-register.php" method="POST">
+    <form class="-checked" onsubmit="return loginSubmit()" action="fun-register.php" method="POST">
 	  <p id = "usernameSpec"></p>
-      <input class="-input -border " type="text" placeholder="Username" required name="Username" id="username">
+      <input class="-input -border " type="text" placeholder="Username" required name="Username" id="username" oninput = "checkUsername(this)">
 	  <p id = "passwordSpec"></p>
 	  <input class="-input -section -border " type="password" placeholder="Password" required name="Password" id="password" oninput = "checkPassword(this)">
 	  <p id = "repeatSpec"></p>
@@ -90,7 +90,7 @@ session_start();
 
 <!-- Footer -->
 <footer class="-center -black -padding-16">
-  <p>Powered by <a href="https://sso.sdu.dk/" title="Silar17-assignment1" target="_blank" class="-hover-text-green">.css</a></p>
+  <p>Powered by <a href="https://sso.sdu.dk/" title="Silar17-assignment1" target="_blank" class="-hover-text-green">Larsen</a></p>
 </footer>
 
 </body>

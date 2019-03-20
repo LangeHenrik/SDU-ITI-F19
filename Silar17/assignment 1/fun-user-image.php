@@ -9,21 +9,22 @@
 			
 		$sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		$sql_code = "SELECT picture_created, picture_user, picture_type, picture 
-		FROM silar17.picture
-		order by picture_created desc";
+		$sql_code ="
+		SELECT * from picture
+		where picture_user = :user_username";
 		
 		$stmt = $sql->prepare($sql_code);
+		
+		$stmt->bindparam(":user_username", $_GET['picture_user']);
 		$stmt->execute();
 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 		$array = $stmt->fetchALL();
-		$index = $_GET['picture_index'];
-		
-		if(!empty($array[$index]['picture'])) {
-			header("Content-type: ".$array[$index]['picture_type']);
-			echo $array[$index]['picture'];
+
+		if(!empty($array[0]['picture'])) {
+			header("Content-type: ".$array[0]['picture_type']);
+			echo $array[0]['picture'];
 			
 		} else {
 			$filename = "images/nopic.jpg";

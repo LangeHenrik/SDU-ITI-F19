@@ -12,7 +12,6 @@ if (isset($_SESSION['username'])){
 <!-- may not be neseary <meta charset="UTF-8"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="javaScript.js"></script>
-
 <link rel="stylesheet" type="text/css" href="style.css">
 <body>
 
@@ -23,6 +22,9 @@ if (isset($_SESSION['username'])){
 	<b>Larsen</b> Solutions</a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="-right">
+	<?php if(!isset($_SESSION['preload'])){ ?>
+	  <a href="fun-preload-image.php" class="-bar-item -buttion">Preload pictures</a>
+	<?php } ?>
 	  <a href="picture.php" class="-bar-item -button">Pictures</a>
       <a href="picture-upload.php" class="-bar-item -button">Upload</a>
       <a href="user.php" class="-bar-item -button">Users</a>
@@ -50,10 +52,6 @@ if (isset($_SESSION['username'])){
     </form>
   </div>
 
-<!-- Image of location/map -->
-<div class="-container">
-  <img src="/images/map.jpg" class="-image" style="width:100%">
-</div>
 
 
 <!-- End page content -->

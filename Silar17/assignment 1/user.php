@@ -5,6 +5,31 @@ if (isset($_SESSION['username'])){
 } else {
 	header('Location: login.php');
 }
+$index = 0;
+
+require_once 'db_config.php';
+
+try {
+    $sql = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	
+	$sql_code = "
+	SELECT * from (SELECT user_username, user_id
+	FROM silar17.site_user
+	order by user_id) alias
+	group by user_username order by user_id "; 
+	$stmt = $sql->prepare($sql_code);
+	$stmt->execute();
+	$names = $stmt->fetchALL();
+	$type = "user_username";
+	} catch (PDOException $pe) {
+	echo "i die";
+    die("Could not connect to the database $dbname :" . $pe->getMessage());
+}
+$sql = null;
+
 ?>
 
 <html>
@@ -25,7 +50,7 @@ if (isset($_SESSION['username'])){
     <div class="-right">
 	  <a href="picture.php" class="-bar-item -button">Pictures</a>
       <a href="picture-upload.php" class="-bar-item -button">Upload</a>
-      <a href="fun-image.php?picture_id=3" class="-bar-item -button">Users</a>
+      <a href="user-php" class="-bar-item -button">Users</a>
       <a href="contact.php" class="-bar-item -button">Contact</a>
 	  <a href="login.php" class="-bar-item -button"> Login</a>
 	  <a href="fun-logout.php" class="-bar-item -button"> logout</a>
@@ -42,70 +67,30 @@ if (isset($_SESSION['username'])){
     <p>here you will find a complete list of users
     </p>
   </div>
-
-  <div class="-row-padding" >
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="fun-image.php?picture_id=1" alt="John" style="width:auto; max-width:100%; max-height:70%">
-      <h3>John Doe</h3>
-      <p class="-opacity">CEO & Founder</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-	</div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="fun-image.php?picture_id=2" alt="Jane" style="width:auto; max-width:100%; max-height:70%">
-      <h3>Jane Doe</h3>
-      <p class="-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="fun-image.php?picture_id=3" alt="Mike" style="width:auto; max-width:100%; max-height:70%">
-      <h3>Mike Ross</h3>
-      <p class="-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="fun-image.php?picture_id=4" alt="Dan" style="width:auto; max-width:100%; max-height:70%">
-      <h3>Dan Star</h3>
-      <p class="-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-  </div>
-    <div class="-divider">
-  </div>
+  <?php 
+  if (isset($names[$index][$type])){
+  for ($row = 0; $row < 5; $row = $row + 1) {
+		echo "<div class=\"-row-padding\">";
+		for ($col = 0; $col < 4; $col = $col + 1) {
+		echo "<div class=\"-col l3 m6 -margin-bottom\">";
+		echo "<img src=\"fun-user-image.php?picture_user={$names[$index][$type]}\" alt={$names[$index][$type]} style=\"width:auto; max-width:100%; max-height:70%\">"; 
+		echo "<h3>".$names[$index][$type]."</h3>"; 
+		
+		echo "<button class=\"-button -light-grey -block\">Contact</button>";
+		echo "</div>";
+		if (isset($names[$index + 1][$type])) {$index = $index + 1;} else {break;}
+		}
+	echo "</div>";
+    echo "<div class=\"-divider\">";
+	echo "</div>";
+	if (isset($names[$index + 1][$type])){} else {break;}
+  }
+  } else {
+	echo "<h3>There has not been any users yet use the link in upload to preload some users</h3>";
+}
+  ?>
   
-   <div class="-row-padding" >
-    <div class="-col l3 m6 -margin-bottom" >
-      <img src="/images/team2.jpg" alt="John" style="width:auto; max-width:100%; max-height:70%">
-      <h3>John Doe</h3>
-      <p class="-opacity">CEO & Founder</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-	</div>
-    <div class="-col l3 m6 -margin-bottom ">
-      <img src="/images/team1.jpg" alt="Jane" style="width:auto; max-width:100%; max-height:70%">
-      <h3>Jane Doe</h3>
-      <p class="-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team3.jpg" alt="Mike" style="width:auto; max-width:100%; max-height:70%">
-      <h3>Mike Ross</h3>
-      <p class="-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-    <div class="-col l3 m6 -margin-bottom">
-      <img src="/images/team4.jpg" alt="Dan" style="width:auto; max-width:100%; max-height:70%">
-      <h3>Dan Star</h3>
-      <p class="-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-      <button class="-button -light-grey -block">Contact</button></p>
-    </div>
-  </div>
+   
   <div class="-divider">
   </div>
 
@@ -115,7 +100,7 @@ if (isset($_SESSION['username'])){
 
 <!-- Footer -->
 <footer class="-center -black -padding-16">
-  <p>Powered by <a href="https://sso.sdu.dk/" title="Silar17-assignment1" target="_blank" class="-hover-text-green">.css</a></p>
+  <p>Powered by <a href="https://sso.sdu.dk/" title="Silar17-assignment1" target="_blank" class="-hover-text-green">Larsen</a></p>
 </footer>
 
 </body>
