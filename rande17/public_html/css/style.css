@@ -3,32 +3,26 @@
 :root {
 
 /**** COLOR ****/
-  --text1: #BAFF29;
-  --text2: #6290C3;
-  --bg1: rgba(68, 69, 84, .8);
-  --bg2: rgba(28,16,24,.8);
-  --opt: rgba(23,33,33,.7);
+	--text1: #BAFF29;
+	--text2: #6290C3;
+	--bg1: rgba(68, 69, 84, .8);
+	--bg2: rgba(28,16,24,.8);
+	--opt: rgba(23,33,33,.7);
 
 /**** FONTS ****/
-//  --font-main: 'Permanent Marker', cursive; //okay
-//  --font-main: 'Kaushan Script', cursive; //okay til menuer
-//  --font-main: 'Monda', sans-serif; //okay
-//  --font-main: 'Vidaloka', serif; //alm
-//  --font-main: 'Rock Salt', cursive; //okay
-//  --font-main: 'Allerta Stencil', sans-serif; /*okay*/ 
-  --font-main: 'Cinzel Decorative', cursive;
+	--font-main: 'Cinzel Decorative', cursive;
 
-  --radius: 10px;
-  --border: solid var(--bg2) 3px;
-  --main-width: calc(56% - 6px - 2em);
-  --title-width: 90%;
+	--radius: 10px;
+	--border: solid var(--bg2) 3px;
+	--main-width: calc(56% - 6px - 2em);
+	--title-width: 90%;
 }
 
 .link{
 	text-align: center;
-        display: block;
-        text-decoration: none;
-        color: var(--text1);
+	display: block;
+	text-decoration: none;
+	color: var(--text1);
 }
 
 .link:hover {
@@ -77,9 +71,6 @@ body {
 	font-family: var(--font-main);	
 	font-size: 1.2em;	
 	background: url("/css/img/bg.jpg") no-repeat fixed center;
-//	background-repeat: no-repeat;
-//	background-attachment: fixed;
-//	background-position: center; 
 	color: var(--text1);
 	margin: 0;
 }

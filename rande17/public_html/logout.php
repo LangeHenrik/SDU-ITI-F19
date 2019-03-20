@@ -1,3 +1,3 @@
 <?php
-		require_once("class/loadall.php");
-		$function->logout();
+require_once("class/loadall.php");
+$function->logout();
