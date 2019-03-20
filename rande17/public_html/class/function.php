@@ -38,7 +38,7 @@ class Functions {
 	function login($user, $password){
 		global $DB;
 			$users = [];
-			$stmt = $DB->prepare("SELECT * FROM user WHERE name=? ");
+			$stmt = $DB->prepare("SELECT * FROM user WHERE username=? ");
 			$stmt->bind_param("s", $user);
 			$stmt->execute();
 			$result = $stmt->get_result();
@@ -85,17 +85,17 @@ class Functions {
 		return $salt;
 	}
 
-	function signup($username, $password, $mail){
+	function signup($username, $password, $mail, $fname, $lname, $phone, $city, $zip){
 		global $function, $DB;
 		$ID = $function->getUUID();
 		$salt = $function->getSalt();
 		echo $salt;
 		$password = hash('sha512', $password.$salt);
-                if ($stmt = $DB->prepare("INSERT INTO user (ID, name, password, salt, mail) VALUES (?,?,?,?,?)")) {
-                        $stmt->bind_param("sssss", $ID, $username, $password, $salt, $mail);
+                if ($stmt = $DB->prepare("INSERT INTO user (ID, username, password, salt, mail, fname, lname, phone, city, zip) VALUES (?,?,?,?,?,?,?,?,?,?)")) {
+                        $stmt->bind_param("ssssssssss", $ID, $username, $password, $salt, $mail, $fname, $lname, $phone, $city, $zip);
                         $stmt->execute();
                 }
-		//header("location: login.php");
+		header("location: login.php");
 	}
 
 	function getMenu(){

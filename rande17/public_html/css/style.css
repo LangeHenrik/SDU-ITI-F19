@@ -21,6 +21,7 @@
   --radius: 10px;
   --border: solid var(--bg2) 3px;
   --main-width: calc(56% - 6px - 2em);
+  --title-width: 90%;
 }
 
 .link{
@@ -65,10 +66,10 @@
 	text-align: center;
 	background: var(--opt);
 	margin-top: .5em;
-	width: calc(var(--main-width) + 2em);
+	width: calc(var(--title-width));
 	border: var(--border);
 	border-radius: var(--radius);
-	padding: 1.2em 5em 1em 5em;
+	padding: 1.2em 0 1em 0em;
 	font-size: 2.8em; 
 }
 
@@ -147,4 +148,17 @@ h1 {
 
 .menuitem a:hover {
 	color: var(--text2);
+}
+
+.imgpage {
+	max-width: 100%;
+	border-radius: 8px;
+	max-height: 100%;	
+}
+.imgdiv {
+	width: 30%; 
+	display: inline-block;
+	overflow: hidden;
+	padding: .5em;
+	height: 20%;
 }
