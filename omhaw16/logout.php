@@ -18,26 +18,31 @@ error_reporting(E_ALL);
 
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
-    echo "Session started.  ";
+  // -- DEBUG --  echo "Session started.  ";
 } else { 
-    echo "Session stopped.";
+  // -- DEBUG --   echo "Session stopped.";
     }
 
 
 if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
-    echo "login = 1";
-    echo "    You're logged in! Hello user   " . $_SESSION['userName'] . "  ";
+  // -- DEBUG --  echo "login = 1";
+  // -- DEBUG --  echo " You're logged in! ";
+    echo " Hello user   " . $_SESSION['userName'] . "  ";
 } else {
     session_unset();
-    echo "Login = 0";
-    echo "    You're logged out! Hello guest.   ";
+  // -- DEBUG --  echo "Login = 0";
+    echo " You're logged out! ";
+    echo " Hello guest. ";
 }
+
+/* - DEBUG --
 
 if(isset($_SESSION['login'])) {
     echo "Login session IS SET.";
 } else { 
     echo "Login session is NOT set.";
 }
+
 
 if(isset($_SESSION['login']) && $_SESSION['login'] == 1){
     echo "- logged in";
@@ -47,10 +52,10 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == 1){
 } else if (!isset($_SESSION['login']) && $_SESSION['login'] == 0) {
     echo "You're not logged in";
     // echo "Good bye!"; 
-}
+} */
 
 
- // this part logs you out
+ // And now, we log out:
 
     if (isset($_POST["logout"])) {
     session_unset();
