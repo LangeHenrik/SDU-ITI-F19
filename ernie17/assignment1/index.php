@@ -46,9 +46,11 @@
 				$_SESSION["username"] = $inputUsername;
 				$_SESSION["login"] = true;
 				header('location: pictures.php');
+				return;
 			}
 		}
 
+		$_SESSION["login"] = false;
 		$_SESSION["loginResult"] = "Wrong username og password!";
 	}
 
