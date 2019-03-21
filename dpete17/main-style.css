@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,body {
+    height:100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: inherit auto 1fr;
+    grid-template-areas: "header" "content" "footer";
+    grid-gap: 10px;
+    /* grid-template-columns: first auto; */
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.main-header {
+    grid-row: header;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+.sign-content {
+    grid-row: content;
+    margin: 0 auto;
+    max-width: 250px;
+    min-height: 150px;
+    padding: 10px;
+}
+
+.sign-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-content .button-container, .sign-content .sign-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 0 0 0;
+}
+
+.button-container button {
+    flex: 1;
+}
+
+.sign-content form label {
+    text-align: left;
+}
+
+.sign-content form label:after {
+    content: ":";
+}
+.sign-content form button {
+    padding: 3px 6px;
+}
+
+.sign-content form button {
+    padding: 3px 6px;
+}
+
+.sign-content span {
+    font-size: 0.8em;
+}
+
+.main-footer {
+    grid-row: footer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-footer li {
+    list-style-type: none;
+}
+
+.main-footer a {
+    color: darkslategray;
+    text-decoration: none;
+}
+
+
+
+
+.filler {
+    flex: 1;
+}
+
+.input {
+    display: grid;
+    /* grid-template-columns: minmax(80px, 1fr)  min-content; */
+    grid-template-columns: minmax(200px, auto);
+    grid-gap: 1px;
+}
+
+input {
+    padding: 5px 5px;
+}
+
+.sign-content input {
+    padding: 5px 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+
+.sign-content input:focus {
+    outline-color: transparent;
+    box-shadow: 0 0 3px darkgray;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.valid {
+    box-shadow: 0 0 3px green;
+    background-color: rgba(30, 220, 30, 0.75) !important;
+}
+
+.invalid {
+    box-shadow: 0 0 3px red;
+    background-color: rgba(220, 30, 30, 0.75) !important;
+}
