@@ -20,8 +20,13 @@ h2{
     text-align: center;
     background-color: #ffe9a8;
     font-size: 20pt;
-    padding: 0.2%;
 }
+/*.inbetweener p{
+    text-align: center;
+    background-color: #ffe9a8;
+    font-size: 20pt;
+    padding: 0.2%;
+}*/
 .fieldset-classic{
     text-align: center;
     padding: 1% 0% 1% 0%;
@@ -52,10 +57,10 @@ h2{
     min-width: 5cm;
 }
 .messagebox {
-    width: 50%;
+    width: 30%;
     margin: 0 auto;
     border: 1px solid black;
     padding: 1% 1% 1% 1%;
     margin-top: 1%;
     margin-bottom: 1%;
-  }
+}
