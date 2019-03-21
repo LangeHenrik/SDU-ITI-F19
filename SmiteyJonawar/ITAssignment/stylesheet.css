@@ -7,29 +7,36 @@
     cursor: pointer;
 }
 
+.button:hover {background-color: BLUE;}
 
-.button:hover {
-    background-color: BLUE;
+.buttonlogin{background-color: #5fe1e6;}
+.buttonlogin:hover{background-color: BLUE;}
+
+.buttonregister {background-color: #4CAF50;}
+.buttonregister:hover {background-color: #068006;}
+
+.buttonlogout {background-color: #e65a51;}
+.buttonlogout:hover {background-color: #e80005;}
+
+* {box-sizing: border-box;}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
 }
 
+.left {width: 25%;}
+.right {width: 75%;}
 
-.buttonlogin{
-    background-color: #5fe1e6;
-}
-.buttonlogin:hover {
-    background-color: BLUE;
-}
-
-.buttonregister {
-    background-color: #4CAF50;
-}
-.buttonregister:hover {
-    background-color: #068006;
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.buttonlogout {
-    background-color: #e65a51;
-}
-.buttonlogout:hover {
-    background-color: #e80005;
+img {
+    max-width: 50%;
+    max-height: 50%;
 }

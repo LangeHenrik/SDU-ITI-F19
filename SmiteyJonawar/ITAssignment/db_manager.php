@@ -53,8 +53,8 @@ function check_if_user_exist($username){
     $conn = getConnection();
     $statement = $conn->prepare('SELECT *, count(*) as NUM FROM users where username = :username');
     $statement->bindParam(':username', $username);
-    $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $statement->execute();
     $result = $statement->fetchAll();
     $conn = null;
     if ($result[0]["NUM"] > 0){
@@ -62,4 +62,36 @@ function check_if_user_exist($username){
     } else {
         return false;
     }
+}
+
+function upload_picture($username, $path, $title, $description){
+    $conn = getConnection();
+    $statement = $conn->prepare('insert into images (username, path, title, description) values (:username, :path, :title, :description);');
+    $statement->bindParam(':username', $username);
+    $statement->bindParam(':path', $path);
+    $statement->bindParam(':title', $title);
+    $statement->bindParam(':description', $description);
+
+    $statement->execute();
+    $conn = null;
+}
+
+function get_20_latest_images(){
+    $conn = getConnection();
+    $statement = $conn->prepare('SELECT * FROM images ORDER BY id DESC LIMIT 20');
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $conn = null;
+    return $result;
+}
+
+function really_good_ajax(){
+    $conn = getConnection();
+    $statement = $conn->prepare('SELECT username FROM users');
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $conn = null;
+    return $result;
 }
