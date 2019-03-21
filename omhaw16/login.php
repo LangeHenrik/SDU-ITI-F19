@@ -13,10 +13,17 @@
     $loggedin = 0;
     $loginuser = "";
     $loginpass = "";
+    $usernameErr = "";
     
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $loginuser = $_POST["user"];
         $loginpass = $_POST["pw"];
+
+        if (!preg_match("/^[a-zA-Z0-9]*$/",$_POST["user"])) {
+        $usernameErr = "User name contains illegal characters!";
+        $regexcheck = 0;
+    }
        
        require 'serverconn.php';
         
@@ -67,6 +74,8 @@
     <label for="name" style="color: blue;">Name</label>
     <br> 
     <input type="text" name="user" id="user"/> 
+    <br>
+    <span class="error"><?php echo $usernameErr;?></span>
     <br>
     <label for="password">Password</label>
     <br> 

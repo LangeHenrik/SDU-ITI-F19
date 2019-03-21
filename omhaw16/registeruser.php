@@ -12,8 +12,8 @@
     $username = "";
     $password = "";
     $confirmpw = "";
-    $usernameErr = "";
-    $usernamecheck = 1;
+    $usernameErr = $firstnameErr = $lastnameErr = $zipErr = $cityErr = $phoneErr = $zipErr = $conpwErr = "";
+    $regexcheck = 1;
     
    if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['submitregister'])) {
         $username = $_POST["username"];
@@ -25,11 +25,34 @@
         $phone = $_POST["phone"];
         $email = $_POST["email"];
     
-    if (!preg_match("/^[a-zA-Z]*$/",$_POST["username"])) {
-        $usernameErr = "User name contains illegal characters!";
-        $usernamecheck = 0;
+    if (!preg_match("/^[a-zA-Z ]*$/",$_POST["firstname"])) {
+        $firstnameErr = "First name contains can only contain letters and spaces.";
+        $regexcheck = 0;
+    } 
+
+    if (!preg_match("/^[a-zA-Z ]*$/",$_POST["lastname"])) {
+        $lastnameErr = "Last name contains can only contain letters and spaces.";
+        $regexcheck = 0;
     }
 
+    if (!preg_match("/^[a-zA-Z0-9]*$/",$_POST["username"])) {
+        $usernameErr = "User name contains illegal characters!";
+        $regexcheck = 0;
+    }
+
+    if (!preg_match("/^[a-zA-Z ]*$/",$_POST["city"])) {
+        $cityErr = "City names cannot contain numbers.";
+        $regexcheck = 0;
+    }
+
+    if (!preg_match("/^[0-9]*$/",$_POST["phone"])) {
+        $phoneErr = "Phone numbers can't contain letters.";
+        $regexcheck = 0;
+    }
+
+    if ($password !== $confirmpw) {
+        $conpwErr = "Passwords don't match!";
+    }
 
 
     /*    if ($password != $confirmpw) { 
@@ -70,7 +93,7 @@
     } */
 
 
-      if ($password === $confirmpw & !$logincheck == 0) {
+      if ($password === $confirmpw & !$regexcheck == 0) {
 
    /*     checkillegals($username);
         checkillegals($password);
@@ -113,9 +136,7 @@
             echo "Username already exists. Please log in!";
 
         } 
-        } else if (!$password === $confirmpw) {
-            echo "Passwords don't match!";
-        } else if ($logincheck = 0) {
+        } else if ($regexcheck == 0) {
             echo "Failed to register.";
         }
         }
@@ -128,9 +149,13 @@
     <br>
     <input type="text" name="firstname" id="firstname"/> 
     <br>
+    <span class="error"><?php echo $firstnameErr;?></span>
+    <br>
     <label for="lastname" >Last name</label>
     <br>
     <input type="text" name="lastname" id="lastname"/> 
+    <br>
+    <span class="error"><?php echo $lastnameErr;?></span>
     <br>
     <label for="User name" style="color: red;">User name</label>
     <br> 
@@ -142,21 +167,36 @@
     <br>
     <input type="number" name="zip" id="zip"/> 
     <br>
+    <span class="error"><?php echo $zipErr;?></span>
+    <br>
+    <label for="text" >City</label>
+    <br>
+    <input type="text" name="city" id="city"/> 
+    <br>
+    <span class="error"><?php echo $cityErr;?></span>
+    <br>
     <label for="email" >E-mail address</label>
     <br>
-    <input type="email" name="email" id="email"/> 
+    <input type="email" name="email" id="email"/>
+    <br>
+    <span class="error"><?php echo $emailErr;?></span>
     <br>
     <label for="phone" >Phone number</label>
     <br>
-    <input type="tel" name="phone" id="phone"/> 
+    <input type="tel" name="phone" id="phone"/>
+    <br>
+    <span class="error"><?php echo $phoneErr;?></span>
     <br>
     <label for="password" style="color: red;">Password</label>
     <br> 
     <input type="password" name="password" id="password" required/> 
     <br>
+    <br>
     <label for="confirmpw" style="color: red;" >Confirm password</label>
     <br>
     <input type="password" name="confirmpw" id="confirmpw" required/> 
+    <br>
+    <span class="error"><?php echo $conpwErr;?></span>
     <br>
     <input type="submit" name="submitregister" id="submitregister"/> 
 </form>    
