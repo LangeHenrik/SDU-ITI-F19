@@ -35,8 +35,8 @@
             $respons = $respons . "Invalid extension! Only .jpeg, .jpg and .png files allowed<br>";
         }
 
-        if ($fileSize > 1000000) {
-            $respons = $respons . "The file is too large!<br>";
+        if ($fileSize > 5000000) {
+            $respons = $respons . "The file is too large! (must be less than 5 MB) <br>";
         }
 
         if ($respons === "") {
@@ -56,7 +56,7 @@
                 $username,
                 $password,
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-                
+
                 $stmtUploadImage = $conn->prepare("INSERT INTO picture (picture_user_id, image_name, header, description) VALUES (:userID, :imageName, :header, :description)");
 				$stmtUploadImage->bindparam(':userID', $userId);
                 $stmtUploadImage->bindparam(':imageName', $uploadFileName);
