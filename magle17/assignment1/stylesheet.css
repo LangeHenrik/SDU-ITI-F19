@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+h1{
+    padding: 1% 1% 0.5%;
+    text-align: center;
+}
+h2{
+    padding: 0.5% 1% 1%;
+    text-align: center;
+}
+.base{
+    width: 100%;
+    background-color: #ffe9a8;
+}
+.inbetweener{
+    width: 100%;
+    text-align: center;
+    background-color: #ffe9a8;
+    font-size: 20pt;
+    padding: 0.2%;
+}
+.fieldset-classic{
+    text-align: center;
+    padding: 1% 0% 1% 0%;
+}
+.fieldset-classic legend{
+    text-align: center;
+    padding: 0% 0.2% 0% 0.2%;
+    font-size: 13pt;
+}
+.fieldset-classic input{
+    text-align: center;
+}
+.form-classic{
+    padding: 0.5% 1% 0.5% 1%;
+}
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 16pt;
+    background-color: lightblue;
+    text-align: center;
+}
+.submit-button{
+    width: 20%;
+    font-size: 18pt;
+    min-width: 5cm;
+}
+.messagebox {
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 1% 1% 1% 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
