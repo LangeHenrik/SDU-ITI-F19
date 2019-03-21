@@ -6,9 +6,19 @@
 
 <?php 
 
+include 'logout.php';
+
 $imgtitle = "";
 $imgdesc = "";
 $imgname = "";
+$postedby = "";
+
+if(session_status() == PHP_SESSION_NONE) {
+session_start();
+}
+$postedby = $_SESSION["userID"];
+
+if ($_SESSION["login"] == 1) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['submitimg'])) {
 
@@ -20,6 +30,7 @@ $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
 
 
 
@@ -61,12 +72,30 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename($_FILES["fileToUpload"]["name"]). " has been uploaded.";
-        
+
+        require 'serverconn.php';
+
+        $sqlinsimg="INSERT INTO posts (postedby, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby','$imgname', '$imgtitle', '$imgdesc', NOW())";
+
+
+ //       echo $sqlinsimg;
+
+        if ($conn->query($sqlinsimg)) {
+        //    echo " Upload to database done! ";
+            $conn->close();
+            } else {
+                echo "DB-upload not done. " . $conn->error();
+            }
+
+     //       echo "database stuff done.";
 
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+} 
+} else if ($_SESSION['login'] == 0) {
+    echo "Please log in, before you upload.";
 }
 ?>
 
