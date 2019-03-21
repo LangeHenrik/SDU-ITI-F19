@@ -4,9 +4,8 @@ session_start();
 if (!isset($_SESSION['login_user'])) {
     header("location: login.php");
 }
-
+require 'dbmanager.php';
 /* INSERT POINT*/
-
 
 /*INSERT POINT*/
 ?>
@@ -16,9 +15,10 @@ if (!isset($_SESSION['login_user'])) {
 <head>
     <title>AJAX</title>
     <link href="mystylesheet.css" type="text/css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-<h1>Index</h1>
+<h1>Ajax</h1>
 <nav id="nav">
     <a href="index.php">INDEX</a>
     <a href="users.php">USERS</a>
