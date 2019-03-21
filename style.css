@@ -1,7 +1,7 @@
 body{
     margin: 0; 
-    padding: 0; 
-    background: url(pic1.jpg); 
+    padding: 0;
+    background: url(1.jpg);
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
@@ -14,7 +14,7 @@ body{
     color: #fff; 
     top: 50%;
     left: 50%; 
-    position: absolute; 
+    position: absolute;
     transform: translate(-50%, -50%); 
     box-sizing: content-box;
     padding: 70px 300px; 
@@ -28,11 +28,20 @@ body{
     top: -50px; 
 }
 
+.topleft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+    color: aliceblue;
+}
+
 h1{
     margin: 0;
     padding: 0 0 200px; 
     text-align: center; 
-    font-size: 22px; 
+    font-size: 22px;
+    color: aliceblue;
 }
 
 .loginbox p{
@@ -54,7 +63,7 @@ h1{
     outline: none; 
     height: 40px;
     color: #fff; 
-    font-size: 16px; 
+    font-size: 16px;
 }
 
 .loginbox input[type="button"]
