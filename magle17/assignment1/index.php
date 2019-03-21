@@ -23,7 +23,7 @@ try{
 if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
     $usernameLogin = htmlentities(filter_input(INPUT_POST, "login-username", FILTER_SANITIZE_STRING));
     $passwordLogin = htmlentities(filter_input(INPUT_POST, "login-password", FILTER_SANITIZE_STRING));
-    $preparedLoginCheck->bindparam(':username', $userNameLogin);
+    $preparedLoginCheck->bindparam(':username', $usernameLogin);
     $preparedLoginCheck->bindparam(':password', $passwordLogin);
     $preparedLoginCheck->execute();
     $preparedLoginCheck->setFetchMode(PDO::FETCH_ASSOC);
@@ -48,7 +48,7 @@ if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
     $emailAdressInput = htmlentities(filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING));
     $phoneNumberInput = htmlentities(filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING));
     
-    $preparedGetUsername->bindparam(':username', $userNameInput);
+    $preparedGetUsername->bindparam(':username', $usernameInput);
     $preparedGetUsername->execute();
     $preparedGetUsername->setFetchMode(PDO::FETCH_ASSOC);
     $result = $preparedGetUsername->fetchAll();
@@ -58,7 +58,7 @@ if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
       $_SESSION['registerMessage'] = "EFTERABER! Dit brugernavn er allerede taget! Eller også er adgangskoden for kort";
     }
     else {
-      $prepareInsertUser->bindparam(':username', $userNameInput);
+      $prepareInsertUser->bindparam(':username', $usernameInput);
       $prepareInsertUser->bindparam(':password', $passwordInput);
       $prepareInsertUser->bindparam(':lastname', $lastNameInput);
       $prepareInsertUser->bindparam(':firstname', $frontNameInput);
