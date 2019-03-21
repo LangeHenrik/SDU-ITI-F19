@@ -1,4 +1,9 @@
 <?php
+/**
+ * DISCLAIMER:
+ * The following w3schools guide was used as reference:
+ * https://www.w3schools.com/php/php_file_upload.asp
+ */
 require "dbmanager.php";
 
 if (!empty($_POST)) {
@@ -59,7 +64,6 @@ if (!empty($_POST)) {
     <a href="index.php">INDEX</a>
     <a href="users.php">USERS</a>
     <a href="uploadimage.php">UPLOAD</a>
-    <a href="ajax.php">AJAX</a>
     <a href="logout.php">LOGOUT</a>
 </nav>
 <br><br><br>
