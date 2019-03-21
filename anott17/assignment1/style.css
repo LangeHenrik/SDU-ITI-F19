@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mainDiv {
+  width: 100%;
+  background-color: lightblue;
+}
+
+.mainDiv h1 {
+  text-align: center;
+  padding: 30px 30px 20px;
+  font-family: arial;
+  font-size: 50px;
+  color: #111;
+  line-height: 44px;
+}
+
+.pictureDiv {
+  width: 100%;
+  background-color: lightblue;
+}
+
+.pictureDiv h1 {
+  text-align: center;
+  padding: 0px 30px 20px;
+  font-family: arial;
+  font-size: 50px;
+  color: #111;
+  line-height: 44px;
+}
+
+.registerDiv {
+  background-color: white;
+
+}
+
+.registerErrorDiv {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 10px 10px 10px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.loginErrorDiv {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 10px 10px 10px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.loginDiv {
+  background-color: white;
+}
+
+.form-register {
+  text-align: center;
+  padding: 50px 50px 50px 50px;
+}
+
+.uploadPictureForm {
+  text-align: center;
+}
+
+.logOutForm {
+  text-align: right;
+  padding: 10px 10px 0px 0px;
+}
+
+.form-login{
+  text-align: center;
+  padding: 50px 50px 50px 50px;
+}
+
+.fieldset-register {
+  background-color: white;
+}
+
+.fieldset-login {
+  background-color: white;
+}
+
+.menuDiv {
+  padding: 22px;
+  background-color: LightSteelBlue;
+  color: white;
+  text-align: center;
+}
+
+.menuButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 6px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 35px;
+  font-family: arial;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+
+.mainButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 4px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-family: arial;
+  margin: 10px 1px;
+  cursor: pointer;
+}
+
+.logOutButton {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 2px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 35px;
+  font-family: arial;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.usersTableDiv {
+  padding: 30px;
+}
+
+.usersTable {
+  margin: 0 auto;
+  color: #333;
+  font-family: Arial;
+  font-size: 30;
+  width: 640px;
+  border-collapse: collapse; border-spacing: 0;
+}
+
+.usersTable th, .usersTable td {
+  border: 1px solid transparent;
+  height: 30px;
+}
+
+.usersTable th {
+  background: #DFDFDF;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.usersTable td {
+  background: #FAFAFA;
+  text-align: center;
+  font-size: 25px;
+}
+
+.usersTable tr {
+  border: solid;
+  border-width: 1px 0;
+}
+
+@media only screen and (min-width: 700px) {
+  .registerDiv {
+    width: 50%;
+    float: left;
+  }
+
+  .loginDiv {
+    width: 50%;
+    float: right;
+  }
+
+  .form-register {
+    text-align: center;
+    padding: 50px 50px 50px 50px;
+  }
+
+  .form-login{
+    text-align: center;
+    padding: 50px 50px 50px 50px;
+  }
+
+}
+
+
+@media only screen and (min-width: 1000px) {
+  .registerDiv {
+    width: 50%;
+    float: left;
+  }
+
+  .loginDiv {
+    width: 50%;
+    float: right;
+  }
+
+  .form-register {
+    text-align: center;
+    padding: 50px 100px 50px 100px;
+  }
+
+  .form-login{
+    text-align: center;
+    padding: 50px 100px 50px 100px;
+  }
+
+  .menuButton {
+    font-size: 18px;
+
+  }
+
+  .logOutButton {
+    font-size: 14px;
+  }
+
+  .usersTable th {
+    font-size: 14px;
+  }
+
+  .usersTable td {
+    font-size: 14px;
+  }
+
+}
+
+@media only screen and (min-width: 1300px) {
+  .registerDiv {
+    width: 50%;
+    float: left;
+  }
+
+  .loginDiv {
+    width: 50%;
+    float: right;
+  }
+
+  .form-register {
+    text-align: center;
+    padding: 50px 200px 50px 200px;
+  }
+
+  .form-login{
+    text-align: center;
+    padding: 50px 200px 50px 200px;
+  }
+}
