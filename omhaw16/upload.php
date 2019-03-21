@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title> PhotoPost Upload an image </title>
-</head>
+<head> <title> Post a photo! </title> </head>
+
 <body>
-<?php
 
-require_once 'serverconn.php';
+<?php 
 
-include 'logout.php';
+$imgtitle = "";
+$imgdesc = "";
+$imgname = "";
 
-// -- DEBUG -- echo "Page loaded. -debug-flag-omhaw16- ";
+if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['submitimg'])) {
 
-$imagename=$_FILES["fileToUpload"]["name"]; 
+$imgtitle = $_POST["imgtitle"];
+$imgdesc = $_POST["imgdesc"];
+$imgname = basename($_FILES["fileToUpload"]["name"]);
 
-//Get the content of the image and then add slashes to it 
-$theimage=addslashes (file_get_contents($_FILES['fileToUpload']['tmp_name']));
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['submitimg'])) {
-        
-        // Define img desc & title placeholders
-        $imgtitle = $_POST["imgtitle"];
-        $imgdesc = $_POST["imgdesc"];
-
-        if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
-        // -- DEBUG -- echo "Hello, " . $_SESSION['userName'];
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
-    // -- DEBUG -- echo "Image name: " . $imagename;
 
-            //Insert the image name and image into DB
-
-    $postedby = $_SESSION['userName'];
-        
-    $sqlinsimg="INSERT INTO posts (postedby, image, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby', '$theimage','$imagename', '$imgtitle', '$imgdesc', NOW())";
-
-
-    if ($conn->query($sqlinsimg)) {
-        echo " Upload done! ";
-        $conn->close();
-        } else {
-            echo " Upload not done. " . $conn->error;
-        }
-
-} else if ($_SESSION['login'] == 0) {
-    echo "Please log in, before you upload.";
-}
+// Check if image file is a actual image or fake image
+if(isset($_POST["submitimg"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
 }
 
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename($_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        
+
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+}
 ?>
 
 <h1> Upload picture </h1>
@@ -59,7 +79,6 @@ $theimage=addslashes (file_get_contents($_FILES['fileToUpload']['tmp_name']));
     <input type="file" name="fileToUpload" id="fileToUpload">
     <br>
     <br>
-
     <label for="imgtitle">Image title</label>
     <br>
     <input type="text" name="imgtitle" id="imgtitle">
