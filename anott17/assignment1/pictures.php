@@ -31,12 +31,6 @@
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
   }
-  //
-  // $getPictureStmt->execute();
-  // $getPictureStmt->setFetchMode(PDO::FETCH_ASSOC);
-  // $result = $getPictureStmt->fetchAll();
-
-  $targetDir = '../uploads/';
 ?>
 
 <!DOCTYPE html>
@@ -68,8 +62,7 @@
       </a>
     </div>
     <div class="pictureContainer">
-      <?php
-      ?>
+      <img src="pictures/test.jpg" alt="">;
     </div>
   </body>
 </html>
