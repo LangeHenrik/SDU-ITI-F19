@@ -5,6 +5,7 @@
 
 body {
     margin: 0;
+    margin-bottom: 90px;
 }
 
 /******      Index Page      ******/
@@ -75,7 +76,7 @@ form button {
     }
 }
 
-/******      Misc      ******/
+/******      Header      ******/
 header {
     background-color: #F1F1F1;
     padding-top: 20px;
@@ -96,7 +97,6 @@ header nav ul li {
     display: inline-block;
     float: none;
     list-style: none;
-    /* margin: 0px 5px; */
     border-radius: 4px;
 }
 
@@ -111,6 +111,27 @@ header nav ul li:hover {
     background-color: #DDD;
 }
 
+@media only screen and (min-width: 800px) {
+    .header-title {
+        margin-left: 20px;
+    }
+
+    header {
+        text-align: left;
+        padding-bottom: 20px;
+    }
+
+    header nav {
+        float: right;
+        margin-right: 20px;
+    }
+
+    header nav ul li {
+        float: left;
+    }
+}
+
+/******      Footer      ******/
 .footer {
     position: fixed;
     bottom: 0%;
@@ -138,23 +159,37 @@ header nav ul li:hover {
     background-color: #DDD;
 }
 
-@media only screen and (min-width: 800px) {
-    .header-title {
-        margin-left: 20px;
-    }
+/******      Picturepage      ******/
+.block-pictures {
+    text-align: center;
+}
 
-    header {
-        text-align: left;
-        padding-bottom: 20px;
-    }
+.header {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
 
-    header nav {
-        float: right;
-        margin-right: 20px;
-    }
+.block-pictures p {
+    font-family: Verdana;
+    padding: 0 5%;
+}
 
-    header nav ul li {
-        float: left;
+.block-pictures img {
+    max-width: 90%;
+}
+
+.description {
+    margin-top: 5px;
+}
+
+/******      Picturepage      ******/
+.form-upload {
+    max-width: 80%;
+}
+
+@media only screen and (min-width: 375px) {
+    .form-upload {
+        max-width: 300px;
     }
 }
 
