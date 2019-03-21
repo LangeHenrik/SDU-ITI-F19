@@ -1,0 +1,61 @@
+p {
+  color: red;
+}
+
+#header1 {
+  text-align: center;
+  font-family: "Arial";
+  border: dotted;
+  background-color: orangered;
+  border-radius: 25px;
+  margin-top: 50px;
+}
+
+#para1 {
+  color: green;
+}
+
+#tab1 {
+  border: 2px solid;
+}
+
+.user_box {
+  text-align: center;
+  font-family: "Arial";
+  border: solid blue;
+  background-color: lightgray;
+  border-radius: 25px;
+  margin: auto;
+}
+
+.username {
+  display: inline-block;
+  margin: 20px;
+  align-content: center;
+}
+
+.user_text {
+  display: inline-block;
+  border: top right;
+  margin-top: 20px;
+}
+
+.item {
+  width: auto;
+  height: auto;
+}
+
+#header2 {
+  text-align: justify;
+}
+
+.label{
+  color: lightgray;
+}
+#form2{
+  margin-top: 30px;
+}
+
+body {
+  background: midnightblue;
+}
