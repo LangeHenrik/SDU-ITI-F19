@@ -1,0 +1,1 @@
+database dump is in the DB folder in the same root as this.
