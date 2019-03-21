@@ -18,7 +18,13 @@ try {
     $sql = "CREATE TABLE IF NOT EXISTS Users (
     id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(31) NOT NULL,
-    password VARCHAR(128) NOT NULL
+    password VARCHAR(128) NOT NULL,
+    firstname VARCHAR(128) NOT NULL,
+    lastname VARCHAR(128) NOT NULL,
+    zipcode VARCHAR(10) NOT NULL,
+    city VARCHAR(128) NOT NULL,
+    email VARCHAR(128) NOT NULL,
+    phone VARCHAR(128) NOT NULL
     )";
     $conn->exec($sql);
     // echo "Table 'Users' created successfully;<br>";
