@@ -1,7 +1,7 @@
 <?php
 // Include config file
 require_once "config.php";
- 
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
@@ -143,17 +143,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="username" required value="<?php echo $username; ?>" >
 
+
             <label for="phone"><b>Phone</b></label>
             <input type="text" placeholder="Enter phone number" name="phone" required>
 
             <label for="firstname"><b>First Name</b></label>
             <input type="text" placeholder="firstname" name="firstname" required>
 
+
+
             <label for="lastname"><b>Last Name</b></label>
             <input type="text" placeholder="lastname" name="lastname" required>
 
             <label for="city"><b>City</b></label>
-            <input type="text" placeholder="city" name="city" required>
+            <span id="txtHint"></span>
+            <input placeholder="City" type="text" onkeyup="showHint(this.value)">
+
+            <script>
+                function showHint(str) {
+                    if (str.length == 0) {
+                        document.getElementById("txtHint").innerHTML = "";
+                        return;
+                    } else {
+                        var xmlhttp = new XMLHttpRequest();
+                        xmlhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                document.getElementById("txtHint").innerHTML = this.responseText;
+                            }
+                        };
+                        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+                        xmlhttp.send();
+                    }
+                }
+            </script>
+
+
+
+            <! -- Ajax functionality -->
+            <span id="txtHint"></span></p>
 
             <label for="zipcode"><b>Zip</b></label>
             <input type="text" placeholder="zipcode" name="zip" required>
