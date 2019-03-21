@@ -26,7 +26,6 @@
         $password,
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-        // $stmtGetPictures = $conn->prepare("SELECT picture_user_id, image_name, header, description FROM picture ORDER BY image_name DESC LIMIT 20");
         $stmtGetPictures = $conn->prepare("SELECT picture_user_id, image_name, header, description
             FROM (SELECT picture_user_id, image_name, header, description FROM picture ORDER BY image_name DESC LIMIT 20) sub ORDER BY image_name ASC");
 
@@ -76,7 +75,6 @@
                         echo "<p class='header'>$header</p>";
                         echo "<img src='uploads/$imageName'>";
                         echo "<p class='description'>$description (User: $pictureAuthor)</p>";
-                        // echo "<p class='date'>date('d-m-Y', $date)</p>";
                         echo "<p class='date'>Uploaded: $date</p>";
                         echo "<hr>";
                     echo "</div>";
