@@ -64,7 +64,12 @@
 }
 
 .uploadPictureForm {
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 30px;
   text-align: center;
+  background-color: #FAFAFA;
+  width: 500px;
 }
 
 .logOutForm {
@@ -167,6 +172,39 @@
 .usersTable tr {
   border: solid;
   border-width: 1px 0;
+}
+
+.pictureContainer {
+  margin: 0 auto;
+  text-align: center;
+  width: 600px;
+}
+
+.titleP {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Arial;
+}
+
+.personP {
+  font-size: 16px;
+  font-family: Arial;
+}
+
+.descP {
+  font-size: 16px;
+  font-family: Arial;
+}
+
+.picturesP {
+  font-size: 13px;
+  font-family: Arial;
+  text-decoration: underline;
+}
+
+.picturesImg {
+  width: 350px;
+  height: auto;
 }
 
 @media only screen and (min-width: 700px) {

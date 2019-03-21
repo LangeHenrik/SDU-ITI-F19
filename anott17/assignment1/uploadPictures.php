@@ -19,8 +19,8 @@
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    $insertPictureStmt = $conn->prepare("INSERT INTO picture(person, title, description, picture_file)
-                                      VALUES(:person, :title, :description, :picture_file)");
+    $insertPictureStmt = $conn->prepare("INSERT INTO picture(person, title, description, picture_file, date_uploaded)
+                                      VALUES(:person, :title, :description, :picture_file, now())");
 
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -34,7 +34,12 @@
     $file_size = $_FILES['image']['size'];
     $file_tmp = $_FILES['image']['tmp_name'];
     $file_type = $_FILES['image']['type'];
-    $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+    $tmp = explode('.',$_FILES['image']['name']);
+    $file_ext=strtolower(end($tmp));
+
+    $dotString = '.';
+
+    $hashedPicFile = hash("sha1", $file_name).$dotString.$file_ext;
 
     $extensions= array("jpeg","jpg","png");
 
@@ -47,12 +52,14 @@
     }
 
     if(empty($errors)==true){
-      move_uploaded_file($file_tmp, "pictures/".$file_name);
+      ///move_uploaded_file($file_tmp, "pictures/".$file_name);
+      move_uploaded_file($file_tmp, "pictures/".$hashedPicFile);
 
       $userInput = $_SESSION['userNameGlobal'];
       $pictureTitleInput = htmlentities(filter_input(INPUT_POST, "pictureName", FILTER_SANITIZE_STRING));
       $pictureDescInput = htmlentities(filter_input(INPUT_POST, "pictureDesc", FILTER_SANITIZE_STRING));
-      $imageInput = $file_name;
+      //$imageInput = $file_name;
+      $imageInput = $hashedPicFile;
 
       $insertPictureStmt->bindparam(':person', $userInput);
       $insertPictureStmt->bindparam(':title', $pictureTitleInput);
@@ -62,9 +69,7 @@
     } else {
       print_r($errors);
     }
-
   }
-
   $conn = null;
 ?>
 
@@ -82,7 +87,7 @@
         <form class="logOutForm" method="post">
           <button name="logout" class="logOutButton">Log out</button>
         </form>';
-        echo '<h1>Upload pictures 2</h1>';
+        echo '<h1>Upload pictures</h1>';
       ?>
     </div>
     <div class="menuDiv">
@@ -110,8 +115,13 @@
 
       <label for="pictureDesc">Picture description</label>
       <br>
-      <input type="text" name="pictureDesc">
+      <textarea name="pictureDesc" rows="5" cols="50"></textarea>
       <br>
+
+      <!-- <label for="pictureDesc">Picture description</label>
+      <br>
+      <input type="text" name="pictureDesc">
+      <br> -->
 
       <input type="submit" value="Upload" name="submit" class="mainButton">
     </form>
