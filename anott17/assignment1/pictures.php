@@ -20,13 +20,11 @@
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    $getPictureStmt = $conn->prepare("SELECT person, title, description, picture_file FROM picture LIMIT 20");
+    $getPictureStmt = $conn->prepare("SELECT person, title, description, picture_file FROM picture ORDER BY date_uploaded DESC LIMIT 20");
 
     $queryExecuted = $getPictureStmt->execute();
     $getPictureStmt->setFetchMode(PDO::FETCH_ASSOC);
     $result = $getPictureStmt->fetchAll();
-
-    $target_dir = '.../pictures/';
 
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -62,7 +60,27 @@
       </a>
     </div>
     <div class="pictureContainer">
-      <img src="pictures/test.jpg" alt="">;
+        <?php
+        foreach ($result as $value)  {
+          $picTmp = $value['picture_file'];
+          $personTmp = $value['person'];
+          $titleTmp = $value['title'];
+          $descTmp = $value['description'];
+          echo '<br>';
+          echo "<img src='pictures/$picTmp' alt='' class='picturesImg'>";
+          echo '<br>';
+          echo '<p class = "picturesP">Title</p>';
+          echo "<p class='titleP'>$titleTmp</p>";
+          echo '<br>';
+          echo '<p class = "picturesP">Posted by</p>';
+          echo "<p class ='personP'>$personTmp</p>";
+          echo '<br>';
+          echo '<p class = "picturesP">Description</p>';
+          echo "<p class='descP'>$descTmp</p>";
+          echo '<br>';
+          echo '<hr>';
+        }
+        ?>
     </div>
   </body>
 </html>
