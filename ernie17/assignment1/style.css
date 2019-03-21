@@ -178,8 +178,22 @@ header nav ul li:hover {
     max-width: 90%;
 }
 
+.block-pictures hr {
+    max-width: 90%;
+}
+
+.block-pictures :last-child > hr {
+    display: none;
+}
+
 .description {
+    margin: 5px 0;
+}
+
+.date {
     margin-top: 5px;
+    font-size: 14px;
+    font-style: italic;
 }
 
 /******      Picturepage      ******/
