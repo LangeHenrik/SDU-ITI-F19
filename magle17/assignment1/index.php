@@ -7,7 +7,7 @@ $_SESSION['loginMessage']='Prøv igen, så kan du se blærede billeder';
 
 require_once 'db_config.php';
 try{
-    $conn = new PDO("mysql:host=$servername;dbname=$db_name;port=$port",
+    $conn = new PDO("mysql:host=$servername;dbname=$db_name",
     $username,
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
