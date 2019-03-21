@@ -9,7 +9,7 @@
         $password,
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-        $stmtGetUsers = $conn->prepare("SELECT username, firstname, lastname FROM picture_user");
+        $stmtGetUsers = $conn->prepare("SELECT picture_user_id, username, firstname, lastname FROM picture_user");
 
         $stmtGetUsers->execute();
         $stmtGetUsers->setFetchMode(PDO::FETCH_ASSOC);
@@ -18,6 +18,7 @@
 
         foreach ($resultGetUsers as $value) {
             if ($_SESSION['username'] === $value["username"]) {
+                $userId = $value['picture_user_id'];
                 $firstname = $value["firstname"] . " ";
                 $lastname = $value["lastname"];
                 break;

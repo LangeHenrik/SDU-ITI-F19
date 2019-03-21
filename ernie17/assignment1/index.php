@@ -94,8 +94,8 @@
 					$stmtAddUser->bindparam(':phone', $inputPhone);
 
 					$stmtAddUser->execute();
-					$stmtAddUser->setFetchMode(PDO::FETCH_ASSOC);
-					$resultAddUser = $stmtAddUser->fetchAll();
+					// $stmtAddUser->setFetchMode(PDO::FETCH_ASSOC);
+					// $resultAddUser = $stmtAddUser->fetchAll();
 
 				} catch (PDOexception $e) {
 					echo "Error: " . $e->getMessage();
