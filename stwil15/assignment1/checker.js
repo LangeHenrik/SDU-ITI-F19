@@ -2,32 +2,35 @@ let attempts = 3;
 
 function loginCheck(){
     if (attempts <= 0 ){
-        // print fuck you you forgot your password
+        document.getElementById("username").disabled = true;
+        document.getElementById("password").disabled = true;
+        document.getElementById("submit").disabled = true;
+        return false;
     } else {
         let password = document.getElementById("password").value;
-        let name = document.getElementById("name");
+        let name = document.getElementById("username");
         attempts -= 1;
-        if (password != 'null' && name != null) {
+        if (password != 'null' && name != "null") {
             alert("login successful")
             document.location.href = "user_page.html";
             return true;
         } else {
+            document.location.href = "login_page.html";
             document.getElementById('loginlabel').innerHTML = 'Error logging in.';
-            return true;
+            return false;
         }
     }
 }
 
 function register(){
     if (usernameCheck() && passwordCheck()){
-        document.location.href = "login_page.html";
         return true;
     }
 }
 
 
 function usernameCheck(){
-    let name = document.getElementById("name");
+    let name = document.getElementById("username");
     if (name.length < 2){
         alert("username is not long enough");
         return false;
@@ -54,6 +57,18 @@ function passwordCheck(){
         }
     } else {
         alert("Passwords do not match");
+        return false;
+    }
+}
+
+function emailCheck(){
+    let email = document.getElementById("email").value;
+    let re = /\S+@\S+\.\S+/;
+    if (re.test(String(email).toLowerCase())) {
+        document.getElementById("emailval").innerText = " ";
+        return true;
+    } else {
+        document.getElementById("emailval").innerText = "The e-mail can't be... that.";
         return false;
     }
 }

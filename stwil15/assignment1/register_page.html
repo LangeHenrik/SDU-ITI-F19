@@ -11,39 +11,39 @@
             <form onsubmit="return register();" method=”post” >
                 <label for="username"> username</label>
                 <br>
-                <input type="text" name="username" id="username"/>
+                <input type="text" name="username" id="username" required/>
                 <br>
                 <label for="password">password</label>
                 <br>
-                <input type="password" name="password" id="password"/>
+                <input type="password" name="password" id="password" required/>
                 <br>
                 <label for="password2">repeat password</label>
                 <br>
-                <input type="password" name="password2" id="password2"/>
+                <input type="password" name="password2" id="password2" onblur="passwordCheck()" required/>
                 <br>
                 <label for="firstname"> First name</label>
                 <br>
-                <input type="text" name="firstname" id="firstname" />
+                <input type="text" name="firstname" id="firstname" required/>
                 <br>
                 <label for="lastname"> Last name</label>
                 <br>
-                <input type="text" name="lastname" id="lastname" />
+                <input type="text" name="lastname" id="lastname" required/>
                 <br>
                 <label for="zip"> zip</label>
                 <br>
-                <input type="number" name="zip" id="zip" />
+                <input type="number" name="zip" id="zip" required/>
                 <br>
                 <label for="city"> city</label>
                 <br>
-                <input type="text" name="city" id="city" />
+                <input type="text" name="city" id="city" required/>
                 <br>
                 <label for="email"> Email</label>
                 <br>
-                <input type="text" name="email" id="email" />
+                <input type="text" id="email" onblur="emailCheck()" required/><label id="emailval"> </label>
                 <br>
                 <label for="phone"> Phone number</label>
                 <br>
-                <input type="text" name="phone" id="phone" />
+                <input type="text" name="phone" id="phone" required/>
                 <br>
                 <input type="submit" name="submit" id="submit"/>
             </form>
