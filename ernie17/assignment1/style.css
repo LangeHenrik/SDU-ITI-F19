@@ -209,7 +209,7 @@ header nav ul li:hover {
 
 /******      Userpage      ******/
 .table-user {
-    margin: 0 auto;
+    margin: 20px auto;
     border-collapse: collapse;
     font-family: Verdana;
 }
@@ -225,4 +225,22 @@ header nav ul li:hover {
 
 .table-user tr:nth-child(even) {
     background-color: #F2F2F2;
+}
+
+.block-search {
+    text-align: center;
+}
+
+.block-search p {
+    font-family: Catamaran;
+    margin: 0;
+}
+
+.header-search {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.userpage-hr {
+    max-width: 90%;
 }
