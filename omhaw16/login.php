@@ -14,7 +14,6 @@
     $loginuser = "";
     $loginpass = "";
     $usernameErr = "";
-    
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $loginuser = $_POST["user"];

@@ -9,6 +9,13 @@
         
         <?php
     
+    function test_input($entry) {
+        $data = trim($entry);
+        $data = stripcslashes($entry);
+        $data = htmlspecialchars($entry);
+        return $entry;
+    }
+
     $username = "";
     $password = "";
     $confirmpw = "";
@@ -94,6 +101,10 @@
 
 
       if ($password === $confirmpw & !$regexcheck == 0) {
+
+        $password = test_input($password);
+        $confirmpw = test_input($confirmpw);
+        $username = test_input($username);
 
    /*     checkillegals($username);
         checkillegals($password);
