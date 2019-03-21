@@ -1,8 +1,8 @@
 
 <?php
 
-$_SESSON['registerMessage']='Prøv igen, så kan du se blærede billeder';
-$_SESSION['loginMessage']='Prøv igen, så kan du se blærede billeder';
+$_SESSION['registerMessage']=' ';
+$_SESSION['loginMessage']=' ';
 
 
 require_once 'db_config.php';
@@ -107,9 +107,9 @@ $conn=null;
                   <br>
                   <input class="submit-button" type="submit" id="login" value="Login" name="login">
                   <div class="messagebox">
-                    <p></p>
+                    
                     <?php 
-                    $_SESSION['loginMessage']='Prøv igen, så kan du se blærede billeder';
+                    //$_SESSION['loginMessage']='Prøv igen, så kan du se blærede billeder';
                     echo''.$_SESSION['loginMessage'];
                     $_SESSION['loginMessage'] = ' ';
                     ?>
@@ -117,8 +117,8 @@ $conn=null;
               </fieldset>
           </form>
       </div>
-      <div>
-          <p class="inbetweener">
+      <div class="inbetweener">
+          <p >
               <b>Eller</b>
           </p>
       </div>
@@ -165,9 +165,8 @@ $conn=null;
                         <br>
                         <input type="submit" class="submit-button" id="register" value="Opret Bruger" name="register">
                         <div class="messagebox">
-                            <p></p>
                             <?php 
-                            $_SESSION['registerMessage']='Noget gik galt. Kontakt ham med de blærede billeder for at få hjælp.';
+                            //$_SESSION['registerMessage']='Noget gik galt. Kontakt ham med de blærede billeder for at få hjælp.';
                             echo''.$_SESSION['registerMessage'];
                             $_SESSION['registerMessage'] = ' ';?>
                         </div>
