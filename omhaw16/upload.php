@@ -17,9 +17,11 @@ $imagename=$_FILES["fileToUpload"]["name"];
 //Get the content of the image and then add slashes to it 
 $theimage=addslashes (file_get_contents($_FILES['fileToUpload']['tmp_name']));
 
-$anumber = 1;
-
     if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['submitimg'])) {
+        
+        // Define img desc & title placeholders
+        $imgtitle = $_POST["imgtitle"];
+        $imgdesc = $_POST["imgdesc"];
 
         if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         // -- DEBUG -- echo "Hello, " . $_SESSION['userName'];
@@ -29,9 +31,9 @@ $anumber = 1;
 
             //Insert the image name and image into DB
 
-    $fullimagename = $_SESSION['userName'] . '-' . $imagename;
+    $postedby = $_SESSION['userName'];
         
-    $sqlinsimg="INSERT INTO posts (image, fileName, fileDate) VALUES('$theimage','$fullimagename', NOW())";
+    $sqlinsimg="INSERT INTO posts (postedby, image, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby', '$theimage','$imagename', '$imgtitle', '$imgdesc', NOW())";
 
 
     if ($conn->query($sqlinsimg)) {
@@ -48,9 +50,26 @@ $anumber = 1;
 
 ?>
 
+<h1> Upload picture </h1>
+
+<p> Here you can upload any image you desire! </p>
+
 <form action="upload.php" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
+    <br>
+    <br>
+
+    <label for="imgtitle">Image title</label>
+    <br>
+    <input type="text" name="imgtitle" id="imgtitle">
+    <br>
+    <br>
+    <label for="imgtitle">Additional text</label>
+    <br>
+    <textarea name="imgdesc" id="imgdesc"> </textarea>
+    <br>
+    <br>
     <input type="submit" value="Upload Image" name="submitimg">
 </form>
 
