@@ -21,7 +21,7 @@
 
 include "logout.php";
 
-require_once 'serverconn.php';
+require 'serverconn.php';
 
 $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY postID DESC";
 
@@ -49,6 +49,28 @@ $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY p
 } else {
 	echo "No posts yet.";
 }
+  
+  require 'serverconn.php';
+
+$sqlusers = "SELECT userID, userName FROM user";
+  $resultusers = mysqli_query($conn,$sqlusers);
+        
+echo "<h1> All users </h1>";
+
+        if ($resultusers->num_rows > 0) {
+            while ($row = $resultusers->fetch_assoc()) {
+              echo "User ID: " . $row['userID'];
+              echo "<br>";
+              echo "<br>";
+              echo "Username: " . $row['userName'];
+              echo "<br>";
+              echo "<br>";
+              // echo "" . $row['userName'] . "";
+}
+} else {
+  echo "<h2> No users </h2>";
+}
+
 
 ?>
 
@@ -72,4 +94,3 @@ $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY p
 </body>
 
 </html>
-

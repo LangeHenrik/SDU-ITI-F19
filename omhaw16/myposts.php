@@ -44,6 +44,7 @@ if ($_SESSION["login"] == 1) {
         		echo "<img src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
             	echo "<p>" . $row['imgDesc'] . "</p>";
+                echo "<a href = deletepost.php?postID=" . $row['postID'] . "> Delete image </a>";
         }
 
         $conn->close();
