@@ -7,7 +7,7 @@ $_SESSION['loginMessage']='Prøv igen, så kan du se blærede billeder';
 
 require_once 'db_config.php';
 try{
-    $conn = new PDO("mysql:host=$servername;dbname=$db_name",
+    $conn = new PDO("mysql:host=$servername;dbname=$db_name;port=$port",
     $username,
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -150,13 +150,13 @@ $conn=null;
                         <br>
                         <input type="text" id="phone" name="phone">
                         <br>
-                        <label for="username"> Brugernavn</label>
+                        <label for="register-username"> Brugernavn</label>
                         <br>
-                        <input type="text" id="username" name="register-username">
+                        <input type="text" id="register-username" name="register-username">
                         <br>
-                        <label for="password"> Adgangskode</label>
+                        <label for="register-password"> Adgangskode</label>
                         <br>
-                        <input type="password" id="password" name="register-password">
+                        <input type="password" id="register-password" name="register-password">
                         <br>
                         <label for="passwordSecond"> Adgangskode igen</label>
                         <br>

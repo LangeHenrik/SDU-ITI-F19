@@ -3,3 +3,4 @@
     $username="admin";
     $password="root";
     $db_name="magle17";
+    $port="3007";
