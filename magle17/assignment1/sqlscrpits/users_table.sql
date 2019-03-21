@@ -1,0 +1,1 @@
+create table users(id int primary key auto_increment, username nvarchar(55) not null unique, firstname tinytext not null, lastname tinytext not null, zip nvarchar(24) not null,city tinytext not null, email tinytext not null,phone tinytext not null, password tinytext not null);
