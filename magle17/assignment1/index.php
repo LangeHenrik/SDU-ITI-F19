@@ -7,7 +7,7 @@ $_SESSION['loginMessage']='Prøv igen, så kan du se blærede billeder';
 
 require_once 'db_config.php';
 try{
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname",
+    $conn = new PDO("mysql:host=$servername;dbname=$db_name",
     $username,
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -166,7 +166,9 @@ $conn=null;
                         <input type="submit" class="submit-button" id="register" value="Opret Bruger" name="register">
                         <div class="messagebox">
                             <p></p>
-                            <?php echo''.$_SESSION['registerMessage'];
+                            <?php 
+                            $_SESSION['registerMessage']='Noget gik galt. Kontakt ham med de blærede billeder for at få hjælp.';
+                            echo''.$_SESSION['registerMessage'];
                             $_SESSION['registerMessage'] = ' ';?>
                         </div>
                 </fieldset>
