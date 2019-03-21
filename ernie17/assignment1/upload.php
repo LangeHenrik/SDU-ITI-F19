@@ -94,7 +94,7 @@
                 <p>Title</p>
                 <input type="text" name="header"><br><br>
                 <p>Description</p>
-                <textarea name="description" rows="5" cols="40"></textarea><br><br>
+                <textarea name="description" rows="5" cols="30"></textarea><br><br>
                 <input type="file" name="image-upload"><br><br>
                 <button type="btn-upload">Upload</button>
             </fieldset>

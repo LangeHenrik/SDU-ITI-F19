@@ -19,19 +19,19 @@ body {
 
 form {
     margin: 0 auto;
+    text-align: center;
+    font-family: Verdana;
+}
+
+.form-login, .form-register {
+    width: 250px;
 }
 
 form button {
     background-color: #C3C3C3;
 }
 
-.form-login, .form-register {
-    width: 200px;
-    text-align: center;
-    font-family: Verdana;
-}
-
-.form-login legend, .form-register legend {
+legend {
     font-weight: bold;
 }
 
