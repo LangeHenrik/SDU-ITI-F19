@@ -31,7 +31,7 @@
 		<th>Phone number</th>
 	</tr>
     <?php
-		require "config.php";
+		require "db_conn.php";
 		$stmt=$conn->prepare("SELECT username, firstname, lastname, zip, city, email, phonenumber FROM users");
 		$stmt->execute();
 		while($row=$stmt->fetch(PDO::FETCH_ASSOC)){

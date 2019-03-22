@@ -1,9 +1,9 @@
 <?php
 require "header.php";
 
-require_once "config.php";
+require_once "db_conn.php";
 
-if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
 	echo "You need to login to see pictures";
 }
 ?>
@@ -21,9 +21,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 	while($row = $stmt->fetch(PDO::FETCH_ASSOC))
 	{
     ?>
-		<img src="<?php echo $row["source"]; ?>" width=800px> <br>
-		<h4><?php if(isset($row["title"])){echo "[no title]";} else{echo $row["title"];}  ?><h4/>
-		<h6><?php if(isset($row["description"])){echo "[no description]";} else{echo $row["description"];} ?><h6/><br>
+		<div style="border-style: solid; border-color: grey; width: 800px">
+			<img src="<?php echo $row["source"]; ?>" width=800px> <br>
+			<h4><?php if(isset($row["title"])){echo $row["title"];} else{echo "[no title]";}  ?><h4/>
+			<span style="font-weight:normal"><?php if(isset($row["description"])){echo $row["description"];} else{echo "[no description]";} ?><span/>
+		<div/>
     <?php
 	}
 }

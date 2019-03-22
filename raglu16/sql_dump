@@ -1,0 +1,37 @@
+CREATE DATABASE IF NOT EXISTS `raglu16` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `raglu16`;
+
+
+-- Dumping structure for table raglu16.images
+CREATE TABLE IF NOT EXISTS `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text,
+  `source` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table raglu16.images: 2 rows
+INSERT INTO `images` (`id`, `title`, `description`, `source`) VALUES
+	(1, 'dog', 'this is a dog', ' images/DSC_3230.JPG'),
+	(2, 'also a dog', 'this is also a dog', 'images/DSC_1450.JPG');
+
+-- Dumping structure for table raglu16.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `zip` int(11) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phonenumber` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `zip`, `city`, `email`, `phonenumber`) VALUES
+	(1, 'raglu', 'Somepassword1', 'Rasmus', 'Gluud', 5000, 'Odense', 'raglu16@student.sdu.dk', 30206300),
+	(8, 'raglu1', 'Somepassword1', 'asdf', 'asdf', 1, 'asdf', 'asdf', 1);

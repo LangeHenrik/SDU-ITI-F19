@@ -1,9 +1,9 @@
 <?php
 require "header.php";
 
-require_once "config.php";
+require_once "db_conn.php";
 
-if(!isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
 	echo "You need to login to upload pictures.";
 }
 
@@ -18,12 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 		$i++;
 		$target_file = str_replace(".", "_" . $i . ".", $target_file);
 	}
-	
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-	&& $imageFileType != "gif" ) {
-		echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-		$uploadOk = 0;
-	}
+
 
 	if ($uploadOk == 0) {
 		echo "Sorry, your file was not uploaded.";

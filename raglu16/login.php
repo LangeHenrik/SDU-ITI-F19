@@ -6,7 +6,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 	echo "You are already logged in.";
 }
  
-require_once "config.php";
+require_once "db_conn.php";
  
 $username = $password = "";
 $username_err = $password_err = "";
