@@ -63,7 +63,21 @@ h2,.logoutbutton{
     margin-bottom: 1%;
 }
 .table-container{
-  overflow-x:auto;
+  overflow-x: auto;
+}
+.table-container table{
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 1%;
+  width: 80%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  margin-left:auto; 
+  margin-right:auto;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.5%
 }
 .row {
     display: flex;

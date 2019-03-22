@@ -6,6 +6,7 @@ function performAjax(){
                 var response=eval(this.responseText.split('<!DOCTYPE html>')[0]);
                 //Splitting on the html because the whole dom is loaded when php is 
                 //
+                offset+=response.length;
                 if(response=='0'){
                     console.log("No More IMAGES!?");
                 }else{
@@ -14,7 +15,6 @@ function performAjax(){
             }
         };
         xmlhttp.open("GET", "?offset="+offset, true); 
-        offset+=4;
         //true means it is asynchronous.
         xmlhttp.send();
 }
