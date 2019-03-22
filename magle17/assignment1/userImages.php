@@ -26,8 +26,8 @@ try{
     $username,
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    $preparedGetImages=$conn->prepare('SELECT * FROM media where uploaded_by=:userid LIMIT :offset,4');
-    $preparedGetInitialImages=$conn->prepare("SELECT * FROM media where uploaded_by=:userid limit 20");
+    $preparedGetImages=$conn->prepare('SELECT * FROM media where uploaded_by=:userid order by id desc LIMIT :offset,4');
+    $preparedGetInitialImages=$conn->prepare("SELECT * FROM media where uploaded_by=:userid order by id desc limit 20");
     $preparedGetFileName=$conn->prepare("SELECT media_name FROM media where id=:id");
     $preparedRemoveImage=$conn->prepare("DELETE FROM media where id=:id");
 

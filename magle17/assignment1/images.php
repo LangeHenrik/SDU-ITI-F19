@@ -28,8 +28,8 @@ try{
     $username,
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    $preparedGetImages=$conn->prepare('SELECT * FROM media LIMIT :offset,4');
-    $preparedGetInitialImages=$conn->prepare("SELECT * FROM media limit 20");
+    $preparedGetImages=$conn->prepare('SELECT * FROM media order by id desc LIMIT :offset,4');
+    $preparedGetInitialImages=$conn->prepare("SELECT * FROM media order by id desc limit 20");
     $stmtUploadImage = $conn->prepare("INSERT INTO media (uploaded_by, media_name, title, description) VALUES (:userID, :imageName, :title, :description)");
 
 } catch (PDOException $e) {
