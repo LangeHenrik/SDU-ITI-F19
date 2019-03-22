@@ -86,7 +86,7 @@ function get_20_latest_images(){
     return $result;
 }
 
-function really_good_ajax(){
+function get_all_usernames(){
     $conn = getConnection();
     $statement = $conn->prepare('SELECT username FROM users');
     $statement->setFetchMode(PDO::FETCH_ASSOC);

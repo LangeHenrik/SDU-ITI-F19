@@ -30,10 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <form action= "" method="post">
     <fieldset>
-        Username:<br>
+        Username (a):<br>
         <input type="text" name="username" required><br>
-        Password:<br>
-        <input type="text" name="password" required>
+        Password (b):<br>
+        <input type="password" name="password" required>
         <br>
         <br>
         <button class="button buttonlogin">Login</button>

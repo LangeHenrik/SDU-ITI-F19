@@ -7,7 +7,7 @@
  */
 
 require "db_manager.php";
-    $result = really_good_ajax();
+    $result = get_all_usernames();
     for ($x = 0; $x < sizeof($result); $x++) {
         echo "User: ";
         echo $result[$x]["username"];

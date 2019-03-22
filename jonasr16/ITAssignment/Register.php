@@ -54,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 Username:<br>
         <input type="text" name="username" required><br>
 Password:<br>
-        <input type="text" name="password" required><br>
+        <input type="password" name="password" required><br>
 Repeat Password:<br>
-        <input type="text" name="rpassword" required><br>
+        <input type="password" name="rpassword" required><br>
 Firstname:<br>
         <input type="text" name="firstname" required><br>
 Lastname:<br>

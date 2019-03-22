@@ -11,7 +11,7 @@ function getConnection()
     $hostname = 'localhost';
     $username = 'root';
     $password = '';
-    $db = 'database';
+    $db = 'jonasr16';
     $port = 3306;
     $dsn = "mysql:dbname={$db};host={$hostname};port={$port};charset=utf8";
     try {

@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <meta charset="UTF-8">
-    <title>Register Page</title>
+    <title>Picture Page</title>
     <link href="stylesheet.css" type="text/css" rel="stylesheet">
 </head>
 <body>
