@@ -7,7 +7,7 @@
     return;
   }
 
-  $q = $_GET['q'];
+  $q = $_GET['q'].'%';
   try {
     require_once 'db_config.php';
     $conn = new PDO("mysql:host=$servername;dbname=$dbname",
@@ -18,7 +18,11 @@
         die('Could not connect: ' . mysqli_error($con));
     }
 
-    $sqlStmt = $conn->prepare("SELECT user_name, front_name, last_name, city, zip_code, email_adress FROM person WHERE user_name LIKE '%$q%'");
+    $sqlStmt = $conn->prepare("SELECT user_name, front_name, last_name, city, zip_code, email_adress FROM person WHERE user_name LIKE :tmp");
+
+    $sqlStmt->bindparam(':tmp', $q);
+
+
 
     $sqlStmt->execute();
     $sqlStmt->setFetchMode(PDO::FETCH_ASSOC);
