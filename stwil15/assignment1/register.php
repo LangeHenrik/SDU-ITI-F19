@@ -1,21 +1,24 @@
+<?php include('server.php') ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Login page </title>
+    <title> Register page </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" type="text/css" href="styles.css" />
     <script src="checker.js"></script>
 </head>
     <body>
         <div class="content">
-            <form onsubmit="return register();" method=”post” >
+            <h2> Register user </h2>
+            <form onsubmit="" method=”post” >
                 <label for="username"> username</label>
                 <br>
                 <input type="text" name="username" id="username" required/>
                 <br>
                 <label for="password">password</label>
                 <br>
-                <input type="password" name="password" id="password" required/>
+                <input type="password" name="password1" id="password1" required/>
                 <br>
                 <label for="password2">repeat password</label>
                 <br>
@@ -49,8 +52,8 @@
             </form>
         </div>
         <div class="navbar">
-            <a href="login_page.html"> Login here </a>
-            <a href="register_page.html"> Register </a>
+            <a href="index.php"> Login here </a>
+            <a href="register.php"> Register </a>
         </div>
     </body>
 </html>

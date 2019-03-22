@@ -6,7 +6,6 @@
 body {
     margin: 5px;
     font-family: sans-serif;
-    background-color: rgba(34,215,89,0.35);
 }
 
 form {
@@ -24,12 +23,10 @@ input {
     z-index: 10; /* stack order of element, higher value will be in front of lower values */
     top: 0; /* top edge of the positioned div from top edge */
     left: 0;
-    background-color: aquamarine;
     overflow-x: hidden; /* determines clipping in horizontal direction */
 }
 
 .navbar a { /* style of links in navbar */
-    color: darkorange;
     padding: 15px;
     text-decoration: underline;
     display: block; /* display behavior (rendering box). options are: none, inline, block, inline-block */
