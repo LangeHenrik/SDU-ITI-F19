@@ -36,12 +36,21 @@ if (isset($_POST['login'])) {
     // get userid for salt for the password hash
     $useridget = "SELECT userid FROM users WHERE username ='$username";
     $db->prepare($useridget);
-    $userid = $db->execute();
+    $db->execute();
+    while($row = $db->fetch(PDO::FETCH_ASSOC)){
+        $userid = $row[0];
+    }
     $hash = hash("sha256", ($password + $userid));
     // check login
-    $query = "SELECT * from users WHERE username='$username' AND password='$hash'";
-    $rs = $db->query($query);
-    if
+    $query = "SELECT * from users WHERE username='$username' AND pass='$hash'";
+    $db->prepare($query);
+    $db->execute();
+    while($row = $db->fetch(PDO::FETCH_ASSOC)){
+        $loggedin = ($username == $row['username'] && $hash == $row[pass]);
+    }
+    if ($loggedin){
+        // proceed login
+    }
     
 }
 

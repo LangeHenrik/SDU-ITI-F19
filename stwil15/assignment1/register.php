@@ -11,7 +11,7 @@
     <body>
         <div class="content">
             <h2> Register user </h2>
-            <form onsubmit="" method=”post” >
+            <form action="server.php" method=”post” >
                 <label for="username"> username</label>
                 <br>
                 <input type="text" name="username" id="username" required/>

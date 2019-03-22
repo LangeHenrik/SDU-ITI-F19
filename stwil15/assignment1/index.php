@@ -11,7 +11,7 @@
 <body>
 <div class="content">
     <h2> Login </h2>
-    <form action="login.php" method="post">
+    <form action="server.php" method="post">
         <?php include('errors.php') ?>
         <label for="username" >username</label>
         <br>
