@@ -5,15 +5,18 @@
 
 <head>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling/style.css">
+    <link rel="shortcut icon" type="image/png" href="styling/favicon.png"/>
+
 <title> PhotoPost - My Posts </title>
 
 </head>
 
 <body>
 
-<h1> My posts </h1>
-
-<p> Here are your posts: </p>
+<h1> PhotoPost - My Posts </h1>
+<p class = 'tagline'> Your photo-sharing website. </p>
 
 <?php 
 
@@ -45,18 +48,21 @@ if ($_SESSION["login"] == 1) {
         if ($result->num_rows > 0) {
 
         	while ($row = $result->fetch_assoc()) {
-        		echo "<img src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'>";
+        		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0' src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'> </div>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
-            	echo "<p>" . $row['imgDesc'] . "</p>";
+            	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
                 echo "<a href = deletepost.php?postID=" . $row['postID'] . "> Delete image </a>";
+                echo "<hr>";
         }
 
         $conn->close();
 
         
 } else {
-	echo "No posts yet.";
+	echo "<p class = 'intro'> No posts yet. </p>";
 }
+} else {
+    echo "<p class = 'intro'> You need to be logged in to view your posts. </p>";
 }
 
 ?>

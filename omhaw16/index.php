@@ -4,20 +4,23 @@
 <html>
 
 <head>
-
-<title> PhotoPost </title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> PhotoPost </title>
+  <link rel="stylesheet" href="styling/style.css">
+  <link rel="shortcut icon" type="image/png" href="styling/favicon.png"/>
 </head>
 
 <body>
 
 <h1> Welcome to PhotoPost! </h1>
 
-<p> Your photo-sharing website. </p>
+<p class = 'tagline'> - Your photo-sharing website </p>
 
 <div id="imgs">
 
 <?php 
+
+
 
 include 'navi.php';
 
@@ -39,12 +42,14 @@ $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY p
         	while ($row = $result->fetch_assoc()) {
         		
             // echo "<br><br>";
+            echo "<h1> * </h1>";
             echo "<h2> All photos </h2>";
-            echo "<p> The posts are sorted by time, with the newest being at the top. </p><br>";
-        		echo "<img align = centre width = auto src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' onclick='imgInfo(" . $row['postID'] . ")'>";
+            echo "<p class = 'intro'> The posts are sorted by time, with the newest being at the top. </p><br>";
+        		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0'  src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' onclick='imgInfo(" . $row['postID'] . ")'> </div>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
-            	echo "<p>" . $row['imgDesc'] . "</p>";
-            	echo "<b> Posted by </b>" . $row['userName'] . "</a>";
+            	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
+            	echo "<p class = 'postedby'> <b> Posted by </b>" . $row['userName'] . "</a> </p>";
+              echo "<hr>";
 
             	       }
 
@@ -60,20 +65,20 @@ $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY p
 $sqlusers = "SELECT userID, userName FROM user";
   $resultusers = mysqli_query($conn,$sqlusers);
         
-echo "<h1> All users </h1>";
+echo "<h1 class='allusers'> All users </h1>";
 
         if ($resultusers->num_rows > 0) {
             while ($row = $resultusers->fetch_assoc()) {
          /*     echo "User ID: " . $row['userID'];
               echo "<br>";
               echo "<br>"; */
-              echo "Username: " . $row['userName'];
-              echo "<br>";
-              echo "<br>";
+              echo "<p> | ". $row['userName'] . " | </p>";
+              // echo "<br>";
+              // echo "<br>";
               // echo "" . $row['userName'] . "";
 }
 } else {
-  echo "<h2> No users </h2>";
+  echo "<p> <b> No users </b> </p>";
 }
 
 

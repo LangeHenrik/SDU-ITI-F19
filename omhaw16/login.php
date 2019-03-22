@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> The Website </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styling/style.css">
+        <title> Login </title>
         <meta charset="utf-8"/>
+        <link rel="shortcut icon" type="image/png" href="styling/favicon.png"/>
     </head>
 <body>
     
-    <h1> Welcome to The Website! ™ </h1>
-    
+<h1> PhotoPost - Login </h1>
+
+<p class = 'tagline'> - Your photo-sharing website </p>
+
         <?php 
 
         include 'navi.php';
@@ -72,8 +77,8 @@
     
     ?>
 
-    <form action="#" method="post">
-    <label for="name" style="color: blue;">Name</label>
+    <form name ="loginform" action="#" method="post">
+    <label for="name" style="color: white;">Name</label>
     <br> 
     <input type="text" name="user" id="user"/> 
     <br>
@@ -84,7 +89,9 @@
     <input type="password" name="pw" id="pw"/> 
     <br>
     <br>
-    <input type="submit" name="submit" id="submit"/> 
+    <input type="submit" name="submit" id="submit"/>
+    <br>
+    <p> Not registered yet? Click <a href="registeruser.php">here!</a> </p>
 </form>
 
     

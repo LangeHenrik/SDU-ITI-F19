@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> The Website </title>
+        <title> Registration </title>
         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="styling/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/png" href="styling/favicon.png"/>
     </head>
 <body>
-        <h1> Register on the Website! ™ </h1>
+        <h1> PhotoPost - Register </h1>
+
+<p class = 'tagline'> - Your photo-sharing website </p>
         
+
+<script>
+        function checkFields() {
+        var password = document.getElementById("password").value;
+        if(password.length < 8) {
+        alert("Password must be at least 8 characters");
+        return false;
+        } else {
+        return true;
+        }        
+        }
+        </script>
+
+
+
         <?php
 
         include 'navi.php';
@@ -32,9 +52,10 @@
         $firstname = $_POST["firstname"];
         $lastname = $_POST["lastname"];
         $zip = $_POST["zip"];
+        $city = $_POST["city"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
-    
+
     if (!preg_match("/^[a-zA-Z ]*$/",$_POST["firstname"])) {
         $firstnameErr = "First name contains can only contain letters and spaces.";
         $regexcheck = 0;
@@ -63,7 +84,6 @@
     if ($password !== $confirmpw) {
         $conpwErr = "Passwords don't match!";
     }
-
 
     /*    if ($password != $confirmpw) { 
         
@@ -133,7 +153,7 @@
 
         if ($countname == 0) {
 
-        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email')";
+        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, city, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$city', '$phone', '$email')";
 
 //        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email')";
             
@@ -158,7 +178,7 @@
     ?>
 
     
-<form id = "registerform" action="registeruser.php" method="post">
+<form id = "registerform" onsubmit="return checkFields()" action="registeruser.php" method="post">
     <label for="firstname" >First name</label>
     <br>
     <input type="text" name="firstname" id="firstname"/> 
@@ -171,7 +191,7 @@
     <br>
     <span class="error"><?php echo $lastnameErr;?></span>
     <br>
-    <label for="User name" style="color: red;">User name</label>
+    <label for="User name" >User name *</label>
     <br> 
     <input type="text" name="username" id="username" required/> 
     <br>
@@ -201,12 +221,12 @@
     <br>
     <span class="error"><?php echo $phoneErr;?></span>
     <br>
-    <label for="password" style="color: red;">Password</label>
+    <label for="password" >Password *</label>
     <br> 
     <input type="password" name="password" id="password" required/> 
     <br>
     <br>
-    <label for="confirmpw" style="color: red;" >Confirm password</label>
+    <label for="confirmpw">Confirm password *</label>
     <br>
     <input type="password" name="confirmpw" id="confirmpw" required/> 
     <br>

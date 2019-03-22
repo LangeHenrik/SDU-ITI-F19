@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
 
-    function redirect() {
-        window.location.href = "http://www.google.com";
-    }
-
-    </script>
+    <link rel="stylesheet" href="styling/style.css">
+</head>
+<body>
 <style>
 table {
     width: 100%;
@@ -15,11 +12,9 @@ table {
 }
 
 table, td, th {
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 5px;
 }
-
-th {text-align: left;}
 </style>
 </head>
 <body>
@@ -43,17 +38,17 @@ echo "<img src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' 
 
 echo "<table>
 <tr>
-<th>Posted by (User ID)</th>
-<th>Posted by (username)</th>
-<th>Post ID</th>
-<th>Posted on</th>
+<th><p><b>Posted by (User ID)</b></p></th>
+<th><p><b>Posted by (username)</b></p></th>
+<th><p><b>Post ID</b></p></th>
+<th><p><b>Posted on</b></p></th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['postedby'] . "</td>";
-    echo "<td>" . $row['userName'] . "</td>";
-    echo "<td>" . $row['postID'] . "</td>";
-    echo "<td>" . $row['imgDate'] . "</td>";
+    echo "<td> <p>" . $row['postedby'] . " </p></td>";
+    echo "<td> <p>" . $row['userName'] . "</p></td>";
+    echo "<td> <p>" . $row['postID'] . "</p></td>";
+    echo "<td> <p>" . $row['imgDate'] . "</p></td>";
     echo "</tr>";
 }
 echo "</table>";

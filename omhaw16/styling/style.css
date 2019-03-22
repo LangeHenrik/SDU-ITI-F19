@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+}
+h1, h2 {
+  color: blue;
+}
+
+span.error {
+	color: red;
+}
+
+a { 
+	color: green;
+	 }
+
+p {
+  color: #FFFFFF;
+}
+
+div.imgs {
+	min-width: 100;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+img {
+	width: 100%;
+	border: '0';
+}
