@@ -135,16 +135,3 @@ require_once "db_config.php";
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
