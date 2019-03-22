@@ -28,7 +28,6 @@ function register_to_db($username,$pass){
     $conn = connect();
     $statement = $conn->prepare('insert into userdb (username, pass) values (:username, :pass);');
     /* Bind Parameters*/
-    //$hashpassword = password_hash($pass, PASSWORD_DEFAULT);
     $statement->bindParam(':username', $username);
     $statement->bindParam(':pass', $pass);
     $statement->execute();

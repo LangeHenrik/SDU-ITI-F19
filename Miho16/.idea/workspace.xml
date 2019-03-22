@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="200a854c-0823-4270-855f-beb5729ee17a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="200a854c-0823-4270-855f-beb5729ee17a" name="Default Changelist" comment="assignment">
       <change beforePath="$PROJECT_DIR$/DB_manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/DB_manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/gallery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startpage.php" beforeDir="false" afterPath="$PROJECT_DIR$/startpage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/userlist.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +12,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/startpage.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="463">
@@ -82,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DB_manager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+            <state relative-caret-position="453">
+              <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -131,8 +127,8 @@
         <option value="$PROJECT_DIR$/mystyle.css" />
         <option value="$PROJECT_DIR$/userlist.php" />
         <option value="$PROJECT_DIR$/gallery.php" />
-        <option value="$PROJECT_DIR$/DB_manager.php" />
         <option value="$PROJECT_DIR$/startpage.php" />
+        <option value="$PROJECT_DIR$/DB_manager.php" />
       </list>
     </option>
   </component>
@@ -230,7 +226,7 @@
       <workItem from="1553185768434" duration="252000" />
       <workItem from="1553186126650" duration="5519000" />
       <workItem from="1553241626469" duration="8301000" />
-      <workItem from="1553250124183" duration="2879000" />
+      <workItem from="1553250124183" duration="2981000" />
     </task>
     <task id="LOCAL-00001" summary="assignment">
       <created>1553249444351</created>
@@ -250,13 +246,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43062000" />
+    <option name="totallyTimeSpent" value="43164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1577" height="1016" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16524029" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16524029" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -270,10 +266,10 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3299435" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50032914" side_tool="true" visible="true" weight="0.3299435" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50098747" side_tool="true" weight="0.3299435" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="12" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="13" visible="true" weight="0.3299435" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49967083" visible="true" weight="0.3299435" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49967083" weight="0.3299435" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -338,13 +334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DB_manager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/upload_image.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -380,6 +369,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="463">
           <caret line="126" column="16" lean-forward="true" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DB_manager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
         </state>
       </provider>
     </entry>
