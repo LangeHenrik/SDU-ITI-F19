@@ -1,43 +1,59 @@
 <?php
-   include("./PDO.php");
    session_start();
-
-
-
-
-   if (isset($_POST['login'])) {
-		$email = htmlentities(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));
-		$password = htmlentities(filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING));
 		
-	include("./PDO.php");
+   if (isset($_POST['login_button'])) { //Button pressed
+
+		include('breakpoint.php');
+
+		$loginError = array();
+		
+
+		if (isset($GLOBALS['loginError'])) {$loginError = $GLOBALS['loginError'];}
+		
+		$clientPassword = $clientEmail = "";
+
+		if (isset($_POST['email'])) {$clientEmail = filter_var($_POST['email'], FILTER_SANITIZE_STRING);} 
+		if (isset($_POST['userPassword'])) {$clientPassword = filter_var($_POST['userPassword'], FILTER_SANITIZE_STRING);}
+		
+		include("./PDO.php");
 	
-	$eventName = 'Login attempt'; //Log a login attempt
-	$SQLNow = 'now()'; // SQL now method return the current time
+		$eventName = 'Login attempt'; //Log a login attempt
+		$SQLNow = 'now()'; // SQL now method return the current time
 	
-	//Log to database
-	$stmt = $conn-> prepare("INSERT INTO timelog (eventName, eventTimestamp, responsible) VALUES (:event, :timestampEvent, :responsible)");
-	$stmt->bindParam(':event', $eventName);
-	$stmt->bindParam(':timestampEvent', $SQLNow);
-	$stmt->bindParam(':responsible', $username);		
+		//Log to database
+		$stmt = $conn-> prepare("INSERT INTO timelog (eventName, eventTimestamp, responsible) VALUES (:event, :timestampEvent, :responsible)");
+		$stmt->bindParam(':event', $eventName);
+		$stmt->bindParam(':timestampEvent', $SQLNow);
+		$stmt->bindParam(':responsible', $clientEmail);		
 	
-	//Get password
-	$stmt = $conn-> prepare("SELECT userPassword FROM Person where email = ':email'");
-	$stmt->bindParam(':email', $email);
-	$stmt->execute();
-	$stmt->setFetchMode(PDO::FETCH_ASSOC);
-	$hashedPassword = $stmt->fetchColumn();
+		//Get hashed password
+		$stmt = $conn-> prepare("SELECT userPassword FROM Person where email = ':email'");
+		$stmt->bindParam(':email', $clientEmail);
+		$stmt->execute();
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$hashedPassword = $stmt->fetchColumn();
 
 
-	if(password_verify($password , $hashedPassword )) {
+		if(password_verify($clientPassword , $hashedPassword )) {
+
 			//Correct password.
-			header("Location: ./pictures.php");
-	} else {
-            header("Location: ./login.php");	
-    }
-	
+			
 
-	exit();
+			$_SESSION['email'] = $clientEmail;
+
+			header("Location: ./pictures.php");
+		} else {
+			$loginError = array();
+			
+			array_push($loginError, "Email and password does not match!");
+
+			$GLOBALS['loginError'] = $loginError;
+
+            header("Location: ./login.php");
+			
+		}
 	
+		exit();
    }
    
    if (isset($_POST['register'])) {
@@ -64,15 +80,15 @@
 <div align="center"> <h1> Login page </h1> </div>
 
 <form action="" method="POST">
-
+	
 <hr>
 
 <center>
 
   <div class="container">
   
-    <label ><b>Username</b></label>
-    <input type="text" placeholder="Enter email" name="username" required>
+    <label ><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="email" required>
 
 	<br/>
 	
@@ -82,8 +98,8 @@
 	<br/>
 	
 	
-	<button type="submit" name="login">Login</button>
-	<button type="submit" formnovalidate name = "register">Register</button>	
+	<input type="button" value = "Login" name= "login_button" >
+	<input type="button" value="Register" formnovalidate name = "register">
     
 
   </div>
