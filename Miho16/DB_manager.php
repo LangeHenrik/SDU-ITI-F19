@@ -61,7 +61,7 @@ function gallerydb() {
 }
 function userdb() {
     $conn = connect();
-    $statement = $conn->prepare('select * from userdb;');
+    $statement = $conn->prepare('select username from userdb;');
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     $statement->execute();
     $result = $statement->fetchAll();

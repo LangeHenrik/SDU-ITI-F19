@@ -10,17 +10,10 @@
 
 require 'DB_manager.php';
 $result = userdb();
-
-
-for($item = 0; $item <= sizeof($result)-1; $item++) {
-    echo '<h3> id: ' . $result[$item]['user_id'] . '<br>username: '. $result[$item]['username'] . '</h3>';
-
+for ($x = 0; $x < sizeof($result); $x++) {
+    echo "User: ";
+    echo $result[$x]["username"];
+    echo "<br>";
 }
 
 ?>
-<html>
-<form action="gallery.php">
-    <input type="Submit" value="back">
-</form>
-<link rel="stylesheet" type="text/css" href="mystyle.css">
-</html>

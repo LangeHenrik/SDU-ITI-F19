@@ -48,14 +48,27 @@ if(isset($_POST['logout'])){
         <form  name = "upload" action="upload_image.php">
             <input type = "submit" name = "upload" value="upload" >
         </form>
-        <form  name = "userlist" action="userlist.php">
-            <input type = "submit" name = "userlist" value="userlist" >
-        </form>
+
+
+
+    <button><a id="button">Show all users</a></button>
+
+    <p id="container"><!-- currently it's empty --></p>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('a#button').click(function(){
+                $.ajax({
+                    url: 'userlist.php',
+                    success: function (response) {
+                        $('#container').html(response);
+                    }
+                });
+            });
+        });
+    </script>
     </body>
 
-
-
-</body>
 </html>
 
 
