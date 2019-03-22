@@ -1,0 +1,141 @@
+/* Top Navigation Bar */
+
+button.button {
+	background:none;
+	border:none; 
+}
+
+.nav {
+	background-color: #4f81bd;
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+		
+.nav inline{
+	display: inline-block;
+	font-size: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+		
+.active { /* Currently activated tab */
+	background-color: #1f497d;
+	color: white;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.weather {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+}
+
+/* Side Panels */
+
+.addcolumn {
+	display: block;
+	background-color: #eeece1;
+	float: left;
+	width: 10%;
+	height: 100vh;
+}
+
+.add {
+	background-color: #f79646;
+	text-align: center;
+	border-style: solid;
+	border-color: #e46c0a;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 500px;
+}
+
+/* Main Page */
+
+.maincolumn {
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+
+.userbox {
+	display: inline-block;
+	border-radius: 25px;
+	background-color: #4f81bd;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 50px;
+	width: 250px;
+	height: 250px;
+}
+
+.pictures {
+	height: 600px;
+	width: 80vw;
+}
+
+.profilepic {
+	display: block;
+	
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	
+	width: 120px;
+	height: 120px;
+	
+	border-radius: 50%;
+	border-style: solid;
+	border-color: white;
+}
+
+.name {
+	color: white;
+	text-align: center;
+}
+
+.post {
+	display: block;
+	margin-left: 25%;
+}
+
+.post_picture_box {
+	height: 450px;
+	
+}
+
+.post_picture { /* Billede og tekst i opslag */
+	margin-top: 50px;
+	height: 400px;
+	width: auto;
+	border: solid;
+}
+
+.post_text {
+	/* MANGLER MEN KUNNE VÆRE BRUGBAR I FORBINDELSE MED DB! */
+}
+
+.user {
+	display: block;
+	float: left;
+	margin-right: 50px;
+	width: 25%;
+	height: 562px;
+}
+
+.line {
+	border-color: #4f81bd;
+	margin-left: 10px;
+	margin-right: 10px;
+}
