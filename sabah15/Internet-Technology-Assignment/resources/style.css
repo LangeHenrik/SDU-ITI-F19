@@ -1,0 +1,420 @@
+/* Complete website layout */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    padding: 10px;
+    background: #77F2F0;
+}
+
+/* Header/Blog Title */
+.header {
+    padding: 30px;
+    text-align: center;
+}
+.header img {
+    max-width:100%;
+    max-height:100%;
+}
+
+.header h1 {
+    font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #2F64CC;
+}
+
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #3A9FFF;
+    color: white;
+}
+.topnav a.active {
+    background-color: #2196F3;
+    color: white;
+}
+/* login NavBar */
+.topnav .login-container {
+    float: right;
+}
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width: 160px;
+}
+.topnav input[type=password] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width: 160px;
+}
+.topnav .login-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background-color: #3D80FF;
+    color: white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+.topnav .login-container button:hover {
+    background-color: #3AAAFF;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 75%;
+
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+/* Add a card effect for articles */
+.card {
+    background-color: #77D1F0;
+    margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    background: #77D1F0;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .topnav .login-container {
+        float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .login-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+/* Responsive Image Gallery */
+div.gallery {
+    /*border: 20px solid #77F2F0;*/
+    background: #77D1F0;
+    width: 50%;
+    height: auto;
+    padding: 10px;
+
+    /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+
+}
+
+div.gallery:hover {
+    /*border: 1px solid #777;*/
+}
+
+div.gallery img {
+    /*padding: 10px;*/
+    width: 100%;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+    /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
+}
+
+h2{
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.signup input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.signup input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.signup input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.signup input[type=tel], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.signup input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.signup input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+.fileUpload input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.fileUpload label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+.fileUpload input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+.fileUpload input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #77D1F0;
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.flex-container > div {
+    background-color: #77D1F0;
+    width: 50%;
+    height: auto;
+    text-align: center;
+    /*line-height: 75px;*/
+    font-size: 25px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #77F2F0;
+}
+
+
+@media screen and (max-width: 700px) {
+    .flex-container > div {
+        width: 100%;
+    }
+}
+
+#users {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #3A9FFF;
+}
+
+#users td, #users th {
+    border: 1px solid #2F64CC;
+    padding: 8px;
+}
+
+#users tr:nth-child(even){
+    background-color: #2196F3;
+}
+
+#users tr:hover {
+    background-color: #77F2F0;
+    color: black;
+}
+
+#users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3171ff;
+    color: white;
+}
+
+.buttonLoad {
+    background-color: #3A9FFF;
+    font-size: 16px;
+    color: white;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #3A9FFF;
+    width: 100%;
+    height: 50px;
+}
+
+.buttonLoad:hover {
+    background-color: #77F2F0;
+    color: black;
+}
