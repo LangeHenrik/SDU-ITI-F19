@@ -39,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,29 +47,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Register Page</title>
     <link href="stylesheet.css" type="text/css" rel="stylesheet">
+    <script src = "check.js"></script>
 </head>
 <body>
-<form action= "" method="post">
+<form action= "" onsubmit="return checkInputs()" method="post">
     <fieldset>
         <legend>Register</legend>
 Username:<br>
-        <input type="text" name="username" required><br>
+        <input type="text" name="username" id="username" required><br>
 Password:<br>
-        <input type="password" name="password" required><br>
+        <input type="password" name="password" id="password" required><br>
 Repeat Password:<br>
-        <input type="password" name="rpassword" required><br>
+        <input type="password" name="rpassword" id="rpassword" required><br>
 Firstname:<br>
-        <input type="text" name="firstname" required><br>
+        <input type="text" name="firstname" id="firstname" required><br>
 Lastname:<br>
-        <input type="text" name="lastname" required><br>
+        <input type="text" name="lastname" id="lastname" required><br>
 Zip:<br>
-        <input type="text" name="zip" required><br>
+        <input type="text" name="zip" id="zip" required><br>
 City:<br>
-        <input type="text" name="city" required><br>
+        <input type="text" name="city" id="city" required><br>
 Email adress:<br>
-        <input type="text" name="email" required><br>
+        <input type="text" name="email" id="email" required><br>
 Phone number:<br>
-        <input type="text" name="phonenumber" required><br>
+        <input type="text" name="phonenumber" id="number" required><br>
         <br>
         <button class="button buttonregister" type="submit">Register</button>
     </fieldset>
