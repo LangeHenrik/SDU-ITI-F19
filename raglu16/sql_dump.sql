@@ -1,1 +1,0 @@
-insert into images values(1,'','','images\DSC_3230.JPG');

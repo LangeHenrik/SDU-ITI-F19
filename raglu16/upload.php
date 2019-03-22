@@ -3,47 +3,51 @@
 session_start();
 
 require_once "db_conn.php";
- 
-$username = $password = "";
- 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    
-	$sql = "SELECT id, username, password FROM users WHERE username = :username";
+
+if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+	echo "You need to login to upload pictures.";
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+	$target_dir = "images/";
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
+	$uploadOk = 1;
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	
-	if($stmt = $conn->prepare($sql)){
-		
-		$stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-            
-        $param_username = trim($_POST["username"]);
-		
-		if($stmt->execute()){
-			if($stmt->rowCount() == 1){
-				if($row = $stmt->fetch()){
-					$id = $row["id"];
-					$username = $row["username"];
-					$password = $row["password"];
-					if($password == trim($_POST["password"])){
-						session_start();
-						
-						$_SESSION["loggedin"] = true;
-						$_SESSION["id"] = $id;
-						$_SESSION["username"] = $username;                            
-						
-						header("location: index.php");
-					} else{
-						echo "The password you entered was not valid.";
-					}
-				}
-			} else{
-				echo "No account found with that username.";
-			}
-		} else{
-			echo "Oops! Something went wrong. Please try again later.";
-		}
+	$i = 0;
+	while (file_exists($target_file)) {
+		$i++;
+		$target_file = str_replace(".", "_" . $i . ".", $target_file);
 	}
 
-	unset($conn);
-	unset($stmt);
+
+	if ($uploadOk == 0) {
+		echo "Sorry, your file was not uploaded.";
+	} else {
+		if (!move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+			echo "Sorry, there was an error uploading your file.";
+			$uploadOk = 0;
+		}
+	}
+	
+	$sql = "INSERT INTO images(title,description,source) VALUES(:title,:description,:source)";
+	
+	if($stmt = $conn->prepare($sql) and $uploadOk == 1){
+		
+		$stmt->bindParam(":title", $param_title, PDO::PARAM_STR);
+		$stmt->bindParam(":description", $param_description, PDO::PARAM_STR);
+		$stmt->bindParam(":source", $target_file, PDO::PARAM_STR);
+
+		$param_title = trim($_POST["title"]);
+		$param_description = trim($_POST["description"]);		
+			
+		if($stmt->execute()){
+			echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+		} else {
+			unlink($target_file);
+			echo "Sorry, there was an error uploading your file.";
+		}
+	}
 }
 ?>
 
@@ -92,13 +96,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
 		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php">Hydrogen</a></h1>
 		<ul>
-			<li class="active"><a href="index.php">Home</a></li>
-			<li><a href="upload.php">Upload</a></li>
+			<li><a href="index.php">Home</a></li>
+			<li class="active"><a href="upload.php">Upload</a></li>
 			<li><a href="users.php">Users</a></li>
 			<li><a href="register.php">Register</a></li>
 		</ul>
 		<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
-			echo '<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){';
+			echo '<a href="logout.php" class="btn btn-primary">Logout</a>';
 		} ?>
 	</div>
 	<header id="fh5co-header" role="banner">
@@ -112,35 +116,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		</div>
 	</header>
 	<!-- END .header -->
-
+	
 	<div id="fh5co-main">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<h2>Login</h2>
+					<h2>Upload</h2>
 					<div class="fh5co-spacer fh5co-spacer-sm"></div>
-					<form name="loginform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+					<form name="registerform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
 						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control" name="username" placeholder="Username" required>	
-								</div>
+							<div class="form-group">
+								<input type="file" name="file" placeholder="Username" required>	
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="password" class="form-control" name="password"  placeholder="Password" required>
+									<input type="text" class="form-control" name="title" placeholder="Title" required>	
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="form-group">
+									<textarea name="description" id="description" cols="30" class="form-control" rows="5" placeholder="Description"></textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="submit" class="btn btn-primary" value="Login">
+									<input type="submit" class="btn btn-primary" value="Upload">
 								</div>
 							</div>
 						</div>
 					</form>
-					<p>Don't have an account? <a href="register.php">Register here</a></p>
 				</div>
-        		
         	</div>
        </div>
 	</div>
