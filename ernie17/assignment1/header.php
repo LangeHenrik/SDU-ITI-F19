@@ -1,3 +1,15 @@
+<?php
+    # Starty session
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
+        echo "No user is currently logged in!";
+        return;
+    }
+?>
+
 <header>
     <span class="header-title"><?php echo $_SESSION['page_name'] . " - $firstname $lastname" ?></span>
     <nav>

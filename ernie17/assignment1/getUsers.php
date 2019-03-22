@@ -1,4 +1,14 @@
 <?php
+    # Starty session
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
+        echo "No user is currently logged in!";
+        return;
+    }
+
     # establish db connection
     require_once 'db_config.php';
 
