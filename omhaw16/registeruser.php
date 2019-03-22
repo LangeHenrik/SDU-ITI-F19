@@ -45,6 +45,18 @@
     $usernameErr = $firstnameErr = $lastnameErr = $zipErr = $cityErr = $phoneErr = $zipErr = $conpwErr = "";
     $regexcheck = 1;
     
+
+    if(session_status() == PHP_SESSION_NONE) {
+                session_start();
+        }
+
+        if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+    echo "<br>";
+    $stylereg = "style='display:none;'";
+    echo " <p class = 'success'> You're already registered. </p>";
+    }
+
+
    if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['submitregister'])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -85,63 +97,13 @@
         $conpwErr = "Passwords don't match!";
     }
 
-    /*    if ($password != $confirmpw) { 
-        
-            echo("Entered passwords don't match!");
-            
-        } 
-       
-       else {
-    */    
       require_once 'serverconn.php';
-
- /* if (empty($username)) {
-        $nameErr = "User name is required";
-      } else {
-        $username = test_input($_POST["username"]);
-        // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          $nameErr = "Only letters and white space allowed"; 
-        }
-      }
-      
-      if (empty($email)) {
-        $emailErr = "Email is required";
-      } else {
-        $email = test_input($_POST["email"]);
-        // check if e-mail address is well-formed
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $emailErr = "Invalid email format"; 
-        }
-      }
-        
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    } */
-
 
       if ($password === $confirmpw & !$regexcheck == 0) {
 
         $password = test_input($password);
         $confirmpw = test_input($confirmpw);
         $username = test_input($username);
-
-   /*     checkillegals($username);
-        checkillegals($password);
-        checkillegals($confirmpw);
-        checkillegals($firstname);
-        checkillegals($lastname);
-        checkillegals($zip);
-        checkillegals($phone);
-        checkillegals($email); */
-//        if ($sqlcheck == 0) { 
-
-//         $sqlreg = "INSERT INTO user (SELECT * FROM (SELECT '$username','$password', '$firstname', '$lastname', '$zip', '$phone', '$email') AS tmp WHERE NOT EXISTS (SELECT userName FROM user WHERE userName = '$username'))";
-
-// TODO: Username check - if it exists, disallow registration with said username.
 
         $sqlchecker = "SELECT userID FROM user WHERE userName = '$username'";
 
@@ -154,8 +116,6 @@
         if ($countname == 0) {
 
         $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, city, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$city', '$phone', '$email')";
-
-//        $sqlreg = "INSERT INTO user (userName, userPass, firstName, lastName, zip, phone, email) VALUES ('$username', '$password', '$firstname', '$lastname', '$zip', '$phone', '$email')";
             
             if ($conn->query($sqlreg)) {
                 $conn->close();
@@ -178,6 +138,7 @@
     ?>
 
     
+<div class = "register" <?php echo $stylereg;?>>
 <form id = "registerform" onsubmit="return checkFields()" action="registeruser.php" method="post">
     <label for="firstname" >First name</label>
     <br>

@@ -23,6 +23,16 @@
     $loginpass = "";
     $usernameErr = "";
 
+    if(session_status() == PHP_SESSION_NONE) {
+                session_start();
+        }
+
+    if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+    echo "<br>";
+    $stylelog = "style='display:none;'";
+    echo " <p class = 'success'> You're already logged in. </p>";
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $loginuser = $_POST["user"];
         $loginpass = $_POST["pw"];
@@ -77,6 +87,7 @@
     
     ?>
 
+    <div class = "login" <?php echo $stylelog;?>>
     <form name ="loginform" action="#" method="post">
     <label for="name" style="color: white;">Name</label>
     <br> 
@@ -92,6 +103,7 @@
     <input type="submit" name="submit" id="submit"/>
     <br>
     <p> Not registered yet? Click <a href="registeruser.php">here!</a> </p>
+</div>
 </form>
 
     

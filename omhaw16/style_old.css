@@ -1,5 +1,5 @@
 body {
-  background-image: url("styling/bg.jpg");
+  background-image: url("bg.jpg");
 }
 h1, h2 {
 	min-width: 100;
@@ -28,6 +28,15 @@ p.imgdesc, p.postedby, p.intro, p.tagline {
 	text-align: center;
 }
 
+p.deleteimg {
+	text-align: center;
+	font-weight: bold;
+}
+
+a.deletion {
+	color: red;
+}
+
 p.tagline {
 	font-style: italic;
 }
@@ -54,7 +63,7 @@ label {
 }
 
 p.status {
-	color: grey;
+	color: red;
 	font-weight: bold;
 }
 

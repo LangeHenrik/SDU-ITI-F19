@@ -4,7 +4,7 @@
 
         <title> Upload </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styling/style.css">
         <link rel="shortcut icon" type="image/png" href="styling/favicon.png"/>
 
 </head>
@@ -50,7 +50,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if(isset($_POST["submitimg"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
-        echo "<p class='status'>File is an image - " . $check["mime"] . ". </p>";
+        echo "<p class='guide'>File is an image - " . $check["mime"] . ". </p>";
         $uploadOk = 1;
     } else {
         echo "File is not an image.";
@@ -83,7 +83,7 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "<p style='color: green' class = 'status'> The file ". basename($_FILES["fileToUpload"]["name"]). " has been uploaded. <p>";
+        echo "<p class = 'success'> The file ". basename($_FILES["fileToUpload"]["name"]). " has been uploaded. <p>";
 
         require 'serverconn.php';
 
@@ -107,14 +107,14 @@ if ($uploadOk == 0) {
 }
 } 
 } else if ($_SESSION['login'] == 0) {
-    echo "<p class='status'> Please log in, before you upload. </p>";
+    echo "<p class='guide'> Please log in, before you upload. </p>";
 }
 ?>
 
 <p> Here you can upload any image you desire! </p>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
-    <p class ="status"> Select image to upload: </p>
+    <p class ="guide"> Select image to upload: </p>
     <input type="file" name="fileToUpload" id="fileToUpload">
     <br>
     <br>

@@ -3,6 +3,7 @@
 <head>
 
     <link rel="stylesheet" href="styling/style.css">
+
 </head>
 <body>
 <style>
@@ -27,10 +28,8 @@ if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-// mysqli_select_db($con,"ajax_demo");
 $sql = "SELECT * FROM posts INNER JOIN user ON postedby = userID WHERE postID 
 = '$q' ORDER BY postID DESC";
-// $sql="SELECT * FROM posts WHERE postID = '$q' ORDER BY postID DESC";
 
 $result = mysqli_query($con,$sql);
 
@@ -55,8 +54,6 @@ echo "</table>";
 echo "<br>";
 echo "<br>";
 echo "<a href = 'index.php'>Go back</a>";
-// echo '<button type="button" onclick="redirect()""> Go back </button>';
-
 mysqli_close($con);
 ?>
 

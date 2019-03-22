@@ -22,8 +22,6 @@
 
 include 'navi.php';
 
-echo "<br><br>";
-
 include "logout.php";
 
 require_once 'serverconn.php';
@@ -39,19 +37,14 @@ $sqlposts = "SELECT * FROM posts WHERE postedby = '$postedby' ORDER BY postID DE
 if ($_SESSION["login"] == 1) {
 
         $result = mysqli_query($conn,$sqlposts);
-    //    $result = $conn->query($sqlposts);
-    //    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //    $active = $row['active'];
-      
-//		$count = mysqli_num_rows($result);
-        
+
         if ($result->num_rows > 0) {
 
         	while ($row = $result->fetch_assoc()) {
         		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0' src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'> </div>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
             	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
-                echo "<a href = deletepost.php?postID=" . $row['postID'] . "> Delete image </a>";
+                echo "<p class = 'deleteimg'> <a class='deletion' href = deletepost.php?postID=" . $row['postID'] . "> Delete image </a></p>";
                 echo "<hr>";
         }
 
