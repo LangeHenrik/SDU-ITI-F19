@@ -134,7 +134,7 @@ if (isset($_POST['register-user'])){
 
 <body>
 
-<form method="POST" action="register.php"  margin-left="20%" >
+<form method="POST" onKeyPress="Validate()" action="register.php"  margin-left="20%" >
 
 <hr>
 
@@ -153,47 +153,48 @@ if (isset($_POST['register-user'])){
 	<br
 	<div>
 		<label> <b>Repeat Password</b></label>
-		<input type="password" placeholder="Repeat Password" id="userPassword" name="repeatPassword" required>
+
+		<input type="password" placeholder="Repeat Password" id="repeatPassword" name="repeatPassword" required>
 		
 		<div id="repassword_error" > </div>
 	</div
 	<br
 	<div>
 		<label> <b>First name</b></label>
-		<input type="text" placeholder="Enter first name" id="userPassword" name="firstName" required>
+		<input type="text" placeholder="Enter first name" id="firstName" name="firstName" required>
 		
 		<div id="firstName_error"> </div
 	</div
 	<br
 	<div>
 		<label> <b>Last name</b></label>
-		<input type="text" placeholder="Enter last name" id="userPassword" name="lastName" required>
+		<input type="text" placeholder="Enter last name" id="lastName" name="lastName" required>
 		
 		<div id="lastName_error"> </div
 	</div
 	<br
 	<div>
 		<label> <b>Zip code</b></label>
-		<input type="number" placeholder="Enter Zip code" id="userPassword" name="zipCode" required>
+		<input type="number" placeholder="Enter Zip code" id="zipCode" name="zipCode" required>
 		
 		<div id="zipCode_error"> </div
 	</div
 	<br/>
 	<div>
 		<label> <b>City</b></label>
-		<input type="text" placeholder="City" id="userPassword" name="city" required>
+		<input type="text" placeholder="City" id="city" name="city" required>
 		
 		<div id="city_error"> </div>
 	</div>
 	<br/>
 	<div>
 		<label> <b>Email</b></label>
-		<input type="email" placeholder="Email" id="userPassword" name="email" required>
+		<input type="email" placeholder="Email" id="email" name="email" required>
 	</div>
 	<br/>
 	<div>
 		<label> <b>Phone number</b></label>
-		<input type="number" placeholder="Phone number" id="userPassword" name="phoneNumber" required>
+		<input type="number" placeholder="Phone number" id="phoneNumber" name="phoneNumber" required>
 		
 		<div id="phoneNumber_error"> </div>
 	</div>
@@ -220,7 +221,7 @@ if (isset($_POST['register-user'])){
 	var phoneNumber = document.getElementById("phoneNumber");
 	
 	//Error displaying
-	var name_error = document.getElementById("name_error");
+	var name_error = document.getElementById("username_error");
 	var password_error = document.getElementById("password_error");
 	var firstName_error = document.getElementById("firstName_error");
 	var lastName_error = document.getElementById("lastName_error");
@@ -228,130 +229,88 @@ if (isset($_POST['register-user'])){
 	var city_error = document.getElementById("city_error");
 	var phoneNumber_error = document.getElementById("phoneNumber_error");
 	
-	//Set event listeners
-	//Blur = when element lose focus
 	
-	username.addEventListener("blur", nameVerify);
-	password.addEventListener("blur", passwordVerify);
-	firstName.addEventListener("blur", firstNameVerify);
-	lastName.addEventListener("blur", lastNameVerify);
-	zipCode.addEventListener("blur", zipCodeVerify);
-	city.addEventListener("blur", cityVerify);
-	phoneNumber.addEventListener("blur", phoneNumberVerify);
-	
-	//Validation function to show error messages
-	function Validate(){
-		
-		if(username.value==""){
+	//Validation function to show/remove error messages
+	function Validate(){	
+
+		if(username.value.length < 2){ 
 			username.style.border = "1px solid red ";
 			name_error.textContent = "Username must be at least 3 letters!"
-			username.focus();
-			return false;
+			
+		}else {
+			username.style.border = "1px solid black ";
+			username_error.innerHTML = "";
+			
 		}
 		
-		if(password.value!=repeatPassword){
+		
+
+		if(password.value!=repeatPassword.value){
+			
 			password.style.border = "1px solid red ";
 			password_error.textContent = "Password does not match!"
+			repeatPassword.style.border = "1px solid red ";
+			repeatPassword.textContent = "Password does not match!"
 			password.focus();
-			return false;
+			
+		} else {
+			password.style.border = "1px solid black ";
+			password_error.innerHTML = "";
+			repeatPassword.style.border = "1px solid black ";
+			repeatPassword.innerHTML = "";
+			
 		}
 		
-		if(firstName.value==""){
+		if(firstName.value.length > 19 && allLetter(firstName)){
 			firstName.style.border = "1px solid red ";
 			firstName_error.textContent = "Name must be maximum 20 letters!"
 			firstName.focus();
 			return false;
-		}
+		} else {
+          firstName.style.border = "1px solid black ";
+		  firstName_error.innerHTML = "";
+		  
+        } 
+
 		
-		if(lastName.value==""){
+		if(lastName.value.length > 19 && allLetter(lastname)){
 			lastName.style.border = "1px solid red ";
 			lastName_error.textContent = "Last name must be maximum 20 letters!"
 			lastName.focus();
 			return false;
+		} else {
+			lastName.style.border = "1px solid black ";
+			lastName_error.innerHTML = "";
+			
 		}
+
 		
-		if(zipCode.value==""){
-			zipCode.style.border = "1px solid red ";
-			zipCode_error.textContent = "zipcode must be numbers only!"
-			zipCode.focus();
-			return false;
-		}
-		
-		if(city.value==""){
+		if(allLetter(city)){
 			city.style.border = "1px solid red ";
 			city_error.textContent = "city must be letters only!"
 			city.focus();
 			return false;
-		}
-		
-		if(phoneNumber.value==""){
-			phoneNumber.style.border = "1px solid red ";
-			phoneNumber_error.textContent = "Phone number must be numbers only!"
-			phoneNumber.focus();
-			return false;
+		} else {
+			city.style.border = "1px solid #000000 ";
+			city_error.innerHTML = "";
 		}
 		
 		return true;
 		
 	}
 	
-//Event	handlers to remove error messages
-function nameVerify(){
-	if(username.value != "") {
-		username.style.border = "1px solid #000000 ";
-		username_error.innerHTML = "";
-		return true;
-	}	
-}
+	function allLetter(input)
+  {
+	var letters = /^[A-Za-z]+$/;
+	if(!input.value.match(letters))
+    {
+		return false;
+    }
+    
+		return false;
+  
+  }
 
-function passwordVerify(){
-	if(password.value != "") {
-		password.style.border = "1px solid #000000 ";
-		password_error.innerHTML = "";
-		return true;
-	}	
-}
-
-function firstNameVerify(){
-	if(firstName.value != "") {
-		firstName.style.border = "1px solid #000000 ";
-		firstName_error.innerHTML = "";
-		return true;
-	}	
-}
-
-function lastNameVerify(){
-	if(lastName.value != "") {
-		lastName.style.border = "1px solid #000000 ";
-		lastName_error.innerHTML = "";
-		return true;
-	}	
-}
-
-function zipCodeVerify(){
-	if(zipCode.value != "") {
-		zipCode.style.border = "1px solid #000000 ";
-		zipCode_error.innerHTML = "";
-		return true;
-	}	
-}
-
-function cityVerify(){
-	if(city.value != "") {
-		city.style.border = "1px solid #000000 ";
-		city_error.innerHTML = "";
-		return true;
-	}	
-}
-
-function phoneNumberVerify(){
-	if(phoneNumber.value != "") {
-		phoneNumber.style.border = "1px solid #000000 ";
-		phoneNumber_error.innerHTML = "";
-		return true;
-	}	
-}
-	
 </script>
 
 </body>

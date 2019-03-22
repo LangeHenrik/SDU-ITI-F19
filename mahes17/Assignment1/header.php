@@ -4,6 +4,13 @@ if (!isset($_SESSION['email'])) {
     $_SESSION['message'] = "You must log in first";
     header('location: login.php');
   }
+
+  if (isset(($_POST["logout"]))) {
+    unset($_SESSION['email']);
+    session_destroy();
+	header('Location: login.php');
+  }
+
 ?>
 
 <html>

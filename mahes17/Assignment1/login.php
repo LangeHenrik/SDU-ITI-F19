@@ -1,11 +1,10 @@
 <?php
 
-//print_r($_POST);
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+print_r($_POST);
+
    session_start();
 		
-   if (isset($_POST['login_button'])) { //Button pressed
+   if (isset($_POST['login_button']) && !empty($_POST['login_button'])) { //Button pressed
 		
 		if (isset($GLOBALS['loginError'])) {$loginError = $GLOBALS['loginError'];}
 		
@@ -31,10 +30,11 @@ ini_set('display_errors', 1);
 		$stmt->execute();
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		$hashedPassword = $stmt->fetchColumn();
-
 		
-		if(password_verify($clientPassword , $hashedPassword )) {
+		
 
+		if(password_verify($clientPassword , $hashedPassword )) {
+			include 'breakpoint.php';
 			//Correct password.
 			
 
