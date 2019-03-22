@@ -37,15 +37,19 @@ CREATE TABLE uploads (
     PRIMARY KEY (account_id, image_id)
 );
 
+-- Password is Admin1
 INSERT INTO account(username, password, firstname, lastname, zip, city, email, phone)
 VALUES ('Admin1', '$2y$10$GHn7SOuZltfGtzGl5WnN/.ksQxLZIQf7zCksNnUbjV8hB5QoLb4V2', 'Admin', 'Nimad', 6000, 'Admincity', 'admin@admin.com', 99999999);
 
+-- Password is Testo0
 INSERT INTO account(username, password, firstname, lastname, zip, city, email, phone)
 VALUES ('Testo1', '$2y$10$UnJB5PYBLmNCjbtLj2jQMee1hGCqw2xOoI2JnywAdsbQkkhJicmKO', 'Tester', 'Retset', 6000, 'Testercity', 'tester1@tester.com', 00000001);
 
+-- Password is Testo0
 INSERT INTO account(username, password, firstname, lastname, zip, city, email, phone)
 VALUES ('Testo2', '$2y$10$UnJB5PYBLmNCjbtLj2jQMee1hGCqw2xOoI2JnywAdsbQkkhJicmKO', 'Tester', 'Retset', 6000, 'Testercity', 'tester2@tester.com', 00000002);
 
+-- Password is Testo0
 INSERT INTO account(username, password, firstname, lastname, zip, city, email, phone)
 VALUES ('dpete17', '$2y$10$UnJB5PYBLmNCjbtLj2jQMee1hGCqw2xOoI2JnywAdsbQkkhJicmKO', 'Dennis', 'Unknown', 6000, 'Odense M', 'creator@htmlgod.com', 35700540);
 

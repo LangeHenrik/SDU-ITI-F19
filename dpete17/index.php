@@ -26,6 +26,7 @@
         </header>
         <div class="sign-content">
             <div style="text-align: center;"><span id="message">
+                <p id="errorMessage"></p>
                 <?php
 
                     if(isset($_SESSION['MESSAGE'])) {
