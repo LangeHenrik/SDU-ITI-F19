@@ -3,7 +3,7 @@
 -- Server version:               5.2.14-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2019-03-22 12:58:25
+-- Date/time:                    2019-03-22 14:25:53
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -51,10 +51,13 @@ CREATE TABLE IF NOT EXISTS `picture` (
   PRIMARY KEY (`picture_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `picture_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `person` (`person_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mahes17.picture: ~0 rows (approximately)
+-- Dumping data for table mahes17.picture: ~2 rows (approximately)
 /*!40000 ALTER TABLE `picture` DISABLE KEYS */;
+INSERT INTO `picture` (`picture_id`, `pictureImage`, `title`, `desc`, `user_id`) VALUES
+	(1, '/cat.jpg', 'Cute cat', 'Pic of cute cat', 11),
+	(2, '/dog.jpg', 'Cute dog', 'A dog', 11);
 /*!40000 ALTER TABLE `picture` ENABLE KEYS */;
 
 
@@ -66,13 +69,14 @@ CREATE TABLE IF NOT EXISTS `timelog` (
   `eventTimestamp` varchar(100) NOT NULL,
   `responsible` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`timelog_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table mahes17.timelog: ~2 rows (approximately)
+-- Dumping data for table mahes17.timelog: ~3 rows (approximately)
 /*!40000 ALTER TABLE `timelog` DISABLE KEYS */;
 INSERT INTO `timelog` (`timelog_id`, `eventName`, `eventTimestamp`, `responsible`) VALUES
 	(1, 'event', 'timestamp', 'responsible'),
-	(2, 'cool', '2019-03-21 01:13:51', 'Testuser.com');
+	(2, 'Logged in', '2019-03-21 01:13:51', 'Testuser.com'),
+	(3, 'Logged in', '2019-03-22 02:22:45', 'maltehesk@hotmail.com');
 /*!40000 ALTER TABLE `timelog` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
