@@ -66,10 +66,18 @@
 .uploadPictureForm {
   margin: 0 auto;
   padding: 20px;
-  margin-top: 30px;
   text-align: center;
   background-color: #FAFAFA;
-  width: 500px;
+  margin-top: 30px;
+  width: 600px;
+}
+
+.searchForUsersForm {
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #FAFAFA;
+  width: 460px;
 }
 
 .logOutForm {
@@ -139,8 +147,20 @@
   cursor: pointer;
 }
 
+
 .usersTableDiv {
   padding: 30px;
+}
+
+.headerDiv {
+  margin: 0 auto;
+  background-color: lightblue;
+  text-align: center;
+  font-family: Arial;
+  font-size: 30px;
+  width: 499px;
+  padding: 10px 0px 10px;
+
 }
 
 .usersTable {
@@ -148,7 +168,7 @@
   color: #333;
   font-family: Arial;
   font-size: 30;
-  width: 640px;
+  width: 500px;
   border-collapse: collapse; border-spacing: 0;
 }
 
@@ -262,10 +282,14 @@
   }
 
   .usersTable th {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .usersTable td {
+    font-size: 12px;
+  }
+
+  .headerDiv {
     font-size: 14px;
   }
 
