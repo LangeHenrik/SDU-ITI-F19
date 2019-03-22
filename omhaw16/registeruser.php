@@ -8,6 +8,9 @@
         <h1> Register on the Website! ™ </h1>
         
         <?php
+
+        include 'navi.php';
+        include 'logout.php';
     
     function test_input($entry) {
         $data = trim($entry);
@@ -213,7 +216,6 @@
 </form>    
 
     <br>
-    <?php include 'logout.php';?>
     
 </body>
 </html>

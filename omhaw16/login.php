@@ -10,6 +10,9 @@
     
         <?php 
 
+        include 'navi.php';
+        include 'logout.php';
+
     $loggedin = 0;
     $loginuser = "";
     $loginpass = "";

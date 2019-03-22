@@ -6,6 +6,7 @@
 
 <?php 
 
+include 'navi.php';
 include 'logout.php';
 
 $imgtitle = "";

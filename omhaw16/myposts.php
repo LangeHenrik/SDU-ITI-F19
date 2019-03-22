@@ -17,6 +17,10 @@
 
 <?php 
 
+include 'navi.php';
+
+echo "<br><br>";
+
 include "logout.php";
 
 require_once 'serverconn.php';

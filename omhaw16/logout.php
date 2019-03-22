@@ -2,10 +2,8 @@
 <html>
 
 <body>
-    
-<form method="post">
-    <input type="submit" name="logout" id="logout" value="Logout"><br/>
-</form>
+  
+  <?php $style = ""; ?>
 
 <?php
 
@@ -27,12 +25,19 @@ if(session_status() == PHP_SESSION_NONE) {
 if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
   // -- DEBUG --  echo "login = 1";
   // -- DEBUG --  echo " You're logged in! ";
-    echo " Hello user   " . $_SESSION['userName'] . "  ";
+    echo " Hello, " . $_SESSION['userName'] . "!  ";
+    echo "<br><br>";
+    $style = "";
+
+
 } else {
     session_unset();
   // -- DEBUG --  echo "Login = 0";
-    echo " You're logged out! ";
-    echo " Hello guest. ";
+    
+    $style = "style='display:none;'";
+    echo " Hello guest! ";
+    echo "<br><br>";
+
 }
 
 /* - DEBUG --
@@ -65,6 +70,13 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == 1){
 }
 
 ?>
+
+<div id="button" <?php echo $style;?>>
+<form method="post">
+    <input type="submit" name="logout" id="logout" value="Logout">
+</form>
+<br>
+</div>
 
     
 </body>

@@ -19,6 +19,8 @@
 
 <?php 
 
+include 'navi.php';
+
 include "logout.php";
 
 require 'serverconn.php';
@@ -36,10 +38,13 @@ $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY p
 
         	while ($row = $result->fetch_assoc()) {
         		
-        		echo "<img src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' onclick='imgInfo(" . $row['postID'] . ")'>";
+            // echo "<br><br>";
+            echo "<h2> All photos </h2>";
+            echo "<p> The posts are sorted by time, with the newest being at the top. </p><br>";
+        		echo "<img align = centre width = auto src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' onclick='imgInfo(" . $row['postID'] . ")'>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
             	echo "<p>" . $row['imgDesc'] . "</p>";
-            	echo "<a class='reg' href='#'>Posted by " . $row['userName'] . "</a>";
+            	echo "<b> Posted by </b>" . $row['userName'] . "</a>";
 
             	       }
 
@@ -59,9 +64,9 @@ echo "<h1> All users </h1>";
 
         if ($resultusers->num_rows > 0) {
             while ($row = $resultusers->fetch_assoc()) {
-              echo "User ID: " . $row['userID'];
+         /*     echo "User ID: " . $row['userID'];
               echo "<br>";
-              echo "<br>";
+              echo "<br>"; */
               echo "Username: " . $row['userName'];
               echo "<br>";
               echo "<br>";
