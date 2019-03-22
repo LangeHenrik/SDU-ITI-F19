@@ -1,6 +1,10 @@
 
 <?php
 
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
 $_SESSION['registerMessage']=' ';
 $_SESSION['loginMessage']=' ';
 
@@ -29,10 +33,11 @@ if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
     $preparedLoginCheck->setFetchMode(PDO::FETCH_ASSOC);
     $result = $preparedLoginCheck->fetchAll();
     if (count($result) == 1) {
-        session_start();
-        $_SESSION['loggedInUser'] =  $_POST["login-username"];
+      foreach($result as $row){
+        $_SESSION['loggedInUser'] =  $row['id'];
         $_SESSION['loggedin'] = true;
         header('Location: images.php');
+      }
     } else {
       $_SESSION['loginMessage'] = "Prøv igen, så kan du se blærede billeder!";
     }
@@ -57,7 +62,7 @@ if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
     if (count($result) == 1) {
       $_SESSION['registerMessage'] = "EFTERABER! Dit brugernavn er allerede taget! Eller også er adgangskoden for kort";
     }
-    else {
+    else{
       $prepareInsertUser->bindparam(':username', $usernameInput);
       $prepareInsertUser->bindparam(':password', $passwordInput);
       $prepareInsertUser->bindparam(':lastname', $lastNameInput);
@@ -67,11 +72,6 @@ if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
       $prepareInsertUser->bindparam(':phone', $phoneNumberInput);
       $prepareInsertUser->bindparam(':email', $emailAdressInput);
       $success=$prepareInsertUser->execute();
-      if($success){
-        $_SESSION['registerMessage'] = "Dine bruger-oplysninger er blevet gemt. Log ind ovenfor og se på de blærede billeder";
-      }else{
-        $_SESSION['registerMessage'] = "Noget gik galt. Kontakt ham med de blærede billeder for at få hjælp.";
-      }
     }
   }
 
@@ -85,6 +85,7 @@ $conn=null;
   <head>
     <meta charset="utf-8">
     <link rel ="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlæredeBilleder</title>
   </head>
@@ -106,7 +107,7 @@ $conn=null;
                   <br>
                   <br>
                   <input class="submit-button" type="submit" id="login" value="Login" name="login">
-                  <div class="messagebox">
+                  <div class="messagebox" id="login-error-container">
                     
                     <?php 
                     //$_SESSION['loginMessage']='Prøv igen, så kan du se blærede billeder';
@@ -123,7 +124,7 @@ $conn=null;
           </p>
       </div>
       <div class="form-container register">
-            <form class="form-classic" method="POST">
+            <form class="form-classic" onSubmit="return checkRegister()" method="POST" action="index.php">
                 <fieldset class="fieldset-classic">
                         <legend>Opret dig som bruger for at se nogle BlæredeBilleder</legend>
                         <label for="firstname">Fornavn</label>
@@ -163,8 +164,8 @@ $conn=null;
                         <input type="password" id="passwordSecond" name="register-passwordSecond">
                         <br>
                         <br>
-                        <input type="submit" class="submit-button" id="register" value="Opret Bruger" name="register">
-                        <div class="messagebox">
+                        <input type="submit" class="submit-button" id="register" value="Opret Bruger" name="register"/>
+                        <div class="messagebox" id="register-error-container">
                             <?php 
                             //$_SESSION['registerMessage']='Noget gik galt. Kontakt ham med de blærede billeder for at få hjælp.';
                             echo''.$_SESSION['registerMessage'];
