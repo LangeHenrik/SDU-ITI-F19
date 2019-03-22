@@ -71,7 +71,7 @@ if( isset($_POST["rusername"]) ) {
         }
 
         if(form.rpassword.value != "" && form.rpassword.value == form.rpassword2.value) {
-            if(form.pwd1.value.length < 6) {
+            if(form.rpassword.value.length < 6) {
                 alert("Error: Password must contain at least six characters!");
                 form.rpassword.focus();
                 return false;
