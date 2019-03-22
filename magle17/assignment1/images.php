@@ -12,6 +12,9 @@ if(isset($_POST["logout"])) {
     header('Location: index.php');
     session_destroy();
 }
+if(isset($_POST["goto-users"])){
+    heder('Location: users.php');
+}
 
 
 require_once 'db_config.php';
@@ -139,6 +142,9 @@ if (isset($_FILES['image-upload'])) {
       <h2>Stedet hvor intet er privat og alt er lovligt</h2>
       <form action="images.php" method="post">
           <input type="submit" name="logout" value="Log ud">
+      </form>
+      <form action="images.php" method="post">
+          <input type="submit" name="goto-users" value="Brugeradminstration">
       </form>
       <div class="form-container upload">
         <form class="form-classic" method="post" enctype="multipart/form-data">

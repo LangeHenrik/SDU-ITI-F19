@@ -21,12 +21,9 @@ h2,.logoutbutton{
     background-color: #ffe9a8;
     font-size: 20pt;
 }
-/*.inbetweener p{
-    text-align: center;
-    background-color: #ffe9a8;
-    font-size: 20pt;
-    padding: 0.2%;
-}*/
+.nav-button{
+  padding: 0.5% 1% 0.5% 1%;
+}
 .fieldset-classic{
     text-align: center;
     padding: 1% 0% 1% 0%;
@@ -56,9 +53,6 @@ h2,.logoutbutton{
     font-size: 18pt;
     min-width: 5cm;
 }
-/*.table-container{
-    
-}*/
 .messagebox{
     width: 20%;
     min-width: 5cm;

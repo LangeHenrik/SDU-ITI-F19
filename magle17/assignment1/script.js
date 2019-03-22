@@ -3,12 +3,12 @@ function performAjax(){
     var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
                 var response=eval(this.responseText.split('<!DOCTYPE html>')[0]);
+                //Splitting on the html because the whole dom is loaded when php is 
+                //
                 if(response=='0'){
                     console.log("No More IMAGES!?");
                 }else{
-                    console.log(response);
                     injectImages(response);
                 }
             }
