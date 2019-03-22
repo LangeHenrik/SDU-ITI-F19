@@ -26,8 +26,7 @@
         $password,
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-        $stmtGetPictures = $conn->prepare("SELECT picture_user_id, image_name, header, description
-            FROM (SELECT picture_user_id, image_name, header, description FROM picture ORDER BY image_name DESC LIMIT 20) sub ORDER BY image_name ASC");
+        $stmtGetPictures = $conn->prepare("SELECT picture_user_id, image_name, header, description FROM picture ORDER BY image_name DESC LIMIT 20");
 
         $stmtGetPictures->execute();
         $stmtGetPictures->setFetchMode(PDO::FETCH_ASSOC);
