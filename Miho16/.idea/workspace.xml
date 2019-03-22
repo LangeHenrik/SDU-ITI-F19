@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="200a854c-0823-4270-855f-beb5729ee17a" name="Default Changelist" comment="assignment">
-      <change afterPath="$PROJECT_DIR$/checkpass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startpage.php" beforeDir="false" afterPath="$PROJECT_DIR$/startpage.php" afterDir="false" />
-    </list>
+    <list default="true" id="200a854c-0823-4270-855f-beb5729ee17a" name="Default Changelist" comment="assignment" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,17 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/startpage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/checkpass.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+            <state relative-caret-position="578">
+              <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -168,6 +155,11 @@
               <item name="Miho16" type="b2602c69:ProjectViewProjectNode" />
               <item name="Miho16" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Miho16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Miho16" type="462c0819:PsiDirectoryNode" />
+              <item name="gallery" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -239,7 +231,7 @@
       <workItem from="1553185768434" duration="252000" />
       <workItem from="1553186126650" duration="5519000" />
       <workItem from="1553241626469" duration="8301000" />
-      <workItem from="1553250124183" duration="3789000" />
+      <workItem from="1553250124183" duration="4041000" />
     </task>
     <task id="LOCAL-00001" summary="assignment">
       <created>1553249444351</created>
@@ -259,11 +251,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43972000" />
+    <option name="totallyTimeSpent" value="44224000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1577" height="1016" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16524029" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -394,8 +385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/startpage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+        <state relative-caret-position="578">
+          <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
         </state>
       </provider>
     </entry>
