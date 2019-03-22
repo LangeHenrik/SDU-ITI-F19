@@ -1,0 +1,42 @@
+CREATE TABLE users (
+    idUsers INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    uidusers TINYTEXT NOT NULL,
+    emailUsers TINYTEXT NOT NULL,
+    pwd LONGTEXT NOT NULL
+);
+
+CREATE TABLE images1 (
+    idPic INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    uidusers TINYTEXT,
+    idUs INT(11),
+    path VARCHAR(200) NOT NULL,
+    tex TEXT NOT NULL,
+    FOREIGN KEY (idUs) REFERENCES users(idUsers)
+);
+
+CREATE TABLE images2 (
+    idPic INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    uidusers TINYTEXT,
+    idUs INT(11),
+    path VARCHAR(200) NOT NULL,
+    tex TEXT NOT NULL,
+    FOREIGN KEY (idUs) REFERENCES users(idUsers)
+);
+
+CREATE TABLE images3 (
+    idPic INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    uidusers TINYTEXT,
+    idUs INT(11),
+    path VARCHAR(200) NOT NULL,
+    tex TEXT NOT NULL,
+    FOREIGN KEY (idUs) REFERENCES users(idUsers)
+);
+
+CREATE TABLE images4 (
+    idPic INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    uidusers TINYTEXT,
+    idUs INT(11),
+    path VARCHAR(200) NOT NULL,
+    tex TEXT NOT NULL,
+    FOREIGN KEY (idUs) REFERENCES users(idUsers)
+);
