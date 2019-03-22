@@ -1,13 +1,12 @@
 <?php
+
+//print_r($_POST);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
    session_start();
 		
    if (isset($_POST['login_button'])) { //Button pressed
-
-		include('breakpoint.php');
-
-		$loginError = array();
 		
-
 		if (isset($GLOBALS['loginError'])) {$loginError = $GLOBALS['loginError'];}
 		
 		$clientPassword = $clientEmail = "";
@@ -15,7 +14,7 @@
 		if (isset($_POST['email'])) {$clientEmail = filter_var($_POST['email'], FILTER_SANITIZE_STRING);} 
 		if (isset($_POST['userPassword'])) {$clientPassword = filter_var($_POST['userPassword'], FILTER_SANITIZE_STRING);}
 		
-		include("./PDO.php");
+		include "./PDO.php";
 	
 		$eventName = 'Login attempt'; //Log a login attempt
 		$SQLNow = 'now()'; // SQL now method return the current time
@@ -33,7 +32,7 @@
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		$hashedPassword = $stmt->fetchColumn();
 
-
+		
 		if(password_verify($clientPassword , $hashedPassword )) {
 
 			//Correct password.
@@ -45,15 +44,16 @@
 		} else {
 			$loginError = array();
 			
-			array_push($loginError, "Email and password does not match!");
+			array_push($loginError, "Email and password does not match!. Hash: " );
 
 			$GLOBALS['loginError'] = $loginError;
 
-            header("Location: ./login.php");
+			print_r($loginError);
+            //header("Location: ./login.php");
 			
 		}
 	
-		exit();
+		
    }
    
    if (isset($_POST['register'])) {
@@ -98,8 +98,8 @@
 	<br/>
 	
 	
-	<input type="button" value = "Login" name= "login_button" >
-	<input type="button" value="Register" formnovalidate name = "register">
+	<input type="submit" value = "Login" name= "login_button" >
+	<input type="submit" value="Register" formnovalidate name = "register">
     
 
   </div>
