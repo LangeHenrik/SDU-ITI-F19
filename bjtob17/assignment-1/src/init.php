@@ -5,5 +5,5 @@ if ($config["debug"]) {
     error_reporting(E_ALL);
 }
 date_default_timezone_set($config["timezone"]);
-include "Services/Autoloader.php";
+include "Util/Autoloader.php";
 include "Services/Auth.php";

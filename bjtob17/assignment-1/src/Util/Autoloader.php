@@ -1,5 +1,5 @@
 <?php
-namespace Services;
+namespace Util;
 /**
  * Simple autoloader, so we don't need Composer just for this.
  * http://php.net/manual/en/language.oop5.autoload.php#120258
