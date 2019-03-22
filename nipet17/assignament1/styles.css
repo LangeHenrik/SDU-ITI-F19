@@ -142,6 +142,24 @@ form div{
   padding-left:50mm;
 
 }
+
+#img_div a{
+  color: #A9A9A9;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s;
+
+
+  display: inline-block;
+  padding: 5px 20px;
+  margin-left: 10px;
+  background: #363435;
+  line-height: normal;
+}
+
+#img_div img {
+  width: inherit;
+}
 /*----------Users---------- */
 #users {
   width: 80%;
@@ -162,4 +180,10 @@ form div{
     text-align: left;
     margin: auto;
     padding: 5px 20px
+}
+
+/* ----------Sign Up---------- */
+main form img {
+  width: 15px;
+  opacity: 0;
 }

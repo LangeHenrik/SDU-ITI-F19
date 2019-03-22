@@ -2,10 +2,10 @@ function checkName(){
     var name = document.getElementById("name").value;
 
     if ((/^\w+\s+\w+$/g).test(name)){
-        document.getElementById("lname").style.color = "green";
+        document.getElementById("ename").style.opacity = 0;
         return true;
     } else {
-        document.getElementById("lname").style.color = "red";
+        document.getElementById("ename").style.opacity = 1;
         return false;
     }
 }
@@ -14,10 +14,10 @@ function checkEmail() {
     var email = document.getElementById("email").value;
 
     if ((/^\S+@\S+\.([a-z]|[A-Z]){1,5}$/g).test(email)) {
-        document.getElementById("lemail").style.color = "green";
+        document.getElementById("eemail").style.opacity = 0;
         return true;
     } else {
-        document.getElementById("lemail").style.color = "red";
+        document.getElementById("eemail").style.opacity = 1;
         return false;
     }
 }
@@ -26,22 +26,22 @@ function checkPassword() {
     var password = document.getElementById("password").value;
 
     if((/^[a-zA-Z0-9!@#$%^&*]{8,}$/g).test(password)){
-        document.getElementById("lpassword").style.color = "green";
+        document.getElementById("epassword").style.opacity = 0;
         return true;
     } else {
-        document.getElementById("lpassword").style.color = "red";
+        document.getElementById("epassword").style.opacity = 1;
         return false;
     }
 }
 
 function checkUsername() {
-  var username = document.getElementById("name").value;
+  var username = document.getElementById("username").value;
 
   if ((/^\w+$/g).test(username)){
-      document.getElementById("luser").style.color = "green";
+      document.getElementById("euser").style.opacity = 0;
       return true;
   } else {
-      document.getElementById("luser").style.color = "red";
+      document.getElementById("euser").style.opacity = 1;
       return false;
   }
 }
@@ -51,10 +51,10 @@ function checkVerify() {
   var verify = document.getElementById("password2").value;
 
   if (verify.length === password.length) {
-    document.getElementById("lpassword2").style.color = "green";
+    document.getElementById("epassword2").style.opacity = 0;
     return true;
   } else {
-    document.getElementById("lpassword2").style.color = "red";
+    document.getElementById("epassword2").style.opacity = 1;
     return false;
   }
 }
@@ -63,10 +63,10 @@ function checkPhone() {
     var phone = document.getElementById("phone").value;
 
     if ((/^[0-9]{8,30}$/g).test(phone)) {
-        document.getElementById("lphone").style.color = "green";
+        document.getElementById("ephone").style.opacity = 0;
         return true;
     } else {
-        document.getElementById("lphone").style.color = "red";
+        document.getElementById("ephone").style.opacity = 1;
         return false;
 
     }
@@ -75,11 +75,11 @@ function checkPhone() {
 function checkZip() {
     var zip = document.getElementById("zip").value;
 
-    if ((/^\d{4}$/g).test(zip)) {
-        document.getElementById("lzip").style.color = "green";
+    if ((/^\d{4}/g).test(zip)) {
+        document.getElementById("ezip").style.opacity = 0;
         return true;
     } else {
-        document.getElementById("lzup").style.color = "red";
+        document.getElementById("ezip").style.opacity = 1;
         return false;
     }
 
@@ -89,10 +89,10 @@ function checkCity() {
     var city = document.getElementById("city").value;
 
     if ((/^([A-Z]|[a-z])\w+$/g).test(city)) {
-        document.getElementById("lzip").style.color = "green";
+        document.getElementById("ecity").style.opacity = 0;
         return true;
     } else {
-        document.getElementById("lzup").style.color = "red";
+        document.getElementById("ecity").style.opacity = 1;
         return false;
     }
 

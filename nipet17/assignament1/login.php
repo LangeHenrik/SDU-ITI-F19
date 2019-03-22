@@ -5,6 +5,11 @@
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
   }
+
+  if (isset($_SESSION["username"])) {
+    header("location:pictures.php");
+  }
+
 /*----------------------------------Database------------------------------------- */
   // Connects to database
   require_once("db_config.php");
@@ -59,6 +64,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <title>Log in</title>
   </head>
 

@@ -10,19 +10,22 @@
 	$object = new db_config_class;
 	$db = $object->connect();
 
+	$_SESSION['count'] = 0;
+
 	if (isset($_POST['submit_btn'])) {
 		if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['name']) &&
 					isset($_POST['password']) && isset($_POST['password2']) && isset($_POST['phone']) &&
 						isset($_POST['zip']) && isset($_POST['city'])) {
 
-						$username = $_POST['username'];
-						$email = $_POST['email'];
-						$name = $_POST['name'];
-						$password = $_POST['password'];
-						$password2 = $_POST['password2'];
-						$phone = $_POST['phone'];
-						$zip = $_POST['zip'];
-						$city = $_POST['city'];
+						// Check username: checks if the username is empty and nothing else.
+						$username = htmlentities(filter_var($_POST["username"]),FILTER_SANITIZE_STRING);
+						$email = htmlentities(filter_var($_POST["email"]),FILTER_SANITIZE_EMAIL);
+						$name = htmlentities(filter_var($_POST["name"]),FILTER_SANITIZE_STRING);
+						$password = htmlentities(filter_var($_POST["password"]),FILTER_SANITIZE_STRING);
+						$password2 = htmlentities(filter_var($_POST["password2"]),FILTER_SANITIZE_STRING);
+						$phone = htmlentities(filter_var($_POST["phone"]),FILTER_SANITIZE_NUMBER_INT);
+						$zip = htmlentities(filter_var($_POST["zip"]),FILTER_SANITIZE_STRING);
+						$city = htmlentities(filter_var($_POST["city"]),FILTER_SANITIZE_STRING);
 
 						if ($password === $password2) {
 							$query = "SELECT * FROM login WHERE login_username = :username";
@@ -33,9 +36,9 @@
 								)
 							);
 
-							$count = $stmt->rowCount();
+							$_SESSION['count'] = $stmt->rowCount();
 
-							if ($count > 0) {
+							if ($_SESSION['count'] > 0) {
 								$_SESSION['message'] = "Username already in use";
 							} else {
 								// Create user
@@ -54,8 +57,6 @@
 										'city' => $city
 									)
 								);
-								$_SESSION['message'] = "You are now logged in!";
-								$_SESSION['username'] = $username;
 								header("location: login.php");	// Redirect to login
 							}
 						} else {
@@ -72,6 +73,7 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 		<script src="script.js"></script>
 
 		</script>
@@ -90,50 +92,63 @@
 
 		<main>
 			<form method="post" action="sign-up.php">
+				<?php
+					if ($_SESSION['count'] > 0) {
+						echo "<h2>".$_SESSION['message']."</h2><br>";
+					}
+				?>
 				<fieldset>
 				<legend><h3>Sign up</h3></legend>
-					<form action="login.php" method="post">
+					<form class="signup" method="post">
 						<label for="Name" id="lname">Name</label>
 						<br>
-						<input onsubmit="checkName()" type="name" name="name" id="name" placeholder="Fullname here.."/>
+						<input onblur="checkName()" type="name" name="name" id="name" placeholder="Fullname here.."/>
+						<img src="img/error.png" alt="error" id="ename">
 						<br>
 
 						<label for="username" id="luser">Username</label>
 						<br>
-						<input onsubmit="checkUsername()" type="username" name="username" id="username" placeholder="Username here.."/>
+						<input onblur="checkUsername()" type="username" name="username" id="username" placeholder="Username here.."/>
+						<img src="img/error.png" alt="error" id="euser">
 						<br>
 
 						<label for="email" id="lemail">E-mail</label>
 						<br>
-						<input onsubmit="checkEmail()" type="text" name="email" id="email" placeholder="E-mail here.."/>
+						<input onblur="checkEmail()" type="text" name="email" id="email" placeholder="E-mail here.."/>
+						<img src="img/error.png" alt="error" id="eemail">
 						<br>
 
 						<label for="phone" id="lphone">Phone</label>
 						<br>
-						<input onsubmit="checkPhone()" type="text" name="phone" id="phone" placeholder="Phone here.."/>
+						<input onblur="checkPhone()" type="text" name="phone" id="phone" placeholder="Phone here.."/>
+						<img src="img/error.png" alt="error" id="ephone">
 						<br>
 
 						<label for="zip" id="lzip">Zip code</label>
 						<br>
-						<input onsubmit="checkZip()" type="text" name="zip" id="zip" placeholder="Zip code here.."/>
+						<input onblur="checkZip()" type="text" name="zip" id="zip" placeholder="Zip code here.."/>
+						<img src="img/error.png" alt="error" id="ezip">
 						<br>
 
 						<label for="city" id="lcity">City</label>
 						<br>
-						<input onsubmit="checkCity()" type="text" name="city" id="city" placeholder="City here.."/>
+						<input onblur="checkCity()" type="text" name="city" id="city" placeholder="City here.."/>
+						<img src="img/error.png" alt="error" id="ecity">
 						<br>
 
 						<label for="password" id="lpassword">Password</label>
 						<br>
-						<input onsubmit="checkPassword()" type="password" name="password" id="password" placeholder="Password here.."/>
+						<input onblur="checkPassword()" type="password" name="password" id="password" placeholder="Password here.."/>
+						<img src="img/error.png" alt="error" id="epassword">
 						<br>
 
 						<label for="password2" id="lpassword2">Verify password</label>
 						<br>
-						<input onsubmit="checkVerify()" type="password" name="password2" id="password2" placeholder="Password here.."/>
+						<input onblur="checkVerify()" type="password" name="password2" id="password2" placeholder="Password here.."/>
+						<img src="img/error.png" alt="error" id="everify">
 						<br><br>
 
-						<input onsubmit="saveUser()" type="submit" name="submit_btn" id="submit"/>
+						<input type="submit" name="submit_btn" id="submit"/>
 						<br><br>
 				</form>
 			</fieldset>

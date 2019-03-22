@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-<!-- ____________________________________PHP____________________________________-->
 <?php
 
   session_start();
@@ -40,12 +39,17 @@
 
 ?>
 
-<!-- ____________________________________PHP____________________________________-->
-
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
     <title>Pictures</title>
   </head>
   <body>
@@ -92,7 +96,6 @@
         </div>
       </form>
 
-<!-- ____________________________________PHP____________________________________-->
         <?php
           // Connect to the database
           require_once("db_config.php");
@@ -100,47 +103,90 @@
           $db = $object->connect();
 
 
-          $stmt = $db->prepare("SELECT * FROM photo;");
+          $stmt = $db->prepare("SELECT * FROM photo LIMIT 20;");
           //$stmt->bindParam(":id", $id);
           $stmt->execute();
 
-          $count = $stmt->rowCount();
-          if ($count >= 20) {
-            for ($i=0; $i < 20; $i++) {
-              $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-              echo "<div id='img_div'>";
-                echo "<h3>".$row['photo_header']."</h3>";
-                echo "<img src='images/".$row['photo_image']."'>";
-                echo "<p>".$row['photo_text']."</p>";
-              echo "</div>";
-
-              //echo "<";
-            }
-          } else {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo "<div id='img_div'>";
-                  echo "<h3>".$row['photo_header']."</h3>";
-                  echo "<img src='images/".$row['photo_image']."'>";
-                  echo "<p>".$row['photo_text']."</p>";
-                echo "</div>";
-
-                //echo "<";
-              }
-          }
-
-
-        /*  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<div id='img_div'>";
-              echo "<img src='images/".$row['photo_image']."'>";
-              echo "<p>".$row['photo_text']."</p>";
-            echo "</div>";
-
-            echo "<";
-          }*/
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+            <div id="img_div">
+              <tr id="<?php echo $row['photo_id']; ?>">
+                <td data-target="photo_header"><h3><?php echo $row['photo_header']?></h3></td>
+                <td>  <img src="images/<?php echo $row['photo_image'] ?>"></td>
+                <td data-taget="photo_text"><p> <?php echo $row['photo_text']; ?></p></td>
+                <td><a href="#" data-role="update" data-id="<?php echo $row['photo_id']; ?>">Update</a></td>
+              </tr>
+            </div>
+          <?php }
         ?>
-<!-- ____________________________________PHP____________________________________-->
+
     </div>
 
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Change image description</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Header</label>
+              <input type="text" id="photo_header" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Image description</label>
+              <input type="text" id="photo_text" class="form-control">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" id="save" class="btn btn-primary pull-right">Update</a>
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
   </body>
+
+<script>
+  $(document).ready(function() {
+    $(document).on('click','a[data-role=update]',function(){
+      var id  = $(this).data('id');
+      var header  = $('#'+id).children('td[data-target=photo_header]').text();
+      var description  = $('#'+id).children('td[data-target=photo_text]').text();
+
+      $('#photo_header').val(header);
+      $('#photo_text').val(description);
+
+      $('#photo_id').val(id);
+      $('#myModal').modal('toggle');
+    });
+
+    $('#save').click(function(){
+          var id  = $('#photo_id').val();
+          var header =  $('#photo_header').val();
+          var description =  $('#photo_text').val();
+
+          $.ajax({
+              url      : 'connection.php',
+              method   : 'post',
+              data     : {header : header , description: description , id: id},
+              success  : function(response){
+                            // now update user record in table
+                             $('#'+id).children('td[data-target=photo_header]').text(photo_header);
+                             $('#'+id).children('td[data-target=photo_text]').text(photo_text);
+                             $('#myModal').modal('toggle');
+
+                         }
+          });
+       });
+  });
+</script>
+
 </html>
