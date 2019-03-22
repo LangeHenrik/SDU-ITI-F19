@@ -3,7 +3,7 @@
 :root {
 
 /**** COLOR ****/
-	--text1: #BAFF29;
+	--text1: #BA8829;
 	--text2: #6290C3;
 	--bg1: rgba(68, 69, 84, .8);
 	--bg2: rgba(28,16,24,.8);
@@ -71,6 +71,7 @@ body {
 	font-family: var(--font-main);	
 	font-size: 1.2em;	
 	background: url("/css/img/bg.jpg") no-repeat fixed center;
+	background-size: cover;
 	color: var(--text1);
 	margin: 0;
 }
