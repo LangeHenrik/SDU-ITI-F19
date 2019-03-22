@@ -28,6 +28,11 @@ include "logout.php";
 
 require 'serverconn.php';
 
+            echo "<h1> * </h1>";
+            echo "<h2> All photos </h2>";
+                       echo "<p class = 'intro'> The posts are sorted by time, with the newest being at the top. </p><br>";
+
+
 $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY postID DESC";
 
         $result = mysqli_query($conn,$sqlposts);
@@ -41,10 +46,6 @@ $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY p
 
         	while ($row = $result->fetch_assoc()) {
         		
-            // echo "<br><br>";
-            echo "<h1> * </h1>";
-            echo "<h2> All photos </h2>";
-            echo "<p class = 'intro'> The posts are sorted by time, with the newest being at the top. </p><br>";
         		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0'  src='uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' onclick='imgInfo(" . $row['postID'] . ")'> </div>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
             	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
