@@ -18,22 +18,26 @@
         $resultGetUsers = $stmtGetUsers->fetchAll();
         // print_r($resultGetUsers);
 
-        echo "<table>
-        <tr>
-        <th>Username</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        </tr>";
+        if (!empty($resultGetUsers)) {
+            echo "<table>
+            <tr>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            </tr>";
 
-        foreach ($resultGetUsers as $value) {
-            echo '<tr>';
-            echo '<td>' . $value['username'] . '</td>';
-            echo '<td>' . $value['firstname'] . '</td>';
-            echo '<td>' . $value['lastname'] . '</td>';
-            echo '</tr>';
+            foreach ($resultGetUsers as $value) {
+                echo '<tr>';
+                echo '<td>' . $value['username'] . '</td>';
+                echo '<td>' . $value['firstname'] . '</td>';
+                echo '<td>' . $value['lastname'] . '</td>';
+                echo '</tr>';
+            }
+
+            echo "</table>";
+        } else {
+            echo "No users found!";
         }
-
-        echo "</table>";
 
     } catch (PDOexception $e) {
         echo "Error: " . $e->getMessage();
