@@ -11,6 +11,6 @@ $allowed_filetypes = array(".jpg",".jpeg",".JPG",".gif",".GIF",".png",".PNG");
 // maximum size for uploads (in Bytes)
 $max_filesize = 10485760; // = 10MB
 // Dierctory for file uploads - HAS TO END WITH TRAILING SLASH
-$upload_path = '/tmp/uploads/';
+$upload_path = './';
 
 ?>
