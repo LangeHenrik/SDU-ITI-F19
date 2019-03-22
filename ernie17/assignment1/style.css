@@ -5,6 +5,7 @@
 
 body {
     margin: 0;
+    margin-bottom: 90px;
 }
 
 /******      Index Page      ******/
@@ -18,19 +19,19 @@ body {
 
 form {
     margin: 0 auto;
+    text-align: center;
+    font-family: Verdana;
+}
+
+.form-login, .form-register {
+    width: 250px;
 }
 
 form button {
     background-color: #C3C3C3;
 }
 
-.form-login, .form-register {
-    width: 200px;
-    text-align: center;
-    font-family: Verdana;
-}
-
-.form-login legend, .form-register legend {
+legend {
     font-weight: bold;
 }
 
@@ -75,7 +76,7 @@ form button {
     }
 }
 
-/******      Misc      ******/
+/******      Header      ******/
 header {
     background-color: #F1F1F1;
     padding-top: 20px;
@@ -96,7 +97,6 @@ header nav ul li {
     display: inline-block;
     float: none;
     list-style: none;
-    /* margin: 0px 5px; */
     border-radius: 4px;
 }
 
@@ -108,33 +108,6 @@ header nav ul li a {
 }
 
 header nav ul li:hover {
-    background-color: #DDD;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0%;
-    width: 100%;
-    text-align: center;
-    background-color: #F1F1F1;
-    padding: 15px 0px;
-    margin-top: 20px;
-}
-
-#btn-logout {
-    font-family: Catamaran;
-    font-size: 16px;
-    color: #111!important;
-    padding: 10px;
-    line-height: 20px;
-    border-radius: 4px;
-
-    background-color: #F1F1F1;
-    border: none;
-    cursor: pointer;
-}
-
-#btn-logout:hover {
     background-color: #DDD;
 }
 
@@ -158,9 +131,85 @@ header nav ul li:hover {
     }
 }
 
+/******      Footer      ******/
+.footer {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    text-align: center;
+    background-color: #F1F1F1;
+    margin-top: 20px;
+}
+
+#btn-logout {
+    font-family: Catamaran;
+    font-size: 20px;
+    color: #111!important;
+    height: 50px;
+    width: 100%;
+    line-height: 20px;
+    border-radius: 4px;
+
+    background-color: #F1F1F1;
+    border: none;
+    cursor: pointer;
+}
+
+#btn-logout:hover {
+    background-color: #DDD;
+}
+
+/******      Picturepage      ******/
+.block-pictures {
+    text-align: center;
+}
+
+.header {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.block-pictures p {
+    font-family: Verdana;
+    padding: 0 5%;
+}
+
+.block-pictures img {
+    max-width: 90%;
+}
+
+.block-pictures hr {
+    max-width: 90%;
+}
+
+.block-pictures :last-child > hr {
+    display: none;
+}
+
+.description {
+    margin: 5px 0;
+}
+
+.date {
+    margin-top: 5px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/******      Picturepage      ******/
+.form-upload {
+    max-width: 80%;
+}
+
+@media only screen and (min-width: 375px) {
+    .form-upload {
+        max-width: 300px;
+    }
+}
+
 /******      Userpage      ******/
 .table-user {
-    margin: 0 auto;
+    margin: 20px auto;
     border-collapse: collapse;
     font-family: Verdana;
 }
@@ -176,4 +225,22 @@ header nav ul li:hover {
 
 .table-user tr:nth-child(even) {
     background-color: #F2F2F2;
+}
+
+.block-search {
+    text-align: center;
+}
+
+.block-search p {
+    font-family: Catamaran;
+    margin: 0;
+}
+
+.header-search {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.userpage-hr {
+    max-width: 90%;
 }

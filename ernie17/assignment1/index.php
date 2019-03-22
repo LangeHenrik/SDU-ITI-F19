@@ -46,9 +46,11 @@
 				$_SESSION["username"] = $inputUsername;
 				$_SESSION["login"] = true;
 				header('location: pictures.php');
+				return;
 			}
 		}
 
+		$_SESSION["login"] = false;
 		$_SESSION["loginResult"] = "Wrong username og password!";
 	}
 
@@ -94,8 +96,8 @@
 					$stmtAddUser->bindparam(':phone', $inputPhone);
 
 					$stmtAddUser->execute();
-					$stmtAddUser->setFetchMode(PDO::FETCH_ASSOC);
-					$resultAddUser = $stmtAddUser->fetchAll();
+					// $stmtAddUser->setFetchMode(PDO::FETCH_ASSOC);
+					// $resultAddUser = $stmtAddUser->fetchAll();
 
 				} catch (PDOexception $e) {
 					echo "Error: " . $e->getMessage();

@@ -81,3 +81,20 @@ function checkRegisterFields() {
     else
         return false
 }
+
+function showUsers(requestString) {
+    if (requestString === "") {
+        document.getElementById("table-respons").innerHTML = ""
+        return
+    } else {
+        let xmlHttp = new XMLHttpRequest()
+        xmlHttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("table-respons").innerHTML = this.responseText
+            }
+        }
+
+        xmlHttp.open("GET", "getUsers.php?request=" + requestString, true)
+        xmlHttp.send()
+    }
+}
