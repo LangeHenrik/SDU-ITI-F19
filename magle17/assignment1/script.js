@@ -13,7 +13,7 @@ function performAjax(){
                 }
             }
         };
-        xmlhttp.open("GET", "images.php?offset="+offset, true); 
+        xmlhttp.open("GET", "?offset="+offset, true); 
         offset+=4;
         //true means it is asynchronous.
         xmlhttp.send();
