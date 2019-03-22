@@ -26,10 +26,10 @@ require_once "config.php";
         $name = $_POST["db_username"];
         $db_pwd = $_POST["db_password"];
         //echo $name. " ".$db_pwd ."<br>";
-        $sql = 'SELECT username, pwd FROM user WHERE username="' .
-            $name . '";';
+        $sql = "SELECT username, pwd FROM user WHERE username=:name;";
         //echo $sql . "<br>";
         $stmt = $conn -> prepare($sql);
+        $stmt -> bindParam(":name", $name);
         $stmt  -> execute();
         $result = $stmt -> fetch(PDO::FETCH_NUM);
         //echo $result[0]." ". $result[1]." ";
