@@ -70,14 +70,14 @@ class PhotoRepository implements IPhotoRepository
 
     public function deletePhoto(int $photoId): bool
     {
-        $sql = "DELETE FROM photo WHERE id = ?";
+        $sql = "DELETE FROM photo WHERE photo_id = ?";
         $stmt = $this->db->getPDO()->prepare($sql);
         return $stmt->execute([$photoId]);
     }
 
     public function getById(int $photoId): ?Photo
     {
-        $sql = "SELECT photo_id, title, caption, imgName, uploadDate, author_id, username, hashedPassword, user_id, firstName, lastName, zip, city, email, phone FROM photo JOIN user ON author_id = user_id WHERE photo.id = ? ORDER BY photo.created_at DESC";
+        $sql = "SELECT photo_id, title, caption, imgName, uploadDate, author_id, username, hashedPassword, user_id, firstName, lastName, zip, city, email, phone FROM photo JOIN user ON author_id = user_id WHERE photo_id = ? ORDER BY photo.created_at DESC";
         $stmt = $this->db->getPDO()->prepare($sql);
         $stmt->execute([$photoId]);
         $dbData = $stmt->fetch();
