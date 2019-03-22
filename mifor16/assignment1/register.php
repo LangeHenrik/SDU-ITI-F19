@@ -37,12 +37,12 @@ if(!empty($_POST)) {
 
         <label for="password"><b>Password</b></label><br>
         <input type="password" placeholder="Enter Password" name="password" id="password" pattern="^\S{6,}$"
-               onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;"
+               onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Password must be at least 8 characters long.' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;"
                required>
 
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Confirm Password" name="password_two" id="password_two" pattern="^\S{6,}$"
-               onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+               onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Passwords not identical.' : '');"
                required>
 
         <label for="FirstName"><b>First Name</b></label>
