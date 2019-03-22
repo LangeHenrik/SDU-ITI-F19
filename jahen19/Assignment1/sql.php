@@ -1,16 +1,16 @@
 <?php
 
-require "config.php";
+require "db_config.php";
 
 try {
-    $conn = new PDO("mysql:host=$db_server;dbname=$db_name", $db_user, $db_pass);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "Connected successfully;<br>";
 
     // create new database
-    $sql = "CREATE DATABASE IF NOT EXISTS $db_name";
+    $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
     $conn->exec($sql);
     // echo "Datbase successfully created;<br>";
 
@@ -44,4 +44,11 @@ try {
 } catch(PDOException $e) {
     echo "Database connection failed: " . $e->getMessage();
 }
+
+// these are no longer required
+unset($username);
+unset($password);
+unset($servername);
+unset($dbname);
+
 ?>
