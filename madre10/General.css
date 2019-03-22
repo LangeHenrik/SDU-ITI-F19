@@ -1,0 +1,173 @@
+*{
+    //border: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+
+
+.alert_message {
+    color: #ed2d2d;
+    font-size: 15px;
+    text-align: center;
+}
+
+.option {
+    font-size: 30px;
+    text-align: center;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    margin: 15px auto;
+}
+
+.option a {
+    text-decoration: none;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.navigation_bar__wrapper{
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.navigation_bar__button{
+    margin-bottom: 5px;
+    padding-top: 20px;
+    height: 30px;
+    width: 150px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #253454;
+}
+
+.navigation_bar__button:hover {
+    background-color: #ed2d2d;
+}
+
+
+.feed_container {
+    width: 80%;
+    margin: auto;
+}
+
+.feed_container h2 {
+    text-align: center;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.feed_container img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+
+.feed__item {
+    margin: 15px 2% 15px 2%;
+    border: 1px dotted #adccff;
+    background-color: whitesmoke;
+}
+
+.feed__image {
+    height: 300px;
+}
+
+.feed__caption {
+    margin-left: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.feed__comment {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.feed__comment_author {
+    color: #303030;
+    font-weight: 900;
+}
+
+.feed__comment_content{
+
+}
+
+.feed__comment_input{
+    margin-top: 10px;
+    margin-left: 30px;
+
+}
+
+feed__comment_input_textarea {
+}
+
+.feed__comment_submit_button {
+
+}
+
+.my_images__image-wrapper {
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+    border: 1px dotted grey;
+}
+
+.my_images__image-wrapper img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+}
+
+.my_images__form{
+    font-size: 20px;
+    text-align: center;
+}
+
+.ajax_button {
+    width: 250px;
+    height: 70px;
+    background-color: #ed2d2d;
+    margin: 25px auto;
+    padding: 10px 0 0 5px;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 25px;
+    text-align: center;
+    display: flex;
+}
+
+.ajax_button:hover {
+    transform: scale(1.5);
+}
+
+.user {
+    display: flex;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.user__username{
+    width: 200px;
+}
+
+.user__password{
+
+}
+

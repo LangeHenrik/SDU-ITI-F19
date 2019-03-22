@@ -1,0 +1,23 @@
+.feed-title {
+    font-family: 'Indie Flower', cursive;
+    text-align: center;
+    font-size: 4vw;
+    border-bottom: 5px solid darkred;
+    margin: 0px;
+}
+
+
+.image-feed-container {
+    margin: 0px;
+    height: 880px;
+    overflow-y: scroll;
+}
+
+
+
+.comment-author-name {
+    font-size: 0.5vw;
+    color: darkblue;
+
+}
+

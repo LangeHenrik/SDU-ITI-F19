@@ -1,0 +1,59 @@
+<form method="post">
+    <label for="name">name</label>
+    <br> 
+    <input onSubmit="return checkName()" type="text" name="name" id="name"/> 
+    <br> 
+    <label for="password">password</label>
+    <br> 
+    <input type="password" name="password" id="password"/> 
+    <br>
+    <label for="phone">phone number</label>
+    <br>
+    <input type="text" name="phone" id="phone"/> 
+    <br> 
+    <label for="email">email address</label>
+    <br>
+    <input type="text" name="email" id="email"/>
+    <br> 
+    <label for="zip">zip code</label>
+    <br> 
+    <input type="text" name="zip" id="zip"/> 
+    <br> 
+    <input type="submit" name="submit" id="submit"/> 
+</form> 
+                                                  
+<script>
+
+
+ 
+ 		var passwordRegex = new RegExp("/\w{8,}/g");
+    var phone = document.getElementById("password").value;
+    var email = document.getElementById("name").value;
+    var zip = document.getElementById("zip").value;
+    var password = document.getElementById("password").value;
+    
+  	function checkName(){
+    
+    var name = document.getElementById("name").value;
+    
+    varnameReg = "/\w.+\s).+/g";
+    
+  		if(!(nameReg.test(name))) {
+        	alert("Name must be at least 2 words!");
+          return false;
+        } 
+        
+      if(!(passwordRegex.test(password))){
+      	alert("Password must have 8 characters.");
+        return false;	
+      }
+      
+        return true;  
+        
+  			
+  }
+
+</script>
+
+
+

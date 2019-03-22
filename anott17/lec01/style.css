@@ -1,0 +1,100 @@
+.classA{
+  background-color: lightblue;
+  height: 50px;
+}
+
+h2{
+  display: inline-block;
+  font-size: 30px;
+  color: white;
+  margin: 0px 0px 0px 600px;
+}
+
+h3{
+  display: inline-block;
+  font-size: 30px;
+  color: white;
+  margin: 0px 0px 0px 50px;
+}
+
+.classB{
+  background-color: orange;
+  height: 500px;
+  width: 300px;
+  float: left;
+  margin: 10px 0px 0px 0px;
+  border-style: solid;
+}
+
+.p1{
+  font-size: 70px;
+  color: white;
+  text-align: center;
+}
+
+.classC{
+  background-color: white;
+  height: 693px;
+  width: 893px;
+  float: left;
+
+}
+
+.p2{
+  font-size: 70px;
+  color: white;
+  text-align: center;
+}
+
+.classD{
+  background-color: orange;
+  height: 500px;
+  width: 300px;
+  float: left;
+  margin: 10px 0px 0px 0px;
+  border-style: solid;
+}
+
+.b1{
+  font-size: 25px;
+  text-align: center;
+}
+
+.b2{
+  font-size: 25px;
+  text-align: center;
+}
+
+.b3{
+  font-size: 25px;
+  text-align: center;
+}
+
+.box1{
+  background-color: lightblue;
+  width: 280px;
+  margin: 10px 0px 0px 10px;
+  border-radius: 10px;
+  float: left;
+}
+
+.box2{
+  background-color: lightblue;
+  width: 280px;
+  margin: 10px 0px 0px 10px;
+  border-radius: 10px;
+  float: left;
+}
+
+.box3{
+  background-color: lightblue;
+  width: 280px;
+  margin: 10px 0px 0px 10px;
+  border-radius: 10px;
+  float: left;
+}
+
+.x{
+  background-color: gray;
+  height: 740px;
+}

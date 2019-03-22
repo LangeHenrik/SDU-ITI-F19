@@ -7,6 +7,7 @@ web:
     - db
   volumes:
     - './:/var/www/html/'
+    - './php.ini:/usr/local/etc/php/conf.d/custom-php.ini'
 
 db:
   image: 'mariadb:10.4'

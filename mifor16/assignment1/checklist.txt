@@ -1,0 +1,50 @@
+Assignment 1 Checklist:
+
+3-5 different pages:
+Login Page & Register User page (can be combined)
+Users
+Pictures & Upload pictures (can be combined)
+
+All pages must be somewhat responsive (change how they look on screens of different sizes)
+User inputs are checked with JavaScript and RegEx, filtered in PHP and protected against XSS & SQL injection
+You must use one AJAX call in your project
+
+Login page
+- Available to anyone
+- Contains username and password field
+- Links to “register user” page, if these are not combined
+- After clicking the log-in button
+- Same page is loaded with error if username and password doesn’t match
+- Pictures page is shown if username and password does match
+
+Register user
+- Contains the following fields
+- Username, Password, Repeat Password
+- Firstname, Lastname, Zip, City
+- Email address, phone number
+- After registering a user, we go the login page, where logging in should immediately be possible
+
+Pictures
+- Shows the latest 20 uploaded pictures, along with headers and additional text
+
+Upload picture
+- Contains a form that lets you update a picture, with a header and some text.
+
+Users
+- Contains a list of users
+
+1 x AJAX Call
+
+______________
+
+Done initial work for login and register pages need functional php to check information in DB
+Login done
+Reguster done
+can see a list of all users
+
+index.php has logout button
+
+
+
+
+

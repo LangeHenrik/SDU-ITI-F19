@@ -9,6 +9,11 @@ Build a website where users can:
 * [X] See and delete own pictures
 * [X] Site must be somewhat scalable to desktop and mobile
 * [X] Must contain one AJAX call
+* [X] Screenshots
+* [X] Protect against XSS & SQL Injection
+* [X] Show latest 20 pictures
+* [X] User list
+* [X] Sign up page: Username, Password, Repeat Password, Firstname, Lastname, Zip, City, Email address, phone number
 
 ## Software
 
