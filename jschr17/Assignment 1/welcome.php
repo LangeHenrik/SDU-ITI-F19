@@ -1,8 +1,5 @@
 <?php
-// Initialize the session
 session_start();
-
-// Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
@@ -66,9 +63,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	$sql = "SELECT id, username, firstname, lastname, zip, city, email, phonenumber FROM users";
 	$stmt1 = $link->prepare($sql);
 	$stmt1->execute();
-    //$result = $stmt1->fetchAll();
-	if(/*$result-> num_rows > 0*/ true){ //DET HER SKAL FIKSES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		while(/*$row = $result-> fetch_assoc()*/ $row = $stmt1->fetchAll(PDO::FETCH_ASSOC)){
+	$row_count = $stmt1-> fetchColumn();
+	if($row_count > 0){
+		while($row = $stmt1->fetchAll(PDO::FETCH_ASSOC)){
             foreach($row as $data_values){
                 $id = $data_values['id'];
                 $username = $data_values['username'];
@@ -117,26 +114,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     </div>';
                         ?>
                         <h2>Gallery</h2>
-                        <?php
-                        /*$sql = 'SELECT * FROM images ORDER BY imgorder DESC LIMIT 3;';
-                        $stmt = mysqli_stmt_init($link3);
-                        if(!mysqli_stmt_prepare($stmt, $sql)){
-                            echo "SQL statement failed 3";
-                        } else {
-                            mysqli_stmt_execute($stmt);
-                            $result = mysqli_stmt_get_result($stmt);
-
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo '
-                                <div class="gallerybox">
-                                <h3>'.$row["title"].'</h3>
-                                <img src="images/'.$row["imgName"].'">
-                                <p>'.$row["imgdesc"].'</p>
-                                </div>
-                                <br>';
-                            }
-                        }*/
-                        ?>
                         <div id="pictureLoad">
                         </div>
                         <br>

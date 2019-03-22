@@ -1,5 +1,3 @@
-
-
 <?php
     include 'config.php';
     $pictureNewCount = $_POST['pictureNewCount'];

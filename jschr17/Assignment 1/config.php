@@ -3,7 +3,6 @@ define('DB_SERVER', 'remotemysql.com');
 define('DB_USERNAME', 'C0rPbGHnaQ');
 define('DB_PASSWORD', 'eVWCKmg32b');
 define('DB_NAME', 'C0rPbGHnaQ');
-//define('DB_NAME2', 'image_upload');
 
 $link = new PDO('mysql:host=remotemysql.com;dbname=C0rPbGHnaQ', DB_USERNAME, DB_PASSWORD);
 $link2 = new PDO('mysql:host=remotemysql.com;dbname=C0rPbGHnaQ', DB_USERNAME, DB_PASSWORD);
