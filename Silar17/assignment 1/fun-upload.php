@@ -17,6 +17,8 @@ try {
 	$type = $info['mime'];
 	$image = fopen($_FILES['picture']['tmp_name'], 'rb');
 	
+	print_r ($_FILES);
+	
 	//$picture = file_get_contents($image);
 	$sql_code = "INSERT INTO picture (picture_user, picture_created, picture_title, picture_comment, picture_likes, picture_type, picture) 
 	VALUES (:username, :created , :title, :comment, :likes, :image_type, :image)";
@@ -37,5 +39,5 @@ try {
 }
 $sql = null;
 
-header('Location: picture.php');	
+//header('Location: picture.php');	
 ?>
