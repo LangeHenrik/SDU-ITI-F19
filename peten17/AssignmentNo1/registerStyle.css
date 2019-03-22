@@ -1,24 +1,28 @@
-/*
+body{
+    background-color:#f2f2f2;
+}
 
 h1{
   font-family: sans-serif;
   font-size: 32px;
   text-align: center;
+  margin-top: 5%;
 }
 p,a{
   font-family: sans-serif;
 }
 
 .wrapper{
+  /* padding: 50px 600px 20px 600px; */
 
-  padding: 50px 600px 20px 600px;
-  background-color: red;
-
+ margin-left: 30%;
+  /* margin-right: 30%; */ 
+  width: 70%;
 
 }
 
 /* ------------Form---------- */
-/* .row input{
+ .row input{
   width: 50%;
   padding: 12px;
   resize: vertical;
@@ -47,4 +51,9 @@ p,a{
   float: left;
   width: 75%;
   margin-top: 10px;
-}  */
+}
+.submit_button input{
+  margin-left: 25%;
+  margin-top: 10px;
+  width: 40%;
+}

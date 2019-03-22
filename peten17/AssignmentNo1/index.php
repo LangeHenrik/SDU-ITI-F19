@@ -1,27 +1,26 @@
 
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-
+session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: startpage.php");
-    exit;
+    exit();
 }
 
 require_once "config.php";
 
 
-$username = $password = "";
-
-print_r($_POST);
+$username = $password = $usernameLabel = $passwordLabel = "";
 
 if (isset($_POST["submit"])) {    // checks if the login-button is pressed.
 
   if (empty($_POST["username"]) or empty($_POST["password"])) {
-    echo "Please enter username and password to login";
+     $usernameLabel  ="Please enter username to login";
+	   $passwordLabel = "Please enter password to login";
   }else {
-    $sql = "SELECT id, username, password FROM users WHERE username = :username";
+    // get and sanitize input
+	$username = htmlentities(filter_var($_POST["username"]),FILTER_SANITIZE_STRING);
+	$password = htmlentities(filter_var($_POST["password"]),FILTER_SANITIZE_STRING);
+    $sql = "SELECT id, username, password, firstname, lastname, zipcode, city, email, phonenumber FROM users WHERE username = :username";
 
     if ($stmt = $conn->prepare($sql)) {
       // bind params to query
@@ -31,31 +30,46 @@ if (isset($_POST["submit"])) {    // checks if the login-button is pressed.
         // checks if the username exists in the database
         if ($stmt->rowCount() == 1) {
           if ($row = $stmt->fetch()) {
+            // get data from row.
               $id = $row["id"];
               $username = $row["username"];
               $hashed_pass = $row["password"];
+
+
               if (password_verify($password,$hashed_pass)) {
+				  // password is correct start session.
                 session_start();
 
                 // store data in session.
                 $_SESSION["loggedin"] = true;
                 $_SESSION["id"] = $id;
                 $_SESSION["username"] = $username;
+                $_SESSION["firstname"] = $row["firstname"];
+                $_SESSION["lastname"] = $row["lastname"];
+                $_SESSION["zipcode"] = $row["zipcode"];
+                $_SESSION["city"] = $row["city"];
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["phonenumber"] = $row["phonenumber"];
                 // sends user to startpage
                 header("location:startpage.php");
               }else {
-                  echo "Password not correct. ";
+                  $passwordLabel = "Password not correct. ";
                 }
 
               // close statement
               unset($stmt);
           }
+		}else{
+		$usernameLabel = "No user with that username";
+	  }
+	  }
 
           // closes connection to database
           unset($conn);
-        }
 
-      }
+
+
+
 
 
 
@@ -85,10 +99,10 @@ if (isset($_POST["submit"])) {    // checks if the login-button is pressed.
         <fieldset>
           <legend>Login</legend>
           <p>Username:</p>
-          <input type="text" name="username" value="" id="username"> <br>
+          <input type="text" name="username" value="" id="username"> <label> <?php echo $usernameLabel ?></label> <br>
           <p>Password:</p>
-          <input type="password" name="password" value="" id="password">
-          <input type="submit" name="submit" value="Log in">
+          <input type="password" name="password" value="" id="password">  <label> <?php echo $passwordLabel?></label> <br>
+          <br/><input type="submit" name="submit" value="Log in">
           <p>Not a member yet?</p> <a href="register.php">Click here to sign up!</a>
         </fieldset>
       </form>
