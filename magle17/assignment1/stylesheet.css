@@ -22,7 +22,7 @@ h2,.logoutbutton{
     font-size: 20pt;
 }
 .nav-button{
-  padding: 0.5% 1% 0.5% 1%;
+  padding: 0.2% 1% 0.2% 1%;
 }
 .fieldset-classic{
     text-align: center;
@@ -61,6 +61,9 @@ h2,.logoutbutton{
     padding: 1% 1% 1% 1%;
     margin-top: 1%;
     margin-bottom: 1%;
+}
+.table-container{
+  overflow-x:auto;
 }
 .row {
     display: flex;

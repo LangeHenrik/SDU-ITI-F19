@@ -12,8 +12,12 @@ if(isset($_POST["logout"])) {
     header('Location: index.php');
     session_destroy();
 }
+if(isset($_POST["goto-userImages"])){
+    header('Location: userImages.php');
+}
+
 if(isset($_POST["goto-users"])){
-    heder('Location: users.php');
+    header('Location: users.php');
 }
 
 
@@ -81,7 +85,6 @@ if(isset($_GET["offset"])){
         if(sizeof($result)==0){
             echo '0';
         }else{
-            $_SESSION['offset']+=4;
             foreach($result as $row){
                 $tmp='<div class="img"><h3>'.$row['title'].'</h3>'.'<img src="media/'.$row['media_name'].'"><p>'.$row['description'].'</p></div>';
                 array_push($columns,$tmp);
@@ -138,13 +141,16 @@ if (isset($_FILES['image-upload'])) {
   </head>
   <body onscroll="monitorScroll()">
     <div class="base">
-      <h1>Dét Sgu Da BLÆREDE BILLEDER</h1>
-      <h2>Stedet hvor intet er privat og alt er lovligt</h2>
-      <form action="images.php" method="post">
+      <h1>Dét Sgu Da ALLES BLÆREDE BILLEDER</h1>
+      <h2>Stedet hvor du kan se alles blærede billeder</h2>
+      <form action="images.php" method="post" class="nav-button">
           <input type="submit" name="logout" value="Log ud">
       </form>
-      <form action="images.php" method="post">
-          <input type="submit" name="goto-users" value="Brugeradminstration">
+      <form action="images.php" method="post" class="nav-button">
+          <input type="submit" name="goto-userImages" value="Dine blærede billeder">
+      </form>
+      <form action="images.php" method="post" class="nav-button">
+        <input type="submit" name="goto-users" value="Alle Brugere">
       </form>
       <div class="form-container upload">
         <form class="form-classic" method="post" enctype="multipart/form-data">
@@ -191,7 +197,7 @@ if (isset($_FILES['image-upload'])) {
                     echo $column4;
                 ?>
             </div>
-            </div>
+        </div>
       </div>
       <footer class="footer" id="footer">
       <p>Copyright: none</p>
