@@ -6,7 +6,7 @@
  * Time: 23:57
  */
 $dbhost = "127.0.0.1";
-$dbname = "profiles";
+$dbname = "longu17";
 $dbuser = "root";
 $dbpass = "";
 try{
