@@ -1,0 +1,13 @@
+Options -MultiViews
+Options -Indexes
+
+RewriteEngine On
+
+RewriteBase /public/
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+RewriteRule !^(public/|index\.php) [NC,F]
+RewriteRule ^(.*)/$ /$1 [L,R=301]
