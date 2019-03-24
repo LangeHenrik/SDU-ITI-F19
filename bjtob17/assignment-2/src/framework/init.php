@@ -5,3 +5,4 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 include "util/Autoloader.php";
+include "util/GlobalUtilFunctions.php";

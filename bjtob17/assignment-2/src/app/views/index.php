@@ -9,6 +9,8 @@
 </head>
 <body>
 hej! HTML!!!
+<?= $viewBag["id"]; ?>
+<?= $viewBag["name"]; ?>
 <script src="/public/js/js.js"></script>
 </body>
 </html>

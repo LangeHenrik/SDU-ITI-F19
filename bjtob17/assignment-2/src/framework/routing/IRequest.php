@@ -1,7 +1,8 @@
 <?php
+
 namespace framework\routing;
 
 interface IRequest
 {
-    public function getBody();
+    public function getBody(): array;
 }

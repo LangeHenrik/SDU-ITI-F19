@@ -1,11 +1,8 @@
 <?php
 
-
 namespace framework\middleware;
 
-
 use framework\routing\IRequest;
-
 
 abstract class AbstractMiddleware
 {

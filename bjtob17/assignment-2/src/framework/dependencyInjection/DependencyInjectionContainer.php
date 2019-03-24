@@ -1,8 +1,6 @@
 <?php
 
-
 namespace framework\dependencyInjection;
-
 
 class DependencyInjectionContainer
 {

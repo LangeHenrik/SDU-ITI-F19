@@ -1,184 +1,123 @@
 <?php
+
 namespace framework\routing;
 
 use framework\dependencyInjection\DependencyInjectionContainer;
+use framework\responses\HtmlResponse;
+use framework\responses\IResponse;
 
 class Router
 {
+    /**
+     * @var Request
+     */
     private $request;
-    private $supportedMethods = [
-        "GET", "POST"
-    ];
+
+    /**
+     * @var MethodHandler
+     */
+    private $methodHandler;
+
+    /**
+     * @var MiddlewareHandler
+     */
+    private $middlewareHandler;
+
+    /**
+     * @var DependencyInjectionContainer
+     */
     private $di;
+
+    /**
+     * @var array
+     */
     private $config;
 
-    function __construct(IRequest $request, DependencyInjectionContainer $di, $config)
+    function __construct(DependencyInjectionContainer $di, array $config)
     {
-        $this->request = $request;
+        $this->request = new Request();
+        $this->methodHandler = new MethodHandler();
+        $this->middlewareHandler = new MiddlewareHandler();
         $this->di = $di;
         $this->config = $config;
     }
 
-    function __call($name, $args)
+    public function get($route, $classAndMethod, $middlewares = [])
     {
-        list($route, $classMethodName, $middlewares) = $args;
-
-        $objectMethod = explode("@", $classMethodName);
-        $method = [new $objectMethod[0]($this->di, $this->config), $objectMethod[1]];
-
-        if (!in_array(strtoupper($name), $this->supportedMethods))
-        {
-            $this->invalidMethodHandler();
-        }
-        $formattedRoute = $this->formatRoute($route);
-
-        $this->{strtolower($name)}[$formattedRoute] = $method;
-
-        if (!is_null($middlewares) && is_array($middlewares)) {
-            $this->{strtolower($name)."-middleware"}[$formattedRoute] = $middlewares;
-        }
+        $this->setupRoute("GET", $route, $classAndMethod, $middlewares);
     }
 
-    /**
-     * Removes trailing forward slashes from the right of the route.
-     * @param string $route
-     * @return string
-     */
-    private function formatRoute(string $route): string
+    public function post($route, $classAndMethod, $middlewares = [])
     {
-        $result = rtrim($route, '/');
-        if ($result === '')
-        {
-            return '/';
-        }
-        return $result;
+        $this->setupRoute("POST", $route, $classAndMethod, $middlewares);
     }
 
-    private function invalidMethodHandler()
+    private function setupRoute($httpMethod, $route, $classAndMethod, $middlewares)
     {
-        header($this->request->serverProtocol." 405 Method Not Allowed", true, 405);
-        header("Location: /405");
-        die();
+        $classMethodArray = explode("@", $classAndMethod);
+        $method = [new $classMethodArray[0]($this->config, $this->di), $classMethodArray[1]];
+
+        $this->methodHandler->addMethod($httpMethod, $route, $method);
+        $this->middlewareHandler->addMiddleware($httpMethod, $route, $middlewares);
     }
+
+
     private function defaultRequestHandler()
     {
-        header($this->request->serverProtocol." 404 Not Found", true, 404);
-        //header("Location: /404");
+        $this->handleResponse(HtmlResponse::create404Response());
         die();
     }
 
     /**
      * Resolves a route
+     * @throws \ReflectionException
      */
-    function resolve()
+    private function resolve()
     {
-        list($method, $routeArguments) = $this->getMethod($this->request);
-        if(is_null($method)) {
+        list($method, $routeArguments) = $this->methodHandler->getMethod($this->request);
+        if (is_null($method)) {
             $this->defaultRequestHandler();
             return;
         }
 
-        $middlewares = $this->getMiddlewares($this->request);
-        list($middlewaresPassed, $middlewaresFailed) = $this->middlewareHandler($middlewares);
+        list($middlewaresPassed, $middlewaresFailed) = $this->middlewareHandler->handleMiddlesware($this->request);
         if ($middlewaresPassed) {
-            echo call_user_func_array($method, array($this->request, $routeArguments));
+            $args = array_merge([$this->request], array_values($routeArguments));
+
+            if (!$this->isArgumensCorrectLength($args, $method)) {
+                $this->defaultRequestHandler();
+                return;
+            }
+
+            $response = call_user_func_array($method, $args);
+            $this->handleResponse($response);
         } else {
             die($middlewaresFailed);
         }
     }
 
-    private function middlewareHandler($middlewares)
+    /**
+     * @param array $suppliedArguments
+     * @param $method
+     * @return bool
+     * @throws \ReflectionException
+     */
+    private function isArgumensCorrectLength(array $suppliedArguments, $method): bool
     {
-        $middlewaresPassed = true;
-        $middlewareFailed = "Middleware failed";
-        if (!is_null($middlewares) && is_array($middlewares)) {
-            foreach ($middlewares as $middleware) {
-                list($returnVal, $msg) = call_user_func_array([$middleware, "apply"], array($this->request));
-                if ($returnVal === false) {
-                    $middlewaresPassed = false;
-                    $middlewareFailed = $msg;
-                    break;
-                }
-            }
-        }
-
-       return [$middlewaresPassed, $middlewareFailed];
+        $reflectionController = new \ReflectionClass($method[0]);
+        return count($suppliedArguments) === $reflectionController->getMethod($method[1])->getNumberOfParameters();
     }
 
-    private function getMiddlewares($request)
+    private function handleResponse(IResponse $response)
     {
-        $middlewaresDictionary = $this->{strtolower($this->request->requestMethod."-middleware")};
-        $formattedRoute = $this->formatRoute($request->requestUri);
-        $middlewares = [];
-        foreach($middlewaresDictionary as $definedRoute => $wares) {
-            $definedRouteAsRegex = $this->regexizeRoute($definedRoute);
-            if (preg_match($definedRouteAsRegex, $formattedRoute)) {
-                $middlewares = $wares;
-                break;
-            }
-        }
-
-        return $middlewares;
+        http_response_code($response->getResponseCode());
+        header("Content-Type: " . $response->getContentType());
+        echo $response->getContent();
     }
 
-    private function getMethod($request)
-    {
-        $methodDictionary = $this->{strtolower($request->requestMethod)};
-        $requestedRoute = $this->formatRoute($request->requestUri);
-        $routeArguments = [];
-        $method = null;
-        foreach ($methodDictionary as $definedRoute => $definedMethod) {
-            $definedRouteAsRegex = $this->regexizeRoute($definedRoute);
-            if (preg_match($definedRouteAsRegex, $requestedRoute)) {
-                $method = $definedMethod;
-                $routeArguments = $this->getRouteArguments($definedRoute, $request);
-                break;
-            }
-        }
-
-        return [$method, $routeArguments];
-    }
-
-    private function regexizeRoute($route) {
-        $parts = [];
-        foreach (explode("/", $route) as $part) {
-            if (strpos($part, "{") !== false) {
-                $regexedPart = preg_replace("/\{(.*)\}/", "(.*)", $part);
-                array_push($parts, $regexedPart);
-            } else {
-                array_push($parts, $part);
-            }
-        }
-
-        $joinedParts = join("/", $parts);
-        $regexedRoute =  "/^".str_replace("/", "\/", $joinedParts)."$/";
-
-        return $regexedRoute;
-    }
-
-    private function getRouteArguments($route, $request) {
-        $keys = [];
-        foreach(explode("/", $route) as $part) {
-            if (strpos($part, "{") !== false) {
-                $pattern = "/\{|\}/";
-                $partWithoutBrackets = preg_replace($pattern, "", $part);
-                array_push($keys, $partWithoutBrackets);
-            } else {
-                array_push($keys, $part);
-            }
-        }
-
-        $values = explode("/", $request->requestUri);
-        unset($keys[0]);
-        unset($values[0]);
-        $combinedArray = [];
-        if (count($keys) === count($values)) {
-            $combinedArray = array_combine($keys, $values);
-        }
-
-        return $combinedArray;
-    }
-
+    /**
+     * @throws \ReflectionException
+     */
     function __destruct()
     {
         $this->resolve();

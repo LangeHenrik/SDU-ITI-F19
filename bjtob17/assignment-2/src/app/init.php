@@ -1,13 +1,14 @@
 <?php
 include "../framework/init.php";
-include "App.php";
+
+use app\App;
 
 $config = include "config.php";
 
 if ($config["debug"]) {
-    ini_set('display_errors',1);
+    ini_set('display_errors', 1);
     error_reporting(E_ALL);
 }
 
-$app = new \app\App($config);
+$app = new App($config);
 $app->start();
