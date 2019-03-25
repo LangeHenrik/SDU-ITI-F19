@@ -6,7 +6,9 @@ function performAjax(){
                 var response=eval(this.responseText.split('<!DOCTYPE html>')[0]);
                 //Splitting on the html because the whole dom is loaded when php is 
                 //
-                offset+=response.length;
+                if(response.length>0){
+                    offset+=4;
+                }
                 if(response=='0'){
                     console.log("No More IMAGES!?");
                 }else{

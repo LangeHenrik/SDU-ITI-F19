@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `media` (
   PRIMARY KEY (`id`),
   KEY `uploaded_by` (`uploaded_by`),
   CONSTRAINT `media_ibfk_1` FOREIGN KEY (`uploaded_by`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table magle17.media: ~37 rows (approximately)
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
@@ -55,7 +55,7 @@ INSERT INTO `media` (`id`, `uploaded_by`, `media_name`, `title`, `description`) 
 	(26, 9, '1553194588-vingin2.jpg', 'mer viking', 'blr&aelig;etksdnf'),
 	(27, 9, '1553217568-asdhs.jpg', 'Bl&aelig;rede hjul!', 'adasgasdf'),
 	(28, 9, '1553217578-blackbeautry.jpg', 'aasd', 'cxvawgwergwerg'),
-	(29, 9, '1553217597-bÃ¸rnebog.jpg', 'asddfesd', 'asdfgasdfasdf'),
+	(29, 9, '1553217597-børnebog.jpg', 'asddfesd', 'asdfgasdfasdf'),
 	(30, 9, '1553217607-download (1).jpg', 'llasdifaosdnf', 'lknadansdfk'),
 	(31, 9, '1553217615-download (2).jpg', 'afdfafd', 'fasdfasdfsdf'),
 	(32, 9, '1553217622-download (3).jpg', 'asdfasdf', 'asdfasdfsdfa'),
@@ -65,7 +65,7 @@ INSERT INTO `media` (`id`, `uploaded_by`, `media_name`, `title`, `description`) 
 	(36, 9, '1553217674-gladiator.jpg', 'FUCKING KRIGER TING', 'AKSDNFNDJANJFNSDFNASDKFNKASNDFNASDFKSDJKNF'),
 	(37, 9, '1553217686-images.jpg', 'DET JOSDKFMSKDFMSKDF', 'SKMDFSDFLSDKFMSKLDFMSKLDF'),
 	(40, 9, '1553273778-penguin.jpg', 'LINUX PINGVIN', 'PINGVIN PINGVIN PINGVIN PINGVIN PINGVIN PINGVIN PINGVIN PINGVIN PINGVIN PINGVIN '),
-	(41, 9, '1553273803-piskflÃ¸de.jpg', 'DANSK PISKEFL&Oslash;DE', 'Bl&aelig;ret nok med piskefl&oslash;de!!!!!'),
+	(41, 9, '1553273803-piskfløde.jpg', 'DANSK PISKEFL&Oslash;DE', 'Bl&aelig;ret nok med piskefl&oslash;de!!!!!'),
 	(42, 9, '1553278570-1553188908-picture.jpg', 'Bl&aelig;ret hus', 'bl&aelig;ret hus uploadet efter jeg kom til at slette det');
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` tinytext NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table magle17.users: ~3 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
