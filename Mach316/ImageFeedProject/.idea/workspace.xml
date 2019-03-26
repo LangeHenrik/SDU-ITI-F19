@@ -2,57 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c378d167-6d2d-4e35-917e-04e908c21c47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JS/Users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PHP/searchUsers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/Users.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/Users.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/DatabaseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/DatabaseManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PHP/LoginPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/LoginPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PHP/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/Register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/imageLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/imageLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/17094071_10212346303909729_133922154_n4938.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/17094071_10212346303909729_133922154_n7441.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/17193876_1407281092626840_2082488336_o.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/17230399_10210517294222009_592635729_o.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/17230399_10210517294222009_592635729_o2576.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/60533_nier_automata.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/60533_nier_automata1475.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/6o81bqf8n12z.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/6o81bqf8n12z3464.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/SDU_BLACK_RGB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 19.20.07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 192692.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 19289.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 193667.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 19465.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 195702.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 196782.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot 2019-03-12 at 199904.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot2019-03-12at192072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot2019-03-12at193700.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot2019-03-12at194036.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot2019-03-12at196251.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot2019-03-12at197411.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot2019-03-12at198622.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Screenshot2019-03-12at198770.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Vegvisir-The-Runic-Viking-Compass-Symbol-of-Protection.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Vegvisir-The-Runic-Viking-Compass-Symbol-of-Protection1362.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/attack-on-titan-wallpaper-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/b862ba6a-8335-448c-b6d4-6dd91f6217ae5796.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/download.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/gris.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/kirk-cropped5823.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/lasse2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/lol.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/pathogens-cancer.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/pathogens-cancer6186.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/pathogens-cancer7934.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/pathogens-cancer8223.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/php.png" beforeDir="false" afterPath="$PROJECT_DIR$/PHP/uploads/php.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/php7495.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/thumb-1920-427347.jpg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,14 +16,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.32953826">
+    <splitter split-orientation="horizontal" split-proportion="0.5145754">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/PHP/LoginPage.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="566">
-                  <caret line="98" column="82" selection-start-line="98" selection-start-column="82" selection-end-line="98" selection-end-column="82" />
+                <state relative-caret-position="324">
+                  <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -88,17 +40,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PHP/Users.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="725">
-                  <caret line="49" column="49" lean-forward="true" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
+                <state relative-caret-position="735">
+                  <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PHP/searchUsers.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+                <state relative-caret-position="285">
+                  <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
                 </state>
               </provider>
             </entry>
@@ -125,20 +77,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/PHP/Register.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+                <state relative-caret-position="90">
+                  <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PHP/DatabaseManager.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="423">
-                  <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
+                <state relative-caret-position="603">
+                  <caret line="153" column="1" lean-forward="true" selection-start-line="153" selection-start-column="1" selection-end-line="153" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -147,7 +99,7 @@
             <entry file="file://$PROJECT_DIR$/PHP/db_config.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="315">
-                  <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+                  <caret line="26" selection-start-line="26" selection-end-line="26" />
                 </state>
               </provider>
             </entry>
@@ -155,8 +107,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PHP/imageLoader.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="451">
-                  <caret line="59" column="55" lean-forward="true" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
+                <state relative-caret-position="810">
+                  <caret line="59" column="55" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
                   <folding>
                     <element signature="e#6#91#0#PHP" expanded="true" />
                   </folding>
@@ -234,14 +186,14 @@
         <option value="$PROJECT_DIR$/JS/LoginPage.js" />
         <option value="$PROJECT_DIR$/CSS/LoginPage.css" />
         <option value="$PROJECT_DIR$/JS/formcheck.js" />
-        <option value="$PROJECT_DIR$/PHP/LoginPage.php" />
         <option value="$PROJECT_DIR$/PHP/Users.php" />
         <option value="$PROJECT_DIR$/CSS/Users.css" />
         <option value="$PROJECT_DIR$/PHP/imageLoader.php" />
         <option value="$PROJECT_DIR$/JS/Users.js" />
-        <option value="$PROJECT_DIR$/PHP/Register.php" />
         <option value="$PROJECT_DIR$/PHP/searchUsers.php" />
         <option value="$PROJECT_DIR$/PHP/DatabaseManager.php" />
+        <option value="$PROJECT_DIR$/PHP/LoginPage.php" />
+        <option value="$PROJECT_DIR$/PHP/Register.php" />
       </list>
     </option>
   </component>
@@ -255,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -281,7 +234,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -342,18 +294,18 @@
       <workItem from="1552463929176" duration="20976000" />
       <workItem from="1552559266975" duration="14297000" />
       <workItem from="1552978919788" duration="639000" />
-      <workItem from="1552994655843" duration="7906000" />
+      <workItem from="1552994655843" duration="8294000" />
+      <workItem from="1553243190375" duration="694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116338000" />
+    <option name="totallyTimeSpent" value="117420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15814696" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15974441" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -413,12 +365,8 @@
     <entry file="file://$PROJECT_DIR$/PHP/uploads/17094071_10212346303909729_133922154_n.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/uploads/6o81bqf8n12z3464.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/uploads/6o81bqf8n12z.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/uploads/6o81bqf8n12z3464.jpg" />
+    <entry file="file://$PROJECT_DIR$/PHP/uploads/6o81bqf8n12z.jpg" />
     <entry file="file://$PROJECT_DIR$/JS/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -566,55 +514,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CSS/Users.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/LoginPage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="98" column="82" selection-start-line="98" selection-start-column="82" selection-end-line="98" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/db_config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/imageLoader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="59" column="55" lean-forward="true" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PHP/Users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="49" column="49" lean-forward="true" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/searchUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PHP/Register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="735">
+          <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -625,10 +528,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CSS/Users.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/db_config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/imageLoader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="59" column="55" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PHP/DatabaseManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
+        <state relative-caret-position="603">
+          <caret line="153" column="1" lean-forward="true" selection-start-line="153" selection-start-column="1" selection-end-line="153" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/searchUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/LoginPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHP/Register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>

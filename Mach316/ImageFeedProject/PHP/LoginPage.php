@@ -78,7 +78,6 @@ session_start();
                         <button id='btnSignOut' type=\"submit\" name='Sign out'>Sign out</button>
                     </form>";
         } else {
-           // <form id='registerform' action='Register.php' method="post">
 
             echo " 
 
