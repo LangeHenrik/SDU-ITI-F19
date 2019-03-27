@@ -59,7 +59,6 @@ session_start();
                                             <textarea maxlength='100' id=\"textarea-image-description\" name='imageText' rows=\"10\" placeholder=\"Description of image...\"></textarea>
                                             <img id='preview' src='#'/>
                                         </div>
-                                        <input type=\"file\" id=\"theFile\" name='theFile'/>
                                         <input type=\"submit\" id='btn-submit-image' value=\"Upload Image\" name=\"submit\" disabled>
                             
                             
