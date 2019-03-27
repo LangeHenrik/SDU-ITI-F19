@@ -12,182 +12,91 @@ session_start();
 class DatabaseManager
 {
 
-    function getAllImages()
+    private static $obj;
+    private $userDAO;
+    private $imageDAO;
+    private $commentDAO;
+
+    private final function __construct()
     {
-        $conn = getConnection();
-
-        $query = "SELECT * FROM images;";
-        $statement = $conn->prepare($query);
-        $statement->execute();
-        $images = $statement->fetchAll(PDO::FETCH_ASSOC);
-        if ($images != null) {
-            return $images;
+        if ($this->userDAO == null) {
+            $this->userDAO = new UserDAO();
         }
-
+        if ($this->commentDAO == null) {
+            $this->commentDAO = new CommentDAO();
+        }
+        if ($this->imageDAO == null) {
+            $this->imageDAO = new ImageDAO();
+        }
     }
 
+    public static function getConn()
+    {
+        if (!isset(self::$obj)) {
+            self::$obj = new DatabaseManager();
+        }
+        return self::$obj;
+    }
+
+
+    //--- All image access functions --//
+
+    function getAllImages()
+    {
+        return $this->imageDAO->getAllImages();
+    }
 
     function getUserImages()
     {
-        $userid = $_SESSION['id'];
-        $conn = getConnection();
-
-        $query = "SELECT * FROM images where user_id = :userid";
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':userid', $userid);
-        $statement->execute();
-        $images = $statement->fetchAll(PDO::FETCH_ASSOC);
-        if ($images != null) {
-            return $images;
-        }
+        return $this->imageDAO->getUserImages();
     }
 
-    function getUserImagesById($userid)
+    function getUserImagesById($userId)
     {
-        $conn = getConnection();
-
-        $query = "SELECT * FROM images where user_id = :userid";
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':userid', $userid);
-        $statement->execute();
-        $images = $statement->fetchAll(PDO::FETCH_ASSOC);
-        if ($images != null) {
-            return $images;
-        }
+        return $this->imageDAO->getUserImagesById($userId);
     }
 
+
+    //-- All comment access functions --//
 
     function getImageComments($imageId)
     {
-        $conn = getConnection();
-
-        $query = "SELECT * FROM comments where image_id = :imageId";
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':imageId', $imageId);
-        $statement->execute();
-        $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $comments;
-
+        return $this->commentDAO->getImageComments($imageId);
     }
 
-    function addImageComment($comment, $authorId, $imageId)
+    function addImageComment($comment)
     {
-
-
-        $time = (string)strtotime("now");
-        $conn = getConnection();
-
-        $query = "INSERT INTO comments(comment, image_id, user_id, post_date) VALUES(:comment, :image_id,:user_id, now());";
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':comment', $comment);
-        $statement->bindParam(':image_id', $imageId);
-        $statement->bindParam(':user_id', $authorId);
-        // $statement->bindParam(':post_date', $time);
-        $success = $statement->execute();
-
-        return $success;
-
+        return $this->commentDAO->addImageComment($comment);
     }
 
-    function deleteImage($imageId)
-    {
 
-        $imageId = (int)$imageId;
-        $conn = getConnection();
-        $query = "DELETE FROM images where id = :imageId;";
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':imageId', $imageId);
-        $success = $statement->execute();
-
-        return $success;
-    }
+    //-- All user access functions --//
 
 
     function getUserName($id)
     {
-
-        $conn = getConnection();
-        $query = "SELECT username FROM users WHERE id = :id;";
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':id', $id);
-        $statement->execute();
-
-        $result = $statement->fetch();
-        $username = $result['username'];
-
-
-        return $username;
+        return $this->userDAO->getUserName($id);
     }
 
     function getCurrentUser()
     {
-        $conn = getConnection();
-        $userId = $_SESSION['id'];
-        $query = 'SELECT * FROM users where id =:id';
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':id', $userId);
-        $statement->execute();
-        $result = $statement->fetch();
-        return $result;
+        return $this->userDAO->getCurrentUser();
     }
 
     function getAllUsers()
     {
-        $conn = getConnection();
-        $query = "Select * from users";
-        $statement = $conn->prepare($query);
-        $statement->execute();
-        $users = $statement->fetchAll();
-        return $users;
-
+        return $this->userDAO->getAllUsers();
     }
 
     function searchUsers($nameSearch)
     {
-
-        //Does not return the right result!
-        //Figure out how to bind wildcard parameter
-        $nameSearch = "%$nameSearch%";
-
-        $conn = getConnection();
-        $DBQuery = "select * from users where username LIKE :nameSearch;";
-        $statement = $conn->prepare($DBQuery);
-        $statement->bindParam(':nameSearch', $nameSearch);
-        $statement->execute();
-        $users = $statement->fetchAll();
-        return $users;
+        return $this->userDAO->searchUsers($nameSearch);
     }
 
-    function registerUser($POST)
+    function registerUser($user)
     {
-        $firstname = htmlentities($POST["firstname"]);
-        $lastname = htmlentities($POST["lastname"]);
-        $password = htmlentities($POST["password"]);
-        $username = htmlentities($POST["username"]);
-        $zipcode = htmlentities($POST["zip"]);
-        $city = htmlentities($POST["city"]);
-        $email = htmlentities($POST["email"]);
-        $phonenumber = htmlentities($POST["phonenumber"]);
-        $firstlogin = 0;
-
-        $conn = getConnection();
-        $query = 'INSERT INTO 
-                  users(firstname, lastname, username, password, zip, city, email, phonenumber, first_login) 
-                  VALUES(:firstname,:lastname,:username,:password,:zip,:city,:email,:phonenumber, :firstlogin)';
-        $statement = $conn->prepare($query);
-        $statement->bindParam(':firstname', $firstname);
-        $statement->bindParam(':lastname', $lastname);
-        $statement->bindParam(':username', $username);
-        $statement->bindParam(':password', $password);
-        $statement->bindParam(':zip', $zipcode);
-        $statement->bindParam(':city', $city);
-        $statement->bindParam(':email', $email);
-        $statement->bindParam(':phonenumber', $phonenumber);
-        $statement->bindParam('firstlogin', $firstlogin);
-        $success = $statement->execute();
-        return $success;
-
+        return $this->userDAO->registerUser($user);
     }
 
 }
+

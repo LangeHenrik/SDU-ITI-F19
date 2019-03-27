@@ -12,4 +12,69 @@ class Comment{
     private $imageID;
     private $postDate;
 
+
+
+    public function getComment() {
+        return $this->comment;
+    }
+
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getAuthorID()
+    {
+        return $this->authorID;
+    }
+
+    /**
+     * @param mixed $authorID
+     */
+    public function setAuthorID($authorID)
+    {
+        $this->authorID = $authorID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageID()
+    {
+        return $this->imageID;
+    }
+
+    /**
+     * @param mixed $imageID
+     */
+    public function setImageID($imageID)
+    {
+        $this->imageID = $imageID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostDate()
+    {
+        return $this->postDate;
+    }
+
+    /**
+     * @param mixed $postDate
+     */
+    public function setPostDate($postDate)
+    {
+        $this->postDate = $postDate;
+    }
+
+
+
 }
