@@ -1,0 +1,146 @@
+@media only screen and (max-width: 760px) { 
+
+  .row{ 
+    display: flex; 
+    box-sizing: border-box; 
+    justify-content: space-between; 
+    -ms-flex-direction: column; 
+    -webkit-box-orient: vertical; 
+    flex-direction: column; 
+  } 
+
+  .row > div{ 
+    box-sizing: border-box; 
+  } 
+
+  .col100 > div{ 
+    width: 100%; 
+  } 
+  .col50 > div:nth-child(1){ 
+    width: 100%; 
+  } 
+  .col50 > div:nth-child(2){ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+  } 
+  .col33 > div{ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-right: 0px; 
+  } 
+  .col33 > div:nth-child(2){ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-right: 0px; 
+    margin-top: 12px; 
+  } 
+
+  .col33 > div:nth-child(3){ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-right: 0px; 
+    margin-top: 12px; 
+  } 
+
+  .col25 > div{ 
+    width: 100%; 
+  } 
+
+  .col25 > div:nth-child(2) { 
+    margin-right: 0px; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+} 
+
+.col25 > div:nth-child(3) { 
+    margin-right: 0px; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+  } 
+
+  .col25 > div:nth-child(4) { 
+    margin-left: 0px; 
+    margin-top: 12px; 
+} 
+.col25-25-50 > div:nth-child(1) { 
+    margin-right: 0px; 
+    width: 100%; 
+    margin-top: 5px; 
+} 
+.col25-25-50 > div:nth-child(2) { 
+    margin-right: 0px; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+    width: 100%; 
+} 
+  .col25-25-50 > div:nth-child(3){ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+  } 
+
+  .col25-50-25 > div{ 
+    width: 100%; 
+  } 
+  .col25-50-25 > div:nth-child(2){ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+  } 
+  .col25-50-25 > div:nth-child(3) { 
+    margin-left: 0px; 
+    margin-top: 12px; 
+} 
+
+  .col50-25-25 > div{ 
+    width: 100%; 
+  } 
+
+  .col50-25-25 > div:nth-child(1){ 
+    width: 100%; 
+  } 
+  .col50-25-25 > div:nth-child(2) { 
+    margin-right: 0px; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+} 
+.col50-25-25 > div:nth-child(3) { 
+    margin-left: 0px; 
+    margin-top: 12px; 
+} 
+  .col25-75 > div{ 
+    width: 100%; 
+  } 
+
+  .col25-75 > div:nth-child(2){ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+  } 
+
+  .col75-25 > div{ 
+    width: 100%; 
+  } 
+  .col75-25 > div:nth-child(2){ 
+    width: 100%; 
+    margin-left: 0px; 
+    margin-top: 12px; 
+  } 
+
+  .col33-66 > div{ 
+    width: 100%; 
+  } 
+  .col33-66 > div:nth-child(2){ 
+    width: 100%; 
+    margin-top: 12px; 
+  } 
+
+  .col66-33 > div{ 
+    width: 100%; 
+  } 
+  .col66-33 > div:nth-child(2){ 
+    width: 100%; 
+    margin-top: 12px; 
+  } 
+}
