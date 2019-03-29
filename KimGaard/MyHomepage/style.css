@@ -1,0 +1,495 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+/* --------This is my stylesheet--------- */
+* {
+  text-decoration: none;
+}
+
+main {
+  background-color: #303030;
+  padding-top: 100px;
+}
+
+.header {
+  color: #FFF;
+  font-family: Catamaran;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #212121;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 20px;
+  line-height: 1px;
+  border-right: 3px solid rgb(159, 76, 76);
+}
+
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav a {
+  color: #FFF;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+}
+
+.div-ul li {
+  color: #111;
+  list-style: none;
+  padding: 0 16px;
+  text-transform: uppercase;
+}
+
+.div-ul li a {
+  font-family: Catamaran;
+  color: #111;
+  font-size: 16px;
+}
+
+.header-logout-button {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.wrapper-main {
+  font-family: Catamaran;
+  font-weight: 900;
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  color: #111;
+
+}
+
+
+.inputfield {
+  width: 50%;
+  font-family: Catamaran;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 0px;
+  background-color: #F2F2F2;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: #111;
+  font-family: Catamaran;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(159, 76, 76);
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .header-logo {
+    border-right: none;
+  }
+
+  .header-nav {
+    order: 2;
+    background: #FFF;
+    width: 100%;
+  }
+
+
+}
+
+/* UPLOAD PAGE */
+.space {
+  width: 100%;
+  height: 200px;
+}
+
+.image-container {
+  padding: .5vw;
+  font-size: 0;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  display: -webkit-box;
+  display: flex;
+}
+
+.images {
+  -webkit-box-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  width: 200px;
+  margin: .5vw;
+}
+
+.images img {
+  width: 100%;
+  height: auto;
+}
+
+/* INDEX */
+.index-banner {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-image: url('RoyaltyFreePhotos/antique-crumpled-crumpled-paper-612800.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: table;
+}
+
+.vertical-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.index-banner h2 {
+  font-family: Catamaran;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 70px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 8px #111;
+}
+
+.index-banner h1 {
+  font-family: Cormorant Garamond;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 40px;
+  text-align: center;
+  text-shadow: 2px 2px 8px #111;
+}
+
+.index-linkboxes div {
+  margin: 12px 12px 0;
+  width: calc(100% - 32px);
+  height: 100px;
+  background-color: #FFF;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #111;
+
+}
+
+.index-linkboxes div:hover {
+  background-color: #e7e7e7;
+  transition: 0.2s;
+}
+
+h3 {
+  font-family: Catamaran;
+  color: #111;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+main p {
+  font-family: Catamaran;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1000px) {
+  .wrapper {
+    width: 1000px;
+    margin: 0 auto;
+  }
+
+  .index-banner {
+    height: 450px;
+  }
+
+  .index-banner h1 {
+    display: block;
+    width: 560px;
+    margin: 0 auto;
+  }
+
+  .index-linkboxes {
+    overflow: hidden;
+  }
+  .index-linkboxes div {
+    margin: 20px 10px 0;
+    height: 150px;
+    float: left;
+  }
+
+  .index-boxlink-square {
+    width: calc(25% - 24px) !important;
+  }
+
+  .index-boxlink-rectangle {
+    width: calc(75% - 24px) !important;
+  }
+
+  .index-linkboxes div h3 {
+    line-height: 150px;
+  }
+}
+
+/* VARER TIL SALG */
+
+.varer-links-h2 {
+  font-family: Catamaran;
+  font-size: 28px;
+  font-weight: 600px;
+  color: #111;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+}
+
+.varer-links {
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.varer-img {
+  flex-basis: 80%;
+  margin: 10px;
+}
+
+.varer-img img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .varer-links-h2 {
+    font-size: 28px;
+  }
+
+  .varer-img {
+    flex-basis: 400px;
+  }
+}
+
+/* FOOTER */
+footer {
+  width: calc(100% - 80px);
+  padding: 40px 40px;
+  margin-top: 20px;
+  background-color: #212121;
+  overflow: hidden;
+}
+
+footer ul {
+  width: fit-content;
+  float: left;
+  padding-left: 20px;
+}
+
+footer ul li {
+  display: block;
+  list-style: none;
+}
+
+footer ul li a {
+  font-family: Catamaran;
+  color: #fff;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.footer-links-nyheder {
+  display: none;
+}
+
+.footer-sm {
+  width: fit-content;
+  float: right;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.facebook-logo i:hover {
+  color: #3C5A99;
+
+}
+
+.pinterest-logo i:hover {
+  color: #c8232c;
+}
+
+.instagram-logo i:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+  /* Also define standard property for compatibility */
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-sm i {
+  font-size: 30px;
+  line-height: 50px;
+  transition: 0.3s;
+}
+
+@media only screen and (min-width: 1000px) {
+  .footer-links-nyheder {
+    display: block;
+  }
+
+  footer ul li a {
+    font-size: 16px;
+    padding-right: 30px;
+    line-height: 25px;
+  }
+
+  .footer-links-nyheder li a {
+    font-size: 12px;
+    line-height: 30px;
+  }
+
+  .footer-links-nyheder li p {
+    font-family: Catamaran;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+}
