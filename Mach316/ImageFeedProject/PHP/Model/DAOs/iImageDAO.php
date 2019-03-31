@@ -8,4 +8,9 @@
 
 interface iImageDAO{
 
+    public function getAllImages();
+    public function getUserImages();
+    public function getUserImagesById($userId);
+    public function deleteImage($imageId);
+
 }

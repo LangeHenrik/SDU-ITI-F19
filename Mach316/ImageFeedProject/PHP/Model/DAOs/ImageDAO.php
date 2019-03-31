@@ -6,7 +6,7 @@
  * Time: 10:25
  */
 
-class ImageDAO extends DAO{
+class ImageDAO extends DAO implements iImageDAO {
 
     private $conn = null;
 
@@ -16,19 +16,19 @@ class ImageDAO extends DAO{
     }
 
 
-    function getAllImages()
+    public function getAllImages()
     {
         $query = "SELECT * FROM images;";
         $statement = $this->conn->prepare($query);
         $statement->execute();
         $images = $statement->fetchAll(PDO::FETCH_ASSOC);
         if ($images != null) {
-            return $images;
+            return $this->convertToImagesArray($images);
         }
-
     }
 
-    function getUserImages()
+
+    public function getUserImages()
     {
         $userid = $_SESSION['id'];
         $query = "SELECT * FROM images where user_id = :userid";
@@ -37,11 +37,11 @@ class ImageDAO extends DAO{
         $statement->execute();
         $images = $statement->fetchAll(PDO::FETCH_ASSOC);
         if ($images != null) {
-            return $images;
+            return $this->convertToImagesArray($images);
         }
     }
 
-    function getUserImagesById($userid)
+    public function getUserImagesById($userid)
     {
         $conn = getConnection();
 
@@ -51,11 +51,11 @@ class ImageDAO extends DAO{
         $statement->execute();
         $images = $statement->fetchAll(PDO::FETCH_ASSOC);
         if ($images != null) {
-            return $images;
+            return $this->convertToImagesArray($images);
         }
     }
 
-    function deleteImage($imageId)
+    public function deleteImage($imageId)
     {
 
         $imageId = (int)$imageId;
@@ -67,4 +67,26 @@ class ImageDAO extends DAO{
 
         return $success;
     }
+
+    private function convertToImagesArray($fetchedImages) {
+        $images = array();
+        foreach($fetchedImages as $fetchedImage) {
+            $image = $this->convertDBImageToImage($fetchedImage);
+            array_push($images, $image);
+        }
+        return $images;
+    }
+
+    private function convertDBImageToImage($fetchedImage) {
+        $image = new Image();
+        $image->setFileName($fetchedImage["name"]);
+        $image->setHeader($fetchedImage['header']);
+        $image->setId($fetchedImage['id']);
+        $image->setText($fetchedImage['text']);
+        $image->setUserId($fetchedImage['user_id']);
+        return $image;
+
+    }
+
+
 }

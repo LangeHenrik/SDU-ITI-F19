@@ -6,7 +6,8 @@
  * Time: 11:19
  */
 
-class CommentDAO extends DAO {
+class CommentDAO extends DAO implements iCommentDAO
+{
 
     private $conn = null;
 
@@ -24,7 +25,9 @@ class CommentDAO extends DAO {
         $statement->execute();
         $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $comments;
+        if($comments != null) {
+            return $this->convertToCommentsArray($comments);
+        }
 
     }
 
@@ -47,6 +50,30 @@ class CommentDAO extends DAO {
         return $success;
 
     }
+
+    private function convertToCommentsArray($fetchedComments)
+    {
+        $comments = array();
+        if (is_array($fetchedComments)) {
+            foreach ($fetchedComments as $fetchedComment) {
+                $comment = $this->convertDBCommentToComment($fetchedComment);
+                array_push($comments, $comment);
+                }
+        } elseif($fetchedComments instanceof Comment) {
+            return $this->convertDBCommentToComment($fetchedComments);
+        }
+    }
+
+    private function convertDBCommentToComment($fetchedComment) {
+        $comment = new Comment();
+        $comment->setAuthorID($fetchedComment['user_id']);
+        $comment->setComment($fetchedComment['comment']);
+        $comment->setImageID($fetchedComment['image_id']);
+        $comment->setPostDate($fetchedComment['post_date']);
+        return $comment;
+    }
+
+
 
 
 }

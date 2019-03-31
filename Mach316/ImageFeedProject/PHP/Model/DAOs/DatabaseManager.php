@@ -17,7 +17,7 @@ class DatabaseManager
     private $imageDAO;
     private $commentDAO;
 
-    private final function __construct()
+    public final function __construct()
     {
         if ($this->userDAO == null) {
             $this->userDAO = new UserDAO();

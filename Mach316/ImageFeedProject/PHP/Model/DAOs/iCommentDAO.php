@@ -7,4 +7,7 @@
  */
 interface iCommentDAO {
 
+    public function getImageComments($imageId);
+    public function addImageComment($comment);
+
 }

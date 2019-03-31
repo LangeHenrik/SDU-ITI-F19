@@ -6,7 +6,7 @@
  * Time: 10:25
  */
 
-class UserDAO extends DAO
+class UserDAO extends DAO implements iUserDAO
 {
 
 
@@ -17,22 +17,20 @@ class UserDAO extends DAO
         $this->conn = parent::$conn;
     }
 
-    function getUserName($id)
+    public function getUserName($id)
     {
 
         $query = "SELECT username FROM users WHERE id = :id;";
         $statement = $this->conn->prepare($query);
         $statement->bindParam(':id', $id);
         $statement->execute();
-
         $result = $statement->fetch();
         $username = $result['username'];
-
 
         return $username;
     }
 
-    function getCurrentUser()
+    public function getCurrentUser()
     {
         $userId = $_SESSION['id'];
         $query = 'SELECT * FROM users where id =:id';
@@ -40,33 +38,40 @@ class UserDAO extends DAO
         $statement->bindParam(':id', $userId);
         $statement->execute();
         $result = $statement->fetch();
-        return $result;
+        if($result != null) {
+            return $this->convertDBUser($result);
+        }
     }
 
-    function getAllUsers()
+    public function getAllUsers()
     {
         $query = "Select * from users";
         $statement = $this->conn->prepare($query);
         $statement->execute();
         $users = $statement->fetchAll();
-        return $users;
+        if($users != null) {
+            return $this->convertToUsersArray($users);
+        }
 
     }
 
-    function searchUsers($nameSearch)
+    public function searchUsers($searchParam)
     {
 
-        $nameSearch = "%$nameSearch%";
+        $searchParam = htmlentities($searchParam);
+        $searchParam = "%$searchParam%";
 
         $DBQuery = "select * from users where username LIKE :nameSearch;";
         $statement = $this->conn->prepare($DBQuery);
-        $statement->bindParam(':nameSearch', $nameSearch);
+        $statement->bindParam(':nameSearch', $searchParam);
         $statement->execute();
         $users = $statement->fetchAll();
-        return $users;
+        if($users != null) {
+            return $this->convertToUsersArray($users);
+        }
     }
 
-    function registerUser($user)
+    public function registerUser($user)
     {
         $firstname = $user->getFirstName();
         $lastname = $user->getLastName();
@@ -97,7 +102,35 @@ class UserDAO extends DAO
 
     }
 
+    private function convertToUsersArray($fetchedUsers)
+    {
+        $users = array();
+        if (is_array($fetchedUsers)) {
+            foreach ($fetchedUsers as $fetchedUser) {
+                $user = $this->convertDBUser($fetchedUser);
+                array_push($users, $user);
+            }
+            return $users;
+        }elseif($fetchedUsers instanceof User) {
+            return $this->convertDBUser($fetchedUsers);
+        }
+    }
 
+    private function convertDBUser($fetchedUser) {
+
+        $user = new User();
+        $user->setId($fetchedUser['id']);
+        $user->setCity($fetchedUser['city']);
+        $user->setEmail($fetchedUser['email']);
+        $user->setFirstLogin($fetchedUser['first_login']);
+        $user->setFirstname($fetchedUser['firstname']);
+        $user->setLastname($fetchedUser['lastname']);
+        $user->setUsername($fetchedUser['username']);
+        $user->setPassword(null);
+        $user->setPhonenumber($fetchedUser['phonenumber']);
+        $user->setZip($fetchedUser['zip']);
+        return $user;
+    }
 
 
 }

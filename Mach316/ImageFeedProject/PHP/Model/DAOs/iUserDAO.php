@@ -8,4 +8,10 @@
 
 interface iUserDAO{
 
+    public function getUserName($id);
+    public function getCurrentUser();
+    public function getAllUsers();
+    public function searchUsers($searchParam);
+    public function registerUser($user);
+
 }
