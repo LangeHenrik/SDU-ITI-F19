@@ -12,7 +12,3 @@ Connect do MariaDB:
 4. use internet_technology
 
 
-
-Shitty PHP guides:
-https://www.codexworld.com/upload-store-image-file-in-database-using-php-mysql/
-

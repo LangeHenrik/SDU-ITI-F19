@@ -46,12 +46,7 @@
         let container = document.getElementById('ajax_container');
         container.append(node);
 
-
-
-        console.log(title, "\n", content);
     }
-
-
 </script>
 </body>
 </html>

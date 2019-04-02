@@ -1,85 +1,56 @@
 <?php
-require 'util/logincheck.php';
-require 'database.php';
 
-$message = null;
-if (isset($_POST["submit"])){
-    $user_id = $_SESSION['user_id'];
-    $comment_content = htmlentities($_POST['comment_content']);
-    $image_id = $_POST['image_id'];
-    addComment($conn, $user_id, $image_id, $comment_content);
-    $message = "Comment added.. Or at least it should be.";
+// Include router class
+include('./PHP/Controller/Route.php');
 
-}
+Route::add('/',function(){
+    include(__DIR__.'/PHP/View/index.php');
+});
 
+Route::add('/index',function(){
+    include(__DIR__.'/PHP/View/index.php');
+});
 
-?>
+Route::add('/feed', function(){
+    include(__DIR__.'/PHP/View/feed.php');
+});
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="General.css">
-</head>
-<body>
+Route::add('/me', function(){
+    include(__DIR__.'/PHP/View/me.php');
+});
 
-<div class="container">
-    <div id="navbar"></div>
+Route::add('/users', function(){
+    include(__DIR__.'/PHP/View/users.php');
+});
 
-    <div class="feed_container" id="feed_container">
-        <h1> Feed </h1>
-        <?php
+Route::add('/images', function(){
+    include(__DIR__.'/PHP/View/images.php');
+});
 
-        if($message != null) {
-            echo '<div class="alert_message">'.$message.'</div>';
-        }
+Route::add('/ajax', function(){
+    include(__DIR__.'/PHP/View/ajax.php');
+});
 
 
-        $image_data = getFeedImages($conn, 100);
-        foreach ($image_data as $image) {
-            $image_path = $image_folder . $image['file_name'];
-            $title = $image['title'];
-            $description = $image['description'];
-            $image_username = $image['username'];
-            $image_id = $image['image_id'];
+// Accept only numbers as parameter. Other characters will result in a 404 error
+Route::add('/([0-9]*)/([0-9]*)',function($var1, $var2){
+    echo $var1.' is a great number.. so is'.$var2;
+});
 
-            echo '<div class="feed__item">';
-            echo '<h2>' . $title . '</h2>';
-            echo '<image class="feed__image" src="' . $image_path . '"></image>';
-            echo '<div class="feed__caption"><p>' . $description . '</p></div>';
-            echo '<div class="feed_comments">';
+// Post route example
+Route::add('/contact-form',function(){
+    echo '<form method="post"><input type="text" name="test" /><input type="submit" value="send" /></form>';
+},'get');
 
-            $comment_data = getImageComments($conn, $image_id);
-            foreach ($comment_data as $comment) {
-                echo '<div class="feed__comment">';
-                echo '<div class="feed__comment_author">' . $comment['username'] . '</div>';
-                echo '<div class="feed__comment_content">' . $comment['content'] . '</div>';
+// Post route example
+Route::add('/contact-form',function(){
+    echo 'Hey! The form has been sent:<br/>';
+    print_r($_POST);
+},'post');
 
-                echo '</div>';
-            }
+// Accept only numbers as parameter. Other characters will result in a 404 error
+Route::add('/foo/([0-9]*)/bar',function($var1){
+    echo $var1.' is a great number!';
+});
 
-            echo '<div class="feed__comment_input">' .
-                    '<form action="index.php" method="POST">'.
-                    '<textarea name="comment_content" class="feed__comment_input_textarea" rows="4" cols="50" placeholder="Comments..."></textarea>' .
-                    '<br/>' .
-                    '<button  name="submit" type="submit" class="feed__comment_submit_button">Submit</button>' .
-                    '<input type="hidden" name="image_id" value="'.$image_id.'"/>'.
-                    '</form>'.
-                '</div>';
-
-            echo '</div>';
-            echo '</div>';
-
-
-        }
-
-        ?>
-
-    </div>
-</div>
-
-
-<script src="navbar.js"></script>
-</body>
-</html>
+Route::run();
