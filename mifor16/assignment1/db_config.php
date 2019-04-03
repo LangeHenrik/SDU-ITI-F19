@@ -5,7 +5,7 @@ function getConnection()
     $hostname = '127.0.0.1';
     $username = 'root';
     $password = '';
-    $db = 'db';
+    $db = 'mifor16';
     $port = 3306;
     $dsn = "mysql:dbname={$db};host={$hostname};port={$port};charset=utf8";
     try {
@@ -17,3 +17,4 @@ function getConnection()
 }
 
 ?>
+

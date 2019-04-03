@@ -119,9 +119,11 @@ function toggleValidation(valid, element) {
 }
 
 function toggleTitle(valid, element, title) {
+    let errorMessage = document.getElementById('errorMessage');
+
     if(!valid) {
-        element.setAttribute('title', title);
+        errorMessage.innerHTML = title;
     } else {
-        element.removeAttribute('title');
+        errorMessage.innerHTML = '';
     }
 }

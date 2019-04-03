@@ -25,16 +25,6 @@
             <h1>Project A01</h1>
         </header>
         <div class="sign-content">
-            <div style="text-align: center;"><span id="message">
-                <?php
-
-                    if(isset($_SESSION['MESSAGE'])) {
-                        echo $_SESSION['MESSAGE'];
-                        unset($_SESSION['MESSAGE']);
-                    }
-
-                ?>
-            </span></div>
             <div id="register">
                 <form action="action/register.php" onsubmit="return validateRegisterForm()" method="POST">
                     <div class="input">
@@ -78,6 +68,18 @@
                     <div class="sign-toggle"><span>Not a member? <a href="javascript:toggle()">Register!</a></span></div>
                 </form>
             </div>
+
+            <div style="text-align: center;"><span id="message">
+                <p id="errorMessage"></p>
+                <?php
+
+                    if(isset($_SESSION['MESSAGE'])) {
+                        echo $_SESSION['MESSAGE'];
+                        unset($_SESSION['MESSAGE']);
+                    }
+
+                ?>
+            </span></div>
         </div>
         <?php include('common/main-footer.php'); ?>
     </div>

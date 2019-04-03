@@ -1,0 +1,44 @@
+* { /* selects all elements */
+    box-sizing: border-box; /* border-box width and height includes content, padding, and border */
+
+}
+
+body {
+    margin: 5px;
+    font-family: sans-serif;
+}
+
+form {
+    margin: 5px;
+}
+
+input {
+    color: gray();
+}
+
+.navbar { /* side navigation bar style */
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 10; /* stack order of element, higher value will be in front of lower values */
+    top: 0; /* top edge of the positioned div from top edge */
+    left: 0;
+    overflow-x: hidden; /* determines clipping in horizontal direction */
+}
+
+.navbar a { /* style of links in navbar */
+    padding: 15px;
+    text-decoration: underline;
+    display: block; /* display behavior (rendering box). options are: none, inline, block, inline-block */
+}
+
+.navbar a:hover { /* change navbar links on hover */
+    background-color: aqua;
+    color: black;
+}
+
+.content { /* style the content attribute in the <meta> element */
+    margin-left: 15%;
+    padding-left: 5%;
+}
+

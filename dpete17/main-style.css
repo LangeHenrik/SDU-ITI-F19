@@ -29,6 +29,7 @@ html,body {
     grid-row: content;
     margin: 0 auto;
     max-width: 250px;
+    min-width: 250px;
     min-height: 150px;
     padding: 10px;
 }
