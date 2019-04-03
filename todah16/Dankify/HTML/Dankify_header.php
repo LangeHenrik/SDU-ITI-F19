@@ -29,17 +29,15 @@
     
 <section class="navigation" >
    <ul>
-    
-    <li><a class="active" href="Dankify_NAVIGATION.html">Home</a></li>
-       <li><a href="Dankify_FEED.html">My images</a></li>
-  <li><a href="Dankify_ABOUT.html">About</a></li>
-      
-   <li><a href="Dankify_LOGIN.html">Login</a></li>
+    <li><a class="active" href="Dankify_users.php">Home</a></li>
+       <li><a href="Dankify_feed.php">My images</a></li>
+      <li><a href="Dankify_login.php">Login</a></li>
+       <li><a href="Dankify_logout.php">Logout</a></li>
+       <li><a href="Dankify_register.php">Register</a></li>
     </ul> 
      
 </section>   
 </div> <!-- end of div related to the navigation bar --> 
     
-
 </body>
 </html>
