@@ -58,7 +58,7 @@ function checkPassword() {
 	
     if (passw == ""){
 	} else {
-		if(passw.length > 8) { 
+		if(passw.length > 7) { 
 			if(lowercase.test(passw)) {
 				if(uppercase.test(passw)) {
 					if(numbers.test(passw)) {

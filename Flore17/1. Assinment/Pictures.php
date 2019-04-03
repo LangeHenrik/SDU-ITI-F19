@@ -102,15 +102,15 @@ $_SESSION['page'] = "Pictures";
 					echo '<html>
 						<div class="post">
 							<div class="headerPost">
-								<h1 style="font-size:2.5vw;"><b>' . htmlentities($header) . ' </b></h1>
+								<h1 style="font-size:2.5vw;"><b>' . $header . ' </b></h1>
 							</div>
 							<div class="postText">
 								<div class="commPost">
-										<p style="font-size:1.5vw;">	' . htmlentities($comm) . ' </p>
+										<p style="font-size:1.5vw;">	' . $comm . ' </p>
 								</div>
 							</div>
 							<div class="postPicframe">
-								<img class="postPic" src="data:' . $exttype . '; base64, ' . htmlentities(base64_encode($image)) . '"/>
+								<img class="postPic" src="data:' . $exttype . '; base64, ' . base64_encode($image) . '"/>
 							</div>
 						</div>
 						<hr>
