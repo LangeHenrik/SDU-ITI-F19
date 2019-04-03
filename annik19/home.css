@@ -1,0 +1,62 @@
+body{
+    font-family: 'Arial', cursive;
+    font-size: 2vh;
+    line-height: 1.5;
+}
+#navigation{
+    padding: 27px;
+    background-color: #F79F24;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#navigation a{
+    font-family: Arial, sans-serif;
+    font-size: 2vh;
+    display: inline;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+#navigation a:hover {
+    background-color: #3c3d3f;
+    transition: background-color 700ms;
+}
+h1{
+    font-family: 'Lobster', cursive;
+}
+#main{
+    top : 10px;
+}
+.images {
+    float: left;
+    padding: 10px;
+    width: 31%;
+    margin: 3%;
+    background-color: lightgray;
+}
+.images .img {
+    width: 99%;
+    padding: 3px;
+}
+.images .header {
+    padding: 5px;
+    font-weight: bold;
+    font-size: 5vh;
+    font-family: 'Lobster', cursive;
+}
+.images .text {
+    overflow: auto;
+    max-height: 100px;
+    height: 50px;
+    padding: 2%;
+    width: 100%;
+}
+.images .delete {
+    display: inline;
+    text-decoration: none;
+    margin: 2%;
+}

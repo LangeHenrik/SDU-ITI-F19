@@ -1,0 +1,107 @@
+
+.form-group{
+    margin: 10px;
+    display: grid;
+}
+
+.help-block{
+    display: block;
+    color: red;
+}
+
+input[type=text] {
+    padding: 0;
+    height: 30px;
+    position: relative;
+    left: 0;
+    outline: none;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0, 0, 0, .15);
+    background-color: white;
+    font-size: 16px;
+  }
+  
+  input[type=password] {
+    padding: 0;
+    height: 30px;
+    position: relative;
+    left: 0;
+    outline: none;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0, 0, 0, .15);
+    background-color: white;
+    font-size: 16px;
+  }
+
+.btn {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px
+}
+
+.btn-primary{
+    background-color: cadetblue !important;
+}
+.btn-success{
+    background-color: green !important;
+}
+.btn-danger{
+    background-color: crimson !important;
+}
+
+.btn-warning{
+    background-color: orange !important;
+}
+
+.center-form{
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
+
+}
+
+table.greyGridTable {
+    border: 2px solid black;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  table.greyGridTable td, table.greyGridTable th {
+    border: 1px solid black;
+    padding: 3px 4px;
+  }
+  table.greyGridTable tbody td {
+    font-size: 13px;
+  }
+  table.greyGridTable td:nth-child(even) {
+    background: #EBEBEB;
+  }
+  table.greyGridTable thead {
+    background: #FFFFFF;
+    border-bottom: 4px solid #333333;
+  }
+  table.greyGridTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+    border-left: 2px solid #333333;
+  }
+  table.greyGridTable thead th:first-child {
+    border-left: none;
+  }
+  
+  table.greyGridTable tfoot {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    border-top: 4px solid #333333;
+  }
+  table.greyGridTable tfoot td {
+    font-size: 14px;
+  }

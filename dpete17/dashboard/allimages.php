@@ -30,6 +30,9 @@
                 <li><a href="allaccounts.php">View All Accounts</a></li>
                 <li><a href="../action/logout.php">Logout</a></li>
             </ul>
+            <?php 
+                echo "<h4>{$_SESSION['username']}</h4>";
+            ?>
         </header>
         <div class="dashboard-body">
             <hr>
