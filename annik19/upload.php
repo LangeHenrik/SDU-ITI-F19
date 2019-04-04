@@ -5,8 +5,9 @@ require_once "config.php";
 $title = htmlentities($_POST["img_title"]);
 $text = htmlentities($_POST["img_text"]);
 $user = $_SESSION["user"];
-$find_user_id = 'select id from '.'user'. ' where username="'. $user.'";';
+$find_user_id = "select id from user where username=:user;";
 $stmt = $conn -> prepare($find_user_id);
+$stmt -> bindParam(":user", $user);
 $stmt -> execute();
 $result = $stmt -> fetch(PDO::FETCH_ASSOC);
 
