@@ -49,9 +49,11 @@ require_once "config.php";
     <?php
     if (isset($_SESSION['user'])) {
         // fetch user's images
+        $user = $_SESSION['user'];
         $user_data = 'SELECT * FROM' . ' user ' . 'INNER JOIN myimages on user.id = myimages.id_user WHERE username="'
-            . $_SESSION['user'] . '";';
+            . ":user" . '";';
         $stmt = $conn->prepare($user_data);
+        $stmt -> bindParam(":user", $user);
         $stmt->execute();
     }
     ?>
