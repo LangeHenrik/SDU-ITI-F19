@@ -5,14 +5,19 @@
  * Date: 2019-03-27
  * Time: 11:19
  */
+require_once 'DAO.php';
+require_once 'iCommentDAO.php';
 
 class CommentDAO extends DAO implements iCommentDAO
 {
 
-    private $conn = null;
+
+    protected static $conn = null;
+
 
     public function __construct()
     {
+        parent::__construct();
         $this->conn = parent::$conn;
     }
 

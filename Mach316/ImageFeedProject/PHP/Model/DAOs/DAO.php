@@ -11,12 +11,12 @@ include 'db_config.php';
 
 class DAO {
 
-    protected $conn = null;
+    protected static $conn = null;
 
     public function __construct()
     {
         if($this->conn == null) {
-            $this.$conn = getConnection();
+            $this->conn = getConnection();
         }
     }
 }

@@ -6,12 +6,18 @@
  * Time: 10:25
  */
 
+require_once 'DAO.php';
+require_once 'iImageDAO.php';
+
 class ImageDAO extends DAO implements iImageDAO {
 
-    private $conn = null;
+
+    protected static $conn = null;
+
 
     public function __construct()
     {
+        parent::__construct();
         $this->conn = parent::$conn;
     }
 

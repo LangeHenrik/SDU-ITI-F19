@@ -24,12 +24,12 @@ session_start();
 
     <?php
 
-    require 'DatabaseManager.php';
+    require_once 'Model/DAOs/DatabaseManager.php';
 
     if(isset($_SESSION["username"])){
-        echo "<navbar id=\"navbar\"><a class=\"navbar-link\" href=\"LoginPage.php\">Profile</a></navbar>";
+        echo "<navbar id=\"navbar\"><a class=\"navbar-link\" href=\"register\">Profile</a></navbar>";
     } else {
-        echo "<navbar id=\"navbar\"><a class=\"navbar-link\" href=\"LoginPage.php\">Register</a></navbar>";
+        echo "<navbar id=\"navbar\"><a class=\"navbar-link\" href=\"register\">Register</a></navbar>";
     }
     ?>
 

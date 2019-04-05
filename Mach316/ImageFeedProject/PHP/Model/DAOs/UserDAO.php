@@ -6,14 +6,18 @@
  * Time: 10:25
  */
 
+require_once 'DAO.php';
+require_once 'iUserDAO.php';
+
 class UserDAO extends DAO implements iUserDAO
 {
 
 
-    private $conn = null;
+    protected static $conn = null;
 
     public function __construct()
     {
+        parent::__construct();
         $this->conn = parent::$conn;
     }
 

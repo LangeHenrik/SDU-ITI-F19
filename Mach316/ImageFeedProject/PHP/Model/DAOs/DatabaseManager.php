@@ -6,13 +6,18 @@
  * Time: 18:50
  */
 
-include 'db_config.php';
+require_once 'db_config.php';
+require_once 'UserDAO.php';
+require_once 'CommentDAO.php';
+require_once 'ImageDAO.php';
+require_once 'DAO.php';
+
 session_start();
 
 class DatabaseManager
 {
 
-    private static $obj;
+
     private $userDAO;
     private $imageDAO;
     private $commentDAO;
@@ -28,14 +33,6 @@ class DatabaseManager
         if ($this->imageDAO == null) {
             $this->imageDAO = new ImageDAO();
         }
-    }
-
-    public static function getConn()
-    {
-        if (!isset(self::$obj)) {
-            self::$obj = new DatabaseManager();
-        }
-        return self::$obj;
     }
 
 
