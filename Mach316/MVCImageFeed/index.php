@@ -1,25 +1,30 @@
 <?php
 
-include('PHP/Controller/Route.php');
-include('PHP/Model/DAOs/DatabaseManager.php');
+include('controllers/Route.php');
+include('model/daos/DatabaseManager.php');
 
 $db = new DatabaseManager();
 
 Route::add('/login', function(){
-    include "PHP/LoginPage.php";
+    echo "login";
+});
+
+Route::add('/loggedin' ,function(){
+    include "views/loggedin.php";
 });
 
 Route::add('/users/([0-9]*)', function($userid) {
     echo "userid: ". $userid;
 });
 
-Route::add('/logout', function() {
-    echo "logout";
+Route::add('/users', function() {
+    include 'views/users.php';
 });
 
-Route::add('/home', function () {
-    include "PHP/Views/feed.php";
+Route::add('/feed', function() {
+   include 'views/feed.php';
 });
+
 
 // Simple test route that simulates static html file
 Route::add('/test.html',function(){
