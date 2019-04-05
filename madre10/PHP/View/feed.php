@@ -1,3 +1,10 @@
+<?php
+    require_once(__DIR__.'/../Model/model.php');
+    $message = null;
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +19,26 @@
 
     <div class="feed_container" id="feed_container">
         <h1> Feed </h1>
+        <?php
+
+        if($message != null) {
+            echo '<div class="alert_message">'.$message.'</div>';
+        }
+
+
+
+        $posts = getAllImages(10);
+
+
+        foreach ($posts as $post) {
+            $image_path = $image_folder . $post->file_name;
+
+            echo '<div class="feed__item">';
+            echo '<h2>' . $post->title . '</h2>';
+
+        }
+
+        ?>
 
     </div>
 </div>
