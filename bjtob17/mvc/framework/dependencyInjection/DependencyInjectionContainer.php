@@ -9,9 +9,7 @@ class DependencyInjectionContainer
 
     public function register($interfaceClass, $implString)
     {
-        $dep = $this->testingReflectionStuff($implString);
-        //$this->interfaceImplementationMap[$interfaceClass] = new $implString($this->config, $this);
-        $this->interfaceImplementationMap[$interfaceClass] = new $implString($dep);
+        $this->interfaceImplementationMap[$interfaceClass] = $this->resolve($implString);
     }
 
     public function get($interfaceClass)
@@ -19,33 +17,75 @@ class DependencyInjectionContainer
         return $this->interfaceImplementationMap[$interfaceClass];
     }
 
-    public function hasImplementation($interfaceClass)
+    public function has($interfaceClass)
     {
         return array_key_exists($interfaceClass, $this->interfaceImplementationMap);
     }
 
-
-    private function testingReflectionStuff($implString)
+    /**
+     * Some inspiration from https://petersuhm.com/recursively-resolving-dependencies-with-phps-reflection-api-part-1/
+     * @param $class
+     * @return mixed|object
+     * @throws \ReflectionException
+     */
+    private function resolve($class)
     {
-        $reflectionClass = new \ReflectionClass($implString);
-        return $this->resolveDependencies($reflectionClass);
-    }
+        $reflection = new \ReflectionClass($class);
+        $constructor = $reflection->getConstructor();
+        $interfaces = $reflection->getInterfaceNames();
 
-    private function resolveDependencies(\ReflectionClass $reflectClass)
-    {
-        if (!is_null($reflectClass->getConstructor()) && $reflectClass->getConstructor()->getNumberOfParameters() > 0) {
-            foreach ($reflectClass->getConstructor()->getParameters() as $param) {
-                if (!$param->isArray() && !is_null($param->getClass())) {
-                    return $this->resolveDependencies($param->getClass());
-                }
-            }
-            return null;
-        } else {
-            if ($this->hasImplementation($reflectClass->name)) {
-                return $this->get($reflectClass->name);
+        if (!$constructor && count($interfaces) > 0) {
+            if ($this->has($interfaces[0])) {
+                return $this->get($interfaces[0]);
             } else {
-                return null;
+                return new $class;
             }
         }
+        if (!$constructor && $reflection->isInterface()) {
+            return $this->get($reflection->name);
+        }
+
+        $params = $constructor->getParameters();
+        if (count($params) === 0 && count($interfaces) > 0 && $this->has($interfaces[0])) {
+            return $this->get($interfaces[0]);
+        }
+
+        $instanceParams = [];
+
+        foreach ($params as $param) {
+            if (is_null($param->getClass())) {
+                $instanceParams = null;
+                continue;
+            }
+
+            array_push($instanceParams, $this->resolve($param->getClass()->getName()));
+        }
+
+        return $reflection->newInstance(...$instanceParams);
     }
+
+// This worked, but only with single parameter constructors :-(
+//    private function testingReflectionStuff($implString)
+//    {
+//        $reflectionClass = new \ReflectionClass($implString);
+//        return $this->resolveDependencies($reflectionClass);
+//    }
+//
+//    private function resolveDependencies(\ReflectionClass $reflectClass)
+//    {
+//        if (!is_null($reflectClass->getConstructor()) && $reflectClass->getConstructor()->getNumberOfParameters() > 0) {
+//            foreach ($reflectClass->getConstructor()->getParameters() as $param) {
+//                if (!$param->isArray() && !is_null($param->getClass())) {
+//                    return $this->resolveDependencies($param->getClass());
+//                }
+//            }
+//            return null;
+//        } else {
+//            if ($this->has($reflectClass->name)) {
+//                return $this->get($reflectClass->name);
+//            } else {
+//                return null;
+//            }
+//        }
+//    }
 }
