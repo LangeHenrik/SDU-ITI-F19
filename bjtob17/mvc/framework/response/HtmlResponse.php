@@ -1,6 +1,6 @@
 <?php
 
-namespace framework\responses;
+namespace framework\response;
 
 class HtmlResponse implements IResponse
 {
@@ -23,7 +23,7 @@ class HtmlResponse implements IResponse
     function getContent(): string
     {
         $viewBag = $this->viewBag; // declaring this variable, so the view file has access to it
-        include $_SERVER["DOCUMENT_ROOT"] . "/app/views/$this->view.php";
+        include $_SERVER["DOCUMENT_ROOT"] . "/app/view/$this->view.php";
         return "";
     }
 
@@ -34,7 +34,7 @@ class HtmlResponse implements IResponse
 
     public static function create404Response(): IResponse
     {
-        return new HtmlResponse("errors/404", [], 404);
+        return new HtmlResponse("error/404", [], 404);
     }
 
 }

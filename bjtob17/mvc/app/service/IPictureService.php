@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\services;
+namespace app\service;
 
 
 interface IPictureService

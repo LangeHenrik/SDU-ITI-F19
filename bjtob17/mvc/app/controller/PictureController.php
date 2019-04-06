@@ -1,13 +1,13 @@
 <?php
 
 
-namespace app\controllers;
+namespace app\controller;
 
 
-use app\services\IPictureService;
-use framework\controllers\BaseController;
+use app\service\IPictureService;
+use framework\controller\BaseController;
 use framework\dependencyInjection\DependencyInjectionContainer;
-use framework\responses\IResponse;
+use framework\response\IResponse;
 use framework\routing\IRequest;
 
 class PictureController extends BaseController

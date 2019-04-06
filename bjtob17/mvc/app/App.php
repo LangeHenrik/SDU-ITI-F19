@@ -2,9 +2,9 @@
 
 namespace app;
 
-use app\repositories\IOtherRepository;
-use app\repositories\IPictureRepository;
-use app\services\IPictureService;
+use app\repository\IOtherRepository;
+use app\repository\IPictureRepository;
+use app\service\IPictureService;
 use app\util\Config;
 use framework\database\IDatabaseConnection;
 use framework\dependencyInjection\DependencyInjectionContainer;
@@ -33,20 +33,20 @@ class App
 
     private function setRoutes()
     {
-        $this->router->get("/bla/{id}/{name}/", "app\\controllers\\HomeController@index");
-        $this->router->get("/api/users", "app\\controllers\\UserController@getUsers");
+        $this->router->get("/bla/{id}/{name}/", "app\\controller\\HomeController@index");
+        $this->router->get("/api/users", "app\\controller\\UserController@getUsers");
         $this->router->get("/api/pictures/user/{userId}",
-            "app\\controllers\\PictureController@getImagesForUser");
+            "app\\controller\\PictureController@getImagesForUser");
         $this->router->post("/api/pictures/user/{userId}",
-            "app\\controllers\\PictureController@uploadImage");
+            "app\\controller\\PictureController@uploadImage");
     }
 
     private function registerDependencies()
     {
         $this->di->register(IConfig::class, "app\\util\\Config");
         $this->di->register(IDatabaseConnection::class, "framework\\database\\DatabaseConnection");
-        $this->di->register(IOtherRepository::class, "app\\repositories\\OtherRepository");
-        $this->di->register(IPictureRepository::class, "app\\repositories\\PictureRepository");
-        $this->di->register(IPictureService::class, "app\\services\\PictureService");
+        $this->di->register(IOtherRepository::class, "app\\repository\\OtherRepository");
+        $this->di->register(IPictureRepository::class, "app\\repository\\PictureRepository");
+        $this->di->register(IPictureService::class, "app\\service\\PictureService");
     }
 }

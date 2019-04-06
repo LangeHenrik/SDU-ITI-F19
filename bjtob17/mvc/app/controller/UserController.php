@@ -1,11 +1,11 @@
 <?php
 
 
-namespace app\controllers;
+namespace app\controller;
 
 
-use framework\controllers\BaseController;
-use framework\responses\IResponse;
+use framework\controller\BaseController;
+use framework\response\IResponse;
 use framework\routing\IRequest;
 
 class UserController extends BaseController

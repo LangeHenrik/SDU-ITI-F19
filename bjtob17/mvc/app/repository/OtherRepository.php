@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\repositories;
+namespace app\repository;
 
 
 class OtherRepository implements IOtherRepository

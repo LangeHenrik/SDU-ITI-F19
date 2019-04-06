@@ -1,11 +1,12 @@
 <?php
 
 
-namespace app\services;
+namespace app\service;
 
 
-use app\repositories\IOtherRepository;
-use app\repositories\IPictureRepository;
+
+use app\repository\IOtherRepository;
+use app\repository\IPictureRepository;
 
 class PictureService implements IPictureService
 {

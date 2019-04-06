@@ -3,8 +3,8 @@
 namespace framework\routing;
 
 use framework\dependencyInjection\DependencyInjectionContainer;
-use framework\responses\HtmlResponse;
-use framework\responses\IResponse;
+use framework\response\HtmlResponse;
+use framework\response\IResponse;
 use framework\util\IConfig;
 
 class Router
