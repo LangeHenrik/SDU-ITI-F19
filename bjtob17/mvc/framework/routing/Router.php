@@ -85,7 +85,7 @@ class Router
         if ($middlewaresPassed) {
             $args = array_merge([$this->request], array_values($routeArguments));
 
-            if (!$this->isArgumensCorrectLength($args, $method)) {
+            if (!$this->isArgumentsCorrectLength($args, $method)) {
                 $this->defaultRequestHandler();
                 return;
             }
@@ -103,7 +103,7 @@ class Router
      * @return bool
      * @throws \ReflectionException
      */
-    private function isArgumensCorrectLength(array $suppliedArguments, $method): bool
+    private function isArgumentsCorrectLength(array $suppliedArguments, $method): bool
     {
         $reflectionController = new \ReflectionClass($method[0]);
         return count($suppliedArguments) === $reflectionController->getMethod($method[1])->getNumberOfParameters();

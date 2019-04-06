@@ -5,6 +5,7 @@ include "../framework/init.php";
 use app\App;
 
 $config = include "config.php";
+$_SERVER["route_offset"] = $config["route_offset"];
 
 if ($config["debug"]) {
     ini_set('display_errors', 1);
