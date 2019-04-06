@@ -1,4 +1,5 @@
 <?php
+$_SERVER["DOCUMENT_ROOT"] = $_SERVER["DOCUMENT_ROOT"] . "/bjtob17/mvc";
 include "../framework/init.php";
 
 use app\App;

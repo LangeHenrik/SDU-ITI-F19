@@ -1,32 +1,16 @@
 version: '3'
 
 services:
-  web:
-    image: bjarkt/php:7.3
-    build:
-        context: ./
-        dockerfile: Dockerfile
-    volumes:
-      - ./src:/var/www/html
-    depends_on:
-      - db
-    ports:
-      - "3000:80"
-
   db:
     image: mariadb:10.3.12
     volumes:
+      - "./migrations/:/docker-entrypoint-initdb.d/"
       - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: bjtob17
     ports:
       - "3306:3306"
-
-  adminer:
-    image: adminer
-    ports:
-      - 8080:8080
 
 volumes:
   db_data:

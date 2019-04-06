@@ -16,12 +16,12 @@ class DatabaseConnection implements IDatabaseConnection
     public function __construct($config)
     {
         $this->config = $config;
-        $this->pdo = $this->createPdo();
+        $this->pdo = $this->createPdo($this->config);
     }
 
-    private function createPdo(): PDO
+    private function createPdo($config): PDO
     {
-        $dsn = "mysql:host=" . $this->config['db_host'] . ";dbname=" . $this->config['db_database'] . ";port=" . $this->config['db_port'] . ";charset=utf8mb4";
+        $dsn = "mysql:host={$config['db_host']};dbname={$config['db_database']};port={$config['db_port']};charset=utf8mb4";
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

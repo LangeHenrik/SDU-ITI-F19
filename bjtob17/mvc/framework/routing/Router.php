@@ -57,8 +57,9 @@ class Router
         $classMethodArray = explode("@", $classAndMethod);
         $method = [new $classMethodArray[0]($this->config, $this->di), $classMethodArray[1]];
 
-        $this->methodHandler->addMethod($httpMethod, $route, $method);
-        $this->middlewareHandler->addMiddleware($httpMethod, $route, $middlewares);
+        $offsetRoute = $this->config["route_offset"] . $route;
+        $this->methodHandler->addMethod($httpMethod, $offsetRoute, $method);
+        $this->middlewareHandler->addMiddleware($httpMethod, $offsetRoute, $middlewares);
     }
 
 

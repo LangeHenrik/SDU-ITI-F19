@@ -1,6 +1,6 @@
 <?php
 return [
-    "db_host" => "db",
+    "db_host" => "127.0.0.1",
     "db_port" => "3306",
     "db_username" => "root",
     "db_password" => "password",
@@ -11,5 +11,6 @@ return [
 
     "timezone" => "Europe/Copenhagen",
 
+    "route_offset" => "/bjtob17/mvc/public",
     "debug" => true,
 ];
