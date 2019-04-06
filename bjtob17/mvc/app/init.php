@@ -4,13 +4,13 @@ include "../framework/init.php";
 
 use app\App;
 
-$config = include "config.php";
-$_SERVER["route_offset"] = $config["route_offset"];
+$configArray = include "config.php";
+$_SERVER["route_offset"] = $configArray["route_offset"];
 
-if ($config["debug"]) {
+if ($configArray["debug"]) {
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 }
 
-$app = new App($config);
+$app = new App();
 $app->start();

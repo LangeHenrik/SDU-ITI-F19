@@ -5,6 +5,7 @@ namespace framework\routing;
 use framework\dependencyInjection\DependencyInjectionContainer;
 use framework\responses\HtmlResponse;
 use framework\responses\IResponse;
+use framework\util\IConfig;
 
 class Router
 {
@@ -33,13 +34,13 @@ class Router
      */
     private $config;
 
-    function __construct(DependencyInjectionContainer $di, array $config)
+    function __construct(DependencyInjectionContainer $di)
     {
         $this->request = new Request();
         $this->methodHandler = new MethodHandler();
         $this->middlewareHandler = new MiddlewareHandler();
         $this->di = $di;
-        $this->config = $config;
+        $this->config = $this->di->get(IConfig::class)->getConfig();
     }
 
     public function get($route, $classAndMethod, $middlewares = [])

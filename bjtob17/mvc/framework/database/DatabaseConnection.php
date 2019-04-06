@@ -2,6 +2,7 @@
 
 namespace framework\database;
 
+use framework\util\IConfig;
 use PDO;
 
 class DatabaseConnection implements IDatabaseConnection
@@ -11,11 +12,11 @@ class DatabaseConnection implements IDatabaseConnection
 
     /**
      * DatabaseConnection constructor.
-     * @param $config
+     * @param IConfig $config
      */
-    public function __construct($config)
+    public function __construct(IConfig $config)
     {
-        $this->config = $config;
+        $this->config = $config->getConfig();
         $this->pdo = $this->createPdo($this->config);
     }
 
