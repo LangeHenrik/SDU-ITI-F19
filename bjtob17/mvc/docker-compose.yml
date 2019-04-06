@@ -2,7 +2,10 @@ version: '3'
 
 services:
   web:
-    image: bjarkt/php:7.3-apache
+    image: bjarkt/php:7.3
+    build:
+        context: ./
+        dockerfile: Dockerfile
     volumes:
       - ./src:/var/www/html
     depends_on:
