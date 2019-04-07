@@ -4,31 +4,12 @@
 namespace app\controller;
 
 
-use app\service\IPictureService;
 use framework\controller\BaseController;
-use framework\dependencyInjection\DependencyInjectionContainer;
 use framework\response\IResponse;
 use framework\routing\IRequest;
 
 class PictureController extends BaseController
 {
-
-    /**
-     * @var IPictureService
-     */
-    private $pictureService;
-
-    /**
-     * PictureController constructor.
-     * @param array $config
-     * @param DependencyInjectionContainer $di
-     */
-    public function __construct(array $config, DependencyInjectionContainer $di)
-    {
-        parent::__construct($config, $di);
-        $this->pictureService = $di->get(IPictureService::class);
-    }
-
 
     public function getImagesForUser(IRequest $request, int $userId): IResponse
     {

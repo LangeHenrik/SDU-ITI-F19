@@ -5,7 +5,6 @@ namespace app\service;
 
 
 
-use app\repository\IOtherRepository;
 use app\repository\IPictureRepository;
 
 class PictureService implements IPictureService
@@ -18,9 +17,8 @@ class PictureService implements IPictureService
     /**
      * PictureService constructor.
      * @param IPictureRepository $pictureRepository
-     * @param IOtherRepository $otherRepository
      */
-    public function __construct(IPictureRepository $pictureRepository, IOtherRepository $otherRepository)
+    public function __construct(IPictureRepository $pictureRepository)
     {
         $this->pictureRepository = $pictureRepository;
     }

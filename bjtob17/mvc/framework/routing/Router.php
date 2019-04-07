@@ -2,7 +2,9 @@
 
 namespace framework\routing;
 
+use app\controller\HomeController;
 use framework\dependencyInjection\DependencyInjectionContainer;
+use framework\dependencyInjection\IDependencyInjectionContainer;
 use framework\response\HtmlResponse;
 use framework\response\IResponse;
 use framework\util\IConfig;
@@ -25,7 +27,7 @@ class Router
     private $middlewareHandler;
 
     /**
-     * @var DependencyInjectionContainer
+     * @var IDependencyInjectionContainer
      */
     private $di;
 
@@ -34,7 +36,7 @@ class Router
      */
     private $config;
 
-    function __construct(DependencyInjectionContainer $di)
+    function __construct(IDependencyInjectionContainer $di)
     {
         $this->request = new Request();
         $this->methodHandler = new MethodHandler();
@@ -56,7 +58,8 @@ class Router
     private function setupRoute($httpMethod, $route, $classAndMethod, $middlewares)
     {
         $classMethodArray = explode("@", $classAndMethod);
-        $method = [new $classMethodArray[0]($this->config, $this->di), $classMethodArray[1]];
+        $this->di->register($classMethodArray[0], $classMethodArray[0]);
+        $method = [$this->di->get($classMethodArray[0]), $classMethodArray[1]];
 
         $offsetRoute = $this->config["route_offset"] . $route;
         $this->methodHandler->addMethod($httpMethod, $offsetRoute, $method);

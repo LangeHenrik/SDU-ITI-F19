@@ -2,24 +2,35 @@
 
 namespace framework\dependencyInjection;
 
-class DependencyInjectionContainer
+class DependencyInjectionContainer implements IDependencyInjectionContainer
 {
     private $interfaceImplementationMap = [];
 
-
-    public function register($interfaceClass, $implString)
+    /**
+     * DependencyInjectionContainer constructor.
+     */
+    public function __construct()
     {
-        $this->interfaceImplementationMap[$interfaceClass] = $this->resolve($implString);
+        // Manually register this instance
+        $this->interfaceImplementationMap[IDependencyInjectionContainer::class] = $this;
+
     }
 
-    public function get($interfaceClass)
+
+    public function register($clazz, $implString)
     {
-        return $this->interfaceImplementationMap[$interfaceClass];
+        $this->interfaceImplementationMap[$clazz] = $this->resolve($implString);
     }
 
-    public function has($interfaceClass)
+    public function get($clazz)
     {
-        return array_key_exists($interfaceClass, $this->interfaceImplementationMap);
+        $impl = $this->interfaceImplementationMap[$clazz];
+        return  $impl;
+    }
+
+    public function has($clazz)
+    {
+        return array_key_exists($clazz, $this->interfaceImplementationMap);
     }
 
     /**
@@ -41,8 +52,13 @@ class DependencyInjectionContainer
                 return new $class;
             }
         }
-        if (!$constructor && $reflection->isInterface()) {
-            return $this->get($reflection->name);
+
+        if (!$constructor) {
+            if ($this->has($reflection->name)) {
+                return $this->get($reflection->name);
+            } else {
+                return new $class;
+            }
         }
 
         $params = $constructor->getParameters();

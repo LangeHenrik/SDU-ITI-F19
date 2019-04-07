@@ -5,7 +5,6 @@ namespace app;
 use app\repository\IOtherRepository;
 use app\repository\IPictureRepository;
 use app\service\IPictureService;
-use app\util\Config;
 use framework\database\IDatabaseConnection;
 use framework\dependencyInjection\DependencyInjectionContainer;
 use framework\routing\Router;
@@ -45,7 +44,6 @@ class App
     {
         $this->di->register(IConfig::class, "app\\util\\Config");
         $this->di->register(IDatabaseConnection::class, "framework\\database\\DatabaseConnection");
-        $this->di->register(IOtherRepository::class, "app\\repository\\OtherRepository");
         $this->di->register(IPictureRepository::class, "app\\repository\\PictureRepository");
         $this->di->register(IPictureService::class, "app\\service\\PictureService");
     }
