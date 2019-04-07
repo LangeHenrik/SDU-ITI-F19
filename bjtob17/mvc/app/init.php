@@ -13,4 +13,3 @@ if ($configArray["debug"]) {
 }
 
 $app = new App();
-$app->start();
