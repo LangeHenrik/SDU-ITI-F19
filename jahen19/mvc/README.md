@@ -11,10 +11,10 @@ Build a website where users can:
 * [ ] RESTful API (see below)
 
 API:
-* [ ] POST image with header and description
-* [ ] GET list of users and IDs
-* [ ] GET all images that belong to a user (from user ID)
-* [ ] API follows design specified in the slides (TODO)
+* [ ] POST /public/api//pictures/user/ID: `$_POST['json']` contains JSON with "image" base64-encoded, "title", "description", "username", "password", returns "image_id"
+* [ ] GET /public/api/users: returns JSON containing "user_id" and "username" of all users
+* [ ] GET /public/api/pictures/user/ID: returns JSON containing "image_id", "title", "description", "image" for all images that belong to a user "ID"
+* [ ] GET /public: UI to register new user
 
 From Assignment 1:
 * [ ] Create a user and log in
