@@ -6,20 +6,20 @@ try {
     $sql = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-	//$image = addslashes(file_get_contents($_FILES['picture']['tmp_name'])); //SQL Injection defence!
+	
+	$picture = $_FILES['imageToUpload'];
 	$user = htmlentities($_SESSION['username']);
 	$created = date("Y-m-d H:i:s");
 	$title = htmlentities($_POST['title']);
 	$comment = htmlentities($_POST['comment']);
 	$likes = 0; 
-	$info = getimagesize($_FILES['picture']['tmp_name']);
-	$type = $info['mime'];
-	$image = fopen($_FILES['picture']['tmp_name'], 'rb');
 	
-	print_r ($_FILES);
+	print_r($_FILES['imageToUpload']);
 	
-	//$picture = file_get_contents($image);
+	$imagename=$_FILES['imageToUpload']['name'];
+	$type = $_FILES['imageToUpload']["type"];
+	$image = file_get_contents($_FILES['imageToUpload']['tmp_name']); //SQL Injection defence!
+
 	$sql_code = "INSERT INTO picture (picture_user, picture_created, picture_title, picture_comment, picture_likes, picture_type, picture) 
 	VALUES (:username, :created , :title, :comment, :likes, :image_type, :image)";
 	$stmt = $sql->prepare($sql_code);
@@ -37,7 +37,6 @@ try {
 } catch (PDOException $pe) {
     die("Could not connect to the database $dbname :" . $pe->getMessage());
 }
-$sql = null;
 
-//header('Location: picture.php');	
+header('Location: picture.php');	
 ?>

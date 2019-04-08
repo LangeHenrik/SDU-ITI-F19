@@ -18,7 +18,7 @@ create table silar17.picture (
   picture_id int(5) primary key auto_increment,
   picture_user char(50) not null,
   picture_created datetime not null,
-  picture_title char(30),
+  picture_title char(100),
   picture_comment char(255),
   picture_likes int4 (10),
   picture_type char(30) not null,
