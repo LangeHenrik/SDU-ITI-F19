@@ -33,6 +33,7 @@ abstract class AbstractApp
     }
 
     protected abstract function setRoutes();
+
     protected abstract function registerDependencies();
 
 

@@ -2,8 +2,6 @@
 
 namespace framework\routing;
 
-use app\controller\HomeController;
-use framework\dependencyInjection\DependencyInjectionContainer;
 use framework\dependencyInjection\IDependencyInjectionContainer;
 use framework\response\HtmlResponse;
 use framework\response\IResponse;
@@ -45,25 +43,37 @@ class Router
         $this->config = $this->di->get(IConfig::class)->getConfig();
     }
 
-    public function get($route, $classAndMethod, $middlewares = [])
+    public function get(string $route, string $class, string $method, array $middlewareClasses = [])
     {
-        $this->setupRoute("GET", $route, $classAndMethod, $middlewares);
+        $this->setupRoute("GET", $route, $class, $method, $middlewareClasses);
     }
 
-    public function post($route, $classAndMethod, $middlewares = [])
+    public function post(string $route, string $class, string $method, array $middlewareClasses = [])
     {
-        $this->setupRoute("POST", $route, $classAndMethod, $middlewares);
+        $this->setupRoute("POST", $route, $class, $method, $middlewareClasses);
     }
 
-    private function setupRoute($httpMethod, $route, $classAndMethod, $middlewares)
+    private function setupRoute(string $httpMethod, string $route, string $class, string $method, array $middlewareClasses)
     {
-        $classMethodArray = explode("@", $classAndMethod);
-        $this->di->register($classMethodArray[0], $classMethodArray[0]);
-        $method = [$this->di->get($classMethodArray[0]), $classMethodArray[1]];
+        $method = [$this->register($class), $method];
+        $middlewares = $this->instantiateMiddlewareClasses($middlewareClasses);
 
         $offsetRoute = $this->config["route_offset"] . $route;
         $this->methodHandler->addMethod($httpMethod, $offsetRoute, $method);
         $this->middlewareHandler->addMiddleware($httpMethod, $offsetRoute, $middlewares);
+    }
+
+    private function instantiateMiddlewareClasses($middlewareClasses): array
+    {
+        return array_map(function ($mw) {
+            return $this->register($mw);
+        }, $middlewareClasses);
+    }
+
+    private function register($class)
+    {
+        $this->di->register($class, $class);
+        return $this->di->get($class);
     }
 
 
@@ -85,9 +95,10 @@ class Router
             return;
         }
 
-        list($middlewaresPassed, $middlewaresFailed) = $this->middlewareHandler->handleMiddlesware($this->request);
+        list($middlewaresPassed, $mwRequest, $failedMiddlewareResponse) = $this->middlewareHandler->handleMiddlewares($this->request);
+        //$this->request = $mwRequest;
         if ($middlewaresPassed) {
-            $args = array_merge([$this->request], array_values($routeArguments));
+            $args = array_merge([$mwRequest], array_values($routeArguments));
 
             if (!$this->isArgumentsCorrectLength($args, $method)) {
                 $this->defaultRequestHandler();
@@ -97,7 +108,8 @@ class Router
             $response = call_user_func_array($method, $args);
             $this->handleResponse($response);
         } else {
-            die($middlewaresFailed);
+            $this->handleResponse($failedMiddlewareResponse);
+            die();
         }
     }
 

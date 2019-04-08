@@ -35,4 +35,9 @@ class JsonResponse implements IResponse
     {
         return $this->responseCode;
     }
+
+    public static function create401Response(): IResponse
+    {
+        return new JsonResponse(["error" => "You must be logged in to view this"], 401);
+    }
 }

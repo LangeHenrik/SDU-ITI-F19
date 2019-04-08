@@ -37,4 +37,9 @@ class HtmlResponse implements IResponse
         return new HtmlResponse("error/404", [], 404);
     }
 
+    public static function createLoginRedirectResponse(): IResponse
+    {
+        return new HtmlResponse("error/loginRedirect", [], 401);
+    }
+
 }

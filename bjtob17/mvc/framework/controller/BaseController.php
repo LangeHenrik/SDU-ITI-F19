@@ -17,7 +17,8 @@ abstract class BaseController
 
     protected function json($data, int $responseCode = 200): IResponse
     {
-        return new JsonResponse($data, $responseCode);
+        $copyOfData = $data;
+        return new JsonResponse($copyOfData, $responseCode);
     }
 
     function redirect($url, $responseCode = 303)

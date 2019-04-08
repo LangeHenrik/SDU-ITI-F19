@@ -31,21 +31,44 @@ class Request implements IRequest
         }
     }
 
-    private function getGETBody(): array
+    public function getBodyAsJson(string $formDataKey)
+    {
+        switch ($this->requestMethod) {
+            case "GET":
+                {
+                    $getBody = $this->getGETBody(FILTER_DEFAULT)[$formDataKey];
+                    $strippedJson = strip_tags($getBody);
+                    return json_decode($strippedJson);
+                }
+
+            case "POST":
+                {
+                    $postBody = $this->getPOSTBody(FILTER_DEFAULT)[$formDataKey];
+                    $strippedJson = strip_tags($postBody);
+                    return json_decode($strippedJson);
+                }
+
+            default:
+                return null;
+        }
+
+    }
+
+    private function getGETBody(int $filter = FILTER_SANITIZE_STRING): array
     {
         $result = [];
         foreach ($_GET as $key => $value) {
-            $result[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            $result[$key] = filter_input(INPUT_GET, $key, $filter);
         }
 
         return $result;
     }
 
-    private function getPOSTBody(): array
+    private function getPOSTBody(int $filter = FILTER_SANITIZE_STRING): array
     {
         $result = array();
         foreach ($_POST as $key => $value) {
-            $result[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            $result[$key] = filter_input(INPUT_POST, $key, $filter);
         }
         if (count($_FILES) > 0) {
             $result["_FILES"] = $_FILES;

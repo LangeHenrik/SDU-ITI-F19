@@ -25,7 +25,7 @@ class DependencyInjectionContainer implements IDependencyInjectionContainer
     public function get($clazz)
     {
         $impl = $this->interfaceImplementationMap[$clazz];
-        return  $impl;
+        return $impl;
     }
 
     public function has($clazz)

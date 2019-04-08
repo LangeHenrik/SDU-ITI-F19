@@ -20,24 +20,25 @@ class MiddlewareHandler
 
     /**
      * @param Request $request
-     * @return array contains two elements: True if all middleware passed (bool) and a message (string)
+     * @return array contains three elements: 1: (Boolean) True if all middlewares passed. 2: (IRequest) request object. 3: (IResponse) Response object of failed middleware
      */
-    public function handleMiddlesware(Request $request): array
+    public function handleMiddlewares(Request $request): array
     {
         $middlewares = $this->getMiddlewares($request);
 
         $middlewaresPassed = true;
-        $middlewareFailedMessage = "Middleware failed";
+        $middlewareResponse = null;
         foreach ($middlewares as $middleware) {
-            list($returnVal, $msg) = call_user_func_array([$middleware, "apply"], [$request]);
-            if ($returnVal == false) {
+            list($success, $mwRequest, $response) = call_user_func_array([$middleware, "handle"], [$request]);
+            $request = $mwRequest;
+            if ($success == false) {
                 $middlewaresPassed = false;
-                $middlewareFailedMessage = $msg;
+                $middlewareResponse = $response;
                 break;
             }
         }
 
-        return [$middlewaresPassed, $middlewareFailedMessage];
+        return [$middlewaresPassed, $request, $middlewareResponse];
     }
 
     private function getMiddlewares(Request $request): array
