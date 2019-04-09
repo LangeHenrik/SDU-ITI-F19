@@ -1,3 +1,3 @@
 <?php include '../app/views/partials/navigationbar.php'; ?>
 
-Hello there, <?=$parameters['username']?>
+<h1>Feed page</h1>

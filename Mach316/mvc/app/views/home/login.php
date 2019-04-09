@@ -1,4 +1,4 @@
-<?php include '../app/views/partials/menu.php'; ?>
+<?php include '../app/views/partials/navigationbar.php'; ?>
 
 You are now logged in!
 <br><br>

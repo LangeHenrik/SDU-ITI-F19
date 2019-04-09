@@ -23,7 +23,8 @@ class Router {
 				unset($url[1]);
 			}
 		}
-		
+
+
 		$this->params = $url ? array_values($url) : [];
 		
 		require_once 'restricted.php';

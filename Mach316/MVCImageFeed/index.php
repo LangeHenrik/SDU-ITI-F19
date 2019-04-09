@@ -5,13 +5,20 @@ include('model/daos/DatabaseManager.php');
 
 $db = new DatabaseManager();
 
+Route::add('/', function(){
+    include "views/feed.php";
+});
+
 Route::add('/login', function(){
-    echo "login";
+
+    include "views/login.php";
 });
 
 Route::add('/loggedin' ,function(){
     include "views/loggedin.php";
 });
+
+
 
 Route::add('/users/([0-9]*)', function($userid) {
     echo "userid: ". $userid;
