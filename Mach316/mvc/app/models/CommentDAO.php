@@ -6,17 +6,18 @@
  * Time: 11:19
  */
 
+
 class CommentDAO extends Connection
 {
 
 
-    protected static $conn = null;
+    private $conn = null;
 
 
     public function __construct()
     {
         parent::__construct();
-        $this->conn = parent::$conn;
+        $this->conn = parent::getConnection();
     }
 
     function getImageComments($imageId)

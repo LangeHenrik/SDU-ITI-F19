@@ -6,19 +6,19 @@
  * Time: 10:25
  */
 
-require_once 'DAO.php';
-require_once 'iImageDAO.php';
+require_once 'UserDAO.php';
+
 
 class ImageDAO extends Connection {
 
 
-    protected static $conn = null;
+    private $conn = null;
 
 
     public function __construct()
     {
         parent::__construct();
-        $this->conn = parent::$conn;
+        $this->conn = parent::getConnection();
     }
 
 
@@ -33,10 +33,24 @@ class ImageDAO extends Connection {
         }
     }
 
-
-    public function getUserImages()
+    function getImageComments($imageId)
     {
-        $userid = $_SESSION['id'];
+
+        $query = "SELECT * FROM comments where image_id = :imageId";
+        $statement = $this->conn->prepare($query);
+        $statement->bindParam(':imageId', $imageId);
+        $statement->execute();
+        $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if($comments != null) {
+            return $this->convertToCommentsArray($comments);
+        }
+
+    }
+
+
+    public function getUserImages($userid)
+    {
         $query = "SELECT * FROM images where user_id = :userid";
         $statement = $this->conn->prepare($query);
         $statement->bindParam(':userid', $userid);
@@ -84,15 +98,51 @@ class ImageDAO extends Connection {
     }
 
     private function convertDBImageToImage($fetchedImage) {
+
+        $imageID = $fetchedImage['id'];
+        $comments = $this->getImageComments($imageID);
+
         $image = new Image();
         $image->setFileName($fetchedImage["name"]);
         $image->setHeader($fetchedImage['header']);
         $image->setId($fetchedImage['id']);
         $image->setText($fetchedImage['text']);
         $image->setUserId($fetchedImage['user_id']);
+
+        $image->setComments($comments);
+
         return $image;
 
     }
+    private function convertToCommentsArray($fetchedComments)
+    {
+        $comments = array();
+        if (is_array($fetchedComments)) {
+            foreach ($fetchedComments as $fetchedComment) {
+                $comment = $this->convertDBCommentToComment($fetchedComment);
+                array_push($comments, $comment);
+            }
+            return $comments;
+        } elseif($fetchedComments instanceof Comment) {
+            return $this->convertDBCommentToComment($fetchedComments);
+        }
+    }
+
+    private function convertDBCommentToComment($fetchedComment) {
+
+        $userDAO = new UserDAO();
+        $authorName = $userDAO->getUserName($fetchedComment['user_id']);
+
+        $comment = new Comment();
+        $comment->setAuthorID($fetchedComment['user_id']);
+        $comment->setComment($fetchedComment['comment']);
+        $comment->setImageID($fetchedComment['image_id']);
+        $comment->setPostDate($fetchedComment['post_date']);
+        $comment->setAuthorUsername($authorName);
+
+        return $comment;
+    }
+
 
 
 }

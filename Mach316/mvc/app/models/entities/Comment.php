@@ -7,12 +7,34 @@
  */
 
 class Comment{
-    private $comment;
-    private $authorID;
-    private $imageID;
-    private $postDate;
+    public $comment;
+    public $authorID;
+    public $imageID;
+    public $postDate;
+    public $authorUsername;
+
+    /**
+     * @return mixed
+     */
+    public function getAuthorUsername()
+    {
+        return $this->authorUsername;
+    }
+
+    /**
+     * @param mixed $authorUsername
+     */
+    public function setAuthorUsername($authorUsername)
+    {
+        $this->authorUsername = $authorUsername;
+    }
 
 
+
+    public function __toString()
+    {
+        return $this->comment . " : " . $this->authorID;
+    }
 
     public function getComment() {
         return $this->comment;

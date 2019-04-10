@@ -5,104 +5,10 @@
       <change afterPath="$PROJECT_DIR$/../mvc/app/controllers/ApiController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mvc/app/css/feed.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mvc/app/css/general.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mvc/app/css/loginform.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mvc/app/css/myimages.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mvc/app/css/navbar.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mvc/app/css/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mvc/app/views/home/loginform.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mvc/app/views/home/unsuccesfullogin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AnonymousFunctions/.idea/AnonymousFunctions.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AnonymousFunctions/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AnonymousFunctions/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AnonymousFunctions/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AnonymousFunctions/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AnonymousFunctions/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ImageFeedProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/Feed.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/General.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/LoginPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/Navbar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/PictureManagement.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/Users.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExampleVideo.mov" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS/Feed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS/LoginPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS/PictureManagement.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS/Users.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS/formcheck.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JS/navbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Controller/PostBuilder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Controller/Route.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Feed.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/LogIn.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/LogOut.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/LoginPage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/Comment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/CommentDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/DAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/DatabaseManager.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/ImageDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/UserDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/db_config.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/iCommentDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/iImageDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/DAOs/iUserDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/Image.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Model/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/PictureManagement.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Register.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/UploadImage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/UserLoader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/Views/Partials/NavigationBar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/addComment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/deleteImage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/getLoginPage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/imageLoader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/searchUsers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/server.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/updateUser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/15192696_10155148836581840_5859672375515799231_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/17094071_10212346303909729_133922154_n.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/Zagan_czolg_T34_85.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/b862ba6a-8335-448c-b6d4-6dd91f6217ae.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/download.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/kirk-cropped.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP/uploads/php.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_backup.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/.idea/MVCImageFeed.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/controllers/Route.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/CommentDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/DAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/DatabaseManager.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/ImageDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/UserDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/db_config.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/iCommentDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/iImageDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/daos/iUserDAO.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/entities/Comment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/entities/Image.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/model/entities/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/views/404.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/views/feed.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/views/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/views/loggedin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/views/login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/views/partials/navigationbar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MVCImageFeed/views/users.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../mvc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mvc/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/app/controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mvc/app/core/Connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/app/core/Connection.php" afterDir="false" />
@@ -114,14 +20,8 @@
       <change beforePath="$PROJECT_DIR$/../mvc/app/models/entities/Image.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/app/models/entities/Image.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mvc/app/models/entities/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/app/models/entities/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mvc/app/views/home/feed.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/app/views/home/feed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvc/app/views/home/login.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../mvc/app/views/home/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/app/views/home/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mvc/app/views/partials/navigationbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc/app/views/partials/navigationbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/untitled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -133,7 +33,97 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHP/Feed.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHP/Controller/Route.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+              <folding>
+                <element signature="e#8#174#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHP/LoginPage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CSS/Navbar.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JS/navbar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../MVCImageFeed/views/feed.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHP/Controller/PostBuilder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHP/Views/Partials/NavigationBar.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../MVCImageFeed/views/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PHP/Model/DAOs/DatabaseManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -231,6 +221,52 @@
               <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="CSS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="JS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="PHP" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="PHP" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="PHP" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="PHP" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="DAOs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="PHP" type="462c0819:PsiDirectoryNode" />
+              <item name="uploads" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ImageFeedProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ImageFeedProject" type="462c0819:PsiDirectoryNode" />
+              <item name="PHP" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -302,15 +338,16 @@
       <workItem from="1554027437985" duration="6007000" />
       <workItem from="1554189880129" duration="5267000" />
       <workItem from="1554454114920" duration="2066000" />
-      <workItem from="1554893249136" duration="637000" />
+      <workItem from="1554893249136" duration="618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137763000" />
+    <option name="totallyTimeSpent" value="137744000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16666667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

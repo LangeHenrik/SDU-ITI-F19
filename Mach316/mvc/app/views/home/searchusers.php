@@ -1,4 +1,5 @@
 <?php
+echo "<link rel='stylesheet' href='../../app/css/general.css'>";
 include 'users.php';
 ?>
 

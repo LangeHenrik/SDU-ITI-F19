@@ -11,13 +11,12 @@ class UserDAO extends Connection
 {
 
 
-    protected static $conn = null;
+    private $conn = null;
 
     public function __construct()
     {
-        echo "Construct";
         parent::__construct();
-        $this->conn = parent::$conn;
+        $this->conn = parent::getConnection();
     }
 
     public function getUserName($id)
@@ -33,9 +32,36 @@ class UserDAO extends Connection
         return $username;
     }
 
+    public function getUserByUsername($username) {
+        $query = "select * from users where username=:username";
+        $statement = $this->conn->prepare($query);
+        $statement->bindParam(':username', $username);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        if($result) {
+            echo $result[0];
+            return $this->convertDBUser($result[0]);
+        } else {
+            return null;
+        }
+    }
+
     public function getCurrentUser()
     {
         $userId = $_SESSION['id'];
+        $query = 'SELECT * FROM users where id =:id';
+        $statement = $this->conn->prepare($query);
+        $statement->bindParam(':id', $userId);
+        $statement->execute();
+        $result = $statement->fetch();
+        if($result != null) {
+            return $this->convertDBUser($result);
+        }
+    }
+    public function getUserById($id)
+    {
+
+        $userId = $id;
         $query = 'SELECT * FROM users where id =:id';
         $statement = $this->conn->prepare($query);
         $statement->bindParam(':id', $userId);
@@ -60,10 +86,6 @@ class UserDAO extends Connection
 
     public function searchUsers($searchParam)
     {
-
-        echo "Search users!";
-        echo "<h1>Connection: $this->conn</h1>";
-        echo "<h1>Search param: $searchParam</h1>";
 
         $searchParam = htmlentities($searchParam);
         $searchParam = "%$searchParam%";
@@ -117,15 +139,20 @@ class UserDAO extends Connection
                 $user = $this->convertDBUser($fetchedUser);
                 array_push($users, $user);
             }
+
             return $users;
+
         }elseif($fetchedUsers instanceof User) {
             return $this->convertDBUser($fetchedUsers);
         }
+
     }
 
     private function convertDBUser($fetchedUser) {
 
         $user = new User();
+
+
         $user->setId($fetchedUser['id']);
         $user->setCity($fetchedUser['city']);
         $user->setEmail($fetchedUser['email']);
@@ -133,9 +160,10 @@ class UserDAO extends Connection
         $user->setFirstname($fetchedUser['firstname']);
         $user->setLastname($fetchedUser['lastname']);
         $user->setUsername($fetchedUser['username']);
-        $user->setPassword(null);
+        $user->setPassword($fetchedUser['password']);
         $user->setPhonenumber($fetchedUser['phonenumber']);
         $user->setZip($fetchedUser['zip']);
+
         return $user;
     }
 

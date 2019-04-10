@@ -6,12 +6,23 @@
  * Time: 11:01
  */
 
+
+
 class Image {
-    private $id;
-    private $header;
-    private $text;
-    private $userId;
-    private $fileName;
+    public $id;
+    public $header;
+    public $text;
+    public $userId;
+    public $fileName;
+    public $comments;
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 
     /**
      * @return mixed
@@ -19,6 +30,14 @@ class Image {
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 
     /**

@@ -7,16 +7,22 @@
  */
 
 class User {
-    private $id;
-    private $username;
-    private $firstname;
-    private $lastname;
-    private $phonenumber;
-    private $email;
-    private $city;
-    private $zip;
-    private $password;
-    private $firstLogin;
+    public $id;
+    public $username;
+    public $firstname;
+    public $lastname;
+    public $phonenumber;
+    public $email;
+    public $city;
+    public $zip;
+    public $password;
+    public $firstLogin;
+
+
+    public function __toString()
+    {
+        return $this->city . " : " . $this->username . "<br>";
+    }
 
     /**
      * @return mixed
