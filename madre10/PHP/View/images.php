@@ -1,3 +1,8 @@
+<?php
+require_once (__DIR__.'/Components/PostRender.php');
+require_once(__DIR__ . '/../Model/postDAO.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +16,12 @@
     <?php include(__DIR__.'/Components/NavigationBar.php'); ?>
 
     <h1> Images </h1>
+    <?php
+        $posts = getUserPosts($_SESSION['user_id']);
+        foreach($posts as $post){
+            echo renderFuckingPost($posts);
+        }
+    ?>
 </div>
 
 </body>

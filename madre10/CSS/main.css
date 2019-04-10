@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+}
+.alert_message {
+    color: #ed2d2d;
+    font-size: 15px;
+    text-align: center;
+}

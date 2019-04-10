@@ -6,4 +6,11 @@
     <div class="navigation_bar__button" onclick="location.href='/me'"> My page</div>
     <div class="navigation_bar__button" onclick="location.href='/users'"> Users</div>
     <div class="navigation_bar__button" onclick="location.href='/ajax'"> Ajax!</div>
+    <?php
+    if( isset($_SESSION['user_id']) ){
+       echo " <div class=\"navigation_bar__button\" onclick=\"location.href='/logout'\">Logout</div>";
+    } else {
+        echo "<div class=\"navigation_bar__button\" onclick=\"location.href='/login'\"> Login</div>";
+    }
+    ?>
 </div>

@@ -9,6 +9,6 @@ Connect do MariaDB:
 1. Open command prompt "cmd"
 2. mysql -u root -p
 3. password = root  //So much for plaintext passwords committed to GitHub. 10/10 stars.
-4. use internet_technology
+4. use madre10_iti
 
 

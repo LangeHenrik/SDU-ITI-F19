@@ -28,4 +28,8 @@ class Post
         $this->description = $description;
     }
 
+    protected function fill($row) {
+
+    }
+
 }

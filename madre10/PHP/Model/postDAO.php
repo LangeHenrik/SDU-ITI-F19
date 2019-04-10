@@ -3,10 +3,10 @@
 include_once(__DIR__.'/entities/user.php');
 include_once(__DIR__.'/entities/post.php');
 include_once(__DIR__.'/entities/comment.php');
-require_once __DIR__."/database/database.php";
+require_once __DIR__.'/database/database.php';
 
 
-function getUserImages($userId)
+function getUserPosts($userId)
 {
     $result = loadUserImages($GLOBALS["conn"], $userId);
     $posts = [];
@@ -18,7 +18,7 @@ function getUserImages($userId)
     return $posts;
 }
 
-function getAllImages($limit)
+function getAllPosts($limit)
 {
     $result = loadNewImages($GLOBALS["conn"], $limit);
     $posts = [];
@@ -30,18 +30,6 @@ function getAllImages($limit)
     return $posts;
 }
 
-function getImageComments($imageId){
-    $result = loadImageComments($GLOBALS["conn"], $imageId);
-    $comments = array();
-
-    foreach($result as $item) {
-        $comment = new Comment($item["id"],$item["user_id"],$item["image_id"], $item["content"], $item["created_on"]);
-        array_push($comments,$comment);
-    }
-    return $comments;
-}
-
-
 function addComment($comment){
     $user_id = $comment["user_id"];
     $image_id = $comment["image_id"];
@@ -50,8 +38,4 @@ function addComment($comment){
     putComment($GLOBALS["conn"], $user_id, $image_id, $content);
 
 }
-
-
-
-
 

@@ -1,7 +1,8 @@
 <?php
-
+session_start();
 // Include router class
 include('./PHP/Controller/Route.php');
+
 
 Route::add('/',function(){
     include(__DIR__.'/PHP/View/index.php');
@@ -31,6 +32,25 @@ Route::add('/ajax', function(){
     include(__DIR__.'/PHP/View/ajax.php');
 });
 
+Route::add('/login', function(){
+    include(__DIR__.'/PHP/View/login.php');
+});
+
+Route::add('/login', function(){
+    include(__DIR__.'/PHP/View/login.php');
+}, 'post');
+
+Route::add('/logout', function(){
+    include(__DIR__.'/PHP/View/logout.php');
+});
+
+Route::add('/register', function(){
+    include(__DIR__.'/PHP/View/register.php');
+});
+
+Route::add('/register', function(){
+    include(__DIR__.'/PHP/View/register.php');
+}, 'post');
 
 // Accept only numbers as parameter. Other characters will result in a 404 error
 Route::add('/([0-9]*)/([0-9]*)',function($var1, $var2){
