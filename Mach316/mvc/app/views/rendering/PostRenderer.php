@@ -70,7 +70,7 @@ class PostRenderer
         $commentAuthor = $comment->getAuthorUsername();
         $commentAuthorID = $comment->getAuthorID();
 
-        $userLink = '/Mach316/mvc/public/api/getuser/'.$commentAuthorID;
+        $userLink = '/Mach316/mvc/public/home/userpage/'.$commentAuthor;
 
         return "<div class='comment'>
                            <div class='comment-author-name'><a href=$userLink >$commentAuthor</a></div>

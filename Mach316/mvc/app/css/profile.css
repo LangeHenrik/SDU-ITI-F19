@@ -1,2 +1,24 @@
 .header-profile {
 }
+
+.profile-information-wrapper {
+    margin: 3%;
+}
+
+
+.btn-logout {
+    border-radius: 0px;
+    border: none;
+    font-size: 1.5vw;
+    background-color: rgba(55,0,0,0.8);
+    color: white;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-left: 3%;
+}
+
+.btn-logout:hover {
+    background-color: red;
+    cursor: pointer;
+}

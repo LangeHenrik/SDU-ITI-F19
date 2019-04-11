@@ -39,7 +39,6 @@ class UserDAO extends Connection
         $statement->execute();
         $result = $statement->fetchAll();
         if($result) {
-            echo $result[0];
             return $this->convertDBUser($result[0]);
         } else {
             return null;

@@ -21,11 +21,11 @@ class HomeController extends Controller
     public function feed()
     {
         $loggedIn = isset($_SESSION['logged_in']);
-        if($loggedIn) {
+        if ($loggedIn) {
             $imageDAO = $this->model('ImageDAO');
             $parameters['images'] = $imageDAO->getAllImages();
             $this->view('home/feed', $parameters);
-        }else{
+        } else {
             $this->view('home/loginform');
         }
     }
@@ -38,7 +38,12 @@ class HomeController extends Controller
     public function profile($parameters = [])
     {
         if (isset($_SESSION['logged_in'])) {
-            $this->view('home/profile');
+
+            $userDAO = $this->model('UserDAO');
+            $username = $_SESSION['username'];
+            $user = $userDAO->getUserByUsername($username);
+            $parameters['user'] = $user;
+            $this->view('home/profile', $parameters);
         } else {
             $this->view('home/loginform', $parameters);
         }
@@ -55,7 +60,11 @@ class HomeController extends Controller
                     $this->view('home/unsuccesfullogin');
                 } else {
                     $_SESSION['logged_in'] = true;
-                    $this->view('home/profile');
+                    $_SESSION['username'] = $username;
+                    $userDAO = $this->model('UserDAO');
+                    $user = $userDAO->getUserByUsername($username);
+                    $parameters['user'] = $user;
+                    $this->view('home/profile', $parameters);
                 }
             }
         }
@@ -85,7 +94,7 @@ class HomeController extends Controller
 
             $message = $this->getRegistrationInformationMessage($newUser);
 
-            if($message == '') {
+            if ($message == '') {
                 $userDAO = $this->model('UserDAO');
                 $userDAO->registerUser($newUser);
                 $_SESSION['logged_in'] = true;
@@ -124,13 +133,15 @@ class HomeController extends Controller
         $this->view('home/users');
     }
 
-    public function userpage($username = "") {
+    public function userpage($username = "")
+    {
         $userDAO = $this->model('UserDAO');
-            $user = $userDAO->getUserByUsername($username);
-            $parameters['user'] = $user;
-            $this->view('home/userpage', $parameters);
-
-
+        $imageDAO = $this->model('ImageDAO');
+        $user = $userDAO->getUserByUsername($username);
+        $images = $imageDAO->getUserImages($user->getId());
+        $parameters['user'] = $user;
+        $parameters['images'] = $images;
+        $this->view('home/userpage', $parameters);
     }
 
     public function logout()
@@ -168,16 +179,16 @@ class HomeController extends Controller
         if ($this->usernameIsTaken($newUser->getUsername())) {
             $message .= "<div class='registration-alert'>That username is taken</div>";
         }
-        if(!$this->passwordsMatch($newUser->getPassword(), $newUser->getRepeatedPassword())) {
+        if (!$this->passwordsMatch($newUser->getPassword(), $newUser->getRepeatedPassword())) {
             $message .= "<div class='registration-alert'>The passwords have to match</div>";
         }
-        if(!$this->validEmail($newUser->getEmail())) {
+        if (!$this->validEmail($newUser->getEmail())) {
             $message .= "<div class='registration-alert'>The email you entered is invalid</div>";
         }
         if (!$this->validPhonenumber($newUser->getPhonenumber())) {
             $message .= "<div class='registration-alert'>Phonenumber has to consists of 8 digits</div>";
         }
-        if(!$this->validZip($newUser->getZip())) {
+        if (!$this->validZip($newUser->getZip())) {
             $message .= "<div class='registration-alert'>Zipcode has to consists of 4 digits</div>";
         }
         return $message;
@@ -208,7 +219,7 @@ class HomeController extends Controller
 
     private function validPhonenumber($phonenumber)
     {
-        return (preg_match('/^[0-9]+$/',$phonenumber) && strlen($phonenumber) == 8);
+        return (preg_match('/^[0-9]+$/', $phonenumber) && strlen($phonenumber) == 8);
     }
 
 
