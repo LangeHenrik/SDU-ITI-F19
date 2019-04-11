@@ -10,7 +10,6 @@
 class CommentDAO extends Connection
 {
 
-
     private $conn = null;
 
 
@@ -32,7 +31,6 @@ class CommentDAO extends Connection
         if($comments != null) {
             return $this->convertToCommentsArray($comments);
         }
-
     }
 
 

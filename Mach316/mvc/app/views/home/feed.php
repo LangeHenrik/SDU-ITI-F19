@@ -10,13 +10,14 @@ echo "<link rel='stylesheet' href='../../app/css/feed.css'>";
 
 
 <div class="main-content">
-<h1>Feed page</h1>
+<h1 class="header-feed">Feed page</h1>
 
 <?php
 $images = $parameters['images'];
 
 $postRenderer = new PostRenderer();
-echo $postRenderer->renderPosts($images)
+$posts = $postRenderer->renderPosts($images);
+echo "<div class='posts-container'>$posts</div>"
 
 ?>
 

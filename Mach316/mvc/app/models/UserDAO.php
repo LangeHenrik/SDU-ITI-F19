@@ -46,6 +46,15 @@ class UserDAO extends Connection
         }
     }
 
+    public function userExists($username) {
+        $result = $this->getUserByUsername($username);
+        if($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getCurrentUser()
     {
         $userId = $_SESSION['id'];

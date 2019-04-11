@@ -16,12 +16,30 @@ class User {
     public $city;
     public $zip;
     public $password;
+    public $repeatedPassword;
     public $firstLogin;
+
 
 
     public function __toString()
     {
         return $this->city . " : " . $this->username . "<br>";
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRepeatedPassword()
+    {
+        return $this->repeatedPassword;
+    }
+
+    /**
+     * @param mixed $repeatedPassword
+     */
+    public function setRepeatedPassword($repeatedPassword)
+    {
+        $this->repeatedPassword = $repeatedPassword;
     }
 
     /**

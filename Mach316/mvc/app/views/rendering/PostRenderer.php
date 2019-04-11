@@ -14,19 +14,31 @@ class PostRenderer
         return $posts;
     }
 
-    public function renderPost($image)
+    private function renderPost($image)
     {
         $imagePath = '/Mach316/mvc/app/uploads/' . $image->getFileName();
+        $imageHeader = $image->getHeader();
+        $imageText = $image->getText();
 
 
-        $post = "<div class='image-post'>
-                  
-                   <div class='image-wrapper'>
-                        <img src={$imagePath} class='img-feed-post'/>
-                   </div>
-                   <div class='textarea-wrapper'> 
-                        <textarea  class='comment-textarea' wrap='hard' rows='10' cols='70'></textarea>
-                   </div>";
+        $post = "
+                  <div class='image-post'>
+                  <div class='image-information-wrapper'>
+                        <h2 class='image-header'>$imageHeader</h2>
+                        <div class='image-wrapper'>
+                            <img src=$imagePath class='img-feed-post'/>
+                        </div>
+                        <div class='image-text'>$imageText</div>
+                        </div>
+                        <div class='comments'>
+                        <div class='textarea-wrapper'> 
+                        <div class='comment-form-wrapper'>
+                        <form class='comment-form' method='post' action='comment'>
+                            <textarea  name='comment' class='comment-textarea' placeholder='Leave a comment.. And be nice!' wrap='hard' rows='5' cols='100'></textarea>
+                            <div><input class='btn-submit-comment' type='submit' value='Comment'/></div>
+                        </form>
+                        </div>
+                        </div>";
 
         $comments = $image->getComments();
         $post .= $this->renderComments($comments);
@@ -36,10 +48,10 @@ class PostRenderer
 
     }
 
-    public function renderComments($comments)
+    private function renderComments($comments)
     {
 
-        $renderedComments = "<div class='comments'>";
+        $renderedComments = "";
 
         if ($comments) {
             foreach ($comments as $comment) {
@@ -52,7 +64,7 @@ class PostRenderer
 
     }
 
-    public function renderComment($comment)
+    private function renderComment($comment)
     {
         $commentText = $comment->getComment();
         $commentAuthor = $comment->getAuthorUsername();
