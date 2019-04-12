@@ -18,6 +18,23 @@ class User {
     public $password;
     public $repeatedPassword;
     public $firstLogin;
+    public $images;
+
+    /**
+     * @return mixed
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param mixed $images
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+    }
 
 
 

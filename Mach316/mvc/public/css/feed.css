@@ -3,7 +3,8 @@
     padding-top: 0.5%;
     width: 60%;
     margin-left: 19%;
-    background-color: rgba(55,0,0,0.3);
+    background-color: rgba(0,55,200,0.2);
+    border-radius: 5px;
 }
 
 .posts-container {
@@ -42,7 +43,7 @@
 .btn-submit-comment {
     border: none;
     border-radius: 0px;
-    font-size: 0.5vw;
+    font-size: 1vw;
     background-color: white;
     transition: 400ms ease-in-out;
     padding: .7%;
@@ -85,6 +86,7 @@
 .comment-textarea {
     resize: none;
     border: none;
+    width: 95%;
 }
 .comment-textarea:focus {
     outline: none;

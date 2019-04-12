@@ -1,5 +1,5 @@
 <?php include '../app/views/partials/navigationbar.php';
-echo "<link rel='stylesheet' href='../../app/css/loginform.css'>";
+echo "<link rel='stylesheet' href='/Mach316/mvc/public/css/loginform.css'>";
 
 $message = $parameters['message'];
 

@@ -1,8 +1,8 @@
 
 <html>
 <?php include '../app/views/partials/navigationbar.php';
-echo "<link rel='stylesheet' href='../../app/css/general.css'>";
-echo "<link rel='stylesheet' href='../../app/css/feed.css'>";
+echo "<link rel='stylesheet' href='/Mach316/mvc/public/css/general.css'>";
+echo "<link rel='stylesheet' href='/Mach316/mvc/public/css/feed.css'>";
 ;
 
 

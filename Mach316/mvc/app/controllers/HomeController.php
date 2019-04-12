@@ -61,9 +61,10 @@ class HomeController extends Controller
                 } else {
                     $_SESSION['logged_in'] = true;
                     $_SESSION['username'] = $username;
-                    $userDAO = $this->model('UserDAO');
-                    $user = $userDAO->getUserByUsername($username);
-                    $parameters['user'] = $user;
+                    $parameters = [];
+                    // $userDAOLogin = $this->model('UserDAO');
+                    //$user = $userDAOLogin->getUserByUsername($username);
+                    //$parameters['user'] = $user;
                     $this->view('home/profile', $parameters);
                 }
             }
@@ -130,7 +131,19 @@ class HomeController extends Controller
     public function users()
     {
 
-        $this->view('home/users');
+        $imageDAO = $this->model('ImageDAO');
+        $userDAO = $this->model('UserDAO');
+        $users = $userDAO->getAllUsers();
+
+        foreach ($users as $user) {
+            $userId = $user->getId();
+            $userImages = $imageDAO->getUserImages($userId);
+            $user->setImages($userImages);
+        }
+
+
+        $parameters['users'] = $users;
+        $this->view('home/users', $parameters);
     }
 
     public function userpage($username = "")

@@ -1,7 +1,20 @@
-<?php include '../app/views/partials/navigationbar.php';
-echo "<link rel='stylesheet' href='../../app/css/general.css'>";
-echo "<link rel='stylesheet' href='../../app/css/registerform.css'>";
+<?php
+include '../app/views/partials/navigationbar.php';
 
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/Mach316/mvc/public/css/general.css'>
+    <link rel='stylesheet' href='/Mach316/mvc/public/css/registerform.css'>
+    <script src='/Mach316/mvc/public/js/listeners.js'></script>
+
+</head>
+</html>
+
+
+<?php
 $message = $parameters['message'];
 
 echo "
@@ -41,7 +54,7 @@ echo "
             </div>
             <div class='input-block'>
                 <div>
-                    <input type='text' name='zip' placeholder='Zip'/>
+                    <input type='text' name='zip' id='zip-input' placeholder='Zip'/>
                 </div>
             </div>
             <div class='input-block'>
@@ -63,10 +76,6 @@ echo "
 
 
 ";
-
-
-
-
 
 
 ?>

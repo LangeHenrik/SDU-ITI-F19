@@ -7,3 +7,4 @@ require_once 'models/entities/User.php';
 require_once 'models/entities/Comment.php';
 require_once 'models/entities/Image.php';
 require_once 'views/rendering/PostRenderer.php';
+require_once 'views/rendering/UserRenderer.php';
