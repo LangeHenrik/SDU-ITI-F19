@@ -7,7 +7,8 @@ require 'database.php';
 <head>
     <meta charset="UTF-8">
     <title>My page</title>
-    <link rel="stylesheet" type="text/css" href="General.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/users.css">
 </head>
 <body>
 <div class="container">
@@ -33,8 +34,8 @@ require 'database.php';
         $users = getAllUsers($conn);
         foreach($users as $user) {
             echo '<div class="user">';
-            echo '<div class="user__username">' . $user['username'] .'</div>';
-            echo '<div class="user__password">' . $user['password'] .'</div>';
+            echo '<div class="user__username">' . $user->username .'</div>';
+            echo '<div class="user__password">' . $user->password .'</div>';
             echo '</div>';
         }
 

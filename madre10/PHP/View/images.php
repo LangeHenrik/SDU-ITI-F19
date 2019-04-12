@@ -1,6 +1,7 @@
 <?php
 require_once (__DIR__.'/Components/PostRender.php');
 require_once(__DIR__ . '/../Model/postDAO.php');
+require_once(__DIR__.'./Components/RequireLogin.php')
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +16,15 @@ require_once(__DIR__ . '/../Model/postDAO.php');
 <div class="container">
     <?php include(__DIR__.'/Components/NavigationBar.php'); ?>
 
-    <h1> Images </h1>
+    <h1>Upload new image </h1>
+
+
+
+    <h1> Your images </h1>
     <?php
         $posts = getUserPosts($_SESSION['user_id']);
         foreach($posts as $post){
-            echo renderFuckingPost($posts);
+            echo renderFuckingPost($post);
         }
     ?>
 </div>

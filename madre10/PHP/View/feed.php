@@ -4,7 +4,6 @@ require_once(__DIR__ . '/../Model/commentDAO.php');
 require_once 'Components/PostRender.php';
 $message = null;
 
-
 ?>
 
 <!DOCTYPE html>

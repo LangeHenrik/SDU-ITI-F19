@@ -11,11 +11,20 @@ function getUserByUsername($username) {
     return $results;
 }
 
+function getUserById($id){
+    $records = $GLOBALS['conn']->prepare('SELECT * FROM users WHERE id = :id');
+    $records->bindParam(':id', $id);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+    return $results;
+}
+
 function getAllUsers() {
     $records = $GLOBALS['conn']->prepare('SELECT * FROM users');
     $records->execute();
     $results = $records->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
+    $users = createListOfUsersObjects($results);
+    return $users;
 }
 
 function createUser($user) {
@@ -31,11 +40,17 @@ function createUser($user) {
 }
 
 
-function createUserFromRow($row){
-
+function createUserObject($row){
+    $user = new User($row['id'], $row['username'],$row['password'], $row['firstname'],$row['lastname'], $row['zip'], $row['city'], $row['email'], $row['phone'] );
+    return $user;
 }
 
-function createListOfUsersFromResult($result){
-
+function createListOfUsersObjects($result){
+     $users = [];
+    foreach($result as $row){
+        $user = createUserObject($row);
+        $users[] = $user;
+    }
+    return $users;
 }
 
