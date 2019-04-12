@@ -1,7 +1,8 @@
 <?php
 session_start();
 // Include router class
-include('./PHP/Controller/Route.php');
+require_once('./PHP/Controller/Route.php');
+require_once('./PHP/Controller/ApiController.php');
 
 
 Route::add('/',function(){
@@ -51,6 +52,19 @@ Route::add('/register', function(){
 Route::add('/register', function(){
     include(__DIR__.'/PHP/View/register.php');
 }, 'post');
+
+Route::add('/madre10/mvc/public/api/users', function(){
+   apiGetAllUsers();
+});
+
+Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
+    apiGetUserPictures($var1);
+});
+
+Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
+    apiGetUserPictures($var1);
+}, 'POST');
+
 
 // Accept only numbers as parameter. Other characters will result in a 404 error
 Route::add('/([0-9]*)/([0-9]*)',function($var1, $var2){
