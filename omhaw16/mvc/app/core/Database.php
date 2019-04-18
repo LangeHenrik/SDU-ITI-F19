@@ -1,8 +1,8 @@
 <?php
-
-require_once 'db_config.php';
+/*
+require_once 'serverconn.php';
 	
-class Database extends DB_Config {
+class Database extends ServerConn {
 
 	public $conn;
 	
@@ -23,4 +23,5 @@ class Database extends DB_Config {
 		$this->conn = null;
 	}
 	
-}
+}*/
+?>
