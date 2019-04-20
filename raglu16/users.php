@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	
+	if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+		header("location: login.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +14,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Hydrogen</title>
+	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -45,7 +49,7 @@
 		
 	<div id="fh5co-offcanvass">
 		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
-		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php">Hydrogen</a></h1>
+		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php"></a></h1>
 		<ul>
 			<li><a href="index.php">Home</a></li>
 			<li><a href="upload.php">Upload</a></li>
@@ -61,7 +65,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <i class="icon-menu"></i></a>
-					<a class="navbar-brand" href="index.php">Hydrogen</a>		
+					<a class="navbar-brand" href="index.php"></a>		
 				</div>
 			</div>
 		</div>
