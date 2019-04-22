@@ -14,29 +14,6 @@ function connect() {
     global $serverName, $dbUser, $dbPassword, $dbName, $connection;
     $connection = mysqli_connect($serverName, $dbUser, $dbPassword, $dbName);
 }
-
-function getImages() {
-    connect();
-    global $connection;
-    $sql = "SELECT * FROM users";
-    $result = $connection->query($sql);
-    
-    if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - username: " . $row["username"]. " password: " . $row["password"]. "<br>";
-    }
-    } else {
-        echo "0 results"; 
-    }
-    echo password_hash("rasmuslerdorf", PASSWORD_BCRYPT) . "<br>";
-    $isUser =password_verify("rasmuslerdorf", '$2y$10$vsJ7pqvdu7zC9CKd1kjJvewGmsvrsMn7ohqAVyME.Voi1hlkHEsSC');
-    if($isUser) {
-        echo "is user";
-    }
-    
-}
-
 function registerUser($username, $password, $firstName, $lastName, $zip, $city, $email, $phone) {
     connect();
     global $connection;

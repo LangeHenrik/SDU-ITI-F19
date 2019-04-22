@@ -1,0 +1,106 @@
+* {
+    margin:0;
+    padding: 0;
+}
+
+.hide {
+    font-size: 0px;
+    visibility: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /*
+    background-color: #eee;*/
+    background-image: url(images/space_background.jpg);
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.image_post img {
+    float: none;
+    display:block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    border-color: lightgray;
+}
+
+.image_post {
+    display: inline-block;
+    margin-right: auto;
+    border: 2px solid #aaa;
+    background-color: white;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    margin-top: 1em;
+    color: #047;
+    width:100%;
+}
+
+.image_post .info {
+    display: block;
+    float:left;
+    display: inline-block;
+    text-align: left;
+    width:100%;
+}
+
+.info p {
+    text-align: left;
+}
+
+.info h1, h2 { 
+    border-bottom: 1px solid #bbb;
+}
+
+
+.full {
+    margin-left:auto;
+    margin-right: auto;
+    width: 60%;
+    text-align: center;
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+}
+
+
+section {
+    margin-top: 0.5em;
+    background-color: white;
+    border: 2px solid #aaa;
+    height: 200px;
+}
+
+.full .upload_image input, textarea, label {
+    float:left;
+    width:100%;
+    margin-top: 0.5em;
+}
+
+.full .upload_image textarea {
+    height:75px;
+}
+#submit, button {
+    float:right;
+    width: auto;
+    margin: 0.5em 0.5em;
+}
+
+.sidebar {
+    width: 15%;
+    display: inline-block;
+    float:left;
+    padding: 0.5em 0.5em 0.5em 0.5em;   
+    background-color: white;
+    border: 2px solid #aaa;
+    margin: 0.5em;
+}
+
+.sidebar input {
+    width:90%;
+    margin: 0.3em;
+    display:block;
+}

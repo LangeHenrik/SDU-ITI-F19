@@ -1,0 +1,15 @@
+
+
+.login {
+    z-index: 1;
+    background: #06f;
+    padding-left: 20%;
+    padding-top: 12;
+    padding-bottom: 42;
+    color: white;
+    object-fit: cover;
+}
+
+a {
+    position: fixed;
+}
