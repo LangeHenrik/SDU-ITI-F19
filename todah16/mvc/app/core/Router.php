@@ -21,14 +21,14 @@ class Router {
 			if(method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];
 				unset($url[1]);
-			}
+			} 
 		}
 		
 		$this->params = $url ? array_values($url) : [];
 		
 		require_once 'restricted.php';
 		if(restricted(get_class($this->controller), $this->method)) {
-			echo 'Access Denied';
+			header("Location: /todah16/mvc/public/home/login");
 		} else {
 			call_user_func_array([$this->controller, $this->method], $this->params);
 		}

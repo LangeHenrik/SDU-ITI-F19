@@ -28,7 +28,7 @@
     
 <section class="navigation" >
    <ul>
-    <li><a class="active" href="other">Home</a></li>
+    <li><a class="active" href="/todah16/mvc/public/home/other">Home</a></li>
        <?php
     if(isset($_SESSION['user_name'])){
         echo '<style>
@@ -51,8 +51,8 @@
 
 </style>
 ';
-        echo   '<li><a href="my_Images">My images</a></li>';
-        echo   '<form name="logout_form" action="includes/logout.inc.php" method="post">  
+        echo   '<li><a href="/todah16/mvc/public/home/myImages/'.htmlentities($_SESSION['user_name']).'">My images</a></li>';
+        echo   '<form name="logout_form" action="/todah16/mvc/public/service/logout" method="post">  
         <button id="logout" type="submit" name="logout">Logout</button>
         
         </form>';

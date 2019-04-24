@@ -1,36 +1,9 @@
 <?php
-
-        //require "../app/controllers/HeaderController.php";
-        include_once "../app/core/Database.php";
-        
-?>
-
-<!DOCTYPE html>
-<html>
-    
-<head>
-    <!-- Title and author-->
-    <title>Dankify</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Tobias Dahl">
-    
-<!--Linked to CSS file--->   
-<link rel="stylesheet" type="text/css" href="\CSS\Dankify_FEED.css"/>
- 
-    
-</head>     
-    
-<body>
-    
-<!--
-Form that creates an upload button for the website along sending the form to the upload.inc.php file on a successful upload.
--->    
-
- <main>
-     <section class = "section-default">     
-    <?php
          
     class HomeController extends Controller {
+    
+    private $comments;
+        
     
       
         
@@ -40,14 +13,17 @@ Form that creates an upload button for the website along sending the form to the
          
     public function other () {
     $this->model('Image');  
-    $this->model('Comment');    
+    $this->model('Comment');
+    $this->model('NewComment');
+    $this->model('User');  
     $db = new Database();    
     $images = $db->getImages();
     $comments = $db->getComments();
-        
-        
+    $users = $db->getUsers();
+            
+            
     $this->viewExtraViewbag('home/loggedIn', $images, $comments); 
-        
+    $this->view('partials/users', $users);    
     }
         
     public function logout(){
@@ -66,21 +42,18 @@ Form that creates an upload button for the website along sending the form to the
         $this->viewOnly('home/register');
     }
         
-    public function my_Images(){
+    public function myImages($user_name){
+       $this->model('Image');  
+        $this->model('Comment');    
+            
+        $db = new Database();
+        
+        $userImages = $db->getImagesByUser($user_name);
+        $comments = $db->getComments();
+        
+        $this->viewExtraViewbag('home/myImages', $userImages, $comments);
+        
         
     }    
         
     }
-    ?>
-    
-         
-         
-  
-     
-     </section>
-     
-</main>
-</body>
-    
-    
-</html>

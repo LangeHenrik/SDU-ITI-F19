@@ -23,7 +23,7 @@
     
 <body>
     <!-- Creates a container for the login -->
-    <form name="login_form" action="services/loginService" method="post">    
+    <form name="login_form" action="/todah16/mvc/public/service/login" method="post">    
     <div class="container">
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" id="login_uname" required>
@@ -40,21 +40,21 @@
     </form>
     
      
-        
-        <!-- Creates a link for the cancel button -->
+  <!--      
+      
     <div class="cancelContainer">    
         <h1></h1>
         <a href ="other">Cancel</a>
       
     </div>
     
-     <!-- Creates a link for the register button -->
+
     <div class="registerContainer">
         <h1></h1>
         <a href ="register">Signup</a> 
     </div>
         
-     
+   -->  
     
     <script>
         

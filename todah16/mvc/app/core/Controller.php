@@ -19,6 +19,10 @@ class Controller {
 	}
     
 	
+    public function service($service){
+        require_once '../app/services/' . $service . '.php';
+    }
+    
 	public function post () {
 		return $_SERVER['REQUEST_METHOD'] === 'POST';
 	}

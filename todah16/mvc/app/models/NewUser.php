@@ -1,9 +1,5 @@
 <?php
-class User extends Database {
-	
-
-	
-	private $_id;
+class NewUser extends Database {
     private $_user_name;
     private $_passw;
     private $_first_name;
@@ -16,23 +12,19 @@ class User extends Database {
 
     
     
-    public function __construct (DatabaseQueryResult $result){
-         $this->_id = $result->user_id;
-        $this->_user_name = $result->user_name;
-        $this->_passw = $result->passw;
-        $this->_first_name = $result->first_name;
-        $this->_last_name = $result->last_name;
-        $this->_zip = $result->zip;
-        $this->_city = $result->city;
-        $this->_email = $result->email;
-        $this->_phone_number = $result->phone_number;
+    public function __construct ($user_name, $passw, $first_name, $last_name, $zip, $city, $email, $phone_number){
+        $this->_user_name = $user_name;
+        $this->_passw = $passw;
+        $this->_first_name = $first_name;
+        $this->_last_name = $last_name;
+        $this->_zip = $zip;
+        $this->_city = $city;
+        $this->_email = $email;
+        $this->_phone_number = $phone_number;
     }
   
     public function __get($var){
     switch ($var){
-      case 'id':
-        return $this->_id;
-        break;
       case 'user_name':
         return $this->_user_name;
         break;

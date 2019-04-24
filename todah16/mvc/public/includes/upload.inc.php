@@ -8,7 +8,7 @@ require 'dbh.inc.php';
 if(isset($_POST['upload'])){    
 $image_description =$_POST['description'];
 
-$target_dir = "uploads/";
+$target_dir = "../uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 

@@ -12,16 +12,13 @@
     <input type="submit" value="Upload Image" name="upload">
     </form>';
         
-
-
         foreach ($viewbag as $image){
-    echo '<p class="upload_section">'.htmlentities($image->user_name).' uploaded:</p>';
-                echo "<img src='../Uploads/".$image->name."' >";
+        echo '<p class="upload_section">'.htmlentities($image->user_name).' uploaded:</p>';
+            echo "<img src='/todah16/mvc/public/Uploads/".$image->name."' >";
             echo "<h1>Description:</h1>";    
-            echo "<p class=description>".$image->description."</p>";
-                
+            echo "<p class=description>".$image->description."</p>";   
                 //echo "<form action='includes/image_comment.inc.php?id=".htmlentities($value)."'method='post'>";
-  
+                
             
         echo "<form action='/todah16/mvc/public/service/comment/".htmlentities($image->id)."'method='post'>";
         echo '<div id="comment">';
@@ -39,17 +36,10 @@
             echo '<p class="comment_section">'.htmlentities($comment->text).'</p>'; 
             echo "</div>";
             }
-            
-            
-                  
-            
-        
-            
-        //echo json_encode($comment);
+                    
             
         }
-            
-            
+    
         }
         
-    include '../app/views/partials/users.php';
+    

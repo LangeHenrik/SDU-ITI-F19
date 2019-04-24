@@ -40,7 +40,7 @@
 <body>
 <!-- action = "includes/register.inc.php" -->
     <main>
-        <form name="registration" action="includes/register.inc.php" onsubmit="return validateForm()" method="post">
+        <form name="registration" action="/todah16/mvc/public/service/register" onsubmit="return validateForm()" method="post">
         
         <div class="container">
             <label for="uname"><b>Username</b></label>

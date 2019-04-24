@@ -5,7 +5,7 @@ include '../app/views/partials/header.php';
 
 //if(isset($_SESSION['user_name'])){
         //echo "<p>You are logged in as ".htmlentities($_SESSION['user_name'])."</p>";
-    
+ /*   
     echo '<form action="includes\upload.inc.php" method="POST" enctype="multipart/form-data">
         
     <label for="image_description">Enter a description</label>    
