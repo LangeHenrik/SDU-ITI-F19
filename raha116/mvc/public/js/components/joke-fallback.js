@@ -19,18 +19,17 @@ const template = `<style>
         display: flex;
         flex-direction: column;
     }
-    
+
     .joke .header {
-        
+
     }
-    
+
     :host {
         display: flex;
         flex-direction: column;
     }
 
 </style>
-
 
 
 <div class="joke">
@@ -42,8 +41,8 @@ const template = `<style>
 <form class="fucks" id="fucksForm">
     <span>Request extra fucks to give</span>
     <div class="input-wrapper">
-    <label>How many fucks do you want to give?</label>
-    <input class="input" type="text" name="numberOfFucks">
+        <label for="numberOfFucksInput">How many fucks do you want to give?</label>
+        <input id="numberOfFucksInput" class="input" type="text" name="numberOfFucks" placeholder="How many fucks do you want to give?">
     </div>
     <zl-button id="fakeFucksToGiveSubmitButton">Request fucks to give</zl-button>
     <span class="output">No fucks given yet</span>
