@@ -4,6 +4,8 @@
 namespace models;
 
 
+use framework\JsonConverter;
+
 class UploadedFile
 {
     /**
@@ -27,4 +29,13 @@ class UploadedFile
      * @var int
      */
     public $size;
+
+    static function fromUploadedFile(array $file): UploadedFile
+    {
+        $instance = new UploadedFile();
+
+        JsonConverter::fill_instance($file, $instance);
+
+        return $instance;
+    }
 }

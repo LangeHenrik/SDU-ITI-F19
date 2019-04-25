@@ -6,6 +6,7 @@ namespace core;
 
 use controllers\CommentController;
 use controllers\FeedController;
+use controllers\HorribleApiController;
 use controllers\ImageController;
 use controllers\TestController;
 use controllers\UserController;
@@ -46,5 +47,7 @@ class RouteConfiguration
 
         $this->resolver->register_handler("GET", "/api/test/(?<foo>\w+)/(?<bar>\w)", TestController::class, "test");
 
+        $this->resolver->register_handler("GET", "/api/users", HorribleApiController::class, "getUsers");
+        $this->resolver->register_handler("GET", "/api/pictures/user/(?<userId>\d+)", HorribleApiController::class, "getPicturesForUser");
     }
 }

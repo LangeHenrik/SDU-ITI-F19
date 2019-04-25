@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace services;
 
 use Exception;
+use models\User;
 use models\UserResponse;
 use repositories\UserRepository;
 
@@ -64,6 +65,32 @@ class UserService
      */
     public function login(string $username, string $password)
     {
+        /**
+         * @var string|User
+         */
+        $result = $this->verify_login($username, $password);
+
+        // Hackity hack hack
+        if (is_string($result)) {
+            return $result;
+        }
+
+        $this->sessionService->set_active_user_id($result->user_id);
+
+        return null;
+    }
+
+    /**
+     * Verifies the given username and password, but doesn't do anymore with it
+     * Will return a User on success, and a string with an error on fail
+     *
+     * @param string $username
+     * @param string $password
+     * @return User|string|null
+     */
+    public function verify_login(string $username, string $password)
+    {
+
         $user = $this->userRepository->get_user($username);
 
         if (!$user) {
@@ -74,9 +101,7 @@ class UserService
             return "Login failed";
         }
 
-        $this->sessionService->set_active_user_id($user->user_id);
-
-        return null;
+        return $user;
     }
 
     public function logout()

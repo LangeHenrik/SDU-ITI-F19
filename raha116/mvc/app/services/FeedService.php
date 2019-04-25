@@ -5,8 +5,8 @@ namespace services;
 
 
 use framework\Request;
+use models\FeedDatabaseEntry;
 use models\FeedEntry;
-use models\ImageDatabaseEntry;
 use models\UploadedFile;
 use repositories\FeedRepository;
 
@@ -85,43 +85,34 @@ class FeedService
      */
     public function get_feed(): array
     {
-        error_log("Getting feed");
         $feed_entries = $this->feedRepository->get_full_feed();
-
-        error_log("Got " . count($feed_entries) . " entries");
-
-        $image_ids = array_unique(array_map(function ($entry) {
-            return $entry->image_id;
-        }, $feed_entries));
-
-        /**
-         * @var ImageDatabaseEntry[] $images
-         */
-        $images = array();
-
-        foreach ($image_ids as $image_id) {
-            $images[$image_id] = $this->imageService->get_image_entry($image_id);
-        }
 
         $user_id = $this->sessionService->get_active_user_id();
 
         $filled_feed_entries = array();
 
         foreach ($feed_entries as $entry) {
-            $comments = $this->commentService->get_comments_for_feed_entry($entry->entry_id);
-
-            $filled_feed_entries[] = new FeedEntry(
-                $entry->entry_id,
-                $images[$entry->image_id]->get_image_url($this->request->prefix),
-                $entry->title,
-                $entry->description,
-                $user_id,
-                $entry->user_id == $user_id,
-                $comments,
-                );
+            $filled_feed_entries[] = $this->convert_feed_database_entry_to_feed_entry($entry, $user_id);
         }
 
         return $filled_feed_entries;
+    }
+
+    private function convert_feed_database_entry_to_feed_entry(FeedDatabaseEntry $entry, int $user_id): FeedEntry
+    {
+        $image = $this->imageService->get_image_entry($entry->image_id);
+
+        $comments = $this->commentService->get_comments_for_feed_entry($entry->entry_id);
+
+        return new FeedEntry(
+            $entry->entry_id,
+            $image->get_image_url($this->request->prefix),
+            $entry->title,
+            $entry->description,
+            $entry->user_id,
+            $entry->user_id == $user_id,
+            $comments,
+            );
     }
 
     /**
@@ -143,6 +134,28 @@ class FeedService
         if (count($this->feedRepository->get_entries_referring_image_id($entry->image_id)) == 0) {
             $this->imageService->delete_image($entry->image_id);
         }
+    }
+
+    /**
+     *
+     * Gets the posts created by the given user
+     *
+     * @param int $user_id
+     * @return FeedEntry[]
+     */
+    public function get_feed_by_user(int $user_id): array
+    {
+        $entries = $this->feedRepository->get_entries_by_user($user_id);
+
+        $user_id = $this->sessionService->get_active_user_id();
+
+        $filled_entries = array();
+
+        foreach ($entries as $entry) {
+            $filled_entries[] = $this->convert_feed_database_entry_to_feed_entry($entry, $user_id);
+        }
+
+        return $filled_entries;
     }
 
 }

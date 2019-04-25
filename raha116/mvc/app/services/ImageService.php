@@ -47,7 +47,7 @@ class ImageService
 
         $output_path = IO::join_paths($this->STORAGE_PATH, "$hash.$extension");
 
-        move_uploaded_file($image->tmp_name, $output_path);
+        copy($image->tmp_name, $output_path);
 
         return $this->imageRepository->add_image($hash, $extension);
     }

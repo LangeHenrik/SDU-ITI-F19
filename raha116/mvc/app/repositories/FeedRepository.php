@@ -81,6 +81,15 @@ class FeedRepository
     }
 
     /**
+     * @param int $user_id
+     * @return FeedDatabaseEntry[]
+     */
+    public function get_entries_by_user(int $user_id): array
+    {
+        return $this->conn->query_multiple_rows("select entry_id, user_id, image_id, description, title from feed_entries where user_id = ?", FeedDatabaseEntry::class, $user_id);
+    }
+
+    /**
      * Deletes the given entry
      *
      * @param int $entry_id
