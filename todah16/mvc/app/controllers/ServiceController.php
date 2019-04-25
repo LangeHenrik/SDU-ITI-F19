@@ -61,6 +61,8 @@ class ServiceController extends Controller {
         
         $uploadImage = $uploadService->upload($this->uploadImageModel);
         
+        
+        
     }
     
     public function comment($id){

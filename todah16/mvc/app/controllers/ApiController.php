@@ -11,9 +11,21 @@ class ApiController extends Controller {
     $db = new Database();    
     $images = $db->getImages();
     $users = $db->getUsers();
-        
-        
     
+        
+        
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+    header('Access-Control-Allow-Methods: GET, POST');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods');
+    
+        
+    foreach($users as $user){
+            if($user->id == $value){
+                $user_name = $user->user_name;  
+            }
+    }
+        
     if($this->get()){    
     foreach($images as $image){
         
@@ -27,11 +39,23 @@ class ApiController extends Controller {
         }
         }
         
-    } else if($this->post()) {
-        $jason = file_get_contents('http://localhost:8080/todah16/mvc/public/api/pictures/"'.$var.'"/"'.$value.'"');    
+    }  
         
-        $image = json_decode($jason);
         
+    if($this->post()) {
+        $image = json_decode(file_get_contents("php://input"));    
+        
+        //$image = json_decode($jason);
+        
+        /*$name = $_POST['name'];
+        $description = $_POST['description'];
+        
+        echo "Here it comes;";
+        echo "<br>";
+        echo $name;
+        echo $decription;
+        */
+      
         
         foreach($users as $user){
             if($user->id == $value){
@@ -39,7 +63,7 @@ class ApiController extends Controller {
             }
         }
         
-        echo $newImage;
+        
     }
         
     }
