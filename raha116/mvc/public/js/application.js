@@ -1,4 +1,5 @@
 import './components/header.js';
+import './components/joke-fallback.js';
 import {BaseComponent} from "./framework/base-component.js";
 import {UserState} from "./services/user-state.js";
 
@@ -25,10 +26,6 @@ const template = `<style>
         grid-column: 2 / span 1;
         
     }
-    
-    .hidden {
-        display: none;
-    }
 
     @media screen and (max-width: 576px) {        
         .sidebar {
@@ -40,7 +37,7 @@ const template = `<style>
 
 <zl-header></zl-header>
 
-<div class="body hidden">
+<div class="body">
 </div>
 
 `;
@@ -77,13 +74,16 @@ class Application extends BaseComponent {
             this.currentPageChanged();
         });
 
-        this.currentPageChanged();
     }
 
     _updateAuthentication() {
         const authenticated = UserState.instance.isLoggedIn;
 
-        this.body.classList.toggle('hidden', !authenticated);
+        if (authenticated) {
+            this.currentPageChanged();
+        } else {
+            this.body.innerHTML = '<zl-joke-fallback></zl-joke-fallback>';
+        }
     }
 
     async currentPageChanged() {
