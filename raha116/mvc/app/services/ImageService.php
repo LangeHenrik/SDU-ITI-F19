@@ -105,9 +105,6 @@ class ImageService
             return false;
         }
 
-        error_log("Image info is valid");
-        error_log(json_encode($image_info));
-
         header("Content-Type: " . $image_info["mime"]);
         header("Content-Length: " . filesize($image_path));
 
