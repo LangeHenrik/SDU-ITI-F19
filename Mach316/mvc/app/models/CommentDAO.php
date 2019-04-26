@@ -37,9 +37,10 @@ class CommentDAO extends Connection
     function addImageComment($comment)
     {
 
-        $commentText = $comment->getComment();
-        $authorId = $comment->getAuthorID();
-        $imageId = $comment->getImageID();
+
+        $commentText = htmlentities($comment->getComment());
+        $authorId = htmlentities($comment->getAuthorID());
+        $imageId = htmlentities($comment->getImageID());
 
         $query = "INSERT INTO comments(comment, image_id, user_id, post_date) VALUES(:comment, :image_id,:user_id, now());";
         $statement = $this->conn->prepare($query);

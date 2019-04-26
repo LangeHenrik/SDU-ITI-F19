@@ -1,0 +1,27 @@
+.user-even{
+    background-color: rgba(200,200,200,0.5);
+}
+
+.user-odd{
+    background-color: burlywood;
+}
+
+.user-username{
+
+}
+
+.user-fullname{
+
+}
+
+.user-images {
+    display: flex;
+}
+
+.user-image-wrapper {
+    width: 15%;
+}
+
+.user-image{
+    width: 100%;
+}

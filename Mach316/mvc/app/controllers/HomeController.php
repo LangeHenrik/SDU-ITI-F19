@@ -3,20 +3,13 @@
 class HomeController extends Controller
 {
 
-    public function index($param)
+    public function index()
     {
-        //This is a proof of concept - we do NOT want HTML in the controllers!
-        echo '<br><br>Home Controller Index Method<br>';
-        echo 'Param: ' . $param . '<br><br>';
+       $this->view('home/index');
     }
 
-    public function other($param1 = 'first parameter', $param2 = 'second parameter')
-    {
-        $user = $this->model('UserDAO');
-        $user->name = $param1;
-        $parameters['username'] = $user->name;
-        $this->view('home/index', $parameters);
-    }
+
+
 
     public function feed()
     {
@@ -35,8 +28,11 @@ class HomeController extends Controller
         echo 'Welcome - you must be logged in';
     }
 
-    public function profile($parameters = [])
+    public function profile()
     {
+
+        $parameters = [];
+
         if (isset($_SESSION['logged_in'])) {
 
             $userDAO = $this->model('UserDAO');
@@ -52,19 +48,23 @@ class HomeController extends Controller
     public function login()
     {
         if (!isset($_SESSION['logged_in'])) {
+
+            $userDAO = $this->model('userDAO');
+
             if ($this->post()) {
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                if (!$this->checkLoginCredentials($username, $password)) {
+                if (!$this->checkLoginCredentials($username, $password, $userDAO)) {
                     $this->view('home/unsuccesfullogin');
                 } else {
+                    $user = $userDAO->getUserByUsername($username);
+                    $userid = $user->getId();
+
                     $_SESSION['logged_in'] = true;
                     $_SESSION['username'] = $username;
-                    $parameters = [];
-                    // $userDAOLogin = $this->model('UserDAO');
-                    //$user = $userDAOLogin->getUserByUsername($username);
-                    //$parameters['user'] = $user;
+                    $_SESSION['userid'] = $userid;
+                    $parameters['user'] = $user;
                     $this->view('home/profile', $parameters);
                 }
             }
@@ -76,6 +76,51 @@ class HomeController extends Controller
     {
         $parameters['message'] = $message;
         $this->view('home/registerform', $parameters);
+    }
+
+
+    public function deleteImage() {
+        if($this->post()) {
+
+            $imageID = $_POST['imageID'];
+            $imageDAO = $this->model('ImageDAO');
+            $imageDAO->deleteImage($imageID);
+        }
+        $userID = $_SESSION['userid'];
+        $images = $imageDAO->getUserImages($userID);
+        $parameters['images'] = $images;
+        header('Location: managepictures');
+    }
+
+
+    public function comment() {
+        if($this->post()) {
+
+            $commentDAO = $this->model('CommentDAO');
+            $userDAO = $this->model('UserDAO');
+            $author = $userDAO->getUserByUsername($_SESSION['username']);
+            $comment = new Comment();
+
+            $commentText = $_POST['comment'];
+            $authorID = $author->getId();
+            $authorUsername = $author->getUsername();
+            $imageID = $_POST['imageID'];
+
+            $comment->setAuthorID($authorID);
+            $comment->setAuthorUsername($authorUsername);
+            $comment->setComment($commentText);
+            $comment->setImageID($imageID);
+
+            $result =  $commentDAO->addImageComment($comment);
+
+            if($result) {
+                header('Location: feed');
+            } else {
+                echo "Something went wrong. Comment was not submitted";
+            }
+
+
+        }
     }
 
     public function registeruser()
@@ -114,7 +159,12 @@ class HomeController extends Controller
 
     public function managepictures()
     {
-        $this->view('home/managepictures');
+        $imageDAO = $this->model('ImageDAO');
+        $userID = $_SESSION['userid'];
+        $images = $imageDAO->getUserImages($userID);
+
+        $parameters['images'] = $images;
+        $this->view('home/managepictures', $parameters);
     }
 
     public function searchusers($searchparam = "")
@@ -148,12 +198,15 @@ class HomeController extends Controller
 
     public function userpage($username = "")
     {
+
         $userDAO = $this->model('UserDAO');
         $imageDAO = $this->model('ImageDAO');
         $user = $userDAO->getUserByUsername($username);
-        $images = $imageDAO->getUserImages($user->getId());
+        $userID = $user->getId();
+        $images = $imageDAO->getUserImages($userID);
         $parameters['user'] = $user;
         $parameters['images'] = $images;
+
         $this->view('home/userpage', $parameters);
     }
 
@@ -170,10 +223,13 @@ class HomeController extends Controller
 
 
     //---- Utility functions ------/
-    private function checkLoginCredentials($username, $password)
+    private function checkLoginCredentials($username, $password, $userDAO)
     {
+        $username = htmlentities($username);
+        $password = htmlentities($password);
+
         $valid = false;
-        $userDAO = $this->model('userDAO');
+
         $user = $userDAO->getUserByUsername($username);
         if ($user) {
             if ($user->password == $password) {

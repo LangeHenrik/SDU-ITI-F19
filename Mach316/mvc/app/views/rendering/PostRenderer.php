@@ -19,6 +19,7 @@ class PostRenderer
         $imagePath = '/Mach316/mvc/app/uploads/' . $image->getFileName();
         $imageHeader = $image->getHeader();
         $imageText = $image->getText();
+        $imageID = $image->getId();
 
 
         $post = "
@@ -34,6 +35,7 @@ class PostRenderer
                         <div class='textarea-wrapper'> 
                         <div class='comment-form-wrapper'>
                         <form class='comment-form' method='post' action='comment'>
+                            <input type='hidden' name='imageID' value=$imageID />
                             <textarea  name='comment' class='comment-textarea' placeholder='Leave a comment.. And be nice!' wrap='hard' rows='5' cols='100'></textarea>
                             <div><input class='btn-submit-comment' type='submit' value='Comment'/></div>
                         </form>

@@ -23,9 +23,6 @@ class UserRenderer
     }
 
     public function renderUser($user, $even) {
-
-
-
         if($even) {
             $classname = "user-even";
         } else {
@@ -37,10 +34,11 @@ class UserRenderer
         $lastname = $user->getLastname();
         $userimages = $user->getImages();
         $imageElements = $this->renderUserImages($userimages);
+        $userLink = '/Mach316/mvc/public/home/userpage/'.$username;
 
         $userElement = "
         <div class=$classname>
-            <h2 class='user-username'>$username</h2>
+            <h2 class='user-username'><a href=$userLink>$username</a></h2>
             <h3 class='user-fullname'>$firstname $lastname</h3>
             <div class='user-images-wrapper'>$imageElements</div>
         </div>";

@@ -22,6 +22,23 @@ class ImageDAO extends Connection {
     }
 
 
+    public function saveImage($image) {
+        $imageHeader = htmlentities($image->getHeader());
+        $imageText = htmlentities($image->getText());
+        $imageFileName = htmlentities($image->getFileName());
+        $userId = $_SESSION['userid'];
+
+        $query = "INSERT INTO images(header, text, name, user_id) VALUES(:header, :text,:filename, :user_id);";
+        $statement = $this->conn->prepare($query);
+        $statement->bindParam(':header',$imageHeader);
+        $statement->bindParam(':text', $imageText);
+        $statement->bindParam(':filename', $imageFileName);
+        $statement->bindParam(':user_id', $userId);
+        $success = $statement->execute();
+
+        return $success;
+    }
+
     public function getAllImages()
     {
         $query = "SELECT * FROM images;";
@@ -35,7 +52,6 @@ class ImageDAO extends Connection {
 
     function getImageComments($imageId)
     {
-
         $query = "SELECT * FROM comments where image_id = :imageId";
         $statement = $this->conn->prepare($query);
         $statement->bindParam(':imageId', $imageId);
@@ -58,6 +74,8 @@ class ImageDAO extends Connection {
         $images = $statement->fetchAll(PDO::FETCH_ASSOC);
         if ($images != null) {
             return $this->convertToImagesArray($images);
+        } else {
+            return null;
         }
     }
 

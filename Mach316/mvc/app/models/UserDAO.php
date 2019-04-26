@@ -110,15 +110,15 @@ class UserDAO extends Connection
 
     public function registerUser($user)
     {
-        $firstname = $user->getFirstName();
-        $lastname = $user->getLastName();
-        $password = $user->getPassword();
-        $username = $user->getUsername();
-        $zipcode = $user->getZip();
-        $city = $user->getCity();
-        $email = $user->getEmail();
-        $phonenumber = $user->getPhoneNumber();
-        $firstlogin = $user->getFirstLogin();
+        $firstname = htmlentities($user->getFirstName());
+        $lastname = htmlentities($user->getLastName());
+        $password = htmlentities($user->getPassword());
+        $username = htmlentities($user->getUsername());
+        $zipcode = htmlentities($user->getZip());
+        $city = htmlentities($user->getCity());
+        $email = htmlentities($user->getEmail());
+        $phonenumber = htmlentities($user->getPhoneNumber());
+        $firstlogin = htmlentities($user->getFirstLogin());
 
 
         $query = 'INSERT INTO 
@@ -171,6 +171,7 @@ class UserDAO extends Connection
         $user->setPassword($fetchedUser['password']);
         $user->setPhonenumber($fetchedUser['phonenumber']);
         $user->setZip($fetchedUser['zip']);
+
 
         return $user;
     }

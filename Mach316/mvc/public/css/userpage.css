@@ -1,27 +1,17 @@
-.user-even{
-    background-color: rgba(200,200,200,0.5);
+.userpage-image {
+    width: 50%;
 }
 
-.user-odd{
-    background-color: burlywood;
+.userpage-image-wrapper {
+    position: relative;
+    margin-top: 2%;
 }
 
-.user-username{
-
-}
-
-.user-fullname{
-
-}
-
-.user-images {
-    display: flex;
-}
-
-.user-image-wrapper {
-    width: 15%;
-}
-
-.user-image{
-    width: 100%;
+.userpage-image-header {
+    color:white;
+    font-size: 1.5vw;
+    text-shadow: 2px 2px black;
+    position: absolute;
+    top: 8px;
+    left: 16px;
 }
