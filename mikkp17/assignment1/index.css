@@ -1,0 +1,10 @@
+.login{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
+	text-align: center;
+}
+.login_fields {
+	margin-bottom: 10px;
+}

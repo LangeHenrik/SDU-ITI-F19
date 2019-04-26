@@ -1,0 +1,28 @@
+.content.users{
+    padding-top: 40px;
+    padding-bottom: 80px;
+    .users{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 8px;
+        .user{
+            flex-basis: 100%;
+            @media only screen and (min-width: 600px){
+                flex-basis: calc(50% - 8px);
+            }
+            margin-right: 8px;
+            cursor: pointer;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            background: #ebebeb;
+            padding: 1rem;
+            .username{
+                font-size: .875rem;
+            }
+            .name{
+                font-size: .75rem;
+                opacity: 0.56;
+            }
+        }
+    }
+}

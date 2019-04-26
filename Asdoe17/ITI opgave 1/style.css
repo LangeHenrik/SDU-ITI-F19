@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.Simple-center{
+  width: 100%
+}
+
+.Center-simple{
+  width: 100%
+}
+
+.pic-text {
+  width: 100%;
+}
+
+.pic-text h2 {
+  padding: 30px 30px 20px;
+  font-family: Arial;
+  font-size: 50px;
+  color: #111;
+  line-height: 44px;
+
+}
+
+.pic-text p {
+  padding: 0px 30px 20px;
+  font-family: Arial;
+  font-size: 16px;
+  color: #111;
+  line-height: 24px;
+}
+
+.img-artc-pic {
+  width: 100%;
+}
+
+.Login {
+  width: 100%;
+  padding-left: 80px;
+  padding-top: 30px;
+}
+
+.Register {
+  width: 100%;
+  padding-left: 80px;
+  padding-top: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  ul li a {
+    padding: 0 20px;
+  }
+
+  .Login {
+    padding-left: 250px;
+    padding-top: 70px;
+  }
+
+  .Register {
+    padding-left: 250px;
+    padding-top: 70px;
+  }
+
+  .wrapper {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .Center-simple{
+    padding-top: 30px;
+  }
+
+  .pic-text {
+    width: 100%;
+  }
+
+  .pic-text h2 {
+    padding: 20px 0px 0px;
+  }
+
+  .pic-text p {
+    padding: 20px 0px 0px;
+  }
+
+  .img-artc-pic {
+    padding-top: 30px;
+  }
+
+}
+
+@media only screen and (min-width: 1000px) {
+  ul li a {
+    padding: 0 20px;
+  }
+
+  .Login {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .Register {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .wrapper {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .Simple-center {
+    padding-top: 80px;
+
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .Center-simple{
+    padding: 20px 200px 0px;
+  }
+
+  .pic-text h2 {
+    padding: 20px 0px 0px;
+  }
+
+  .pic-text p {
+    padding: 20px 0px 0px;
+  }
+
+  .img-artc-pic {
+    padding-top: 30px;
+  }
+
+}
+
+nav {
+  whidth: 100%;
+  height: 100px;
+  background-color: #1e1e1e;
+}
+
+ul {
+
+}
+
+ul li {
+  list-style: none;
+  display: inline-block;
+  float: left;
+  line-height: 100px;
+
+}
+
+ul li a {
+  display: block;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: Arial;
+  color: #FFFFFF;
+  padding: 0 5px;
+}
+
+ul li a:hover {
+color: red;
+}

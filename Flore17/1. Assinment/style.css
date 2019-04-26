@@ -1,0 +1,310 @@
+.body {
+	background-color: #e6e6e6;
+}
+
+/* Top Navigation Bar */
+.topnav {
+	background-color: #333;
+	overflow: hidden;
+}
+
+.topnav a {
+	float: left;
+	color: #f2f2f2;	  
+	text-align: center;
+	padding: 1% 2%;
+	text-decoration: none;
+	font-size: 25px;
+}
+
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+.topnav a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+/*ADD*/
+.addcolumn {
+	display: block; 
+	background-color: #f2f2f2;
+	float: left;
+	width: 16%;
+	height: 100%;
+}
+
+.add {
+	background-color: #333;
+	text-align: center;
+	border-style: solid;
+	border-color: #f2f2f2;
+	margin: 3% 2%;
+	height: 100%;
+}
+
+.addtext {
+	color: white;
+	font-size: 2vw;
+}
+
+/*middle*/
+
+.maincolumn {
+	float: left;
+	background-color: #ffffff;
+	height: 100%;
+	width: 68%;
+	margin: auto;
+}
+
+.maincolumn label {
+
+}
+
+.header1 {
+	padding: 0.5% 3%;
+	margin: auto;
+	background-color: #333;
+	color: white;
+	border-style: solid;
+	border-color: #f2f2f2;
+	font-size: 1vw;
+}
+
+.header3 {
+	padding: 0.5% 3%;
+	margin: auto;
+	background-color: #333;
+	color: white;
+	border-style: solid;
+	border-color: #f2f2f2;
+	font-size: 2vw;
+}
+
+.loginForm {
+	float: left;
+	width: 70%;
+	margin: 0 15%;
+	margin-top: 50px;
+}
+
+.signin {
+	float: left;
+	width: 70%;
+	margin: 0 15%;
+}
+
+input[type=text], input[type=password] {
+	width: 50%;
+	padding: 15px;
+	margin: 5px 25%;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	background-color: #ddd;
+	outline: none;
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9;
+}
+
+button:hover {
+	opacity:1;
+}
+
+.cancelbtn {
+	padding: 14px 20px;
+	background-color: #f44336;
+}
+
+.cancelbtn, .signupbtn {
+	float: left;
+	width: 50%;
+}
+
+.signUP {
+	float: left;
+	width: 50%;
+	margin: 10px 25%;
+}
+
+.container {
+	padding: 16px;
+	font-size:1vw;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: #333;
+	padding-top: 50px;
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	border: 1px solid #888;
+	width: 80%;
+}
+ 
+.close {
+	position: absolute;
+	right: 35px;
+	top: 15px;
+	font-size: 40px;
+	font-weight: bold;
+	color: #f1f1f1;
+}
+
+.close:hover, .close:focus {
+	color: #f44336;
+	cursor: pointer;
+}
+
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+@media screen and (max-width: 300px) {
+	.cancelbtn, .signupbtn {
+		width: 100%;
+	}
+}
+
+
+.userbox {
+	display: block;
+	border-radius: 25px;
+	background-color: #333;
+	margin: 1%;
+	width: auto;
+	height: 250px;
+}
+
+.profilepic {
+	display: block;
+	
+	margin: auto;
+	
+	width: 50%;
+	height: auto;
+	
+	
+	border-radius: 50%;
+	border-style: solid;
+	border-color: white;
+}
+
+.tdUser {
+	text-align: left;
+	width: 24%;
+	color: white;
+	display: inline-table;
+}
+
+.threecol {
+	width: 75% !important;
+}
+
+.profileInfo {
+	float: left;
+	display: inline-block;
+	width: 75%;
+}
+
+.profilepicbox {
+	float: left;
+	width: 25%;
+}
+
+.name {
+	color: white;
+	text-align: center;
+}
+
+.post {
+	display: block;
+}
+
+.postText, .postPicframe {
+	display: inline-block;
+	float: left;
+	width: 41%;
+	height: auto;
+	padding: 1% 0;
+}
+
+.postText{
+	margin-left: 8%;
+	margin-right: 1%;
+}
+
+.postPicframe{
+	margin-right: 8%;
+	margin-left: 1%;
+}
+
+.headerPost {
+    margin:auto;
+    text-align:center;
+}
+
+.commPost {
+	
+}
+
+.postPic {
+	display: block;
+	border-radius: 5px;
+	margin: 1%;
+	width: 100%;
+	max-width: 400px;
+	height: auto;
+}
+
+.upload {
+	
+}
+
+.subject {
+	resize: none;
+	width: 50%;
+	height: 150px;
+	margin: 10px 25%;
+	background-color: #f2f2f2;
+}
+
+hr { 
+    display: block;
+    margin-before: 0.5em;
+    margin-after: 0.5em;
+    margin-start: auto;
+    margin-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+
+

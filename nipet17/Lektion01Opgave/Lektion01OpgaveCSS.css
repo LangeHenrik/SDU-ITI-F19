@@ -1,0 +1,142 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: darkgray;
+    background: #F3F3F3;
+}
+
+h2{
+    color:white;
+}
+
+/* The container centered in the middle */
+.container{
+    max-width: 960;
+    width: 96%;
+    margin: auto;
+}
+.container a:link {
+  color: ##D3D3D3;
+}
+
+/* visited link */
+.container a:visited {
+  color: #A9A9A9;
+}
+
+/* mouse over link */
+.container a:hover {
+  color: #C0C0C0;
+}
+
+/* selected link */
+.container a:active {
+  color: blue;
+}
+
+/*-------------HEADER-----------*/
+header{
+    background: #fff;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.logo{
+    float: left;
+    margin-top: 10px;
+}
+nav{
+    float: right;
+    line-height: 70px;
+}
+
+nav li{
+    display: inline-block;
+    padding: 5px 20px;
+    margin-left: 10px;
+    background: #f3f3f3;
+    line-height: normal;
+}
+
+/*----------ADS--------*/
+.content .ads{
+    position: sticky;
+    width: calc(960px - 600px);
+    height: 740px;
+    max-height: 900px;
+    margin: 15px;
+    background: #f3f3f3;
+    float: left;
+}
+
+.content .ads img{
+    width: calc(960px - 600px);
+    height: auto;
+    opacity: 20%;
+    
+}
+
+.content .ads .top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+/*--------CONTENT------*/
+
+.content h2{
+    background: #ff4719;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content article{
+    float: left;
+    width: 600px;
+}
+
+.content .users{
+    width: 600;
+}
+
+.content .users .box{
+    position:relative;
+    width: 300px;
+    height: 300px;
+    background: #3197E0;
+    border-radius: 10px;
+    float: left;
+    margin: 15px;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px #000000;
+    
+}
+
+.content .users .box img{
+    position: relative;
+    left: 50px;
+    top: 15px;
+    max-width: 200px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px #000000;
+}
+
+.content .users .box h1{
+    color: white;
+    text-align: center;
+}
+
+.content .users .pbox{
+    position:relative;
+    width: 600px;
+    height: 300px;
+    background: #f3f3f3;
+    border-radius: 10px;
+    float: left;
+    margin: 15px;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px #000000;
+    color: black;
+    
+}

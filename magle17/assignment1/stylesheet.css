@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+h1{
+    padding: 1% 1% 0.5%;
+    text-align: center;
+}
+h2,.logoutbutton{
+    padding: 0.5% 1% 1%;
+    text-align: center;
+}
+.base{
+    width: 100%;
+    background-color: #ffe9a8;
+}
+.inbetweener{
+    width: 100%;
+    text-align: center;
+    background-color: #ffe9a8;
+    font-size: 20pt;
+}
+.nav-button{
+  padding: 0.2% 1% 0.2% 1%;
+}
+.fieldset-classic{
+    text-align: center;
+    padding: 1% 0% 1% 0%;
+}
+.fieldset-classic legend{
+    text-align: center;
+    /*padding: 0% 0.2% 0% 0.2%;*/
+    font-size: 13pt;
+}
+.fieldset-classic input,.error-response{
+    text-align: center;
+}
+.form-classic{
+    padding: 0.5% 1% 0.5% 1%;
+}
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 16pt;
+    background-color: lightblue;
+    text-align: center;
+}
+.submit-button{
+    width: 20%;
+    font-size: 18pt;
+    min-width: 5cm;
+}
+.messagebox{
+    width: 20%;
+    min-width: 5cm;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 1% 1% 1% 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.table-container{
+  overflow-x: auto;
+}
+.table-container table{
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 1%;
+  width: 80%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  margin-left:auto; 
+  margin-right:auto;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.5%
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1%;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 0%;
+  }
+  
+  .column .img {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .img p{
+    word-wrap:break-word;
+  }
+  .column .img img{
+    margin-top: 4px;
+    margin-bottom: 4px;
+    max-width: 100%;
+    vertical-align: middle;
+    text-align: center;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      flex: 50%;
+      max-width: 50%;
+    }
+    .column .img img{
+        margin-top: 8px;
+        margin-bottom: 4px;
+        max-width: 100%;
+        vertical-align: middle;
+        text-align: center;
+      }
+
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+    .column .img img{
+        margin-top: 8px;
+        margin-bottom: 4px;
+        max-width: 100%;
+        min-width: 100%;
+        vertical-align: middle;
+        text-align: center;
+      }
+  }
