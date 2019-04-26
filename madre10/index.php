@@ -15,7 +15,12 @@ Route::add('/index',function(){
 
 Route::add('/feed', function(){
     include(__DIR__.'/PHP/View/feed.php');
-});
+}, 'GET');
+
+Route::add('/feed', function(){
+    include(__DIR__.'/PHP/Controller/createComment.php');
+}, 'POST');
+
 
 Route::add('/me', function(){
     include(__DIR__.'/PHP/View/me.php');
@@ -53,6 +58,13 @@ Route::add('/register', function(){
     include(__DIR__.'/PHP/View/register.php');
 }, 'post');
 
+Route::add('/upload', function(){
+   include(__DIR__.'/PHP/Controller/uploadController.php');
+}, 'POST');
+
+
+
+
 Route::add('/madre10/mvc/public/api/users', function(){
    apiGetAllUsers();
 });
@@ -64,6 +76,7 @@ Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
 Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
     apiGetUserPictures($var1);
 }, 'POST');
+
 
 
 // Accept only numbers as parameter. Other characters will result in a 404 error

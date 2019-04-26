@@ -4,8 +4,26 @@ h1 {
     font-weight: 600;
     font-size: 50px;
 }
+
+h3 {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: large;
+}
+
+.container h1,h2,h3 {
+    text-align: center;
+}
+
+container p {
+    font-family: sans-serif;
+    font-size: 17px;
+
+}
+
 .alert_message {
     color: #ed2d2d;
     font-size: 15px;
     text-align: center;
 }
+

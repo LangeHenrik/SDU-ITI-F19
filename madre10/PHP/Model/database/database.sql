@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS madre10_iti;
-USE madre10_iti;
+CREATE DATABASE IF NOT EXISTS madre10;
+USE madre10;
 
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS images;
@@ -25,6 +25,7 @@ CREATE TABLE images (
   uploaded_on datetime NOT NULL,
   title VARCHAR(250),
   description VARCHAR(250),
+  image LONGBLOB,
   FOREIGN KEY (owner) REFERENCES users(id)
 );
 

@@ -7,18 +7,24 @@ function renderFuckingPostWithComments($post, $comments)
 {
     $htmlComments = createComments($comments);
 
+    $hidden = (isset($_SESSION['user_id'])) ? "" : "hidden";
+
+
     $html =
         "<div class='feed__item'>"
-        . "<h2>$post->title</h2>"
-        . "<image class='feed__image' src='/uploaded_images/$post->file_name'></image>"
+        . "<h3>$post->title</h3>"
+        . "<image class='feed__image' src=$post->base64img></image>"
         . "<div class='feed__caption'><p>$post->description</p></div>"
         . "<div class='feed_comments'>"
         . $htmlComments
         . "</div>"
         . "<div class='feed__comment_input'>"
-        . "<textarea class='feed__comment_input_textarea' rows='4' cols='50' placeholder='Comments...'></textarea>"
-        . "<br/>"
-        . "<button class='feed__comment_submit_button'>Submit</button>"
+        . "<form action='/feed' method='POST' $hidden>"
+        .   "<input type='hidden' name='post_id' value=$post->id >"
+        .   "<textarea name='comment' class='feed__comment_input_textarea' rows='4' cols='50' placeholder='Comments...'></textarea>"
+        .   "<br/>"
+        .   "<button class='feed__comment_submit_button' name='submit' >Submit</button>"
+        . "</form>"
         . "</div>"
         . "</div>";
 
@@ -29,8 +35,8 @@ function renderFuckingPost($post)
 {
     $html =
         "<div class='feed__item'>"
-        . "<h2>$post->title</h2>"
-        . "<image class='feed__image' src='/uploaded_images/$post->file_name'></image>"
+        . "<h3>$post->title</h3>"
+        . "<image class='feed__image' src=$post->base64img></image>"
         . "<div class='feed__caption'><p>$post->description</p></div>"
         . "</div>";
 
@@ -44,7 +50,7 @@ function createComments($comments)
     foreach ($comments as $comment) {
         $html .=
             "<div class='feed__comment'>"
-            . "<div class='feed__comment_author'>AUTHOR GOES HERE</div>"
+            . "<div class='feed__comment_author'>$comment->username</div>"
             . "<div class='feed__comment_content'>$comment->content</div>"
             . "</div>";
     }

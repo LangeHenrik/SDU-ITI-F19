@@ -10,7 +10,8 @@
 <div class="container">
     <?php include(__DIR__.'/Components/NavigationBar.php'); ?>
 
-    <h1> Index </h1>
+    <h1> Welcome to ... whatever this is. </h1>
+    <h2> Use the navigation bar </h2>
 </div>
 
 </body>

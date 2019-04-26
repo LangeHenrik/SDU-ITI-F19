@@ -9,7 +9,7 @@ function getComments($postId){
     $comments = [];
 
     foreach($results as $item) {
-        $comment = new Comment($item["image_id"],$item["user_id"],$item["image_id"], $item["content"], $item["created_on"]);
+        $comment = new Comment($item["image_id"],$item["user_id"],$item["image_id"], $item["content"], $item["created_on"], $item['username']);
         $comments[] = $comment;
     }
     return $comments;
