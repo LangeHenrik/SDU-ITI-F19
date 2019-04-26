@@ -1,5 +1,5 @@
 <?php
-require(__DIR__.'/../Model/userDAO.php');
+require_once(__DIR__.'/../Model/userDAO.php');
 require_once(__DIR__.'/../Model/entities/user.php');
 ?>
 
