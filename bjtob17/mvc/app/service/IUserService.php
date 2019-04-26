@@ -4,7 +4,7 @@
 namespace app\service;
 
 
-use app\model\dto\UserDto;
+use app\model\dto\UserLoginDto;
 use app\model\User;
 
 interface IUserService
@@ -13,5 +13,7 @@ interface IUserService
 
     function findById(int $id): ?User;
 
-    function create(UserDto $userDto);
+    function findByUsername(string $username): ?User;
+
+    function create(UserLoginDto $userDto);
 }

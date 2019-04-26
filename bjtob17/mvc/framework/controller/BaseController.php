@@ -10,7 +10,7 @@ use framework\response\JsonResponse;
 abstract class BaseController
 {
 
-    protected function html(string $viewName, array $viewBag = [], int $responseCode = 200): IResponse
+    protected function html(String $viewName, array $viewBag = [], int $responseCode = 200): IResponse
     {
         return new HtmlResponse($viewName, $viewBag, $responseCode);
     }

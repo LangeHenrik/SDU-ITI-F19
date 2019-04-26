@@ -45,4 +45,10 @@ class UserRepository implements IUserRepository
     {
         // TODO: Implement create() method.
     }
+
+    function findByUsername(string $username): ?User
+    {
+        // TODO: Implement findByUsername() method.
+        return null;
+    }
 }

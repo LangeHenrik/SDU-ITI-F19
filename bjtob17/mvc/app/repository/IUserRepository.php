@@ -12,5 +12,7 @@ interface IUserRepository
 
     function findById(int $id): ?User;
 
+    function findByUsername(string $username): ?User;
+
     function create(User $user);
 }

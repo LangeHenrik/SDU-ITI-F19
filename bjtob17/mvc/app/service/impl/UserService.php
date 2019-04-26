@@ -4,7 +4,7 @@
 namespace app\service\impl;
 
 
-use app\model\dto\UserDto;
+use app\model\dto\UserLoginDto;
 use app\model\User;
 use app\repository\IUserRepository;
 use app\service\IEntityService;
@@ -44,8 +44,13 @@ class UserService implements IUserService
         // TODO: Implement findById() method.
     }
 
-    function create(UserDto $userDto)
+    function create(UserLoginDto $userDto)
     {
         // TODO: Implement create() method.
+    }
+
+    function findByUsername(string $username): ?User
+    {
+        // TODO: Implement findByUsername() method.
     }
 }

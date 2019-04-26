@@ -4,7 +4,7 @@
 namespace app\model\dto;
 
 
-class UserDto
+class UserLoginDto
 {
     /**
      * @var string
@@ -17,7 +17,7 @@ class UserDto
     public $password;
 
     /**
-     * UserDto constructor.
+     * UserLoginDto constructor.
      * @param string $username
      * @param string $password
      */

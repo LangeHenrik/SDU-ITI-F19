@@ -8,7 +8,7 @@ use framework\routing\IRequest;
 
 class HomeController extends BaseController
 {
-    public function index(IRequest $request, $id, $name): IResponse
+    public function index(IRequest $request, int $id, string $name): IResponse
     {
         return $this->html("index", ["id" => $id, "name" => $name]);
     }

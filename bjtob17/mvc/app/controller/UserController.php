@@ -30,4 +30,14 @@ class UserController extends BaseController
     {
         return $this->json($this->userService->findAll());
     }
+
+    public function postRegister(IRequest $request): IResponse
+    {
+
+    }
+
+    public function getRegister(IRequest $request): IResponse
+    {
+        return $this->html("register", ["page_title" => "Register"]);
+    }
 }
