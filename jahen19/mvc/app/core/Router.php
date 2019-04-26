@@ -1,46 +1,58 @@
 <?php
 
 class Router {
-	
+
 	protected $controller = 'homeController';
 	protected $method = 'index';
 	protected $params = [];
-	
+
 	function __construct () {
 		$url = $this->parseUrl();
-		
+
+        // print_r($url);
+        // echo "<br>";
+
 		if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
 			$this->controller = $url[0] . 'Controller';
 			unset($url[0]);
-		}
-		
+		} // else {
+        //     echo "Couldn't find " . $url[0] . 'Controller.php<br>';
+        // }
+
 		require_once '../app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
-		
+
 		if(isset($url[1])) {
 			if(method_exists($this->controller, $url[1])) {
+                // echo "Method " . $url[1] . " found<br>";
 				$this->method = $url[1];
 				unset($url[1]);
-			}
+			} // else {
+            //     echo "Method " . $url[1] . " not found<br>";
+            // }
 		}
-		
+
 		$this->params = $url ? array_values($url) : [];
-		
-		require_once 'restricted.php';
-		if(restricted(get_class($this->controller), $this->method)) {
-			echo 'Access Denied';
-		} else {
-			call_user_func_array([$this->controller, $this->method], $this->params);
-		}
-		
+
+		// require_once 'Restricted.php';
+		// if(restricted(get_class($this->controller), $this->method)) {
+		// 	echo 'Access Denied';
+		// } else {
+		// 	call_user_func_array([$this->controller, $this->method], $this->params);
+		// }
+        call_user_func_array([$this->controller, $this->method], $this->params);
+
 	}
-	
+
 	public function parseUrl () {
 		$url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
 		$url = explode('/', $url);
-		return array_slice($url, 4);
-	}
-	
-}
-	
+        $url = array_slice($url, 4);
 
+        $url[0] = strtolower($url[0]);
+        $url[1] = strtolower($url[1]);
+
+        return $url;
+	}
+
+}
