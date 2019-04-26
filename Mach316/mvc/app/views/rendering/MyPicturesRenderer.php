@@ -7,11 +7,14 @@ class MyPicturesRenderer
     public function renderMyPictures($images)
     {
         $renderString = "<div class='user-management-pictures'>";
-        foreach ($images as $image) {
-            $renderString .= $this->renderMyPicture($image);
+        if ($images != null) {
+            foreach ($images as $image) {
+                $renderString .= $this->renderMyPicture($image);
+            }
+            $renderString .= "</div>";
         }
-        $renderString .= "</div>";
         return $renderString;
+
     }
 
     private function renderMyPicture($image)

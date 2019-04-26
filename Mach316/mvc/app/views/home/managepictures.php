@@ -6,7 +6,7 @@ echo "<link rel='stylesheet' href='/Mach316/mvc/public/css/myimages.css'>";
 echo "<h1>Manage Pictures!</h1>";
 
 
-$formaction = '/Mach316/mvc/public/api/pictures/user/' . $_SESSION['userid'];
+$formaction = '/Mach316/mvc/public/api/saveImage';
 $images = $parameters['images'];
 
 echo "

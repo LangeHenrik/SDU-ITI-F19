@@ -17,9 +17,39 @@ class ApiController extends Controller
         echo json_encode($users);
     }
 
+    public function saveImage() {
+        if ($this->post()) {
+
+            $fileName = basename($_FILES["fileToUpload"]["name"]);
+            $header = $_POST['header'];
+            $imagetext = $_POST['text'];
+
+
+            //Save the image data in the database
+            $imageObject = new Image();
+            $imageObject->setFileName($fileName);
+            $imageObject->setHeader($header);
+            $imageObject->setText($imagetext);
+
+
+            $imageDAO = $this->model('ImageDAO');
+            $imageID = $imageDAO->saveImage($imageObject);
+
+
+            //Save the image locally in the uploads folder
+            $target_dir = $this->getFullRootPath() . "/uploads/";
+            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $this->saveImageLocally($target_file, $imageID);
+
+            header('Location: /Mach316/mvc/public/home/managepictures');
+
+        }
+    }
+
     public function pictures($param, $userid)
 
     {
+
         if ($param == 'user') {
 
             if ($this->get()) {
@@ -38,7 +68,7 @@ class ApiController extends Controller
                 }
 
 
-                echo "Lol det var også en get" . json_encode($imageBase64Array);
+                echo json_encode($imageBase64Array);
 
 
             } elseif ($this->post()) {
@@ -47,10 +77,6 @@ class ApiController extends Controller
                 $header = $_POST['header'];
                 $imagetext = $_POST['text'];
 
-                //Save the image locally in the uploads folder
-                $target_dir = $this->getFullRootPath() . "/uploads/";
-                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-                $this->saveImageLocally($target_file);
 
                 //Save the image data in the database
                 $imageObject = new Image();
@@ -59,10 +85,19 @@ class ApiController extends Controller
                 $imageObject->setText($imagetext);
 
 
-                $imageDAO = $this->model('ImageDAO');
-                $imageDAO->saveImage($imageObject);
 
-                //echo json_encode($image);
+
+                $imageDAO = $this->model('ImageDAO');
+                $imageID = $imageDAO->saveImage($imageObject);
+
+
+                //Save the image locally in the uploads folder
+                $target_dir = $this->getFullRootPath() . "/uploads/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $this->saveImageLocally($target_file, $imageID);
+
+                $imageIDJson = json_encode(array('image_id' => $imageID));
+                echo $imageIDJson;
             }
 
 
@@ -83,7 +118,7 @@ class ApiController extends Controller
         return $targetDirString;
     }
 
-    private function saveImageLocally($target_file)
+    private function saveImageLocally($target_file, $imageID)
     {
 
 
@@ -103,12 +138,8 @@ class ApiController extends Controller
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
 
-        } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                header('Location: managepictures');
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
+        } if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
+            return;
         }
 
     }

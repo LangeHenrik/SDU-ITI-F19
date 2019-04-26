@@ -36,7 +36,10 @@ class ImageDAO extends Connection {
         $statement->bindParam(':user_id', $userId);
         $success = $statement->execute();
 
-        return $success;
+        //TODO: Get the generated key and return
+        $imageID =  $this->conn->lastInsertId();;
+
+        return $imageID;
     }
 
     public function getAllImages()
