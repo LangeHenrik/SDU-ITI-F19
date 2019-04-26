@@ -1,9 +1,9 @@
 <?php
 
-class HomeController extends Controller {
+class ContentController extends Controller {
 	
 	public function index () {
-		$this->view('login_page/login_page');
+        $this->view('content_page/login_page');
 	}
 	
 	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
@@ -15,8 +15,8 @@ class HomeController extends Controller {
 	
 	public function restricted () {
 		echo 'Welcome - you must be logged in';
-	}
-	
+	}	
+
 	public function login() {
 		$_SESSION['logged_in'] = true;
 		$this->view('home/login');
@@ -36,12 +36,4 @@ class HomeController extends Controller {
 		echo 'You are now logged out';
 	}
 	
-	public function index2 () {
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
-			header('Location: /Henrik/mvc/public/pictures/all');
-		} else {
-			$this->view('home/login');
-		}
-	}
-
 }

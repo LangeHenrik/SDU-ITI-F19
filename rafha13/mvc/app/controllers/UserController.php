@@ -1,9 +1,11 @@
 <?php
 
-class HomeController extends Controller {
+class UserController extends Controller {
 	
-	public function index () {
-		$this->view('login_page/login_page');
+	public function index ($param) {
+		//This is a proof of concept - we do NOT want HTML in the controllers!
+		echo '<br><br>User Controller Index Method<br>';
+		echo 'Param: ' . $param . '<br><br>';
 	}
 	
 	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
@@ -36,12 +38,4 @@ class HomeController extends Controller {
 		echo 'You are now logged out';
 	}
 	
-	public function index2 () {
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
-			header('Location: /Henrik/mvc/public/pictures/all');
-		} else {
-			$this->view('home/login');
-		}
-	}
-
 }

@@ -1,10 +1,18 @@
+public function __construct() {
+	header('Content-Type: application/json');
+}
+
 <?php
 
-class HomeController extends Controller {
+class ApiController extends Controller {
 	
 	public function index () {
 		$this->view('login_page/login_page');
-	}
+    }
+    
+    public function __construct() {
+        header('Content-Type: application/json');
+    }
 	
 	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
 		$user = $this->model('User');
@@ -36,12 +44,4 @@ class HomeController extends Controller {
 		echo 'You are now logged out';
 	}
 	
-	public function index2 () {
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
-			header('Location: /Henrik/mvc/public/pictures/all');
-		} else {
-			$this->view('home/login');
-		}
-	}
-
 }

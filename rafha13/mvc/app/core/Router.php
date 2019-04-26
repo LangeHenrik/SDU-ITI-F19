@@ -7,12 +7,16 @@ class Router {
 	protected $params = [];
 	
 	function __construct () {
-		$url = $this->parseUrl();
 		
-		if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
-			$this->controller = $url[0] . 'Controller';
-			unset($url[0]);
-		}
+		$url = $this->parseUrl();
+
+		//in case we stop the URL at .../mvc/public
+		if(isset($url[0])) {
+			if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
+				$this->controller = $url[0] . 'Controller';
+				unset($url[0]);
+			}
+		} 
 		
 		require_once '../app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
