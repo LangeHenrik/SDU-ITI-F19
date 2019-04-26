@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajax</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/ajax.css">
+    <link rel="stylesheet" type="text/css" href="/madre10css/main.css">
+    <link rel="stylesheet" type="text/css" href="/madre10css/ajax.css">
     <?php echo '<script src="js/ajax.js"></script>'; ?>
 
 </head>

@@ -14,6 +14,12 @@ class Route
             'function' => $function,
             'method' => $method
         ));
+
+        array_push(self::$routes, Array(
+            'expression' => "/madre10".$expression,
+            'function' => $function,
+            'method' => $method
+        ));
     }
 
     public static function pathNotFound($function)

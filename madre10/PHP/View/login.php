@@ -2,7 +2,7 @@
 
 require_once(__DIR__.'/../Model/userDAO.php');
 if( isset($_SESSION['user_id']) ){
-    header("Location: /");
+    header("Location: /madre10/");
 }
 
 if(!empty($_POST['username']) && !empty($_POST['password'])):
@@ -11,7 +11,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])):
     $message = '';
     if($user!=null && ($_POST['password'] == $user['password'] )){
         $_SESSION['user_id'] = $user['user_id'];
-        header("Location: /");
+        header("Location: /madre10/");
     } else {
         $message = 'Sorry, those credentials do not match';
     }
@@ -23,9 +23,9 @@ endif;
 <html>
 <head>
     <title>Login Below</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/main.css">
     <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/CSS/register.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/register.css">
 </head>
 <body>
 

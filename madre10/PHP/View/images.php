@@ -12,8 +12,8 @@ $message = null;
 <head>
     <meta charset="UTF-8">
     <title>Images</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
-    <link rel="stylesheet" type="text/css" href="/CSS/feed.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/feed.css">
 </head>
 <body>
 
@@ -25,7 +25,7 @@ $message = null;
     } ?>
 
     <h2>Upload new image </h2>
-    <form method="post" action="/upload" enctype="multipart/form-data">
+    <form method="post" action="/madre10/upload" enctype="multipart/form-data">
 
         <label> Select a file: </label>
         <input name="image" type="file"/><input type="submit" value="submit">

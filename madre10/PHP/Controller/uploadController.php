@@ -14,7 +14,7 @@ if ($data_is_present && $user_is_set) {
     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
     $result = addPost($title, $description, $base64, $_SESSION['user_id']);
-    header("Location: /images");
+    header("Location: /madre10/images");
 
 
 } else {

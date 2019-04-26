@@ -9,7 +9,7 @@ $user = getUserById($_SESSION['user_id']);
 <head>
     <meta charset="UTF-8">
     <title>Your page</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="/madre10css/main.css">
 </head>
 <body>
 

@@ -8,8 +8,8 @@ require_once(__DIR__.'/../Model/entities/user.php');
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
-    <link rel="stylesheet" type="text/css" href="/CSS/users.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/users.css">
 </head>
 <body>
 

@@ -3,7 +3,7 @@ require_once(__DIR__ . '/../Model/userDAO.php');
 
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: /");
+    header("Location: /madre10/");
 }
 require_once(__DIR__ . '/../Model/userDAO.php');
 $message = '';
@@ -47,9 +47,9 @@ if(isset($_POST['email'])) {
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/main.css">
     <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/CSS/register.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/register.css">
 </head>
 <body>
 <?php include(__DIR__ . '/Components/NavigationBar.php'); ?>

@@ -12,8 +12,8 @@ require_once 'Components/PostRender.php';
 <head>
     <meta charset="UTF-8">
     <title>Feed</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
-    <link rel="stylesheet" type="text/css" href="/CSS/feed.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/madre10/CSS/feed.css">
 </head>
 <body>
 
