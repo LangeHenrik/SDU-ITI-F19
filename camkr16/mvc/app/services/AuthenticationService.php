@@ -15,7 +15,7 @@ class AuthenticationService extends Database {
         $password_hash = $existingUser['password'];
         //print_r($existingUser['password']);
         if (password_verify($password, $password_hash)) {
-            $id = $existingUser['id'];
+            $id = $existingUser['user_id'];
             settype($id, 'int');
 
             $_SESSION["id"] = $id;

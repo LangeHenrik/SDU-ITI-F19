@@ -5,6 +5,7 @@ namespace services;
 use core\Database;
 use models\ImageResponse;
 use models\Post;
+use models\Response;
 use PDO;
 
 class PostService extends Database
