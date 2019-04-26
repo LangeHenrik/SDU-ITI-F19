@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `person`;
 CREATE TABLE IF NOT EXISTS `person` (
   `person_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `front_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `zip_code` int(11) NOT NULL,
@@ -36,11 +36,15 @@ CREATE TABLE IF NOT EXISTS `person` (
 -- Dumping data for table anott17.person: ~0 rows (approximately)
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 INSERT INTO `person` (`person_id`, `user_name`, `password`, `front_name`, `last_name`, `zip_code`, `city`, `phone_number`, `email_adress`) VALUES
-	(1, 'admin', 'admin', 'Anders', 'Ottsen', 4000, 'Odense', '+2000000000', 'anders@mail.dk'),
-	(2, 'Jolo', 'Hejsa5678!', 'Jonas', 'Krristiansen', 6000, 'Aalborg', '+88888888888', 'jonas@hotmail.com'),
-	(3, 'Rssoe', 'Rosen95!', 'Rose', 'Terese', 5000, 'Odense', '+888888888', 'rose@mail.dk'),
-	(4, 'Young', 'Test123456!', 'Christian', 'Hansen', 4000, 'Odense', '+2020202020220', 'christian@gmail.com');
+	(1, 'admin', '$2y$10$4DCIqvJmoqyaO7d44Ft08OXIsnpf3BrO/WWr2tKq4T9g8NCpLn1yy', 'Anders', 'Ottsen', 4000, 'Odense', '+2000000000', 'anders@mail.dk'),
+	(2, 'Jolo', '$2y$10$S9a55b0Q9LOMkFFI1KgwWuaPriEJ9gmV22baSpNgF/fSLwuubgJH2', 'Jonas', 'Krristiansen', 6000, 'Aalborg', '+88888888888', 'jonas@hotmail.com'),
+	(3, 'Rssoe', '$2y$10$VICKEr2ZYvjyfaAwfoFne.xflQc68VEXGjTfgM0h8ooLUR.4UCAhq', 'Rose', 'Terese', 5000, 'Odense', '+888888888', 'rose@mail.dk'),
+	(4, 'Young', '$2y$10$byy8GJVk5GKUeZ/pS5iv8ua15mHopotGAJBK12RyT8pYCxg4o7FjW', 'Christian', 'Hansen', 4000, 'Odense', '+2020202020220', 'christian@gmail.com');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
+-- admin pass: Admin1234!
+-- jolo pass: Hejsa5678
+-- rssoe pass: Rosen95!
+-- young pass: Test123456!
 
 -- Dumping structure for tabel anott17.picture
 DROP TABLE IF EXISTS `picture`;
