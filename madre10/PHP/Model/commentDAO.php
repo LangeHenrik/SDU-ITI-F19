@@ -1,7 +1,7 @@
 <?php
 
 function getComments($postId){
-    $sql = 'SELECT user_id, image_id, content, created_on, username FROM comments JOIN users ON comments.user_id = users.id WHERE image_id = :image_id ORDER BY created_on ASC ';
+    $sql = 'SELECT comments.user_id, image_id, content, created_on, username FROM comments JOIN users ON comments.user_id = users.user_id WHERE image_id = :image_id ORDER BY created_on ASC ';
     $records = $GLOBALS["conn"]->prepare($sql);
     $records->bindParam(':image_id', $postId);
     $records->execute();

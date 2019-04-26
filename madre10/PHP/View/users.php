@@ -17,8 +17,7 @@ require_once(__DIR__.'/../Model/entities/user.php');
     <?php include(__DIR__.'/Components/NavigationBar.php'); ?>
 
     <div class="">
-        <h1> We build on trust!</h1>
-        <center><h3>Forgot your password? No problem. Find it here</h3></center>
+        <h1> All users in system</h1>
     </div>
 
     <br/>
@@ -26,7 +25,7 @@ require_once(__DIR__.'/../Model/entities/user.php');
 
     <div class="user">
         <div class="user__username"> <b>Username</b> </div>
-        <div class="user__username"><b> Password</b> </div>
+        <div class="user__username"><b> ID </b> </div>
         <br/>
     </div>
 
@@ -36,7 +35,7 @@ require_once(__DIR__.'/../Model/entities/user.php');
     foreach($users as $user) {
         echo '<div class="user">';
         echo '<div class="user__username">' . $user->username .'</div>';
-        echo '<div class="user__password">' . $user->password .'</div>';
+        echo '<div class="user__password">' . $user->user_id .'</div>';
         echo '</div>';
     }
     ?>

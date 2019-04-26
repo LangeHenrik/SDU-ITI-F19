@@ -2,7 +2,6 @@
 
 class User
 {
-    public $id;
     public $username;
     public $password;
     public $firstname;
@@ -14,7 +13,7 @@ class User
 
     /**
      * User constructor.
-     * @param $id
+     * @param $user_id
      * @param $username
      * @param $password
      * @param $firstname
@@ -24,9 +23,9 @@ class User
      * @param $email
      * @param $phone
      */
-    public function __construct($id, $username, $password, $firstname, $lastname, $zip, $city, $email, $phone)
+    public function __construct($user_id, $username, $password, $firstname, $lastname, $zip, $city, $email, $phone)
     {
-        $this->id = $id;
+        $this->user_id = $user_id;
         $this->username = $username;
         $this->password = $password;
         $this->firstname = $firstname;

@@ -74,7 +74,7 @@ Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
 });
 
 Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
-    apiGetUserPictures($var1);
+    apiPostPicture($var1);
 }, 'POST');
 
 

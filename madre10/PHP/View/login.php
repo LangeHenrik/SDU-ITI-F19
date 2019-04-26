@@ -10,7 +10,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])):
     $user = getUserByUsername($_POST['username']);
     $message = '';
     if($user!=null && ($_POST['password'] == $user['password'] )){
-        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_id'] = $user['user_id'];
         header("Location: /");
     } else {
         $message = 'Sorry, those credentials do not match';

@@ -16,7 +16,7 @@ function getUserByUsername($username)
 
 function getUserById($id)
 {
-    $records = $GLOBALS['conn']->prepare('SELECT * FROM users WHERE id = :id');
+    $records = $GLOBALS['conn']->prepare('SELECT * FROM users WHERE user_id = :id');
     $records->bindParam(':id', $id);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -50,7 +50,7 @@ function createUser($user)
 
 function createUserObject($row)
 {
-    $user = new User($row['id'], $row['username'], $row['password'], $row['firstname'], $row['lastname'], $row['zip'], $row['city'], $row['email'], $row['phone']);
+    $user = new User($row['user_id'], $row['username'], "Sorry, can't tell.. Try 'password?'", $row['firstname'], $row['lastname'], $row['zip'], $row['city'], $row['email'], $row['phone']);
     return $user;
 }
 

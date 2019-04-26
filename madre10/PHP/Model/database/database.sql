@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS users;
 
 
 CREATE TABLE users (
-  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   username VARCHAR(250) NOT NULL,
   password VARCHAR(250) NOT NULL,
   firstname VARCHAR(250),
@@ -26,7 +26,7 @@ CREATE TABLE images (
   title VARCHAR(250),
   description VARCHAR(250),
   image LONGBLOB,
-  FOREIGN KEY (owner) REFERENCES users(id)
+  FOREIGN KEY (owner) REFERENCES users(user_id)
 );
 
 CREATE TABLE comments (
@@ -35,7 +35,7 @@ CREATE TABLE comments (
   image_id INT,
   content VARCHAR(1000),
   created_on datetime,
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
    FOREIGN KEY (image_id) REFERENCES images(id)
 );
 
@@ -43,14 +43,4 @@ CREATE TABLE comments (
 INSERT INTO users(username, password, firstname, lastname, zip, city, email, phone) VALUES
 ('phoellen','password', 'Martin', 'Dreymann', '5000', 'Odense', 'madre10@student.sdu.dk', '60641990'),
 ('trump','nukes', 'Donald', 'J. Trump', 'no idea', 'Washington', 'dtj@fakenews.com', '13371337');
-
-INSERT INTO images (id, owner, file_name, uploaded_on, title, description) VALUES
-(1, 1, 'php1.jpg', NOW(), 'Guide lines', 'This is an example description'),
-(2, 1, 'php2.jpg', NOW()+1, 'Headache', 'This is an example description'),
-(3, 1, 'php3.jpg', NOW()+2, 'Think of the future!', 'This is an example description');
-
-
-INSERT INTO comments(id, user_id, image_id, content, created_on) VALUES
-(1,1,1,'First test comment from user 1', NOW()),
-(2,1,1,'Second test comment from user 1', NOW()+1);
 

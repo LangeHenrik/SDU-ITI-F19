@@ -12,8 +12,8 @@ $message = null;
 <head>
     <meta charset="UTF-8">
     <title>Images</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/feed.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/feed.css">
 </head>
 <body>
 

@@ -42,14 +42,6 @@ function getImageComments($imageId){
 }
 
 
-function addComment($comment){
-    $user_id = $comment["user_id"];
-    $image_id = $comment["image_id"];
-    $content = $comment["comment"];
-
-    putComment($GLOBALS["conn"], $user_id, $image_id, $content);
-
-}
 
 
 
