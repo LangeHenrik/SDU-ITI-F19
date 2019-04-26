@@ -42,7 +42,7 @@
 
 		foreach ($resultGetUsers as $value) {
 			#print_r("<br>username: " . $value["username"] . " password: " . $value["pass"]);
-			if ($inputUsername === $value["username"] && $inputPassword === $value["pass"]) {
+			if ($inputUsername === $value["username"] && password_verify($inputPassword, $value["pass"])) {
 				$_SESSION["username"] = $inputUsername;
 				$_SESSION["login"] = true;
 				header('location: pictures.php');
@@ -71,7 +71,7 @@
 		if (!isset($_SESSION["registerResult"]) && $inputPassword !== $inputPasswordRepeat) {
 			$_SESSION["registerResult"] = "Passwords doesn't match!";
 		}
-		
+
 		$inputFirstname = filter_input(INPUT_POST, "register-firstname", FILTER_SANITIZE_STRING);
 		$inputLastname = filter_input(INPUT_POST, "register-lastname", FILTER_SANITIZE_STRING);
 		$inputZip = filter_input(INPUT_POST, "register-zip", FILTER_SANITIZE_NUMBER_INT);
@@ -85,9 +85,11 @@
 			 && $inputLastname !== "" && $inputZip !== "" && $inputCity !== ""
 			  && $inputEmail !== "" && $inputPhone !== "") {
 
+		  		$hashedPassword = password_hash($inputPassword, PASSWORD_DEFAULT);
+
 				try {
 					$stmtAddUser->bindparam(':username', $inputUsername);
-					$stmtAddUser->bindparam(':pass', $inputPassword);
+					$stmtAddUser->bindparam(':pass', $hashedPassword);
 					$stmtAddUser->bindparam(':firstname', $inputFirstname);
 					$stmtAddUser->bindparam(':lastname', $inputLastname);
 					$stmtAddUser->bindparam(':zip', $inputZip);
