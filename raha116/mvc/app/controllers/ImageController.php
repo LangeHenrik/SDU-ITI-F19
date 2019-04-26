@@ -24,10 +24,10 @@ class ImageController extends ControllerBase
 
     public function get(int $path_id): ActionResult
     {
-        error_log("Loading image " . $path_id);
-        if ($authentication_required = $this->required_authentication()) {
-            return $authentication_required;
-        }
+        // No authentication allowed right now apparently
+//        if ($authentication_required = $this->required_authentication()) {
+//            return $authentication_required;
+//        }
 
         if ($this->imageService->print_image($path_id)) {
             return $this->ManuallyHandled();

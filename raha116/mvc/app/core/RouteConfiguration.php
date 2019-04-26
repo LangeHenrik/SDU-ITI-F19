@@ -49,5 +49,6 @@ class RouteConfiguration
 
         $this->resolver->register_handler("GET", "/api/users", HorribleApiController::class, "getUsers");
         $this->resolver->register_handler("GET", "/api/pictures/user/(?<userId>\d+)", HorribleApiController::class, "getPicturesForUser");
+        $this->resolver->register_handler("POST", "/api/pictures/user/(?<userId>\d+)", HorribleApiController::class, "uploadPictureInHorribleWay");
     }
 }

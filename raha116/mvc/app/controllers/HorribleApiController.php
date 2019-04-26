@@ -72,15 +72,17 @@ class HorribleApiController extends ControllerBase
     public function uploadPictureInHorribleWay(int $path_userId, HorribleUploadPictureRequest $body)
     {
 
-        $loginResult = $this->userService->verify_login($body->username, $body->password);
+        $success = $this->userService->login($body->username, $body->password);
 
-        if (is_string($loginResult)) {
-            return new ActionResult(new ValidationError($loginResult), 401);
+        if ($success) {
+            return new ActionResult(new ValidationError($success), 401);
         }
 
-        if ($loginResult->user_id != $path_userId) {
+        $activeUserId = $this->sessionService->get_active_user_id();
+
+        if ($activeUserId != $path_userId) {
             // No uploading for other users either
-            return new ActionResult(new ValidationError($loginResult), 401);
+            return new ActionResult(new ValidationError($success), 401);
         }
 
         $uploadedFile = $this->convertThatShittyBase64HackIntoAProperlyUploadedFileBecauseFuckThatIsBadAndHorribleAndSomebodyShouldBeAshamedToEvenAttemptToTeachSuchCrapToStudents($body->image);
@@ -104,8 +106,9 @@ class HorribleApiController extends ControllerBase
      */
     private function convertThatShittyBase64HackIntoAProperlyUploadedFileBecauseFuckThatIsBadAndHorribleAndSomebodyShouldBeAshamedToEvenAttemptToTeachSuchCrapToStudents(string $encodedFile)
     {
-        $tempFileName = tempnam("%TEMP%", "hack");
-        $fileHandle = fopen($tempFileName, "0600");
+        $encodedFile = substr($encodedFile, strlen("data:image/jpeg;base64,"));
+        $tempFileName = tempnam("", "hack");
+        $fileHandle = fopen($tempFileName, "w");
 
         if ($fileHandle === false) {
             throw new Exception("Could not create temporary file");

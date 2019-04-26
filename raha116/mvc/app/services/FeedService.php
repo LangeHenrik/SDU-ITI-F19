@@ -147,8 +147,6 @@ class FeedService
     {
         $entries = $this->feedRepository->get_entries_by_user($user_id);
 
-        $user_id = $this->sessionService->get_active_user_id();
-
         $filled_entries = array();
 
         foreach ($entries as $entry) {

@@ -108,17 +108,23 @@ class HandlerCallback
         if ($content_type == "application/json") {
 
             $inputJSON = file_get_contents('php://input');
-            $input = JsonDecoder::DecodeJson($inputJSON, TRUE);
+            $input = JsonDecoder::DecodeJson($inputJSON, true);
 
             return JsonConverter::convert_to_object($input, $type->getName());
-        } else if ($content_type == "multipart/form-data") {
+        } else if ($content_type == "multipart/form-data" || $content_type == "application/x-www-form-urlencoded") {
             $name = $type->getName();
             $instance = new $name;
+            if (isset($_REQUEST["json"])) {
+                $jsonText = $_REQUEST["json"];
 
-            JsonConverter::fill_instance($_FILES, $instance);
+                $input = JsonDecoder::DecodeJson($jsonText, true);
 
-            JsonConverter::fill_instance($_REQUEST, $instance);
+                JsonConverter::fill_instance($input, $instance);
+            } else {
+                JsonConverter::fill_instance($_FILES, $instance);
 
+                JsonConverter::fill_instance($_REQUEST, $instance);
+            }
             return $instance;
         } else {
             die("unknown content type $content_type");

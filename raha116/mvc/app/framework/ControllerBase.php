@@ -16,7 +16,7 @@ abstract class ControllerBase
     /**
      * @var SessionService
      */
-    private $sessionService;
+    protected $sessionService;
 
     /**
      * ControllerBase constructor.
