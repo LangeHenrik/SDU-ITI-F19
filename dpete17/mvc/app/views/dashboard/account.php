@@ -49,7 +49,12 @@
             <div class="image-container">
                 <?php
                     foreach ($viewbag['images'] as $image) {
-                        $src = '<img src="data:'.$image -> getMimeType().';base64,'.$image -> base64.'" alt="Error.." >';
+                        if(substr($image -> base64, 0, strlen('data') != 'data')) {
+                            $src = '<img src="data:'.$image -> getMimeType().';base64,'.$image -> base64.'" alt="Error.." >';
+                        } else {
+                            $src = '<img src=";base64,'.$image -> base64.'" alt="Error.." >';
+                        }
+                    
                         echo '<div><h2>'.$image -> header.'</h2><span>'.$image -> content.'</span><br>'.$src.'</div>';
                         echo '<hr>';
                     }

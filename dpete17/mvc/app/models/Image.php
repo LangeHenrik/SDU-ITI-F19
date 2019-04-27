@@ -72,10 +72,6 @@ class Image {
         $stmt -> execute();
 
         $result = $stmt -> fetchAll(PDO::FETCH_CLASS, 'Image');
-
-        foreach ($result as $row) {
-            $row -> base64 = base64_encode($row -> base64);
-        }
   
         return $result;
     }
@@ -92,10 +88,6 @@ class Image {
         $stmt -> execute();
 
         $result = $stmt -> fetchAll(PDO::FETCH_CLASS, 'Image');
-
-        foreach ($result as $row) {
-            $row -> base64 = base64_encode($row -> base64);
-        }
   
         return $result;
     }
@@ -104,11 +96,10 @@ class Image {
         $conn = Database::get() -> conn;
 
         $time = time();
-        $decode = base64_decode($image -> base64);
 
         $image_sql = 'INSERT INTO image(file, header, content, uploaded_at) VALUES (:file, :header, :content, FROM_UNIXTIME(:time));';
         $stmt = $conn -> prepare($image_sql);
-        $stmt -> bindParam(':file', $decode);
+        $stmt -> bindParam(':file', $image -> base64);
         $stmt -> bindParam(':header', $image -> header);
         $stmt -> bindParam(':content', $image -> content);
         $stmt -> bindParam(':time', $time);

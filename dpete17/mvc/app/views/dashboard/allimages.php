@@ -39,7 +39,11 @@
                 <?php
                 
                 foreach ($viewbag['images'] as $image) {
-                    $src = '<img src="data:'.$image -> getMimeType().';base64,'.$image -> base64.'" alt="Error.." >';
+                    if(substr($image -> base64, 0, strlen('data')) != 'data') {
+                        $src = '<img src="data:'.$image -> getMimeType().';base64,'.$image -> base64.'" alt="Error.." >';
+                    } else {
+                        $src = '<img src="'.$image -> base64.'" alt="Error.." >';
+                    }
 
                     echo <<<EOL
                         <div>

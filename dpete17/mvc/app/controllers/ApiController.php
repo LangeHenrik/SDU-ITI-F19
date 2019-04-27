@@ -33,21 +33,29 @@ class ApiController extends Controller {
             print 'Given type is not a valid type.';
         } else {
             if($this -> isPost()) {
-                $this -> postUserPictures($type, $account_id);
+                $this -> postUserPictures($account_id);
             } else if($this -> isGet()) {
                 $this -> getUserPictures($account_id);
             }
         }
     }
 
+    // GET localhost:8080/xx/mvc/public/api/picture/user/:id
     private function getUserPictures($account_id) {
         $images = Image::getImagesByAccount($account_id);
 
         foreach ($images as $image) {
+            // $image -> image_id = $image -> id;
+            // $test = explode(':', $image -> base64);
+            // $test = explode(';', $test[0] . $test[1]);
+            // $test = explode(',', $test[0] . $test[1]);
+
+            // $image -> image = $test[0] . $test[1];
             $image -> image = $image -> base64;
             $image -> title = $image -> header;
             $image -> description = $image -> content;
 
+            unset($image -> id);
             unset($image -> base64);
             unset($image -> header);
             unset($image -> content);
@@ -59,7 +67,8 @@ class ApiController extends Controller {
         echo json_encode($images);
     }
 
-    private function postUserPictures($type, $account_id) {
+    // POST localhost:8080/xx/mvc/public/api/picture/user/:id
+    private function postUserPictures($account_id) {
         $json = json_decode($_POST['json']);
 
         $login_id = User::login($json -> username, $json -> password);
@@ -79,8 +88,6 @@ class ApiController extends Controller {
             }
             
             echo json_encode($image_id);
-        } else {
-            print 'Wrong username/password or account id.';
         }
     }
 }
