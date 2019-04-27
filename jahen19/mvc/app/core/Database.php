@@ -188,6 +188,22 @@ class Database extends DB_Config {
         }
     }
 
+    public function getUserCity($username) {
+        try {
+            $sql = "SELECT city FROM Users WHERE username = :username LIMIT 1";
+            $statement = $this->conn->prepare($sql);
+            $statement->bindParam(":username", $username);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            if ($result && $statement->rowCount() >= 1 && ! empty($result[0]['city'])) {
+                return $result[0]['city'];
+            }
+        } catch(PDOException $error) {
+            echo $sql . "<br>" . $error->getMessage();
+        }
+        return false;
+    }
+
     public function model($model) {
 		require_once '../app/models/' . $model . '.php';
 		return new $model();

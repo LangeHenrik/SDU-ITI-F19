@@ -1,3 +1,5 @@
+/* === code for uploading pictures === */
+
 function send() {
     var form = document.getElementById("fileform");
     var file = form.file.files[0];
@@ -78,6 +80,7 @@ function uploadError(event) {
     alert("Sorry, something went wrong.");
 }
 
+/* === code for deleting pictures === */
 function deletePicture(obj) {
     var image_id = obj.value;
 
@@ -109,6 +112,8 @@ function deleteError(event) {
     alert("Sorry, something went wrong.");
 }
 
+/* === QUOTES API === */
+
 function fetchQuote() {
     $.ajax({
         type: "GET",
@@ -122,7 +127,64 @@ function fetchQuote() {
     });
 }
 
-// run these functions when the DOM is ready
+/* === WEATHER API === */
+
+var apiKey = "hoArfRosT1215";
+function fetchWeather() {
+    var location = $("#location").html();
+
+    locationUrl = "http://apidev.accuweather.com/locations/v1/search?q=" + location + "&apikey=" + apiKey;
+    $.ajax({
+        type: "GET",
+        url: locationUrl,
+        dataType: "jsonp",
+        cache: true,                    // Use cache for better reponse times
+        jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
+        success: function (data) { getWeather(selectLocationKey(data)); }
+    });
+}
+
+function selectLocationKey(data) {
+    console.log(data.length, " Locations found");
+    if (data.length == 0) {
+        $("#weather-conditions").html("No weather data available");
+        return;
+    }
+    locationKey = data[0].Key;
+    localName = data[0].LocalizedName;
+    countryId = data[0].Country.ID;
+    $("#location").html(localName + " (" + countryId + ")");
+    return locationKey;
+}
+
+function getWeather(locationKey) {
+    if (locationKey == null) {
+        return;
+    }
+
+    currentConditionsUrl = "http://apidev.accuweather.com/currentconditions/v1/" + locationKey + ".json?language=en&apikey=" + apiKey;
+    $.ajax({
+        type: "GET",
+        url: currentConditionsUrl,
+        dataType: "jsonp",
+        cache: true,                    // Use cache for better reponse times
+        jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
+        success: function (data) {
+            var temp;
+            var description;
+            if(data && data.length > 0) {
+                temp = data[0].Temperature.Metric.Value + "°" + data[0].Temperature.Metric.Unit;
+                description = data[0].WeatherText;
+            } else {
+                temp = "N/A";
+            }
+            $("#weather-conditions").html(description + " @ " + temp);
+        }
+    });
+}
+
+/* === these functions are run when the DOM is ready === */
 $(function() {
-  fetchQuote();
+    fetchQuote();
+    fetchWeather();
 });

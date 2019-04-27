@@ -65,7 +65,8 @@
         </form>
     </section>
     <div class="col-sm">
-        Weather API
+        <div id="location" class="text-muted"><?php echo $viewbag['city'] ?></div>
+        <div id="weather-conditions" class="text-center display-4"></div>
     </div>
     </div>
     </div>

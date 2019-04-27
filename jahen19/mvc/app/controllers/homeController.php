@@ -4,15 +4,23 @@ class HomeController extends Controller {
 
 	public function index ($param) {
         $viewbag = array();
-        if ( isset($_SESSION['username'])) {
-            $db = new Database();
-            $images = $db->getImages();
 
-            //        print_r($images);
-            $viewbag['images'] = $images;
-        } else {
+        if ( ! isset($_SESSION['username'])) {
             $viewbag['notloggedin'] = true;
+        } else {
+            if ($param == "my") {
+                $viewbag['myfeed'] = true;
+                $username = $_SESSION['username'];
+            } else {
+                $username = false;
+            }
+
+            $db = new Database();
+            $images = $db->getImages($username);
+            $viewbag['images'] = $images;
+            $viewbag['city'] = $db->getUserCity($_SESSION['username']);
         }
+
         $this->view('home/index', $viewbag);
 	}
 
@@ -22,21 +30,6 @@ class HomeController extends Controller {
 		$viewbag['username'] = $user->name;
 		$this->view('home/index', $viewbag);
 	}
-
-    public function my() {
-        $viewbag = array();
-        if ( isset($_SESSION['username'])) {
-            $db = new Database();
-            $images = $db->getImages($_SESSION['username']);
-            $viewbag['images'] = $images;
-        } else {
-            $viewbag['notloggedin'] = true;
-        }
-
-        $viewbag['myfeed'] = true;
-
-        $this->view('home/index', $viewbag);
-    }
 
 	public function restricted () {
 		echo 'Welcome - you must be logged in';
