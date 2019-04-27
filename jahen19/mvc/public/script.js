@@ -50,22 +50,19 @@ function uploadBar(event) {
 
 function uploadFinished(event) {
     var response = event.target.responseText;
-    if(response.search("OK") == -1) {
-        // oops, something went wrong
+    var obj = JSON.parse(response);
+    if (obj != undefined && obj.image_id != undefined && typeof obj.image_id == 'number') {
+        // all good, nothing went wrong
+
+        // reload the page to show the new image
+        location.reload();
+        return true;
+    } else {
         alert("Sorry, something went wrong: " + response);
         document.getElementById("fileform").submit.value = "Upload";
-    } else {
-        // all good, nothing went wrong
-        var link = response.split('OK: ', 2)[1];
-//        var text = '<a href="' + link + '">Click here to view your file</a>';
 
-        // reload page to update content
-        location.reload();
-
-        document.getElementById("fileform").submit.value = "Finished";
-
-        // clear upload form after 3 seconds
-        setTimeout(clearUploadForm, 3000);
+        // do not reload page (to retain form contents)
+        return false;
     }
 
 }
@@ -82,16 +79,14 @@ function uploadError(event) {
 }
 
 function deletePicture(obj) {
-    var filename = obj.value;
+    var image_id = obj.value;
 
     // submit query to server
     var formdata = new FormData();
-    formdata.append("filename", filename);
-
     var request = new XMLHttpRequest();
     request.addEventListener("load", deleteFinished, false);
     request.addEventListener("error", deleteError, false);
-    request.open("POST", "delete.php", true);
+    request.open("POST", "/jahen19/mvc/public/api/delete/picture/" + image_id, true);
     request.send(formdata);
 }
 

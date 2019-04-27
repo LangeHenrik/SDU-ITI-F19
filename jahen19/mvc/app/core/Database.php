@@ -46,15 +46,12 @@ class Database extends DB_Config {
 		$this->conn = null;
 	}
 
-    public function getImages(){
+    public function getImages( $username = false){
         $this->model('Image');
-        $username = false;
         $images = array();
 
-        //        $this->conn->query("SELECT 1");
-
         if ($username != false) {
-            $sql = "SELECT id, data, user, header, text FROM Images WHERE user = '$user' ORDER BY date DESC LIMIT 20";
+            $sql = "SELECT id, data, user, header, text FROM Images WHERE user = '$username' ORDER BY date DESC LIMIT 20";
         } else {
             $sql = "SELECT id, data, user, header, text FROM Images ORDER BY date DESC LIMIT 20";
         }
@@ -156,7 +153,7 @@ class Database extends DB_Config {
         try {
             $sql = "INSERT INTO Images (user, header, text, date, data) values (:user, :header, :text, NOW(), :data)";
             $statement = $this->conn->prepare($sql);
-            $statement->bindParam(":user", $image->username);
+            $statement->bindParam(":user", $image->user);
             $statement->bindParam(":header", $image->header);
             $statement->bindParam(":text", $image->text);
             $statement->bindParam(":data", $image->data);
@@ -167,13 +164,28 @@ class Database extends DB_Config {
             $statement = $this->conn->prepare($sql);
             $statement->execute();
             $result = $statement->fetchAll();
-            if ($result && $statement->rowCount > 0) {
-                return $result[0];
+            // print_r($result);
+            // print_r($statement);
+            if ($result) {
+                return $result[0][0];
             }
         } catch(PDOException $error) {
             echo $sql . "<br>" . $error->getMessage();
         }
         return NULL;
+    }
+
+    public function deleteImage($image_id, $user) {
+        try {
+            $sql = "DELETE FROM Images WHERE user = :user AND id = :image_id LIMIT 1";
+            $statement = $this->conn->prepare($sql);
+            $statement->bindParam(":user", $user);
+            $statement->bindParam(":image_id", $image_id);
+            $statement->execute();
+            return;
+        } catch(PDOException $error) {
+            echo $sql . "<br>" . $error->getMessage();
+        }
     }
 
     public function model($model) {

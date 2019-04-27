@@ -1,10 +1,12 @@
-<!--DOCTYPE_HTML-->
+<!DOCTYPE html>
 <html>
 <head>
     <title>Register</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no">
 </head>
-
 <body>
     <main>
             <form name="registration" id="registrationform" method="post" action="/jahen19/mvc/public/api/register">

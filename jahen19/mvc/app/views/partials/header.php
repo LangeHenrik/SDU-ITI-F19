@@ -2,8 +2,6 @@
 <?php if (isset($_SESSION['username'])) { ?>
      <span id="hello-message">
      Hello <?php echo $_SESSION['username']; ?>!
-                                                   |
-         <a href="user.php">See all users</a>
      </span>
      <form id="userform" method="post" action="./logout/">
      <input id="logout-button" type="submit" name="logout" value="Logout">

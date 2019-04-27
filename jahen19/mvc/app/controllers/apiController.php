@@ -2,7 +2,28 @@
 class ApiController extends Controller {
 
     public function index() {
-        echo "API Index<br>";
+        echo "API Endpoint<br>";
+    }
+
+    // POST /public/api/delete/picture/ID
+    public function delete($var, $value) {
+        if (! isset($_SESSION['username'])) {
+            echo "You need to be logged in to delete pictures.";
+            return;
+        }
+
+        if($this->post()) {
+            if (strtolower($var) == "picture" && ctype_digit($value) == true) {
+                $user = $_SESSION['username'];
+                $id = (int) $value;
+
+                $db = new Database();
+                $db->deleteImage($id, $user);
+                echo "OK";
+                return;
+            }
+        }
+        echo "400 Bad Request";
     }
 
     public function pictures($var, $value){
@@ -16,7 +37,7 @@ class ApiController extends Controller {
             $users = $db->getUsers();
             $arr = array();
             foreach($images as $image){
-                if($value == NULL || $image->$var == $value){
+                if($value == NULL || $image->$id == $value){
                     $imageArr = array(
                         'image_id' => $image->id,
                         'title' => $image->header,
@@ -54,7 +75,7 @@ class ApiController extends Controller {
             $image->data = $json["image"];
 
             $image_id = $db->insertImage($image);
-            echo $image_id;
+            echo '{ "image_id": '. $image_id  . ' }';
         }
     }
 

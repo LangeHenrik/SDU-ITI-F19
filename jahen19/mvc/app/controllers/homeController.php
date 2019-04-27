@@ -9,7 +9,7 @@ class HomeController extends Controller {
             $images = $db->getImages();
 
             //        print_r($images);
-            $viewbag = $images;
+            $viewbag['images'] = $images;
         } else {
             $viewbag['notloggedin'] = true;
         }
@@ -22,6 +22,21 @@ class HomeController extends Controller {
 		$viewbag['username'] = $user->name;
 		$this->view('home/index', $viewbag);
 	}
+
+    public function my() {
+        $viewbag = array();
+        if ( isset($_SESSION['username'])) {
+            $db = new Database();
+            $images = $db->getImages($_SESSION['username']);
+            $viewbag['images'] = $images;
+        } else {
+            $viewbag['notloggedin'] = true;
+        }
+
+        $viewbag['myfeed'] = true;
+
+        $this->view('home/index', $viewbag);
+    }
 
 	public function restricted () {
 		echo 'Welcome - you must be logged in';
