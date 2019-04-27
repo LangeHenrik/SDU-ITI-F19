@@ -8,8 +8,14 @@ use app\util\AuthUtil;
 
 class HeaderPartial
 {
+    private static function isActive(string $url)
+    {
+        return $_SERVER["REQUEST_URI"] === $url ? "is-active" : "";
+    }
+
     public static function show(array $viewBag)
     {
+        echo self::isActive("/");
         $pageTitle = $viewBag["page_title"];
         $myCss = css("css/style.css");
         $bulmaCss = css("css/bulma.min.css");
@@ -49,22 +55,32 @@ class HeaderPartial
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a href="$pathRoot/" class="navbar-item">
+EOL;
+        echo "
+      <a href='$pathRoot/' class='navbar-item ".self::isActive("$pathRoot/")."'>
         Home
       </a>
-      
-      <a href="$pathRoot/pictures" class="navbar-item">
-        Images
-      </a>
+      ";
 
-      <a href="$pathRoot/users" class="navbar-item">
-        Users
+        echo "
+      <a href='$pathRoot/pictures' class='navbar-item ".self::isActive("$pathRoot/pictures")."'>
+        Pictures
+      </a>
+      ";
+
+        echo "
+      <a href='$pathRoot/users'  class='navbar-item ".self::isActive("$pathRoot/users")."'>
+        Users 
       </a>
     </div>
+    <div class='navbar-end'>
+      ";
+        WeatherPartial::show();
+        echo "
+             <div class='navbar-item' >
+        ";
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-EOL;
+
         if (!AuthUtil::isLoggedIn()) {
             echo <<<EOL
         <div class="buttons">

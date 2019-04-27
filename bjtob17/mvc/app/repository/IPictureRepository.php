@@ -12,5 +12,5 @@ interface IPictureRepository
 
     function findByUserId(int $userId): array;
 
-    function uploadPicture(string $base64SEncodedImage, string $title, string $description, User $user): bool;
+    function uploadPicture(string $base64SEncodedImage, string $title, string $description, User $user): int;
 }

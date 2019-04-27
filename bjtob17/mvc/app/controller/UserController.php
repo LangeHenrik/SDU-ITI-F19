@@ -3,8 +3,10 @@
 
 namespace app\controller;
 
+use app\model\dto\UserApiDto;
 use app\model\dto\UserLoginDto;
 use app\model\dto\UserRegisterDto;
+use app\model\User;
 use app\service\IAuthService;
 use app\service\IUserService;
 use framework\controller\BaseController;
@@ -49,13 +51,15 @@ class UserController extends BaseController
 
     public function getUsers(IRequest $request): IResponse
     {
-        return $this->json($this->userService->findAll());
+        return $this->json(array_map(function (User $user) {
+            return UserApiDto::fromUser($user);
+        }, $this->userService->findAll()));
     }
 
     public function getUsersHtml(IRequest $request): IResponse
     {
         return $this->html("users", [
-            "page_title" => "Users",
+            "page_title" => "All users",
             "users" => $this->userService->findAll()
         ]);
     }
@@ -72,7 +76,7 @@ class UserController extends BaseController
         $errors = $this->authService->login($loginDto);
         if (count($errors) > 0) {
             return $this->html("login", [
-                "page_title" => "login",
+                "page_title" => "Login",
                 "register_action" => $this->loginAction,
                 "_errors" => $errors
             ]);

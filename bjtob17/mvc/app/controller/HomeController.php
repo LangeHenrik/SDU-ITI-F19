@@ -2,26 +2,35 @@
 
 namespace app\controller;
 
+use app\service\IPictureService;
 use framework\controller\BaseController;
 use framework\response\IResponse;
 use framework\routing\IRequest;
 
 class HomeController extends BaseController
 {
-    public function index(IRequest $request, int $id, string $name): IResponse
+
+    /**
+     * @var IPictureService
+     */
+    private $pictureService;
+
+    /**
+     * HomeController constructor.
+     * @param IPictureService $pictureService
+     */
+    public function __construct(IPictureService $pictureService)
     {
-        return $this->html("index", ["id" => $id, "name" => $name]);
+        $this->pictureService = $pictureService;
     }
 
-    public function index_(IRequest $request): IResponse
+
+    public function index(IRequest $request): IResponse
     {
         return $this->html("index",[
-            "page_title" => "Home"
+            "page_title" => "Home",
+            "photos" => $this->pictureService->findAll(20)
         ]);
     }
 
-    public function jsonTest(IRequest $request): IResponse
-    {
-        return $this->json($request);
-    }
 }

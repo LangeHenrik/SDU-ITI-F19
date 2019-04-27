@@ -36,12 +36,11 @@ class App extends AbstractApp
         $this->router->post("/login", UserController::class, "postLogin");
         $this->router->get("/register", UserController::class, "getRegister");
         $this->router->post("/register", UserController::class, "postRegister");
-        $this->router->get("/bla/{id}/{name}/", HomeController::class, "index");
         $this->router->get("/profile", ProfileController::class, "index", [WebAuthMiddleware::class]);
         $this->router->post("/pictures", PictureController::class, "uploadPictureOld", [WebAuthMiddleware::class]);
         $this->router->get("/pictures", PictureController::class, "getAllPictures", [WebAuthMiddleware::class]);
         $this->router->get("/users", UserController::class, "getUsersHtml", [WebAuthMiddleware::class]);
-        $this->router->get("/", HomeController::class, "index_", [WebAuthMiddleware::class]);
+        $this->router->get("/", HomeController::class, "index");
 
         $this->router->get("/api/users", UserController::class, "getUsers");
         $this->router->get("/api/pictures/user/{userId}", PictureController::class, "getImagesForUser");

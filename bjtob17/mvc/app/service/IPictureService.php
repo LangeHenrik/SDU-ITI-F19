@@ -4,15 +4,15 @@
 namespace app\service;
 
 
-use app\model\dto\PictureDto;
+use app\model\dto\PictureApiRequestDto;
 
 interface IPictureService
 {
-    function findAll(): array;
+    function findAll(int $limit = 999999999999999): array;
 
     function findByUserId(int $userId): array;
 
-    function uploadImage(PictureDto $pictureDto): bool;
+    function uploadImage(PictureApiRequestDto $picture): int;
 
     function getPicturesForUser(string $username): array;
 

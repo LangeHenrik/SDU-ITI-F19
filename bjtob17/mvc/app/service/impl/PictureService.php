@@ -4,7 +4,7 @@
 namespace app\service\impl;
 
 
-use app\model\dto\PictureDto;
+use app\model\dto\PictureApiRequestDto;
 use app\repository\IPictureRepository;
 use app\repository\IUserRepository;
 use app\service\IPictureService;
@@ -35,20 +35,22 @@ class PictureService implements IPictureService
     }
 
 
-    function findAll(): array
+    function findAll(int $limit = 999999999999999): array
     {
-        return $this->pictureRepository->findAll();
+        return $this->pictureRepository->findAll($limit);
     }
 
     function findByUserId(int $userId): array
     {
-        // TODO: Implement findByUserId() method.
         return $this->pictureRepository->findByUserId($userId);
     }
 
-    function uploadImage(PictureDto $pictureDto): bool
+    function uploadImage(PictureApiRequestDto $picture): int
     {
-        return $this->pictureRepository->uploadPicture($pictureDto->image, $pictureDto->title, $pictureDto->description);
+        $user = $this->userRepository->findByUsername($picture->username);
+        return $this->pictureRepository->uploadPicture(
+            $picture->image, $picture->title, $picture->description, $user
+        );
     }
 
     function uploadPictureForm(array $body)

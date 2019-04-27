@@ -29,8 +29,9 @@ class ApiAuthMiddleware extends AbstractMiddleware
 
     public function handle(IRequest $request): array
     {
-        $username = $request->getBodyAsJson("json")->username;
-        $password = $request->getBodyAsJson("json")->password;
+
+        $username = $request->getBodyAsJson("json")["username"];
+        $password = $request->getBodyAsJson("json")["password"];
         if ($this->authService->isLoggedInApi($username, $password)) {
             return $this->next($request);
         } else {

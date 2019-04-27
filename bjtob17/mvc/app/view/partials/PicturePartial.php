@@ -13,11 +13,15 @@ class PicturePartial
         $username = $picture->user->username;
         $fName = $picture->user->firstName;
         $lName = $picture->user->lastName;
+        $imgSrc = $picture->imageData;
+        if (substr($imgSrc, 0, strlen("data:image")) !== "data:image") {
+            $imgSrc = "data:image/jpeg;base64," . $imgSrc;
+        }
         echo <<<EOL
 <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img src="data:image/png;base64, $picture->imageData" alt="An image">
+      <img src="$imgSrc" alt="An image">
     </figure>
   </div>
   <div class="card-content">
@@ -34,6 +38,7 @@ class PicturePartial
     </div>
 
     <div class="content">
+      <p class="title is-4">$picture->title</p>
       $picture->description
       <br>
       <time>$picture->formattedUploadDate</time>

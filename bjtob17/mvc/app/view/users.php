@@ -3,14 +3,12 @@
 ?>
     <div>
 
-        <h2 class="is-size-2">All users</h2>
-        <div class="cards">
-            <?php
-            foreach ($viewBag["users"] as $user) {
-                \app\view\partials\UserPartial::show($user);
-            }
-            ?>
-        </div>
+        <h2 class="title is-2"><?= $viewBag["page_title"] ?></h2>
+        <?php
+        \app\view\partials\ColumnPartial::show(function ($items) {
+            \app\view\partials\UserPartial::show($items);
+        }, $viewBag["users"])
+        ?>
 
     </div>
 <?php

@@ -4,6 +4,9 @@
 namespace app\controller;
 
 
+use app\model\dto\PictureApiRequestDto;
+use app\model\dto\PictureApiResponseDto;
+use app\model\Picture;
 use app\service\IPictureService;
 use app\service\IUserService;
 use app\util\AuthUtil;
@@ -53,18 +56,23 @@ class PictureController extends BaseController
 
     public function getImagesForUser(IRequest $request, int $userId): IResponse
     {
-        return $this->json($this->pictureService->findByUserId($userId));
+        return $this->json(
+            array_map(function (Picture $picture) {
+                return PictureApiResponseDto::fromPicture($picture);
+            }, $this->pictureService->findByUserId($userId))
+        );
     }
 
     public function uploadImage(IRequest $request, int $userId): IResponse
     {
-        return $this->json($request->getBodyAsJson("json"));
-        /**
-         * $pictureDtoArr = $request->getBody();
-         * $pictureDtoArr["userId"] = $userId;
-         *
-         * $success = $this->pictureService->uploadImage(PictureDto::fromArray($pictureDtoArr));
-         * return $this->json(["success" => $success], $success ? 200 : 500);*/
+        $requestBody = $request->getBodyAsJson("json");
+        $requestBody["user_id"] = $userId;
+        $picture = PictureApiRequestDto::fromArray($requestBody);
+        $imageId = $this->pictureService->uploadImage($picture);
+        $response = [
+            "image_id" => $imageId
+        ];
+        return $this->json($response);
     }
 
 }

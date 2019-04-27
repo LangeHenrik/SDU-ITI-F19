@@ -55,11 +55,13 @@ class PictureRepository implements IPictureRepository
         return $photos;
     }
 
-    function uploadPicture(string $base64SEncodedImage, string $title, string $description, User $user): bool
+    function uploadPicture(string $base64SEncodedImage, string $title, string $description, User $user): int
     {
         $stmt = $this->db->getPDO()->prepare(
-            "INSERT INTO photo (title, caption, imgData, author_id) VALUES (?, ?, ?, ?)"
+            "INSERT INTO photo (title, caption, imgData, author_id) VALUES (?, ?, ?, ?) "
         );
-        return $stmt->execute([$title, $description, $base64SEncodedImage, $user->user_id]);
+        $stmt->execute([$title, $description, $base64SEncodedImage, $user->user_id]);
+        $lastId = $this->db->getPDO()->lastInsertId();
+        return $lastId;
     }
 }

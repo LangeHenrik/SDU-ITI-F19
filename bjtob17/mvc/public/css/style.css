@@ -2,6 +2,16 @@
     margin-bottom: 10px;
 }
 
+#weather {
+    display:flex;
+}
+#weather div {
+    margin-left: 5px;
+}
+#weather.box {
+    padding: 2px;
+}
+
 /**
 ERROR
  */

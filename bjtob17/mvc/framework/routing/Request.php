@@ -31,21 +31,21 @@ class Request implements IRequest
         }
     }
 
-    public function getBodyAsJson(string $formDataKey)
+    public function getBodyAsJson(string $formDataKey): array
     {
         switch ($this->requestMethod) {
             case "GET":
                 {
                     $getBody = $this->getGETBody(FILTER_DEFAULT)[$formDataKey];
                     $strippedJson = strip_tags($getBody);
-                    return json_decode($strippedJson);
+                    return json_decode($strippedJson, true);
                 }
 
             case "POST":
                 {
                     $postBody = $this->getPOSTBody(FILTER_DEFAULT)[$formDataKey];
                     $strippedJson = strip_tags($postBody);
-                    return json_decode($strippedJson);
+                    return json_decode($strippedJson, true);
                 }
 
             default:

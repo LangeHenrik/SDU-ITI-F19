@@ -3,14 +3,12 @@
 ?>
     <div>
 
-        <h2 class="is-size-2">All images</h2>
-        <div class="user-photos cards">
-            <?php
-            foreach ($viewBag["photos"] as $photo) {
-                \app\view\partials\PicturePartial::show($photo, false);
-            }
-            ?>
-        </div>
+        <h2 class="title is-2"><?= $viewBag["page_title"] ?></h2>
+        <?php
+        \app\view\partials\ColumnPartial::show(function ($items) {
+            \app\view\partials\PicturePartial::show($items, false);
+        }, $viewBag["photos"])
+        ?>
 
     </div>
 <?php

@@ -4,7 +4,7 @@
 $loginAction = $viewBag["login_action"];
 ?>
 <div>
-    <h2 class="is-size-2">Login</h2>
+    <h2 class="title is-2"><?= $viewBag["page_title"] ?></h2>
     <?php if (isset($viewBag["_errors"]) && count($viewBag["_errors"]) > 0): ?>
         <div class="error">
             <h4>Please fix the following errors:</h4>

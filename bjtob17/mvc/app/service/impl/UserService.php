@@ -30,9 +30,7 @@ class UserService implements IUserService
 
     function findAll(): array
     {
-        return array_map(function(User $user) {
-            return UserApiDto::fromUser($user);
-        }, $this->userRepository->findAll());
+        return $this->userRepository->findAll();
     }
 
     function findById(int $id): ?User

@@ -4,7 +4,7 @@
 $photoAction = $viewBag["photo_action"];
 ?>
     <div>
-        <h2 class="is-size-2">Profile</h2>
+        <h2 class="title is-2"><?= $viewBag["page_title"] ?></h2>
         <?php if (count($viewBag["_errors"]) > 0): ?>
             <div class="error">
                 <?php foreach ($viewBag["_errors"] as $error): ?>
@@ -41,13 +41,11 @@ $photoAction = $viewBag["photo_action"];
         </div>
 
         <h2 class="is-size-2">Your images</h2>
-        <div class="user-photos cards">
-            <?php
-            foreach ($viewBag["photos"] as $photo) {
-                \app\view\partials\PicturePartial::show($photo, true);
-            }
-            ?>
-        </div>
+        <?php
+        \app\view\partials\ColumnPartial::show(function ($items) {
+            \app\view\partials\PicturePartial::show($items, false);
+        }, $viewBag["photos"])
+        ?>
 
     </div>
 <?php

@@ -6,5 +6,5 @@ interface IRequest
 {
     public function getBody(): array;
 
-    public function getBodyAsJson(string $formDataKey);
+    public function getBodyAsJson(string $formDataKey): array;
 }
