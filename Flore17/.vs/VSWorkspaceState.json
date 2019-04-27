@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\mvc",
+    "\\mvc\\app",
+    "\\mvc\\app\\controllers",
+    "\\mvc\\app\\core",
+    "\\mvc\\app\\models",
+    "\\mvc\\app\\views",
+    "\\mvc\\app\\views\\home",
+    "\\mvc\\app\\views\\partials",
+    "\\mvc\\app\\views\\pictures",
+    "\\mvc\\app\\views\\users",
+    "\\mvc\\public"
+  ],
+  "SelectedNode": "\\mvc\\public\\index.php",
+  "PreviewInSolutionExplorer": false
+}

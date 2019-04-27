@@ -14,14 +14,17 @@ create table flore17.users (
 	city char(50) not null,
 	exttype char(255) not null,
 	imagetmp longblob not null,
-	primary key (username), 
-	unique (username)
+	primary key (user_id), 
+	unique (user_id)
 );
 
 create table flore17.posts (
+	image_id char(50) not null,
 	imagename char(200) not null,
     exttype char(200) not null,
     imagetmp longblob not null,
     header char(50) not null,
-    comm char(250) not null
+    comm char(250) not null,
+    primary key (image_id), 
+	unique (image_id)
 );
