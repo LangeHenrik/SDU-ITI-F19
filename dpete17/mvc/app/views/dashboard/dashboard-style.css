@@ -37,6 +37,14 @@
     padding: 10px 0;
 }
 
+.dashboard-body > table {
+    width: 100%;
+}
+
+.dashboard-body > table td {
+    padding: 5px 15px;
+}
+
 #upload-header {
     border:1px solid #ccc;
     width: 100%;
