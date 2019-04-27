@@ -13,4 +13,8 @@ interface IPictureService
     function findByUserId(int $userId): array;
 
     function uploadImage(PictureDto $pictureDto): bool;
+
+    function getPicturesForUser(string $username): array;
+
+    function uploadPictureForm(array $body);
 }

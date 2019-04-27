@@ -27,5 +27,13 @@ class UserLoginDto
         $this->password = $password;
     }
 
+    public static function fromArray(array $arr): UserLoginDto
+    {
+        return new UserLoginDto(
+            $arr["username"],
+            $arr["password"]
+        );
+    }
+
 
 }

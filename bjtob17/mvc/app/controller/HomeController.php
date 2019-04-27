@@ -13,6 +13,13 @@ class HomeController extends BaseController
         return $this->html("index", ["id" => $id, "name" => $name]);
     }
 
+    public function index_(IRequest $request): IResponse
+    {
+        return $this->html("index",[
+            "page_title" => "Home"
+        ]);
+    }
+
     public function jsonTest(IRequest $request): IResponse
     {
         return $this->json($request);

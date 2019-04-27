@@ -4,8 +4,6 @@
 namespace app\model;
 
 
-use DateTime;
-
 class User extends Entity
 {
     /**
@@ -64,10 +62,10 @@ class User extends Entity
      * @param string $city
      * @param string $email
      * @param int $phone
-     * @param DateTime $createdAt
-     * @param DateTime $updatedAt
+     * @param string $createdAt
+     * @param string $updatedAt
      */
-    public function __construct(int $user_id, string $username, string $hashedPassword, string $firstName, string $lastName, int $zip, string $city, string $email, int $phone, DateTime $createdAt, DateTime $updatedAt)
+    public function __construct(int $user_id, string $username, string $hashedPassword, string $firstName, string $lastName, int $zip, string $city, string $email, int $phone, string $createdAt, string $updatedAt)
     {
         parent::__construct($createdAt, $updatedAt);
         $this->user_id = $user_id;

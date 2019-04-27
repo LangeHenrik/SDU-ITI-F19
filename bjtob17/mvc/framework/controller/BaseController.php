@@ -21,9 +21,10 @@ abstract class BaseController
         return new JsonResponse($copyOfData, $responseCode);
     }
 
-    function redirect($url, $responseCode = 303)
+    function redirect($url, $responseCode = 303): IResponse
     {
-        header('Location: ' . $url, true, $responseCode);
+        $routeOffset = $_SERVER["route_offset"];
+        header('Location: ' . $routeOffset . $url, true, $responseCode);
         die();
     }
 }

@@ -5,6 +5,8 @@ namespace app\controller;
 
 
 use app\service\IPictureService;
+use app\service\IUserService;
+use app\util\AuthUtil;
 use framework\controller\BaseController;
 use framework\response\IResponse;
 use framework\routing\IRequest;
@@ -18,14 +20,36 @@ class PictureController extends BaseController
     private $pictureService;
 
     /**
+     * @var IUserService
+     */
+    private $userService;
+
+    /**
      * PictureController constructor.
      * @param IPictureService $pictureService
+     * @param IUserService $userService
      */
-    public function __construct(IPictureService $pictureService)
+    public function __construct(IPictureService $pictureService, IUserService $userService)
     {
         $this->pictureService = $pictureService;
+        $this->userService = $userService;
     }
 
+    public function uploadPictureOld(IRequest $request): IResponse
+    {
+        $body = $request->getBody();
+        $this->pictureService->uploadPictureForm($body);
+
+        $this->redirect("/profile");
+    }
+
+    public function getAllPictures(IRequest $request): IResponse
+    {
+        return $this->html("/pictures", [
+            "page_title" => "All images",
+            "photos" => $this->pictureService->findAll()
+        ]);
+    }
 
     public function getImagesForUser(IRequest $request, int $userId): IResponse
     {

@@ -20,12 +20,12 @@ abstract class Entity
 
     /**
      * Entity constructor.
-     * @param DateTime $createdAt
-     * @param DateTime $updatedAt
+     * @param string $createdAt
+     * @param string $updatedAt
      */
-    public function __construct(DateTime $createdAt, DateTime $updatedAt)
+    public function __construct(string $createdAt, string $updatedAt)
     {
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
+        $this->createdAt = DateTime::createFromFormat('Y-m-d H:i:s', $createdAt);
+        $this->createdAt = DateTime::createFromFormat('Y-m-d H:i:s', $updatedAt);
     }
 }

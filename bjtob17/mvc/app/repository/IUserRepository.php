@@ -4,6 +4,7 @@
 namespace app\repository;
 
 
+use app\model\dto\UserRegisterDto;
 use app\model\User;
 
 interface IUserRepository
@@ -14,5 +15,5 @@ interface IUserRepository
 
     function findByUsername(string $username): ?User;
 
-    function create(User $user);
+    function create(UserRegisterDto $user): bool;
 }

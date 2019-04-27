@@ -26,8 +26,7 @@ CREATE TABLE IF NOT EXISTS photo
 
   title      VARCHAR(255) NOT NULL,
   caption    VARCHAR(255) NOT NULL,
-  imgName    VARCHAR(255) NOT NULL,
-  imgData    BLOB         NOT NULL,
+  imgData    MEDIUMBLOB         NOT NULL,
   uploadDate INT          NOT NULL DEFAULT UNIX_TIMESTAMP(),
   author_id  INT          NOT NULL REFERENCES user (user_id),
 

@@ -19,3 +19,10 @@ function css($file)
     $offset = $_SERVER["route_offset"];
     return "<link href='$offset/$file' rel='stylesheet'>";
 }
+
+function img($file, $alt)
+{
+    $offset = $_SERVER["route_offset"];
+    return "<img src='$offset/$file' alt='$alt'>";
+}
+

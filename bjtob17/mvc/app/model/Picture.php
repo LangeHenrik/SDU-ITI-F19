@@ -4,6 +4,8 @@
 namespace app\model;
 
 
+use DateTime;
+
 class Picture extends Entity
 {
     /**
@@ -21,27 +23,53 @@ class Picture extends Entity
      */
     public $description;
 
+
     /**
      * @var string
      */
-    public $image;
+    public $imageData;
+
+    /**
+     * @var \DateTime
+     */
+    public $uploadDate;
+
+    /**
+     * @var string
+     */
+    public $formattedUploadDate;
+
+    /**
+     * @var User
+     */
+    public $user;
 
     /**
      * Picture constructor.
      * @param int $image_id
      * @param string $title
      * @param string $description
-     * @param string $image
-     * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
+     * @param string $imageData
+     * @param string $uploadDate
+     * @param User $user
+     * @param string $createdAt
+     * @param string $updatedAt
+     * @throws \Exception
      */
-    public function __construct(int $image_id, string $title, string $description, string $image, \DateTime $createdAt, \DateTime $updatedAt)
+    public function __construct(int $image_id, string $title, string $description, string $imageData, string $uploadDate, User $user, string $createdAt, string $updatedAt)
     {
         parent::__construct($createdAt, $updatedAt);
         $this->image_id = $image_id;
         $this->title = $title;
         $this->description = $description;
-        $this->image = $image;
+        $this->imageData = $imageData;
+        $this->uploadDate = $uploadDate;
+
+        $dt = DateTime::createFromFormat('U', $this->uploadDate);
+        $dt->setTimezone(new \DateTimeZone("Europe/Copenhagen"));
+        $this->formattedUploadDate = $dt->format("M d Y, H:i");
+
+        $this->user = $user;
     }
 
 }
