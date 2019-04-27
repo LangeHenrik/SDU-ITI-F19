@@ -108,3 +108,21 @@ function deleteError(event) {
     console.log("Error: " + event);
     alert("Sorry, something went wrong.");
 }
+
+function fetchQuote() {
+    $.ajax({
+        type: "GET",
+        url: "http://quotes.rest/qod.json",
+        dataType: "json",
+        cache: true,
+        success: function (data) {
+            $("#quote-text").html(data.contents.quotes[0].quote);
+            $("#quote-author").html(data.contents.quotes[0].author);
+        }
+    });
+}
+
+// run these functions when the DOM is ready
+$(function() {
+  fetchQuote();
+});

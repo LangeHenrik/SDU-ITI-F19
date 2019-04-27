@@ -7,7 +7,7 @@ Deadline: 02.05.2019
 Build a website where users can:
 * [ ] Use 2 external APIs
 * [X] Use MVC pattern
-* [ ] Use 2 frameworks
+* [X] Use 2 frameworks
 * [X] RESTful API (see below)
 
 API:
