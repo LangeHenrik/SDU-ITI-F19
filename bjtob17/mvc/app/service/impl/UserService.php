@@ -33,11 +33,6 @@ class UserService implements IUserService
         return $this->userRepository->findAll();
     }
 
-    function findById(int $id): ?User
-    {
-        // TODO: Implement findById() method.
-    }
-
     function create(UserRegisterDto $userDto): array
     {
         $errors = [];

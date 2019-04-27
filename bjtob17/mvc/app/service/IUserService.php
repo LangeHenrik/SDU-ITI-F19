@@ -12,8 +12,6 @@ interface IUserService
 {
     function findAll(): array;
 
-    function findById(int $id): ?User;
-
     function findByUsername(string $username): ?User;
 
     function create(UserRegisterDto $userDto): array;
