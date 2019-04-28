@@ -9,7 +9,6 @@ function apiGetAllUsers()
 {
     header("Content-Type: application/json; charset=UTF-8");
     $users = getAllUsers();
-
     echo json_encode($users);
 }
 
@@ -21,7 +20,16 @@ function apiGetUserPictures($userId){
 
 function apiPostPicture($userId){
     header("Content-Type: application/json; charset=UTF-8");
-    $data = json_decode(file_get_contents('php://input'), true);
+
+    $data = null;
+    if(isset($_POST["json"])) {
+        $data = json_decode($_POST["json"], true);
+    } else {
+        $file = file_get_contents('php://input');
+        $data = json_decode($file, true);
+    }
+
+
     $title = $data['title'];
     $description = $data['description'];
     $image = $data['image'];
@@ -43,14 +51,15 @@ function apiPostPicture($userId){
         } else {
             echo "Something went wrong";
         }
-
-
     }
-
-
-
-
 }
 
+function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}
 
 
