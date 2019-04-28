@@ -54,6 +54,11 @@
     margin-top: 0px;
 }
 
+.error-message{
+    color: red;
+    font-size: 1.3vw;
+}
+
 
 
 .btn-registration {

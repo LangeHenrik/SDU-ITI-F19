@@ -121,6 +121,11 @@ class UserDAO extends Connection
         $firstlogin = htmlentities($user->getFirstLogin());
 
 
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+    echo $hash;
+
+
         $query = 'INSERT INTO 
                   users(firstname, lastname, username, password, zip, city, email, phonenumber, first_login) 
                   VALUES(:firstname,:lastname,:username,:password,:zip,:city,:email,:phonenumber, :firstlogin)';
@@ -128,7 +133,7 @@ class UserDAO extends Connection
         $statement->bindParam(':firstname', $firstname);
         $statement->bindParam(':lastname', $lastname);
         $statement->bindParam(':username', $username);
-        $statement->bindParam(':password', $password);
+        $statement->bindParam(':password', $hash);
         $statement->bindParam(':zip', $zipcode);
         $statement->bindParam(':city', $city);
         $statement->bindParam(':email', $email);
