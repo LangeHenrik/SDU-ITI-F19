@@ -1,0 +1,246 @@
+/******      Global pages      ******/
+* {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 90px;
+}
+
+/******      Index Page      ******/
+.form-register p {
+    margin: 2px;
+}
+
+.register {
+    margin-bottom: 20px;
+}
+
+form {
+    margin: 0 auto;
+    text-align: center;
+    font-family: Verdana;
+}
+
+.form-login, .form-register {
+    width: 250px;
+}
+
+form button {
+    background-color: #C3C3C3;
+}
+
+legend {
+    font-weight: bold;
+}
+
+.login {
+    padding-bottom: 50px;
+}
+
+.form-login input {
+    text-align: center;
+}
+
+.error-response {
+    text-align: center;
+    color: #F00;
+    font-family: Tahoma;
+}
+
+.title, .header-title {
+    text-align: center;
+    font-family: Catamaran;
+    font-size: 32px;
+    font-weight: 600;
+    color: #111;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 1000px) {
+    .login {
+        width: 50%;
+        float: left;
+    }
+
+    .register {
+        width: 50%;
+        float: right;
+        margin-bottom: 0px;
+    }
+
+    .login {
+        padding-bottom: 0;
+    }
+}
+
+/******      Header      ******/
+header {
+    background-color: #F1F1F1;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+header nav ul {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 0px;
+    line-height: 52px;
+}
+
+header nav ul li {
+    display: inline-block;
+    float: none;
+    list-style: none;
+    border-radius: 4px;
+}
+
+header nav ul li a {
+    font-family: Catamaran;
+    font-size: 20px;
+    padding: 10px 16px;
+    color: #111;
+}
+
+header nav ul li:hover {
+    background-color: #DDD;
+}
+
+@media only screen and (min-width: 800px) {
+    .header-title {
+        margin-left: 20px;
+    }
+
+    header {
+        text-align: left;
+        padding-bottom: 20px;
+    }
+
+    header nav {
+        float: right;
+        margin-right: 20px;
+    }
+
+    header nav ul li {
+        float: left;
+    }
+}
+
+/******      Footer      ******/
+.footer {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    text-align: center;
+    background-color: #F1F1F1;
+    margin-top: 20px;
+}
+
+#btn-logout {
+    font-family: Catamaran;
+    font-size: 20px;
+    color: #111!important;
+    height: 50px;
+    width: 100%;
+    line-height: 20px;
+    border-radius: 4px;
+
+    background-color: #F1F1F1;
+    border: none;
+    cursor: pointer;
+}
+
+#btn-logout:hover {
+    background-color: #DDD;
+}
+
+/******      Picturepage      ******/
+.block-pictures {
+    text-align: center;
+}
+
+.header {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.block-pictures p {
+    font-family: Verdana;
+    padding: 0 5%;
+}
+
+.block-pictures img {
+    max-width: 90%;
+}
+
+.block-pictures hr {
+    max-width: 90%;
+}
+
+.block-pictures :last-child > hr {
+    display: none;
+}
+
+.description {
+    margin: 5px 0;
+}
+
+.date {
+    margin-top: 5px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/******      Picturepage      ******/
+.form-upload {
+    max-width: 80%;
+}
+
+@media only screen and (min-width: 375px) {
+    .form-upload {
+        max-width: 300px;
+    }
+}
+
+/******      Userpage      ******/
+.table-user {
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Verdana;
+}
+
+.table-user th, .table-user td {
+    padding: 13px;
+}
+
+.table-user th {
+    background-color: #4F81BD;
+    color: #FFF;
+}
+
+.table-user tr:nth-child(even) {
+    background-color: #F2F2F2;
+}
+
+.block-search {
+    text-align: center;
+}
+
+.block-search p {
+    font-family: Catamaran;
+    margin: 0;
+}
+
+.header-search {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.userpage-hr {
+    max-width: 90%;
+}

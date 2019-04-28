@@ -1,0 +1,10 @@
+.content{
+    .intro{
+        max-width: 600px;
+        margin: auto auto;
+        margin-top: 50px;
+        > h1, p{
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,162 @@
+
+body{
+
+}
+
+
+.header h1{
+  font-family: sans-serif;
+  font-size: 72px;
+  position: relative;
+  text-align: left;
+
+}
+
+.header img{
+  float: left;
+  width: 200px;
+  height: 200px;
+
+}
+div.header{
+  padding: 20px;
+  overflow: auto;
+  width: 80%;
+}
+
+.navMenu{
+  background-color: #D5E0EA;
+  overflow: hidden;
+  margin: auto;
+  padding: 10px;
+  border: 10px;
+  width: 80%;
+
+
+}
+.navMenu a{
+  font-family: Trebuchet MS;
+  font-size: 20px;
+  padding: 10px 15px;
+  text-decoration: none;
+
+}
+.navMenu a.active{
+  background-color: #1B66B0;
+  color: white;
+}
+.navMenu a:hover{
+  background-color: #95C1ED;
+}
+
+.card{
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  text-align: center;
+}
+
+.title{
+  color: gray;
+  font-size: 18px;
+}
+.card button{
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #0a304e;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+.card h1{
+  font-family: sans-serif;
+}
+.card a{
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.card button:hover{
+  opacity: 0.7;
+}
+
+
+#content{
+
+}
+#profile1{
+display: inline-block;
+}
+#profile2{
+display: inline-block;
+
+}
+#profile3{
+display: inline-block;
+}
+.content{
+  width: 60%;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+
+
+}
+.simpleCard{
+    display: inline-block;
+    margin: 150px 100px;
+    vertical-align:top;
+
+}
+
+.simpleCard img{
+  width: 150px;
+  height: 150px;
+}
+.simpleCard h1{
+  font-family: sans-serif;
+  font-size: 20px;
+
+}
+.picture{
+  display: inline-block;
+  margin: 5px;
+}
+.picture img{
+  width: 600px;
+  height: 400;
+}
+.picture p{
+  text-align: left;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.post{
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+.form1 {
+  text-align: center;
+}
+.form1 label{
+  text-align: left;
+  font-size: 20px;
+  font-family: sans-serif;
+  margin: 8px;
+  padding: 10px;
+
+
+}
+
+.form1 input{
+  width: 200px;
+  padding: 10px;
+}
