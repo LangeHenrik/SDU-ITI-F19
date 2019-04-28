@@ -232,7 +232,7 @@ class HomeController extends Controller
 
         $user = $userDAO->getUserByUsername($username);
         if ($user) {
-            if ($user->password == $password) {
+            if (password_verify($password, $user->password)) {
                 $valid = true;
             }
         } else {

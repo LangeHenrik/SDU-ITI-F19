@@ -123,7 +123,7 @@ class UserDAO extends Connection
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    echo $hash;
+
 
 
         $query = 'INSERT INTO 
