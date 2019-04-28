@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/Components/PostRender.php');
 require_once(__DIR__ . '/../Model/postDAO.php');
-require_once(__DIR__ . './Components/RequireLogin.php');
+require_once(__DIR__ . '/Components/RequireLogin.php');
 
 $message = null;
 

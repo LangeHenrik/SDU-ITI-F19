@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . './Components/RequireLogin.php');
+require_once(__DIR__ . '/Components/RequireLogin.php');
 require_once(__DIR__ . '/../Model/userDAO.php');
 $user = getUserById($_SESSION['user_id']);
 
