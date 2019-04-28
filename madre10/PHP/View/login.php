@@ -1,15 +1,15 @@
 <?php
 
-require_once(__DIR__.'/../Model/userDAO.php');
-if( isset($_SESSION['user_id']) ){
+require_once(__DIR__ . '/../Model/userDAO.php');
+if (isset($_SESSION['user_id'])) {
     header("Location: /madre10/");
 }
 
-if(!empty($_POST['username']) && !empty($_POST['password'])):
+if (!empty($_POST['username']) && !empty($_POST['password'])):
 
     $user = getUserByUsername($_POST['username']);
     $message = '';
-    if($user!=null && ($_POST['password'] == $user['password'] )){
+    if ($user != null && (password_verify($_POST['password'], $user['password']))) {
         $_SESSION['user_id'] = $user['user_id'];
         header("Location: /madre10/");
     } else {
@@ -31,11 +31,9 @@ endif;
 
 <?php include(__DIR__ . '/Components/NavigationBar.php'); ?>
 
-<?php if(!empty($message)): ?>
+<?php if (!empty($message)): ?>
     <div class="alert_message"><?= $message ?></div>
 <?php endif; ?>
-
-
 
 
 <div class="register_wrapper">
@@ -57,7 +55,6 @@ endif;
 
     </div>
 </div>
-
 
 
 <script src="navbar.js"></script>

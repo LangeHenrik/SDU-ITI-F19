@@ -11,5 +11,5 @@ if(!isset($_POST['comment']) && !isset($_SESSION['user_id']) && !isset($_POST['p
     $post_id =  htmlentities($_POST['post_id']);
     $comment = new Comment(null, $user_id, $post_id, $content, "NOW()");
     addComment($comment);
-    //header("Location: /feed");
+    header("Location: /madre10/feed");
 }

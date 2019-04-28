@@ -40,7 +40,7 @@ function apiPostPicture($userId){
     //Check that user exists
     if($user==null) {
         echo "Sorry, no such user";
-    } elseif ($user['password'] != $password){
+    } elseif (!password_verify($password, $user['password'])){
         echo "Sorry, wrong password";
     } else {
         $id = addPost($title, $description, $image, $userId);

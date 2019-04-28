@@ -19,7 +19,7 @@ function renderFuckingPostWithComments($post, $comments)
         . $htmlComments
         . "</div>"
         . "<div class='feed__comment_input'>"
-        . "<form action='/feed' method='POST' $hidden>"
+        . "<form action='/madre10/feed' method='POST' $hidden>"
         .   "<input type='hidden' name='post_id' value=$post->id >"
         .   "<textarea name='comment' class='feed__comment_input_textarea' rows='4' cols='50' placeholder='Comments...'></textarea>"
         .   "<br/>"

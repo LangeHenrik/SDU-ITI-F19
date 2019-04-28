@@ -1,4 +1,9 @@
 
+.validation_message {
+    color: red;
+    margin-bottom:25px;
+}
+
 .register_wrapper {
     margin: 0;
     padding: 0;

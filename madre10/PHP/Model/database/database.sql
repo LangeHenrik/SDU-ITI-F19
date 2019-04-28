@@ -14,7 +14,7 @@ CREATE TABLE users (
   lastname VARCHAR(250),
   zip VARCHAR(250),
   city VARCHAR(250),
-  email VARCHAR(250) NOT NULL DEFAULT '',
+  email VARCHAR(250) UNIQUE NOT NULL,
   phone VARCHAR(250)
 );
 
@@ -41,6 +41,5 @@ CREATE TABLE comments (
 
 
 INSERT INTO users(username, password, firstname, lastname, zip, city, email, phone) VALUES
-('phoellen','password', 'Martin', 'Dreymann', '5000', 'Odense', 'madre10@student.sdu.dk', '60641990'),
-('trump','nukes', 'Donald', 'J. Trump', 'no idea', 'Washington', 'dtj@fakenews.com', '13371337');
+('testuser','$2y$10$84MsrvJyi9xrPeyYl6wb2O8Xwz1a80ZT.x7P/ERi4edukQEIvCerq', 'John', 'Doe', '5000', 'Odense', 'test@test.dk', '80808080');
 
