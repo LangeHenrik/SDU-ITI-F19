@@ -143,8 +143,11 @@ class HomeController extends Controller
             if ($message == '') {
                 $userDAO = $this->model('UserDAO');
                 $userDAO->registerUser($newUser);
+                $userID = $userDAO->getUserByUsername($newUser->getUsername())->getId();
                 $_SESSION['logged_in'] = true;
                 $_SESSION['username'] = $newUser->getUsername();
+                $_SESSION['userid'] = $userID;
+
                 $this->view('home/profile');
             } else {
 

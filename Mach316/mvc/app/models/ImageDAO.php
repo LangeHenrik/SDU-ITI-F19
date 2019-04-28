@@ -26,7 +26,7 @@ class ImageDAO extends Connection {
         $imageHeader = htmlentities($image->getHeader());
         $imageText = htmlentities($image->getText());
         $imageFileName = htmlentities($image->getFileName());
-        $userId = $_SESSION['userid'];
+        $userId = htmlentities($image->getUserId());
 
         $query = "INSERT INTO images(header, text, name, user_id) VALUES(:header, :text,:filename, :user_id);";
         $statement = $this->conn->prepare($query);
@@ -36,10 +36,15 @@ class ImageDAO extends Connection {
         $statement->bindParam(':user_id', $userId);
         $success = $statement->execute();
 
-        //TODO: Get the generated key and return
-        $imageID =  $this->conn->lastInsertId();;
+        if($success) {
+            $imageID = $this->conn->lastInsertId();;
+            return $imageID;
+        }
+        else {
+            return -1;
+        }
 
-        return $imageID;
+
     }
 
     public function getAllImages()

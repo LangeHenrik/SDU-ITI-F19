@@ -9,9 +9,9 @@
 
 
 class Image {
-    public $id;
-    public $header;
-    public $text;
+    public $image_id;
+    public $title;
+    public $description;
     public $userId;
     public $fileName;
     public $comments;
@@ -29,7 +29,7 @@ class Image {
      */
     public function getId()
     {
-        return $this->id;
+        return $this->image_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class Image {
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->image_id = $id;
     }
 
     /**
@@ -53,7 +53,7 @@ class Image {
      */
     public function getHeader()
     {
-        return $this->header;
+        return $this->title;
     }
 
     /**
@@ -61,7 +61,7 @@ class Image {
      */
     public function setHeader($header)
     {
-        $this->header = $header;
+        $this->title = $header;
     }
 
     /**
@@ -69,7 +69,7 @@ class Image {
      */
     public function getText()
     {
-        return $this->text;
+        return $this->description;
     }
 
     /**
@@ -77,7 +77,7 @@ class Image {
      */
     public function setText($text)
     {
-        $this->text = $text;
+        $this->description = $text;
     }
 
     /**
@@ -110,5 +110,10 @@ class Image {
     public function setFileName($fileName)
     {
         $this->fileName = $fileName;
+    }
+
+    public function _toString()
+    {
+        return "$this->title : $this->description : $this->fileName";
     }
 }

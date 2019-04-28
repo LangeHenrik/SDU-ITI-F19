@@ -7,7 +7,7 @@
  */
 
 class User {
-    public $id;
+    public $user_id;
     public $username;
     public $firstname;
     public $lastname;
@@ -64,7 +64,7 @@ class User {
      */
     public function getId()
     {
-        return $this->id;
+        return $this->user_id;
     }
 
     /**
@@ -72,7 +72,7 @@ class User {
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->user_id = $id;
     }
 
     /**
