@@ -47,19 +47,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-?>
+session_start();
+if(isset($_SESSION['login_user'])) : ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <title>Picture Page</title>
+        <link href="stylesheet.css" type="text/css" rel="stylesheet">
+        <script src = "change_tabs.js"></script>
+    </head>
+    <body>
 
-<!DOCTYPE html>
-<html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<head>
-    <meta charset="UTF-8">
-    <title>Picture Page</title>
-    <link href="stylesheet.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-<div class="row">
-    <div class="column left" style="background-color:white;">
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="changeTab(event, 'PostPage', document.getElementsByClassName('tabcontent'),
+        document.getElementsByClassName('tablinks'))">Post pictures</button>
+        <button class="tablinks" onclick="changeTab(event, 'ViewPosts', document.getElementsByClassName('tabcontent'),
+        document.getElementsByClassName('tablinks'))">View Posts</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="PostPage" class="tabcontent">
         <form action= "logout.php" method="post">
             <button class="button buttonlogout" type="submit">Logout</button>
         </form>
@@ -91,7 +101,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         </script>
     </div>
-    <div class="column right" style="background-color:grey;">
+
+    <div id="ViewPosts" class="tabcontent">
         <?php
         $images = get_20_latest_images();
         for ($x = 0; $x < sizeof($images); $x++) {
@@ -104,6 +115,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
     </div>
-</div>
-</body>
-</html>
+    <script>
+
+    </script>
+    </body>
+    </html>
+<?php else :
+    header("location: Login.php");
+endif; ?>
