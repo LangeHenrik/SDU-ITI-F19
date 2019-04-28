@@ -1,5 +1,9 @@
 <?php 
 
+	if(!isset($_SESSION['isLogged'])) {
+		$_SESSION['isLogged'] = false;
+	}
+
 	if(!isset($_SESSION['passwordMismatch'])) {
 		$_SESSION['passwordMismatch'] = false;
 	}

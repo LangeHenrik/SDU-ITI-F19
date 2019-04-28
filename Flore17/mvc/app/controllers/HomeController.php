@@ -21,15 +21,21 @@ class HomeController extends Controller {
 	
 	public function loginCheck() {
 
-		$match = $this->model('User')->checkPassword();
+		if ($_SESSION['isLogged'] == false){
 
-		if ($match == true) {
-			$_SESSION['isLogged'] = true;
+			$match = $this->model('User')->checkPassword();
+
+			if ($match == true) {
+				$_SESSION['isLogged'] = true;
+				$_SERVER['REQUEST_URI'] = 'localhost:8080/flore17/mvc/public/pictures/';
+				$Router = new Router();
+			} else {
+				$_SESSION['passwordMismatch'] = true;
+				$this->view('home/index');
+			}
+		} else {
 			$_SERVER['REQUEST_URI'] = 'localhost:8080/flore17/mvc/public/pictures/';
 			$Router = new Router();
-		} else {
-			$_SESSION['passwordMismatch'] = true;
-			$this->view('home/index');
 		}
 	}
 	

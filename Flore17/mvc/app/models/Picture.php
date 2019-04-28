@@ -7,7 +7,7 @@ class Picture extends Database {
 
 	public function getAllPosts() {
 
-		$sql = "Select * From posts";
+		$sql = "Select * From posts ORDER BY image_id";
 
 		$stmt = $this->conn->prepare($sql);
 
@@ -45,7 +45,7 @@ class Picture extends Database {
 			$sql = "INSERT INTO posts (imagename, exttype, imagetmp, header, comm, image_id) VALUES (:imagename, :type, :imagetmp, :header, :comm, :image_id)";
 
 			$stmt = $this->conn->prepare($sql);
-	
+
 			//bindParam for sql injection defence
 			$stmt->bindParam(":imagename", $imagename);
 			$stmt->bindParam(":type", $type);

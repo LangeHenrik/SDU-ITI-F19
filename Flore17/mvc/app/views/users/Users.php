@@ -12,13 +12,13 @@
 		<?php include '../app/views/partials/menu.php'; ?>
 
 		<?php include '../app/views/partials/add.php'; ?>
-		
+
 		<div class="maincolumn">
-		
+
 			<?php include '../app/views/partials/getUsers.php'; ?>
-		
+			
 		</div>
-		
+
 		<?php include '../app/views/partials/add.php'; ?>
 
 	</body>
