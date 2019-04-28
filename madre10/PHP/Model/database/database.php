@@ -1,9 +1,6 @@
 <?php
-$server = 'localhost';
-$username = 'root';
-$password = 'root';
-$dsn =  'mysql:dbname=madre10;host=localhost;port=3306;charset=utf8';
-$image_folder= "uploaded_images/";
+require(__DIR__.'/../../../dbConfig.php');
+
 $conn = null;
 try{
     $conn = new PDO($dsn, $username, $password);

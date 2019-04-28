@@ -5,7 +5,7 @@ General info:
  - There is a basic test user with username: 'testuser' and password: 'password'
  - For me all the tests are passed when run from root folder.
  - All paths are changed to work only from root folder. It will not work if served of my folder (madre10).
-
+ - See DB.config in root to change DB connection configs
 
 
 
