@@ -5,6 +5,7 @@ echo "<link rel='stylesheet' href='/Mach316/mvc/public/css/users.css'>";
 
 $userRenderer = new UserRenderer();
 $users = $parameters['users'];
+
 $renderedUsers = $userRenderer->renderUsers($users);
 
 

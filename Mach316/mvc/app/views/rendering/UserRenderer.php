@@ -3,27 +3,34 @@
 
 class UserRenderer
 {
-    public function renderUsers($users) {
+    public function renderUsers($users)
+    {
 
         $usersElement = "<div class='users'>";
         $count = 0;
-        foreach($users as $user) {
-            $even = true;
-            if($count%2 == 0) {
+        if ($users) {
+            foreach ($users as $user) {
                 $even = true;
-            } else {
-                $even = false;
+                if ($count % 2 == 0) {
+                    $even = true;
+                } else {
+                    $even = false;
+                }
+                $usersElement .= $this->renderUser($user, $even);
+                $count = $count + 1;
             }
-            $usersElement .= $this->renderUser($user, $even);
-            $count = $count +1;
+            $usersElement .= "</div>";
+            return $usersElement;
         }
-        $usersElement .= "</div>";
-        return $usersElement;
+        else {
+            return "<div>No users have registered yet</div>";
+        }
 
     }
 
-    public function renderUser($user, $even) {
-        if($even) {
+    public function renderUser($user, $even)
+    {
+        if ($even) {
             $classname = "user-even";
         } else {
             $classname = "user-odd";
@@ -34,7 +41,7 @@ class UserRenderer
         $lastname = $user->getLastname();
         $userimages = $user->getImages();
         $imageElements = $this->renderUserImages($userimages);
-        $userLink = '/Mach316/mvc/public/home/userpage/'.$username;
+        $userLink = '/Mach316/mvc/public/home/userpage/' . $username;
 
         $userElement = "
         <div class=$classname>
@@ -47,10 +54,11 @@ class UserRenderer
 
     }
 
-    public function renderUserImages($userImages) {
+    public function renderUserImages($userImages)
+    {
 
         $userImagesElement = "<div class='user-images'>";
-        if($userImages) {
+        if ($userImages) {
             foreach ($userImages as $userImage) {
                 $filePath = '/Mach316/mvc/app/uploads/' . $userImage->getFileName();
                 $userImagesElement .= "<div class='user-image-wrapper'><img class='user-image' src=$filePath /></div>";
@@ -61,7 +69,6 @@ class UserRenderer
         return $userImagesElement;
 
     }
-
 
 
 }
