@@ -2,10 +2,9 @@
 class DB_Config {
 	
 	protected $servername = 'localhost';
-	protected $username = 'username';
-	protected $password = 'password';
-	protected $dbname = 'myPDOdb';
-
+	protected $username = 'admin';
+	protected $password = 'root';
+	protected $dbname = 'magle17';
 }
 	
 	

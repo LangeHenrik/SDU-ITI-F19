@@ -2,7 +2,7 @@
 
 class Router {
 	
-	protected $controller = 'homeController';
+	protected $controller = 'HomeController';
 	protected $method = 'index';
 	protected $params = [];
 	
