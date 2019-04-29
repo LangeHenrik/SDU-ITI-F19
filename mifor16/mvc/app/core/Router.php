@@ -4,7 +4,7 @@ namespace core;
 
 class Router {
 	
-	protected $controller = 'homeController';
+	protected $controller = 'controllers\HomeController';
 	protected $method = 'index';
 	protected $params = [];
 
@@ -32,7 +32,8 @@ class Router {
 
         require_once 'restricted.php';
         if(restricted(get_class($this->controller), $this->method)) {
-            header("Location: /camkr16/mvc/public/authentication/login");
+            # TODO: fix
+            header("Location: /mifor16/mvc/public/authentication/login");
             echo 'Access Denied';
         } else {
             call_user_func_array([$this->controller, $this->method], $this->params);
@@ -48,4 +49,3 @@ class Router {
 	
 }
 	
-

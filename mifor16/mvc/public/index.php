@@ -5,5 +5,3 @@ if (session_status() == PHP_SESSION_NONE ) {
 }
 
 require_once '../app/init.php';
-
-$router = new Router();

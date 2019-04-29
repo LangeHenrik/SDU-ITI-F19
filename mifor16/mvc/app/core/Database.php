@@ -1,7 +1,8 @@
 <?php
 
-require_once 'db_config.php';
+namespace core;
 
+require_once 'db_config.php';
 
 	
 class Database extends DB_Config {
