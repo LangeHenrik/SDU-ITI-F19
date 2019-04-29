@@ -22,12 +22,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = $_POST['city'];
     $email = $_POST['email'];
     $phonenumber = $_POST["phonenumber"];
+    $username_stripped = strip_tags($username,"<b>");
+    $password_stripped = strip_tags($password,"<b>");
+    $rpassword_stripped = strip_tags($rpassword,"<b>");
+    $firstname_stripped = strip_tags($firstname,"<b>");
+    $lastname_stripped = strip_tags($lastname,"<b>");
+    $zip_stripped = strip_tags($zip,"<b>");
+    $city_stripped = strip_tags($city,"<b>");
+    $email_stripped = strip_tags($email,"<b>");
+    $phonenumber_stripped = strip_tags($phonenumber,"<b>");
 
 
-    if($password != $rpassword){
+    if($password_stripped != $rpassword_stripped) {
         $password_match = false;
     } else {
-        if(create_user($username, $password, $firstname, $lastname, $zip, $city, $email, $phonenumber) == false){
+        if(create_user($username_stripped, $password_stripped, $firstname_stripped, $lastname_stripped, $zip_stripped,
+                $city_stripped, $email_stripped, $phonenumber_stripped) == false){
             header("location: Login.php");
         } else {
             $user_exist = true;
@@ -77,11 +87,11 @@ Phone number:<br>
 
 </form>
 <?php
-if ($password_match == false){
+if (!$password_match){
     echo "Password does not match";
     $password_match = true;
 }
-if ($user_exist == true){
+if ($user_exist){
     echo "The user already exist";
     $user_exist = false;
 }

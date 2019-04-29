@@ -40,7 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $path = $target_file;
             $title = $_POST['title'];
             $description = $_POST['description'];
-            upload_picture($username, $path, $title, $description);
+            $username_stripped = strip_tags($username,"<b>");
+            $path_stripped = strip_tags($path,"<b>");
+            $title_stripped = strip_tags($title,"<b>");
+            $description_stripped = strip_tags($description,"<b>");
+            upload_picture($username_stripped, $path_stripped, $title_stripped, $description_stripped);
         } else {
             echo "Sorry, there was an error uploading your file.";
         }

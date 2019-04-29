@@ -6,15 +6,18 @@
  * Time: 11:10
  */
 require "db_manager.php";
+$msg = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    if(login($username, $password) == true){
+    $username_stripped = strip_tags($username,"<b>");
+    $password_stripped = strip_tags($password,"<b>");
+    if(login($username_stripped, $password_stripped) == true){
         session_start();
         $_SESSION['login_user'] = $username;
         header("location: picture_page.php");
     } else {
-        echo '<script>alert("Username does not exist, or password is incorrect.")</script>';
+        $msg = "Username or Password is incorrect";
     }
 }
 
@@ -37,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br>
         <br>
         <button class="button buttonlogin">Login</button>
+        <p id="container"><?php echo $msg; ?></p>
     </fieldset>
 </form>
 <nav>
