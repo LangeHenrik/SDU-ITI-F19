@@ -16,7 +16,7 @@ function performAjax(){
                 }
             }
         };
-        xmlhttp.open("GET", "?offset="+offset, true); 
+        xmlhttp.open("GET", "getimages/?offset="+offset, true); 
         //true means it is asynchronous.
         xmlhttp.send();
 }
@@ -61,7 +61,7 @@ function amountscrolled(){
 }
 
 function checkRegister() {
-    alert("entered JS");
+    console.log("entered JS");
     var errorMessageContainer = document.getElementById("register-error-container");
     errorMessageContainer.innerHTML="";
 
@@ -102,7 +102,7 @@ function checkRegister() {
     }
 
     if (!(validLastName)) {
-        console.log("efternavnforkert.");
+        console.log("efternavn forkert.");
         errorMessageContainer.innerHTML += "Dit efternavn må kun indeholde bogstaver<br>";
         evalVar = false;
     }

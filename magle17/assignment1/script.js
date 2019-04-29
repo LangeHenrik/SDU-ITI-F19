@@ -61,7 +61,7 @@ function amountscrolled(){
 }
 
 function checkRegister() {
-    alert("entered JS");
+    console.log("entered js checks");
     var errorMessageContainer = document.getElementById("register-error-container");
     errorMessageContainer.innerHTML="";
 
