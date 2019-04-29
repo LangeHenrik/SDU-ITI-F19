@@ -1,6 +1,6 @@
 -- MySQL dump 10.14  Distrib 5.2.14-MariaDB, for Win64 (x64)
 --
--- Host: localhost    Database: Images
+-- Host: localhost    Database: ImagesTable
 -- ------------------------------------------------------
 -- Server version	5.2.14-MariaDB
 

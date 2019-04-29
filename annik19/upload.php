@@ -1,5 +1,5 @@
 <?php
-include "Images.php";
+include "images.php";
 require_once "config.php";
 
 $title = htmlentities($_POST["img_title"]);
@@ -26,4 +26,4 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 <?php } else {
     //echo "Sorry, there was an error uploading your file.";
 }
-header("Location: Images.php?");
+header("Location: images.php?");

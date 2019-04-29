@@ -5,13 +5,12 @@
     margin-top: 8%;
 }
 #hello{
-    margin: 0;
-    margin-left: 2%;
+    margin-top: 4%;
     font-family: 'Lobster', cursive;
     font-size: 6vh;
 }
 #upload{
-    margin-left: 3%;
+
 }
 #upload input[type="text"]:focus, textarea:focus {
     background-color: #cbcdd3;

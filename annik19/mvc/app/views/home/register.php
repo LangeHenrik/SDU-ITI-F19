@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="home.css">
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="mvc/app/css/home.css">
+    <link rel="stylesheet" type="text/css" href="mvc/app/css/login.css">
+    <?php echo "<link rel='stylesheet' href='../css/navbar.css'>"?>
     <title>Register</title>
 </head>
 <body>
 
 <?php
-require_once "config.php";
+//require_once "config.php";
 $fname =$lname =$username = $password = $repeat_pwd = $city = $zip = $email = $phone="";
 $er_fname =$er_lname=$er_username = $er_password = $er_repeat = $er_city = $er_zip = $er_email = $er_phone =$er_dontmatch="";
 $errors = array();
@@ -115,41 +116,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     if (count($errors)==0){
-        $new_user = 'INSERT INTO user (username, pwd, fname, lname, city, zip, email, phone) 
-              VALUES (:username, :password, :fname, :lname, :city, :zip, :email, :phone);';
-        $stmt = $conn->prepare($new_user);
-        $stmt -> bindParam(":username", $_POST["username"]);
-        $pwd_hash = password_hash($_POST["password"], PASSWORD_BCRYPT);
-        $stmt -> bindParam(":password", $pwd_hash);
-        $stmt -> bindParam(":fname", $_POST["fname"]);
-        $stmt -> bindParam(":lname", $_POST["last"]);
-        $stmt -> bindParam(":city", $_POST["city"]);
-        $stmt -> bindParam(":zip", $_POST["zip"]);
-        $stmt -> bindParam(":email", $_POST["email"]);
-        $stmt -> bindParam(":phone", $_POST["phone"]);
-        $stmt -> execute();
-
-        // echo $new_user."<br>";
+//        $new_user = 'INSERT INTO user (username, pwd, fname, lname, city, zip, email, phone)
+//              VALUES (:username, :password, :fname, :lname, :city, :zip, :email, :phone);';
+//        $stmt = $conn->prepare($new_user);
+//        $stmt -> bindParam(":username", $_POST["username"]);
+//        $pwd_hash = password_hash($_POST["password"], PASSWORD_BCRYPT);
+//        $stmt -> bindParam(":password", $pwd_hash);
+//        $stmt -> bindParam(":fname", $_POST["fname"]);
+//        $stmt -> bindParam(":lname", $_POST["last"]);
+//        $stmt -> bindParam(":city", $_POST["city"]);
+//        $stmt -> bindParam(":zip", $_POST["zip"]);
+//        $stmt -> bindParam(":email", $_POST["email"]);
+//        $stmt -> bindParam(":phone", $_POST["phone"]);
+//        $stmt -> execute();
     }
 }
 
-function test_input($in){
-    // echo "inside test_input...";
-    $in = trim($in);
-    $in = stripslashes($in);
-    $in = htmlspecialchars($in);
-    return $in;
-}
 ?>
-
-<form class="register" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+<!--action="--><?php //echo htmlspecialchars($_SERVER["PHP_SELF"]);?><!--"-->
+<?php include '../app/views/partials/menu.php';?>
+<form class="register" action ="register" method="post">
     <h1>Register</h1>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (count($errors)==0) {
             if ($stmt) {
-                header('Location:Login.php?');
-                // print " <p class='register_message'>Now you are registered! Login in <a href=\"Login.php\">here</a>.</p>";
+                //header('Location:login.php?');
+                 print " <p class='register_message'>Now you are registered! Login in <a href=\"login.php\">here</a>.</p>";
             }
         }else {
             print "<p class='login_error'>Registration failed.</p>";
@@ -186,15 +179,9 @@ function test_input($in){
     <br><br>
     <div id="register">
         <input type="submit" id="button_register" value="Register">
-        <p class="message">Already have an account? Login in <a href="Login.php">here</a>.</p>
+        <p class="message">Already have an account? Login in <a href="login.php">here</a>.</p>
     </div>
 </form>
-
-<?php
-//    echo preg_match("/^([a-zA-Z])+$/", "9KJK7J");
-//    echo $fname . "<br>" . $lname . "<br>" .
-//    $username. "<br>".$password . "<br>".$city ."<br>".$zip ."<br>" . $email."<br>".$phone;
-//?>
 
 </body>
 </html>

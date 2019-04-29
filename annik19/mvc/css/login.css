@@ -1,0 +1,114 @@
+label{
+    text-align: left;
+    margin-left: 0;
+    margin-top: 2%;
+}
+h2 {
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+#register{
+    margin-top: 3%;
+}
+/*.login {*/
+    /*font-family: 'Lobster', cursive;*/
+    /*width: 350px;*/
+    /*padding: 40px;*/
+    /*position: relative;*/
+    /*top: 5%;*/
+    /*left: 50%;*/
+    /*transform: translate(-45%, 15%);*/
+    /*background: #F79F24;*/
+    /*text-align: center;*/
+/*}*/
+/*.register{*/
+    /*width: 600px;*/
+    /*padding: 40px;*/
+    /*position: relative;*/
+    /*top: 5%;*/
+    /*left: 50%;*/
+    /*transform: translate(-45%, 5%);*/
+    /*background: rgb(255, 140, 0);*/
+/*}*/
+/*h1 {*/
+    /*font-family: 'Lobster', cursive;*/
+    /*font-size: 8vh;*/
+    /*text-align: center;*/
+    /*text-transform: uppercase;*/
+    /*color: #3c3d3f;*/
+/*}*/
+/*.field_login{*/
+    /*margin: 3%;*/
+    /*border: 2px solid #3c3d3f;*/
+    /*padding: 3%;*/
+    /*text-decoration: none;*/
+/*}*/
+/*.field_register{*/
+    /*margin: 1%;*/
+    /*padding: 1%;*/
+    /*border: 2px solid #3c3d3f;*/
+/*}*/
+/*label{*/
+    /*width: 150px;*/
+    /*display: block;*/
+    /*float: left;*/
+    /*margin-left: 15%;*/
+    /*clear: left;*/
+    /*text-align: right;*/
+    /*padding: 1%;*/
+/*}*/
+/*#login_button {*/
+    /*padding: 3%;*/
+    /*margin: 2%;*/
+    /*text-decoration: none;*/
+    /*border: 2px solid darkgreen;*/
+    /*background-color: white;*/
+    /*color: #3c3d3f;*/
+    /*font-weight: bold;*/
+/*}*/
+/*#button_register {*/
+    /*padding: 2%;*/
+    /*text-decoration: none;*/
+    /*border: 2px solid darkgreen;*/
+    /*background-color: white;*/
+    /*color: #3c3d3f;*/
+    /*font-weight: bold;*/
+    /*width: 210px;*/
+/*}*/
+/*#register{*/
+    /*display: block;*/
+    /*text-align: center;*/
+/*}*/
+/*.login_error{*/
+    /*font-family: "Arial", sans-serif;*/
+    /*text-align: center;*/
+    /*font-weight: bold;*/
+    /*font-size: 2vh;*/
+/*}*/
+/*.error{*/
+    /*display: block;*/
+    /*padding: 1.5%;*/
+    /*width: 200px;*/
+    /*margin-left: 45%;*/
+    /*color: red;*/
+/*}*/
+/*.message{*/
+    /*font-family: 'Lobster', cursive;*/
+    /*font-size: 3vh;*/
+/*}*/
+/*.login input[type="text"]:focus, .login input[type="password"]:focus, .register input[type="text"]:focus, .register input[type="password"]:focus {*/
+    /*background-color: #cbcdd3;*/
+    /*text-decoration: none;*/
+/*}*/
+/*#login_button:hover, #button_register:hover{*/
+    /*background-color: darkgreen;*/
+    /*transition: background-color 0.25s;*/
+    /*cursor: pointer;*/
+    /*color: white;*/
+/*}*/
+/*.fa-user {*/
+    /*font-size: larger;*/
+/*}*/
+/*.fa-unlock {*/
+    /*font-size: larger;*/
+/*}*/

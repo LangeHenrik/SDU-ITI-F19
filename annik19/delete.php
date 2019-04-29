@@ -14,4 +14,4 @@ if ($stmt->rowCount() == 1) {
     echo "OK";
 }
 
-header("location: Images.php?");
+header("location: images.php?");
