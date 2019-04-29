@@ -13,8 +13,8 @@ if (!function_exists('getConnection')) {
 
         $hostname = '127.0.0.1';
         $username = 'root';
-        $password = 'nqg69yhk';
-        $db = 'internet_technology';
+        $password = 'root';
+        $db = 'mach316';
         $port = 3306;
         $dsn = "mysql:dbname={$db};host={$hostname};port={$port};charset=utf8";
 
