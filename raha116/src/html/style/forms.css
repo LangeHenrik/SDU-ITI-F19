@@ -1,0 +1,61 @@
+/* Some reuseable styling for forms */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 1px;
+    min-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.input-wrapper label {
+    display: none;
+}
+
+.input {
+    height: 2rem;
+    padding: 0.5rem;
+    font-family: var(--font);
+    box-sizing: border-box;
+    outline-offset: 0;
+    outline: none;
+    border-radius: 0.3rem;
+    border: 2px solid var(--blurred-input);
+    transition: border-color 100ms ease-in-out;
+    font-size: 1rem;
+}
+
+textarea.input {
+    resize: vertical;
+    height: 5rem;
+    min-height: 4rem;
+}
+
+.input:focus {
+    border-color: var(--main-color);
+}
+
+.input.dirty:invalid {
+    border-color: var(--error-color);
+}
+
+.form {
+    grid-gap: 1rem;
+}
+
+.hidden-submit-button {
+    display: none;
+}
+
+
+.error {
+    color: var(--error-color);
+    transition: flex-basis 250ms ease-in-out;
+    flex: 0 0 1em;
+    overflow: hidden;
+    padding-top: 0.2rem;
+    text-align: center;
+}
+
+.error.hidden {
+    flex-basis: 0;
+}

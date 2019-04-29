@@ -1,0 +1,6 @@
+<html>
+<head>
+<div class="ajax">
+<p>Hope you like your new page<p>
+</div>
+</head>

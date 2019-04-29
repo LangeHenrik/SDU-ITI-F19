@@ -1,0 +1,156 @@
+/* Top Navigation Bar */
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
+
+body {
+	height: 100%;
+}
+
+button.button {
+	background:none;
+	border:none; 
+}
+
+.topbar {
+	background-color: #4f81bd;
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+		
+.topbar inline{
+	display: inline-block;
+	font-size: 20px;
+	padding: 10px;
+}
+
+		
+.active { /* Currently activated tab */
+	background-color: #1f497d;
+	color: white;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.weather {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+}
+
+/* Side Panels */
+
+.side-column {
+	display: block;
+	background-color: #eeece1;
+	text-align: center;
+	float: left;
+	width: 10%;
+	margin-left: 0px;
+	height: 100vh;
+	}
+
+.add-side {
+	background-color: #f79646;
+	border-style: solid;
+	border-color: #e46c0a;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 80vh;
+}
+
+/* Main Page */
+
+.mainCenter {
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+
+.pictures {
+	float: left;
+	width: 80vW;
+	height: 600px;
+
+}
+
+
+.user {
+	display: block;
+	float: left;
+	margin-right: 50px;
+	width: 25%;
+	height: 562px;
+}
+
+.userbox {
+	display: inline-block;
+	border-radius: 25px;
+	background-color: #4f81bd;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 50px;
+	width: 250px;
+	height: 250px;
+}
+
+.profilePictureBox{
+	margin-left: auto;	
+	margin-right: auto;
+	margin-top: 20px;
+	width: 120px;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+	
+}
+
+.profilePicture {
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+    height: auto;
+    width: 100%;
+
+}
+
+.profileName {
+	color: white;
+	text-align: center;
+}
+
+.postBox {
+	display: block;
+	margin-left: 25%;
+}
+
+.postingPicFrame {
+	height: 80%;
+	
+}
+
+.postingPic { /* Billede og tekst i opslag */
+	border: solid;
+	margin-top: 50px;
+	height: 80%;
+	width: auto;	
+}
+
+.postHeadingBox {
+
+}
+
+.seperator {
+	border-color: #4f81bd;
+	margin-left: 10px;
+	margin-right: 10px;
+}

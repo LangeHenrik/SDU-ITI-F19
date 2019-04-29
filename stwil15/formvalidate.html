@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title> Form validator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--<script src="formvalidate.js"></script>-->
+	</head>
+    <body>
+        <form onsubmit="return checkFields();" method=”post” >
+            <label for="name" style="color: blue;">name</label>
+            <br> 
+            <input type="text" name="name" id="name"/> 
+            <br> 
+            <label for="password">password</label>
+            <br> 
+            <input type="password" name="password" id="password"/> 
+            <br>
+            <label for="phone">phone number</label>
+            <br>
+            <input type="text" name="phone" id="phone"/> 
+            <br> 
+            <label for="email">email adress</label>
+            <br>
+            <input type="text" name="email" id="email"/>
+            <br> 
+            <label for="zip">zip code</label>
+            <br> 
+            <input type="text" name="zip" id="zip"/> 
+            <br> 
+            <input type="submit" name="submit" id="submit"/> 
+        </form>
+    <script> 
+        function checkFields() { 
+            checkName(); 
+            //confirm("Submitted"); //test if function is even called
+            var password = document.getElementById("password").value;
+            
+            if(password.length < 8) { 
+                alert("Password must be at least 8 characters"); 
+                return false; 
+            } else if(!/[A-Z]/.test(password)) {
+                alert("password must contain at least one upper case character");
+                return false;
+            } else if(!(/[a-z]/).test(password)) {
+                aler("password must contain at least one lower case character");
+                return false
+            } else { 
+                return true;
+            } 
+            
+            
+            
+        }
+        function checkName() {
+            let names = document.getElementById("name").value.split(' ');
+            let namecount = 0;
+            for (n in names) {
+                if (n.length >= 1) {
+                    namecount++;
+                }
+            }
+            if(!namecount >= 2) {
+                alert("Given and surname must be at least one character");
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+        function checkPhone() {
+            let phone = document.getElementById("phone").value;
+
+        }
+        
+        function checkEmail() {
+            let email = document.getElementById("email").value;
+
+        }
+        
+        function checkZip() {
+            let zip = document.getElementById("zip").value;
+
+        }
+        
+        
+    </script> 
+    
+    
+    </body>
+	
+	
+</html>

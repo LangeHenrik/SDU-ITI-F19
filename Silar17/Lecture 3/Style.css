@@ -1,0 +1,218 @@
+/* Top Navigation Bar */
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+	background-color: 99ccff;
+}
+
+body {
+	height: 100%;
+}
+
+button.button {
+	background:none;
+	border:none; 
+}
+
+.topbar {
+	background-color: #4f81bd;
+	list-style-type: none;
+	text-align: center;
+	
+}
+		
+.topbar inline{
+	
+	display: inline-block;
+	font-size: 20px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	
+}
+
+		
+.active { /* Currently activated tab */
+	
+	background-color: #1f497d;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	
+}
+.notActive {
+	background-color: #4f81bd;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	
+}
+
+.weather {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+}
+
+/* Side Panels */
+
+.side-column {
+	display: block;
+	float: left;
+	background-color: #eeece1;
+	text-align: center;
+	width: 20% px;
+	height: 100% -25px;
+	min-width: 100px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+
+}
+
+.add-side {
+	background-color: #f79646;
+	text-align: center;
+	border-style: solid;
+	border-color: #e46c0a;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin: 0 auto;
+	height: 100%;
+	width: 100% -26px;
+	/* howthe fuck do I get this to match parent dic i lenght */
+	
+}
+
+/* Main Page */
+
+.main {
+	float: left;
+	height: 100%;
+	width: 100%;
+	
+}
+
+.mainCenter {
+	float: left;
+	height: 100%;
+	width: 80%;
+	
+}
+
+.pictureFeedBox {
+	float: left;
+	height: 80vh;
+	width: 100%;
+	
+}
+
+.feedBoxUser {
+	display: block;
+	float: left;
+	min-width: 150px;
+	width: 20%;
+	min-height: 150px;
+	height: auto;
+	background-color: yellow;
+}
+.feedBoxPicture {
+	display: block;
+	border-radius: 25px;
+	background-color: #4f81bd;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 50px;
+	height: 250px;
+	width: auto;
+}
+
+.user {
+	display: block;
+	float: left;
+	margin-right: 50px;
+	width: 25%;
+	height: 80%;
+	
+
+}
+
+.pictures {
+	float: left;
+	width: 80vW;
+	height: 600px;
+
+}
+
+
+
+
+.userbox {
+	display: inline-block;
+	border-radius: 25px;
+	background-color: #4f81bd;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 50px;
+	height: 250px;
+	width: auto;
+	
+}
+
+.profilePictureBox{
+	margin-left: auto;	
+	margin-right: auto;
+	margin-top: 20px;
+	width: 120px;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+	
+	
+}
+
+.profilePicture {
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+    height: auto;
+    width: 100%;
+}
+
+.profileName {
+	font-size: 3vw;
+	color: white;
+	text-align: center;
+}
+
+.postBox {
+	display: block;
+	margin-left: 25%;
+}
+
+.postingPicFrame {
+	height: 80%;
+	
+}
+
+.postingPic { /* Billede og tekst i opslag */
+	border: solid;
+	margin-top: 50px;
+	height: 80%;
+	width: auto;	
+}
+
+.postHeadingBox {
+
+}
+
+.seperator {
+	border-color: #4f81bd;
+	margin-left: 10px;
+	margin-right: 10px;
+}

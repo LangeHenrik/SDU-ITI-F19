@@ -1,0 +1,53 @@
+        .comment {
+      width: 40%;
+      height: 100px;
+      padding: 10px;
+      background-color: #d0e2bc;
+      }
+      
+    input[type=button], input[type=submit], input[type=file] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+p.comment_section{
+color: green;
+
+}
+
+p.description{
+ padding: 16px 32px;
+border: none;
+background-color: #D3D3D3;
+color: green;
+
+}
+
+p.user_section{
+ background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 2px 5px;
+
+}
+p.upload_section{
+padding: 16px 32px;
+border: none;
+background-color: #D3D3D3;
+color: green;
+}
+
+#user_feed{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    text-decoration: none;
+    margin: 4px 2px;
+}
+      

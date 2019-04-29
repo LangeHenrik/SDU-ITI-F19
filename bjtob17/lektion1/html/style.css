@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(233, 233, 233);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: inline-block;
+    width: 110px;
+}

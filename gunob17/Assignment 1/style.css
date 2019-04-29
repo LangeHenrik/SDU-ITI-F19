@@ -1,0 +1,124 @@
+/*
+color wheel
+#B21515;
+#FF5150;
+#FF3737;
+#03B235;
+#37FF70;
+*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+#bod {
+  background-color: #03B235;
+}
+
+.headline {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  background-color: #B21515;
+  border-radius: 25px;
+  border: dotted;
+}
+
+.header {
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #FF3737;
+}
+
+.single {
+  background-color: gray;
+  padding: 20px;
+  max-width: 100%;
+  margin: 10px;
+  border-radius: 2%;
+}
+
+.single_im {
+  border-radius: 2%;
+  max-width: 100%;
+  height: auto;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#logout {
+  display: block;
+  color: black;
+  text-align: right;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.com {
+  padding-left: 30px;
+}
+
+p {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+li a:hover {
+  background-color: #FF5150;
+}
+
+.active {
+  background-color: #B21515;
+}
+
+.login {
+  margin-top: 20px;
+}
+
+.label {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.images {
+  border-radius: 2%;
+  max-width: 100%;
+  height: auto;
+}
+
+.image {
+  background-color: gray;
+  padding: 20px;
+  max-width: 21%;
+  margin: 10px;
+  border-radius: 2%;
+  float: left;
+}
+
+.upload_form {
+  margin: 20px;
+}
+
+.comment {
+  display: block;
+  background-color: white;
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.newcomment {
+  margin-left: 3%;
+  margin-top: 3%;
+}
