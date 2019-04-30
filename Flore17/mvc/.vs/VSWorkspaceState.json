@@ -9,10 +9,8 @@
     "\\app\\views",
     "\\app\\views\\home",
     "\\app\\views\\partials",
-    "\\app\\views\\pictures",
-    "\\app\\views\\users",
-    "\\public"
+    "\\app\\views\\pictures"
   ],
-  "SelectedNode": "\\app\\views\\partials\\add.php",
+  "SelectedNode": "\\app\\controllers\\ApiController.php",
   "PreviewInSolutionExplorer": false
 }

@@ -60,10 +60,10 @@ class Picture extends Database {
 		$comm = "";
 	}
 
-	public function uploadPicDB($header, $comm, $imagetmp) {
+	public function uploadPicDB($header, $comm, $imagetmp, $ext) {
 
 		$imagename = 'Unknown';
-		$type = 'image/png';
+		$pic = base64_decode($imagetmp);
 
 		$sql = "Select * From posts";
 
@@ -83,8 +83,8 @@ class Picture extends Database {
 	
 		//bindParam for sql injection defence
 		$stmt->bindParam(":imagename", $imagename);
-		$stmt->bindParam(":type", $type);
-		$stmt->bindParam(":imagetmp", $imagetmp, PDO::PARAM_LOB); //bindparam for a DB Longblob
+		$stmt->bindParam(":type", $ext);
+		$stmt->bindParam(":imagetmp", $pic, PDO::PARAM_LOB); //bindparam for a DB Longblob
 		$stmt->bindParam(":header", $header);
 		$stmt->bindParam(":comm", $comm);
 		$stmt->bindParam(":image_id", $image_id);
