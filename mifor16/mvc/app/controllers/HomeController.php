@@ -6,8 +6,13 @@ use core\Controller;
 class HomeController extends Controller {
 	
 	public function index () {
-		return $this->view("home/login");
+		return $this->view("home/Home");
 	}
+
+    public function log_out(){
+        session_destroy();
+        header("location: /mifor16/mvc/public/home");
+    }
 	
 //	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
 //		$user = $this->model('User');

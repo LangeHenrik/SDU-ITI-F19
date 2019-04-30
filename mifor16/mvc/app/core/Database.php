@@ -3,6 +3,7 @@
 namespace core;
 
 require_once 'db_config.php';
+use PDO;
 
 	
 class Database extends DB_Config {
@@ -25,5 +26,21 @@ class Database extends DB_Config {
 	public function __destruct() {
 		$this->conn = null;
 	}
+
+    function checkUserExists($ausername) {
+        $conn = getConnection();
+        $statement = $conn->prepare('select username from users where username = :username;');
+        $statement->bindParam(':username', $ausername);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        $count = count($result);
+        if ($count >= 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 	
 }

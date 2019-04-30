@@ -6,12 +6,12 @@
  * Time: 12:30
  */
 
-namespace services;
+namespace models;
 
 use core\Database;
 use PDO;
 
-class LoginService extends Database
+class Login extends Database
 {
     public function checkCredentials($ausername, $apassword) {
 

@@ -13,7 +13,7 @@
 //        if(checkCredentials($theusername, $thepassword)) {
 //            session_start();
 //            $_SESSION['login_user'] = $theusername;
-//            header('location: index.php');
+//            header('location: Home.php');
 //        }
 //    } else {
 //        echo '<script>alert("Username doesn\'t exist, or password is incorrect.")</script>';
@@ -31,8 +31,9 @@
 </head>
 <body>
 
-<form action="services/login()" method="post">
+<form action="/mifor16/mvc/public/Login/login" method="post">
     <div class="box">
+        <fieldset>
 
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="username" required>
@@ -41,16 +42,23 @@
         <input type="password" placeholder="Enter Password" name="password" required>
 
         <button type="submit" value="Submit">Login</button>
+        <?php if (isset($viewbag["error_msg"])) {
+            echo '<br>';
+            echo $viewbag["error_msg"];
+        } ?>
     </div>
 
 
 </form>
 
-<form action="register.php" method="post">
-    <div class="box">
-        <button type="submit" value="Submit">Register User</button>
-    </div>
-</form>
+<!--<form action="/mifor16/mvc/public/register" method="post">-->
+<!--    <div class="box">-->
+<!--        <button type="submit" value="Submit">Register User</button>-->
+<!--    </div>-->
+<!--</form>-->
+<div class="box">
+    <a href="/mifor16/mvc/public/Register">Register User</a>
+</div>
 
 
 </body>
