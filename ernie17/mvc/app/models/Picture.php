@@ -34,16 +34,9 @@ class Picture extends Database {
 			}
 
 			if ($respons === "") {
-				#$uploadFileName = time() . "-" . $fileName;
-				# Upload file
-				#move_uploaded_file($fileTmp, "uploads/" . $uploadFileName);
-
 				# create base64
 				$file = file_get_contents($fileTmp);
-			    //$base64 = 'data:image/' . $fileType . ';base64,' . base64_encode($file);
 				$base64 = "data:image;base64," . base64_encode($file);
-
-			    #echo "Base64 is " . $base64;
 
 				$stmtUploadImage = $this->conn->prepare("INSERT INTO picture (picture_user_id, image_name, header, description) VALUES (:userID, :imageName, :header, :description)");
 				$stmtUploadImage->bindparam(':userID', $userId);
@@ -73,7 +66,6 @@ class Picture extends Database {
 	}
 
 	public function getPicturesFromUser ($userId) {
-		// $stmtGetPictures = $this->conn->prepare("SELECT picture_id as image_id, image_name as image, header as title, description FROM picture WHERE picture_user_id = :userId");
 		$stmtGetPictures = $this->conn->prepare("SELECT picture_id as image_id, header as title, description, image_name as image FROM picture WHERE picture_user_id = :userId");
 		$stmtGetPictures->bindparam(':userId', $userId);
 

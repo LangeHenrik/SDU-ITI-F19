@@ -51,8 +51,6 @@ class APIController extends Controller {
 
             echo $json_users;
         }
-
-        #echo "Error";
     }
 
 }

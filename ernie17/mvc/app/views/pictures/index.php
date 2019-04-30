@@ -21,7 +21,6 @@
                 }
 
                 echo "<p class='header'>$header</p>";
-                // echo '<img src=' . "data:image;base64,$imageName" . '>';
                 echo "<img src='$imageName'>";
                 echo "<p class='description'>$description (User: $pictureAuthor)</p>";
                 // echo "<p class='date'>Uploaded: $date</p>";

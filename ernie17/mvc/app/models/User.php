@@ -1,8 +1,6 @@
 <?php
 class User extends Database {
 
-	// public $name;
-
 	public function login($username, $password) {
 		$users = $this->getUsers();
 
@@ -26,9 +24,6 @@ class User extends Database {
 			header('Location: /ernie17/mvc/public/home');
 		}
 
-		/*if ($username == 'admin' && $password == 'admin') {
-			echo 'nice';
-		}*/
 	}
 
 	public function register ($username, $password, $passwordRepeat, $firstname, $lastname, $zip, $city, $email, $phone) {
@@ -128,10 +123,6 @@ class User extends Database {
 	}
 
 	public function validateUser ($username, $password) {
-		// $stmtGetUsers = $this->conn->prepare("SELECT picture_user_id FROM picture_user WHERE username = :username AND pass = :password");
-		// $stmtGetUsers->bindparam(':username', $username);
-		// $stmtGetUsers->bindparam(':password', $password);
-
 		$stmtGetUsers = $this->conn->prepare("SELECT picture_user_id, pass FROM picture_user WHERE username = :username");
 		$stmtGetUsers->bindparam(':username', $username);
 

@@ -5,7 +5,6 @@ class UsersController extends Controller {
 	public function index () {
 		$_SESSION['page_name'] = "Users";
 
-		// $viewbag['pictures'] = $this->model('Picture') -> getAllPictures();
 		$viewbag['users'] = $this->model('User') -> getAllUsersInfo();
 		$viewbag['user'] = $this->model('User') -> getUserInfo();
 
