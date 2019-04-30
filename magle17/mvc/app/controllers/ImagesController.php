@@ -1,11 +1,11 @@
 <?php
 
 class ImagesController extends Controller {
-
+    private $viewbag=[];
     public function index(){
         $images=$this->model('Images');
-        $viewbag["initialImages"]=$images->loadInitialImages();
-        $this->view('home/index', $viewbag);
+        $this->viewbag["initialImages"]=$images->loadInitialImages();
+        $this->view('home/index', $this->viewbag);
     }
 
     public function getimages(){
@@ -15,7 +15,7 @@ class ImagesController extends Controller {
 
     public function uploadImage(){
         $images=$this->model('Images');
-        $viewbag["respons"]=$images->uploadImage();
+        $this->viewbag["respons"]=$images->uploadImage();
         header("Location: /magle17/mvc/public/Images/");
 
     }

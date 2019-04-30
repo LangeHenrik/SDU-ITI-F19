@@ -7,7 +7,7 @@ class User extends Database {
 	private $prepareInsertUser;
 	public function __construct() {
 		parent::__construct();
-		$this->preparedLoginCheck = $this->conn->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+		$this->preparedLoginCheck = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
 		$this->preparedGetUsername = $this->conn->prepare("SELECT * from users WHERE username = :username");
 		$this->prepareInsertUser = $this->conn->prepare("INSERT INTO users (username, firstname, lastname, zip, city, email, phone, password) 
 			VALUES(:username, :firstname,:lastname,:zip,:city,:email,:phone,:password)");
@@ -18,18 +18,21 @@ class User extends Database {
 			$usernameLogin = htmlentities(filter_input(INPUT_POST, "login-username", FILTER_SANITIZE_STRING));
 			$passwordLogin = htmlentities(filter_input(INPUT_POST, "login-password", FILTER_SANITIZE_STRING));
 			$this->preparedLoginCheck->bindparam(':username', $usernameLogin);
-			$this->preparedLoginCheck->bindparam(':password', $passwordLogin);
 			$this->preparedLoginCheck->execute();
 			$this->preparedLoginCheck->setFetchMode(PDO::FETCH_ASSOC);
 			$result = $this->preparedLoginCheck->fetchAll();
 			if (count($result) == 1) {
-			foreach($result as $row){
-				$_SESSION['loggedInUser'] =  $row['id'];
-				$_SESSION['logged_in'] = true;
-				header('Location: /magle17/mvc/public/home/');
-			}
+				foreach($result as $row){
+					if(password_verify($passwordLogin,$row["password"])){
+						$_SESSION['loggedInUser'] =  $row['id'];
+						$_SESSION['logged_in'] = true;
+						header('Location: /magle17/mvc/public/home/');
+					}else{
+						return "Forkert adgangskode! Prøv igen, så kan du se blærede billeder!";
+					}
+				}
 			} else {
-				return "Forkert brugernavn eller adgangskode! Prøv igen, så kan du se blærede billeder!";
+				return "Brugeren eksisterer ikke! Prøv igen, så kan du se blærede billeder!";
 			}
 		}
 		return "";
@@ -57,7 +60,7 @@ class User extends Database {
 			}
 			else{
 			  $this->prepareInsertUser->bindparam(':username', $usernameInput);
-			  $this->prepareInsertUser->bindparam(':password', $passwordInput);
+			  $this->prepareInsertUser->bindparam(':password', password_hash($passwordInput,PASSWORD_DEFAULT));
 			  $this->prepareInsertUser->bindparam(':lastname', $lastNameInput);
 			  $this->prepareInsertUser->bindparam(':firstname', $frontNameInput);
 			  $this->prepareInsertUser->bindparam(':zip', $zipInput);
