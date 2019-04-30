@@ -3,8 +3,9 @@
 class HomeController extends Controller {
 	private $viewbag=[];
 	public function index () {
-		if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
-			$this->view('home/index', $this->viewbag);
+		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+			//$this->view('home/index', $this->viewbag);
+			header("Location: /magle17/mvc/public/Images/");
 		}else{
 			$this->login();
 		}
@@ -31,7 +32,7 @@ class HomeController extends Controller {
 	}
 	
 	public function logout() {
-		unset($_SESSION['loggedin']);
+		unset($_SESSION['logged_in']);
 		if($this->post()) {
 			session_unset();
 			header('Location: /mvc/public/home/loggedout');

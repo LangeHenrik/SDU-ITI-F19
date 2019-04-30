@@ -25,7 +25,7 @@ class User extends Database {
 			if (count($result) == 1) {
 			foreach($result as $row){
 				$_SESSION['loggedInUser'] =  $row['id'];
-				$_SESSION['loggedin'] = true;
+				$_SESSION['logged_in'] = true;
 				header('Location: /magle17/mvc/public/home/');
 			}
 			} else {

@@ -21,13 +21,13 @@ class Images extends Database {
 
     public function getimages(){
         if(isset($_GET["offset"])){
-            if( isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
+            if( isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
         
-                $preparedGetImages->bindParam(':offset',$_GET["offset"],PDO::PARAM_INT);
-                $preparedGetImages->execute();
-                $preparedGetImages->setFetchMode(PDO::FETCH_ASSOC);
-                $result=$preparedGetImages->fetchAll();
-                $preparedGetImages=null;
+                $this->preparedGetImages->bindParam(':offset',$_GET["offset"],PDO::PARAM_INT);
+                $this->preparedGetImages->execute();
+                $this->preparedGetImages->setFetchMode(PDO::FETCH_ASSOC);
+                $result=$this->preparedGetImages->fetchAll();
+                $this->preparedGetImages=null;
                 
                 $columns=array();
                 
@@ -35,7 +35,7 @@ class Images extends Database {
                     echo '0';
                 }else{
                     foreach($result as $row){
-                        $tmp='<div class="img"><h3>'.$row['title'].'</h3>'.'<img src="media/'.$row['media_name'].'"><p>'.$row['description'].'</p></div>';
+                        $tmp='<div class="img"><h3>'.$row['title'].'</h3>'.'<img src="data:image/;base64,'.$row['media_name'].'"><p>'.$row['description'].'</p></div>';
                         array_push($columns,$tmp);
                     }
                     echo json_encode($columns);
@@ -47,31 +47,19 @@ class Images extends Database {
     public function uploadImage(){
         if (isset($_FILES['image-upload'])) {
             $respons = "";
-            $fileName = $_FILES['image-upload']['name'];
-            $fileSize = $_FILES['image-upload']['size'];
             $fileTmp = $_FILES['image-upload']['tmp_name'];
-            $fileType = $_FILES['image-upload']['type'];
-            $fileNameExploded = explode ('.', $_FILES['image-upload']['name']);
-            $fileExt = strtolower(end($fileNameExploded));
-            $validExtensions = array("jpeg", "jpg", "png");
-            if (in_array($fileExt, $validExtensions) === false) {
-                $respons = $respons . "Ublæret filtype! Kun .jpeg, .jpg and .png filer er tilladt<br>";
-            }
-            if ($fileSize > 1000000) {
-                $respons = $respons . "Filen er lidt for blæret til os! Vælg en mindre blæret fil.<br>";
-            }
+            $fileTmp = file_get_contents($fileTmp);
+            $fileTmp = base64_encode($fileTmp);
             if ($respons === "") {
-                $uploadFileName = time() . "-" . $fileName;
                 # Upload file
-                move_uploaded_file($fileTmp, "media/" . $uploadFileName);
                 $inputHeader = htmlentities(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
                 $inputDescription = htmlentities(filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING));
         
-                $stmtUploadImage->bindparam(':userID', $_SESSION['loggedInUser']);
-                $stmtUploadImage->bindparam(':imageName', $uploadFileName);
-                $stmtUploadImage->bindparam(':title', $inputHeader);
-                $stmtUploadImage->bindparam(':description', $inputDescription);
-                $stmtUploadImage->execute();
+                $this->stmtUploadImage->bindparam(':userID', $_SESSION['loggedInUser']);
+                $this->stmtUploadImage->bindparam(':imageName', $fileTmp);
+                $this->stmtUploadImage->bindparam(':title', $inputHeader);
+                $this->stmtUploadImage->bindparam(':description', $inputDescription);
+                $this->stmtUploadImage->execute();
         
                 $respons =  "File uploaded!";
             }

@@ -7,8 +7,8 @@
     $column4 ='';
 
     
-    foreach($result as $row){
-        $tmp='<div class="img"><h3>'.$row['title'].'</h3>'.'<img src="media/'.$row['media_name'].'"><p>'.$row['description'].'</p></div>';
+    foreach($viewbag["initialImages"] as $row){
+        $tmp='<div class="img"><h3>'.$row['title'].'</h3>'.'<img src="data:image/;base64,'.$row['media_name'].'"><p>'.$row['description'].'</p></div>';
         switch($pointer){
         case 1:
             $column1.=$tmp;
@@ -46,7 +46,7 @@
         <input type="submit" name="goto-users" value="Alle Brugere">
       </form>
       <div class="form-container upload">
-        <form class="form-classic" method="post" enctype="multipart/form-data" action="/magle17/mvc/public/images/uploadImage/">
+        <form class="form-classic" method="post" enctype="multipart/form-data" action="/magle17/mvc/public/Images/uploadImage/">
             <fieldset class="fieldset-classic">
                 <legend>Upload et Blæret Billede!</legend>
                 <p>Titel</p>
