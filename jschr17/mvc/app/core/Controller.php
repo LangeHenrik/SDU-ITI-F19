@@ -7,9 +7,9 @@ class Controller {
 	}
 	
 	public function view($view, $viewbag = []) {
-		require_once '../app/views/' . $view . '.php';
+            require_once '../app/views/home/' . $view . '.php';
 	}
-	
+
 	public function post () {
 		return $_SERVER['REQUEST_METHOD'] === 'POST';
 	}
