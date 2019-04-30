@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Awesome Website</title>
-    <meta charset="UTF-8" />
-    <meta name="HandheldFriendly" content="true">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no, shrink-to-fit=no">
+      <title>My Awesome Website</title>
+      <meta charset="UTF-8" />
+      <meta name="HandheldFriendly" content="true">
+      <meta name="MobileOptimized" content="320">
+      <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no, shrink-to-fit=no">
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   </head>
-<body>
-     <?php include '../app/views/partials/header.php'; ?>
+  <body>
+      <?php include '../app/views/partials/header.php'; ?>
 
-    <div class="container">
-    <div class="row pt-3">
-    <section id="form-wrapper" class="form-group col-sm">
-        <form id="fileform" action="return false;">
-            <div class="form-group">
-                <label for="file">Select picture:</label>
-                <input type="file" name="file" autocomplete="off" required class="form-control-file">
-            </div>
+      <div class="container">
+          <div class="row pt-3">
+              <section id="form-wrapper" class="form-group col-sm">
+                  <form id="fileform" action="return false;">
+                      <div class="form-group">
+                          <label for="file">Select picture:</label>
+                          <input type="file" name="file" autocomplete="off" required class="form-control-file">
+                      </div>
 
-            <div class="form-group">
-                <label for="header">Header:</label>
-                <input type="text" name="header" autocomplete="off" class="form-control">
-            </div>
+                      <div class="form-group">
+                          <label for="header">Header:</label>
+                          <input type="text" name="header" autocomplete="off" class="form-control">
+                      </div>
 
-            <div class="form-group">
-                <label for="subtext">Subtext:</label>
-                <textarea name="subtext" autocomplete="off" class="form-control"></textarea>
-            </div>
+                      <div class="form-group">
+                          <label for="subtext">Subtext:</label>
+                          <textarea name="subtext" autocomplete="off" class="form-control"></textarea>
+                      </div>
 
-            <input id="input-button" type="button" name="submit" value="Upload" onclick="return send();" class="btn btn-primary">
-        </form>
-    </section>
-    <div class="col-sm">
-        <div id="location" class="text-muted"><?php echo $viewbag['city'] ?></div>
+                      <input id="input-button" type="button" name="submit" value="Upload" onclick="return send();" class="btn btn-primary">
+                  </form>
+              </section>
+              <div class="col-sm">
+                  <div id="location" class="text-muted"><?php echo htmlspecialchars($viewbag['city']) ?></div>
         <br>
         <div id="weather-conditions" class="text-center display-4"></div>
     </div>

@@ -49,7 +49,7 @@
                 <br>
                 <input id="passwordrepeat" type="password" name="password-repeat" placeholder="Repeat Password..." required onblur="checkPassword()">
                 <br>
-                <input id="city" type="text" name="city" placeholder="City..." pattern="^[a-zA-Z]*$">
+                <input id="city" type="text" name="city" placeholder="City..." pattern="^[a-zA-Z ]*$">
                 <br>
                 <input id="email" type="email" name="email" placeholder="Email...">
                 <br>

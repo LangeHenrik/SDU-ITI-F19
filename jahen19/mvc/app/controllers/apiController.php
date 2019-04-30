@@ -99,7 +99,7 @@ class ApiController extends Controller {
     public function register() {
         $this->model('User');
         $user = new User();
-        // TODO: input validation
+
         $user->name = $_POST['username'];
         if ($user->checkUsername() == FALSE) {
             echo "Invalid username";
@@ -109,6 +109,16 @@ class ApiController extends Controller {
         $user->hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $user->city = $_POST['city'];
         $user->email = $_POST['email'];
+
+        if (preg_match('/^[a-zA-Z ]*$/', $user->city) != 1) {
+            echo "Invalid city (only letters allowed)";
+            return;
+        }
+
+        if (!filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
+            echo "Invalid email address";
+            return;
+        }
 
         $db = new Database();
         $db->createUser($user);
