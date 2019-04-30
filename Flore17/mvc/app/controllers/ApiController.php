@@ -36,8 +36,8 @@ class ApiController extends Controller {
 
 			$exists = $this->model('User')->checkPasswordDB($json_obj->username, $json_obj->password);
 			
-			$temp = $json_obj->image;
-			//echo $temp;
+			//Split image-blob in ext and content
+			$temp = $json_obj->image
 			$temp1 = explode(';', $temp, 2);
 			$ext = $temp1[0];
 			$ext1 = substr($ext, 5);
