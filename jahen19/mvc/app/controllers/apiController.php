@@ -28,24 +28,20 @@ class ApiController extends Controller {
 
     public function pictures($var, $value){
         $this->model('Image');
-        $this->model('User');
         $db = new Database();
 
         // GET /public/api/pictures/user/ID: returns JSON containing "image_id", "title", "description", "image" for all images that belong to a user "ID"
         if($this->get()){
-            $images = $db->getImages();
-            $users = $db->getUsers();
+            $images = $db->getImages($value);
             $arr = array();
             foreach($images as $image){
-                if($value == NULL || $image->$id == $value){
-                    $imageArr = array(
-                        'image_id' => $image->id,
-                        'title' => $image->header,
-                        'description' => $image->text,
-                        'image' => $image->data,
-                    );
-                    array_push($arr, $imageArr);
-                }
+                $imageArr = array(
+                    'image_id' => $image->id,
+                    'title' => $image->header,
+                    'description' => $image->text,
+                    'image' => $image->data,
+                );
+                array_push($arr, $imageArr);
             }
 
             echo json_encode($arr);
@@ -57,7 +53,10 @@ class ApiController extends Controller {
 
             $json = json_decode($_POST['json'], true);
 
-            if (isset($_SESSION['username'])) {
+            if (isset($_SESSION['username'])
+                && empty($json["username"])
+                && empty($json["password"])
+            ) {
                 // user is logged in, just use those credentials
                 $image->user = $_SESSION['username'];
             } else {
@@ -123,7 +122,7 @@ class ApiController extends Controller {
 
     public function login() {
         $db = new Database();
-        if ( $db->checkUserPassword($_POST['username'], $POST['password']) == TRUE ) {
+        if ( $db->checkUserPassword($_POST['username'], $_POST['password']) ) {
             // username / password combination correct, log user in, redirect to home page
             $_SESSION['username'] = $_POST['username'];
             header("Location: /jahen19/mvc/public/home");

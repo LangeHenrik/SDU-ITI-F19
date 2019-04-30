@@ -101,21 +101,16 @@ class Database extends DB_Config {
     }
 
     public function checkUserPassword($username, $password) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         try {
-            $sql = "SELECT username, password FROM Users WHERE username = :username AND password = :password";
+            $sql = "SELECT username, password FROM Users WHERE username = :username";
             $statement = $this->conn->prepare($sql);
             $statement->bindParam(":username", $username);
-            $statement->bindParam(":password", $hashed_password);
             $statement->execute();
             $result = $statement->fetchAll();
-            if ($result && $statement->rowCount() != 1) {
-                // user does not exist
-                return false;
-            } else {
-                return true;
+            if ($result && $statement->rowCount() >= 1) {
+                return password_verify($password, $result[0]["password"]);
             }
-
+            return false;
         } catch(PDOException $error) {
             echo $sql . "<br>" . $error->getMessage();
         }
