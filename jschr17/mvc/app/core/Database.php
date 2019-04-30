@@ -4,12 +4,13 @@ require_once 'db_config.php';
 	
 class Database extends DB_Config {
 
-	public $conn;
-	
+	public $conn1;
+    protected $servername = '';
+
 	public function __construct() {
 		try {
 			
-			$this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
+			$this->conn1 = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
 			$this->username,
 			$this->password,
 			array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -20,7 +21,10 @@ class Database extends DB_Config {
 	}
 	
 	public function __destruct() {
-		$this->conn = null;
+		$this->conn1 = null;
 	}
-	
+
+	public function getConn(){
+	    return this::$conn1;
+    }
 }
