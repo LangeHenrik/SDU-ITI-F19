@@ -2,7 +2,7 @@
 
 class Router {
 	
-	protected $controller = 'homeController';
+	protected $controller = 'HomeController';
 	protected $method = 'index';
 	protected $params = [];
 	
@@ -16,7 +16,8 @@ class Router {
 		
 		require_once '../app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
-		
+        /*echo '<pre>'; print_r($url); echo '</pre>';*/
+
 		if(isset($url[1])) {
 			if(method_exists($this->controller, $url[1])) {
 				$this->method = $url[1];

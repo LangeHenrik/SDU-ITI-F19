@@ -8,12 +8,22 @@ class Database extends DB_Config {
     protected $servername = '';
 
 	public function __construct() {
+	    $servername = parent::getDBServername();
+	    $dbname = parent::getDBName();
+	    $username = parent::getDBUsername();
+	    $password = parent::getDBPassword();
+
 		try {
-			
-			$this->conn1 = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
+            $this->conn1 = new PDO("mysql:host=" . $servername . ";dbname=" . $dbname,
+            username,
+            password,
+            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+
+			/*$this->conn1 = new PDO("mysql:host=" . $this->servername . ";dbname=" . $this->dbname,
 			$this->username,
 			$this->password,
-			array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+			array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));*/
 			
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
