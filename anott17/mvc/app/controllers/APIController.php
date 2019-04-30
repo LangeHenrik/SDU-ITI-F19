@@ -14,6 +14,7 @@ class APIController extends Controller {
 	}
 
 	public function pictures ($user, $userID) {
+		header("Content-Type:application/json");
 		// print_r($_SERVER['REQUEST_METHOD']);
 		if (isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD'] === 'POST')) {
 			//$input = $_POST['json'];
@@ -36,23 +37,21 @@ class APIController extends Controller {
 				$image_id = array('image_id' => $image_id);
 
 				$json_users = json_encode($image_id, JSON_PRETTY_PRINT);
-				header("Content-Type:application/json");
 				echo $json_users;
+			} else {
+				$image_id = -1;
+
+				$image_id = array('image_id' => $image_id);
+
+				$json_users = json_encode($image_id, JSON_PRETTY_PRINT);
+				echo $json_users;
+
 			}
 		} else if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET'){
 			// print('asasdasdasdsdas');
 			$pictures = $this->model('Picture') -> getPicturesFromUser($userID);
 
-			$returnedObject = array();
-
-			foreach ($pictures as $picture) {
-				$returnedObject[] = array($picture);
-				// code...
-			}
-
 			$json_users = json_encode($pictures, JSON_PRETTY_PRINT);
-
-			header("Content-Type:application/json");
 			echo $json_users;
 		}
 	}
