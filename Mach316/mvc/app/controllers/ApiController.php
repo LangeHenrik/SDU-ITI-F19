@@ -212,12 +212,15 @@ class ApiController extends Controller
 
     private function getFullRootPath()
     {
-        $targetDir = __DIR__;
-        $targetDir = explode('/', $targetDir);
-        $targetDirLength = sizeof($targetDir) - 1;
-        $targetDir = array_splice($targetDir, 0, $targetDirLength);
 
         $pathConcatinator = $this->getOSSpecificPathConcatinator();
+
+
+        $targetDir = __DIR__;
+
+        $targetDir = explode($pathConcatinator, $targetDir);
+        $targetDirLength = sizeof($targetDir) - 1;
+        $targetDir = array_splice($targetDir, 0, $targetDirLength);
 
         $count = 0;
 
@@ -226,8 +229,9 @@ class ApiController extends Controller
             if ($count == 0 && $pathConcatinator == "\\") {
                 $targetDirString .= $pathElement;
                 $count += 1;
+            }else {
+                $targetDirString .= $pathConcatinator . $pathElement;
             }
-            $targetDirString .= $pathConcatinator . $pathElement;
         }
         return $targetDirString;
     }
@@ -236,7 +240,7 @@ class ApiController extends Controller
     {
         $os = $this->getOperatingSystem();
         $pathConcatinator = "";
-        if ($os == "Mac") {
+        if ($os == "Mac" || $os == "Unknown") {
             $pathConcatinator = "/";
         } else {
             $pathConcatinator = "\\";
@@ -260,7 +264,7 @@ class ApiController extends Controller
         elseif (preg_match('/Windows/i', $agent)) $os = 'Windows';
         else $os = 'Unknown';
 
-       
+
         return $os;
 
     }
