@@ -11,10 +11,10 @@ use PDO;
 use core\Database;
 class HomeModel extends Database
 {
-    public function upload_picture($username, $path, $title, $description){
-        $statement = $this->conn->prepare('insert into images (username, path, title, description) values (:username, :path, :title, :description);');
+    public function upload_picture($username, $blob, $title, $description){
+        $statement = $this->conn->prepare('insert into images (username, datablob, title, description) values (:username, :blob, :title, :description);');
         $statement->bindParam(':username', $username);
-        $statement->bindParam(':path', $path);
+        $statement->bindParam(':blob', $blob);
         $statement->bindParam(':title', $title);
         $statement->bindParam(':description', $description);
 

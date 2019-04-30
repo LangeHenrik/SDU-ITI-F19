@@ -554,10 +554,9 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="140" parent="137" name="path">
+    <column id="140" parent="137" name="datablob">
       <Position>2</Position>
-      <DataType>varchar(500)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>blob|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="141" parent="137" name="title">

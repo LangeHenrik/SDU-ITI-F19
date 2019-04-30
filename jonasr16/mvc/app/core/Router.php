@@ -3,7 +3,7 @@
 namespace core;
 class Router {
 	
-	protected $controller = 'controllers\HomeController';
+	protected $controller = 'controllers\MenuController';
 	protected $method = 'index';
 	protected $params = [];
 	
@@ -37,7 +37,6 @@ class Router {
 		} else {
 			call_user_func_array([$this->controller, $this->method], $this->params);
 		}
-		
 	}
 	
 	public function parseUrl () {

@@ -14,12 +14,10 @@ class Database extends DB_Config
 
     public function __construct() {
         try {
-
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
                 $this->username,
                 $this->password,
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -40,15 +38,5 @@ class Database extends DB_Config
         } else {
             return false;
         }
-    }
-
-
-    function get_all_usernames(){
-        $conn = getConnection();
-        $statement = $conn->prepare('SELECT username FROM users');
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        $statement->execute();
-        $result = $statement->fetchAll();
-        return $result;
     }
 }

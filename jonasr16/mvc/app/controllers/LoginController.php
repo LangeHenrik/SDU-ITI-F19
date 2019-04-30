@@ -16,16 +16,15 @@ class LoginController extends Controller
     }
 
     public function login(){
-        $login_service = new LoginModel();
+        $loginModel = new LoginModel();
         $username = $_POST['username'];
         $password = $_POST['password'];
         $username_stripped = strip_tags($username,"<b>");
         $password_stripped = strip_tags($password,"<b>");
-        if($login_service->login($username_stripped, $password_stripped) == true){
+        if($loginModel->login($username_stripped, $password_stripped) == true){
             session_start();
             $_SESSION['login_user'] = $username;
             header("location: /jonasr16/mvc/public/home");
-            #return $this->view("home/PicturePage");
         } else {
             return $this->view("home/Login", array("error_msg" => "username or password was not correct"));
         }

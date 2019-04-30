@@ -16,16 +16,15 @@
     <button class="tablinks" onclick="changeTab(event, 'ViewPosts', document.getElementsByClassName('tabcontent'),
     document.getElementsByClassName('tablinks'))">View Posts</button>
 </div>
-
 <!-- Tab content -->
 <div id="PostPage" class="tabcontent">
     <form action="/jonasr16/mvc/public/home/post_picture" method="post" enctype="multipart/form-data">
         Select image to upload: <br>
-        <input type="file" name="fileToUpload" id="fileToUpload"> <br> <br>
+        <input type="file" name="fileToUpload" id="fileToUpload" required> <br> <br>
         Title of image: <br>
-        <input type="text" name="title" id="titleOfImage"><br> <br>
+        <input type="text" name="title" id="titleOfImage" required><br> <br>
         Description of image: <br>
-        <input type="text" name="description" id="descriptionOfImage"><br> <br>
+        <input type="text" name="description" id="descriptionOfImage" required><br> <br>
         <input type="submit" value="Upload Image" name="submit">
     </form>
     <br>
@@ -42,7 +41,7 @@
         $(document).ready(function(){
             $('a#button').click(function(){
                 $.ajax({
-                    url: 'ajax_call.php',
+                    url: '/jonasr16/mvc/public/Ajax/ajax_call',
                     success: function (response) {
                         $('#container').html(response);
                     }
@@ -58,15 +57,22 @@
         for ($x = 0; $x < sizeof($images); $x++) {
             echo $images[$x]['title'] . ' - By: ' . $images[$x]['username'];
             echo '<div class = "img">';
-            echo '<img src="' . $images[$x]['path'] . '"/>';
+            $image = imagecreatefromstring($images[$x]['datablob']);
+            ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
+            imagejpeg($image, null, 80);
+            $data = ob_get_contents();
+            ob_end_clean();
+            echo '<img src="data:image/jpg;base64,' .  base64_encode($data)  . '" />';
             echo '</div>';
             echo $images[$x]['description'];
             echo '<hr>';
         }
     } ?>
 </div>
-<script>
-
-</script>
+<div>
+    <?php if (isset($viewbag["error_msg"])) {
+        echo $viewbag["error_msg"];
+    } ?>
+</div>
 </body>
 </html>
