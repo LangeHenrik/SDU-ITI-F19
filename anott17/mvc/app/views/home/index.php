@@ -56,8 +56,12 @@
 
           <div id ="errorDiv" class="registerErrorDiv">
             <p></p>
-            <?php echo''.$_SESSION['globalRegisterMsg'];
-            $_SESSION['globalRegisterMsg'] = ' ';?>
+            <?php
+            if (isset($_SESSION['globalRegisterMsg'])) {
+              echo''.$_SESSION['globalRegisterMsg'];
+              $_SESSION['globalRegisterMsg'] = ' ';
+            }
+            ?>
           </div>
         </fieldset>
       </form>
@@ -80,8 +84,12 @@
 
         <input type="submit" value="Login" class="mainButton">
         <div id ="errorDivLogin" class="loginErrorDiv">
-          <?php echo''.$_SESSION['globalLoginMsg'];
-          $_SESSION['globalLoginMsg'] = ' ';?>
+          <?php
+          if (isset($_SESSION['globalLoginMsg'])) {
+            echo''.$_SESSION['globalLoginMsg'];
+            $_SESSION['globalLoginMsg'] = ' ';
+          }
+          ?>
         </div>
       </fieldset>
     </form>
