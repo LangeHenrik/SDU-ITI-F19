@@ -8,20 +8,13 @@ class HomeController extends Controller {
 		$this->view('home/index');
 	}
 	
-	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
-		$user = $this->model('User');
-		$user->name = $param1;
-		$viewbag['username'] = $user->name;
-		$this->view('home/index', $viewbag);
-	}
-	
 	public function restricted () {
 		echo 'Welcome - you must be logged in';
 	}
 	
 	public function loginCheck() {
 
-		if ($_SESSION['isLogged'] == false){
+		if ($_SESSION['isLogged'] == false && isset($_POST['username']) && isset($_POST['password'])){
 
 			$match = $this->model('User')->checkPassword();
 

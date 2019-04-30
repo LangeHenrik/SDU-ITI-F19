@@ -3,7 +3,7 @@ drop database if exists flore17;
 create schema `flore17`;
 
 create table flore17.users (
-	user_id char(50) not null,
+	user_id int(50) not null,
 	username char(50) not null,
 	psw CHAR(64) not null,
 	firstname char(50) not null,
@@ -19,7 +19,7 @@ create table flore17.users (
 );
 
 create table flore17.posts (
-	image_id char(50) not null,
+	image_id int(50) not null,
 	imagename char(200) not null,
     exttype char(200) not null,
     imagetmp longblob not null,

@@ -1,12 +1,13 @@
 ﻿<?php
 	//set det amount af post that has to be loaded
 	
+	$_SESSION['count'] = 20;
 	$x = $_SESSION['count'];
 				
 	//prints out the 20 newest post with the newest on top and the oldest on det bottom
 	foreach(array_reverse($viewbag['posts']) as $posts) :
 
-		if ( $x > 0)  {
+		if ( $x > 0 )  {
 ?>
 			<html>
 				<div class="post">
@@ -30,5 +31,5 @@
 		}
 
 	endforeach;
-	$_SESSION['count'] = $_SESSION['count'] + 20;
+
 ?>

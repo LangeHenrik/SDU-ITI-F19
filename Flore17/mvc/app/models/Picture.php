@@ -19,6 +19,9 @@ class Picture extends Database {
 	}
 
 	public function uploadPic() {
+		if(!isset($_POST['postHeader']) || $_POST['postHeader'] == "" || !isset($_POST['subject']) || $_POST['subject'] == "" || $_FILES['imageToUpload']['error'] > 0){
+			
+		} else {
 
 		$header = htmlentities($_POST['postHeader']);
 		$comm = htmlentities($_POST['subject']);
@@ -37,10 +40,6 @@ class Picture extends Database {
 		} else {
 			$image_id = $stmt->rowCount();
 		}
-
-		if(!isset($header) || $header == "" || !isset($comm) || $comm == "" || $_FILES['imageToUpload']['error'] > 0){
-			
-		} else {
 
 			$sql = "INSERT INTO posts (imagename, exttype, imagetmp, header, comm, image_id) VALUES (:imagename, :type, :imagetmp, :header, :comm, :image_id)";
 

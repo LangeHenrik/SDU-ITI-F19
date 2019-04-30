@@ -2,13 +2,15 @@
 	//set det amount af post that has to be loaded
 	session_start();
 	$viewbag['posts'] = $_SESSION['posts'];
-	
+
+	$_SESSION['count'] = $_SESSION['count'] + 20;
+
 	$x = $_SESSION['count'];
-				
+
 	//prints out the 20 newest post with the newest on top and the oldest on det bottom
 	foreach(array_reverse($viewbag['posts']) as $posts) :
 
-		if ( $x > $_SESSION['count'] - 20 && $x < 20 && $posts['image_id'] < $posts['image_id'] - $_SESSION['count'] + 20)  {
+		if ($x > $_SESSION['count'] - 20 && $posts['image_id'] < count($viewbag['posts']) - 20)  {
 ?>
 			<html>
 				<div class="post">
@@ -32,5 +34,4 @@
 		}
 
 	endforeach;
-	$_SESSION['count'] = $_SESSION['count'] + 20;
 ?>
