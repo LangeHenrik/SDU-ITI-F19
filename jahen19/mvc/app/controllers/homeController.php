@@ -5,15 +5,16 @@ class HomeController extends Controller {
 	public function index ($param) {
         $viewbag = array();
 
-        if ( ! isset($_SESSION['username'])) {
-            $viewbag['notloggedin'] = true;
-        } else {
+        if ( isset($_SESSION['username']) ) {
+            $viewbag['loggedin'] = true;
+
             if ($param == "my") {
                 $viewbag['myfeed'] = true;
                 $username = $_SESSION['username'];
             } else {
                 $username = false;
             }
+
 
             $db = new Database();
             $images = $db->getImages($username);

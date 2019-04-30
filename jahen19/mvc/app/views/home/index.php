@@ -14,6 +14,7 @@
   <body>
       <?php include '../app/views/partials/header.php'; ?>
 
+      <?php if ($viewbag['loggedin'] == true) { ?>
       <div class="container">
           <div class="row pt-3">
               <section id="form-wrapper" class="form-group col-sm">
@@ -38,11 +39,12 @@
               </section>
               <div class="col-sm">
                   <div id="location" class="text-muted"><?php echo htmlspecialchars($viewbag['city']) ?></div>
-        <br>
-        <div id="weather-conditions" class="text-center display-4"></div>
-    </div>
-    </div>
-    </div>
+                  <br>
+                  <div id="weather-conditions" class="text-center display-4"></div>
+              </div>
+          </div>
+      </div>
+      <?php } ?>
 
     <hr>
 

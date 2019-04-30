@@ -1,6 +1,6 @@
 <main id='feed' class="mx-auto">
 <?php
-if ($viewbag['notloggedin'] == true) {
+if ($viewbag['loggedin'] != true) {
     echo '<div class="alert alert-warning" role="alert">You need to log in first!</div>';
     return;
 }
