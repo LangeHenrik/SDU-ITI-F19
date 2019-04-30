@@ -34,34 +34,6 @@
             </div>
 
             <input id="input-button" type="button" name="submit" value="Upload" onclick="return send();" class="btn btn-primary">
-
-            <!-- <div class="row">
-                 <div class="col grid_1_of_3 right">
-                 Select picture:
-                 </div>
-                 <div class="col grid_2_of_3">
-                 <input type="file" name="file" autocomplete="off" required>
-                 </div>
-                 </div>
-                 <div class="row">
-                 <div class="col grid_1_of_3 right">
-                 Header:
-                 </div>
-                 <div class="col grid_2_of_3">
-                 <input type="text" name="header" autocomplete="off">
-                 </div>
-                 </div>
-                 <div class="row">
-                 <div class="col grid_1_of_3 right">
-                 Subtext:
-                 </div>
-                 <div class="col grid_2_of_3">
-                 <textarea name="subtext" autocomplete="off"></textarea>
-                 </div>
-                 </div>
-                 <div class="row" id="submit-wrapper">
-                 <input id="input-button" type="button" name="submit" value="Upload" onclick="return send();">
-                 </div> -->
         </form>
     </section>
     <div class="col-sm">

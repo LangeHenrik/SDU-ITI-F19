@@ -31,10 +31,6 @@ class HomeController extends Controller {
 		$this->view('home/index', $viewbag);
 	}
 
-	public function restricted () {
-		echo 'Welcome - you must be logged in';
-	}
-
 	public function login() {
         if ($this->post()) {
             $db = new Database();

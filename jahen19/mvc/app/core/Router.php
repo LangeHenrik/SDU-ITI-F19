@@ -9,15 +9,10 @@ class Router {
 	function __construct () {
 		$url = $this->parseUrl();
 
-        // print_r($url);
-        // echo "<br>";
-
 		if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
 			$this->controller = $url[0] . 'Controller';
 			unset($url[0]);
-		} // else {
-        //     echo "Couldn't find " . $url[0] . 'Controller.php<br>';
-        // }
+		}
 
 		require_once '../app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
@@ -27,19 +22,11 @@ class Router {
                 // echo "Method " . $url[1] . " found<br>";
 				$this->method = $url[1];
 				unset($url[1]);
-			} // else {
-            //     echo "Method " . $url[1] . " not found<br>";
-            // }
+			}
 		}
 
 		$this->params = $url ? array_values($url) : [];
 
-		// require_once 'Restricted.php';
-		// if(restricted(get_class($this->controller), $this->method)) {
-		// 	echo 'Access Denied';
-		// } else {
-		// 	call_user_func_array([$this->controller, $this->method], $this->params);
-		// }
         call_user_func_array([$this->controller, $this->method], $this->params);
 
 	}
