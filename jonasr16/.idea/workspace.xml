@@ -2,25 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9caaa377-5f5f-4da3-9b2a-324905ef047e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mvc/app/controllers/AjaxController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/app/controllers/MenuController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvc/app/models/AjaxModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/controllers/APIController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/models/APIModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/models/picture_format.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/290e4e74-2dc5-4006-bf89-6f5f6bebb172.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/290e4e74-2dc5-4006-bf89-6f5f6bebb172.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/controllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/core/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/core/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/core/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/models/HomeModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/views/home/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/views/home/Home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/views/home/ajax_call.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/app/views/partials/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/views/partials/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/banan-g8gyLJqB58u745T3TWUuMg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/public/uploads/banan-g8gyLJqB58u745T3TWUuMg.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/banan-maskeraddrakt-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/public/uploads/banan-maskeraddrakt-4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/bananaDestroyed.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/public/uploads/bananaDestroyed.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/hotdog.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/public/uploads/hotdog.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/kachowder.png" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/public/uploads/kachowder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/app/models/AjaxModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/app/models/AjaxModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/public/uploads/banan-g8gyLJqB58u745T3TWUuMg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/public/uploads/banan-maskeraddrakt-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/public/uploads/bananaDestroyed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/public/uploads/hotdog.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/public/uploads/kachowder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/public/uploads/nice.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,79 +61,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mvc/app/controllers/HomeController.php">
+        <entry file="file://$PROJECT_DIR$/mvc/app/controllers/APIController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
+            <state relative-caret-position="393">
+              <caret line="33" column="99" selection-start-line="33" selection-start-column="99" selection-end-line="33" selection-end-column="99" />
               <folding>
-                <element signature="e#29#49#0#PHP" expanded="true" />
+                <element signature="e#114#134#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/app/controllers/LoginController.php">
+        <entry file="file://$PROJECT_DIR$/mvc/app/models/picture_format.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-              <folding>
-                <element signature="e#112#132#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/app/core/Database.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="35" column="35" lean-forward="true" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-              <folding>
-                <element signature="e#6#87#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Home.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="69" column="8" lean-forward="true" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/app/models/HomeModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-              <folding>
-                <element signature="e#107#115#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/app/controllers/MenuController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mvc/app/controllers/RegisterController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
-              <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-              <folding>
-                <element signature="e#112#132#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -169,9 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/connect_to_db.php" />
-        <option value="$PROJECT_DIR$/logout.php" />
-        <option value="$PROJECT_DIR$/receiver.php" />
         <option value="$PROJECT_DIR$/ajax_call.php" />
         <option value="$PROJECT_DIR$/db_config.php" />
         <option value="$PROJECT_DIR$/ChangeTabs.js" />
@@ -212,7 +145,6 @@
         <option value="$PROJECT_DIR$/mvc/public/AjaxCall.php" />
         <option value="$PROJECT_DIR$/mvc/public/ajax_call.php" />
         <option value="$PROJECT_DIR$/mvc/app/core/Database.php" />
-        <option value="$PROJECT_DIR$/mvc/app/models/AjaxModel.php" />
         <option value="$PROJECT_DIR$/mvc/app/core/ajax_call.php" />
         <option value="$PROJECT_DIR$/mvc/app/controllers/AjaxController.php" />
         <option value="$PROJECT_DIR$/mvc/app/controllers/LoginController.php" />
@@ -220,6 +152,10 @@
         <option value="$PROJECT_DIR$/mvc/app/models/HomeModel.php" />
         <option value="$PROJECT_DIR$/mvc/app/views/home/Home.php" />
         <option value="$PROJECT_DIR$/mvc/app/controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/AjaxModel.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/APIModel.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/picture_format.php" />
+        <option value="$PROJECT_DIR$/mvc/app/controllers/APIController.php" />
       </list>
     </option>
   </component>
@@ -303,13 +239,6 @@
               <item name="mvc" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
-              <item name="mvc" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="uploads" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -362,12 +291,12 @@
       <workItem from="1553172115568" duration="3563000" />
       <workItem from="1553245612350" duration="9147000" />
       <workItem from="1556470001126" duration="24277000" />
-      <workItem from="1556537469990" duration="34353000" />
+      <workItem from="1556537469990" duration="41365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108173000" />
+    <option name="totallyTimeSpent" value="115185000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -511,13 +440,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/app/models/RegisterModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -545,23 +467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/app/core/Restricted.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="158" selection-start-line="4" selection-start-column="158" selection-end-line="4" selection-end-column="158" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/app/models/LoginModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/app/views/partials/menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -576,37 +481,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/app/core/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/public/AjaxCall.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/app/models/AjaxModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#107#125#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/AjaxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#112#132#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -651,13 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/MenuController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/app/controllers/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
@@ -668,29 +539,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/MenuController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="54" lean-forward="true" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/app/models/HomeModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+          <caret line="24" column="63" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="63" />
           <folding>
             <element signature="e#107#115#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/Restricted.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="158" selection-start-line="4" selection-start-column="158" selection-end-line="4" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="69" column="8" lean-forward="true" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+        <state relative-caret-position="306">
+          <caret line="63" column="27" lean-forward="true" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mvc/app/controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
+        <state relative-caret-position="121">
           <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
           <folding>
             <element signature="e#29#49#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/LoginModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="23" selection-end-column="13" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/RegisterModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/AjaxController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <folding>
+            <element signature="e#112#132#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/AjaxModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#107#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/APIModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding>
+            <element signature="e#108#116#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/picture_format.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/APIController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="33" column="99" selection-start-line="33" selection-start-column="99" selection-end-line="33" selection-end-column="99" />
+          <folding>
+            <element signature="e#114#134#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

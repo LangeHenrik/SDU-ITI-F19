@@ -587,53 +587,73 @@
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
-    <column id="146" parent="138" name="username">
+    <column id="146" parent="138" name="user_id">
       <Position>1</Position>
-      <DataType>varchar(500)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="147" parent="138" name="password">
+    <column id="147" parent="138" name="username">
       <Position>2</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="148" parent="138" name="firstname">
+    <column id="148" parent="138" name="password">
       <Position>3</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="149" parent="138" name="lastname">
+    <column id="149" parent="138" name="firstname">
       <Position>4</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="150" parent="138" name="zip">
+    <column id="150" parent="138" name="lastname">
       <Position>5</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="151" parent="138" name="city">
+    <column id="151" parent="138" name="zip">
       <Position>6</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="152" parent="138" name="email">
+    <column id="152" parent="138" name="city">
       <Position>7</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="153" parent="138" name="phonenumber">
+    <column id="153" parent="138" name="email">
       <Position>8</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
+    <column id="154" parent="138" name="phonenumber">
+      <Position>9</Position>
+      <DataType>varchar(500)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="155" parent="138" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="156" parent="138" name="user_id">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="157" parent="138" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

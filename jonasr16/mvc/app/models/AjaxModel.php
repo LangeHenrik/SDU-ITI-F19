@@ -19,4 +19,5 @@ class AjaxModel extends Database
         $result = $statement->fetchAll();
         return $result;
     }
+
 }
