@@ -6,7 +6,7 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no, shrink-to-fit=no">
-    <link href="/jahen19/mvc/public/main.css" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -15,7 +15,7 @@
      <?php include '../app/views/partials/header.php'; ?>
 
     <div class="container">
-    <div class="row">
+    <div class="row pt-3">
     <section id="form-wrapper" class="form-group col-sm">
         <form id="fileform" action="return false;">
             <div class="form-group">
@@ -38,6 +38,7 @@
     </section>
     <div class="col-sm">
         <div id="location" class="text-muted"><?php echo $viewbag['city'] ?></div>
+        <br>
         <div id="weather-conditions" class="text-center display-4"></div>
     </div>
     </div>

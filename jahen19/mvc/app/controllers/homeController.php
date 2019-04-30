@@ -25,10 +25,10 @@ class HomeController extends Controller {
 	}
 
 	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
-		$user = $this->model('User');
-		$user->name = $param1;
-		$viewbag['username'] = $user->name;
-		$this->view('home/index', $viewbag);
+        // redirect user to index
+        header("Location: /jahen19/mvc/public/home");
+        echo "/jahen19/mvc/public/home";
+        return;
 	}
 
 	public function login() {
@@ -51,7 +51,9 @@ class HomeController extends Controller {
 	public function logout() {
 		if($this->post()) {
 			session_unset();
+            $_SESSION['username'] = NULL;
 			header('Location: /jahen19/mvc/public/home/');
+            echo "Successfully logged out";
 		}
 	}
 

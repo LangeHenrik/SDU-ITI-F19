@@ -1,7 +1,7 @@
 <main id='feed' class="mx-auto">
 <?php
 if ($viewbag['notloggedin'] == true) {
-    echo "You need to log in first.<br>";
+    echo '<div class="alert alert-warning" role="alert">You need to log in first!</div>';
     return;
 }
 foreach( (array) $viewbag['images'] as $i) {
