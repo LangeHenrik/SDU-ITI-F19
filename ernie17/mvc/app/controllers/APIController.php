@@ -36,16 +36,18 @@ class APIController extends Controller {
                 $json_users = json_encode($image_id, JSON_PRETTY_PRINT);
 
                 echo $json_users;
+            } else {
+				$image_id = -1;
+
+				$image_id = array('image_id' => $image_id);
+
+                $json_users = json_encode($image_id, JSON_PRETTY_PRINT);
+
+                echo $json_users;
             }
-        } else if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
+        } else if (isset($_SERVER['REQUEST_METHOD']) && $this->get()) {
 
             $pictures = $this->model('Picture') -> getPicturesFromUser($userId);
-
-			$returnObject = array();
-
-			foreach ($pictures as $picture) {
-				$returnObject[] = array($picture);
-			}
 
             $json_users = json_encode($pictures, JSON_PRETTY_PRINT);
 
