@@ -3,7 +3,7 @@
 namespace core;
 
 function restricted ($controller, $method) {
-    
+
     $restricted_urls = array('controllers\HomeController' => array('index'), 'controllers\LoginController' => array(), 'controllers\RegisterController' => array());
 
     if(isset($_SESSION['login_user'])) {

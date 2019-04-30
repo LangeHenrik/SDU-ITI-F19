@@ -10,6 +10,7 @@ namespace controllers;
 
 
 use core\Controller;
+use models\RegisterModel;
 
 class RegisterController extends Controller
 {
@@ -20,5 +21,31 @@ class RegisterController extends Controller
 
     public function register() {
 
+        if($this->post()) {
+            $registerService = new RegisterModel();
+
+            $un = $_POST['username']; $pw = $_POST['password'];
+            $fn = $_POST['firstname']; $ln = $_POST['lastname'];
+            $c = $_POST['city']; $z = $_POST['zip'];
+            $mail = $_POST['mail']; $phone = $_POST['phone'];
+
+            $registerService->registerUser($un, $pw, $fn, $ln, $c, $z, $mail, $phone);
+            header("Location: /mifor16/mvc/public/Login)");
+        }
     }
 }
+
+
+
+
+//    $un = $_POST['username']; $pw = $_POST['password'];
+//    $fn = $_POST['firstname']; $ln = $_POST['lastname'];
+//    $c = $_POST['city']; $z = $_POST['zip'];
+//    $mail = $_POST['mail']; $phone = $_POST['phone'];
+//
+//    if(checkUserExists($un)) {
+//        echo '<script>alert("Username is taken!")</script>';
+//    } else {
+//        registerUser($un, $pw, $fn, $ln, $c, $z, $mail, $phone);
+//        header("location: Login.php");
+//    }

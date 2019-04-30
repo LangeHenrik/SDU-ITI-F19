@@ -1,26 +1,3 @@
-<?php
-//error_reporting(E_ALL);
-//session_start();
-//require 'dbmanager.php';
-//
-//if(!empty($_POST)) {
-//    $un = $_POST['username']; $pw = $_POST['password'];
-//    $fn = $_POST['firstname']; $ln = $_POST['lastname'];
-//    $c = $_POST['city']; $z = $_POST['zip'];
-//    $mail = $_POST['mail']; $phone = $_POST['phone'];
-//
-//    if(checkUserExists($un)) {
-//        echo '<script>alert("Username is taken!")</script>';
-//    } else {
-//        registerUser($un, $pw, $fn, $ln, $c, $z, $mail, $phone);
-//        header("location: Login.php");
-//    }
-//
-//
-//}
-//
-//?>
-
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
@@ -30,7 +7,7 @@
 </head>
 
 <body>
-<form action="" onsubmit="return validateForm()" method="post">
+<form action="/mifor16/mvc/public/Register/register" onsubmit="return validateForm()" method="post">
     <div class="box">
 
         <label for="username"><b>Username</b></label><br>

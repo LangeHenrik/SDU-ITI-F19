@@ -9,7 +9,7 @@
 namespace controllers;
 
 use core\Controller;
-use models\Login;
+use models\LoginModel;
 
 class LoginController extends Controller
 {
@@ -19,16 +19,14 @@ class LoginController extends Controller
     }
 
     public function login() {
-        $loginService = new Login();
+        $loginService = new LoginModel();
         if($this->post()) {
 
             $theusername = $_POST['username'];
             $thepassword = $_POST['password'];
-
             if($loginService->checkCredentials($theusername, $thepassword) == true) {
                 session_start();
                 $_SESSION['login_user'] = $theusername;
-                print $_SESSION['login_user'];
                 header("Location: /mifor16/mvc/public/home");
             }
             else {
