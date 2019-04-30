@@ -1,0 +1,89 @@
+.login-page-form-container{
+    width: 30%;
+    margin-left: 34%;
+    text-align: center;
+    background-color: rgba(255,255,255,0.9);
+    margin-top: 0.5%;
+    padding: 1%;
+}
+
+.login-page-form-container > form {
+    width: 100%;
+}
+
+.update-user-block > label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    margin-right: 1%;
+}​
+
+.profile-header {
+    font-size: 100px;
+    color: white;
+    color: white;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+ #registerform{
+     text-align: center;
+     width: 100%;
+ }
+
+#registerform > input {
+    width: 100%;
+    padding: 0.5%;
+    font-size: 20px;
+}
+
+.login-page-form-container > form > input {
+    width: 80%;
+    background-color: rgba(255,255,255,0.9);
+    border-bottom: 1px solid black;
+}
+
+#btnSubmit{
+    margin-top: 1%;
+}
+
+#btnSignOut{
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+#btnSignOut:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+#btnAlreadyMember {
+    background:none!important;
+    color:inherit;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    /*border is optional*/
+    border-bottom:1px solid #444;
+    cursor: pointer;
+}
+
+.page-container {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height:100%;
+    position: fixed;
+    left: 0px;
+}

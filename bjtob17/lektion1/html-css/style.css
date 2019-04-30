@@ -1,0 +1,248 @@
+/* 
+RESET
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #ffffff;
+}
+
+/*
+OTHER STUFF :-)
+*/
+.ad {
+  min-width: 100px;
+  max-height: 450px;
+  overflow: hidden;
+  background-color: #f79646;
+  padding: 0 5px;
+}
+
+/*
+CARDS
+*/
+.cards .card {
+  margin: 0px 5px 10px 5px;
+}
+.card-vertical-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-horizontal-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  max-width: 350px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+}
+
+.card.card-user {
+  flex-direction: column;
+  background-color: #4f81bd;
+}
+
+.card-user .card-img img {
+  max-width: 150px;
+  border-radius: 50%;
+}
+.card-user .card-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.card-media {
+  flex-direction: column;
+}
+
+.card.card-media > .card-content {
+  background-color: #ffffff;
+  margin: 15px;
+  color: #000000;
+}
+
+.card.card-media .card-content .card-img img {
+  max-width: 100%;
+}
+.card.card-media .card-content .card-img .caption .caption-content {
+  border-left: 2px solid #4f81bd;
+  padding-left: 5px;
+}
+.card.card-media .card-content .card-img .caption .caption-buttons {
+  padding-left: 5px;
+}
+.card.card-media
+  .card-content
+  .card-img
+  .caption
+  .caption-buttons
+  .caption-number {
+  margin-left: 2px;
+  margin-right: 15px;
+}
+
+.card .card-content a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.card.card-media .card-content .card-img .caption .buttons {
+  float: right;
+}
+
+/*
+HEADER
+*/
+.header-nav {
+  display: flex;
+}
+
+.header-nav .links {
+  flex: 1; /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-nav .links a {
+  text-decoration: underline;
+  font-size: 2em;
+  margin-right: 30px;
+  color: #ffffff;
+  padding: 0 10px;
+}
+
+.header-nav .links a.active {
+  background-color: #1f497d;
+}
+
+.header-nav .title {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header-nav .weather {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2em;
+}
+
+/*
+GRID
+*/
+.main-head {
+  grid-area: header;
+  background-color: #4f81bd;
+  color: #ffffff;
+  padding: 0 5px;
+}
+.content {
+  grid-area: content;
+  background-color: #ffffff;
+  padding: 0 5px;
+  color: #000000;
+}
+.ad-left {
+  grid-area: ad-left;
+}
+.ad-right {
+  grid-area: ad-right;
+}
+.main-footer {
+  grid-area: footer;
+  background-color: coral;
+  padding: 0 5px;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "content"
+    "ad-left"
+    "ad-right"
+    "footer";
+
+  height: 100vh;
+}
+@media (min-width: 500px) {
+  .grid-container {
+    grid-template-columns: auto 4fr;
+    grid-template-areas:
+      "header  header"
+      "ad-left content"
+      "ad-right content"
+      "footer footer";
+  }
+
+  .card.card-media {
+    flex-direction: column;
+  }
+  .card-vertical-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-horizontal-list {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 700px) {
+  .grid-container {
+    grid-template-columns: auto 5fr auto;
+    grid-template-areas:
+      "header    header  header"
+      "ad-left   content ad-right"
+      "footer    footer  footer";
+  }
+  .card.card-media {
+    flex-direction: row;
+  }
+
+  .card {
+    max-width: 600px;
+  }
+  .card-vertical-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-horizontal-list {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+}
