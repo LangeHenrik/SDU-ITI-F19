@@ -28,6 +28,7 @@ class ImageDAO extends Connection {
         $imageFileName = htmlentities($image->getFileName());
         $userId = htmlentities($image->getUserId());
 
+
         $query = "INSERT INTO images(header, text, name, user_id) VALUES(:header, :text,:filename, :user_id);";
         $statement = $this->conn->prepare($query);
         $statement->bindParam(':header',$imageHeader);

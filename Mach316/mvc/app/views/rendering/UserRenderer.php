@@ -60,7 +60,7 @@ class UserRenderer
         $userImagesElement = "<div class='user-images'>";
         if ($userImages) {
             foreach ($userImages as $userImage) {
-                $filePath = '/Mach316/mvc/app/uploads/' . $userImage->getFileName();
+                $filePath = $userImage->getFileName();
                 $userImagesElement .= "<div class='user-image-wrapper'><img class='user-image' src=$filePath /></div>";
             }
         }

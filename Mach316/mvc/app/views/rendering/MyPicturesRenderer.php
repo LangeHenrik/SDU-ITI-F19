@@ -19,7 +19,8 @@ class MyPicturesRenderer
 
     private function renderMyPicture($image)
     {
-        $imagePath = "/Mach316/mvc/app/uploads/" . $image->getFilename();
+        //$imagePath = "/Mach316/mvc/app/uploads/" . $image->getFilename();
+        $imagePath = $image->getFileName();
         $imageID = $image->getId();
         $renderString = "    
                          <div class='user-management-picture'>

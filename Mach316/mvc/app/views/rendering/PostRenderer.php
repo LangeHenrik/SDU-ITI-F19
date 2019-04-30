@@ -16,7 +16,7 @@ class PostRenderer
 
     private function renderPost($image)
     {
-        $imagePath = '/Mach316/mvc/app/uploads/' . $image->getFileName();
+        $imagePath = $image->getFileName();
         $imageHeader = $image->getHeader();
         $imageText = $image->getText();
         $imageID = $image->getId();
