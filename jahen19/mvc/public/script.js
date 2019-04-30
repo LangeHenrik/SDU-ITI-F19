@@ -21,7 +21,7 @@ function send() {
         base64 = btoa(reader.result);
 
         var json_string = JSON.stringify({
-            "image": base64,
+            "image": "data:" + type + ";base64," + base64,
             "title": header,
             "description": subtext,
         });
