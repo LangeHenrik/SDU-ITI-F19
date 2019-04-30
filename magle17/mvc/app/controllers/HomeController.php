@@ -10,10 +10,6 @@ class HomeController extends Controller {
 			$this->login();
 		}
 	}
-
-	public function restricted () {
-		echo 'Welcome - you must be logged in';
-	}
 	
 	public function login() {
 		$this->view('home/login', $this->viewbag);
@@ -32,17 +28,7 @@ class HomeController extends Controller {
 	}
 	
 	public function logout() {
-		unset($_SESSION['logged_in']);
-		if($this->post()) {
-			session_unset();
-			header('Location: /mvc/public/home/loggedout');
-		} else {
-			echo 'You can only log out with a post method';
-		}
+		session_unset();
+		header('Location: /magle17/mvc/public/Home/');
 	}
-	
-	public function loggedout() {
-		echo 'You are now logged out';
-	}
-	
 }

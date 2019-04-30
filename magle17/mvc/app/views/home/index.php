@@ -36,15 +36,11 @@
 
 <h1>Dét Sgu Da ALLES BLÆREDE BILLEDER</h1>
       <h2>Stedet hvor du kan se alles blærede billeder</h2>
-      <form action="/magle17/mvc/public/home/logout/" method="post" class="nav-button">
-          <input type="submit" name="logout" value="Log ud">
-      </form>
-      <form action="/magle17/mvc/public/home/userImages/" method="post" class="nav-button">
-          <input type="submit" name="goto-userImages" value="Dine blærede billeder">
-      </form>
-      <form action="/magle17/mvc/public/home/users/" method="post" class="nav-button">
-        <input type="submit" name="goto-users" value="Alle Brugere">
-      </form>
+      <?php include '../app/views/partials/logoutButton.php'; ?>
+      
+      <?php include '../app/views/partials/usersButton.php'; ?>
+      <?php include '../app/views/partials/userImagesButton.php'; ?>
+      
       <div class="form-container upload">
         <form class="form-classic" method="post" enctype="multipart/form-data" action="/magle17/mvc/public/Images/uploadImage/">
             <fieldset class="fieldset-classic">
@@ -91,5 +87,6 @@
                 ?>
             </div>
         </div>
+    </div>
 
 <?php include '../app/views/partials/end.php'; ?>
