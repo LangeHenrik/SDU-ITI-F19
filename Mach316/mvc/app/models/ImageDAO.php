@@ -37,7 +37,7 @@ class ImageDAO extends Connection {
         $success = $statement->execute();
 
         if($success) {
-            $imageID = $this->conn->lastInsertId();;
+            $imageID = $this->conn->lastInsertId();
             return $imageID;
         }
         else {
