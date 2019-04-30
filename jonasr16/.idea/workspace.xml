@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9caaa377-5f5f-4da3-9b2a-324905ef047e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mvc/app/controllers/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/controllers/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/models/HomeModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvc/app/models/RegisterModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/ITAssignment.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/dataSources/290e4e74-2dc5-4006-bf89-6f5f6bebb172.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/Assignment 1 screenshots/Login Page.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/Assignment 1 screenshots/Picture Page (After show all users).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/Assignment 1 screenshots/Picture Page (Before show all users).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/Assignment 1 screenshots/Picture Page scrolled down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/Assignment 1 screenshots/Register Page.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/db_config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/db_manager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/core/ajax_call.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/core/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/views/home/Login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/views/home/Register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/views/home/change_tabs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/views/home/check.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/views/home/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/views/home/picture_page.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/mvc/app/views/home/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/uploads/banan-g8gyLJqB58u745T3TWUuMg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/uploads/banan-maskeraddrakt-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/uploads/bananaDestroyed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/uploads/hotdog.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITAssignment/uploads/kachowder.png" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jonasr16@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jonasr16@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jonasr16@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="jonasr16: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="56" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="56" />
+              <folding>
+                <element signature="e#29#49#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/init.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="e#7#40#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/core/Restricted.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="158" selection-start-line="4" selection-start-column="158" selection-end-line="4" selection-end-column="158" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="54" column="39" lean-forward="true" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/core/Database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+              <folding>
+                <element signature="e#6#87#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/models/HomeModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/core/Router.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="51" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/controllers/RegisterController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-68">
+              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>jonasr</find>
+      <find>view</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Register.html" />
+        <option value="$PROJECT_DIR$/Login.html" />
+        <option value="$PROJECT_DIR$/connect_to_db.php" />
+        <option value="$PROJECT_DIR$/logout.php" />
+        <option value="$PROJECT_DIR$/receiver.php" />
+        <option value="$PROJECT_DIR$/ajax_call.php" />
+        <option value="$PROJECT_DIR$/db_config.php" />
+        <option value="$PROJECT_DIR$/ChangeTabs.js" />
+        <option value="$PROJECT_DIR$/stylesheet.css" />
+        <option value="$PROJECT_DIR$/Login.php" />
+        <option value="$PROJECT_DIR$/db_manager.php" />
+        <option value="$PROJECT_DIR$/Register.php" />
+        <option value="$PROJECT_DIR$/check.js" />
+        <option value="$PROJECT_DIR$/change_tabs.js" />
+        <option value="$PROJECT_DIR$/MVC/.htaccess" />
+        <option value="$PROJECT_DIR$/MVC/app/init.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/Picture.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/User.php" />
+        <option value="$PROJECT_DIR$/picture_page.php" />
+        <option value="$PROJECT_DIR$/mvc/app/views/home/picture_page.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/Login.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/Register.php" />
+        <option value="$PROJECT_DIR$/mvc/public/index.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/Controller.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/db_manager.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/db_config.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/DB_Config.php" />
+        <option value="$PROJECT_DIR$/mvc/app/services/RegisterService.php" />
+        <option value="$PROJECT_DIR$/mvc/app/services/PostService.php" />
+        <option value="$PROJECT_DIR$/mvc/app/views/home/PicturePage.php" />
+        <option value="$PROJECT_DIR$/mvc/app/services/LoginService.php" />
+        <option value="$PROJECT_DIR$/mvc/app/views/home/Login.php" />
+        <option value="$PROJECT_DIR$/mvc/app/services/HomeService.php" />
+        <option value="$PROJECT_DIR$/mvc/app/controllers/LoginController.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/LoginModel.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/RegisterModel.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/Router.php" />
+        <option value="$PROJECT_DIR$/mvc/app/controllers/RegisterController.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/Restricted.php" />
+        <option value="$PROJECT_DIR$/mvc/app/views/home/Register.php" />
+        <option value="$PROJECT_DIR$/mvc/app/core/Database.php" />
+        <option value="$PROJECT_DIR$/mvc/app/init.php" />
+        <option value="$PROJECT_DIR$/mvc/app/models/HomeModel.php" />
+        <option value="$PROJECT_DIR$/mvc/app/controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/mvc/app/views/home/Home.php" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="22" />
+    <option name="y" value="21" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jonasr16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jonasr16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jonas\OneDrive\Dokumenter\GitHub\SmiteyJonawar\SDU-ITI-F19\jonasr16\mvc\app\models" />
+      <recent name="C:\Users\jonas\OneDrive\Dokumenter\GitHub\SmiteyJonawar\SDU-ITI-F19\jonasr16\mvc\public" />
+      <recent name="C:\Users\jonas\OneDrive\Dokumenter\GitHub\SmiteyJonawar\SDU-ITI-F19\jonasr16\mvc\app\views\home" />
+      <recent name="C:\Users\jonas\OneDrive\Dokumenter\GitHub\SmiteyJonawar\SDU-ITI-F19\jonasr16\ITAssignment\mvc\app\views\home" />
+      <recent name="C:\Users\jonas\OneDrive\Dokumenter\GitHub\SmiteyJonawar\SDU-ITI-F19\jonasr16\ITAssignment\mvc\app\core" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9caaa377-5f5f-4da3-9b2a-324905ef047e" name="Default Changelist" comment="" />
+      <created>1553067496579</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553067496579</updated>
+      <workItem from="1553067499616" duration="4903000" />
+      <workItem from="1553074859616" duration="31930000" />
+      <workItem from="1553172115568" duration="3563000" />
+      <workItem from="1553245612350" duration="9147000" />
+      <workItem from="1556470001126" duration="24277000" />
+      <workItem from="1556537469990" duration="20819000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="94639000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Database" order="0" weight="0.24962178" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
+      <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Console" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info anchor="right" id="Structure" order="1" side_tool="true" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/connect_to_db.php" />
+    <entry file="file://$PROJECT_DIR$/Register.html" />
+    <entry file="file://$PROJECT_DIR$/Login.html" />
+    <entry file="file://$PROJECT_DIR$/receiver.php" />
+    <entry file="das://290e4e74-2dc5-4006-bf89-6f5f6bebb172/schema/jonasr16/table/images">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/superglobals/_superglobals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="173" selection-start-line="173" selection-end-line="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/290e4e74-2dc5-4006-bf89-6f5f6bebb172/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/public/check.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/public/change_tabs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/public/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php" />
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/db_manager.php" />
+    <entry file="file://$PROJECT_DIR$/mvc/app/services/MathService.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/views/partials/menu.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/views/home/ajax_call.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/migration.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" selection-start-column="25" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/Picture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/public/stylesheet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/views/home/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="71" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/Post.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/Login.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/DB_Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/views/home/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="e#112#132#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/LoginModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/RegisterModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/Restricted.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="158" selection-start-line="4" selection-start-column="158" selection-end-line="4" selection-end-column="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/Router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="51" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#7#40#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/core/Database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="56" />
+          <folding>
+            <element signature="e#29#49#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/models/HomeModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc/app/views/home/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="54" column="39" lean-forward="true" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

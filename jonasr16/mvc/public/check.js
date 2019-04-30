@@ -7,27 +7,27 @@ function checkInputs(){
     var number = document.getElementById("number").value;
 
     if(!/^[0-9a-zA-Z]+$/.test(username)){
-        alert("Invalid input.");
+        alert("Invalid username.");
         return false;
     }
     if(!/^[a-zA-Z]+$/.test(fname)){
-        alert("Invalid input.");
+        alert("Invalid first name.");
         return false;
     }
     if(!/^[a-zA-Z]+$/.test(lname)){
-        alert("Invalid input.");
+        alert("Invalid last name.");
         return false;
     }
     if(!/^[0-9]+$/.test(zip)){
-        alert("Invalid input.");
+        alert("Invalid zip.");
         return false;
     }
     if(!/^[a-zA-Z]+$/.test(city)){
-        alert("Invalid input.");
+        alert("Invalid city.");
         return false;
     }
     if(!/^[0-9]+$/.test(number)){
-        alert("Invalid input.");
+        alert("Invalid phone number.");
         return false;
     }
     return true;
