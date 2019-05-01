@@ -9,8 +9,11 @@
 namespace controllers;
 
 use core\Controller;
+use models\LoginModel;
+use models\picture_format;
+use models\post_image_format;
 use models\UsersModel;
-use models\ApiGetImages;
+use services\ImageConversionService;
 
 class APIController extends Controller
 {
@@ -23,40 +26,42 @@ class APIController extends Controller
     }
 
     public function pictures($_, $user_id) {
-        header("Content-Type:application/json");
+        $usersModel = new UsersModel();
         if($this->post()) {
-            #post a picture
+            $loginModel = new LoginModel();
+            $json = $_POST["json"];
+            $text = json_decode($json, true);
+
+            $fullImage = $text["image"];
+            $title = $text["title"];
+            $description = $text["description"];
+            $username = $text["username"];
+            $password = $text["password"];
+
+            if($loginModel->checkCredentials($username, $password)) {
+                $type = "string";
+                $id = $usersModel->upload_picture_and_return_id($username, $fullImage, $title, $description, $type);
+                $formatPost = new post_image_format($id[0]["image_id"]);
+
+                echo json_encode($formatPost, JSON_UNESCAPED_SLASHES);
+            } else {
+                echo json_encode(new post_image_format("why is this needed"));
+                #return;
+            }
+
         }else {
             #get pictures
             $userModel = new UsersModel();
-            $result = $userModel->getPicturesFromID($user_id);
+            $imageService = new ImageConversionService();
+            $resultbad = $userModel->getPicturesFromID($user_id);
+            $result = $imageService->convertArray($resultbad);
+
             $formatted_stuff = array();
             for($item = 0; $item <= sizeof($result)-1; $item++) {
-                $image_id = $result[$item]['counter'];
-                $title = $result[$item]['title'];
-                $description = $result[$item]['description'];
-                $blob_data = $result[$item]['blob_data'];
-                //$image = imagecreatefromstring(base64_decode($images[$x]['image']));
-                //ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
-                //imagejpeg($image, null, 80);
-                //$data = ob_get_contents();
-                //ob_end_clean();
-
-                $formatted_stuff[] = new ApiGetImages($image_id, $title, $description, $blob_data);
+                $formatted = new picture_format($result[$item]['image_id'], $result[$item]['title'], $result[$item]['description'], $result[$item]['imageString']);
+                $formatted_stuff[] = $formatted;
             }
-            #echo print_r($result);
-            #echo print_r($formatted_stuff);
-            echo json_encode($formatted_stuff);
+            echo json_encode($formatted_stuff, JSON_UNESCAPED_SLASHES);
         }
     }
 }
-
-//
-//$image = imagecreatefromstring(base64_decode($images[$x]['image']));
-//ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
-//imagejpeg($image, null, 80);
-//$data = ob_get_contents();
-//ob_end_clean();
-//$imageString = 'data:' .  $images[$x]['extension'] .  ';base64,' .  base64_encode($data);
-//$nice_format = new picture_format($images[$x]['image_id'], $images[$x]['title'], $images[$x]['description'], $imageString);
-//$all_nice_format[] = $nice_format;

@@ -3,12 +3,16 @@
 namespace controllers;
 use core\Controller;
 use models\HomeModel;
+use services\ImageConversionService;
 
 class HomeController extends Controller {
 	
 	public function index () {
 	    $homeModel = new HomeModel();
-		return $this->view("home/Home", array("pictures" => $homeModel->getImages()));
+	    $posts = $homeModel->getImages();
+	    $imageService = new ImageConversionService();
+	    $newarray = $imageService->convertArray($posts);
+		return $this->view("home/Home", array("pictures" => $newarray));
 	}
 
     public function log_out(){

@@ -15,20 +15,14 @@
 <br><br><br><br>
 
 <?php if (isset($viewbag["pictures"])) {
-$latestimages = $viewbag["pictures"];
-
+    $latestimages = $viewbag["pictures"];
     for ($item = 0; $item <= sizeof($latestimages) - 1; $item++) {
         echo '<div class="boxyInside">';
         echo '<h2>' . $latestimages[$item]['title'] . '</h2>';
         echo '<h5>' . 'Submitted by: ' . $latestimages[$item]['username'] . '</h5>';
 
         echo '<div class="resize">';
-        $image = imagecreatefromstring(base64_decode($latestimages[$item]['blob_data']));
-        ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
-        imagejpeg($image, null, 80);
-        $data = ob_get_contents();
-        ob_end_clean();
-        echo '<img src="data:image/jpg;base64,' . base64_encode($data) . '" />';
+        echo '<img src="' . $latestimages[$item]['imageString'] . '" />';
         echo '</div>';
         echo '<h4>' . 'Description:' . '</h4>' . $latestimages[$item]['description'];
         echo '</div>';

@@ -37,4 +37,20 @@ class UsersModel extends Database
         $result = $statement->fetchAll();
         return $result;
     }
+
+    public function upload_picture_and_return_id($username, $blob, $title, $description, $type){
+        $statement = $this->conn->prepare('insert into images (username, blob_data, extension, title, description) values (:username, :image, :extension, :title, :description);');
+        $statement->bindParam(':username', $username);
+        $statement->bindParam(':image', $blob);
+        $statement->bindParam(':extension', $type);
+        $statement->bindParam(':title', $title);
+        $statement->bindParam(':description', $description);
+        $statement->execute();
+
+        $statement2 = $this->conn->prepare('SELECT * FROM images WHERE image_id = (SELECT MAX(image_id) FROM images)');
+        $statement2->execute();
+        $statement2->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $statement2->fetchAll();
+        return $result;
+    }
 }

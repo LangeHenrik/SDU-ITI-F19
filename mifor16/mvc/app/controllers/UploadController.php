@@ -10,6 +10,7 @@ namespace controllers;
 
 use core\Controller;
 use models\UploadModel;
+use services\ImageConversionService;
 
 class UploadController extends Controller
 {
@@ -22,6 +23,7 @@ class UploadController extends Controller
     {
         if ($this->post()) {
             $uploadModel = new UploadModel();
+            $imageService = new ImageConversionService();
             $type = $_FILES["fileToUpload"]["type"];
 
             $imageFileType = strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]), PATHINFO_EXTENSION));

@@ -21,8 +21,7 @@ class UploadModel extends Database
         $statement = $this->conn->prepare('insert into images (username, blob_data, title, description, extension) values (:username, :blob_data, :title, :description, :extension);');
 
         $statement->bindParam(':username', $username);
-        #$statement->bindParam(':blob_data', $blob_data, PDO::PARAM_LOB);
-        $statement->bindParam(':blob_data', $image_base64, PDO::PARAM_LOB);
+        $statement->bindParam(':blob_data', $image_base64);
         $statement->bindParam(':title', $title);
         $statement->bindParam(':description', $description);
         $statement->bindParam(':extension', $type);
