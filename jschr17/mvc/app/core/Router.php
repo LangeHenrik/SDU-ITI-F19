@@ -27,7 +27,7 @@ class Router {
 		
 		$this->params = $url ? array_values($url) : [];
 		
-		require_once 'restricted.php';
+		require_once 'Restricted.php';
 		if(restricted(get_class($this->controller), $this->method)) {
 			echo 'Access Denied';
 		} else {
