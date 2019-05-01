@@ -1,71 +1,29 @@
 <?php
 
-//print_r($_POST);
+	if($_SERVER["REQUEST_METHOD"]=="POST"){
+		$email = $_POST["email"];
+		$password = $_POST["userPassword"];
 
-   session_start();
+    include "PDO.php";
 
-   if (isset($_POST['login_button']) && !empty($_POST['login_button'])) { //Button pressed
+    $stmt = $conn-> prepare("SELECT userPassword FROM Person where email = ':email'");
+		$stmt->bindParam(':email', $clientEmail);
+		$stmt -> execute();
 
+		$result = $stmt -> fetch(PDO::FETCH_NUM);
 
-		   if (isset($GLOBALS['loginError'])) {$loginError = $GLOBALS['loginError'];}
-
-		     // include "breakpoint.php";
-
-		        $clientPassword = $clientEmail = "";
-
-		         if (isset($_POST['email'])) {$clientEmail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);}
-		         if (isset($_POST['userPassword'])) {$clientPassword = filter_var($_POST['userPassword'], FILTER_SANITIZE_STRING);}
-
-		     include "PDO.php";
-
-	       $eventName = 'Login attempt'; //Log a login attempt
-	       $SQLNow = 'now()'; // SQL now method return the current time
-
-		     //Log to database
-		     $stmt = $conn-> prepare("INSERT INTO timelog (eventName, eventTimestamp, responsible) VALUES (:event, :timestampEvent, :responsible)");
-		     $stmt->bindParam(':event', $eventName);
-		     $stmt->bindParam(':timestampEvent', $SQLNow);
-		     $stmt->bindParam(':responsible', $clientEmail);
-
-		     //Get hashed password
-		     $stmt = $conn-> prepare("SELECT userPassword FROM Person where email = ':email'");
-		     $stmt->bindParam(':email', $clientEmail);
-		     $stmt->execute();
-
-         $result = $stmt -> fetch(PDO::FETCH_NUM);
-
-		     //$stmt->setFetchMode(PDO::FETCH_ASSOC);
-		     //$hashedPassword = $stmt->fetchColumn();
-          echo $clientPassword;
-
-		     if(password_verify($clientPassword , $result )) {
-           //Correct password.
-
-			   $_SESSION['email'] = $clientEmail;
-
-			      header("Location: ./pictures.php");
-		     } else {
-			        $loginError = array();
-
-			        array_push($loginError, "Email and password does not match!." );
-
-			        $GLOBALS['loginError'] = $loginError;
-
-			        print_r($loginError);
-            //header("Location: ./login.php"); //Do not reload
-
+		if(empty($username)){
+			   echo '<br> <div> Please enter a username!</div>';
+		}else if(empty($result[0])){
+			   echo '<br> <div> Email does not exist!</div>';
+		}else if(password_verify($password, $result[0])){
+			$_SESSION['email'] = $email;
+			   header("Location: ./pictures.php");
+		}else{
+			echo '<br> <div> Wrong password! </div>';
 		}
-
-
-   }
-
-   if (isset($_POST['register'])) {
-	   header("Location: ./register.php");
-   }
-
-
-
-?>
+	}
+	?>
 <!DOCTYPE html>
 
 <html>
@@ -89,7 +47,7 @@
 <center>
 
   <div class="container">
-
+    <form class="loginForm" method="post">
     <label ><b>Email</b></label>
     <input type="text" placeholder="Enter email" name="email" required>
 
