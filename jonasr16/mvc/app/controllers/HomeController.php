@@ -30,9 +30,8 @@ class HomeController extends Controller {
             }
         }
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" ) {
-            return $this->view("home/Home", array("pictures" => $newArray, "error_msg" => "Sorry, only JPG, JPEG, PNG & GIF files are allowed."));
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+            return $this->view("home/Home", array("pictures" => $newArray, "error_msg" => "Sorry, only JPG, JPEG, & PNG files are allowed."));
         }
         $username = $_SESSION['login_user'];
         $data = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
