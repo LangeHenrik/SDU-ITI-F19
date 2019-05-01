@@ -13,7 +13,6 @@ class HomeModel extends Database
 {
     public function upload_picture($username, $blob, $title, $description, $type){
         $image = base64_encode($blob);
-        #$image = 'data:' .  $type .  ';base64,' .  $encodedblob;
         $statement = $this->conn->prepare('insert into images (username, image, extension, title, description) values (:username, :image, :extension, :title, :description);');
         $statement->bindParam(':username', $username);
         $statement->bindParam(':image', $image);

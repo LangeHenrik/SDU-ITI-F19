@@ -2,30 +2,37 @@
 namespace controllers;
 use core\Controller;
 use models\HomeModel;
+use services\imageConverter;
 
 class HomeController extends Controller {
 
 	public function index () {
         $homeModel = new HomeModel();
-        return $this->view("home/home", array("pictures" => $homeModel->get_20_posts()));
+        $imageService = new imageConverter();
+        $posts = $homeModel->get_20_posts();
+        $newArray = $imageService->convertArray($posts);
+        return $this->view("home/home", array("pictures" => $newArray));
 	}
 
 
 	public function post_picture(){
 	    $homeModel = new HomeModel();
+        $imageService = new imageConverter();
+        $posts = $homeModel->get_20_posts();
+        $newArray = $imageService->convertArray($posts);
 	    $type = $_FILES["fileToUpload"]["type"];
         $imageFileType = strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]),PATHINFO_EXTENSION));
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
             if(!$check) {
-                return $this->view("home/Home", array("pictures" => $homeModel->get_20_posts(), "error_msg" => "File is not an image."));
+                return $this->view("home/Home", array("pictures" => $newArray, "error_msg" => "File is not an image."));
             }
         }
         // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-            return $this->view("home/Home", array("pictures" => $homeModel->get_20_posts(), "error_msg" => "Sorry, only JPG, JPEG, PNG & GIF files are allowed."));
+            return $this->view("home/Home", array("pictures" => $newArray, "error_msg" => "Sorry, only JPG, JPEG, PNG & GIF files are allowed."));
         }
         $username = $_SESSION['login_user'];
         $data = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
@@ -37,7 +44,8 @@ class HomeController extends Controller {
         $type_stripped = strip_tags($type, "<b>");
         $homeModel->upload_picture($username_stripped, $data, $title_stripped, $description_stripped, $type_stripped);
 
-        return $this->view("home/Home", array("pictures" => $homeModel->get_20_posts()));
+        header("location: /jonasr16/mvc/public/");
+        return;
     }
 
     public function log_out(){
