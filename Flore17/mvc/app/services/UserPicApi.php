@@ -26,8 +26,14 @@ class UserPicApi {
 		$imageArray = array();
 	
 		foreach($viewbag['images'] as $Images) :
-			$tempImg = new Img($Images['imagetmp'], $Images['header'], $Images['comm']);
-			array_push($imageArray, $tempImg);
+			if (substr($posts['imagetmp'], 0, 5) == 'data:') {
+			echo $Images['imagetmp'];
+				$tempImg = new Img($Images['imagetmp'], $Images['header'], $Images['comm']);
+				array_push($imageArray, $tempImg);
+			} else {
+				$tempImg = new Img(base64_encode($Images['imagetmp']), $Images['header'], $Images['comm']);
+				array_push($imageArray, $tempImg);
+			}
 		endforeach;
 
 		$json = json_encode($imageArray, JSON_PRETTY_PRINT);
