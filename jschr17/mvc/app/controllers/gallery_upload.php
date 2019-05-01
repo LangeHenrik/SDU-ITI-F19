@@ -1,5 +1,9 @@
 <?php
 
+include_once 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php';
+$database = new Database();
+$conn = $database->getConn();
+
 if(isset($_POST["submit"])){
 
     $newFileName = $_POST["filename"];
@@ -10,6 +14,10 @@ if(isset($_POST["submit"])){
     }
     $imageTitle = $_POST["filetitle"];
     $imageDesc = $_POST["filedesc"];
+
+    if(!empty(htmlspecialchars($_SESSION["username"]))){
+        $user_id = $_SESSION["id"];
+    }
 
     $file = $_FILES['file'];
 
@@ -24,36 +32,37 @@ if(isset($_POST["submit"])){
 
     $allowed = array("jpg", "jpeg", "png");
 
+    $blob = addslashes(file_get_contents($_FILES[$file][$fileTempName]));
+
     if (in_array($fileActualExt, $allowed)){
         if ($fileError === 0){
             if ($fileSize < 200000){
                 $imageFullName = $newFileName . "." . uniqid("", true) . "." . $fileActualExt;
                 $fileDestination = "images/" . $imageFullName;
 
-                include 'config.php';
-
                 if(empty($imageTitle) || empty($imageDesc)){
                     exit();
                 } else {
                     $sql = 'SELECT * FROM images;';
-                    $stmt = mysqli_stmt_init($link3);
-                    if(!mysqli_stmt_prepare($stmt, $sql)){
+                    $stmt = $conn->prepare($sql);
+                    if(!$stmt = $conn->prepare($sql)){
                         echo "SQL statement failed 1";
                     } else {
-                        mysqli_stmt_execute($stmt);
-                        $result = mysqli_stmt_get_result($stmt);
-                        $rowCount = mysqli_num_rows($result);
-                        $setImageOrder = $rowCount + 1;
+                        $stmt->execute();
+                        $result = $stmt->fetchAll();
+                        /*$rowCount = mysqli_num_rows($result);
+                        $setImageOrder = $rowCount + 1;*/
 
-                        $stmt = mysqli_stmt_init($link3);
-                        $sql = 'INSERT INTO images(title, imgdesc, imgName, imgorder) VALUES (?, ?, ?, ?);';
-                        if(!mysqli_stmt_prepare($stmt, $sql)){
+                        //$stmt = mysqli_stmt_init($conn);
+                        $sql2 = 'INSERT INTO images(blob, imgName, title, description, user_id) VALUES (?, ?, ?, ?);';
+                        $stmt2 = $conn->prepare($sql2);
+                        if(!$stmt2 = $conn->prepare($sql2)){
                             echo "SQL statement failed 2";
                         } else {
-                            mysqli_stmt_bind_param($stmt, "ssss", $imageTitle, $imageDesc, $imageFullName, $setImageOrder);
-                            mysqli_stmt_execute($stmt);
+                            $stmt2->execute([$blob, $imageFullName, $imageTitle, $imageDesc, $user_id]);
+                            //mysqli_stmt_execute($stmt);
 
-                            move_uploaded_file($fileTempName, $fileDestination);
+                            //move_uploaded_file($fileTempName, $fileDestination);
                         }
                     }
                 }

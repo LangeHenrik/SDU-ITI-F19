@@ -1,15 +1,17 @@
 <?php
-/*
-session_start();
+
+//session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+    header("location: other");
     exit;
-}*/
+}
 
 
 include_once 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php';
 $database = new Database();
 $conn = $database->getConn();
+
+$homeController = new HomeController();
 
 ?>
  
@@ -70,9 +72,11 @@ $conn = $database->getConn();
 	$sql = "SELECT user_id, username, firstname, lastname, zipcode, city, email, phonenumber FROM users";
 	$stmt1 = $conn->prepare($sql);
 	$stmt1->execute();
-	$row_count = $stmt1-> fetchColumn();
+	$row_count = $stmt1->fetchColumn();
 	if($row_count > 0){
+	    echo $row_count;
 		while($row = $stmt1->fetchAll(PDO::FETCH_ASSOC)){
+
             foreach($row as $data_values){
                 $id = $data_values['user_id'];
                 $username = $data_values['username'];
@@ -104,14 +108,14 @@ $conn = $database->getConn();
 	<br>
 	<br>
 	<div>
-        <main>
-            <section class="gallery-links">
+        <!--<main>-->
+            <!--<section class="gallery-links">-->
                 <div class="wrapper">
                     <div class="gallery-container">
                         <h3>Upload pictures to gallery</h3>
                         <?php
                         echo '<div class="gallery-upload">
-                        <form action="gallery_upload.php" method="POST" enctype="multipart/form-data">
+                        <form action="gallery_upload"  method="POST" enctype="multipart/form-data">
                             <input type="text" name="filename" placeholder="File name here" class="form-control">
                             <input type="text" name="filetitle" placeholder="Image title here" class="form-control">
                             <input type="text" name="filedesc" placeholder="Image description here" class="form-control">
@@ -128,8 +132,8 @@ $conn = $database->getConn();
                         <br>
                     </div>
                 </div>
-            </section>
-        </main>
+            <!--</section>-->
+        <!--</main>-->
 	</div>
 </body>
 </html>
