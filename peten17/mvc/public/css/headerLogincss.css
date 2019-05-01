@@ -1,0 +1,31 @@
+.header h1 {
+    text-align: center;
+    font-family: sans-serif;
+    padding: 10px;
+    margin-top: 200px;
+  }
+  
+  .loginBox form {
+    width: 30%;
+    position: absolute;
+    left: 35%;
+  
+  
+  }
+  
+  .loginBox fieldset {
+    font-size: 20px;
+    font-family: sans-serif;
+  
+  }
+  
+  .loginBox input {
+    padding: 8px;
+    font-family: sans-serif;
+    border: 0px;
+    color: black;
+  }
+  
+  body {
+    background-color: #f2f2f2;
+  }

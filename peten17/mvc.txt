@@ -1,0 +1,11 @@
+MVC-pattern:
+
+Public:
+index.php loader
+
+
+
+html i views
+
+sql i models
+

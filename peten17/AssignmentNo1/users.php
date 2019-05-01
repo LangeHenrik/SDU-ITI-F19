@@ -14,8 +14,6 @@
   <body>
 
     <div class="content">
-
-
       <table>
         <tr>
            <th>Name</th>
@@ -25,14 +23,9 @@
            <th>Zipcode</th>
          </tr>
       <?php
-
         $sql = "SELECT * from users";
-
         $stmt = $conn->query($sql);
         $stmt->execute();
-
-
-
 
          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -43,11 +36,6 @@
             echo "<td>" . $row['city'] ."</td>";
             echo "<td>" . $row['zipcode'] . "</td>";
           echo "</tr>";
-
-
-
-
-
 
          }
         // for ($i=0; $row < ; $i++) {
@@ -64,17 +52,9 @@
       <?php
         $sql = "SELECT "
 
-
-
-
-
-
        ?>
 
     </div>
-
-
-
 
   </body>
 </html>

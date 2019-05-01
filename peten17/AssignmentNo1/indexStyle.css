@@ -1,11 +1,11 @@
-.header h1{
+.header h1 {
   text-align: center;
   font-family: sans-serif;
   padding: 10px;
   margin-top: 200px;
 }
 
-.loginBox form{
+.loginBox form {
   width: 30%;
   position: absolute;
   left: 35%;
@@ -13,18 +13,19 @@
 
 }
 
-.loginBox fieldset{
+.loginBox fieldset {
   font-size: 20px;
   font-family: sans-serif;
 
 }
-.loginBox input{
+
+.loginBox input {
   padding: 8px;
   font-family: sans-serif;
   border: 0px;
   color: black;
 }
 
-body{
+body {
   background-color: #f2f2f2;
 }
