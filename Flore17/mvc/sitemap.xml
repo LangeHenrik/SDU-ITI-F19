@@ -1,0 +1,19 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:8080/flore17/mvc/public</loc>
+</url>
+<url>
+<loc>http://localhost:8080/flore17/mvc/public/home/</loc>
+</url>
+<url>
+<loc>
+http://localhost:8080/flore17/mvc/public/home/logout/
+</loc>
+</url>
+<url>
+<loc>http://localhost:8080/flore17/mvc/public/pictures/</loc>
+</url>
+<url>
+<loc>http://localhost:8080/flore17/mvc/public/users/</loc>
+</url>
+</urlset>

@@ -1,0 +1,10 @@
+
+User-agent: *
+
+Disallow: 
+
+Crawl-delay: 5
+
+Disallow: /flore17/mvc/public/home/restricted
+
+Sitemap: http://localhost:8080/flore17/mvc/sitemap.xml
