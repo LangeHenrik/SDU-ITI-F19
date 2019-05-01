@@ -47,7 +47,7 @@ class ApiController extends Controller {
 			$user_id_match = $this->model('User')->checkUserID($json_obj->username, $user_id);
 
 			if ($exists == true && $user_id_match == true){
-				$image_id = $this->model('Picture')->uploadPicDB($json_obj->title, $json_obj->description, $image1, $ext1);
+				$image_id = $this->model('Picture')->uploadPicDB($json_obj->title, $json_obj->description, $json_obj->image, $ext1);
 				$img_id = new \stdClass();
 				$img_id->image_id = $image_id;
 				$json = json_encode($img_id, JSON_PRETTY_PRINT);

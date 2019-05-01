@@ -26,7 +26,7 @@ class UserPicApi {
 		$imageArray = array();
 	
 		foreach($viewbag['images'] as $Images) :
-			$tempImg = new Img(base64_encode($Images['imagetmp']), $Images['header'], $Images['comm']);
+			$tempImg = new Img($Images['imagetmp'], $Images['header'], $Images['comm']);
 			array_push($imageArray, $tempImg);
 		endforeach;
 
@@ -54,6 +54,7 @@ class Img {
 	public $description;
 
 	public function __construct($img, $header, $comm){
+	
 		$this->image = $img;
 		$this->title = $header;
 		$this->description = $comm;
