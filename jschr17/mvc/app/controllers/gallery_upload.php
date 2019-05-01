@@ -15,8 +15,16 @@ if(isset($_POST["submit"])){
     $imageTitle = $_POST["filetitle"];
     $imageDesc = $_POST["filedesc"];
 
+    $user_id = '';
+
     if(!empty(htmlspecialchars($_SESSION["username"]))){
-        $user_id = $_SESSION["id"];
+        $sql = 'SELECT user_id FROM users WHERE username = :param_username';
+        $stmt3 = $conn->prepare('param_username', $param_username);
+        $param_username = $_SESSION["username"];
+        if ($stmt3->execute()){
+            $id_values = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+            echo $id_values;
+        }
     }
 
     $file = $_FILES['file'];
@@ -55,7 +63,7 @@ if(isset($_POST["submit"])){
                         $setImageOrder = $rowCount + 1;*/
 
                         //$stmt = mysqli_stmt_init($conn);
-                        $sql2 = 'INSERT INTO images(blob, imgName, title, description, user_id) VALUES (?, ?, ?, ?);';
+                        $sql2 = 'INSERT INTO images(image, imgName, title, description, user_id) VALUES (?, ?, ?, ?, ?);';
                         $stmt2 = $conn->prepare($sql2);
                         if(!$stmt2 = $conn->prepare($sql2)){
                             echo "SQL statement failed 2";
