@@ -5,27 +5,44 @@ header("Content-Type: application/json, charset=UTF-8");
 include_once(__DIR__ . '/../../../app/core/Database.php');
 
 
+$method = $_SERVER['REQUEST_METHOD'];
+$request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
+switch ($method) {
+    case 'GET':
+        read();
+        break;
+    default:
+        echo 'Default switch case';
+        break;
+}
+
 function read(){
     echo json_encode('read method entered');
-    //database connection
-    $database = new Database;
-    $db = $database->getConn();
 
     //create user array
     $users = array();
-
-    //connect to database
-    $query = $db->prepare("SELECT * FROM users");
-    $query->execute();
-
-    //get list of users
     $userList = array();
-    $userList = $query->fetchAll();
+    
+    try {
+        //database connection
+        $database = new Database;
+        $db = $database->getConn();
 
+        //connect to database
+        $query = $db->prepare("SELECT * FROM users");
+        $query->execute();
+
+        //get list of users
+        $userList = $query->fetchAll();
+    } catch(Exception $e){
+        echo json_encode('Exception in database connection');
+    }
+    
+    echo json_encode('size of userlist array: ' . $userList->sizeof);
     //check amount of users found
     if ($userList->sizeof > 0){
         //print userlist to see what happens
-        echo '<pre>'; echo print_r($userList); echo '</pre>';
+        echo json_encode(print_r($userList));
 
         foreach ($userList as $usr) {
             //for each tuple make new user object with the information
@@ -46,6 +63,7 @@ function read(){
         
     }
 }
+
 
 //notes
 //json_encode($object)
