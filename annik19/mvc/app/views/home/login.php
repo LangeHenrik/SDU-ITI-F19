@@ -1,4 +1,3 @@
-<?php include_once(__DIR__ . "\\..\\..\\models\\UserTable.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,11 +24,12 @@
         <div class="col-sm">
         </div>
         <div class="col-sm" style="color: red">
-            <?php if (isset($viewbag['messages']) && !empty($viewbag['messages'])){
-                foreach ($viewbag['messages'] as $item){
-                    print $item. "<br>";
+            <?php if (isset($viewbag['messages']) && !empty($viewbag['messages'])) {
+                foreach ($viewbag['messages'] as $item) {
+                    print $item . "<br>";
                 }
-            }?>
+                unset($viewbag);
+            } ?>
         </div>
     </div>
     <div class="row">

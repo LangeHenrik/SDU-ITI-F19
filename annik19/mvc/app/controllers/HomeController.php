@@ -19,7 +19,7 @@ class HomeController extends Controller {
             if ($user_verify[0][1]===$username && password_verify($password, $user_verify[0][8])){
                 $_SESSION['logged_in']=true;
                 $user->name = $_POST['db_username']; //user in model
-                $_SESSION['UserTable'] = $username;
+                $_SESSION['user'] = $username;
                 $viewbag['username'] = $user->name;
                 $images = $this->model('ImagesTable');
                 $images_results = $images -> getData("id_user", $user_verify[0][0], "user");
@@ -37,8 +37,6 @@ class HomeController extends Controller {
 	public function login() {
 	    if ($this->post()){
             $_SESSION['logged_in'] = true;
-            echo $_POST['db_username'];
-            echo $_POST['db_password'];
         }else{
 	        if (isset($_SESSION['logged_in'])){
 	            unset($_SESSION['logged_in']);
@@ -48,7 +46,6 @@ class HomeController extends Controller {
         }
 	}
 
-	# create a button for logout?
 	public function logout() {
 		if($this->post()) {
 			session_unset();
@@ -57,18 +54,13 @@ class HomeController extends Controller {
 			echo 'You can only log out with a post method';
 		}
 	}
-	
-	public function loggedout() {
-		echo 'You are now logged out';
-        header('Location: index');
-	}
 
 	public function images(){
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']===true){
-            $viewbag['username']= $_SESSION['username'];
+            $viewbag['username']= $_SESSION['user'];
             $images = $this->model('ImagesTable');
             $user = $this->model('UserTable');
-            $results = $user->getData('username', $_SESSION['username'], 'name');
+            $results = $user->getData('username', $_SESSION['user'], 'name');
             $user_id = $results[0][0];
             $images_results = $images -> getData("id_user", $user_id, "user");
             $viewbag['ImagesTable'] = $images_results;
@@ -90,22 +82,13 @@ class HomeController extends Controller {
         $this -> view('home/community', $viewbag);
     }
 
-    public function users(){
-	    if ($this -> get()){
-	        echo "all users:";
-            $user = $this ->model('User');
-            $all_users = $user -> select();
-            echo json_encode($all_users);
-        }
-    }
-
     public function upload(){
         $new_img = $this->model('ImagesTable');
         $header = htmlentities($_POST['img_title']);
         $text = htmlentities($_POST["img_text"]);
-        // all this to get the images - create function
+
         $user = $this->model('UserTable');
-        $results = $user->getData('username', $_SESSION['UserTable'], 'name');
+        $results = $user->getData('username', $_SESSION['user'], 'name');
         $user_id = $results[0][0];
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -113,7 +96,7 @@ class HomeController extends Controller {
         $new_img->insert($fieldarray);
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
             $viewbag['ImagesTable'] = $new_img -> getData("id_user", $user_id, "user");
-            $viewbag['username'] = $_SESSION['UserTable'];
+            $viewbag['username'] = $_SESSION['user'];
             $this->view('home/images', $viewbag);
             //header('Location: annik19/mvc/public/home/images');
             //$this->images();

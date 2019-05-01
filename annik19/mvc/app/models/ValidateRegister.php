@@ -1,5 +1,4 @@
 <?php
-//require_once "config.php";
 
 class validateRegister
 {
@@ -113,10 +112,8 @@ class validateRegister
 }
 
 function test_input($in){
-    // echo "inside test_input...";
     $in = trim($in);
     $in = stripslashes($in);
     $in = htmlspecialchars($in);
     return $in;
 }
-//var_dump($errors);

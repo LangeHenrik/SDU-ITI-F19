@@ -38,7 +38,7 @@ class Database extends DB_Config {
             return;
         }
         // else fetch the data
-        $query = "SELECT * FROM $this->tablename WHERE $where=:$bind ORDER BY id DESC;";
+        $query = "SELECT * FROM $this->tablename WHERE $where=:$bind;";
         $stmt = $this->conn -> prepare($query);
         $stmt -> bindParam($bind, $var);
         $stmt -> execute();
@@ -50,7 +50,6 @@ class Database extends DB_Config {
 
     function select(){
         $end = end($this->fieldarray);
-        //echo "<br> " . $end;
         $query ="SELECT ";
         foreach ($this->fieldarray as $field){
             $query .= $field;
@@ -59,7 +58,6 @@ class Database extends DB_Config {
             }
         }
         $query .= " FROM $this->tablename";
-        //echo $query;
         $stmt = $this->conn ->prepare($query);
         $stmt -> execute();
         $result = $stmt -> fetchAll(PDO::FETCH_NUM);
@@ -91,7 +89,8 @@ class Database extends DB_Config {
         }
         $stmt -> execute();
 
-        $er = $stmt ->errorCode();
+        return $this -> conn ->lastInsertId();
+        //$er = $stmt ->errorCode();
 //        if ($er==='00000')
 //            //echo "<br> uploaded successful";
 //        else

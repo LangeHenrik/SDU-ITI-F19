@@ -9,9 +9,8 @@ class Router {
 	function __construct () {
 	    //echo "<br> Router Constructor";
 		$url = $this->parseUrl();
-		//echo "<br> url[0]: ".$url[0];
 		
-		if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
+		if(isset($url[0]) &&    file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
 			$this->controller = $url[0] . 'Controller';
 			//echo "<br> unset url[0]";
 			unset($url[0]);

@@ -52,35 +52,6 @@
         </div>
     </div>
 </div>
-<br><br>
-<div id="main" class="container">
-    <div class="row">
-        <div class="col">
-            <h4>Your pictures in a glance</h4>
-        </div>
-    </div>
-
-    <?php
-    $arr_img= $viewbag['ImagesTable'];
-    $flag= true;
-    if (!empty($arr_img)) {
-        foreach ($arr_img as $img) { ?>
-            <?php if ($flag == true) { ?>
-                <div class="row">
-            <?php } ?>
-            <div class="col">
-                <div id="images" class="card">
-                    <a target="_blank" href="../<?= $img[4] ?>">
-                        <img id="img-small" class="card-img-top" src="../<?= $img[4] ?>"></a>
-                </div>
-            </div>
-            <?php $flag = true ? false : true; ?>
-            <?php if ($flag == true) { ?>
-                </div>
-            <?php } ?>
-        <?php }
-    };
-    ?> </div>
 
 <br><br>
 <div id="main" class="container">
@@ -103,13 +74,13 @@
                             <h5 class="card-title"><?=$img[1]?></h5>
                             <h5 class="form-text text-muted">Description </h5>
                             <p class="card-text"><?=$img[2]?> </p>
-                            <form name="delete" method="post" action="../../../../delete.php">
-                                <input class="form-control" type="hidden" name="image_path" value="../<?=$img[4]?>">
-                                <button class="btn btn-danger" type='submit' value="Delete" id="delete">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+<!--                            <form name="delete" method="post" action="">-->
+<!--                                <input class="form-control" type="hidden" name="image_path" value="../--><?//=$img[4]?><!--">-->
+<!--                                <button class="btn btn-danger" type='submit' value="Delete" id="delete">-->
+<!--                                    <i class="fas fa-trash-alt"></i>-->
+<!--                                </button>-->
+<!--                            </form>-->
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>

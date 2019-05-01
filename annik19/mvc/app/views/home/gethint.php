@@ -1,13 +1,8 @@
 <?php
-include 'config.php';
+include_once(__DIR__."\\..\\..\\core\\Database.php");
 
-$sql_users="SELECT username FROM user";
-$stmt = $conn -> prepare($sql_users);
-$stmt -> execute();
-$result = array();
-while($row = $stmt->fetch(PDO::FETCH_NUM)){
-    array_push($result, $row[0]);
-}
+$user = $this -> model('UserTable');
+$result= $user -> select();
 
 // the q parameter from URL
 if (isset($_GET['q'])) {

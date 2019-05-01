@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Images</title>
-    <link rel="stylesheet" type="text/css" href="mvc/app/css/home.css">
-    <link rel="stylesheet" type="text/css" href="mvc/app/css/users.css">
-    <link rel="stylesheet" type="text/css" href="mvc/app/css/images.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <?php echo "<link rel='stylesheet' href='../css/users.css'>"?>
+    <?php echo "<link rel='stylesheet' href='../../css/community.css'>"?>
 </head>
+<?php include_once('gethint.php')?>
 <script>
     function showHint(str){
         if (str.length === 0){
@@ -30,16 +28,17 @@
 <?php include '../app/views/partials/menu.php'; ?>
 <body>
 
-<!--<div class="search_bar">-->
-<!--<h2> Search a user: </h2>-->
-<!--<form>-->
-<!--    Username: <input type="text" onkeyup="showHint(this.value)">-->
-<!--</form>-->
-<!--<p> Suggestions: <span id="txt_hint"></span></p>-->
-<!--</div>-->
+<div class="container">
+    <h2>Community</h2>
+    <form>
+        <h4>Search a user:</h4>
+        <label>Username:</label>
+        <input type="text" onkeyup="showHint(this.value)">
 
-<h2 style="margin: 4%">Community</h2>
-<table class="table table-striped table-hover table-responsive" style="margin-left: 4%; margin-right:4%;" ">
+    <p> Suggestions: <span id="txt_hint"></span></p>
+    </form>
+
+<table class="table table-striped table-hover table-responsive" ">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
@@ -60,16 +59,18 @@
         ?>
             <tr>
                 <th scope="row"><?=$count?></th>
-                <td><?=$user[0]?></td>
                 <td><?=$user[1]?></td>
                 <td><?=$user[2]?></td>
                 <td><?=$user[3]?></td>
                 <td><?=$user[4]?></td>
                 <td><?=$user[5]?></td>
                 <td><?=$user[6]?></td>
+                <td><?=$user[7]?></td>
             </tr>
     <?php $count += 1; } ?>
     </tbody>
+
+</div>
 
 </body>
 </html>

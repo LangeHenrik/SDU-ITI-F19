@@ -3,7 +3,7 @@
 function restricted ($controller, $method) {
 
     //echo '<br> restricted function';
-	$restricted_urls = array('HomeController' => array('restricted'));
+	$restricted_urls = array('HomeController' => array('restricted'), 'ApiController' => array('restricted'));
     //var_dump($restricted_urls);
 
 	if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
