@@ -6,7 +6,8 @@ function restricted ($controller, $method) {
 		'HomeController' => array(),
 		'ImagesController'=>array('index','getimages','uploadImage'),
 		'UserImagesController'=>array('index','getimages','removeImage'),
-		'UsersController'=>array('index'));
+		'UsersController'=>array('index'),
+		'ApiController'=>array());
 
 
 	if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {

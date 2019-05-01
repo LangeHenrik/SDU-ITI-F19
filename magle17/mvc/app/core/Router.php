@@ -29,6 +29,7 @@ class Router {
 		require_once 'Restricted.php';
 		if(restricted(get_class($this->controller), $this->method)) {
 			echo 'Access Denied';
+			echo '<form action="/magle17/mvc/public/Home/" method="post"><input type="submit" value="Til Loginsiden"></form>';
 		} else {
 			call_user_func_array([$this->controller, $this->method], $this->params);
 		}
