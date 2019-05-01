@@ -8,15 +8,15 @@ class Database extends DB_Config {
     protected $servername = '';
 
 	public function __construct() {
-	    $servername = parent::getDBServername();
+	    $servername = parent::getServername();
 	    $dbname = parent::getDBName();
-	    $username = parent::getDBUsername();
-	    $password = parent::getDBPassword();
+	    $username = parent::getUsername();
+	    $password = parent::getPassword();
 
 		try {
             $this->conn1 = new PDO("mysql:host=" . $servername . ";dbname=" . $dbname,
-            username,
-            password,
+            $username,
+            $password,
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 
@@ -34,7 +34,12 @@ class Database extends DB_Config {
 		$this->conn1 = null;
 	}
 
-	public function getConn(){
-	    return this::$conn1;
+    /**
+     * @return PDO
+     */
+    public function getConn()
+    {
+        return $this->conn1;
     }
+
 }

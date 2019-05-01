@@ -1,9 +1,16 @@
 <?php
+/*
 session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
-}
+}*/
+
+
+include_once 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php';
+$database = new Database();
+$conn = $database->getConn();
+
 ?>
  
 <!DOCTYPE html>
@@ -39,9 +46,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </head>
 <body>
     <div class="page-header">
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome!</h1>
+        <h1>Hi, <b><?php  echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome!</h1>
         <p>
-            <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+            <a href="logout" class="btn btn-danger">Sign Out of Your Account</a>
         </p>
     </div>
 	<div>
@@ -59,19 +66,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 			<th>Phone number</th>
 		</tr>
 	<?php
-    include 'config.php';
-	$sql = "SELECT id, username, firstname, lastname, zip, city, email, phonenumber FROM users";
-	$stmt1 = $link->prepare($sql);
+
+	$sql = "SELECT user_id, username, firstname, lastname, zipcode, city, email, phonenumber FROM users";
+	$stmt1 = $conn->prepare($sql);
 	$stmt1->execute();
 	$row_count = $stmt1-> fetchColumn();
 	if($row_count > 0){
 		while($row = $stmt1->fetchAll(PDO::FETCH_ASSOC)){
             foreach($row as $data_values){
-                $id = $data_values['id'];
+                $id = $data_values['user_id'];
                 $username = $data_values['username'];
                 $firstname = $data_values['firstname'];
                 $lastname = $data_values['lastname'];
-                $zip = $data_values['zip'];
+                $zip = $data_values['zipcode'];
                 $city = $data_values['city'];
                 $email = $data_values['email'];
                 $phonenumber = $data_values['phonenumber'];

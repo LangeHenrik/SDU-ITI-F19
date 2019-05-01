@@ -5,21 +5,35 @@ class DB_Config {
 	protected $password = 'master070';
 	protected $dbname = 'MVC_Data';
 
-    public function getDBServername(){
-        return this::$servername;
-    }
-
-    public function getDBUsername(){
-        return this::$username;
-    }
-
-    public function getDBPassword(){
-        return this::$password;
-    }
-
     public function getDBName(){
-        return this::$dbname;
+        return $this->dbname;
     }
+
+    /**
+     * @return string
+     */
+    public function getServername()
+    {
+        return $this->servername;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+
 }
 
 	

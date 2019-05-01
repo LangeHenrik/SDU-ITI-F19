@@ -2,9 +2,12 @@
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = "";
-/*
+
 // Include config file
-include_once "config.php";
+include_once "C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php";
+
+$database = new Database();
+$conn = $database->getConn();
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -23,8 +26,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty($username_err) && empty($password_err)){
         $sql_username = "SELECT username FROM users WHERE username = :param_username";
-        $stmt1 = $link->prepare($sql_username);
-        if($link->prepare($sql_username)){
+        $stmt1 = $conn->prepare($sql_username);
+        if($conn->prepare($sql_username)){
             $stmt1->bindParam(':param_username', $param_username);
             $param_username = $username;
             if($stmt1->execute()){
@@ -36,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }
                 if($param_username === $got_username) {
                     $sql_password = "SELECT password FROM users WHERE username = :param_username";
-                    $stmt2 = $link->prepare($sql_password);
+                    $stmt2 = $conn->prepare($sql_password);
                     $stmt2->bindParam(':param_username', $param_username);
                     $stmt2->execute();
                     $password_values = $stmt2->fetchAll();
@@ -49,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $id;
                         $_SESSION["username"] = $username;
-                        header("location: welcome.php");
+                        header("location: welcome");
                     } else{
                         $password_err = "The password you entered was not valid.";
                     }
@@ -61,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
     }
-}*/
+}
 ?>
 
 <html>
