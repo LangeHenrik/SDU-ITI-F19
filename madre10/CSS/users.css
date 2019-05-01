@@ -1,0 +1,13 @@
+.user {
+    display: flex;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.user__username{
+    width: 200px;
+}
+
+.user__password{
+
+}
