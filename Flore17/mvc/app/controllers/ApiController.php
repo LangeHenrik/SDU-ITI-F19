@@ -38,7 +38,6 @@ class ApiController extends Controller {
 			
 			//Split image-blob in ext and content
 			$temp = $json_obj->image;
-			//echo $temp;
 			$temp1 = explode(';', $temp, 2);
 			$ext = $temp1[0];
 			$ext1 = substr($ext, 5);
@@ -49,6 +48,7 @@ class ApiController extends Controller {
 
 			if ($exists == true && $user_id_match == true){
 				$image_id = $this->model('Picture')->uploadPicDB($json_obj->title, $json_obj->description, $image1, $ext1);
+				$img_id = new \stdClass();
 				$img_id->image_id = $image_id;
 				$json = json_encode($img_id, JSON_PRETTY_PRINT);
 
