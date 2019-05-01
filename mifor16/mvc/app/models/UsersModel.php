@@ -21,4 +21,20 @@ class UsersModel extends Database
         return $result;
     }
 
+    function getUsersAndID (){
+        $statement = $this->conn->prepare("SELECT user_id, username FROM Users");
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll();
+        return $result;
+    }
+
+    function getPicturesFromID($user_id) {
+        $statement = $this->conn->prepare("SELECT * FROM mifor16.images WHERE username = (SELECT username FROM mifor16.users WHERE user_id = :user_id);");
+        $statement->bindParam(':user_id', $user_id);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
 }

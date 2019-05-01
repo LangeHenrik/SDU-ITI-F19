@@ -22,7 +22,7 @@ class UploadController extends Controller
     {
         if ($this->post()) {
             $uploadModel = new UploadModel();
-
+            $type = $_FILES["fileToUpload"]["type"];
 
             $imageFileType = strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]), PATHINFO_EXTENSION));
             // Check if image file is a actual image or fake image
@@ -40,11 +40,12 @@ class UploadController extends Controller
 
             $username = $_SESSION['login_user'];
             $blob_data = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
+
             $title = $_POST['title'];
             $description = $_POST['description'];
 
 
-            $uploadModel->uploadImage($username, $blob_data, $title, $description);
+            $uploadModel->uploadImage($username, $blob_data, $title, $description, $type);
 
             header("Location: /mifor16/mvc/public/home");
         }

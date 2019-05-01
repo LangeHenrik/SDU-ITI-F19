@@ -15,13 +15,17 @@ use PDO;
 class UploadModel extends Database
 {
 
-    public function uploadImage($username, $blob_data, $title, $description) {
-        $statement = $this->conn->prepare('insert into images (username, blob_data, title, description) values (:username, :blob_data, :title, :description);');
+    public function uploadImage($username, $blob_data, $title, $description, $type) {
+
+        $image_base64 = base64_encode($blob_data);
+        $statement = $this->conn->prepare('insert into images (username, blob_data, title, description, extension) values (:username, :blob_data, :title, :description, :extension);');
 
         $statement->bindParam(':username', $username);
-        $statement->bindParam(':blob_data', $blob_data);
+        #$statement->bindParam(':blob_data', $blob_data, PDO::PARAM_LOB);
+        $statement->bindParam(':blob_data', $image_base64, PDO::PARAM_LOB);
         $statement->bindParam(':title', $title);
         $statement->bindParam(':description', $description);
+        $statement->bindParam(':extension', $type);
 
         $statement->execute();
 

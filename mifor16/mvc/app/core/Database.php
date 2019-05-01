@@ -28,8 +28,7 @@ class Database extends DB_Config {
 	}
 
     function checkUserExists($ausername) {
-        $conn = getConnection();
-        $statement = $conn->prepare('select username from users where username = :username;');
+        $statement = $this->conn->prepare('select username from users where username = :username;');
         $statement->bindParam(':username', $ausername);
         $statement->setFetchMode(PDO::FETCH_ASSOC);
         $statement->execute();

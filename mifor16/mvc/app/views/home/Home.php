@@ -23,7 +23,7 @@ $latestimages = $viewbag["pictures"];
         echo '<h5>' . 'Submitted by: ' . $latestimages[$item]['username'] . '</h5>';
 
         echo '<div class="resize">';
-        $image = imagecreatefromstring($latestimages[$item]['blob_data']);
+        $image = imagecreatefromstring(base64_decode($latestimages[$item]['blob_data']));
         ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
         imagejpeg($image, null, 80);
         $data = ob_get_contents();
