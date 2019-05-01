@@ -11,16 +11,16 @@ namespace models;
 
 class picture_format
 {
-    public $id;
+    public $image_id;
     public $title;
-    public $blob;
     public $description;
+    public $image;
 
-    public function __construct($id ,$title, $blob, $description)
+    public function __construct($id ,$title, $description, $blob)
     {
-        $this->id = $id;
+        $this->image_id = $id;
         $this->title = $title;
-        $this->blob = $blob;
         $this->description = $description;
+        $this->image = $blob;
     }
 }

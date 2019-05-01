@@ -57,12 +57,12 @@
         for ($x = 0; $x < sizeof($images); $x++) {
             echo $images[$x]['title'] . ' - By: ' . $images[$x]['username'];
             echo '<div class = "img">';
-            $image = imagecreatefromstring($images[$x]['datablob']);
+            $image = imagecreatefromstring(base64_decode($images[$x]['image']));
             ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
             imagejpeg($image, null, 80);
             $data = ob_get_contents();
             ob_end_clean();
-            echo '<img src="data:image/jpg;base64,' .  base64_encode($data)  . '" />';
+            echo '<img src="data:' .  $images[$x]['extension'] .  ';base64,' .  base64_encode($data)  . '" />';
             echo '</div>';
             echo $images[$x]['description'];
             echo '<hr>';

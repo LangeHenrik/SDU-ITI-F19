@@ -13,6 +13,7 @@ class HomeController extends Controller {
 
 	public function post_picture(){
 	    $homeModel = new HomeModel();
+	    $type = $_FILES["fileToUpload"]["type"];
         $imageFileType = strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]),PATHINFO_EXTENSION));
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
@@ -33,7 +34,8 @@ class HomeController extends Controller {
         $username_stripped = strip_tags($username,"<b>");
         $title_stripped = strip_tags($title,"<b>");
         $description_stripped = strip_tags($description,"<b>");
-        $homeModel->upload_picture($username_stripped, $data, $title_stripped, $description_stripped);
+        $type_stripped = strip_tags($type, "<b>");
+        $homeModel->upload_picture($username_stripped, $data, $title_stripped, $description_stripped, $type_stripped);
 
         return $this->view("home/Home", array("pictures" => $homeModel->get_20_posts()));
     }
