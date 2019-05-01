@@ -1,171 +1,33 @@
 <?php
 class User extends Database {
 
-	public $username = '';
-	public $password = '';
-	public $confirm_password = '';
-	public $firstname = '';
-	public $lastname = '';
-    public $zipcode = '';
-    public $city = '';
-    public $email = '';
-    public $phonenumber = '';
-    public $username_err = '';
-    public $password_err = '';
-    public $confirm_password_err = '';
-    public $firstname_err = '';
-    public $lastname_err = '';
-    public $zipcode_err = '';
-    public $city_err = '';
-    public $email_err = '';
-    public $phonenumber_err = '';
+
+
+/*	protected $username = '';
+    protected $password = '';
+    protected $confirm_password = '';
+    protected $firstname = '';
+    protected $lastname = '';
+    protected $zipcode = '';
+    protected $city = '';
+    protected $email = '';
+    protected $phonenumber = '';
+    protected $username_err = '';
+    protected $password_err = '';
+    protected $confirm_password_err = '';
+    protected $firstname_err = '';
+    protected $lastname_err = '';
+    protected $zipcode_err = '';
+    protected $city_err = '';
+    protected $email_err = '';
+    protected $phonenumber_err = ''; */
 
     public function __construct(){
         //parent::__construct();
     }
 
-    /**
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getConfirmPassword()
-    {
-        return $this->confirm_password;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getZipcode()
-    {
-        return $this->zipcode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhonenumber()
-    {
-        return $this->phonenumber;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsernameErr()
-    {
-        return $this->username_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPasswordErr()
-    {
-        return $this->password_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getConfirmPasswordErr()
-    {
-        return $this->confirm_password_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstnameErr()
-    {
-        return $this->firstname_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastnameErr()
-    {
-        return $this->lastname_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getZipcodeErr()
-    {
-        return $this->zipcode_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCityErr()
-    {
-        return $this->city_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmailErr()
-    {
-        return $this->email_err;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhonenumberErr()
-    {
-        return $this->phonenumber_err;
+    function setUsername($username) {
+        this::$username = $username;
     }
 
 
