@@ -1,21 +1,20 @@
 <?php
 class User extends Database {
-	
-	public function login($username, $password){
 
-		$sql = "SELECT username, password FROM users WHERE username = :username";
+	public function login($email, $password){
+
+		$sql = "SELECT email, userPassword FROM person WHERE email = :email";
 		$stmt = $this->conn->prepare($sql);
-		$stmt->bindParam('username', $username);
+		$stmt->bindParam('email', $email);
 		$stmt->execute();
 		$users = $stmt->fetchAll();
 
-		if(isset($users[0]) && sizeof($users) == 1 && $users[0]['username'] == $username) {
-			
-			if($users[0]['password'] == $password) {
+		if(isset($users[0]) && sizeof($users) == 1 && $users[0]['email'] == $email) {
+
+			if($users[0]['userPassword'] == $password) {
 				$_SESSION['logged_in'] = true;
 				return true;
 			}
-
 		}
 
 		return false;
