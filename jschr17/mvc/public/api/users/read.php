@@ -20,7 +20,7 @@ function read(){
     //get list of users
     $userList = $query->fetchAll();
     //check amount of users found
-    if ($userList->sizeof = 0){
+    if ($userList->sizeof === 0){
         http_response_code(404); //find correct response code
         echo json_encode(array("message" => 'no users found.'));
     } else {

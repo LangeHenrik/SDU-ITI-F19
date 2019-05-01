@@ -32,7 +32,8 @@ if(isset($_POST["submit"])){
 
     $allowed = array("jpg", "jpeg", "png");
 
-    $blob = addslashes(file_get_contents($_FILES[$file][$fileTempName]));
+    $blob = addslashes(file_get_contents($_FILES['file']['tmp_name']));
+
 
     if (in_array($fileActualExt, $allowed)){
         if ($fileError === 0){
