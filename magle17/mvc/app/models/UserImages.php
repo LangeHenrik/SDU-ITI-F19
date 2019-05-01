@@ -47,6 +47,9 @@ class UserImages extends Database {
     }
 
     public function removeImage(){
+        if(!isset($_POST["image-id"])){
+            header("Location: /magle17/mvc/public/UserImages/");
+        }
         $imageid=$_POST["image-id"];
 
         $this->preparedRemoveImage->bindParam(':id',$imageid,PDO::PARAM_INT);

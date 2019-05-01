@@ -27,15 +27,34 @@ class ApiController extends Controller {
     public function users(){
         $model =$this->model("Api");
         $users=$model->getUsers();
-
+        header("Content-Type:application/json");
         echo json_encode($users);
     }
 
     public function pictures($param1,$param2){
+      header("Content-Type:application/json");
+      $model=$this->model("Api");
         if($this->post()){
-            echo $_POST['json'];
+            $body=json_decode($_POST['json'],true);
+            $image=$body["image"];
+            $title=$body["title"];
+            $description=$body["description"];
+            $username=$body["username"];
+            $password=$body["password"];
+
+            $check=$model->checkLogin($username,$password);
+            if($check==$param2){
+
+              $imageid=$model->saveImage($check,$image,$title,$description);
+
+              $arr=array('image_id'=>$imageid);
+              echo json_encode($arr);
+            }else{
+              echo $check;
+            }
+
+
         }else if($this->get()){
-            $model=$this->model("Api");
             $images=$model->getUserImages($param2);
             echo json_encode($images);
         }
