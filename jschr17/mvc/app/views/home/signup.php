@@ -3,10 +3,7 @@
 /* $username = $password = $confirm_password = $firstname = $lastname = $zipcode = $city = $email = $phonenumber = "";
 $username_err = $password_err = $confirm_password_err = $firstname_err = $lastname_err = $zipcode_err = $city_err = $email_err = $phonenumber_err = ""; */
 
-require 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\models\User.php';
-//$User = User::__contruct();
-
-
+require 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\controllers\SignupController.php';
 
     class Signup extends User{
         protected $username = '';
@@ -181,7 +178,9 @@ require 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\models\User
 
     }
 
-$signup = new Signup();
+$signup = new SignupController();
+
+$signupView = new signup();
 
 
 ?>
@@ -200,7 +199,7 @@ $signup = new Signup();
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
-        <form name="registerForm" action="<?php /*echo htmlspecialchars($_SERVER["PHP_SELF"]);*/ ?>" method="post" onsubmit="return <?php $signup->formCheck(); ?>">
+        <form name="registerForm" action="<?php /*echo htmlspecialchars($_SERVER["PHP_SELF"]);*/ ?>" method="post" onsubmit="return <?php $signupView->formCheck(); ?>">
             <div class="form-group <?php echo (!empty($signup->getUsernameErr())) ? 'has-error' : ''; ?>">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="<?php /*echo $username;*/ $signup->getUsername(); ?>">

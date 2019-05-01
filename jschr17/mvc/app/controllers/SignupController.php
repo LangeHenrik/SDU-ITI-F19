@@ -1,5 +1,7 @@
 <?php
 
+require 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\models\User.php';
+
 class SignupController extends Controller {
 
     public function index ($param) {
@@ -12,4 +14,10 @@ class SignupController extends Controller {
         $viewbag['username'] = $user->name;
         $this->view('index', $viewbag);
     }
+
+    public function checkInput(){
+        $user = new User();
+        return $user->checkInput();
+    }
+
 }
