@@ -4,7 +4,10 @@ function restricted ($controller, $method) {
 
 	$restricted_urls = array(
 		'HomeController' => array(),
-		'ImagesController'=>array('index','getimages','uploadImage'));
+		'ImagesController'=>array('index','getimages','uploadImage'),
+		'UserImagesController'=>array('index','getimages','removeImage'),
+		'UsersController'=>array('index'));
+
 
 	if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 		return false;

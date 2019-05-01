@@ -23,7 +23,7 @@ class HomeController extends Controller {
 
 	public function registerUser(){
 		$user = $this->model('User');
-		$user->registerUser();
+		$this->viewbag["registerMessage"]=$user->registerUser();
 		$this->index();
 	}
 	

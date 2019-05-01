@@ -5,12 +5,14 @@ class User extends Database {
 	private $preparedLoginCheck;
 	private $preparedGetUsername;
 	private $prepareInsertUser;
+	private $preparedGetUsers;
 	public function __construct() {
 		parent::__construct();
 		$this->preparedLoginCheck = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
 		$this->preparedGetUsername = $this->conn->prepare("SELECT * from users WHERE username = :username");
 		$this->prepareInsertUser = $this->conn->prepare("INSERT INTO users (username, firstname, lastname, zip, city, email, phone, password) 
 			VALUES(:username, :firstname,:lastname,:zip,:city,:email,:phone,:password)");
+		$this->preparedGetUsers=$this->conn->prepare('SELECT * FROM users');
 	}
 
 	public function login(){
@@ -56,11 +58,12 @@ class User extends Database {
 		
 		
 			if (count($result) == 1) {
-			  $_SESSION['registerMessage'] = "EFTERABER! Dit brugernavn er allerede taget! Eller også er adgangskoden for kort";
+			  return "EFTERABER! Dit brugernavn er allerede taget! Eller også er adgangskoden for kort";
 			}
 			else{
+				$hashed=password_hash($passwordInput,PASSWORD_DEFAULT);
 			  $this->prepareInsertUser->bindparam(':username', $usernameInput);
-			  $this->prepareInsertUser->bindparam(':password', password_hash($passwordInput,PASSWORD_DEFAULT));
+			  $this->prepareInsertUser->bindparam(':password', $hashed);
 			  $this->prepareInsertUser->bindparam(':lastname', $lastNameInput);
 			  $this->prepareInsertUser->bindparam(':firstname', $frontNameInput);
 			  $this->prepareInsertUser->bindparam(':zip', $zipInput);
@@ -69,7 +72,12 @@ class User extends Database {
 			  $this->prepareInsertUser->bindparam(':email', $emailAdressInput);
 			  $success=$this->prepareInsertUser->execute();
 			}
-		  }
+		}
+	}
+	public function getAllUsers(){
+		$this->preparedGetUsers->execute();
+        $this->preparedGetUsers->setFetchMode(PDO::FETCH_ASSOC);
+        return $this->preparedGetUsers->fetchAll();
 	}
 }
 
