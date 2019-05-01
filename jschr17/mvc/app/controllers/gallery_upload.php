@@ -1,6 +1,6 @@
 <?php
 
-include_once 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php';
+include_once (__DIR__ . '\..\..\..\app\core\Database.php');
 $database = new Database();
 $conn = $database->getConn();
 
@@ -18,12 +18,15 @@ if(isset($_POST["submit"])){
     $user_id = '';
 
     if(!empty(htmlspecialchars($_SESSION["username"]))){
-        $sql = 'SELECT user_id FROM users WHERE username = :param_username';
-        $stmt3 = $conn->prepare('param_username', $param_username);
+        $sql = "SELECT user_id FROM users WHERE username = :param_username";
+
+        $stmt3 = $conn->prepare($sql);
+        $stmt3->bindParam(':param_username', $param_username);
         $param_username = $_SESSION["username"];
+
         if ($stmt3->execute()){
             $id_values = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-            echo $id_values;
+
         }
     }
 
@@ -88,5 +91,5 @@ if(isset($_POST["submit"])){
         exit();
     }
 }
-header('Location: welcome.php');
+header('Location: welcome');
 ?>

@@ -6,8 +6,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
-
-include_once 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php';
+include_once (__DIR__ . '\..\..\..\app\core\Database.php');
 $database = new Database();
 $conn = $database->getConn();
 
@@ -31,7 +30,7 @@ $homeController = new HomeController();
             var pictureCount = 0;
             $("#btn").click(function(){
                 pictureCount = pictureCount + 5;
-                $("#pictureLoad").load("load-pictures.php", {
+                $("#pictureLoad").load("load-pictures", {
                     pictureNewCount: pictureCount
                 });
             });
@@ -74,7 +73,6 @@ $homeController = new HomeController();
 	$stmt1->execute();
 	$row_count = $stmt1->fetchColumn();
 	if($row_count > 0){
-	    echo $row_count;
 		while($row = $stmt1->fetchAll(PDO::FETCH_ASSOC)){
 
             foreach($row as $data_values){
@@ -128,7 +126,7 @@ $homeController = new HomeController();
                         <div id="pictureLoad">
                         </div>
                         <br>
-                        <button id="btn" class="btn btn-primary">Load pictures</button>
+                        <button type="submit" action="load-pictures" id="btn" class="btn btn-primary">Load pictures</button>
                         <br>
                     </div>
                 </div>
