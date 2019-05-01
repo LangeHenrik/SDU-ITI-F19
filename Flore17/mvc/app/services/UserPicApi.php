@@ -26,12 +26,11 @@ class UserPicApi {
 		$imageArray = array();
 	
 		foreach($viewbag['images'] as $Images) :
-			if (substr($posts['imagetmp'], 0, 5) == 'data:') {
-			echo $Images['imagetmp'];
-				$tempImg = new Img($Images['imagetmp'], $Images['header'], $Images['comm']);
+			if (substr($Images['imagetmp'], 0, 5) == 'data:') {
+				$tempImg = new Img($Images['image_id'], $Images['imagetmp'], $Images['header'], $Images['comm']);
 				array_push($imageArray, $tempImg);
 			} else {
-				$tempImg = new Img(base64_encode($Images['imagetmp']), $Images['header'], $Images['comm']);
+				$tempImg = new Img(base64_encode($Images['image_id'], $Images['imagetmp']), $Images['header'], $Images['comm']);
 				array_push($imageArray, $tempImg);
 			}
 		endforeach;
@@ -55,12 +54,14 @@ class Person {
 }
 
 class Img {
+	public $image_id;
 	public $image;
 	public $title;
 	public $description;
 
-	public function __construct($img, $header, $comm){
+	public function __construct($image_id, $img, $header, $comm){
 	
+		$this->image_id = $image_id;
 		$this->image = $img;
 		$this->title = $header;
 		$this->description = $comm;

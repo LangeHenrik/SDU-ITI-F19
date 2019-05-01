@@ -11,6 +11,6 @@
     "\\app\\views\\partials",
     "\\app\\views\\pictures"
   ],
-  "SelectedNode": "\\app\\models\\Picture.php",
+  "SelectedNode": "\\app\\views\\partials\\getPictures.php",
   "PreviewInSolutionExplorer": false
 }
