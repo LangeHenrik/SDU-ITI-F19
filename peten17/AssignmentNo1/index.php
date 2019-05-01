@@ -86,7 +86,7 @@ if (isset($_POST["submit"])) {    // checks if the login-button is pressed.
 <head>
   <meta charset="utf-8">
   <title>Login</title>
-  <link rel="stylesheet" href="indexStyle.css">
+  <link rel="stylesheet" href="../../../../public/css/style.css">
 </head>
 
 <body>

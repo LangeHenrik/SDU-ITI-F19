@@ -1,126 +1,88 @@
 <?php
 class User extends Database {
 	
-	private $_username, $_pwd, $_firstName, $_lastName,$_zipcode,$_city,$_email,$_phonenumber;
-	 
+	public function login($username, $password){
 
-	// // constructer for user
-	// //public function __construct($username,$pwd, $lastName,$zipcode,$city,$email,$phonenumber){
-	// public function __construct(){
-	// 	// $_username = $username;
-	// 	// $_pwd = $pwd; 
-	// 	// $_firstName = $firstName;
-	// 	// $_lastName = $lastName;
-	// 	// $_zipcode = $zipcode;
-	// 	// $_city = $city;
-	// 	// $_email = $email;
-	// 	// $_phonenumber = $phonenumber;
-	// }
-
-	// public function login($username,$pwd){	
-		
-	// 	if($username == "" || $pwd == ""){
-	// 		return false;
-	// 	}
-		
-	// 	$sql = "SELECT username,pwd FROM users WHERE username = $username;";
-		
-	// 	echo $sql;
-		
-	// 	$stmt = $this->conn->prepare($sql);
-	// 	$stmt->bindParam(":username",$username);
-	// 	$stmt->execute();
-	// 	$users = $stmt->fetchAll();
-
-	// 	if(isset($users[0]) && sizeof($users) == 1 && $users[0]['username']==$username){
-	// 		$hashed_pwd = $users[0]['pwd'];
-	// 		if(password_verify($pwd,$hashed_pass) ){
-	// 			$_SESSION['logged_in'] = true;
-	// 				// sets session variables
-	// 			$_SESSION["username"] = $users[0]['username'];
-    //             $_SESSION["firstname"] = $users[0]["firstname"];
-    //             $_SESSION["lastname"] = $users[0]["lastname"];
-    //             $_SESSION["zipcode"] = $users[0]["zipcode"];
-    //             $_SESSION["city"] = $users[0]["city"];
-    //             $_SESSION["email"] = $users[0]["email"];
-    //             $_SESSION["phonenumber"] = $users[0]["phonenumber"];
-	// 			return true;
-
-	// 		}else{
-	// 			return false;
-	// 		}
-			
-	// 	}
-
-	// }
-
-	// public function logout(){
-	// 	$_SESSION['logged_in'] = false;
-		
-	// }
-
-
-	// public function showUsers(){
-	//     $sql = "SELECT * FROM users";
-	// 	$stmt = $this->conn->prepare($sql);
-	// 	$stmt->execute();
-		
-	// 	$userList = $stmt->fetchAll();
-		
-	// 	return $userList;
-	// }
-
-	public function login($username,$password){
-		
-		$sql = "SELECT username,pwd FROM users WHERE username = $username;";
-				
+		$sql = "SELECT * FROM users WHERE username = :username";
 		$stmt = $this->conn->prepare($sql);
-		$stmt->bindParam(':username',$username);
+		$stmt->bindParam(':username', $username);
 		$stmt->execute();
-		$stmt->setFetchMode(PDO::FETCH_ASSOC);
-		$users = $stmt->fetchAll();
+		$users = $stmt->fetch();
 
-		if(isset($users[0]) && sizeof($users) == 1 && $users[0]['username']==$username){
-			$hashed_pwd = $users[0]['pwd'];
-			if(password_verify($pwd,$hashed_pass) ){
-				$_SESSION['logged_in'] = true;
-					// sets session variables
-				$_SESSION["username"] = $users[0]['username'];
-                $_SESSION["firstname"] = $users[0]["firstname"];
-                $_SESSION["lastname"] = $users[0]["lastname"];
-                $_SESSION["zipcode"] = $users[0]["zipcode"];
-                $_SESSION["city"] = $users[0]["city"];
-                $_SESSION["email"] = $users[0]["email"];
-                $_SESSION["phonenumber"] = $users[0]["phonenumber"];
-				return true;
-
-			}else{
-				return false;
-			}
+		if($users['username'] == $username && password_verify($password,$users['pwd'])) {
+			echo "Username correct and password correct";
 			
-		}	
+				$_SESSION['logged_in'] = true;
+				echo "Password correct";
+				
+				// Stores data in session
+				$_SESSION['id'] = $users['id'];
+                $_SESSION["username"] = $username;
+                $_SESSION["firstname"] = $users["firstname"];
+                $_SESSION["lastname"] = $users["lastname"];
+                $_SESSION["zipcode"] = $users["zipcode"];
+                $_SESSION["city"] = $users["city"];
+                $_SESSION["email"] = $users["email"];
+                $_SESSION["phonenumber"] = $users["phonenumber"];
+				header('Location: /peten17/mvc/public/picture/all');
+				
+			} else{
+			echo "Wrong password or username";
+			
+		}
+
+		
 	}
 
-	public function getUserlist(){
-		$sql = "Select * FROM users";
+	public function getUsers(){
+		$sql = $this->conn->prepare("SELECT * FROM users");
 		$sql->execute();
-		$sql->setFetchMode(PDO::FETCH_ASSOC);
-		$userList = $sql->fetchAll();
+	 	$sql->setFetchMode(PDO::FETCH_ASSOC);
+		$users = $sql->fetchAll();
+		  
+		return $users;
 	}
 
+	public function register($username, $password, $firstname, $lastname, $zipcode, $city, $email, $phonenumber){
+		$_SERVER['register_msg'] = "";
+		$checkUsername = $this->conn->prepare("SELECT id FROM users where username = :username");
+		$addUsersql = 	 $this->conn->prepare("INSERT INTO users (username, pwd, firstname, lastname, zipcode, city, email, phonenumber) VALUES (:username, :password, :firstname, :lastname, :zipcode, :city, :email, :phonenumber);");
+		
+		$checkUsername->bindParam(":username", $username, PDO::PARAM_STR);
+
+		$checkUsername->execute();
+		$checkUsername->setFetchMode(PDO::FETCH_ASSOC);
+		$users = $checkUsername->fetchAll();
+		  
+		if(count($users)==1){
+			$_SERVER['register_msg'] = "Username already taken. Pick another!";
+
+		} else {
+			$param_pass = password_hash($password,PASSWORD_DEFAULT);// Hashing the password for safety
+
+			$addUsersql->bindParam(":username",$username,PDO::PARAM_STR);
+			$addUsersql->bindParam(":password",$param_pass,PDO::PARAM_STR);
+			$addUsersql->bindParam(":firstname",$firsname,PDO::PARAM_STR);
+			$addUsersql->bindParam(":lastname",$lastname,PDO::PARAM_STR);
+			$addUsersql->bindParam(":zipcode",$zipcode,PDO::PARAM_INT);
+			$addUsersql->bindParam(":city",$city,PDO::PARAM_STR);
+			$addUsersql->bindParam(":email",$email,PDO::PARAM_STR);
+			$addUsersql->bindParam(":phonenumber",$phone,PDO::PARAM_STR);
+			print_r($addUsersql);
+
+			$addUsersql->execute();
+			$_SESSION['register_msg'] = "Registration successful.";
+			$_SESSION['logged_in'] = true;
+			
+
+		}
+		header('Location: /peten17/mvc/app/views/home/register.php');
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+		
+		
+	}
 
 }

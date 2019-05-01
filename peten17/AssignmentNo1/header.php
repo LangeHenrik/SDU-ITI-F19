@@ -23,14 +23,6 @@ if (isset($_POST["logout"])) {
   </head>
 
   <body>
-    <script>
-      function changeTitle(){
-        
-      }
-
-    </script>
-
-
 
     <div class="pageHeader">
       <h1>Hi, <?php echo htmlspecialchars($_SESSION["firstname"]); ?>!</h1>
