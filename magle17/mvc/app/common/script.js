@@ -3,11 +3,12 @@ function performAjax(){
     var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var response=eval(this.responseText.split('<!DOCTYPE html>')[0]);
+                //var response=eval(this.responseText.split('<!DOCTYPE html>')[0]);
+                var response=eval(this.responseText);
                 //Splitting on the html because the whole dom is loaded when php is 
                 //
                 if(response.length>0){
-                    offset+=4;
+                    offset+=response.length;
                 }
                 if(response=='0'){
                     console.log("No More IMAGES!?");
@@ -16,7 +17,7 @@ function performAjax(){
                 }
             }
         };
-        xmlhttp.open("GET", "?offset="+offset, true); 
+        xmlhttp.open("GET", "getimages/?offset="+offset, true); 
         //true means it is asynchronous.
         xmlhttp.send();
 }
@@ -61,7 +62,7 @@ function amountscrolled(){
 }
 
 function checkRegister() {
-    console.log("entered js checks");
+    console.log("entered JS");
     var errorMessageContainer = document.getElementById("register-error-container");
     errorMessageContainer.innerHTML="";
 
@@ -102,7 +103,7 @@ function checkRegister() {
     }
 
     if (!(validLastName)) {
-        console.log("efternavnforkert.");
+        console.log("efternavn forkert.");
         errorMessageContainer.innerHTML += "Dit efternavn må kun indeholde bogstaver<br>";
         evalVar = false;
     }
