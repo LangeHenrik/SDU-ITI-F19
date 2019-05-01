@@ -17,5 +17,10 @@ class Controller {
 	public function get () {
 		return $_SERVER['REQUEST_METHOD'] === 'GET';
 	}
+
+	public function service($service) {
+		require_once '../app/services/' . $service . '.php';
+		return new $service();
+	}
 	
 }

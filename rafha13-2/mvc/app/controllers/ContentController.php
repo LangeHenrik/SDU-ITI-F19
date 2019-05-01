@@ -3,37 +3,16 @@
 class ContentController extends Controller {
 	
 	public function index () {
-        $this->view('content_page/login_page');
+		//$content = $this->model('Content')->loadContent();
+		$_SESSION['page'] = 'content';
+        $this->view('content_page/content_page');
 	}
-	
-	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
-		$user = $this->model('User');
-		$user->name = $param1;
-		$viewbag['username'] = $user->name;
-		$this->view('home/index', $viewbag);
-	}
-	
+
 	public function restricted () {
 		echo 'Welcome - you must be logged in';
-	}	
+	}
 
-	public function login() {
-		$_SESSION['logged_in'] = true;
-		$this->view('home/login');
+	public function create () {
+		$this->model('Content')->createPost();
 	}
-	
-	public function logout() {
-		
-		if($this->post()) {
-			session_unset();
-			header('Location: /mvc/public/home/loggedout');
-		} else {
-			echo 'You can only log out with a post method';
-		}
-	}
-	
-	public function loggedout() {
-		echo 'You are now logged out';
-	}
-	
 }

@@ -163,17 +163,16 @@ button.button {
 
 .post_picture_box {
 	height: 450px;
+	
 }
 
 .post_picture { /* Billede og tekst i opslag */
 	margin-top: 50px;
-	height: 400px;
+	max-height: 400px;
+	height: auto;
+	max-width: 80%;
 	width: auto;
 	border: solid;
-}
-
-.post_text {
-	/* MANGLER MEN KUNNE VÆRE BRUGBAR I FORBINDELSE MED DB! */
 }
 
 .user {

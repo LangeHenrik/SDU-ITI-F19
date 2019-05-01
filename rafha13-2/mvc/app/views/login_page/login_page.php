@@ -4,8 +4,8 @@
 		
 		<title>Assignment 2</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src='/rafha13/mvc/public/js/FormValidation.js'></script>
-		<link rel="stylesheet" type="text/css" href='/rafha13/mvc/public/css/PageStyle.css'>
+		<script src='/rafha13-2/mvc/public/js/FormValidation.js'></script>
+		<link rel="stylesheet" type="text/css" href='/rafha13-2/mvc/public/css/PageStyle.css'>
 
 	</head>
 	<!--Comment-->
@@ -19,7 +19,7 @@
 			</inline>
 						
 			<div class="weather">
-				<img src='/rafha13/mvc/public/images/weather.png' style="height:35px"/>
+				<img src='/rafha13-2/mvc/public/images/weather.png' style="height:35px"/>
 			</div>
 				
 		</div>
@@ -34,7 +34,7 @@
 				<div class="box" style="left:10%"> 
 					<p class="title"> Sign up for free! <p>
 					
-					<form class="form" onsubmit="checkFields()" method="post" action="createUser.php">
+					<form class="form" onsubmit="checkFields()" method="post" action="/rafha13-2/mvc/public/login/create">
 						
 						<input onblur="checkUsername()" required type="text" name="newUsername" placeholder="New username..." id="newUsername" size="20%"/>
 						<br> <br>
@@ -63,7 +63,7 @@
 				<div class="box" style="right:10%">
 					<p class="title"> Already a user? Log in! <p>
 					
-					<form class="form" method="post" action="loginUser.php">
+					<form class="form" method="post" action="/rafha13-2/mvc/public/login">
 						<input type="text" name="username" placeholder="Username..." id="login_username"/>
 						
 						<br> <br> <br> 
@@ -76,7 +76,7 @@
 					</form>
 					
 					<p> Is the homepage empty? </p>
-					<form action="dummy_data.php">
+					<form class=form method="post" action="/rafha13-2/mvc/public/login/dummy">
 						<input type="submit" value="Click me for dummy data!"/>
 					</form>
 					
