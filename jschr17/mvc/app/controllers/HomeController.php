@@ -5,6 +5,10 @@ class HomeController extends Controller {
 	public function index ($param) {
 		Controller::view($param);
 	}
+
+	public function controller($param){
+	    Controller::controllers($param);
+    }
 	
 	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
 		$user = $this->model('User');
@@ -23,13 +27,8 @@ class HomeController extends Controller {
 	}
 	
 	public function logout() {
-		
-		if($this->post()) {
-			session_unset();
-			header('Location: /mvc/public/home/loggedout');
-		} else {
-			echo 'You can only log out with a post method';
-		}
+        session_unset();
+        header('Location: other');
 	}
 	
 	public function loggedout() {
