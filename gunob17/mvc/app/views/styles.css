@@ -1,0 +1,66 @@
+body
+{
+    background-image:url(img/background.jpg); /* background picture with an alpha value*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-color: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: orangered;
+}
+h1{
+    color: white;
+    text-align: center;
+
+
+}
+h2{
+    color: white;
+    text-align: center;
+}
+
+.signuperror{
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+}
+.signup-succ {
+    padding:  20px;
+    background-color: green;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.login-status {
+    padding: 20px;
+    background-color: rgba(90,102,243,0.5);
+    color: black;
+    margin-bottom: 15px;
+}

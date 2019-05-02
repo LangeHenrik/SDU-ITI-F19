@@ -15,57 +15,57 @@ if (isset($_POST['signup_submit'])) {
   $pwd = $_POST['password'];
   $repwd = $_POST['rep_password'];
   if (empty($uid) ||empty($email) ||empty($pwd) ||empty($repwd)) {
-    header("Location: ../signup.php?error=emptyfields&username=".$uid."&email=".$email);
+    //header("Location: ../signup.php?error=emptyfields&username=".$uid."&email=".$email);
     exit();
   }
   elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)&&!preg_match("/^[a-zA-Z0-9]*$/",$uid)) {
-    header("Location: ../signup.php?error=invalidEmail&invalidusername");
+    //header("Location: ../signup.php?error=invalidEmail&invalidusername");
     exit();
   }
   elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: ../signup.php?error=invalidEmail&username=".$uid);
+    //header("Location: ../signup.php?error=invalidEmail&username=".$uid);
     exit();
   }
   elseif (!preg_match("/^[a-zA-Z0-9]*$/",$uid)) {
-    header("Location: ../signup.php?error=invalidusername&email=".$email);
+    //header("Location: ../signup.php?error=invalidusername&email=".$email);
     exit();
   }
   elseif (!preg_match("/^[a-zA-ZÆØÅæøå]*$/",$firstN)) {
-    header("Location: ../signup.php?error=invalidname");
+    //header("Location: ../signup.php?error=invalidname");
     exit();
   }
   elseif (!preg_match("/^[a-zA-ZÆØÅæøå]*$/",$lastN)) {
-    header("Location: ../signup.php?error=invalidname");
+    //header("Location: ../signup.php?error=invalidname");
     exit();
   }
   elseif (!preg_match("/^[0-9]*$/",$zip)) {
-    header("Location: ../signup.php?error=invalidzip");
+    //header("Location: ../signup.php?error=invalidzip");
     exit();
   }
   elseif (!preg_match("/^[a-zA-ZÆØÅæøå]*$/",$city)) {
-    header("Location: ../signup.php?error=invalidcity");
+    //header("Location: ../signup.php?error=invalidcity");
     exit();
   }
   elseif (!preg_match("/^[0-9]*$/",$phoneN)) {
-    header("Location: ../signup.php?error=invalidphoneNr");
+    //header("Location: ../signup.php?error=invalidphoneNr");
     exit();
   }
   elseif ($pwd !== $repwd) {
-    header("Location: ../signup.php?error=passwordcheck&username=".$uid."&email=".$email);
+    //header("Location: ../signup.php?error=passwordcheck&username=".$uid."&email=".$email);
     exit();
   }
   else {
 
     $stmt = $conn->prepare("SELECT username from users where username = :username");
     if (!$stmt) {
-      header("Location: ../signup.php?error=sqlerror");
+      //header("Location: ../signup.php?error=sqlerror");
       exit();
     }
     $stmt->bindParam(':username', $uid);
     $stmt->execute();
 
     if ($stmt->rowCount() >= 1) {
-      header("Location: ../signup.php?error=usernameInUse&email=".$email);
+      //header("Location: ../signup.php?error=usernameInUse&email=".$email);
       exit();
     }
   }
@@ -73,7 +73,7 @@ if (isset($_POST['signup_submit'])) {
     $stmt = $conn->prepare("INSERT INTO users (fname, lname, zip, city, phoneN, username, email, pwdusers)
     VALUES (:fname, :lname, :zip, :city, :phoneN, :username, :email, :password)");
     if (!$stmt) {
-      header("Location: ../signup.php?error=sqlerror");
+      //header("Location: ../signup.php?error=sqlerror");
       exit();
     }
     $hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
@@ -87,16 +87,16 @@ if (isset($_POST['signup_submit'])) {
     $stmt->bindParam(':email', $email);
     $res = $stmt->execute();
     if (!$res){
-      header("Location: ../signup.php?error=sqlerror");
+      //header("Location: ../signup.php?error=sqlerror");
       exit();
     }
     else {
-        header("Location: ../signup.php?signup=success");
+        //header("Location: ../signup.php?signup=success");
         exit();
     }
   }
   catch(PDOException $e){
-    header("Location: ../signup.php?error=sqlerror");
+    //header("Location: ../signup.php?error=sqlerror");
     exit();
   }
 
@@ -104,7 +104,7 @@ if (isset($_POST['signup_submit'])) {
 
 }
 else{
-  header("Location: ../signup.php");
+  //header("Location: ../signup.php");
   exit();
 }
 

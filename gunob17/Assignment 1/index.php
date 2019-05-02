@@ -24,7 +24,7 @@
                display.innerHTML=this.responseText ;
              } else {
                display.innerHTML = "Loading...";
-             };
+             }
            }
 }
 
