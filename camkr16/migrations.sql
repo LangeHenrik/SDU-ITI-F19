@@ -19,6 +19,7 @@ CREATE TABLE post(
   user_id INT REFERENCES user(user_id),
   title VARCHAR(100),
   description TEXT,
-  extension VARCHAR(4)
+  extension VARCHAR(4),
+  file BLOB
 );
 
