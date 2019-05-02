@@ -213,9 +213,11 @@
                     
                     $picturesJson = file_get_contents($url);
                     $pictures = json_decode($picturesJson);
-
+                    
+                    /*
                     echo $picturesJson;
                     print_r($picturesJson);
+                    */
 
                     if(isset($pictures[0]->image)) :
                         

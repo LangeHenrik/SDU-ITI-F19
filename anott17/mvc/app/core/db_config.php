@@ -9,6 +9,6 @@ class DB_Config {
   protected $servername = "localhost";
   protected $username = "root";
   protected $password = "root";
-  protected $dbname = "anott17_ass2";
+  protected $dbname = "anott17";
 
 }
