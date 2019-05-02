@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 session_start();
 if (!isset($_SESSION['login_user'])) {
-    header("location: login.php");
+    header("location: Login.php");
 }
 require 'dbmanager.php';
 ?>

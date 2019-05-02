@@ -13,7 +13,7 @@ if (!empty($_POST)) {
         if(checkCredentials($theusername, $thepassword)) {
             session_start();
             $_SESSION['login_user'] = $theusername;
-            header('location: index.php');
+            header('location: Home.php');
         }
     } else {
         echo '<script>alert("Username doesn\'t exist, or password is incorrect.")</script>';

@@ -112,5 +112,6 @@ function getImages() {
     $conn = null;
 
 
+
     return $result;
 }

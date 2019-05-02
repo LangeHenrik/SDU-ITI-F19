@@ -43,7 +43,7 @@ if (!empty($_POST)) {
 
             uploadImage($username, $path, $title, $description);
 
-            header('location: index.php');
+            header('location: Home.php');
         } else {
             echo '<script>alert("An error occured.")</script>';
         }
