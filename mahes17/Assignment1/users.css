@@ -1,0 +1,19 @@
+table{
+	margin: 3%;
+    border: 3px;
+    width: 90%;
+		border-color: black;
+}
+th, td{
+    padding: 12px;
+    text-align: left;
+}
+tr:nth-child(even) {background-color: #3677f9;}
+
+thead {
+    background-color: lightgray;
+}
+
+.suggestions {
+	margin-left: 50 px;
+}

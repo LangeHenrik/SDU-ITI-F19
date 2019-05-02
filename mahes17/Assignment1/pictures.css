@@ -1,0 +1,28 @@
+.flex-container {
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 15px;
+}
+
+.user {
+	width: 30%;
+	background-color: lightgray;
+	text-align: center;
+}
+
+.fa-user {
+    font-size: xx-large;
+}
+
+.pictures {
+    width: 65%;
+    background-color: lightgray;
+}
+
+.pictures .img {
+	width: 99%;
+    padding: 3px;
+}

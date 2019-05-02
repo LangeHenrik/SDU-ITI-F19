@@ -1,76 +1,48 @@
 <?php
+require_once "db_config.php";
+session_start();
+?>
 
-	if($_SERVER["REQUEST_METHOD"]=="POST"){
-		$email = $_POST["email"];
-		$password = $_POST["userPassword"];
-
-    include "PDO.php";
-
-    $stmt = $conn-> prepare("SELECT userPassword FROM Person where email = ':email'");
-		$stmt->bindParam(':email', $clientEmail);
-		$stmt -> execute();
-
-		$result = $stmt -> fetch(PDO::FETCH_NUM);
-
-		if(empty($username)){
-			   echo '<br> <div> Please enter a username!</div>';
-		}else if(empty($result[0])){
-			   echo '<br> <div> Email does not exist!</div>';
-		}else if(password_verify($password, $result[0])){
-			$_SESSION['email'] = $email;
-			   header("Location: ./pictures.php");
-		}else{
-			echo '<br> <div> Wrong password! </div>';
-		}
-	}
-	?>
-<!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-	<title> Login </title>
-
-	<link rel="stylesheet" type="text/css" href="css.css">
-
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+<div class="login">
 
-<div align="center"> <h1> Login page </h1> </div>
+<form class="loginForm" method="post">
+	<h1>Login</h1>
+	<input name="username" type="text" class="inputcss" placeholder="Enter username"/><br>
+	<input name="password" type="password" class="inputcss" placeholder="Enter password"/><br>
+	<input type="submit" id="login_btn" class="button" value="Login"></br>
 
-<form action="" method="POST">
+	<?php
+	if($_SERVER["REQUEST_METHOD"]=="POST"){
+		$username = $_POST["username"];
+		$password = $_POST["password"];
 
-<hr>
+		$sql = "SELECT password FROM users WHERE username = :username;";
+		$stmt = $conn -> prepare($sql);
+		$stmt -> bindParam(':username', $username);
+		$stmt -> execute();
 
-<center>
-
-  <div class="container">
-    <form class="loginForm" method="post">
-    <label ><b>Email</b></label>
-    <input type="text" placeholder="Enter email" name="email" required>
-
-	<br/>
-
-    <label> <b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="userPassword" required>
-
-	<br/>
-
-
-	<input type="submit" value = "Login" name= "login_button" >
-	<input type="submit" value="Register" formnovalidate name = "register">
-
-
-  </div>
- <center>
-
+		$result = $stmt -> fetch(PDO::FETCH_NUM);
+		if(empty($username)){
+			echo '<br> <div class="login_error">Wrong username/password combination!</div>';
+		}else if(password_verify($password, $result[0])){
+			$_SESSION['user'] = $username;
+			header("Location: users.php");
+		}else{
+			echo '<br> <div class="login_error">Wrong password!</div>';
+		}
+	}
+	?>
+	<p> <a href="register.php"> Register </a>  user </p>
 </form>
+</div>
 
-
- <hr>
 </body>
-
-
 </html>
