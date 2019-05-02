@@ -3,17 +3,20 @@
 class LoginController extends Controller {
 	
 	public function index ($param = null) {
-		echo "These are the params: " . $param;
+		require_once "../app/models/User.php";
+		
 		$this->view("login/Login");
 	}
-	
+	function __construct () {
+		require_once "../app/models/User.php";
+	}	
 	public function restricted () {
 		echo 'Welcome - you must be logged in';
 	}
 	
 	public function login() {
 		
-		if(isset($_POST['submit']) && strlen($_POST["login"])>0 && authenticate($_POST['login'], $_POST['password'])) {
+		if(isset($_POST['submit']) && strlen($_POST["login"])>0 && User::authenticate($_POST['login'], $_POST['password'])) {
 			$_SESSION["user_name"] = $_POST['login'];
 			header('Location: ../home', true, 302);
 			die();
@@ -48,7 +51,7 @@ class LoginController extends Controller {
 			$email = $_POST['email'];
 			$phone = $_POST['phone'];
 			
-			registerUser($username, $password, $firstName, $lastName, $zip, $city, $email, $phone);
+			User::registerUser($username, $password, $firstName, $lastName, $zip, $city, $email, $phone);
 			
 			
 			$authenticated = authenticate($username, $password);

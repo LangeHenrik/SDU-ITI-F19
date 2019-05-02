@@ -3,5 +3,6 @@
 
 
 function getImagesJson($start_index, $amount, $displayUser = null) {
-	return json_encode(imagesInRange($start_index, $amount, $displayUser));
+	require_once "../app/models/Image.php";
+	return json_encode(Image::imagesInRange($start_index, $amount, $displayUser));
 }

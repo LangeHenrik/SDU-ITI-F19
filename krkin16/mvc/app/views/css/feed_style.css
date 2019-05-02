@@ -13,7 +13,7 @@ body {
     padding: 0;
     /*
     background-color: #eee;*/
-    background-image: url(images/space_background.jpg);
+    background-image: url(/krkin16/mvc/app/images/space_background.jpg);
 
     background-repeat: no-repeat;
     background-attachment: fixed;

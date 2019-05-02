@@ -3,7 +3,7 @@
 
 body {
     background-color: gainsboro;
-    background-image: url(images/space_background.jpg);
+    background-image: url(/krkin16/mvc/app/images/space_background.jpg);
     font-size:1em;
     margin:0;
     padding: 0; 

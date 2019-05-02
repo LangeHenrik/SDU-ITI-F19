@@ -13,14 +13,14 @@
             echo "<h3 id='user_name'>" . $_SESSION["user_name"] . "</h3";?>
     </div>
     <div class="sidebar">
-        <form method="post">
-            <input type="submit" value="Home" name="home">
+        <form method="post" action="/krkin16/mvc/public/home">
+            <input type="submit" value="Home" name="home" >
         </form>
-        <form method="post">
+        <form method="post" action="/krkin16/mvc/public/home/displayOwn">
             <input type="submit" value="My Images" name="my_images">
         </form>
-        <form method="post">
-            <input type="submit" value="Log out!" name="log_out" >
+        <form method="post" action="/krkin16/mvc/public/home/logout">
+            <input type="submit" value="Log out!" name="log_out">
         </form>
     </div>
     

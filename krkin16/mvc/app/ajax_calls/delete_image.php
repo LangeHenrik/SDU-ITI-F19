@@ -2,15 +2,17 @@
 
 
 function deleteImageById($imageId=null) {
+	require_once "../app/models/Image.php";
+	require_once "../app/models/User.php";
     if($imageId!=null) {
 		$user = $_SESSION["user_name"];
         if($user!=null) {
-            $image = getImage($imageId);
-            if(getId($user) == $image->user) {
+            $image = Image::getImage($imageId);
+            if(User::getId($user) == $image->user) {
                 
                 unlink("../" . $image->imagePath);
                 
-                deleteImage($imageId);
+                Image::deleteImage($imageId);
             }
         }
     }

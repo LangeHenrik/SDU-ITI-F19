@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="headernav">
-		<?= require "header.php"; ?>
+		<?php include "header.php"; ?>
     </div>
     <div class="sidebar">
         <form method="post" action="/krkin16/mvc/public/home">

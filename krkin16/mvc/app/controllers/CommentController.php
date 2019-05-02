@@ -1,25 +1,23 @@
 <?php
+require "HomeController.php";
 
-class CommentController extends Controller {
-	
+class CommentController extends HomeController {
+	private $image;
 	public function index ($param = null) {
 		$imageId = $param;
-		$image =  getImage($imageId);
-		$image->user = getUser($image->user);
-		$viewbag = ["image"=>$image, "comments"=>getComments($imageId)];
+		$this->image =  Image::getImage($imageId);
+		$this->image->user = User::getUser($this->image->user);
+		$viewbag = ["image"=>$this->image, "comments"=>Comment::getComments($imageId)];
 		
 		$this->view("comment/Comment", $viewbag);
 		
 	}
-	
-	
-	public function restricted () {
-		echo 'Welcome - you must be logged in';
+	function __construct() {
+		require_once "../app/models/User.php";
+		require_once "../app/models/Image.php";
+		require_once "../app/models/Comment.php";
 	}
 	
-	public function loggedout() {
-		echo 'You are now logged out';
-	}
 	
 	public function postComment($imageId) {
 	    if(isset($_POST["submit_comment"])) {
@@ -27,8 +25,10 @@ class CommentController extends Controller {
 				
 				$text = $_POST["text"];
 				$user = $_SESSION["user_name"];
+				$userId = User::getId($user);
 				
-				submitComment($text, $imageId, $user);
+				
+				Comment::submitComment($text, $imageId, $userId);
 				header("Location: ../" . $imageId); //Make sure the same form can't be sent twice!
 				exit; // Location header is set, pointless to send HTML, stop the script
 			}

@@ -2,7 +2,7 @@
 class HomeController extends Controller {
 	
 	public function index ($param = null) {
-		$users = getUser();
+		$users = User::getUser();
 		
 		$usernames = array();
 		$count = 0;
@@ -19,6 +19,11 @@ class HomeController extends Controller {
 		$this->view("home/index", $viewbag);
 		
 	}
+	
+	function __construct () {
+		require_once "../app/models/User.php";
+		require_once "../app/models/Image.php";
+	}	
 	
 	public function displayOwn() {
 		$this->index([$_SESSION["user_name"]]);
@@ -53,7 +58,7 @@ class HomeController extends Controller {
 
 			if(!is_uploaded_file($path) || !exif_imagetype($path)) {
 				echo "Please only upload images";
-				header("Location: home"); //Make sure the same form can't be sent twice!
+				header("Location: ../home"); //Make sure the same form can't be sent twice!
 				exit();
 			}
 
@@ -64,15 +69,14 @@ class HomeController extends Controller {
 
 			rename($path, $newPath);
 
-			uploadImage($_POST["file_name"], $_POST["file_description"], $newPath);
+			Image::uploadImage($_POST["file_name"], $_POST["file_description"], $newPath);
 
-			header("Location: home "); //Make sure the same form can't be sent twice!
+			header("Location: ../home"); //Make sure the same form can't be sent twice!
 			exit; // Location header is set, pointless to send HTML, stop the script
 		}
 	}
 	
 	public function deleteImage($imageId) {
-		echo "run";
 		require_once "../app/ajax_calls/delete_image.php";
 		deleteImageById($imageId);
 	}
