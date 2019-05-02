@@ -38,7 +38,7 @@ class ApiController extends Controller {
 			}
 
 		} elseif (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-			$pictures = $this->model('Api') -> selectPictures($userID);
+			$pictures = $this->model('Api')->selectPictures($userID);
 			$json = json_encode($pictures, JSON_PRETTY_PRINT);
 			echo $json;
 		}
