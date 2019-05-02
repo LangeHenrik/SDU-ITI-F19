@@ -1,5 +1,5 @@
 <?php
-require "header.php";
+include "../app/views/partials/header.php";
 ?>
 
 
@@ -65,7 +65,7 @@ require "header.php";
                 }
             }
         ?>
-    <form class="signup" action="resources/signup.res.php" method="post">
+    <form class="signup" action="/sabah15/mvc/public/home/signup" method="post">
         <input type="text" name="uid" placeholder="Username">
         <input type="text" name="mail" placeholder="E-mail">
         <input type="password" name="pwd" placeholder="Password">
@@ -85,5 +85,5 @@ require "header.php";
 </main>
 
 <?php
-require "footer.php";
+include "../app/views/partials/footer.php";
 ?>

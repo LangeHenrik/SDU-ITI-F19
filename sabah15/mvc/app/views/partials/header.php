@@ -1,6 +1,3 @@
-<?php
-    session_start()
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +5,7 @@
         <meta name="description" content="This is an example of a meta description. THis will often show up in search results.">
         <meta name=viewport content="width=device-width, initial-scale=1">
         <title></title>
-        <link rel="stylesheet" href="resources/style.css">
+        <link rel="stylesheet" href="/sabah15/mvc/public/resources/style.css">
         <script
                 src="https://code.jquery.com/jquery-3.3.1.min.js"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -35,14 +32,14 @@
             <nav>
                 <div class="header">
                 <a href="#">
-                    <img src="resources/Samstagram.PNG" alt="logo">
+                    <img src="/sabah15/mvc/public/resources/Samstagram.PNG" alt="logo">
                 </a>
                 </div>
 
                 <div class="topnav">
-                    <a href="index.php">Gallery</a>
-                    <a href="portfolio.php">My Portfolio</a>
-                    <a href="users.php">Users</a>
+                    <a href="/sabah15/mvc/public/home/">Gallery</a>
+                    <a href="/sabah15/mvc/public/home/portfolio/">My Portfolio</a>
+                    <a href="/sabah15/mvc/public/home/users">Users</a>
 
                     <?php
                         if (isset($_SESSION['userId'])) {
@@ -50,7 +47,7 @@
 
 
                             echo '<div class="login-container">
-                                <form action="resources/logout.res.php" method="post">
+                                <form action="/sabah15/mvc/public/home/logout" method="post">
                                     <button type="submit" name="logout-submit">Logout</button>
                                 </form>
                             </div>';
@@ -60,7 +57,7 @@
                         }
                         else {
                             echo '<div class="login-container">
-                        <form action="resources/login.res.php" method="post">
+                        <form action="/sabah15/mvc/public/home/login" method="post">
                             <input type="text" name="mailuid" placeholder="Username/E-mail...">
                             <input type="password" name="pwd" placeholder="Password...">
                             <button type="submit" name="login-submit">Login</button>
@@ -68,7 +65,7 @@
                     </div>
 
                     <div class="login-container">
-                        <a href="signup.php">Signup</a>
+                        <a href="/sabah15/mvc/public/home/signup">Signup</a>
                     </div>';
                         }
                     ?>
