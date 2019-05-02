@@ -1,0 +1,102 @@
+.dashboard-header {
+    grid-row: header;
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.dashboard-header ul {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 10px 0 0;
+}
+
+.dashboard-header li {
+    list-style-type: none;
+    padding: 0 0 0 20px;
+}
+
+.dashboard-header a {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.dashboard-header a:hover {
+    color: orange;
+}
+
+.dashboard-body {
+    grid-row: content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    padding: 10px 0;
+}
+
+.dashboard-body > table {
+    width: 100%;
+}
+
+.dashboard-body > table td {
+    padding: 5px 15px;
+}
+
+#upload-header {
+    border:1px solid #ccc;
+    width: 100%;
+}
+
+#upload-content {
+    margin-top: 10px;
+    resize: none;
+    border:1px solid #ccc;
+    width: 100%;
+}
+
+.image-container p {
+    color: darkslategray;
+    font-size: 0.8em;
+}
+
+.image-container img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+}
+
+.image-container hr {
+    margin: 10px 0 5px 0;
+    border: 1px dashed black;
+}
+
+.opinions {
+    display: flex;
+}
+
+.opinions a {
+    display: flex;
+    align-items: flex-end;
+    color: black;
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.opinions a p {
+    padding: 0 0 0 5px;
+}
+
+.active {
+    color: green !important;
+}
+
+.like {
+    color: orange;
+}
+
+.dislike {
+    color: darkred;
+}

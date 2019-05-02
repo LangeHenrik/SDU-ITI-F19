@@ -17,6 +17,11 @@ Route::get('/feed/item/.*/like', 'FeedController@like');
 // Users
 Route::get('/users', 'UserController@index');
 
+// Api
+Route::get('/mvc/public/api/users', 'ApiUserController@index');
+Route::get('/mvc/public/api/pictures/user/.*', 'ApiFeedController@listUserPictures');
+Route::post('/mvc/public/api/pictures/user/.*', 'ApiFeedController@uploadPicture');
+
 // Catch all
 Route::get('.*', 'ErrorController@notFound');
 Route::post('.*', 'ErrorController@notFound');

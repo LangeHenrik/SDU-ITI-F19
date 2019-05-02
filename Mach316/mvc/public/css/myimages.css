@@ -1,0 +1,16 @@
+.user-management-pictures {
+
+}
+.user-management-picture {
+    width: 50%;
+}
+.user-management-image{
+    width: 100%;
+}
+
+.upload-image-form {
+    background-color: lightgoldenrodyellow;
+    border-bottom: 2px solid black;
+    margin: 0px;
+    padding: 3%;
+}

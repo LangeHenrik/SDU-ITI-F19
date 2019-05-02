@@ -1,6 +1,8 @@
 <?php
 namespace App\Core\Response;
 
+use App\Core\Config;
+use App\Core\Persistence\DB\Model;
 use App\Core\ViewRenderer\View;
 
 class ResponseObject
@@ -21,13 +23,14 @@ class ResponseObject
     {
         if(is_string($value) || is_numeric($value)) {
             $this->_response = $value;
-        } else if(is_array($value)) {
+        } else if(is_array($value) || $value instanceof Model) {
             $this->_response = json_encode($value);
+            $this->_headers['Content-Type'] = "application/json";
         } else if($value instanceof View) {
             $this->_response = $value->render();
         } else if($value instanceof Redirect) {
             $this->_response = null;
-            $this->_headers['Location'] = $value->getUrl();
+            $this->_headers['Location'] = Config::get("app/base") . $value->getUrl();
         }
     }
 

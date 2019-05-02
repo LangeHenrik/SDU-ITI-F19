@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title : "Default" }}</title>
 
-    <link href="/css/app.css" rel="stylesheet" />
+    <link href="{{ $publicBasePath }}/css/app.css" rel="stylesheet" />
 </head>
 <body>
 {{ $content }}

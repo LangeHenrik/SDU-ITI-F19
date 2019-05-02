@@ -13,7 +13,7 @@ if(!empty($_POST)) {
         echo '<script>alert("Username is taken!")</script>';
     } else {
         registerUser($un, $pw, $fn, $ln, $c, $z, $mail, $phone);
-        header("location: login.php");
+        header("location: Login.php");
     }
 
 

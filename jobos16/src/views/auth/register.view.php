@@ -19,7 +19,7 @@
                     Register new account
                 </div>
                 <div class="card-body">
-                    <form action="/auth/register" method="post">
+                    <form action="{{ $base }}/auth/register" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" id="inputFirstName" name="first_name" placeholder="First name" required>
                         </div>
@@ -49,7 +49,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-muted">
-                    Already have an account? <a href="/auth/login">Sign in</a>.
+                    Already have an account? <a href="{{ $base }}/auth/login">Sign in</a>.
                 </div>
             </div>
         </div>

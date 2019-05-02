@@ -90,7 +90,7 @@ try{
                 <th>Telefonnummer</th>
                 <th>Top-Hemmelige Password</th>
             </tr>
-            <?php 
+            <?php
                 $preparedGetUsers->execute();
                 $preparedGetUsers->setFetchMode(PDO::FETCH_ASSOC);
                 $result=$preparedGetUsers->fetchAll();
