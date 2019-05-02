@@ -1,3 +1,5 @@
+var wrongCredentials = {};
+
 function validateForm() {
     var allInput = document.getElementsByTagName("input");
     var login = document.getElementById("login").value;
@@ -14,25 +16,29 @@ function validateForm() {
     
     for(var i = 0; i < allInput.length; i++) {
         if (!validateCommonInput(allInput[i].value)) {
-            alert("Do not try to inject!");
-            return false;
+			if(!(allInput[i].id+"_wrong" in wrongCredentials)) {
+				wrongCredentials[allInput[i].id+"_wrong"] = true;
+				document.getElementById(allInput[i].id+"_wrong").innerHTML = "Should at include min 4 letters or numbers and no other symbols"
+			}
+			console.log(allInput[i].id+"_wrong");
+            validData = false;
         }
     }
     
     if(!validateUsername(login)) {
-        alert("Please don't use any symbols other than text and numbers.");
-        return false;
+		document.getElementById("login_wrong").innerHTML = "Username: <br> Should be at least 4 letters long and unique";
+        validData = false;
     }
     
     if(!validateEmail(email)) {
-        alert("Please enter a valid email");
-        return false;
+		document.getElementById("email_wrong").innerHTML = "Invalid mail";
+        validData = false;
     }
     
     //console.log(validatePassword(password, passwordConfirm));
     
-    
-    return true;
+	if(validData)
+		document.getElementById("registerForm").action = "/krkin16/mvc/public/login/registerUser";
 }
 
 function validatePassword(password, passwordRepeated) {
@@ -40,7 +46,12 @@ function validatePassword(password, passwordRepeated) {
 }
 
 function validateCommonInput(data) {
-    return data.match(/[\t\r\n]|(--[^\r\n]*)|(\/\*[\w\W]*?(?=\*)\*\/)/gi) == null;
+	var validated = true;
+	
+	if( data.match(/[\t\r\n]|(--[^\r\n]*)|(\/\*[\w\W]*?(?=\*)\*\/)/gi) != null) validated = false;
+	if(data.length < 4) validated = false;
+	
+    return validated;
 }
 
 function validateUsername(data) {

@@ -1,7 +1,9 @@
 <html>
     <head>
-        <link rel="stylesheet" href="/krkin16/mvc/app/views/css/login_style.css">
+        <link rel="stylesheet" href="/krkin16/mvc/app/views/css/login_style.css"> 
         <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </head>
     <body>
     <div class = 'login'>
@@ -20,11 +22,9 @@
         </form>
         <p>Not already a user? Click <a href='/krkin16/mvc/public/login/register'>here</a> to register now.</p>
     </div>
-    <div class = "spacebook-images">
-        <img src="/krkin16/mvc/app/images/space_cat.jpg">
-    </div>
-        
-    <div class = "spacebook-text">
+    <div class = "container-fluid">
+        <img src="/krkin16/mvc/app/images/space_cat.jpg" class="img-fluid rounded mx-auto d-block">
+		<div class = "spacebook-text">
         <p>Space, also known as outer space, is the near-vacuum between celestial bodies.[1] It is where everything (all of the planets, stars, galaxies and other objects) is found.
 <br>
 On Earth, space begins at the Kármán line (100 km above sea level).[2] This is where Earth's atmosphere is said to stop and outer space begins. This is not a natural boundary but is a convention used by scientists and diplomats.
@@ -40,6 +40,9 @@ Interstellar space is the physical space within a galaxy not occupied by stars o
 A number of molecules and tiny 0.1 μm dust particles do exist in interstellar space.[6] About four new types of molecule are discovered each year. Large regions of higher density matter known as molecular clouds allow chemical reactions to occur. This incudes organic polyatomic species. Much of this chemistry is driven by collisions.
 Intergalactic space does have 'cosmic voids' between the large-scale structures of the universe.</p>
     </div>
+    </div>
+        
+    
     
     </body>
 

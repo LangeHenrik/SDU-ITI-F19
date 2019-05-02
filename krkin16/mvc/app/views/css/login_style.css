@@ -44,8 +44,10 @@ html, body {
 .form_input {
     display: inline-block;
 }
-
-img {
+.login {
+	margin-bottom: 1em;
+}
+.login img {
     float:left;
     padding-right: 20%;
     padding-top: 2%;
@@ -59,18 +61,12 @@ img {
 
 .spacebook-text {
     font-size: 1.5em;
-    padding-right: 50%;
     color: #014;
     padding-left: 32;
 }
-
-.spacebook-images {
-    float:right;
-    padding: 32 32 32 32;
-}
-
-.spacebook-images img{
-    width:auto;
+img{
+	margin:auto;
+	
 }
 
 

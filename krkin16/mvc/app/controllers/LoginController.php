@@ -54,11 +54,11 @@ class LoginController extends Controller {
 			User::registerUser($username, $password, $firstName, $lastName, $zip, $city, $email, $phone);
 			
 			
-			$authenticated = authenticate($username, $password);
+			$authenticated = User::authenticate($username, $password);
 			
 			
 			if($authenticated) {
-				header('Location: ../home', true, 302);
+				header('Location: ..', true, 302);
 				die();
 			}
 		}
