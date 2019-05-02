@@ -47,7 +47,7 @@ if(isset($_POST["submit"])){
     $allowed = array("jpg", "jpeg", "png");
 
     $blob = file_get_contents($_FILES['file']['tmp_name']);
-
+    //$blob = base64_encode($blob);
 
     if (in_array($fileActualExt, $allowed)){
         if ($fileError === 0){
