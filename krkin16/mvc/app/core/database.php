@@ -48,10 +48,12 @@ function deleteImage($id) {
 }
 
 
-function uploadImage($title, $description, $path) {
+function uploadImage($title, $description, $path, $user_id = null) {
     connect();
     global $connection;    
-    $user_id= getId($_SESSION["user_name"]);
+	if($user_id === null) {
+		$user_id= getId($_SESSION["user_name"]);
+	}
     $stmt = $connection->prepare("INSERT INTO images (title, description, image_path, user_id) VALUES (?, ?, ?, ?)");
     
     $stmt->bind_param("sssi", $title, $description, $path, $user_id);
@@ -60,9 +62,12 @@ function uploadImage($title, $description, $path) {
     if(!$stmt->execute()) {
         echo $stmt->error;
     }
-    
+    $last_id = $connection->insert_id;
     $stmt->close();
     $connection->close();
+	
+	
+	return $last_id;
 }
 
 function authenticate($username, $password) {
@@ -107,14 +112,18 @@ function getUser($id=null) {
             return $row["username"];
         }
     } else {
-        $result = $connection->query("SELECT username from users;");
-        $arrayOfUsers = array();
+        $result = $connection->query("SELECT username, id from users;");
+        $entries = array();
         $count=0;
 
         while($row = $result->fetch_assoc()) {
-            $arrayOfUsers[$count++] = $row["username"];
+			$entries[$count] = new stdClass();
+            $entries[$count]->user_id = $row["id"];
+            $entries[$count]->username = $row["username"];
+			
+			$count++;
         }
-        return $arrayOfUsers;
+        return $entries;
     }    
 }
 
@@ -122,14 +131,21 @@ function imagesInRange($start_i, $amount, $user) {
     connect();
     global $connection;
     $entries = array();
-    if($user === null) {
-        $stmt = $connection->prepare("SELECT * FROM images limit ?, ?");
-        $stmt->bind_param("ii", $start_i, $amount);
-    } else {
-        $id = getId($user);
-        $stmt = $connection->prepare("SELECT * FROM images WHERE user_id = ? limit ?, ?");
-        $stmt->bind_param("iii", $id, $start_i, $amount);
-    }
+	if(!is_int($user)) {
+		
+		if($user === null) {
+			$stmt = $connection->prepare("SELECT * FROM images limit ?, ?");
+			$stmt->bind_param("ii", $start_i, $amount);
+		} else {
+			$id = getId($user);
+			$stmt = $connection->prepare("SELECT * FROM images WHERE user_id = ? limit ?, ?");
+			$stmt->bind_param("iii", $id, $start_i, $amount);
+		}
+	} else {
+		
+		$stmt = $connection->prepare("SELECT * FROM images WHERE user_id = ?;");
+		$stmt->bind_param("i", $user);
+	}
     $stmt->execute();
     $result = $stmt->get_result();
     $index = 0;

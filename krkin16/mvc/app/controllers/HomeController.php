@@ -3,7 +3,14 @@ class HomeController extends Controller {
 	
 	public function index ($param = null) {
 		$users = getUser();
-		$viewbag = ["users"=>$users, "user"=>$_SESSION["user_name"]];
+		
+		$usernames = array();
+		$count = 0;
+		foreach($users as $u) {
+			$usernames[$count++] = $u->username;
+		}
+		
+		$viewbag = ["users"=>$usernames, "user"=>$_SESSION["user_name"]];
 			$viewbag["displayUser"] = "";
 		if($param!=null) {
 			$viewbag["displayUser"] = $param[0];
