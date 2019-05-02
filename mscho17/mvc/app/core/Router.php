@@ -9,9 +9,11 @@ class Router {
 	function __construct () {
 		$url = $this->parseUrl();
 		
-		if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
-			$this->controller = $url[0] . 'Controller';
-			unset($url[0]);
+		if(isset($url[0])){
+			if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
+				$this->controller = $url[0] . 'Controller';
+				unset($url[0]);
+			}
 		}
 		
 		require_once '../app/controllers/' . $this->controller . '.php';
@@ -28,7 +30,7 @@ class Router {
 		
 		require_once 'restricted.php';
 		if(restricted(get_class($this->controller), $this->method)) {
-			echo 'Access Denied';
+			header('Location: /mscho17/mvc/public/account');
 		} else {
 			call_user_func_array([$this->controller, $this->method], $this->params);
 		}
@@ -38,6 +40,7 @@ class Router {
 	public function parseUrl () {
 		$url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
 		$url = explode('/', $url);
+		
 		return array_slice($url, 4);
 	}
 	

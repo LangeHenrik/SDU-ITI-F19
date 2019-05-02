@@ -26,12 +26,9 @@ class HomeController extends Controller {
 	
 	public function logout() {
 		
-		if($this->post()) {
+		
 			session_unset();
-			header('Location: /mvc/public/home/loggedout');
-		} else {
-			echo 'You can only log out with a post method';
-		}
+		
 	}
 	
 	public function loggedout() {
