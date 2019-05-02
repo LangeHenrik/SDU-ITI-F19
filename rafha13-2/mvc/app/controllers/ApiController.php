@@ -27,7 +27,7 @@ class ApiController extends Controller {
 		} elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
 			$result = $this->service('postImage')->get($user, $userID);
 			//echo 'should be get';
-			print_r($result);
+			//print_r($result);
 		}
 	}
 	

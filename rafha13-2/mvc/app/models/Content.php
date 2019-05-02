@@ -9,10 +9,6 @@ class Content extends Database {
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $content = $stmt->fetchAll();
 
-            //print_r($content[0]);
-
-            print_r($content);
-
         return $content;    
     
     }

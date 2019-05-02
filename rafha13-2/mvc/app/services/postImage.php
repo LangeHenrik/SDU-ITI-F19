@@ -47,12 +47,6 @@ class postImage extends Database {
                 // create post
                 $type = substr($obj->image, 5, 10);
                 $image = substr($obj->image, 23);
-
-
-                echo 'Type: ' . $type;
-                echo '</br>';
-                echo 'Image: ' . $image;
-                
                                 
                 $stmt3 = $this->conn->prepare("INSERT INTO rafha13.content (image, post_img_type, post_user, title, description, image_id) VALUES (:image, :type, :user, :title, :description, :postid)");
         
@@ -84,8 +78,6 @@ class postImage extends Database {
         $stmt1->setFetchMode(PDO::FETCH_ASSOC);
         $username = $stmt1->fetchAll();
 
-        //return $username[0]['username'];
-        
         $stmt = $this->conn->prepare("SELECT image_id, title, description, image FROM rafha13.content WHERE content.post_user = :username");
         
         $stmt->bindParam(':username', $username[0]['username']);
@@ -95,20 +87,19 @@ class postImage extends Database {
         $result = [];
         $images = $stmt->fetchAll();
 
-        //return $images;
-        
         foreach ($images as $tmp) :
             array_push($result, $tmp);
         endforeach;
 
         //return $result;
-        /*
+        
         for ($i = 0 ; $i < sizeof($result) ; $i++) {
             $result[$i]['image'] = 'data:image/jpeg;base64,' . $result[$i]['image'] ;
         }
-        */
-
+        
         $json = json_encode($result);
+
+        print_r($json);
 
         return $json; 
     }
