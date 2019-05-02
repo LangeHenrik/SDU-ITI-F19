@@ -1,18 +1,18 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, otherwise redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
- 
+
 // Include config file
 require_once "config.php";
 
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +22,7 @@ require_once "config.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
 
-        body{ font: 14px sans-serif; background-image: url("loginbackgound.jpg")}
+        body{ font: 14px sans-serif; background-image: url("../images/loginbackground.jpg")}
         .wrapper{ width: 350px; padding: 20px; }
 
         .topleft {
@@ -36,13 +36,13 @@ require_once "config.php";
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <h1 class="topleft">Reset Password</h1>
+<div class="wrapper">
+    <h1 class="topleft">Reset Password</h1>
 
-        <div class="loginbox">
-            <img src="avatar.png" class="avatar">
+    <div class="loginbox">
+        <img src="avatar.png" class="avatar">
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">
                 <label>New Password</label>
                 <input type="password" name="new_password" class="form-control" value="<?php echo $new_password; ?>">
@@ -61,6 +61,6 @@ require_once "config.php";
             </div>
         </form>
     </div>
-    </div>
+</div>
 </body>
 </html>
