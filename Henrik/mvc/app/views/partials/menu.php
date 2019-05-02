@@ -11,3 +11,4 @@
 <a href="/Henrik/mvc/public/user/logout">log out</a>
 
 <?php endif; ?>
+

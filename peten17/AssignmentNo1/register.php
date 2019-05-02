@@ -70,7 +70,7 @@ if (isset($_POST["register"])) {
 		}else {
       $confirmPasswordLabel = "Passwords doesn't match!";
     }
-	  $sql = "INSERT INTO users (username, password, firstname, lastname, zipcode, city, email, phonenumber) VALUES (:username, :password, :firstname, :lastname, :zipcode, :city, :email, :phonenumber);";
+	  $sql = "INSERT INTO users (username, pwd, firstname, lastname, zipcode, city, email, phonenumber) VALUES (:username, :password, :firstname, :lastname, :zipcode, :city, :email, :phonenumber);";
     echo "sql set";
 	  if ($stmt = $conn->prepare($sql)) {
           // bind params to sql
@@ -107,23 +107,24 @@ if (isset($_POST["register"])) {
  ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta
-    <meta charset="UTF-8" />
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="/registerStyle.css" />
-    <!-- <link rel="stylesheet" href=" "> -->
-  </head>
-  <body>
-    <h1>Sign up here!</h1>
-    <div class="wrapper">
-      <p>Please fill up all the textfields.</p>
-      <form action="register.php" method="post">
-        <div class="row">
-          <div class="col_1">
-            <label>Username</label>
-          </div>
-          <div class="col_2">
+
+<head>
+  <meta <meta charset="UTF-8" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/registerStyle.css" />
+  <!-- <link rel="stylesheet" href=" "> -->
+</head>
+
+<body>
+  <h1>Sign up here!</h1>
+  <div class="wrapper">
+    <p>Please fill up all the textfields.</p>
+    <form action="register.php" method="post">
+      <div class="row">
+        <div class="col_1">
+          <label>Username</label>
+        </div>
+        <div class="col_2">
           <input type="text" name="username" value="" />
           <label><?php echo $usernameLabel ?></label>
         </div>
@@ -196,8 +197,9 @@ if (isset($_POST["register"])) {
           <input type="submit" name="register" value="Sign up!" />
         </div>
         <p>I have an account already!
-        <a href="index.php">Click here!</a></p>
-      </form>
-    </div>
-  </body>
+          <a href="index.php">Click here!</a></p>
+    </form>
+  </div>
+</body>
+
 </html>

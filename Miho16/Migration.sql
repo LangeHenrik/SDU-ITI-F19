@@ -1,51 +1,41 @@
+DROP DATABASE IF EXISTS miho16;
 
-DROP DATABASE IF EXIST `miho16`;
-CREATE DATABASE `miho16`;
-USE `miho16`;
+CREATE DATABASE if not exists miho16;
 
-CREATE TABLE IF NOT EXISTS `imagedb` (
-  `image_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `tittle` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`image_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+use miho16;
 
-/*!40000 ALTER TABLE `imagedb` DISABLE KEYS */;
-INSERT INTO `imagedb` (`image_id`, `username`, `tittle`, `description`, `image`) VALUES
-	(1, 'miho16', 'cat', 'cute cat', 'gallery/1.png'),
-	(2, 'miho16', 'cat2', 'cat nugget', 'gallery/2.png');
-/*!40000 ALTER TABLE `imagedb` ENABLE KEYS */;
+create table imagedb
+(
+  username text null,
+  fileID int null,
+  headline text null,
+  text text null,
+  date date null
+);
+
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863778','nice cat','my cat',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','364432018','happy cat','my friends cat',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863779','lonely cat','some cat',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863770','missing cat','that cat',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863771','lost cat','i want my cat back',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863772','fat cat','i stole this cat',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863773','dangerous cat','this cat attacked me',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863774','handsome cat','this cat helped me',NOW());
+INSERT INTO imagedb (username,fileID,headline,text,date) values ('miho16','126863775','cute cat','what a cute cat',NOW());
 
 
-CREATE TABLE IF NOT EXISTS `userdb` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) NOT NULL,
-  `pass` varchar(100) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+create table userdb
+(
+  username text null,
+  password text null,
+  firstName text null,
+  lastName text null,
+  zip int null,
+  city text null,
+  emailAddress text null,
+  phoneNumber int null,
+  date date null
+);
 
-/*!40000 ALTER TABLE `userdb` DISABLE KEYS */;
-INSERT INTO `userdb` (`user_id`, `username`, `pass`) VALUES
-	(1, 'admin', 'admin'),
-	(2, 'test', 'test'),
-	(3, 'miho16', 'miho16'),
-	(4, 'heeej', 'heejddd'),
-	(5, 'bfgnh', '$2y$10$jn41.fgGW82k4.S8dolZIucshkRd8bpxfbLR4kTCvU7scp89pIsZ.'),
-	(6, 'erg', 'efrg'),
-	(7, '321', '321'),
-	(8, 'mikkel', 'mikkel'),
-	(9, 'ghew', 'vsdbsd'),
-	(10, 'few', 'fesfe123SD'),
-	(11, '123', '123'),
-	(12, '12345', '12345'),
-	(13, 'michaelhuu', '1qW"1qW"'),
-	(14, '123', '123'),
-	(15, 'ngorebgore', 'gneroinhregip'),
-	(16, 'miho16', 'miho16'),
-	(17, 'test', 'test'),
-	(18, 'admin', 'admin');
-/*!40000 ALTER TABLE `userdb` ENABLE KEYS */;
-/*!40014 SET FOREIGN_KEY_CHECKS=1 */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+INSERT INTO userdb (username,password,firstName,lastName,zip,city,emailAddress,phoneNumber,date) VALUE ('miho16','$2y$10$vHpWnWemAgPdhC3UKO5ybOEZWYQlbX6fd7dpsdxqAtAal.8gS7Zpm','michael','huu',5220,'Odense C','miho16@studen.sdu.dk',88888888, NOW());

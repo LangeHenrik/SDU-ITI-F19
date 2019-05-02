@@ -3,36 +3,6 @@ if(session_status() == PHP_SESSION_NONE){
 	session_start();
 }
 
-?>
-
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="styles.css">
-<script src="loginscripts.js"></script>
-</head>
-<body>
-<div>
-	will crash if /index.php is called instead of nothing... no idea why
-	<?php include 'topBar.php'; ?>
-	
-<div class="login_screen">
-	<?php include 'loginScreen.php'; ?>
-<div class="login_screen">
-	<?php include 'registeruser.php'; ?>
-</div>
-</div>
-	
-</div>
-
-<div>
-</div>
-
-
-	</body>
-</html>
-
-<?php
-
 if(isset($_POST["login"])){
 	$username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
 	$password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
@@ -245,9 +215,7 @@ function checkEmail($input){
 	}
 	return $sucess;
 }
-?>
 
-<?php
 
 //StandardUser007
 //SuperEasyPassword1337
@@ -323,3 +291,32 @@ try {
 	
 }
 
+?>
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="loginscripts.js"></script>
+</head>
+<body>
+<div>
+	will crash if /index.php is called instead of nothing... no idea why
+	<?php 
+	include 'topBar.php'; 
+	?>
+	
+<div class="login_screen">
+	<?php include 'loginScreen.php'; ?>
+<div class="login_screen">
+	<?php include 'registeruser.php'; ?>
+</div>
+</div>
+	
+</div>
+
+<div>
+</div>
+
+
+	</body>
+</html>
