@@ -1,0 +1,318 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  } /* style everything on the website */
+
+header {
+  background-color: #cccccc;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: #666666;
+  width: 100%;
+}
+.headerscale h1 {
+  font-family: Arial;
+  font-size: 60px;
+  color: #333;
+}
+.align-left{
+  text-align: left;
+}
+body {
+    background-color: #cccccc;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+/* this wrapper class centers the content on the website */
+.wrapper{
+  margin: 0 auto;
+  width: 1000px;
+}
+
+/*anchor*/
+a{
+  text-decoration: none; /*remove the undeline*/
+  color: #cccccc;
+}
+
+nav{
+  width: 100%;
+  height: 20px;
+  background-color: #333333;
+}
+
+nav form{
+  width: 100%;
+  height: 20px;
+  background-color: #333333;
+/*  float: right;*/
+}
+
+nav form a{
+  width: 100%;
+  height: 20px;
+  background-color: #333333;
+/*  float: right;*/
+}
+
+/* style the unordered list */
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+  /*overflow: hidden;*/
+  background-color: #333333;
+  color: #cccccc;
+}
+
+/* style the list items */
+ul li {
+  list-style: none;
+  display: inline-block;
+  float: left;
+  line-height: 50px;
+}
+
+/* style the anchores inside the list*/
+ul li a {
+  display: block; /* can click in the box, not only on the link */
+  color: white;
+  text-align: center;
+  /*text-transform: uppercase; all caps*/
+  padding: 0 20px;
+  text-decoration: none; /* get rid of the undeline */
+}
+
+li a.active {
+  background-color: #666;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  color: #111111;
+}
+
+.wrapperscale{
+  width: 100%;
+}
+
+.headerscale {
+  display: none;
+}
+
+
+.articlescale{
+  width: 90%;
+  height: auto;
+  color: #cccccc;
+  background-color: #333333;
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  line-height: 30px;
+  margin: 10px auto;
+  float: none;
+}
+
+.articlescaletop {
+  width: 90%;
+  height: auto;
+  color: #cccccc;
+  background-color: #333333;
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  line-height: 30px;
+  margin: 10px auto;
+  float: none;
+}
+
+.articlescaleupload {
+  width: 90%;
+  height: auto;
+  color: #cccccc;
+  background-color: #333333;
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  line-height: 30px;
+  margin: 10px auto;
+  float: none;
+}
+
+.articlescale h1{
+  padding: 0px 10px 10px;
+  font-family: Arial;
+  font-size: 25px;
+  color: #ccc;
+  line-height: 44px
+}
+
+.articlescale p{
+  padding: 0px 30px 20px;
+  font-family: Arial;
+  font-size: 30px;
+  color: #ccc;
+  line-height: 40px
+}
+
+.img-article{
+  width: 100%
+}
+
+.video-article{
+  width: 100%;
+  float: none;
+}
+
+.navscale{
+  overflow-y: auto;
+  width: 100%;
+  height: 70px;
+  background-color: #333333;
+
+}
+/* Header style */
+input.header {
+  width: 10%;
+  padding: 12px 20px;
+  /*margin: 8px 0;*/
+  display: inline-block;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  align: right;
+}
+
+input {
+  width: 56%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+input.comment {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+button.combot{
+  background-color: #333333;
+  color: white;
+  border: 1px solid#000000;
+  cursor: pointer;
+  width: 80%;
+}
+
+.align-right {
+  text-align: right;
+}
+
+button {
+  background-color: #333333;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 56%;
+}
+
+button.header {
+  background-color: #333333;
+  color: white;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  height: auto;
+  width: 5%;
+  align: right;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+img.bighero {
+  width: 25%;
+  border-radius: 50%;
+  float: none;
+}
+
+/* Uploade style .. combined with .articlescale */
+form{
+  width: 50%;
+  margin: 20px auto;
+}
+
+form div{
+  margin-top: 5px;
+}
+
+.img{
+  width: 80%;
+  padding: 5px;
+  margin: 15px auto;
+  border: 1px solid #cbcbcb;
+}
+
+p b {
+  text-decoration: underline;
+}
+/* changes when the screen is minimum 768px (tablet)*/
+@media only screen and (min-width: 768px) {
+
+  .headerscale{
+    display: block;
+    width: 100%;
+    padding-bottom: 30px;
+  }
+
+  .wrapperscale{
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop screen */
+@media only screen and (min-width: 1000px) {
+
+  .wrapperscale{
+    width: 1000px;
+  }
+
+  .articlescale{
+    float: center;
+    padding: 20px;
+    margin: 20px 20px 20px;
+    height: 600px;
+  }
+
+  .articlescaletop{
+    float: center;
+    padding: 20px;
+    margin: 20px 20px 20px;
+  }
+
+  .img-article{
+    width: 45%;
+  /*  height: 350px;*/
+    float:right;
+    padding-top: 0px;
+  }
+
+  .video-article{
+    width: 450px;
+    height: 450px;
+    float: right;
+    padding: 20px 20px 20px 20px;
+  }
+}
