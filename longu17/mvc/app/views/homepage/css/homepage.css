@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed'); /*Font import */
+/*Styling af hele body for index.html*/
+body {
+    font-family: 'Roboto Condensed', sans-serif; /* Roboto font til alt body i index.html*/
+    margin: 0; /*ingen margin i bunden af content box*/
+    background: #eee; /* hecadecimal værdi for LIGHT GREY*/
+    height: 50vh; /*automatisk justere HEIGHT*/
+
+}
+
+/*Styling af første HEADER i #landing <h1>*/
+h1 {
+    font-weight: 400; /* kan tage BOLD.*/
+    font-size: 2.5rem; /* str, 1 rem er 16 pixels dvs 16 gange 2.5*/
+    text-transform: uppercase;
+    margin: 0;
+}
+
+h2 {
+    font-weight: 400; /* kan tage BOLD.*/
+    font-size: 1.2rem; /* str, 1 rem er 16 pixels dvs 16 gange 2.5*/
+    text-transform: capitalize;
+    margin: 0;
+}
+
+/* Ændre billederne til at tilpasses til CONTAINEREN/ BROWSER WINDOW*/
+/* vi skriver img tag så alle <img> vil blive ændret*/
+img {
+    display: block; /* display elementer kan være inline eller block f.eks*/
+    width: 100%;    /* 100% af containeren*/
+    max-height: 763px;
+}
+
+main {
+    max-width: 900px; /* 900 pixels for alt i <main> </main>*/
+    margin: auto; /* auto gøre således at alt i <main> er skubbet ind til MIDTE*/
+    box-shadow: 30px 0px 40px rgba(0,0,0,0.1), /* shadow på elementer (horiOffset, 0 vertOff(*/
+    -30px 0px 40px rgba(0,0,0,0.1); /* til siderne af boksen*/
+}
+
+/*Styling af  afsnitter ved landing, som ahr id=landing
+  Brugs # til at indikere ID i html */
+#landing {
+    background: #fff;
+    align-content: center;
+}
+
+/*align alt under <div> landing-text </div> 
+  Med brug af flex box*/
+#landing-text {
+    display: flex;
+    height: 50vh; /* hvore eget det fylder vertical*/
+    justify-content: center; /* aligner teksten ind i midten*/
+    align-items: center; /* aligner til midte*/
+    text-align: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+#landing-text h6 {
+    color: #888;
+    margin: 1rem 0;
+}
+
+
+
+.btn {
+    padding: 0.5rem 2rem; /* det er pixels UpDown og så LeftRIght til knappen*/
+    border: 1.5px #CCC solid; /* border på knappen i grå og solid */
+    display: inline-block; /* så knappe ikke hænger fast i teksten */
+    margin: 1rem 0; /* vi rykker den 2 rem pixel ned så mere plads*/
+    border-radius: 50px;
+    text-decoration: none; /*fjener underLine*/
+    color: #333; /* ændre blå skrift til sort*/
+    transition: background 500ms ease; /* bruger hover, sifter farven langsom 500ms*/
+}
+.btn:hover {
+    background: #f4f4f4; /*kanp skifter farve når musen hover over den*/
+
+}
+
+.btn2 {
+    padding: 0.5rem 2rem; /* det er pixels UpDown og så LeftRIght til knappen*/
+    border: 1.5px #CCC solid; /* border på knappen i grå og solid */
+    display: inline-block; /* så knappe ikke hænger fast i teksten */
+    margin: 1rem 0 ; /* vi rykker den 2 rem pixel ned så mere plads*/
+    border-radius: 50px;
+    text-decoration: none; /*fjener underLine*/
+    color: #333; /* ændre blå skrift til sort*/
+    transition: background 500ms ease; /* bruger hover, sifter farven langsom 500ms*/
+
+}
+
+.btn2:hover {
+    background: #f4f4f4; /*kanp skifter farve når musen hover over den*/
+
+}
+
+#header {
+padding: 1.5rem; /*1.5 pixels tykkelse, så det ikker er tynd*/
+text-align: center;
+background: #333;
+color: #ffff;
+}
+
+#header h2 {
+    border-left: dotted 1px #fff; /*vi laver dots venstre side, 1 pixel str*/
+    border-right: dotted 1px #fff;
+
+    display: inline; /*for at rykke dots ind mod header2*/
+    padding-right: 1rem; /*for at rykke dots 1 rem fra header2*/
+    padding-left: 1rem;
+}
+
+/*aligner alle elemnter i caption klasse i midten*/
+.caption {
+    padding: 0.8rem;
+    text-align: center;
+}
+
+
+
+/* Screen Sizes 500px and Up aka. stor browser
+   Justere text og billedet på landin når man skalere op fra mobil px 500px*/
+@media(min-width: 500px) {
+#landing {
+    display: inline-flex;
+    height: 100%;
+}
+
+#landing-text {
+    height: 50vh;
+}
+
+#landing-image {
+    height: 100vh;
+}
+
+}
+
+/* Screen Sizes 700px and Up stor browser
+   skalere view work knappen op, efter 700 px*/
+@media(min-width: 700px) {
+    .btn, .btn2 {
+        padding: 1rem 3rem; /* originale stør er 0.5 rem og 2 rem*/
+    }
+}
