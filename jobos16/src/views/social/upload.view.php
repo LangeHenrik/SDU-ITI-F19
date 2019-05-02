@@ -11,7 +11,7 @@
                     Upload new picture
                 </div>
                 <div class="card-body">
-                    <form action="/feed/upload" method="post" enctype="multipart/form-data">
+                    <form action="{{ $base }}/feed/upload" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputFile">Select photo</label>
                             <input type="file" class="form-control-file" id="inputFile" name="file">

@@ -36,4 +36,29 @@ class File
         return false;
     }
 
+    public static function saveBase64($data, $name) {
+        if (preg_match('/^data:image\/(\w+);base64,/', $data, $type)) {
+            $data = substr($data, strpos($data, ',') + 1);
+
+            // Find file extension and convert it to lowercase
+            $ext = strtolower($type[1]);
+
+            if (in_array($ext, [ 'jpg', 'jpeg', 'gif', 'png' ])) {
+                // Convert to image
+                $image = base64_decode($data);
+
+                // Save image to disk
+                file_put_contents(__DIR__ . "/../../../../public/uploads/{$name}.{$ext}", $image);
+
+                return "{$name}.{$ext}";
+            }
+
+            // File type is not valid (or allowed)
+            return false;
+        } else {
+            // File is not an image
+            return false;
+        }
+    }
+
 }

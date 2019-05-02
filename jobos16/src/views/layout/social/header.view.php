@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title : "Default" }}</title>
 
-    <link href="/css/app.css" rel="stylesheet" />
+    <link href="{{ $publicBasePath }}/css/app.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,10 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/feed">Feed</a>
+                        <a class="nav-link" href="{{ $base }}/feed">Feed</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/users">Users</a>
+                        <a class="nav-link" href="{{ $base }}/users">Users</a>
                     </li>
                 </ul>
             </div>

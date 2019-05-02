@@ -3,10 +3,15 @@
 namespace App\Core\ViewRenderer;
 
 
+use App\Core\Config;
+
 class Renderer
 {
 
     public function render($content, array $data = []) {
+
+        global $publicBasePath;
+        $publicBasePath = Config::get('app/publicBasePath');
 
         // Register sections
         if(preg_match_all("/@section\([\'|\"](.*)[\'|\"]\)\n(.*)\n@endsection/msU", $content, $matches, PREG_SET_ORDER, 0)) {
@@ -104,6 +109,12 @@ class Renderer
                                 foreach (array_slice($keys, 1) as $subkey) {
                                     $result = $result->{$subkey};
                                 }
+                            }
+                        } else {
+                            if($key == "base") {
+                                $result = Config::get('app/base');
+                            } else if($key == "publicBasePath") {
+                                $result = Config::get('app/publicBasePath');
                             }
                         }
 
