@@ -45,7 +45,7 @@ function read(){
     //check amount of users found
     if ($userList_size > 0){
         //print userlist to see what happens
-        echo json_encode(print_r($userList));
+        //echo json_encode(print_r($userList)); //prints all user data including passwords
 
         foreach ($userList as $usr) {
             //for each tuple make new user object with the information
@@ -61,7 +61,7 @@ function read(){
         return($json);
     } else {
         http_response_code(404); //find correct response code
-        $msg = json_encode(array("message" => 'no users found.'));
+        echo json_encode('no users found.');
         return $msg;
         
     }
