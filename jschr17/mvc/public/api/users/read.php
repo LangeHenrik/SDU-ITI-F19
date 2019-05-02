@@ -3,6 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json, charset=UTF-8");
 include_once(__DIR__ . '/../../../app/core/Database.php');
+include_once 'users.php';
 
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -48,7 +49,7 @@ function read(){
 
         foreach ($userList as $usr) {
             //for each tuple make new user object with the information
-            $user = new User($usr[0],$usr[1]);
+            $user = new Users($usr[0],$usr[1]);
             //add user to array of users
             array_push($users, $user);
         }
