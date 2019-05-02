@@ -1,0 +1,273 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: darkgray;
+    background: #d4d4d4;
+    text-align: center;
+    font-family: fantasy;
+}
+h1{
+  padding: 2px;
+}
+
+h2{
+    color: #363435;
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+h3{
+    color: #363435;
+    margin: auto
+}
+
+text{
+  color: #363435;
+}
+
+
+
+/* The container centered in the middle */
+.container{
+    max-width: 960;
+    width: 96%;
+    margin: auto;
+}
+.container a:link {
+  color: ##D3D3D3;
+}
+
+/* visited link */
+.container a:visited {
+  color: #A9A9A9;
+}
+
+/* mouse over link */
+.container a:hover {
+  color: #C0C0C0;
+}
+
+/* selected link */
+.container a:active {
+  color: blue;
+}
+
+.container a:focus {
+  outline: none;
+}
+
+.container .content div {
+  border-radius: 5px;
+  padding: 20px;
+
+}
+
+.container .content form{
+  size: 200px;
+  display: inline-block;
+  /*background-color: #c0c0c0;*/
+
+}
+/*-------------HEADER-----------*/
+.container .dropdown .dropdown input {
+  width:100%;
+  display:block;
+  max-width:100%;
+  line-height:1.5;
+  padding:5px 5px 8px;
+  border-radius:3px;
+  border:1px solid #cbcbcb;
+  font:13px Tahoma, cursive;
+  transition:box-shadow 0.5s ease;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  font-smoothing:subpixel-antialiased;
+}
+header{
+    background: #235885;
+    /*background: #fff;*/
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.logo{
+    float: left;
+    margin-top: 25px;
+}
+.logo img {
+  height: 100px;
+}
+nav{
+    float: right;
+    line-height: 70px;
+    list-style: none;
+}
+
+nav li{
+    display: inline-block;
+    padding: 5px 20px;
+    margin-left: 10px;
+
+    line-height: normal;
+}
+
+nav li a{
+  color: #151515;
+  padding: 12px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+main form{
+  text-align: left;
+}
+
+main section p{
+  text-align: justify;
+  padding: 5px 100px;
+
+}
+
+/*----------Picture-------- */
+#content{
+  width: 50%;
+  text-align: left;
+  margin: 20px auto;
+  display:block;
+  max-width:100%;
+  line-height:1.5;
+  padding:15px 15px 30px;
+  border-radius:3px;
+  border:1px solid #cbcbcb;
+  transition:box-shadow 0.5s ease;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  font-smoothing:subpixel-antialiased;
+}
+#content p, h4, h3, h2 {
+  margin: 20px 50px;
+}
+#content textarea {
+  width:100%;
+  display:block;
+  max-width:100%;
+  line-height:1.5;
+  padding:15px 15px 30px;
+  border-radius:3px;
+  border:1px solid #cbcbcb;
+  font:13px Tahoma, cursive;
+  transition:box-shadow 0.5s ease;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  font-smoothing:subpixel-antialiased;
+}
+#content input  {
+  width:100%;
+  display:block;
+  max-width:100%;
+  line-height:1.5;
+  padding:15px 15px 30px;
+  border-radius:3px;
+  border:1px solid #cbcbcb;
+  font:13px Tahoma, cursive;
+  transition:box-shadow 0.5s ease;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  font-smoothing:subpixel-antialiased;
+}
+
+#content img  {
+  width:100%;
+  display:block;
+  max-width:100%;
+  line-height:1.5;
+  padding:15px 15px 30px;
+  border-radius:3px;
+  border:1px solid #cbcbcb;
+  font:13px Tahoma, cursive;
+  transition:box-shadow 0.5s ease;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  font-smoothing:subpixel-antialiased;
+}
+
+.fifty{
+  width: 50%;
+  margin: 20px auto;
+}
+
+form div{
+  margin-top: 5px;
+}
+
+#img_div{
+  width: 80%;
+  padding: 5px;
+  margin: 15px auto;
+  border: 1px solid #cbcbcb;
+}
+
+#img_div:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#header label {
+  padding-left:50mm;
+
+}
+
+#img_div a{
+  color: #A9A9A9;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s;
+
+
+  display: inline-block;
+  padding: 5px 20px;
+  margin-left: 10px;
+  background: #363435;
+  line-height: normal;
+}
+
+#img_div img {
+  width: inherit;
+}
+/*----------Users---------- */
+#users {
+  width: 80%;
+  padding: 5px;
+  margin: 15px auto;
+  border: 1px solid #cbcbcb;
+  padding: 20px 50px;
+}
+
+#users h3{
+    color: #363435;
+    text-align: left;
+    margin: auto;
+    padding: 5px 50px
+}
+
+#users p{
+    text-align: left;
+    margin: auto;
+    padding: 5px 20px
+}
+
+/* ----------Sign Up---------- */
+main form img {
+  width: 15px;
+  opacity: 0;
+}
+
+
+.btn {
+  border: none;
+  float: left !important;
+  width:200px !important;
+  position: relative !important;
+  padding: 15px 32px !important;
+  text-align: center !important;
+  display: inline-block !important;
+  font-size: 16px;
+}
