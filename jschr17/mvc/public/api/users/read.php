@@ -32,15 +32,17 @@ function read(){
         $query = $db->prepare("SELECT * FROM users");
         $query->execute();
 
+        $userList_size = $query->rowCount();
+
         //get list of users
         $userList = $query->fetchAll();
     } catch(Exception $e){
         echo json_encode('Exception in database connection');
     }
     
-    echo json_encode('size of userlist array: ' . $userList->sizeof);
+    echo json_encode('size of userlist array: ' . $userList_size /*$userList->sizeof*/);
     //check amount of users found
-    if ($userList->sizeof > 0){
+    if ($userList_size > 0){
         //print userlist to see what happens
         echo json_encode(print_r($userList));
 
