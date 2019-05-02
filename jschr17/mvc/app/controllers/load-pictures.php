@@ -9,20 +9,15 @@
     $stmt->execute();
     $row_count = $stmt->rowCount();
 
-    //$result = mysqli_query($conn, $sql);
     if ($row_count > 0){
 
         while($row = $stmt->fetchAll(PDO::FETCH_ASSOC)){
             header("Content-type: image/jpeg");
             foreach ($row as $data_values){
 
-                //$image2 = imagecreatefromstring($data_values['image']);
-
                 $title = $data_values['title'];
                 $image = $data_values['image'];
                 $description = $data_values['description'];
-                //header("Content-type: image/jpeg");
-                //echo $image;
 
                 echo '
                 <div class="gallerybox">
@@ -31,17 +26,7 @@
                 <p>'.$description.'</p>
                 </div>
                 <br>';
-
-            /*echo '
-            <div class="gallerybox">
-            <h3>'.$row["title"].'</h3>
-            <img src="data:image/jpeg;base64 '. base64_encode($row["image"]) .' ">
-            <p>'.$row["description"].'</p>
-            </div>
-            <br>';*/
             }
-
-
         }
     } else {
         echo 'There are no pictures.';
