@@ -40,7 +40,7 @@ if(isset($_POST['logout'])){
     <head>
         <title> Gallery </title>
         </head>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
     <body>
         <form method = "post" name = "logout">
             <input type = "submit" name = "logout" value="logout" >
