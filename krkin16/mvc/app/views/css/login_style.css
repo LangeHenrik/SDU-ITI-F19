@@ -1,0 +1,145 @@
+
+
+
+body {
+    background-color: gainsboro;
+    background-image: url(/krkin16/mvc/app/images/space_background.jpg);
+    font-size:1em;
+    margin:0;
+    padding: 0; 
+}
+
+.login {
+    z-index: 1;
+    background: #06f;
+    padding-left: 20%;
+    padding-top: 12;
+    padding-bottom: 12;
+    color: white;
+    object-fit: cover;
+}
+
+.register {
+    margin:auto;
+    width:50%;
+    border: 3px solid green;
+    padding: 2em;
+    text-align: center;
+}
+.register input {
+    margin-top: 0.1em;
+    width:30%;
+}
+
+#register_button {
+    margin-top: 0.5em;
+    width:auto;
+    float:right;
+}
+
+html, body {
+    margin:0;
+}
+
+.form_input {
+    display: inline-block;
+}
+.login {
+	margin-bottom: 1em;
+}
+.login img {
+    float:left;
+    padding-right: 20%;
+    padding-top: 2%;
+}
+
+.login.p {
+    padding-left: 55%;
+    padding-top: 32;
+}
+
+
+.spacebook-text {
+    font-size: 1.5em;
+    color: #014;
+    padding-left: 32;
+}
+img{
+	margin:auto;
+	
+}
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        
+    }
+    .login .p {
+        font-size: 1.5em;
+        word-wrap: break-word;
+        width:50%;
+    }
+    .login {
+        width:100%;
+    }
+    .form_input input {
+        width:300px;
+        height:30px;
+    }
+     #submit {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1em;
+        padding: 1em;
+    }
+    
+    label {
+        font-size:2em;
+    }
+    
+    .spacebook-images {
+        float:none;
+        margin-left:auto;
+        margin-right: auto;
+        padding: 32 32 32 32;
+    }
+    
+    .spacebook-text p {
+        width:200%;
+    }
+    
+    .spacebook-images img {
+        width:100%;
+    }
+    
+    .register {
+        margin:auto;
+        width:90%;
+        border: 3px solid green;
+        padding-bottom: 5em;
+        text-align: center;
+    }
+    
+    .register form {
+        margin:1em;
+    }
+    .register form input {
+        margin-top: 0.1em;
+        width:90%;
+    }
+    .register form #register_button {
+        padding:1em;
+        margin:1em;
+        width:90%;
+    }
+    
+    .register form {
+        width:90%;
+    }
+
+    #register_button {
+        margin-top: 0.5em;
+        width:auto;
+        float:right;
+    }
+}
