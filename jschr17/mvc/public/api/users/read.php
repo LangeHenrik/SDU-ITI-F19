@@ -18,8 +18,6 @@ switch ($method) {
 }
 
 function read(){
-    echo json_encode('read method entered');
-
     //create user array
     $users = array();
     $userList = array();
