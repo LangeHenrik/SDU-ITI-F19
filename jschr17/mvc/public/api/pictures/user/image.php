@@ -1,5 +1,5 @@
 <?php
-class image {
+class Image {
     public $image;
     public $title;
     public $description;
