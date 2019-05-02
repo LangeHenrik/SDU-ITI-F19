@@ -1,6 +1,7 @@
 <?php
 class User extends Database {
 	
+
 	public function login($username, $password){
 
 		$sql = "SELECT username, password FROM users WHERE username = :username";
