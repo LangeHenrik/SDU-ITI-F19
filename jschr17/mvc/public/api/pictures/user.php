@@ -105,10 +105,8 @@ function matchUsernameAndId($user_id, $username, $conn){
     $gotUsername = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($gotUsername['username'] !== $username){
-                echo 'test 1';
                 return false;
             } else{
-                echo 'test 2';
                 return true;
             }
 }

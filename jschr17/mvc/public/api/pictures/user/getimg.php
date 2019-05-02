@@ -10,7 +10,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 $request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 switch ($method) {
     case 'GET':
-        read();
+        readimg();
         break;
     case 'POST':
         //method call
@@ -22,7 +22,8 @@ switch ($method) {
 
 function readimg(){
     // get $user from the URL given (2 is the id): GET localhost:8080/xx/mvc/public/api/pictures/user/2
-    $user = preg_split("(?<=user\/)(.*)", $_SERVER['REQUEST_URI']);
+    //$user = preg_split("(?<=user\/)(.*)", $_SERVER['REQUEST_URI']);
+    $user = 1;
     echo json_encode("user id should be: " . $user);
 
     //create image array
@@ -34,7 +35,7 @@ function readimg(){
         $db = $database->getConn();
 
         //connect to database
-        $query = $db->prepare("SELECT image_id FROM images WHERE user_id = ". $user); // get $user from the URL given (2 is the id): GET localhost:8080/xx/mvc/public/api/pictures/user/2
+        $query = $db->prepare("SELECT * FROM images WHERE user_id = ". $user); // get $user from the URL given (2 is the id): GET localhost:8080/xx/mvc/public/api/pictures/user/2
         $query->execute();
 
         $images_size = $query->rowCount();
@@ -48,13 +49,22 @@ function readimg(){
     echo json_encode('size of images array: ' . $images_size /*$images->sizeof*/);
     //check amount of images found
     if ($images_size > 0){
+        //echo json_encode(print_r($images));
+        //print_r($images);
         foreach ($images as $img) {
-            //for each tuple make new image object with the information
+
             $image = new Image(
+                $img[1],
+                $img[3],
+                $img[4]
+            );
+
+            //for each tuple make new image object with the information
+            /*$image = new Image(
                 $img['image'],
                 $img['title'],
                 $img['description']
-            );
+            );*/
             //add image to array of images
             array_push($images, $image);
         }
