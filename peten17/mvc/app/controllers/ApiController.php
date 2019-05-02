@@ -25,25 +25,26 @@ class ApiController extends Controller {
 			$imageDesc = $input['description'];
 			$username = $input['username'];
 			$password = $input['password'];
-
+			print_r($input);
 			$returnedID = $this->model('User')->validateUser($username,$password);
 
 			if($returnedID ==$id){
+				
 				$imageID = $this->model('Picture')->apiUploadPicture($imageBlob,$imageTitle,$imageDesc,$id);
 				$imageID = array('image_id'=>$imageID);
-				$jsonUsers = json_encode($imageID,JSON_PRETTY_PRINT);
-				echo $jsonUsers;
+				$json = json_encode($imageID,JSON_PRETTY_PRINT);
+				echo $json;
 			} else {
 				$imageID = -1;
 				$imageID = array('image_id'=>$imageID);
-				$jsonUsers = json_encode($imageID,JSON_PRETTY_PRINT);
-				echo $jsonUsers;
+				$json = json_encode($imageID,JSON_PRETTY_PRINT);
+				echo $json;
 			}
-		}else if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET'){
+		}else if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'GET'){
 		
-			$pictures = $this->model('Picture') -> getPicturesFromUser($id);
-			$json_users = json_encode($pictures, JSON_PRETTY_PRINT);
-			echo $json_users;
+			$pictures = $this->model('Picture')->getPicturesFromUser($id);
+			$json = json_encode($pictures, JSON_PRETTY_PRINT);
+			echo $json;
 		}
 	}
 

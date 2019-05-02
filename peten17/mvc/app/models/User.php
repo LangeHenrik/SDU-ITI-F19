@@ -99,25 +99,18 @@ class User extends Database {
 		return $users;
 	}
 
-	private function getUserNameFromID($id) {
-		$sql = $this->conn->prepare("SELECT username FROM users WHERE user_id = :userid");
-		$sql->bindparam(':userid', $id);
-		$sql->execute();
-		$sql->setFetchMode(PDO::FETCH_ASSOC);
-		$result = $sql->fetchAll();
-		$username = $result[0]['username'];
-		return $username;
-	}
 
 	public function validateUser($username,$password){
-		$sql = $this->conn->prepare("SELECT user_id, password FROM users WHERE username = :username");
+		$sql = $this->conn->prepare("SELECT user_id, pwd FROM users WHERE username = :username");
 		$sql->bindparam(':username', $username);
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
-		$result = $sql->fetch;
-		if (password_verify($password, $result['password'])) {
+		$result = $sql->fetch();
+		if (password_verify($password, $result['pwd'])) {
+			echo "approved";
 			return $result['user_id'];
 		} else {
+			echo "not approved";
 			return 'error';
 		}
 	}

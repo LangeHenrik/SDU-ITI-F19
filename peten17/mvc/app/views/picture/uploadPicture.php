@@ -19,7 +19,7 @@
          <br><br>
        </div>
        <div>
-         <input type="submit" name="upload" value="Upload Image">
+         <input type="submit" name="upload" valu  e="Upload Image">
        </div>
      </form>
     </div>

@@ -18,6 +18,9 @@ class UserController extends Controller {
 			//echo "I don't think so!";
 		}
 	}
+	public function validateUser($user,$pwd){
+		$this->model('User')->validateUser($user,$pwd);
+	}
 
 	
 	

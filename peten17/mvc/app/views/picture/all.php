@@ -11,9 +11,9 @@ foreach($viewbag as $picture) :
 ?>
 <div class="content">
 <div class= "post_container">
-    <h2><?=$picture['image_title']?></h2>
-    <p><?=$picture['image_desc']?></p>
-    <img src="<?=$picture['image_file']?>" />
+    <h2><?=$picture['title']?></h2>
+    <p><?=$picture['description']?></p>
+    <img src="<?=$picture['image']?>" />
 </div>
 </div>
 <?php

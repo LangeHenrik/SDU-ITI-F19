@@ -13,7 +13,7 @@ class Picture extends Database {
 	}
 
 	public function uploadPicture($pictureTitle,$pictureDescription,$pictureLoaded){
-		$sql = $this->conn->prepare("INSERT INTO peten17.picture (username, image_title, image_desc, image_file) VALUES(:username, :imageTitle, :imageDesc, :imageFile);");
+		$sql = $this->conn->prepare("INSERT INTO peten17.picture (username, title, description, image) VALUES(:username, :imageTitle, :imageDesc, :imageFile);");
 
 		$errors = array();
 
@@ -64,26 +64,29 @@ class Picture extends Database {
 	}
 
 	public function getPicturesFromUser($id){
-		$username = $this->model('User')->getUserFromId($id);
-		$sql = $this->conn->prepare("SELECT image_id, image_title, image_desc, image_file FROM picture WHERE username =:username;");
+		$username = $this->getUserNameFromId($id);
+		$sql = $this->conn->prepare("SELECT image_id, title, description, image FROM picture WHERE username =:username;");
 		$sql->bindParam(':username',$username);
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
 		$result = $sql->fetchAll();
-		echo $result;
+		//print_r($result);
+	
 		return $result;
 	}
 
 
 	public function apiUploadPicture($image,$imageTitle,$imageDesc,$userid){
-		$username = $this->model('User')->getUserNameFromID($userid);
+		$username = $this->getUserNameFromID($userid);
 
-		$sql = $this->conn->prepare("INSERT INTO peten17.picture (username, image_title, image_desc, image_file) VALUES(:username, :imageTitle, :imageDesc, :imageFile);");
+		//$sql = $this->conn->prepare("INSERT INTO peten17.picture (username, title, desc, image) VALUES(:username, :title, :desc, :image);");
+		$sql = $this->conn->prepare("INSERT INTO peten17.picture (username, title, description, image) VALUES(:username, :imageTitle, :imageDesc, :imageFile);");
 
 		$sql->bindparam(':username', $username);
 		$sql->bindparam(':imageTitle', $imageTitle);
 		$sql->bindparam(':imageDesc', $imageDesc);
 		$sql->bindparam(':imageFile', $image);
+
 		$sql->execute();
 
 		$lastInsertID = $this->conn->lastInsertId();
@@ -91,5 +94,15 @@ class Picture extends Database {
 		return $lastInsertID;
 
 	}
+	private function getUserNameFromID($id) {
+		$sql = $this->conn->prepare("SELECT username FROM users WHERE user_id = :userid");
+		$sql->bindparam(':userid', $id);
+		$sql->execute();
+		$sql->setFetchMode(PDO::FETCH_ASSOC);
+		$result = $sql->fetch();
+		$username = $result['username'];
+		return $username;
+	}
+
 
 }
