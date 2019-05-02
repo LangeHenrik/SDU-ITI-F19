@@ -20,7 +20,7 @@ switch ($method) {
         break;
 }
 
-function read(){
+function readimg(){
     // get $user from the URL given (2 is the id): GET localhost:8080/xx/mvc/public/api/pictures/user/2
     $user = preg_split("(?<=user\/)(.*)", $_SERVER['REQUEST_URI']);
     echo json_encode("user id should be: " . $user);
