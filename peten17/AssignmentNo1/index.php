@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -20,7 +19,7 @@ if (isset($_POST["submit"])) {    // checks if the login-button is pressed.
     // get and sanitize input
 	$username = htmlentities(filter_var($_POST["username"]),FILTER_SANITIZE_STRING);
 	$password = htmlentities(filter_var($_POST["password"]),FILTER_SANITIZE_STRING);
-    $sql = "SELECT id, username, password, firstname, lastname, zipcode, city, email, phonenumber FROM users WHERE username = :username";
+    $sql = "SELECT id, username, pwd, firstname, lastname, zipcode, city, email, phonenumber FROM users WHERE username = :username";
 
     if ($stmt = $conn->prepare($sql)) {
       // bind params to query
@@ -81,33 +80,34 @@ if (isset($_POST["submit"])) {    // checks if the login-button is pressed.
  ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="indexStyle.css">
-  </head>
-  <body>
-    <div class="header">
+
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="../../../../public/css/style.css">
+</head>
+
+<body>
+  <div class="header">
     <h1>Welcome to my website!</h1>
-    </div>
-    <div class="loginBox">
-      <form class="loginForm" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-        <fieldset>
-          <legend>Login</legend>
-          <p>Username:</p>
-          <input type="text" name="username" value="" id="username"> <label> <?php echo $usernameLabel ?></label> <br>
-          <p>Password:</p>
-          <input type="password" name="password" value="" id="password">  <label> <?php echo $passwordLabel?></label> <br>
-          <br/><input type="submit" name="submit" value="Log in">
-          <p>Not a member yet?</p> <a href="register.php">Click here to sign up!</a>
-        </fieldset>
-      </form>
+  </div>
+  <div class="loginBox">
+    <form class="loginForm" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+      <fieldset>
+        <legend>Login</legend>
+        <p>Username:</p>
+        <input type="text" name="username" value="" id="username"> <label> <?php echo $usernameLabel ?></label> <br>
+        <p>Password:</p>
+        <input type="password" name="password" value="" id="password"> <label> <?php echo $passwordLabel?></label> <br>
+        <br /><input type="submit" name="submit" value="Log in">
+        <p>Not a member yet?</p> <a href="register.php">Click here to sign up!</a>
+      </fieldset>
+    </form>
 
-    </div>
+  </div>
 
-  </body>
+</body>
+
 </html>
