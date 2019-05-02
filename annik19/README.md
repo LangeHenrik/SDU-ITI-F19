@@ -1,7 +1,5 @@
 # SDU
 # Internet Technologies
-## Assignment 1
+## Assignment 2
 
-Username and password of the existing user:
-	andk 
-	Andriani9
+
