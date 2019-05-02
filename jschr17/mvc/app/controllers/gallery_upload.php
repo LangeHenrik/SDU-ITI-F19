@@ -1,6 +1,6 @@
 <?php
 
-include_once (__DIR__ . '\..\..\..\app\core\Database.php');
+include_once ('C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php');
 $database = new Database();
 $conn = $database->getConn();
 
@@ -25,8 +25,11 @@ if(isset($_POST["submit"])){
         $param_username = $_SESSION["username"];
 
         if ($stmt3->execute()){
-            $id_values = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-
+            while($row = $stmt3->fetchAll(PDO::FETCH_ASSOC)){
+                foreach ($row as $data_value){
+                    $user_id = $data_value['user_id'];
+                }
+            }
         }
     }
 
@@ -43,7 +46,7 @@ if(isset($_POST["submit"])){
 
     $allowed = array("jpg", "jpeg", "png");
 
-    $blob = addslashes(file_get_contents($_FILES['file']['tmp_name']));
+    $blob = file_get_contents($_FILES['file']['tmp_name']);
 
 
     if (in_array($fileActualExt, $allowed)){
@@ -62,32 +65,25 @@ if(isset($_POST["submit"])){
                     } else {
                         $stmt->execute();
                         $result = $stmt->fetchAll();
-                        /*$rowCount = mysqli_num_rows($result);
-                        $setImageOrder = $rowCount + 1;*/
-
-                        //$stmt = mysqli_stmt_init($conn);
                         $sql2 = 'INSERT INTO images(image, imgName, title, description, user_id) VALUES (?, ?, ?, ?, ?);';
                         $stmt2 = $conn->prepare($sql2);
                         if(!$stmt2 = $conn->prepare($sql2)){
                             echo "SQL statement failed 2";
                         } else {
                             $stmt2->execute([$blob, $imageFullName, $imageTitle, $imageDesc, $user_id]);
-                            //mysqli_stmt_execute($stmt);
-
-                            //move_uploaded_file($fileTempName, $fileDestination);
                         }
                     }
                 }
             } else {
-                header("Location: welcome.php?file_too_big");
+                echo 'file too big';
                 exit();
             }
         } else {
-            header("Location: welcome.php?error_uploading");
+            echo 'error uploading';
             exit();
         }
     } else {
-        header("Location: welcome.php?wrong_file_type");
+        echo 'wrong file type';
         exit();
     }
 }

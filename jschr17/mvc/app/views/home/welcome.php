@@ -71,7 +71,7 @@ $homeController = new HomeController();
 	$sql = "SELECT user_id, username, firstname, lastname, zipcode, city, email, phonenumber FROM users";
 	$stmt1 = $conn->prepare($sql);
 	$stmt1->execute();
-	$row_count = $stmt1->fetchColumn();
+	$row_count = $stmt1->rowCount();
 	if($row_count > 0){
 		while($row = $stmt1->fetchAll(PDO::FETCH_ASSOC)){
 
@@ -106,8 +106,8 @@ $homeController = new HomeController();
 	<br>
 	<br>
 	<div>
-        <!--<main>-->
-            <!--<section class="gallery-links">-->
+        <main>
+            <section class="gallery-links">
                 <div class="wrapper">
                     <div class="gallery-container">
                         <h3>Upload pictures to gallery</h3>
@@ -130,8 +130,8 @@ $homeController = new HomeController();
                         <br>
                     </div>
                 </div>
-            <!--</section>-->
-        <!--</main>-->
+            </section>
+        </main>
 	</div>
 </body>
 </html>
