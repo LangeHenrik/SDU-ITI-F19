@@ -53,7 +53,10 @@ class User extends Database {
         break;
       case 'phone_number':
         return $this->_phone_number;
-        break;        
+        break;
+      case 'user':
+        return $this->_id;
+        break;            
       default:
         return null;
         break;

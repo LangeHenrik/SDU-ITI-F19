@@ -18,51 +18,49 @@ class ApiController extends Controller {
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: GET, POST');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods');
-    
-        
+    $user_name = "";
     foreach($users as $user){
-            if($user->id == $value){
+            if($user->$var == $value){
                 $user_name = $user->user_name;  
             }
     }
         
-    if($this->get()){    
-    foreach($images as $image){
+    if($this->get()){     
+    
+    $userImages = $db->getImagesByUser($user_name);
         
-        if($image->$var == $value){
+    foreach($userImages as $image){
         $imageArr = array('id'=>$image->id, 'user_name'=>$image->user_name, 'image_name'=>$image->name, 'description'=>$image->description);
         
         $jason = json_encode($imageArr);
         
         echo $jason;
-        echo "<br>";
-        }
+        echo "\n";
         }
         
     }  
         
         
     if($this->post()) {
+        echo "I work too";
         $image = json_decode(file_get_contents("php://input"));    
         
-        //$image = json_decode($jason);
         
-        /*$name = $_POST['name'];
-        $description = $_POST['description'];
+        $newImage = new UploadImage(basename($image->image_name), $user_name, $image->description);
         
-        echo "Here it comes;";
-        echo "<br>";
-        echo $name;
-        echo $decription;
-        */
-      
+        echo $newImage->user_name;
+        echo $newImage->name;
+        echo $newImage->description;
         
-        foreach($users as $user){
-            if($user->id == $value){
-            $newImage = new UploadImage($image->name, $user->user_name, $image->description);
-            }
-        }
+        $db->addNewImage($newImage);
         
+        echo "I work too";
+        
+        $this->service('uploadService');
+        
+        $uploadService = new UploadService();
+        
+        $uploadService->uploadFromPOST($newImage);
         
     }
         

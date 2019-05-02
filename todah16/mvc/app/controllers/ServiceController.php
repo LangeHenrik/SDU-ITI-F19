@@ -60,8 +60,11 @@ class ServiceController extends Controller {
         $uploadService = new UploadService();
         
         $uploadImage = $uploadService->upload($this->uploadImageModel);
+        echo $uploadImage->name;
+        $db = new Database();
+        $db->addNewImage($uploadImage);
         
-        
+        header("Location: /todah16/mvc/public/home/other");
         
     }
     

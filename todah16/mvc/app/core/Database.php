@@ -109,9 +109,8 @@ class Database extends DB_Config {
     
     private function queryToModelObject($sql){
  
-    //$connection = $this->conn;   
     $res = $this->conn->query($sql);
- 
+    
     if ($res){
       if (strpos($sql,'SELECT') === false){
         return true;

@@ -23,6 +23,10 @@ class Controller {
         require_once '../app/services/' . $service . '.php';
     }
     
+    public function partial($partialView, $viewbag = []){
+        require_once '../app/views/partials/' . $partialView . '.php';
+    }
+    
 	public function post () {
 		return $_SERVER['REQUEST_METHOD'] === 'POST';
 	}

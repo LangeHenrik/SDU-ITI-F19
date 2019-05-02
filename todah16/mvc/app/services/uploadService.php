@@ -3,6 +3,13 @@
 class UploadService{
 
     
+public function uploadFromPOST($image){
+    $target_dir = "C:/Users/Tobia/Documents/GitHub/SDU-ITI-F19/todah16/mvc\public/Uploads/";
+    $src_folder = "C:/Users/Tobia/Documents/GitHub/SDU-ITI-F19/todah16/mvc\public/SourceFolder/";
+    copy($image->name, $target_dir . basename($image->name));
+    
+}    
+    
 public function upload($UploadImageModel){    
     if(isset($_POST['upload'])){    
         $image_description =$_POST['description'];
@@ -69,15 +76,14 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         
          echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
     return true;
     
-        /* header("Location: ../Dankify_feed.php");
-        exit();
-        */
+   
     
     
     
