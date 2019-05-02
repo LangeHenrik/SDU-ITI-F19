@@ -32,7 +32,6 @@ class Router {
 
         require_once 'restricted.php';
         if(restricted(get_class($this->controller), $this->method)) {
-            # TODO: fix
             header("Location: /mifor16/mvc/public/Login");
 
         } else {
