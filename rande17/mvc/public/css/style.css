@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Allerta+Stencil|Cabin+Sketch|Cinzel+Decorative|Courgette|Fahkwang|Kanit|Kaushan+Script|Monda|Monoton|Permanent+Marker|Press+Start+2P|Raleway+Dots|Reenie+Beanie|Rock+Salt|Satisfy|Sedgwick+Ave+Display|VT323|Vidaloka|ZCOOL+XiaoWei');
+
+:root {
+
+    /**** COLOR ****/
+    --text1: #BA8829;
+    --text2: #6290C3;
+    --bg1: rgba(68, 69, 84, .8);
+    --bg2: rgba(28, 16, 24, .8);
+    --opt: rgba(23, 33, 33, .7);
+
+    /**** FONTS ****/
+    --font-main: 'Cinzel Decorative', cursive;
+
+    --radius: 10px;
+    --border: solid var(--bg2) 3px;
+    --main-width: calc(56% - 6px - 2em);
+    --title-width: 90%;
+}
+
+.link {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: var(--text1);
+}
+
+.link:hover {
+    color: var(--text2);
+}
+
+.left-content, .right-content {
+    display: block;
+    width: calc(17% - 6px - .4em);
+    margin: 6em 1% 0 1%;
+    min-height: 4em;
+    background: var(--opt);
+    border: var(--border);
+    border-radius: var(--radius);
+    float: left;
+    overflow: hidden;
+    padding: 0 .2em;
+}
+
+.main-content {
+    display: block;
+    background: var(--opt);
+    width: var(--main-width);
+    margin: 1em 3% 0 3%;
+    min-height: 4em;
+    border: var(--border);
+    border-radius: var(--radius);
+    float: left;
+    padding: 0 1em;
+}
+
+.title {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--opt);
+    margin-top: .5em;
+    width: calc(var(--title-width));
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 1.2em 0 1em 0em;
+    font-size: 2.8em;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: 1.2em;
+    background: url("/mvc/public/css/img/bg.jpg") no-repeat fixed center;
+    background-size: cover;
+    color: var(--text1);
+    margin: 0;
+}
+
+h1 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#form {
+    margin: 0 auto;
+    width: 50%;
+    display: block;
+}
+
+.checkbox {
+
+
+}
+
+.text {
+    width: 100%;
+    font-family: var(--font-main);
+    color: var(--text1);
+    font-size: 1em;
+    margin: 0 0 .1em 0;
+    -webkit-appearance: none;
+    padding: 0;
+    box-sizing: unset;
+    padding-left: .3em;
+    border: 2px;
+    border: solid var(--bg2);
+    background: var(--opt);
+    border-radius: var(--radius);
+}
+
+#form > input::placeholder {
+    color: var(--text2);
+}
+
+#submit {
+    font-weight: bold;
+    display: block;
+    padding: 0;
+    background-color: var(--bg2) !important;
+    padding-left: .3em;
+}
+
+.menu {
+    margin: 0 auto;
+    width: 100%;
+    background-color: var(--bg2);
+    min-height: 1em;
+    display: inline-block;
+    padding: .2em 0;
+}
+
+.menuitem {
+    font-size: 1.4em;
+    text-align: center;
+    margin: 0 auto;
+    width: calc(100% / 4);
+    float: left;
+    display: block;
+}
+
+.menuitem a {
+    display: block;
+    text-decoration: none;
+    color: var(--text1);
+}
+
+.menuitem a:hover {
+    color: var(--text2);
+}
+
+.imgpage {
+    max-width: 100%;
+    border-radius: 8px;
+    max-height: 100%;
+}
+
+.imgdiv {
+    width: 30%;
+    display: inline-block;
+    overflow: hidden;
+    padding: .5em;
+    height: 20%;
+}
