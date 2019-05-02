@@ -23,7 +23,7 @@ function postValues(){
     $data = file_get_contents("php://input");
     $json = json_decode($data, true);
     extract($json);
-    $user_id = '1';
+    $user_id = '1'; //NEED TO GET PROPER FROM THE URL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     $image = base64_decode($json['image']);
     $title = $json['title'];
@@ -36,12 +36,20 @@ function postValues(){
 
     if($userBool === $matchBool){
         uploadImage($image, $title, $description, $user_id, $conn);
+        returnImgId($conn);
     } else{
         return 'Something went wrong';
     }
 }
 
-function returnImgId(){
+function returnImgId($conn){
+
+    $sql = "SELECT user_id FROM images ORDER BY image_id DESC LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $got_user_id = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    echo $got_user_id['user_id'];
 
 }
 
