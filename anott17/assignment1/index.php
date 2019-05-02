@@ -10,7 +10,8 @@
     $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    $getPasswordStmt = $conn->prepare("SELECT 1 FROM person WHERE user_name = :user_name AND password = :password");
+    $getPasswordStmt = $conn->prepare("SELECT user_name AS userNameDB, password AS passwordDB FROM person WHERE user_name = :user_name");
+    //$getPasswordStmt = $conn->prepare("SELECT 1 FROM person WHERE user_name = :user_name AND password = :password");
     $getUserNameStmt = $conn->prepare("SELECT 1 from person WHERE user_name = :user_name");
     $registerStmt = $conn->prepare("INSERT INTO person (user_name, password, front_name, last_name, zip_code, city, phone_number, email_adress)
                             VALUES(:user_name, :password, :front_name, :last_name, :zip_code, :city, :phone_number, :email_adress)");
@@ -21,29 +22,49 @@
 
   if(isset($_POST["userNameLogin"]) && isset($_POST["passwordLogin"])) {
 
-    $userNameLogin = htmlentities(filter_input(INPUT_POST, "userNameLogin", FILTER_SANITIZE_STRING));
-    $passwordLogin = htmlentities(filter_input(INPUT_POST, "passwordLogin", FILTER_SANITIZE_STRING));
+    $userNameLogin = filter_input(INPUT_POST, "userNameLogin", FILTER_SANITIZE_STRING);
+    $passwordLogin = filter_input(INPUT_POST, "passwordLogin", FILTER_SANITIZE_STRING);
 
     $getPasswordStmt->bindparam(':user_name', $userNameLogin);
-    $getPasswordStmt->bindparam(':password', $passwordLogin);
 
     $getPasswordStmt->execute();
     $getPasswordStmt->setFetchMode(PDO::FETCH_ASSOC);
     $result = $getPasswordStmt->fetchAll();
-    if (count($result) == 1) {
-        session_start();
-        $_SESSION['userNameGlobal'] =  $_POST["userNameLogin"];
-        $_SESSION['Login'] = true;
-        header('Location: pictures.php');
-    } else {
-      $_SESSION['globalLoginMsg'] = "Wrong password, username or both.";
+
+    $tmpArray = current($result);
+
+    if(!empty($tmpArray)) {
+      $tmpUserName = $tmpArray['userNameDB'];
+      $tmpPassword = $tmpArray['passwordDB'];
+
+      if ($userNameLogin == $tmpUserName && password_verify($passwordLogin, $tmpPassword)){
+          session_start();
+          $_SESSION['userNameGlobal'] =  $_POST["userNameLogin"];
+          $_SESSION['Login'] = true;
+          header('Location: pictures.php');
+      } else {
+        $_SESSION['globalLoginMsg'] = "Wrong password, username or both.";
+      }
     }
-  }
+    else {
+      $_SESSION['globalLoginMsg'] = " EMPTY: Wrong password, username or both.";
+    }
+ }
+  //
+  //   if (count($result) == 1) {
+  //       session_start();
+  //       $_SESSION['userNameGlobal'] =  $_POST["userNameLogin"];
+  //       $_SESSION['Login'] = true;
+  //       header('Location: pictures.php');
+  //   } else {
+  //     $_SESSION['globalLoginMsg'] = "Wrong password, username or both.";
+  //   }
+  // }
 
 
   if (isset($_POST["userName"])) {
     $userNameInput = htmlentities(filter_input(INPUT_POST, "userName", FILTER_SANITIZE_STRING));
-    $passwordInput = htmlentities(filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING));
+    $passwordInput = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
     $frontNameInput = htmlentities(filter_input(INPUT_POST, "frontName", FILTER_SANITIZE_STRING));
     $lastNameInput = htmlentities(filter_input(INPUT_POST, "lastName", FILTER_SANITIZE_STRING));
     $zipInput = htmlentities(filter_input(INPUT_POST, "zip", FILTER_SANITIZE_NUMBER_INT));
@@ -51,6 +72,7 @@
     $phoneNumberInput = htmlentities(filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING));
     $emailAdressInput = htmlentities(filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING));
 
+    $hashedPassword = password_hash($passwordInput, PASSWORD_DEFAULT);
 
     $getUserNameStmt->bindparam(':user_name', $userNameInput);
 
@@ -79,7 +101,7 @@
     }
     else {
       $registerStmt->bindparam(':user_name', $userNameInput);
-      $registerStmt->bindparam(':password', $passwordInput);
+      $registerStmt->bindparam(':password', $hashedPassword);
       $registerStmt->bindparam(':last_name', $lastNameInput);
       $registerStmt->bindparam(':front_name', $frontNameInput);
       $registerStmt->bindparam(':zip_code', $zipInput);

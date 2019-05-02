@@ -44,8 +44,8 @@
             # Upload file
             move_uploaded_file($fileTmp, "uploads/" . $uploadFileName);
 
-    		$inputHeader = htmlentities(filter_input(INPUT_POST, "header", FILTER_SANITIZE_STRING));
-    		$inputDescription = htmlentities(filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING));
+    		$inputHeader = filter_input(INPUT_POST, "header", FILTER_SANITIZE_STRING);
+    		$inputDescription = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING);
 
             # establish db connection
             require_once 'db_config.php';

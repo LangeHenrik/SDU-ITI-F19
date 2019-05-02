@@ -1,85 +1,103 @@
 <?php
-require 'util/logincheck.php';
-require 'database.php';
-
-$message = null;
-if (isset($_POST["submit"])){
-    $user_id = $_SESSION['user_id'];
-    $comment_content = htmlentities($_POST['comment_content']);
-    $image_id = $_POST['image_id'];
-    addComment($conn, $user_id, $image_id, $comment_content);
-    $message = "Comment added.. Or at least it should be.";
-
-}
+session_start();
+// Include router class
+require_once('./PHP/Controller/Route.php');
+require_once('./PHP/Controller/ApiController.php');
 
 
-?>
+Route::add('/',function(){
+    include(__DIR__.'/PHP/View/index.php');
+});
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="General.css">
-</head>
-<body>
+Route::add('/index',function(){
+    include(__DIR__.'/PHP/View/index.php');
+});
 
-<div class="container">
-    <div id="navbar"></div>
+Route::add('/feed', function(){
+    include(__DIR__.'/PHP/View/feed.php');
+}, 'GET');
 
-    <div class="feed_container" id="feed_container">
-        <h1> Feed </h1>
-        <?php
-
-        if($message != null) {
-            echo '<div class="alert_message">'.$message.'</div>';
-        }
+Route::add('/feed', function(){
+    include(__DIR__.'/PHP/Controller/createComment.php');
+}, 'POST');
 
 
-        $image_data = getFeedImages($conn, 100);
-        foreach ($image_data as $image) {
-            $image_path = $image_folder . $image['file_name'];
-            $title = $image['title'];
-            $description = $image['description'];
-            $image_username = $image['username'];
-            $image_id = $image['image_id'];
+Route::add('/me', function(){
+    include(__DIR__.'/PHP/View/me.php');
+});
 
-            echo '<div class="feed__item">';
-            echo '<h2>' . $title . '</h2>';
-            echo '<image class="feed__image" src="' . $image_path . '"></image>';
-            echo '<div class="feed__caption"><p>' . $description . '</p></div>';
-            echo '<div class="feed_comments">';
+Route::add('/users', function(){
+    include(__DIR__.'/PHP/View/users.php');
+});
 
-            $comment_data = getImageComments($conn, $image_id);
-            foreach ($comment_data as $comment) {
-                echo '<div class="feed__comment">';
-                echo '<div class="feed__comment_author">' . $comment['username'] . '</div>';
-                echo '<div class="feed__comment_content">' . $comment['content'] . '</div>';
+Route::add('/images', function(){
+    include(__DIR__.'/PHP/View/images.php');
+});
 
-                echo '</div>';
-            }
+Route::add('/ajax', function(){
+    include(__DIR__.'/PHP/View/ajax.php');
+});
 
-            echo '<div class="feed__comment_input">' .
-                    '<form action="index.php" method="POST">'.
-                    '<textarea name="comment_content" class="feed__comment_input_textarea" rows="4" cols="50" placeholder="Comments..."></textarea>' .
-                    '<br/>' .
-                    '<button  name="submit" type="submit" class="feed__comment_submit_button">Submit</button>' .
-                    '<input type="hidden" name="image_id" value="'.$image_id.'"/>'.
-                    '</form>'.
-                '</div>';
+Route::add('/login', function(){
+    include(__DIR__.'/PHP/View/login.php');
+});
 
-            echo '</div>';
-            echo '</div>';
+Route::add('/login', function(){
+    include(__DIR__.'/PHP/View/login.php');
+}, 'post');
 
+Route::add('/logout', function(){
+    include(__DIR__.'/PHP/View/logout.php');
+});
 
-        }
+Route::add('/register', function(){
+    include(__DIR__.'/PHP/View/register.php');
+});
 
-        ?>
+Route::add('/register', function(){
+    include(__DIR__.'/PHP/View/register.php');
+}, 'post');
 
-    </div>
-</div>
+Route::add('/upload', function(){
+   include(__DIR__.'/PHP/Controller/uploadController.php');
+}, 'POST');
 
 
-<script src="navbar.js"></script>
-</body>
-</html>
+
+
+Route::add('/madre10/mvc/public/api/users', function(){
+   apiGetAllUsers();
+});
+
+Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
+    apiGetUserPictures($var1);
+});
+
+Route::add('/madre10/mvc/public/api/pictures/user/([0-9]*)', function($var1){
+    apiPostPicture($var1);
+}, 'POST');
+
+
+
+// Accept only numbers as parameter. Other characters will result in a 404 error
+Route::add('/([0-9]*)/([0-9]*)',function($var1, $var2){
+    echo $var1.' is a great number.. so is'.$var2;
+});
+
+// Post route example
+Route::add('/contact-form',function(){
+    echo '<form method="post"><input type="text" name="test" /><input type="submit" value="send" /></form>';
+},'get');
+
+// Post route example
+Route::add('/contact-form',function(){
+    echo 'Hey! The form has been sent:<br/>';
+    print_r($_POST);
+},'post');
+
+// Accept only numbers as parameter. Other characters will result in a 404 error
+Route::add('/foo/([0-9]*)/bar',function($var1){
+    echo $var1.' is a great number!';
+});
+
+Route::run();
