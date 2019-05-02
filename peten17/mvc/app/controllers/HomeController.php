@@ -18,19 +18,18 @@ class HomeController extends Controller {
 	}
 
 	public function register() {
-		
-
-		$_SERVER['register_msg'] = "";
-		$username = 	filter_input(INPUT_POST, $_POST["username"], FILTER_SANITIZE_STRING);
-		$password = 	filter_input(INPUT_POST, $_POST["password"], FILTER_SANITIZE_STRING);
-		$password_conf =filter_input(INPUT_POST, $_POST["confirm_password"], FILTER_SANITIZE_STRING);
-		$firstname = 	filter_input(INPUT_POST, $_POST["firstname"], FILTER_SANITIZE_STRING);
-		$lastname = 	filter_input(INPUT_POST, $_POST["lastname"], FILTER_SANITIZE_STRING);
-		$zipcode = 		filter_input(INPUT_POST, $_POST["zipcode"], FILTER_SANITIZE_STRING);
-		$city = 		filter_input(INPUT_POST, $_POST["city"], FILTER_SANITIZE_STRING);
-		$email = 		filter_input(INPUT_POST, $_POST["email"], FILTER_SANITIZE_STRING);
-		$phonenumber =  filter_input(INPUT_POST, $_POST["phone"], FILTER_SANITIZE_STRING);
+		//filter_input(INPUT_POST,"pictureTitle", FILTER_SANITIZE_STRING);
+		$username = 	filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+		$password = 	filter_input(INPUT_POST,"password", FILTER_SANITIZE_STRING);
+		$password_conf =filter_input(INPUT_POST,"confirm_password", FILTER_SANITIZE_STRING);
+		$firstname = 	filter_input(INPUT_POST,"firstname", FILTER_SANITIZE_STRING);
+		$lastname = 	filter_input(INPUT_POST,"lastname", FILTER_SANITIZE_STRING);
+		$zipcode = 		filter_input(INPUT_POST,"zipcode", FILTER_SANITIZE_STRING);
+		$city = 		filter_input(INPUT_POST,"city", FILTER_SANITIZE_STRING);
+		$email = 		filter_input(INPUT_POST,"email", FILTER_SANITIZE_STRING);
+		$phonenumber =  filter_input(INPUT_POST,"phone", FILTER_SANITIZE_STRING);
 		if($password == $password_conf){
+			//echo "Passwords match";
 		$this->model('User')->register($username, $password, $firstname, $lastname, $zipcode, $city, $email, $phonenumber);
 		}else{
 			echo "Passwords doesn't match!";
@@ -45,6 +44,10 @@ class HomeController extends Controller {
 		session_unset();
 		session_destroy();
 		header('Location: /peten17/mvc/public/home');
+	}
+
+	public function addPost(){
+		$this->view('picture/uploadPicture');
 	}
 
 	

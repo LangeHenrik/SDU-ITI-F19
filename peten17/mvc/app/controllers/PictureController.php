@@ -8,9 +8,10 @@ class PictureController extends Controller {
 	}
 
 	public function uploadPicture(){
-		$pictureTitel = filter_input(INPUT_POST,$_POST['pictureTitel'],FILTER_SAINITIZE_STRING);
-		$pictureDescription = filter_input(INPUT_POST,$_POST['pictureDescription'],FILTER_SAINITIZE_STRING);
-		$this->model('Picture')->uploadPicture($pictureTitel,$pictureDescription);
+		$pictureTitle = 		filter_input(INPUT_POST,"pictureTitle", FILTER_SANITIZE_STRING);
+		$pictureDescription = 	filter_input(INPUT_POST, "pictureDesc", FILTER_SANITIZE_STRING);
+		$pictureLoaded = isset($_FILES['pictureFile']);
+		$this->model('Picture')->uploadPicture($pictureTitle,$pictureDescription,$pictureLoaded);
 	}
 
 }

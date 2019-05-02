@@ -72,7 +72,7 @@ p,a{
 <body> 
   <h1>Sign up here!</h1>
   <div class="wrapper">
-    <p>Please fill up all the textfields.</p> <label><?=$_SERVER['register_msg']?></label>
+    <p>Please fill up all the textfields.</p> 
     <form action="/peten17/mvc/public/home/register" method="post">
       <div class="row">
         <div class="col_1">

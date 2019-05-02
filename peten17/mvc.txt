@@ -9,3 +9,20 @@ html i views
 
 sql i models
 
+
+
+image database sql
+
+create table picture(
+	image_id int(11) NOT NULL AUTO_INCREMENT,
+	username varchar(30) NOT NULL,
+	imageTitle varchar(30) NOT NULL,
+	imageDesc varchar(100) NOT NULL,
+	picture_file LONGBLOB NOT NULL,
+	FOREIGN KEY (username) REFERENCES users(username),
+	PRIMARY KEY(image_id,username)
+	);
+	
+	
+	
+
