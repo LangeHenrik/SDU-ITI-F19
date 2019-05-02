@@ -71,10 +71,16 @@ function readimg(){
         }
 
         //json encode array of images and return it
-        $json = json_encode($image_list, JSON_PRETTY_PRINT);
+        $json = json_encode($image_list /*JSON_PRETTY_PRINT*/);
+        echo 'test1';
         http_response_code(200);
-        echo($json);
+        echo 'test2';
+        //print_r($image_list);
+        print_r($json);
+        echo $json;
+        echo 'test3';
         return($json);
+
     } else {
         http_response_code(404); //find correct response code
         echo json_encode('no images found.');
