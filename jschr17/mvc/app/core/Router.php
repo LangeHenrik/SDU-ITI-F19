@@ -42,31 +42,31 @@ class Router {
 		return array_slice($url, 4);
 	}
 
-	private $_uri = array();
-	private $_method = array();
+	// private $_uri = array();
+	// private $_method = array();
 
-	/**
-	 * Builds a collection of internal URL's to look for
-	 * @param type $_uri
-	 */
-	public function add($_uri, $_method = null){
-		$this->_uri[] = '/' . trim($_uri, '/');
-		if ($_method != null) {
-			$this->_method[] = $_method;
-		}
-	}
+	// /**
+	//  * Builds a collection of internal URL's to look for
+	//  * @param type $_uri
+	//  */
+	// public function add($_uri, $_method = null){
+	// 	$this->_uri[] = '/' . trim($_uri, '/');
+	// 	if ($_method != null) {
+	// 		$this->_method[] = $_method;
+	// 	}
+	// }
 
-	public function submit(){
-		$uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
-		foreach ($this->_uri as $key => $val) {
-			if (preg_match("#^$val$#", $uriGetParam)) {
-				$useMethod = $this->_method[$key];
-				new $useMethod;
+	// public function submit(){
+	// 	$uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
+	// 	foreach ($this->_uri as $key => $val) {
+	// 		if (preg_match("#^$val$#", $uriGetParam)) {
+	// 			$useMethod = $this->_method[$key];
+	// 			new $useMethod;
 
-			}
-		}
-	}
-	
+	// 		}
+	// 	}
+	// }
+
 }
 	
 
