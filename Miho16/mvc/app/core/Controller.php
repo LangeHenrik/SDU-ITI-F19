@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: micha
- * Date: 01-05-2019
- * Time: 15:36
- */
-namespace core;
 class Controller {
 
     public function model($model) {

@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `imagedb` (
 
 /*!40000 ALTER TABLE `imagedb` DISABLE KEYS */;
 INSERT INTO `imagedb` (`image_id`, `username`, `tittle`, `description`, `image`) VALUES
-	(1, 'miho16', 'cat', 'cute cat', 'gallery/1.png'),
+	(1, 'miho16', 'cat', 'cute cat', 'gallery/234203922.png'),
 	(2, 'miho16', 'cat2', 'cat nugget', 'gallery/2.png');
 /*!40000 ALTER TABLE `imagedb` ENABLE KEYS */;
 

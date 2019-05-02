@@ -61,7 +61,7 @@ if ($uploadOk == 0) {
 }
 ?>
 <html>
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+
 <form action="gallery.php">
     <input type="Submit" value="back">
 </form>

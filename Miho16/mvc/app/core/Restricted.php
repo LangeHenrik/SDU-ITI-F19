@@ -1,14 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: micha
- * Date: 01-05-2019
- * Time: 15:37
- */
-
 function restricted ($controller, $method) {
-    $restricted_urls = array('controllers\HomeController' => array('index'), 'controllers\LoginController' => array(), 'controllers\RegisterController' => array(), 'controllers\AjaxController' => array(), 'controllers\APIController' => array(), 'controllers\MenuController' => array());
-    if(isset($_SESSION['login_user'])) {
+    $restricted_urls = array('HomeController','ApiController' => array('restricted'));
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
         return false;
     } else if( isset($controller) && in_array($method, $restricted_urls[$controller])) {
         return true;

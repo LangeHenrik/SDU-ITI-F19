@@ -16,7 +16,7 @@ echo"welcome to the gallery " .$_SESSION['username'];
 ?>
 
 <html>
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+
 <body>
 <form action="upload.php" method="post" enctype="multipart/form-data">
     Select image to upload:

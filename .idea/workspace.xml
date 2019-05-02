@@ -2,39 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd39fc01-c497-4f37-b1bf-e386e73ed4aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/SDU-ITI-F19.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/APIController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/AjaxController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/MenuController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/DB_Config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Restricted.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Router.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/init.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/APIModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/AjaxModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/HomeModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/LoginModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/RegisterModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/picture_format.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/post_image_format.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/views/home/Home.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/views/home/Login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/views/home/Register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/public/change_tabs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/public/check.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Miho16/mvc/public/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/Migration.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/JS/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/ApiController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Db_config.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/Asset.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/models/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/services/MathService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/views/home/gallery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/views/home/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/views/home/searchAssets.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/mvc/app/views/home/users.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/126863770" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/126863771" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/126863772" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/126863774" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/126863775" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/126863778" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/126863779" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Miho16/upload/364432018" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/assignment 1/Migration.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/assignment 1/Migration.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/assignment 1/gallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/assignment 1/gallery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/assignment 1/startpage.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/assignment 1/startpage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/assignment 1/upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/assignment 1/upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/assignment 1/upload_image.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/assignment 1/upload_image.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/controllers/APIController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/controllers/AjaxController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/mvc/app/controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/controllers/LoginController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/controllers/MenuController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/controllers/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/core/DB_Config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/core/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/core/Restricted.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Restricted.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/mvc/app/core/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/core/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/mvc/app/init.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/models/APIModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/models/AjaxModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/models/HomeModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/models/LoginModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/models/RegisterModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/models/picture_format.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/models/post_image_format.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/views/home/Home.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/views/home/Login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/app/views/home/Register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/public/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/public/change_tabs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/public/check.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Miho16/mvc/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Miho16/mvc/public/stylesheet.css" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,108 +79,93 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/LoginModel.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-              <folding>
-                <element signature="e#106#124#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/HomeModel.php">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="e#106#114#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/picture_format.php">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+            <state relative-caret-position="323">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Login.php">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Db_config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state relative-caret-position="119">
+              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Register.php">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/gallery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+            <state relative-caret-position="561">
+              <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/init.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#6#39#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/APIController.php">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/AjaxController.php">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/Asset.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-              <folding>
-                <element signature="e#111#131#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/LoginController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-              <folding>
-                <element signature="e#112#132#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="506">
+              <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Home.php">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Router.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="48" column="16" lean-forward="true" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+            <state relative-caret-position="289">
+              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/searchAssets.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="421">
+              <caret line="38" column="6" lean-forward="true" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -173,47 +180,101 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>all</find>
+      <find>geta</find>
+      <find>get</find>
+      <find>user</find>
+      <find>jen</find>
+      <find>Miho16</find>
+      <find>jena</find>
+      <find>seeallassets</find>
+      <find>headline</find>
+      <find>allassets</find>
+      <find>__con</find>
+      <find>getallAssetsfor</find>
+      <find>gallery</find>
+      <find>allAssets()</find>
+      <find>getGaller</find>
+      <find>$allAsset</find>
+      <find>$allAssets</find>
+      <find>allAsset</find>
+      <find>allAssets</find>
+      <find>assets</find>
+      <find>userAsset</find>
+      <find>userAssets</find>
+      <find>index</find>
+      <find>galler</find>
+      <find>Asset</find>
+      <find>viewbag</find>
+      <find>mate</find>
+      <find>searchAsse</find>
+      <find>css</find>
+      <find>CSS</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>gallerie</replace>
+      <replace>gallery</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/PictureContoller.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/UserController.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/db_config.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/models/Picture.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/models/User.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/services/MathServices.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/.htaccess" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/init.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/APIController.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/LoginController.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/RegisterController.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/models/AjaxModel.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/models/APIModel.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/models/picture_format.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/models/post_image_format.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/public/change_tabs.js" />
         <option value="$PROJECT_DIR$/Miho16/mvc/public/check.js" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/public/index.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/public/stylesheet.css" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/AjaxController.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/core/migration.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Restricted.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Router.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/MenuController.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/Home.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/Login.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/Register.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/models/LoginModel.php" />
-        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Database.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/models/RegisterModel.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/core/migration.sql" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/core/DB_Config.php" />
         <option value="$PROJECT_DIR$/Miho16/mvc/app/models/HomeModel.php" />
+        <option value="$PROJECT_DIR$/Miho16/JS/search.js" />
+        <option value="$PROJECT_DIR$/Miho16/JS/searchAssets.php" />
+        <option value="$PROJECT_DIR$/Miho16/JS/Asset.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/Image.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/upload_image.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/users.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/public/index.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/services/Math_services.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/services/MathService.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/init.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Restricted.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/models/Image.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/searchImages.php" />
+        <option value="$PROJECT_DIR$/Miho16/CSS/main.css" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Database.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/allAssets.php" />
+        <option value="$PROJECT_DIR$/Miho16/assignment 1/index.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/Gallery.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/searchAssets.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/models/User.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/index.php" />
+        <option value="$PROJECT_DIR$/Miho16/assignment 1/upload.php" />
+        <option value="$PROJECT_DIR$/Miho16/assignment 1/upload_image.php" />
+        <option value="$PROJECT_DIR$/Miho16/assignment 1/gallery.php" />
+        <option value="$PROJECT_DIR$/Miho16/assignment 1/startpage.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Router.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/models/Asset.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/controllers/ApiController.php" />
+        <option value="$PROJECT_DIR$/Miho16/Migration.sql" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/views/home/gallery.php" />
+        <option value="$PROJECT_DIR$/Miho16/mvc/app/core/Db_config.php" />
       </list>
     </option>
   </component>
@@ -289,6 +350,14 @@
               <item name="Miho16" type="462c0819:PsiDirectoryNode" />
               <item name="mvc" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SDU-ITI-F19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SDU-ITI-F19" type="462c0819:PsiDirectoryNode" />
+              <item name="Miho16" type="462c0819:PsiDirectoryNode" />
+              <item name="mvc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -305,7 +374,7 @@
               <item name="SDU-ITI-F19" type="462c0819:PsiDirectoryNode" />
               <item name="Miho16" type="462c0819:PsiDirectoryNode" />
               <item name="mvc" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="JS" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -318,6 +387,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16" />
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16\mvc\JS" />
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16\upload" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16\mvc\app\views\home" />
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16\gallery" />
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16\mvc\CSS" />
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16\mvc" />
+      <recent name="C:\Users\micha\OneDrive\Dokumenter\GitHub\SDU-ITI-F19\Miho16\mvc\JS" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -345,6 +430,9 @@
       <workItem from="1556716183745" duration="978000" />
       <workItem from="1556717170344" duration="179000" />
       <workItem from="1556717351273" duration="2582000" />
+      <workItem from="1556746168622" duration="5531000" />
+      <workItem from="1556751756988" duration="4474000" />
+      <workItem from="1556795192302" duration="7319000" />
     </task>
     <task id="LOCAL-00001" summary="fe">
       <created>1556716700636</created>
@@ -356,17 +444,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2600000" />
+    <option name="totallyTimeSpent" value="33487000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1577" height="1016" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1632653" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17774852" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32915717" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.03502825" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -388,247 +475,222 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/.htaccess">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/RegisterModel.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/migration.sql" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/AjaxModel.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/APIModel.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/LoginModel.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/HomeModel.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/picture_format.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Home.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Login.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Register.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/AjaxController.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/LoginController.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/JS/allAssets.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/search im.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/JS/searchAssets.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/JS/Asset.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Image.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/upload_image.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/services/Math_services.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/Image.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/upload/2.png" />
+    <entry file="file://$PROJECT_DIR$/Miho16/upload/234203922.png" />
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/searchImages.php" />
+    <entry file="file://$PROJECT_DIR$/Miho16/assignment 1/db_config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        <state relative-caret-position="272">
+          <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/public/.htaccess">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/public/change_tabs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/public/check.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/public/stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="796">
-          <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/migration.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding>
-            <element signature="e#111#131#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/MenuController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-          <folding>
-            <element signature="e#111#131#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/public/index.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/init.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/post_image_format.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/assignment 1/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/CSS/search.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/assignment 1/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/assignment 1/upload_image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/assignment 1/gallery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/assignment 1/startpage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2091">
+          <caret line="123" column="34" lean-forward="true" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/assignment 1/DB_manager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="67" column="1" lean-forward="true" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2108">
+          <caret line="16334" column="13" selection-start-line="16334" selection-start-column="13" selection-end-line="16334" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/JS/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Restricted.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/DB_manager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/db_config.php">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="15" selection-end-column="1" />
+          <caret line="1" column="44" lean-forward="true" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/RegisterModel.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/services/MathService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/CSS/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/Migration.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="102">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="177" column="5" lean-forward="true" selection-start-line="177" selection-start-column="5" selection-end-line="177" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Db_config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/DB_Config.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding>
-            <element signature="e#104#112#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/migration.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/core/Router.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+        <state relative-caret-position="289">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/AjaxModel.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="e#106#124#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="288">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/APIModel.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/Asset.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding>
-            <element signature="e#106#114#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="506">
+          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/LoginModel.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/gallery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="e#106#124#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="561">
+          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/HomeModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#106#114#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/models/picture_format.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="48" column="16" lean-forward="true" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/Register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/init.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#6#39#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/APIController.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/AjaxController.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/searchAssets.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="e#111#131#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="421">
+          <caret line="38" column="6" lean-forward="true" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/controllers/LoginController.php">
+    <entry file="file://$PROJECT_DIR$/Miho16/mvc/app/views/home/users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#112#132#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>

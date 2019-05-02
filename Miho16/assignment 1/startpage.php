@@ -113,7 +113,6 @@ if( isset($_POST["rusername"]) ) {
     <title>Start Page</title>
 </head>
 
-<link rel="stylesheet" type="text/css" href="mystyle.css">
 
 
 <body>
