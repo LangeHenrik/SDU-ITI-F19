@@ -49,14 +49,15 @@ function readimg(){
     echo json_encode('size of images array: ' . $images_size /*$images->sizeof*/);
     //check amount of images found
     if ($images_size > 0){
+        $image_list = array();
         //echo json_encode(print_r($images));
         //print_r($images);
         foreach ($images as $img) {
 
             $image = new Image(
-                $img[1],
-                $img[3],
-                $img[4]
+                $img[1], // index of image
+                $img[3], // index of title
+                $img[4]  // index of description
             );
 
             //for each tuple make new image object with the information
@@ -66,11 +67,11 @@ function readimg(){
                 $img['description']
             );*/
             //add image to array of images
-            array_push($images, $image);
+            array_push($image_list, $image);
         }
 
         //json encode array of images and return it
-        $json = json_encode($images, JSON_PRETTY_PRINT);
+        $json = json_encode($image_list, JSON_PRETTY_PRINT);
         http_response_code(200);
         echo($json);
         return($json);
