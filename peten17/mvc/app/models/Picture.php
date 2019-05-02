@@ -48,17 +48,7 @@ class Picture extends Database {
 				$file = file_get_contents($fileTmpName);
 					 
 				$base64Image = "data:image;base64," . base64_encode($file);
-				//print_r($base64Image);
-				print_r($username);
-				//print_r($base64Image);
-				print_r($pictureTitle);
-				print_r($imageDesc);
-				print_r($_FILES);
-
-
-
-
-
+			
 				$sql->bindparam(':username', $username);
 				$sql->bindparam(':imageTitle', $pictureTitle);
 				$sql->bindparam(':imageDesc', $imageDesc);
@@ -73,14 +63,15 @@ class Picture extends Database {
 		}			
 	}
 
-	public function pictureByUser($id){
-		$username = $this->model('User')->getUserById($id);
+	public function getPicturesFromUser($id){
+		$username = $this->model('User')->getUserFromId($id);
 		$sql = $this->conn->prepare("SELECT image_id, image_title, image_desc, image_file FROM picture WHERE username =:username;");
 		$sql->bindParam(':username',$username);
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
-		$users = $sql->fetchAll();
-		return $users;
+		$result = $sql->fetchAll();
+		echo $result;
+		return $result;
 	}
 
 
@@ -96,6 +87,7 @@ class Picture extends Database {
 		$sql->execute();
 
 		$lastInsertID = $this->conn->lastInsertId();
+		
 		return $lastInsertID;
 
 	}
