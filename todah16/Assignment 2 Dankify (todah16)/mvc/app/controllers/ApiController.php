@@ -42,6 +42,11 @@ class ApiController extends Controller {
          $obj->image = "/todah16/mvc/public/Uploads/".$image->name;
          array_push($entries, $obj);
         
+        //$imageArr = array('id'=>$image->id, 'user_name'=>$image->user_name, 'image_name'=>$image->name, 'description'=>$image->description);
+        
+        
+        //echo $obj->image;
+        
         }
         echo json_encode($entries);
         

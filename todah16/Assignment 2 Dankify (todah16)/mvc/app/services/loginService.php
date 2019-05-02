@@ -33,7 +33,12 @@ if(isset($_POST['login'])){
     }
     
     
-   
+    //$this->checkUser($username, $conn);
+    //$this->checkLogin($username, $password, $conn);
+            
+        
+        
+    
     
     
     

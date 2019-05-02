@@ -27,7 +27,11 @@
         $this->view('partials/users', $users);
     $this->viewExtraViewbag('home/loggedIn', $images, $comments);
         
-
+    
+    /*    
+    $this->view('partials/users', $users);
+    */    
+    
     }
     public function logout(){
         if(isset($_POST['logout'])){    
