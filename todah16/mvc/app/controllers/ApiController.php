@@ -3,6 +3,8 @@
 
 class ApiController extends Controller {
     
+    private $username;
+    private $password;
     
     public function pictures($var, $value){
     $this->model('Image');
@@ -21,49 +23,86 @@ class ApiController extends Controller {
     $user_name = "";
     foreach($users as $user){
             if($user->$var == $value){
-                $user_name = $user->user_name;  
+                $this->username = $user->user_name;
+                $this->password = $user->passw;
             }
     }
         
     if($this->get()){     
     
-    $userImages = $db->getImagesByUser($user_name);
+    $userImages = $db->getImagesByUser($this->username);
+    $entries = array();
         
     foreach($userImages as $image){
-        $imageArr = array('id'=>$image->id, 'user_name'=>$image->user_name, 'image_name'=>$image->name, 'description'=>$image->description);
+             
+         $obj = new StdClass();
+         $obj->image_id = $image->id;
+         $obj->title = $image->description;
+         $obj->description = $image->description;
+         $obj->image = "/todah16/mvc/public/Uploads/".$image->name;
+         array_push($entries, $obj);
         
-        $jason = json_encode($imageArr);
+        //$imageArr = array('id'=>$image->id, 'user_name'=>$image->user_name, 'image_name'=>$image->name, 'description'=>$image->description);
         
-        echo $jason;
-        echo "\n";
+        
+        //echo $obj->image;
+        
         }
+        echo json_encode($entries);
+        
         
     }  
         
         
     if($this->post()) {
-        echo "I work too";
-        $image = json_decode(file_get_contents("php://input"));    
+        $jason = json_decode($_POST["json"]);
         
+        $db = new Database();
+        $randomNumberLength = 8;
+        if($this->checkUser($jason->username, $jason->password)){
+            $randomNumber = rand(0, $randomNumberLength);
+            $pos  = strpos($jason->image, ';');
+            $type = explode('/', explode(':', substr($jason->image, 0, $pos))[1])[1];
+					
+            $newPath = "Uploads\\TestFile".$randomNumber . "." . $type;
+					
+            $data = explode(',', $jason->image);
+            $content = base64_decode($data[1]);
+            $_SESSION["user_name"] = $jason->username;
+            
+            $this->service('uploadService');
         
-        $newImage = new UploadImage(basename($image->image_name), $user_name, $image->description);
+            $uploadService = new UploadService();
         
-        echo $newImage->user_name;
-        echo $newImage->name;
-        echo $newImage->description;
-        
-        $db->addNewImage($newImage);
-        
-        echo "I work too";
-        
-        $this->service('uploadService');
-        
-        $uploadService = new UploadService();
-        
-        $uploadService->uploadFromPOST($newImage);
+            $uploadService->uploadFromPOST($newPath, $content);
+            
+            $newImage = new UploadImage(basename($newPath), $jason->username, $jason->description);
+            $imageID = $db->addNewImage($newImage);
+            
+            unset($_SESSION["user_name"]);
+            
+            $obj = new StdClass();
+            $obj->image_id = (int) $imageID;
+            
+            echo json_encode($obj);
+            
+            
+        }
         
     }
         
+    }
+    
+    
+    
+    
+    private function checkUser($username, $password){
+        
+        if($username == $this->username && $password = $this->password){
+            return true;
+        } else{
+            return false;
+        }
     }
     
     
@@ -106,17 +145,18 @@ class ApiController extends Controller {
         $this->model('User');  
         $db = new Database();    
         $users = $db->getUsers();
+        $entries = array();
+    
         
         foreach($users as $user){
-            $usersArr = array('id'=>$user->id, 'user_name'=>$user->user_name);
+            $obj = new StdClass();
+            $obj->user_id = $user->id;
+            $obj->username = $user->user_name;
+            array_push($entries, $obj);
         
-            $jason = json_encode($usersArr);
-            
-            
-            
-        echo $jason;
-        echo "<br>";    
+             
         }
+        echo json_encode($entries);
         
     }
         

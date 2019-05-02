@@ -3,10 +3,8 @@
 class UploadService{
 
     
-public function uploadFromPOST($image){
-    $target_dir = "C:/Users/Tobia/Documents/GitHub/SDU-ITI-F19/todah16/mvc\public/Uploads/";
-    $src_folder = "C:/Users/Tobia/Documents/GitHub/SDU-ITI-F19/todah16/mvc\public/SourceFolder/";
-    copy($image->name, $target_dir . basename($image->name));
+public function uploadFromPOST($newPath, $content){
+    file_put_contents($newPath, $content);
     
 }    
     

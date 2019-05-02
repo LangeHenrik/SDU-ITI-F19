@@ -3,17 +3,7 @@
 <!--DOCTYPE_HTML-->
 <html>
 <head>
-    <!-- Title and author-->
-    <title>Dankify</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Tobias Dahl">
-    
-<!--Linked to CSS file-->    
-<link rel="stylesheet" type="text/css" href="\CSS\Dankify_NAVIGATION.css"/>
-<style>
-    
-    
-</style> 
+ 
     
 </head>    
     

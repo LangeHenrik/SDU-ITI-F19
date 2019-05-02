@@ -8,9 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     
-  <!--Linked to CSS file -->    
-    <link rel="stylesheet" type="text/css" href="../CSS/loggedIn.css"/>
-    
+
 </head>
 
 <!--DOCTYPE_HTML-->
@@ -21,8 +19,6 @@
     <meta charset="utf-8">
     <meta name="author" content="Tobias Dahl">
     
-<!--Linked to CSS file-->    
-<link rel="stylesheet" type="text/css" href="CSS/Dankify_register.css"/>
 
 
 

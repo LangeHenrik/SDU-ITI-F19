@@ -7,9 +7,36 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
     
-  <!--Linked to CSS file -->    
-    <link rel="stylesheet" type="text/css" href="../CSS/loggedIn.css"/>
+   
+    
+    function deleteImage(_id){
+        console.log(_id);
+        
+        $.ajax({
+        url: '/todah16/mvc/public/service/delete',
+        type: 'POST',
+        data: { 'id':_id },
+        success: function(response){
+            
+       if(response ==1){
+	 // Remove image source
+        
+	   var image = document.getElementById(_id);
+       image.parentNode.removeChild(image);
+       } else{
+	   console.log('Invalid ID.');
+      }
+      } 
+
+    
+        });
+        
+    }    
+        
+</script>
+  
     
 </head>
 
@@ -40,19 +67,18 @@
     echo "<br>";
         foreach ($viewbag as $image){
         echo '<p class="upload_section">'.htmlentities($image->user_name).' uploaded:</p>';
-            echo "<img src='/todah16/mvc/public/Uploads/".$image->name."' >";
+            echo "<img src='/todah16/mvc/public/Uploads/".$image->name."' id=".$image->id." >";
             echo '<div class="detailBox">';
             echo "<label>Description:</label>";    
             echo '<p style="color:green;">'.$image->description.'</p>';
             echo '</div>';  
                 //echo "<form action='includes/image_comment.inc.php?id=".htmlentities($value)."'method='post'>";
-            ?>
-    <button onclick="delete('(<?php$image->id?>')">Delete</button>
+            
     
-    <p id="demo" onclick="myFunction()">Click me to change my text color.</p>
-    <?php        
-    echo "<br>";
-            echo '<div id="test"> </div>';     
+    echo '<button class="btn-danger" onclick="deleteImage('.$image->id.')">Delete</button>';
+    
+            
+   
             echo "<br>";
         echo "<form action='/todah16/mvc/public/service/comment/".htmlentities($image->id)."'method='post'>";
         echo '<div class ="form.row" id="comment">';
@@ -76,17 +102,9 @@
     
         }
         
-?>
+
+  ?>
     
-<script>
-    function delete(id) {
-    document.getElementById("test").style.color = id;
-}
-    
-function myFunction(){
-   document.getElementById("demo").style.color = "red";
-}
-}    
+
     
     
-</script>

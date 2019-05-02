@@ -142,7 +142,7 @@
 
                 if(isset($pictures[0]->image)) : ?>
                     <p class="pass">
-                        <i class="fas fa-check"></i> GET pictures by user_id returns content <img src="<?=$pictures[0]->image?>" alt="<?=$pictures[0]->title?>" title="<?=$pictures[0]->description?>" width="50px"/>
+                        <i class="fas fa-check"></i> GET pictures by user_id returns content <img src="<?=$pictures[0]->image; ?>" alt="<?=$pictures[0]->title?>" title="<?=$pictures[0]->description?>" width="50px"/>
                     </p>
                     <?php
                         $foundRightImage = false;

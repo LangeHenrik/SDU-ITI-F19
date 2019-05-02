@@ -104,6 +104,14 @@ class Database extends DB_Config {
     public function addNewImage($NewImage){
         $sql = "INSERT INTO `images` (`name`, `description`, `user_name`) VALUES ('".$NewImage->name."','".$NewImage->description."','".$NewImage->user_name."')";
         $this->conn->query($sql);
+        return $this->conn->lastInsertId();
+    }
+    
+    public function deleteImageOnID($id){
+        $sql = "DELETE FROM images WHERE img_id='".$id."';";
+        $this->conn->query($sql);
+        
+        return true;
     }
     
     

@@ -66,6 +66,7 @@ class ServiceController extends Controller {
         
         header("Location: /todah16/mvc/public/home/other");
         
+        
     }
     
     public function comment($id){
@@ -85,7 +86,22 @@ class ServiceController extends Controller {
         header("Location: /todah16/mvc/public/home/other");
     }
     
-
+    public function delete(){
+        if($this->post()){
+        //$id = $_POST['id']   
+        
+        //echo $_POST['id'];    
+            
+        $db = new Database();
+        if($db->deleteImageOnID($_POST['id'])){
+            echo 1;
+        } else {
+            echo 0;
+        }    
+            
+        }
+        
+    }
     
 
 }
