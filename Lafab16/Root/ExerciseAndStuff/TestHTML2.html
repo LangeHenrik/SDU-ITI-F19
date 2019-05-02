@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	
+	<title> 
+	This is a test 
+	</title>
+	
+	</head>
+	
+	<style>
+	body 	{background-color: powderblue;}
+	</style>
+	
+	<body> 
+	
+	<h1>
+	Header!
+	</h1>
+
+	<h3>
+	
+	</h3>
+	
+	<form onsubmit="return checkFields()" method="post" action="testHTML2.html" >
+		<input type= "text" name="name" id="name"/>
+		
+	</form>
+	
+	<script>
+		function checkFields(){
+			var name = document.getElementByld("name").value;
+			
+			if(name.length < 4) {
+				alert("Name must be at least 4 charecters");
+				return false;
+			}
+			
+			else{
+				return true;
+			}
+		}
+	</script>
+	
+	</body>
+	
+	</html>

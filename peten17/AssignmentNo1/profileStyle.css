@@ -1,0 +1,25 @@
+.content {
+  padding: 10px;
+  margin: auto;
+  width: 40%;
+}
+
+.userInfo p {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+
+.usernameTag {
+  border-bottom: 2px solid;
+  font-weight: bold;
+  padding: 10px;
+
+}
+
+.usernameTag p {
+  font-size: 40px;
+  font-family: sans-serif;
+  margin: 10px;
+
+}

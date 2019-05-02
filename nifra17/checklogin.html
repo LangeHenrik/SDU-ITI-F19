@@ -1,0 +1,32 @@
+<?php
+    require_once 'db_config.php';
+	
+    try {
+		
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname",
+        $username,
+        $password,
+        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		
+		$usernameToLogin = $_POST['username'];
+		$passwordToLogin = $_POST['password'];
+
+        
+		$stmt = $conn->prepare("SELECT (username, password) FROM usertest");
+		$username
+		
+        $stmt->execute();
+        #$stmt->setFetchMode(PDO::FETCH_ASSOC);
+        #$result = $stmt->fetchAll();
+        #print_r($result);
+		
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+		
+    $conn = null;
+	
+	session_start();
+	$_SESSION["username"] = $usernameToStore;
+	
+	?>

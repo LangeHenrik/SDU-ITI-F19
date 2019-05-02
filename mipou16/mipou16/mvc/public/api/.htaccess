@@ -1,0 +1,5 @@
+RewriteEngine On # Turn on the rewriting engine
+RewriteRule ^users$ api.php [NC,L]
+
+RewriteRule ^pictures/user/?$ api.php [NC,L]
+RewriteRule ^pictures/user/([0-9]+)$ api.php?user_id=$1 [NC,L]

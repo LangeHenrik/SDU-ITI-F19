@@ -1,0 +1,78 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: url(adele1.jpg);
+	background-size: cover;
+	background-position: center;
+	 background-repeat: no-repeat;
+	front-family: sans-serif;
+}
+.loginbox{
+	width: 320px;
+	height: 520px;
+	background: #000;
+	color: #fff;
+	top: 60%;
+	left: 20%;
+	position: absolute;
+	transform: translate(-50%,-30%);
+	box-sizing: border-box;
+	padding: 40px 30px;
+    border-radius: 10%;
+	
+}
+
+	.avatar{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: center;
+	top: -50px%;
+	left: calc(50%-50px);
+	
+	
+}
+h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size:22px;
+	color: DeepPink;
+}
+/*Username + password text*/
+.loginbox p{
+	margin:0;
+	padding:0;
+	font-weight: bold;
+	color: DeepPink;
+}
+
+.loginbox input{
+	width: 100%;
+	margin-bottom:20px;
+}
+.loginbox input[type="text"], input[type="password"]{
+	border: none;
+	border-bottom: 1px solid DeepPink;
+	background:transparent;
+	outline:none;
+	height:40px;
+	color:DeepPink;
+	font-size:16px;
+}
+.loginbox input[type="submit"]{
+border:none;
+outline:none;
+height:40px;
+background: DeepPink;
+color: DarkViolet;
+font-size:18px;
+
+border-radius:20px;
+}
+.loginbox input[type="submit"]:hover
+{
+	cursor:pointer;
+	background:greenYellow ;
+	color: #000;
+}

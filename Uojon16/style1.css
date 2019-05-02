@@ -1,0 +1,100 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: url(adele1.jpg);
+	background-size: cover;
+	background-position: center;
+	 background-repeat: no-repeat;
+	
+	front-family: sans-serif;
+}
+.registerbox{
+	width: 320px;
+	height: 720px;
+	background: #000;
+	color: #fff;
+	top: 40%;
+	left: 20%;
+	position: absolute;
+	transform: translate(-50%,-30%);
+	box-sizing: border-box;
+	padding: 40px 30px;
+border-radius: 10%;
+	
+}
+	.avatar{
+			
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	
+	top: -50px%;
+	left: calc(50%-50px);
+	
+	
+}h1{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size:22px;
+	color: DeepPink;
+}
+/*name + address text*/
+.registerbox p{
+	margin:0;
+	padding:0;
+	font-weight: bold;
+	color: DeepPink;
+}
+
+.registerbox input{
+	width: 100%;
+	margin-bottom:20px;
+}
+/*kassarnir hverfa verda svartir*/
+.registerbox input[type="text"], input[type="address"], input[type="Username"], input[type="password"], input[type="RepeatPassword"]{
+	border: none;
+	border-bottom: 1px solid DeepPink;
+	background:transparent;
+	outline:none;
+	height:40px;
+	color:DeepPink;
+	font-size:16px;
+}
+.registerbox input[type="submit"]{
+border:none;
+outline:none;
+height:40px;
+background: DeepPink;
+
+color: #000;
+font-size:18px;
+
+border-radius:20px;
+}
+.registerbox input[type="submit"]:hover
+{
+	cursor:pointer;
+	background:greenYellow ;
+	color: #000;
+}
+.ajax{
+left: 400px;
+	top: 0px;
+	position: absolute;
+	text-align: center;
+	font-size:80px;
+	color: DeepPink;
+	
+}
+button{
+	width: 100px;
+	height: 100px;
+	left: 500px;
+	top: 250px;
+	position: absolute;
+	border-radius:50%;
+	color:DeepPink;
+	font-size:16px;
+		front-family: sans-serif;
+}

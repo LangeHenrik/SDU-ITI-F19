@@ -1,0 +1,20 @@
+.content table{
+  font-family: sans-serif;
+  width: 60%;
+  margin: auto;
+
+}
+
+.content td, th{
+    text-align: left;
+    padding: 10px;
+}
+
+.content {
+
+}
+
+.content th{
+  border-bottom: 2px solid;
+
+}

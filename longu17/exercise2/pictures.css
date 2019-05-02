@@ -1,0 +1,176 @@
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+  }
+  
+  .header {
+    width: 100%;
+    height: 1vh;
+    background-image: url("img/sdunight.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: table;
+  }
+  
+  .index-banner .text h2 {
+    text-align: center;
+    font-style: normal;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 100;
+    color: aliceblue;
+    font-size: 50px;
+  }
+  
+  .index-banner .text h1 {
+    text-align: center;
+    font-style: normal;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 100;
+    font-size: 10px;
+    margin-bottom: 20vh;
+    color: antiquewhite;
+  }
+  
+  nav {
+    background-color: rgba(11, 18, 26, 0.082);
+    padding-top: 0.11vh;
+    padding-bottom: 0.1vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+  
+  .nav ul {
+    margin-left: 550px;
+  }
+  
+  .nav ul li {
+    display: inline-block;
+    text-align: center;
+    margin-left: 80px;
+  }
+  
+  .nav ul li a {
+    text-decoration: none;
+    color: #0f080871;
+    font-size: 30px;
+    font-weight: 100;
+    font-family: Verdana, sans-serif;
+  }
+  
+  /*content*/
+  
+  main {
+    background-color: white;
+  }
+  
+  .ad {
+    text-align: center;
+  }
+  .wrapper #ad1 {
+    background-color: #f0f0f5;
+  }
+  
+  .wrapper #ad2 {
+    background-color: #f0f0f5;
+  }
+  
+  .ad #ad1 {
+    float: left;
+    width: 175px;
+    border: 5px solid white;
+    padding: 10px;
+    padding-bottom: 500px;
+    border: 3px solid #c1c1d7;
+  }
+  
+  .ad #ad2 {
+    float: right;
+    width: 175px;
+    border: 5px solid white;
+    padding: 10px;
+    padding-bottom: 500px;
+    border: 3px solid #c1c1d7;
+  }
+  
+  .wrapper {
+    width: 100%;
+    padding-top: 50px;
+  }
+
+  .wrapper .content div img {
+    position: relative;
+    display: block;
+    padding: 10px;
+  }
+  
+  .wrapper .content #user1 div p {
+    padding-left: 60px;
+    
+
+    
+  }
+
+  .wrapper .content #user2 div p {
+    padding-left: 70px;
+
+  }
+  
+  .wrapper .content #user1 div {
+    position: static;
+    display: inline-block;
+  }
+  
+  .wrapper .content #user2 div {
+    position: static;
+    display: inline-block;
+  }
+
+  .wrapper .content .description1 {
+    position: absolute;
+    left: 440px;
+    
+  }
+
+  .wrapper .content .description2 {
+    position: absolute;
+    left: 440px;
+    bottom:25px;
+    
+
+  }
+  
+  .wrapper .content #user1 div img {
+    position: absolute;
+    display: inline-block;
+    width: 350px;
+    height: 200px;
+    left: 1000px;
+    top: 690px;
+
+     border-style: groove;
+  border-color: #c1c1d7;
+  border-width: 7px;
+
+
+
+  }
+  
+  .wrapper .content #user2 div img {
+    position: absolute;
+    display: inline-block;
+    width: 350px;
+    height: 200px;
+    left: 1000px;
+    top: 940px;
+     border-style: groove;
+  border-color: #c1c1d7;
+  border-width: 7px;
+  }
+  

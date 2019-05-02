@@ -1,0 +1,78 @@
+<form method="post" onsubmit="return checkFields()">
+    <label for="name" style="color: blue;">name</label>
+    <br> 
+    <input type="text" name="name" id="name"/> 
+    <br> 
+    <label for="password">password</label>
+    <br> 
+    <input type="password" name="password" id="password"/> 
+    <br>
+    <label for="phone">phone number</label>
+    <br>
+    <input type="text" name="phone" id="phone"/> 
+    <br> 
+    <label for="email">email adress</label>
+    <br>
+    <input type="text" name="email" id="email"/>
+    <br> 
+    <label for="zip">zip code</label>
+    <br> 
+    <input type="text" name="zip" id="zip"/> 
+    <br> 
+    <input type="submit" name="submit" id="submit"/> 
+</form> 
+
+<script> 
+    function checkFields() {
+		nameChecker();
+		//phoneChecker();
+        var password = document.getElementById("password").value;
+        if(password.length < 8) { 
+            alert("Password must be at least 8 characters"); 
+            return false; 
+        } else { 
+            return true;
+        } 
+    } 
+	function nameChecker(){
+		var name = document.getElementById("name").value;
+		var values = name.split(' ').filter(function(v){return v!==''});
+		if (values.length > 1) {
+			//two or more words
+			return true;
+		} else {
+			//not enough words
+			alert("Not enough words in the name field");
+			return false;
+		}
+	}
+	function phoneChecker(){
+		var phone = document.getElementById("phone").value;
+		if(phone.value == [+] && phone.length == {8,30}){
+			return true;
+		}
+		else {
+			alert("Phone number must be something... figure it out yourself :P");
+			return false;
+		}
+	}
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
