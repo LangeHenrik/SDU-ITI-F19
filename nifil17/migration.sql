@@ -1,35 +1,34 @@
-DROP DATABASE IF EXISTS it_assignment_1;
+DROP DATABASE IF EXISTS `it_assignment_2`;
+CREATE DATABASE IF NOT EXISTS `it_assignment_2`;
+USE `it_assignment_2`;
 
-CREATE DATABASE it_assignment_1;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `userid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` char(16) COLLATE latin1_danish_ci NOT NULL,
+  `password_hash` char(255) COLLATE latin1_danish_ci NOT NULL,
+  `firstname` char(32) COLLATE latin1_danish_ci NOT NULL,
+  `lastname` char(32) COLLATE latin1_danish_ci NOT NULL,
+  `zip` char(8) COLLATE latin1_danish_ci DEFAULT NULL,
+  `city` char(32) COLLATE latin1_danish_ci DEFAULT NULL,
+  `email` char(64) COLLATE latin1_danish_ci DEFAULT NULL,
+  `number` char(30) COLLATE latin1_danish_ci DEFAULT NULL,
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci;
 
-CREATE TABLE `user` (
-	`userid` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-	`username` CHAR(16) NOT NULL,
-	`password_hash` CHAR(255) NOT NULL,
-	`firstname` CHAR(32) NOT NULL,
-	`lastname` CHAR(32) NOT NULL,
-	`zip` CHAR(8) NULL DEFAULT NULL,
-	`city` CHAR(32) NULL DEFAULT NULL,
-	`email` CHAR(64) NULL DEFAULT NULL,
-	`number` CHAR(30) NULL DEFAULT NULL,
-	PRIMARY KEY (`userid`),
-	UNIQUE INDEX `username` (`username`)
-)
-COLLATE='latin1_swedish_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=8;
+DROP TABLE IF EXISTS `picture`;
+CREATE TABLE IF NOT EXISTS `picture` (
+  `picid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `picture` blob NOT NULL,
+  `user` char(16) COLLATE latin1_danish_ci NOT NULL,
+  `header` varchar(50) COLLATE latin1_danish_ci NOT NULL,
+  `description` varchar(200) COLLATE latin1_danish_ci DEFAULT NULL,
+  PRIMARY KEY (`picid`),
+  KEY `FK_picture_user` (`user`),
+  CONSTRAINT `FK_picture_user` FOREIGN KEY (`user`) REFERENCES `user` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_danish_ci;
 
-CREATE TABLE `picture` (
-	`picid` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-	`picture` BLOB NOT NULL,
-	`user` CHAR(16) NOT NULL,
-	`header` VARCHAR(50) NOT NULL,
-	`description` VARCHAR(200) NULL DEFAULT NULL,
-	PRIMARY KEY (`picid`),
-	INDEX `FK_picture_user` (`user`),
-	CONSTRAINT `FK_picture_user` FOREIGN KEY (`user`) REFERENCES `user` (`username`)
-)
-COLLATE='latin1_swedish_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=34;
+INSERT INTO user(username, password_hash, firstname, lastname, zip, city, email, number)
+	VALUES('niko6116', '$10$3zKjdy3VDipWsoqSZbUDAOlGwWYgAxXaAdJfN9A5WdVKzKivqx.ym', 'Nikolaj', 'Filipsen', '5000', 'Odense', 'test@gmail.com', '00000000');
 
