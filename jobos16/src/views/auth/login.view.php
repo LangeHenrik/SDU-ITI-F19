@@ -25,7 +25,7 @@
                     Sign in
                 </div>
                 <div class="card-body">
-                    <form action="/auth/login" method="post">
+                    <form action="{{ $base }}/auth/login" method="post">
                         <div class="form-group">
                             <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
                         </div>
@@ -36,7 +36,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-muted">
-                    Don't have an account yet? <a href="/auth/register">Create one</a>.
+                    Don't have an account yet? <a href="{{ $base }}/auth/register">Create one</a>.
                 </div>
             </div>
         </div>

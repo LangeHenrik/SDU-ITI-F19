@@ -58,6 +58,8 @@ class Router
      */
     public function run()
     {
+        $uri = str_replace("jobos16", "", $_SERVER["REQUEST_URI"]);
+
         foreach ($this->_routes[$_SERVER['REQUEST_METHOD']] as $route => $callback) {
             if (preg_match($route, strtok($_SERVER["REQUEST_URI"], '?'), $matches)) {
                 return $this->call($this->_routes[$_SERVER['REQUEST_METHOD']][$route]);

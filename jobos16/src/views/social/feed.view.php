@@ -8,7 +8,7 @@
         <div class="col-md-8">
             @foreach(Picture::all() as $picture)
                 <div class="card mb-3">
-                    <img src="/uploads/{{ $picture->file }}" class="card-img-top" alt="{{ $picture->caption }}">
+                    <img src="{{ $publicBasePath }}/uploads/{{ $picture->file }}" class="card-img-top" alt="{{ $picture->caption }}">
                     <div class="card-body">
                         <p class="card-text">
                             <b>{{ $picture->userName }}</b><br />
@@ -30,7 +30,7 @@
 
             <!-- Upload new image -->
             <div class="mt-3">
-                <a href="/feed/upload" class="btn btn-primary btn-block">Upload picture</a>
+                <a href="{{ $base }}/feed/upload" class="btn btn-primary btn-block">Upload picture</a>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
             }
         };
 
-        request.open("GET", `/feed/item/${id}/like`, true);
+        request.open("GET", `{{ $base }}/feed/item/${id}/like`, true);
         request.send();
     }
 </script>

@@ -3,9 +3,10 @@
 namespace App\Core\Persistence\DB;
 
 
+use JsonSerializable;
 use ReflectionClass;
 
-abstract class Model
+abstract class Model implements JsonSerializable
 {
 
     /**
@@ -49,6 +50,21 @@ abstract class Model
      * @var array
      */
     protected $fillable = [];
+
+    /**
+     * Attribute keys that should be removed from the model in array form
+     *
+     * @var array
+     */
+    protected $hidden = [];
+
+    /**
+     * Attribute keys that may be mapped when in array form
+     *
+     * @var array
+     */
+    protected $arrayMap = [];
+
 
     /**
      * Attribute keys that will be converted to dates
@@ -306,6 +322,12 @@ abstract class Model
         $this->changedAttributes = $changedAttributes;
     }
 
+    /**
+     * Get object attribute
+     *
+     * @param $key
+     * @return mixed
+     */
     public function __get($key)
     {
         if(method_exists($this, $key)) {
@@ -314,6 +336,12 @@ abstract class Model
         return $this->attributes[$key];
     }
 
+    /**
+     * Set object attribute
+     *
+     * @param $key
+     * @param $value
+     */
     public function __set($key, $value)
     {
         // Set date
@@ -333,5 +361,29 @@ abstract class Model
             }
         }
     }
+
+    /**
+     * Data to be serialized as json
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        $data = $this->getAttributes();
+
+        // Map values
+        foreach ($this->arrayMap as $key => $newKey) {
+            $data[$newKey] = $data[$key];
+            unset($data[$key]);
+        }
+
+        // Remove hidden fields from the object
+        foreach ($this->hidden as $hidden) {
+            unset($data[$hidden]);
+        }
+
+        return $data;
+    }
+
 
 }

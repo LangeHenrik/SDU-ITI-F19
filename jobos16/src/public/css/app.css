@@ -1,3 +1,5 @@
+@import "bootstrap.min.css";
+
 body,
 html {
     font-family: "Helvetica Neue", "Arial", sans-serif;
@@ -43,31 +45,6 @@ a {
     margin-right: 10px;
 }
 
-.container {
-    max-width: 900px;
-    width: 100%;
-    padding: 20px;
-    margin: 0 auto;
-}
-
-.col-md-5 {
-    padding: 10px;
-    float: left;
-    max-width: 50%;
-}
-
-.col-md-8 {
-    padding: 10px;
-    float: left;
-    max-width: 66.666667%;
-}
-
-.col-md-4 {
-    padding: 5px;
-    float: left;
-    max-width: 33.333333%;
-}
-
 .card {
     width: 100%;
     border-radius: 5px;
@@ -90,18 +67,6 @@ h2.text-brand {
     font-weight: bolder;
 }
 
-.mt-3 {
-    margin-top: 3em;
-}
-
-.mt-5 {
-    margin-top: 5em;
-}
-
-.mb-3 {
-    margin-bottom: 3em;
-}
-
 .btn {
     text-align: center;
     border-radius: 5px;
@@ -115,50 +80,5 @@ h2.text-brand {
 
 .btn-primary {
     background: cornflowerblue;
-    color: #FFF;
-}
-
-.btn-block {
-    width: 100%;
-    display: block;
-}
-
-.table {
-    width: 100%;
-}
-
-.table thead {
-    background: dimgrey;
-    color: #FFF;
-}
-
-.table th {
-    text-align: left;
-    padding: 10px;
-}
-
-.table td {
-    text-align: left;
-    padding: 10px;
-}
-
-.table-striped tr:nth-child(even) {
-    background: lightgray;
-}
-
-.alert {
-    width: 100%;
-    display: block;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.alert-success {
-    background: darkgreen;
-    color: #FFF;
-}
-
-.alert-danger {
-    background: darkred;
     color: #FFF;
 }

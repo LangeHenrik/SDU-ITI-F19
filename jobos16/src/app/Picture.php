@@ -16,7 +16,7 @@ class Picture extends Model
     protected $primaryKeyType = 'string';
 
     protected $fillable = [
-        'id', 'user', 'file', 'caption'
+        'id', 'user', 'file', 'caption', 'title'
     ];
 
     protected $dates = [
@@ -57,5 +57,17 @@ class Picture extends Model
         }
         return $count;
     }
+
+    public function jsonSerialize()
+    {
+        return [
+            'image_id' => $this->id,
+            'user_id' => $this->user,
+            'title' => $this->title,
+            'description' => $this->caption,
+            'image' => "data:image/jpeg;base64," . base64_encode(file_get_contents(__DIR__ . "/../public/uploads/{$this->file}")),
+        ];
+    }
+
 
 }
