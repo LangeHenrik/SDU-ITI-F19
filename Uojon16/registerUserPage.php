@@ -6,7 +6,7 @@ if (!empty($_POST ) ) {
 require_once('db.php');
 $conn = new PDO("mysql:host=$dbhost;dbname=adele2", $dbusername, $dbpassword);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$ins = $conn->prepare('INSERT INTO notendur(FullName,Username,Address, password) 
+$ins = $conn->prepare('INSERT INTO user(FullName,Username,Address, password) 
 VALUES(:FullName,:Username,:Address,:password);'); 
 	echo 'not not';
 	$ins->bindParam(':FullName',$_POST['FullName']);
@@ -14,7 +14,7 @@ VALUES(:FullName,:Username,:Address,:password);');
 	$ins->bindParam(':Address',$_POST['Address']);
 	$ins->bindParam(':password',$_POST['password']);
 	$ins->execute();
- header("Location: UserPage.php");
+ header("Location: index.php");
 		}
  }   
 function checkFields(){
@@ -52,29 +52,137 @@ return $sucess;
 
 <div class="registerbox">
 	
-	<img src="adele2.jpg"class="avatar">
+	<img src="images/adele2.jpg"class="avatar">
 	<h1> Register Here</h1>
 	<form>
 	
 	<p>FullName</p>
-	<input type="text"   name="FullName" placeholder="Enter full name" required>
+	<input id= "fullnameField" input type="text"   name="FullName" onblur="checkFullname()" placeholder="Enter full name" required>
 	<p>Username</p>
-	<input type="text" name="Username" placeholder="Enter Username" required>
+	<input id= "usernameField"input type="text" name="Username" onblur="checkUsername()" placeholder="Enter Username" required>
 	<br>	
 	<p>Address</p>
-	<input type="text" name="Address" placeholder="Enter address" required>
+	<input id= "addressField"input type="text" name="Address"onblur="checkAddress()"  placeholder="Enter address" required>
 	<br>
 	
 	<p>password</p>
-	<input type="text" name="password" placeholder="Enter new password" required>
+	<input id= "pass"input type="password" name="password"onblur="checkPassword()"  placeholder="Enter new password" required>
 		<br>
 	<p>REenter password</p>
-	<input type="text" name="repassword" placeholder="REenter password" required>
+	<input id= "repass"input type="password" name="repassword" onblur="checkRepeatPassword() " placeholder="REenter password" required>
 	<br>
 	<input type="submit" value="Register"><br>
 
 <a href="index.php"> Back to Login page</a><br>
 </form>
+<script>
+function checkFullname() {
+
+    var fullname = document.getElementById("fullnameField").value;
+    var regex = /^[a-zA-Z ,.'-]{2,30}$/;
+	
+
+
+    if (regex.test(fullname)) {
+        document.getElementById("fullnameField").style.color = "green";
+        return regex.test(fullname);
+
+    }
+    else {
+        document.getElementById("fullnameField").style.color = "red";
+        return regex.test(fullname)
+    }
+
+}
+function checkUsername() {
+
+    var username = document.getElementById("usernameField").value;
+    var regex = /^[a-zA-Z\d]{5,20}$/;
+
+
+    if (regex.test(username)) {
+        document.getElementById("usernameField").style.color = "green";
+        return regex.test(username);
+
+    }
+    else {
+        document.getElementById("usernameField").style.color = "red";
+        return regex.test(username)
+    }
+
+}
+function checkAddress() {
+
+    var Address = document.getElementById("addressField").value;
+    var regex = /^[a-zA-Z0-9\s,.'-]{3,}$/ ;
+
+
+    if (regex.test(Address)) {
+        document.getElementById("addressField").style.color = "green";
+        return regex.test(Address);
+
+    }
+    else {
+        document.getElementById("addressField").style.color = "red";
+        return regex.test(Address)
+    }
+
+}
+function checkPassword() {
+
+
+    var password = document.getElementById("pass").value;
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+
+    if (regex.test(password)) {
+        document.getElementById("pass").style.color = "green";
+        return regex.test(password);
+
+    }
+    else {
+        document.getElementById("pass").style.color = "red";
+        return regex.test(password)
+    }
+
+}
+function checkRepeatPassword() {
+
+
+
+    var password = document.getElementById("pass").value;
+    var repassword = document.getElementById("repass").value;
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+
+    if (regex.test(repassword) && password === repassword) {
+        document.getElementById("repass").style.color = "green";
+        return regex.test(repassword) && password === repassword;
+
+    }
+    else {
+        document.getElementById("repass").style.color = "red";
+        return regex.test(repassword && password === repassword)
+    }
+
+}
+
+
+
+function checkFields() {
+
+
+    if ( checkFullname() && checkUsername() && checkAddress() &&  checkPassword() && checkRepeatPassword() ) {
+
+        return true;
+    }
+    else {
+
+        return false;
+    }
+}
+</script>
+
 </body>
 </head>
 <div id="demo">
