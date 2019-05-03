@@ -42,35 +42,42 @@ class ApiController extends Controller{
 		//GET localhost:8080/xx/mvc/public/api/pictures/user/2
 		//[{"image": "blob","title": "some title", "description":"my description"}]
 		if($this->get()){
-			//$sql = "select MsgID,msgview.username,MsgHeader,MsgContent,picture from msgview,usersinfo where usersID = :usersID and msgview.username = usersinfo.username";
 			$sql = "select image,title,description from postview,usersinfo where user_id = :user_id and postview.username = usersinfo.username";
 			
 			$stmt = $this->db->conn->prepare($sql);
 			$stmt->bindParam(':user_id',$para2);
 			$stmt->execute();
 			/* output base64
-			$image_path = ".".$stmt->fetchColumn();
-			//$image_path = './pictures/1556618393.jpeg';
+			
+			$arr = explode('/',$stmt->fetchColumn());
+			$image_path = "./".$arr[4]."/".$arr[5];
+				
 			$image_info = getimagesize($image_path);
 			$image_type = $image_info['mime'];
 			$image_data = fread(fopen($image_path, 'r'), filesize($image_path));
-			echo 'data:' . $image_type . ';base64,' . base64_encode($image_data);
+			//echo 'data:' . $image_type . ';base64,' . base64_encode($image_data);
+			//echo str_replace("\\/", "/",  json_encode("image_data=>data:".$image_type.";base64,".base64_encode($image_data)));
 			*/
+			
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			echo json_encode($result);
+			
+			
+			
 		}
 		if($this->post()){
 			//POST localhost:8080/xx/mvc/public/api/pictures/user/2
 			//input:{"image": "blob","title": "some title", "description":"my description","username":"username","password":"actual password"}
 			//output:{"image_id": "246"}
 			
-			$postData = json_decode(file_get_contents("php://input"));
+			//$postData = json_decode(file_get_contents("php://input"));
 			//print_r($postData);
-			//$postData = json_decode($_POST['json']);//where is ['json']????
+			$postData = json_decode($_POST['json']);
 			
 			$sql = "insert into postview(username,title,description,image) select :username,:title,:description,:image from dual where exists (select 1 from usersinfo where username = :username and password = :password and user_id = :user_id)";
 			//put pictures into file
 			$base64 = $postData->image;
+			
 			$path = "./pictures";
 			
 			
@@ -82,6 +89,11 @@ class ApiController extends Controller{
 			}
 			
 			
+			$arr = explode('/', $newpath);
+			$dbpath = "/shzha19/mvc/public/pictures/".$arr[2];
+			
+			
+			
 			
 			$pwdmd5 = md5($postData->password);
 			$stmt = $this->db->conn->prepare($sql);
@@ -90,7 +102,7 @@ class ApiController extends Controller{
 			$stmt->bindParam(':user_id',$para2);
 			$stmt->bindParam(':title',$postData->title);
 			$stmt->bindParam(':description',$postData->description);
-			$stmt->bindParam(':image',$newpath);
+			$stmt->bindParam(':image',$dbpath);
 			//$stmt->bindParam(':blob',$)
 			//$stmt->execute();
 			//$users = $stmt->fetchall();
