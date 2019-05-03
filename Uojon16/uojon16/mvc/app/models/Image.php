@@ -6,9 +6,31 @@ class Image extends Database {
 	public $description;
 	public $uplodedBy;
 
+	public function postPicture($title,$description,$image){
+		$sql = "INSERT INTO image(title, description,image, uplodedby)VALUES(:title,:description, :image, :uplodedby)";
+		
+		$stmt = $this->conn->prepare($sql);
+		$stmt ->bindParam(':title',$title);
+		$stmt ->bindParam(':description',$description);
+		$stmt ->bindParam(':image',$image);
+		$stmt ->bindParam(':uplodedby',$_SESSION['user_id']);
+		$stmt->execute();
+		$user_id = $this->conn->lastInsertId();
+		
+		return $user_id;
+	}
+	
+	public function getUserPictures($userId){
+		$sql = "SELECT * FROM image WHERE uplodedby = :user_id";
+		$stmt = $this->conn->prepare($sql);
+		$stmt ->bindParam('user_id', $userId);
+		$stmt->execute();
+		$pictures = $stmt->fetchAll();
+		
+		return $pictures;
+	}
 	
 	public function listAllImages() {
-		
 		
 		$getImages = $this->conn->prepare("SELECT * FROM image");
 		

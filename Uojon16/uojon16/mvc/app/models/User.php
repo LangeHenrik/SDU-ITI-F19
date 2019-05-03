@@ -46,7 +46,7 @@ class User extends Database {
 	public function createUser() {
 		
 		
-	$postUser = $this->conn->prepare("INSERT INTO user (username, password, firstname, lastname, zip, city, email, phonenumber) VALUES (:username, :password, :firstname, :lastname, :zip, :city, :email, :phone);");
+		$postUser = $this->conn->prepare("INSERT INTO user (username, password, firstname, lastname, zip, city, email, phonenumber) VALUES (:username, :password, :firstname, :lastname, :zip, :city, :email, :phone);");
 		$postUser->bindParam(':username', $_POST['username']);
 		$postUser->bindParam(':password', $_POST['password']);
 		$postUser->bindParam(':firstname', $_POST['firstname']);
@@ -67,7 +67,33 @@ class User extends Database {
         return $result;
     }
 	
-    
+	//mangler
+	public function getALLUsers(){
+		$sql = "SELECT user_id, username FROM user";
+		$stmt = $this-> conn-> prepare($sql);
+		$stmt -> execute();
+		$tempUsers = $stmt-> fetchAll();
+		
+		$conn = null;
+		return $tempUsers;
+		
+	}
+	
+    public function apiValidateUsers($username, $password) {
+        $st = $this->conn->prepare("SELECT user_id, password FROM user WHERE username = :username;");
+        $st->bindparam(':username', $username);
+        $st->execute();
+        $st->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $st->fetchAll();
+        if ($password == $result[0]['password']) {
+            
+			$_SESSION['logged_in'] = true;
+			$_SESSION['user_id'] = $result[0]['user_id'];
+			return $result[0]['user_id'];
+        } else {
+            return 'Error';
+        }
+    }
 		
 		
 }
