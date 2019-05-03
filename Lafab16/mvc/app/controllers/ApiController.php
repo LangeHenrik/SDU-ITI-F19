@@ -1,5 +1,5 @@
 <?php
-class apiController extends Controller {
+class ApiController extends Controller {
 
 	public function index ($param) {
 header('Content-Type: Application/json');
@@ -16,20 +16,22 @@ header('Content-Type: Application/json');
 public function pictures($user, $id){
 	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$this -> model('apiPicture')->uploadPicture($id);
-}
-		if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+	}
+
+	 	if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 		$viewbag['pictures'] =	$this -> model('apiPicture')->getById($id);
 		$this -> view('api/pictures', $viewbag);
-}
+	}
 
 }
+
 public function view_upload(){
 	$this -> view('pictures/uploade_picture');
 }
 
 public function users($id = 0){
 	if ($_SERVER['REQUEST_METHOD'] = 'GET'){
-	$viewbag['users'] = $this->model('user')->getuser($id);
+	$viewbag['users'] = $this->model('user')->getAllUsers($id);
 	$this -> view('api/user_output', $viewbag);}
 }
 }
