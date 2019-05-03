@@ -157,9 +157,9 @@ public function login_user(){
 
   }
 }
-public function getuser($id){
+public function getAllUsers($id){
 	if ($id === 0){
-		$sql = $this->conn->prepare('SELECT * from users');
+		$sql = $this->conn->prepare('SELECT user_id, username from users');
 		$sql -> execute();
 		$users = $sql -> fetchall(PDO::FETCH_NAMED);
 		$json = '[';
