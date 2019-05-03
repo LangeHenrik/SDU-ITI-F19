@@ -9,14 +9,14 @@ class User extends Database {
 		$stmt 										= $this->conn->prepare($sql);
 		$stmt->execute(
 			array(
-				'username' => $username,
+				':username' => $username,
 			)
 		);
 		$result = $stmt->fetchAll();
 		if (isset($result[0]) && sizeof($result) >= 1 && $result[0]['login_username'] == $username) {
 			// Hashing password in order to check if the password is correct
 
-			$verification = password_verify();
+			//$verification = password_verify();
 			if (password_verify($password, $result[0]['login_password'])) {
 				$_SESSION['logged_in'] 	= true;
 				$_SESSION['username'] 	= $result[0]['login_username'];
@@ -25,6 +25,7 @@ class User extends Database {
 				$_SESSION["phone"] 			= $result[0]["login_phone"];
 				$_SESSION["zip"] 				= $result[0]["login_zip"];
 				$_SESSION["city"] 			= $result[0]["login_city"];
+				$_SESSION['id']					= $result[0]["login_id"];
 				return true;
 			} else {
 				$_SESSION['msg'] = "Incorrect login";
