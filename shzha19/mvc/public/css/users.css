@@ -1,0 +1,41 @@
+html, body {
+    margin: 0;
+    height: 100%
+}
+
+#main {
+    height: 100%;
+    overflow: hidden;
+    background-color: hotpink;
+}
+
+#left, #right {
+    width: 20%;
+    height: 100%;
+    background-color: pink;
+}
+
+#left {
+    float: left;
+    margin-right: 2%
+}
+
+#right {
+    float: right;
+    margin-left: 2%
+}
+
+button {
+    height: 100%;
+}
+
+.round_icon{
+    margin: 0 15%;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
