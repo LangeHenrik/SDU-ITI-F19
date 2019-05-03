@@ -4,7 +4,7 @@ echo "<a href = '$root/omhaw16/mvc/public/index.php'>Home</a>";
 
 echo " <a href = '$root/omhaw16/mvc/app/views/home/login.php'>Login</a>";
 
-echo " <a href = '$root/omhaw16/mvc/app/controllers/registeruser.php'>Register</a>";
+echo " <a href = '$root/omhaw16/mvc/app/controllers/login.php'>Register</a>";
 
 echo " <a href = '$root/omhaw16/mvc/app/controllers/upload.php'>Upload</a>";
 

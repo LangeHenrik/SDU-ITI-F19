@@ -63,7 +63,9 @@ $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY p
 	echo "No posts yet.";
 }
   
-  // require 'serverconn.php';
+// require 'serverconn.php';
+
+require dirname(__DIR__) . '/app/core/serverconn.php';
 
 $sqlusers = "SELECT userID, userName FROM user";
   $resultusers = mysqli_query($conn,$sqlusers);
