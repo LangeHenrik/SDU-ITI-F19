@@ -9,12 +9,12 @@
     </head>
 <body>
 
-	<?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/login.php';?>
-    
 <h1> PhotoPost - Login </h1>
 
 <p class = 'tagline'> - Your photo-sharing website </p>
+
+    <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
+    <?php include $pathroot . '/omhaw16/mvc/app/controllers/LoginController.php';?>
 
     <div class = "login" <?php echo $stylelog;?>>
     <form name ="loginform" action="#" method="post">
@@ -31,7 +31,7 @@
     <br>
     <input type="submit" name="submit" id="submit"/>
     <br>
-    <p> Not registered yet? Click <a href="/omhaw16/mvc/app/controls/registeruser.php">here!</a> </p>
+    <p> Not registered yet? Click <a href="/omhaw16/mvc/app/views/home/register.php">here!</a> </p>
 </div>
 </form>
 

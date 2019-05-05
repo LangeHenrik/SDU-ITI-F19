@@ -1,7 +1,8 @@
 <?php 
-
-include dirname(__DIR__) . '/partials/navi.php';
-include dirname(__DIR__) . '/partials/logout.php';
+    
+include dirname(__DIR__) . '/views/partials/navi.php';
+include dirname(__DIR__) . '/views/partials/logout.php';
+    
     $loggedin = 0;
     $loginuser = "";
     $loginpass = "";

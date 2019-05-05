@@ -9,14 +9,17 @@
     </head>
 <body>
 
-        <h1> PhotoPost - Register </h1>
+<h1> PhotoPost - Register </h1>
 
 <p class = 'tagline'> - Your photo-sharing website </p>
+
+    <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
+    <?php include $pathroot . '/omhaw16/mvc/app/controllers/RegistrationController.php';?>
 
 <script type="text/javascript" src="/omhaw16/mvc/app/controllers/JSHomeController.js"></script>
 
 <div class = "register" <?php echo $stylereg;?>>
-<form id = "registerform" onsubmit="return checkFields()" action="/omhaw16/mvc/app/controllers/registeruser.php" method="post">
+<form id = "registerform" onsubmit="return checkFields()" action="/omhaw16/mvc/app/views/home/register.php" method="post">
     <label for="firstname" >First name</label>
     <br>
     <input type="text" name="firstname" id="firstname"/> 
@@ -74,9 +77,6 @@
 </form>    
 
     <br>
-
-    <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/registeruser.php';?>
     
 </body>
 </html>

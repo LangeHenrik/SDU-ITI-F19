@@ -1,22 +1,13 @@
 <?php
 
-    echo "<script>
-        function checkFields() {
-        var password = document.getElementById('password').value;
-        if(password.length < 8) {
-        alert('Password must be at least 8 characters');
-        return false;
-        } else {
-        return true;
-        }        
-        }
-        </script>";
-
     $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
-    include $pathroot . '/omhaw16/mvc/app/views/partials/navi.php';
-    include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php';
+ /* include $pathroot . '/omhaw16/mvc/app/views/partials/navi.php';
+    include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php'; */
 
-        $userregname = "";
+include dirname(__DIR__) . '/views/partials/navi.php';
+include dirname(__DIR__) . '/views/partials/logout.php';
+
+    $userregname = "";
     $password = "";
     $confirmpw = "";
     $usernameErr = $firstnameErr = $lastnameErr = $zipErr = $cityErr = $phoneErr = $zipErr = $conpwErr = "";

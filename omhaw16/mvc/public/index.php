@@ -20,8 +20,6 @@
 
 <?php 
 
-
-
 include dirname(__DIR__) . '/app/views/partials/navi.php';
 
 // FOR TESTING PURPOSES: include 'index_old.php';

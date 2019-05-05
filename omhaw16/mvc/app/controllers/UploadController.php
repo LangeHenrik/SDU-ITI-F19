@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-        <title> Upload </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/omhaw16/mvc/app/views/styling/style.css">
-        <link rel="shortcut icon" type="image/png" href="/omhaw16/mvc/app/views/styling/favicon.png"/>
-
-</head>
-
-<body>
-
-<h1> PhotoPost - Upload </h1>
-<p class = 'tagline'> - Your photo-sharing website </p>
-
-
 <?php 
 
-    $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
-    include $pathroot . '/omhaw16/mvc/app/views/partials/navi.php';
-    include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php';
+$pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);    
+
+include dirname(__DIR__) . '/views/partials/navi.php';
+include dirname(__DIR__) . '/views/partials/logout.php';
 
 $imgtitle = "";
 $imgdesc = "";
@@ -81,7 +65,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "<p class = 'status'> Sorry, your file was not uploaded. </p>";
+    echo "<p class = 'status'> Sorry, your file was not uploaded. UploadOK = 0 by mistake. </p>";
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -89,9 +73,9 @@ if ($uploadOk == 0) {
 
               $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]); 
        require $pathroot . '/omhaw16/mvc/app/core/serverconn.php';
-
-
+       // echo $sqlinsimg;
         $sqlinsimg="INSERT INTO posts (postedby, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby','$imgname', '$imgtitle', '$imgdesc', NOW())";
+        // echo $sqlinsimg;
 
 
  //       echo $sqlinsimg;
@@ -106,6 +90,9 @@ if ($uploadOk == 0) {
      //       echo "database stuff done.";
 
     } else {
+        // echo $_FILES["fileToUpload"];
+        echo "<p class='guide'> Target file: " . $target_file;
+        echo $_FILES["tmp_name"];
         echo "Sorry, there was an error uploading your file.";
     }
 }
@@ -114,26 +101,3 @@ if ($uploadOk == 0) {
     echo "<p class='guide'> Please log in, before you upload. </p>";
 }
 ?>
-
-<p> Here you can upload any image you desire! </p>
-
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    <p class ="guide"> Select image to upload: </p>
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <br>
-    <br>
-    <label for="imgtitle">Image title</label>
-    <br>
-    <input type="text" name="imgtitle" id="imgtitle">
-    <br>
-    <br>
-    <label for="imgtitle">Additional text</label>
-    <br>
-    <textarea name="imgdesc" id="imgdesc"> </textarea>
-    <br>
-    <br>
-    <input type="submit" value="Upload Image" style="color: black" name="submitimg">
-</form>
-
-</body>
-</html>
