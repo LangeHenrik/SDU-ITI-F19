@@ -23,7 +23,7 @@ class Picture extends Database {
 	}
 	
 	public function postPicture($title, $description, $image){
-		$sql = "INSERT INTO pictures (title, description, user_id) VALUES(:title, :description, :user_id)"
+		$sql = "INSERT INTO pictures (title, description, user_id) VALUES(:title, :description, :user_id)";
 		
 		$stmt = $this->conn->prepare($sql);
 		$stmt->bindParam('title', $title);

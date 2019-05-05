@@ -10,7 +10,7 @@ class ApiController extends Controller {
 	}
 	
 	public function users(){
-		$users = $this->Model('User')-getAllUsers();
+		$users = $this->Model('User')->getAllUsers();
 		$jsonUsers = json_encode($users);
 		echo $jsonUsers;
 	}
