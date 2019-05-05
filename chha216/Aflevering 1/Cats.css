@@ -1,0 +1,42 @@
+body
+{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(337a964201890a6559f27c4c511f5929.jpg);
+    background-size: cover;
+    background-position: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: blueviolet;
+}
+h1{
+    color: white;
+    text-align: center;
+
+
+}
+h2{
+    color: white;
+}
