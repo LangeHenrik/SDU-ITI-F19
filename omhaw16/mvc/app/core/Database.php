@@ -1,4 +1,16 @@
 <?php
+
+ class Database extends DBConfig {
+
+	$conn = new mysqli($servername, $username, $userpass, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } else {   
+    	print("Connected hereee!");
+    } 
+}
+
 /*
 require_once 'serverconn.php';
 	
