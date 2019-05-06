@@ -20,6 +20,8 @@
 
     <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
     <?php include $pathroot . '/omhaw16/mvc/app/controllers/MyPostsController.php';?>
+    <?php include $pathroot . '/omhaw16/mvc/app/controllers/DeletionController.php';?>
+
 
 </body>
 

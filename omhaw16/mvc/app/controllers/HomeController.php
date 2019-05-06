@@ -20,7 +20,7 @@ class HomeController extends Controller {
 	}
 	
 	public function login() {
-		$_SESSION['logged_in'] = true;
+		$_SESSION['login'] == 0;
 		$this->view('home/login');
 	}
 	

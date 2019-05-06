@@ -25,7 +25,7 @@ if ($_SESSION["login"] == 1) {
         		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0' src='/omhaw16/mvc/app/models/uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'> </div>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
             	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
-                echo "<p class = 'deleteimg'> <a class='deletion' href = /omhaw16/mvc/app/controllers/deletepost.php?postID=" . $row['postID'] . "> Delete image </a></p>";
+                echo "<p class = 'deleteimg'> <a class='deletion' href = /omhaw16/mvc/app/controllers/DeletionController.php?postID=" . $row['postID'] . "> Delete image </a></p>";
                 echo "<hr>";
         }
 
