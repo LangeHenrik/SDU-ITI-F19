@@ -32,6 +32,7 @@ p.imgdesc, p.postedby, p.intro, p.tagline {
 p.deleteimg {
 	text-align: center;
 	font-weight: bold;
+	color: red;
 }
 
 p.success {

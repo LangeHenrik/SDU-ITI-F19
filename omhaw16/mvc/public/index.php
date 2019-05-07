@@ -42,6 +42,8 @@ $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
 
 </div>
 
+<?php // AJAX CALL ?>
+
 <script> 
 	function imgInfo(int) {
   var xhttp = new XMLHttpRequest();

@@ -418,16 +418,73 @@ if ($_SESSION["login"] == 1) {
         if ($result->num_rows > 0) {
 
         	while ($row = $result->fetch_assoc()) {
+
+//        		$postID = $row['postID'];
+
         		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0' src='/omhaw16/mvc/app/models/uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'> </div>";
         	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
             	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
-                echo "<p class = 'deleteimg'> <a class='deletion' href = /omhaw16/mvc/app/controllers/DeletionController.php?postID=" . $row['postID'] . "> Delete image </a></p>";
+            	echo "<p> <a class='deletion' href = /omhaw16/mvc/app/controllers/DeletionController.php?postID=" . $row['postID'] . " > Delete image. </p>";
+
+            	// /omhaw16/mvc/app/controllers/DeletionController.php?postID=" . $row['postID'] .
+
+
+//                echo "<p class = 'deleteimg'> <a class='deletion' href = " . $this->deletePost($postID) . "> Delete image </a></p>";
                 echo "<hr>";
         }
-    }
+    } else { echo "<p class = 'success'> Oopsie! You have no posts. Make one today! </p>";
+			
+			}
 
         $dbc->connectToDB()->close();
 
 	}
 }
+	
+	/* public function deletePost($postID) {
+
+	$dbc = new Database();
+	
+	$dbc->connectToDB();
+
+		$imgname = "";
+
+	$pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
+
+	$imgpath = $pathroot . '/omhaw16/mvc/app/models/uploads/';
+
+	$sqlfind = "SELECT postID, imgName FROM posts WHERE postID = '$postID'";
+
+	$result = mysqli_query($dbc->connectToDB(),$sqlfind);
+       
+       if ($result->num_rows > 0) {
+
+       	$row = $result->fetch_assoc();
+
+        	$imgname = $row["imgName"];
+            echo $imgname;
+        	$fullpath = $imgpath . $imgname;
+            echo $fullpath;
+        	if (!unlink($fullpath)) {
+        		echo "Couldn't delete file.";
+        		echo $fullpath;
+        	} else {
+        		echo "File deleted.";
+        	}
+
+$sqldel = "DELETE FROM posts WHERE postID = '$postID'";
+
+if ($dbc->connectToDB()->query($sqldel)) {
+
+	$dbc->connectToDB()->close();
+	               header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . "/omhaw16/mvc/app/views/home/myposts.php" . $location);
+	exit;
+
+} else { 
+        		echo "Count not larger than 0";
+        	}
+        }
+
+	} */
+
 }
