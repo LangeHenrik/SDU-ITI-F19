@@ -73,6 +73,13 @@ class HomeController extends Controller {
 			}
 
 
+	public function getAllPosts() {
+			$objectOfUser = new User();
+
+			$objectOfUser->getAllPosts();
+	}
+
+
 	public function uploadPic($postedby,$imgname,$imgtitle,$imgdesc) {
 
 		$objectOfUser = new User();

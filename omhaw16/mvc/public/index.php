@@ -20,70 +20,23 @@
 
 <?php 
 
-include dirname(__DIR__) . '/app/views/partials/navi.php';
+$pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
+    include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';
+
+
+// include dirname(__DIR__) . '/app/views/partials/navi.php';
 
 // FOR TESTING PURPOSES: include 'index_old.php';
 
-include dirname(__DIR__) . '/app/views/partials/logout.php';
-
-require dirname(__DIR__) . '/app/core/serverconn.php';
+// include dirname(__DIR__) . '/app/views/partials/logout.php';
 
             echo "<h1> * </h1>";
             echo "<h2> All photos </h2>";
                        echo "<p class = 'intro'> The posts are sorted by time, with the newest being at the top. </p><br>";
 
 
-$sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY postID DESC";
-
-        $result = mysqli_query($conn,$sqlposts);
-    //    $result = $conn->query($sqlposts);
-    //    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //    $active = $row['active'];
-      
-//		$count = mysqli_num_rows($result);
-        
-        if ($result->num_rows > 0) {
-
-        	while ($row = $result->fetch_assoc()) {
-        		
-        		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0'  src='/omhaw16/mvc/app/models/uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' onclick='imgInfo(" . $row['postID'] . ")'> </div>";
-        	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
-            	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
-            	echo "<p class = 'postedby'> <b> Posted by </b>" . $row['userName'] . "</a> </p>";
-              echo "<hr>";
-
-            	       }
-
-        $conn->close();
-
-        
-} else {
-	echo "No posts yet.";
-}
-  
-// require 'serverconn.php';
-
-require dirname(__DIR__) . '/app/core/serverconn.php';
-
-$sqlusers = "SELECT userID, userName FROM user";
-  $resultusers = mysqli_query($conn,$sqlusers);
-        
-echo "<h1 class='allusers'> All users </h1>";
-
-        if ($resultusers->num_rows > 0) {
-            while ($row = $resultusers->fetch_assoc()) {
-         /*     echo "User ID: " . $row['userID'];
-              echo "<br>";
-              echo "<br>"; */
-              echo "<p> | ". $row['userName'] . " | </p>";
-              // echo "<br>";
-              // echo "<br>";
-              // echo "" . $row['userName'] . "";
-}
-} else {
-  echo "<p> <b> No users </b> </p>";
-}
-
+    $hc = new HomeController();
+    $hc->getAllPosts();
 
 ?>
 

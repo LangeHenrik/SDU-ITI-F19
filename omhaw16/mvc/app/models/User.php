@@ -340,4 +340,62 @@ if ($uploadOk == 0) {
     echo "<p class='guide'> Please log in, before you upload. </p>";
 }
 	}
+
+	public function getAllPosts() {
+
+		$dbc = new Database();
+
+		$dbc->connectToDB();
+
+		$sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY postID DESC";
+
+        $result = mysqli_query($dbc->connectToDB(),$sqlposts);
+    //    $result = $conn->query($sqlposts);
+    //    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    //    $active = $row['active'];
+      
+//		$count = mysqli_num_rows($result);
+        
+        if ($result->num_rows > 0) {
+
+        	while ($row = $result->fetch_assoc()) {
+        		
+        		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0'  src='/omhaw16/mvc/app/models/uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "' onclick='imgInfo(" . $row['postID'] . ")'> </div>";
+        	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
+            	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
+            	echo "<p class = 'postedby'> <b> Posted by </b>" . $row['userName'] . "</a> </p>";
+              echo "<hr>";
+
+            	       }
+
+        $dbc->connectToDB()->close();
+
+        
+} else {
+	echo "No posts yet.";
+}
+  
+// require 'serverconn.php'; HERE HERE HERE
+
+// require dirname(__DIR__) . '/app/core/serverconn.php';
+
+$sqlusers = "SELECT userID, userName FROM user";
+  $resultusers = mysqli_query($dbc->connectToDB(),$sqlusers);
+        
+echo "<h1 class='allusers'> All users </h1>";
+
+        if ($resultusers->num_rows > 0) {
+            while ($row = $resultusers->fetch_assoc()) {
+         /*     echo "User ID: " . $row['userID'];
+              echo "<br>";
+              echo "<br>"; */
+              echo "<p> | ". $row['userName'] . " | </p>";
+              // echo "<br>";
+              // echo "<br>";
+              // echo "" . $row['userName'] . "";
+}
+} else {
+  echo "<p> <b> No users </b> </p>";
+}
+	}
 }
