@@ -37,6 +37,7 @@ $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
 
     $hc = new HomeController();
     $hc->getAllPosts();
+    $hc->getAllUsers();
 
 ?>
 

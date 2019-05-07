@@ -374,10 +374,18 @@ if ($uploadOk == 0) {
 } else {
 	echo "No posts yet.";
 }
+
+}
   
 // require 'serverconn.php'; HERE HERE HERE
 
 // require dirname(__DIR__) . '/app/core/serverconn.php';
+
+    public function getAllUsers() { 
+
+    $dbc = new Database();
+
+    $dbc->connectToDB();
 
 $sqlusers = "SELECT userID, userName FROM user";
   $resultusers = mysqli_query($dbc->connectToDB(),$sqlusers);
