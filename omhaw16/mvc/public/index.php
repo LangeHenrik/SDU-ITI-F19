@@ -22,7 +22,7 @@
 
 $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
     include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';
-
+//    include $pathroot . '/omhaw16/mvc/app/models/getposts.php';
 
 // include dirname(__DIR__) . '/app/views/partials/navi.php';
 
@@ -45,6 +45,7 @@ $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
 <?php // AJAX CALL ?>
 
 <script> 
+
 	function imgInfo(int) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -56,6 +57,7 @@ $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
   xhttp.send();
 }
 	</script>
+
 
 <br>
 <br>

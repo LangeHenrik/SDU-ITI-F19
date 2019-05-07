@@ -28,7 +28,8 @@ if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-$sql = "SELECT * FROM posts INNER JOIN user ON postedby = userID WHERE postID 
+$sql = "SELECT * FROM posts 
+INNER JOIN user ON postedby = userID WHERE postID 
 = '$q' ORDER BY postID DESC";
 
 $result = mysqli_query($con,$sql);
