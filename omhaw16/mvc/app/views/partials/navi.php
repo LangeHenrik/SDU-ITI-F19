@@ -1,5 +1,7 @@
 <?php 
 
+$pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
+
 echo "<a href = ' " . $root . "/omhaw16/mvc/public/index.php'>Home </a>";
 
 echo "<a href = ' " . $root . "/omhaw16/mvc/app/views/home/login.php'> Login  </a>";

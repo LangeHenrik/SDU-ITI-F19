@@ -80,7 +80,7 @@ public function login($username,$password) {
                 $_SESSION['userName'] = $username;
                 $_SESSION['password'] = $password;
                 $_SESSION['login'] = 1;
-                $conn->close();
+                $dbc->connectToDB()->close();
 
                 echo "Login successful!";
                 return true;
@@ -398,4 +398,36 @@ echo "<h1 class='allusers'> All users </h1>";
   echo "<p> <b> No users </b> </p>";
 }
 	}
+
+	public function getMyPosts($userID) {
+	
+	if(session_status() == PHP_SESSION_NONE) {
+session_start();
+}
+
+	$dbc = new Database();
+	
+	$dbc->connectToDB();
+
+$sqlposts = "SELECT * FROM posts WHERE postedby = '$userID' ORDER BY postID DESC";
+
+if ($_SESSION["login"] == 1) {
+
+        $result = mysqli_query($dbc->connectToDB(),$sqlposts);
+
+        if ($result->num_rows > 0) {
+
+        	while ($row = $result->fetch_assoc()) {
+        		echo "<div class = 'imgs'> <img align = centre width = 100% border = '0' src='/omhaw16/mvc/app/models/uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'> </div>";
+        	  	echo "<h3>" . $row['imgTitle'] . "</h3>";
+            	echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
+                echo "<p class = 'deleteimg'> <a class='deletion' href = /omhaw16/mvc/app/controllers/DeletionController.php?postID=" . $row['postID'] . "> Delete image </a></p>";
+                echo "<hr>";
+        }
+    }
+
+        $dbc->connectToDB()->close();
+
+	}
+}
 }

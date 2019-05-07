@@ -80,6 +80,12 @@ class HomeController extends Controller {
 	}
 
 
+	public function getMyPosts($userID) {
+			$objectOfUser = new User();
+
+			$objectOfUser->getMyPosts($userID);
+	}
+
 	public function uploadPic($postedby,$imgname,$imgtitle,$imgdesc) {
 
 		$objectOfUser = new User();

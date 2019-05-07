@@ -19,8 +19,20 @@
 <p class = 'tagline'> Your photo-sharing website. </p>
 
     <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/MyPostsController.php';?>
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/DeletionController.php';?>
+    <?php include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';
+
+    if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+
+    $userID = $_SESSION['userID'];
+    $hc = new HomeController();
+    $hc->getMyPosts($userID); 
+
+} else { 
+	
+		echo "<p class ='status'> You need to be logged in to view your posts. </p>";
+
+	}
+?>
 
 
 </body>
