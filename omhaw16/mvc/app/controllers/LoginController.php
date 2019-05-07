@@ -15,7 +15,7 @@ include dirname(__DIR__) . '/views/partials/logout.php';
     if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
     echo "<br>";
 
-    $stylelog = "style='display:none;'";
+    $stylereg = "style='display:none;'";
     
     echo " <p class = 'success'> You're already logged in. </p>";
     }
@@ -53,6 +53,7 @@ include dirname(__DIR__) . '/views/partials/logout.php';
                 $_SESSION['password'] = $loginpass;
                 $_SESSION['login'] = 1;
                 $conn->close();
+
             
           }  else if ($count == 0) {
                 

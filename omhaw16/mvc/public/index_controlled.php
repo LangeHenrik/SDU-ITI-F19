@@ -15,8 +15,23 @@
 
 <p class = 'tagline'> - Your photo-sharing website </p>
 
-    <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';?>
+   <div class = "login" <?php echo $stylelog;?>>
+    <form name ="loginform" action="#" method="post">
+    <label for="name" style="color: white;">Name</label>
+    <br> 
+    <input type="text" name="user" id="user"/> 
+    <br>
+    <span class="error"><?php echo $usernameErr;?></span>
+    <br>
+    <label for="password">Password</label>
+    <br> 
+    <input type="password" name="pw" id="pw"/> 
+    <br>
+    <br>
+    <input type="submit" name="submitme" id="submitme"/>
+    <br>
+    <p> Not registered yet? Click <a href="/omhaw16/mvc/app/views/home/register.php">here!</a> </p>
+</div>
 
 </body>
 

@@ -14,7 +14,15 @@
 <p class = 'tagline'> - Your photo-sharing website </p>
 
     <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/LoginController.php';?>
+    <?php include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';?>
+    <?php // to disable form after login -- include $pathroot . '/omhaw16/mvc/app/controllers/User.php';?>
+
+    <?php $hc = new HomeController();
+    $loginuser = $_POST["user"];
+    $loginpass = $_POST["pw"];
+    $hc->login($loginuser,$loginpass);
+
+    ?>
 
     <div class = "login" <?php echo $stylelog;?>>
     <form name ="loginform" action="#" method="post">

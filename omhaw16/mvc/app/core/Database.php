@@ -1,14 +1,23 @@
 <?php
+$pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);   
+ include $pathroot . '/omhaw16/mvc/app/core/DBConfig.php';
 
  class Database extends DBConfig {
 
-	$conn = new mysqli($servername, $username, $userpass, $dbname);
+ 	function connectToDB() {
+
+ 		$dbcon = new DBConfig();
+
+		$conn = new mysqli($dbcon->servername, $dbcon->username, $dbcon->userpass, $dbcon->dbname);
+
+		return $conn;
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {   
-    	print("Connected hereee!");
+    	print("Connected thru new method!");
     } 
+}
 }
 
 /*
