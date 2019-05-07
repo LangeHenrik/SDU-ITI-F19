@@ -1,16 +1,21 @@
 <?php
 
 $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
-include $pathroot . '/omhaw16/mvc/app/core/Controller.php';
-include $pathroot . '/omhaw16/mvc/app/models/User.php';   
+require_once $pathroot . '/omhaw16/mvc/app/core/Controller.php';
+require_once $pathroot . '/omhaw16/mvc/app/models/User.php';   
 // require $pathroot . '/omhaw16/mvc/app/core/User.php';
 
 class HomeController extends Controller {
+
+	public function __construct() {
+
+	}
 	
-	public function index ($param) {
+	public function index () {
 		//This is a proof of concept - we do NOT want HTML in the controllers!
-		echo '<br><br>Home Controller Index Method<br>';
-		echo 'Param: ' . $param . '<br><br>';
+	//	echo '<br><br>Home Controller Index Method<br>';
+	//	echo 'Param: ' . $param . '<br><br>';
+		header ('Location: ../app/views/home/index.php');
 	}
 	
 	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {

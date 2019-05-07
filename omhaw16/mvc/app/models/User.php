@@ -4,7 +4,7 @@ include dirname(__DIR__) . '/views/partials/navi.php';
 include dirname(__DIR__) . '/views/partials/logout.php';
 
 $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);   
- require $pathroot . '/omhaw16/mvc/app/core/Database.php';
+require_once $pathroot . '/omhaw16/mvc/app/core/Database.php';
 
 class User extends Database {
 
