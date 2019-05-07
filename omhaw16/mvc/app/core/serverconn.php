@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 // class ServerConn {
   
@@ -12,7 +12,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {   
-    	print("Connected");
+    	print("Connected through old method.");
     } 
 // }
 ?>

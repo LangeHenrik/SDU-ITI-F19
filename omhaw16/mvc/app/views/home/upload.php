@@ -14,8 +14,15 @@
 <h1> PhotoPost - Upload </h1>
 <p class = 'tagline'> - Your photo-sharing website </p>
 
-    <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/UploadController.php';?>
+ <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
+    <?php include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';?>
+
+    <?php $hc = new HomeController();
+    $postedby = $_SESSION['userID'];
+    $imgname = basename($_FILES["fileToUpload"]["name"]);
+    $imgtitle = $_POST["imgtitle"];
+    $imgdesc = $_POST["imgdesc"];
+    $hc->uploadPic($postedby,$imgname,$imgtitle,$imgdesc);?>
 
 <p> Here you can upload any image you desire! </p>
 

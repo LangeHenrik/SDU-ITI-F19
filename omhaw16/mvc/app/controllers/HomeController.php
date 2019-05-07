@@ -71,7 +71,15 @@ class HomeController extends Controller {
 		$setUser = $objectOfUser->register($username,$password,$firstname,$lastname,$zip,$city,$phone,$email);
 
 			}
-	
+
+
+	public function uploadPic($postedby,$imgname,$imgtitle,$imgdesc) {
+
+		$objectOfUser = new User();
+
+		$uploadPic = $objectOfUser->uploadPic($postedby,$imgname,$imgTitle,$imgDesc);
+
+	}
 
 
 	public function logout() {
