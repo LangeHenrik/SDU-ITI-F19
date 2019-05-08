@@ -60,7 +60,7 @@ class Picture extends Database {
 	      print_r($errors);
 	    }
 	  }
-    header('Location: /anott17/mvc/public/upload');
+    header('Location: /absay12/mvc/public/upload');
 	}
     header('Location: /absay12/mvc/public/upload');
 	}
