@@ -29,7 +29,8 @@
 
     $userID = $_SESSION['userID'];
     $hc = new HomeController();
-    $hc->getMyPosts($userID); 
+    $hc->getMyPosts($userID);
+    $hc->showMyPosts($userID); 
 
 } else { 
 	

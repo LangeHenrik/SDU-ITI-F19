@@ -2,7 +2,8 @@
 
 $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once $pathroot . '/omhaw16/mvc/app/core/Controller.php';
-require_once $pathroot . '/omhaw16/mvc/app/models/User.php';   
+require_once $pathroot . '/omhaw16/mvc/app/models/User.php';
+require_once $pathroot . '/omhaw16/mvc/app/models/Pictures.php';   
 // require $pathroot . '/omhaw16/mvc/app/core/User.php';
 
 class HomeController extends Controller {
@@ -79,9 +80,9 @@ class HomeController extends Controller {
 
 
 	public function getAllPosts() {
-			$objectOfUser = new User();
+			$objectOfPics = new Pictures();
 
-			$objectOfUser->getAllPosts();
+			$objectOfPics->getAllPosts();
 	}
 
 
@@ -102,16 +103,24 @@ class HomeController extends Controller {
 	}
 
 	public function getMyPosts($userID) {
-			$objectOfUser = new User();
+			$objectOfPics = new Pictures();
 
-			$objectOfUser->getMyPosts($userID);
+			$objectOfPics->getMyPosts($userID);
 	}
+
+
+	public function showMyPosts($userID) {
+			$objectOfPics = new Pictures();
+
+			$objectOfPics->showMyPosts($userID);
+	}
+
 
 	public function uploadPic($postedby,$imgname,$imgtitle,$imgdesc) {
 
-		$objectOfUser = new User();
+		$objectOfPics = new Pictures();
 
-		$uploadPic = $objectOfUser->uploadPic($postedby,$imgname,$imgTitle,$imgDesc);
+		$uploadPic = $objectOfPics->uploadPic($postedby,$imgname,$imgTitle,$imgDesc);
 
 	}
 

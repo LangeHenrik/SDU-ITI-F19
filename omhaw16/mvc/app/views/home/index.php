@@ -47,6 +47,7 @@ include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php';
     echo "<h1 class='allusers'> All users </h1>";
 
     $hc->showAllUsers();
+    $hc->showMyPosts();
 
 ?>
 
