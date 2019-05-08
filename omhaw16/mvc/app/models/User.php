@@ -391,17 +391,25 @@ $sqlusers = "SELECT userID, userName FROM user";
   $resultusers = mysqli_query($dbc->connectToDB(),$sqlusers);
         
 echo "<h1 class='allusers'> All users </h1>";
+    
+    $userfetchArray = array();
 
         if ($resultusers->num_rows > 0) {
             while ($row = $resultusers->fetch_assoc()) {
-         /*     echo "User ID: " . $row['userID'];
-              echo "<br>";
+
+                array_push($userfetchArray, $row['userID'], $row['userName']);
+                    //"username" . $row['userName'];
+                }
+
+              return $userfetchArray;
+
+//              echo "<p><b> User ID: </b>" . $row['userID'];
+             /* echo "<br>";
               echo "<br>"; */
-              echo "<p> | ". $row['userName'] . " | </p>";
+//              echo "<p> | ". $row['userName'] . " | </p>";
               // echo "<br>";
               // echo "<br>";
               // echo "" . $row['userName'] . "";
-}
 } else {
   echo "<p> <b> No users </b> </p>";
 }

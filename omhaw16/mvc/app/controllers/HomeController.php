@@ -22,7 +22,7 @@ class HomeController extends Controller {
 		$user = $this->model('User');
 		$user->name = $param1;
 		$viewbag['username'] = $user->name;
-		$this->view('home/index', $viewbag);
+		$this->view('ho1me/index', $viewbag);
 	}
 	
 	public function restricted () {
