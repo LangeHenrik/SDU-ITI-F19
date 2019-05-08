@@ -22,15 +22,15 @@ class User extends Database {
 		      if ($username == $tmpUserName && password_verify($password, $tmpPassword)){
 		          $_SESSION['userNameGlobal'] =  $_POST["userNameLogin"];
 		          $_SESSION['logged_in'] = true;
-		          header('Location: /anott17/mvc/public/pictures');
+		          header('Location: /absay12/mvc/public/pictures');
 		      } else {
 		        $_SESSION['globalLoginMsg'] = "Wrong password, username or both.";
-						header('Location: /anott17/mvc/public/home');
+						header('Location: /absay12/mvc/public/home');
 		      }
 		    }
 		    else {
 		      $_SESSION['globalLoginMsg'] = " EMPTY: Wrong password, username or both.";
-					header('Location: /anott17/mvc/public/home');
+					header('Location: /absay12/mvc/public/home');
 		    }
 		 }
 	}
@@ -65,7 +65,7 @@ class User extends Database {
 	      $_SESSION['globalRegisterMsg'] = "Account created, you can now login.";
 	    }
 	  }
-		header('Location: /anott17/mvc/public/home');
+		header('Location: /absay12/mvc/public/home');
 	}
 
 	public function getUsers() {

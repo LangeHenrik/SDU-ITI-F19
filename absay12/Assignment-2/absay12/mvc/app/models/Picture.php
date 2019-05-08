@@ -62,45 +62,6 @@ class Picture extends Database {
 	  }
     header('Location: /anott17/mvc/public/upload');
 	}
-
-	public function APIUploadPicture($image, $pictureTitleInput, $pictureDescInput, $userID) {
-    $userName = $this->getUserNameFromID($userID);
-
-		$insertPictureStmt = $this->conn->prepare("INSERT INTO picture(person, title, description, picture_file, date_uploaded)
-                                    VALUES(:person, :title, :description, :picture_file, now())");
-
-
-    $insertPictureStmt->bindparam(':person', $userName);
-    $insertPictureStmt->bindparam(':title', $pictureTitleInput);
-    $insertPictureStmt->bindparam(':description', $pictureDescInput);
-    $insertPictureStmt->bindparam(':picture_file', $image);
-    $insertPictureStmt->execute();
-
-		$id = $this->conn->lastInsertId();
-		return $id;
-	}
-
-	public function getPicturesFromUser($userid) {
-		$userName = $this->getUserNameFromID($userid);
-
-		$sqlStmt = $this->conn->prepare("SELECT picture_id as image_id, title, description, picture_file as image FROM picture WHERE person = :username");
-		$sqlStmt->bindparam(':username', $userName);
-		$sqlStmt->execute();
-		$sqlStmt->setFetchMode(PDO::FETCH_ASSOC);
-		$result = $sqlStmt->fetchAll();
-
-		return $result;
-	}
-
-	private function getUserNameFromID($userid) {
-		$sqlStmt = $this->conn->prepare("SELECT user_name FROM person WHERE person_id = :userid");
-		$sqlStmt->bindparam(':userid', $userid);
-
-		$sqlStmt->execute();
-		$sqlStmt->setFetchMode(PDO::FETCH_ASSOC);
-		$result = $sqlStmt->fetchAll();
-		$userName = $result[0]['user_name'];
-
-		return $userName;
+    header('Location: /absay12/mvc/public/upload');
 	}
 }
