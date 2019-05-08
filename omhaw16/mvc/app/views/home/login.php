@@ -13,7 +13,13 @@
 
 <p class = 'tagline'> - Your photo-sharing website </p>
 
-    <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
+      <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
+
+        include $pathroot . '/omhaw16/mvc/app/views/partials/navi.php';
+        include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php';
+
+        ?>    
+    
     <?php include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';?>
     <?php // to disable form after login -- include $pathroot . '/omhaw16/mvc/app/controllers/User.php';?>
 
@@ -21,6 +27,12 @@
     $loginuser = $_POST["user"];
     $loginpass = $_POST["pw"];
     $hc->login($loginuser,$loginpass);
+
+    if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+    echo "<br>";
+    $stylelog = "style='display:none;'";
+    echo " <p class = 'success'> You're already logged in! </p>";
+    }
 
     ?>
 

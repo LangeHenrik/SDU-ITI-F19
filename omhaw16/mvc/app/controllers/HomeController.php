@@ -93,6 +93,14 @@ class HomeController extends Controller {
 
 	}
 
+	public function showAllUsers() {
+
+			$objectOfUser = new User();
+
+			$objectOfUser->showAllUsers();
+
+	}
+
 	public function getMyPosts($userID) {
 			$objectOfUser = new User();
 

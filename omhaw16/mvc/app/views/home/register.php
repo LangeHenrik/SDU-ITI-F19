@@ -13,8 +13,12 @@
 
 <p class = 'tagline'> - Your photo-sharing website </p>
 
- <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';?>
+      <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
+
+        include $pathroot . '/omhaw16/mvc/app/views/partials/navi.php';
+        include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php';
+        include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';?>
+  
     <? // -- to remove form if logged in -- php include $pathroot . '/omhaw16/mvc/app/controllers/User.php';?>
 
     <?php $hc = new HomeController();
@@ -27,6 +31,13 @@
     $phone = $_POST["phone"];
     $email = $_POST["email"];
     $hc->register($userregname,$password,$firstname,$lastname,$zip,$city,$phone,$email);
+
+    if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+    echo "<br>";
+    $stylereg = "style='display:none;'";
+    echo " <p class = 'success'> You're already registered. </p>";
+    }
+
     ?>   
 
 <script type="text/javascript" src="/omhaw16/mvc/app/controllers/JSHomeController.js"></script>

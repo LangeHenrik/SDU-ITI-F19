@@ -4,7 +4,7 @@ class APIController extends Controller {
 
 public function __construct() { 
 
-echo "I am the API Controller!";
+// echo "I am the API Controller!";
 
 }
 
@@ -17,9 +17,7 @@ public function users() {
             if ($this->get()) {
                 $objectOfUser = $this->model('User');
                 $userArray = $objectOfUser->getAllUsers();
-                    
-                    
-
+                                
                 echo json_encode($userArray);
                 
             }

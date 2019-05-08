@@ -16,11 +16,17 @@
 
 <p class = 'tagline'> - Your photo-sharing website </p>
 
+  <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
+
+include $pathroot . '/omhaw16/mvc/app/views/partials/navi.php';
+include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php';
+
+?>
+
 <div id="imgs">
 
 <?php 
 
-$pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
     include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';
 //    include $pathroot . '/omhaw16/mvc/app/models/getposts.php';
 
@@ -37,7 +43,10 @@ $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
 
     $hc = new HomeController();
     $hc->getAllPosts();
-    $hc->getAllUsers();
+
+    echo "<h1 class='allusers'> All users </h1>";
+
+    $hc->showAllUsers();
 
 ?>
 
@@ -54,7 +63,7 @@ $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
      document.getElementById("imgs").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "getposts.php?q="+int, true);
+  xhttp.open("GET", "/omhaw16/mvc/app/views/partials/getposts.php?q="+int, true);
   xhttp.send();
 }
 	</script>

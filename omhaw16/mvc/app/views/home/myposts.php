@@ -18,8 +18,12 @@
 <h1> PhotoPost - My Posts </h1>
 <p class = 'tagline'> Your photo-sharing website. </p>
 
-    <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);?>     
-    <?php include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';
+ <?php $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
+
+        include $pathroot . '/omhaw16/mvc/app/views/partials/navi.php';
+        include $pathroot . '/omhaw16/mvc/app/views/partials/logout.php';
+        include $pathroot . '/omhaw16/mvc/app/controllers/HomeController.php';?>
+ <?php 
 
     if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
 

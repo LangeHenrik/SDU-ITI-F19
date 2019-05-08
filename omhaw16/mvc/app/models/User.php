@@ -1,8 +1,5 @@
 <?php
 
-include dirname(__DIR__) . '/views/partials/navi.php';
-include dirname(__DIR__) . '/views/partials/logout.php';
-
 $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);   
 require_once $pathroot . '/omhaw16/mvc/app/core/Database.php';
 
@@ -137,13 +134,6 @@ public function login($username,$password) {
     if(session_status() == PHP_SESSION_NONE) {
                 session_start();
         }
-
-        if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
-    echo "<br>";
-    $stylereg = "style='display:none;'";
-    echo " <p class = 'success'> You're already registered. </p>";
-    }
-
 
    if ($_SERVER["REQUEST_METHOD"] == "POST" & isset($_POST['submitregister'])) {
         $userregname = $_POST["userregname"];
@@ -389,24 +379,30 @@ if ($uploadOk == 0) {
 
 $sqlusers = "SELECT userID, userName FROM user";
   $resultusers = mysqli_query($dbc->connectToDB(),$sqlusers);
-        
-echo "<h1 class='allusers'> All users </h1>";
     
     $userfetchArray = array();
 
         if ($resultusers->num_rows > 0) {
             while ($row = $resultusers->fetch_assoc()) {
 
-                array_push($userfetchArray, $row['userID'], $row['userName']);
-                    //"username" . $row['userName'];
-                }
+              //  array_push($userfetchArray, $row['userID'], $row['userName']);
 
-              return $userfetchArray;
+                $oneUser['ID'] = $row['userID'];
+                $oneUser['Name'] = $row['userName'];
+                $userObject[] = $oneUser;
+
+                    //"username" . $row['userName']; 
 
 //              echo "<p><b> User ID: </b>" . $row['userID'];
              /* echo "<br>";
               echo "<br>"; */
 //              echo "<p> | ". $row['userName'] . " | </p>";
+
+
+                }
+
+              return $userObject;
+
               // echo "<br>";
               // echo "<br>";
               // echo "" . $row['userName'] . "";
@@ -414,6 +410,41 @@ echo "<h1 class='allusers'> All users </h1>";
   echo "<p> <b> No users </b> </p>";
 }
 	}
+
+    public function showAllUsers() {
+
+//        echo "Showing users.";
+
+    $dbc = new Database();
+
+    $dbc->connectToDB();
+
+    $sqlusernames = "SELECT userName FROM user";
+    $resultusernames = mysqli_query($dbc->connectToDB(),$sqlusernames);
+
+    if ($resultusernames->num_rows > 0) {
+            while ($row = $resultusernames->fetch_assoc()) {
+
+                echo "<p> | ". $row['userName'] . " | </p>";
+            }
+        }
+    }
+
+
+
+//        $userArray = $this->getAllUsers();
+
+//        print_r($userArray);
+
+//     foreach($userArray as $id => $username) {
+
+//                echo "$id => $username <br>";
+
+
+
+//         foreach($userArray as $id => $username) {
+//                print_r($username);
+            //echo $userArray['userID'][0];
 
 	public function getMyPosts($userID) {
 	
