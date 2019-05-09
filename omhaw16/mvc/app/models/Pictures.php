@@ -5,7 +5,28 @@ require_once $pathroot . '/omhaw16/mvc/app/core/Database.php';
 
 class Pictures extends Database {
 
-public function uploadThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
+
+public function uploadPicThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
+
+        $ext="png";
+
+            $imgstr = $img_base64;
+            $imgstr = trim( str_replace('data:image/'.$ext.';base64,', "", $imgstr ) );
+                $imgstr = str_replace( ' ', '+', $imgstr );
+                $data = base64_decode( $imgstr );
+
+//                $image_name = "LOOOOOOL";
+                $path = '../app/models/uploads/'.$imgname.'.'.$ext;
+                $status = file_put_contents($path, $data );
+
+        $dbc = new Database();
+
+        $dbc->connectToDB();
+        
+        $sqlinsapi="INSERT INTO posts (postedby, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby','$imgname', '$imgtitle', '$imgdesc', NOW())";
+}
+
+public function uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
 
     echo " - Upload template. - ";
 
@@ -150,6 +171,26 @@ if ($uploadOk == 0) {
 }
     }
 
+    public function getPostsAPI($base64_string, $output_file) {
+
+            // open the output file for writing
+        $ifp = fopen( $output_file, 'wb' ); 
+
+        // split the string on commas
+        // $data[ 0 ] == "data:image/png;base64"
+        // $data[ 1 ] == <actual base64 string>
+        $data = explode( ',', $base64_string );
+
+        // we could add validation here with ensuring count( $data ) > 1
+        fwrite( $ifp, base64_decode( $data[ 1 ] ) );
+
+        // clean up the file resource
+        fclose( $ifp ); 
+
+        return $output_file; 
+
+    }
+
     public function getAllPosts() {
 
         $dbc = new Database();
@@ -210,12 +251,12 @@ $sqlposts = "SELECT * FROM posts WHERE postedby = '$userID' ORDER BY postID DESC
 
         	while ($row = $result->fetch_assoc()) {
 
-                $onePost['PostID'] = $row['postID'];
-                $onePost['PostedBy'] = $row['postedby'];
-                $onePost['Image'] = $row['imgName'];
-                $onePost['Title'] = $row['imgTitle'];
-                $onePost['Description'] = $row['imgDesc'];
-                $onePost['Date'] = $row['imgDate'];
+                $onePost['image_id'] = $row['postID'];
+                $onePost['userID'] = $userID;
+                $onePost['title'] = $row['imgTitle'];
+                $onePost['description'] = $row['imgDesc'];
+                $onePost['image'] = $row['imgName'];
+                // $onePost['Date'] = $row['imgDate'];
 
                 $postObject[] = $onePost;
         } 

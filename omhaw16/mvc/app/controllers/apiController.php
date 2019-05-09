@@ -29,7 +29,7 @@ public function pictures($userID) {
 				$objectOfPics = $this->model('Pictures');
 				$picJSON = $objectOfPics->getMyPosts($userID);
 
-//				echo json_encode($picJSON);
+//				echo json_encode($picJSON);	
 
 				echo json_encode($picJSON);
 //				echo json_encode($objectOfPics);
@@ -53,9 +53,11 @@ public function pictures($userID) {
 				$username = $decoder["username"];
 				$password = $decoder["password"];
 				$postedby = $userID;
-				$imgname = $decoder["imgurl"];
+				$imgname = $decoder["image"];
 				$imgtitle = $decoder["title"];
-				$imgdesc = $decoder["desc"];
+				$imgdesc = $decoder["description"];
+
+
 
 				echo $imgname . " - ";
 
@@ -64,14 +66,23 @@ public function pictures($userID) {
 
 				echo "- test - ";
 
-			    if($objectOfUser->login($username,$password)) {
+				$decoded = base64_decode($imgname);
+
+					echo "Base64 found!";
+
+				$newname = $decoded . "converted";
+
+				$objectOfPics->getPostsAPI($imgname,$newname);
+				//	echo $decoded;
+
+			    if($objectOfUser->loginAPI($username,$password)) {
 			    	echo "Logged in!";
 
-			    	$objectOfPics->uploadThruAPI($postedby,$imgname,$imgtitle,$imgdesc);
+			    	$objectOfPics->uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc);
 
 			    }
 			    else { 
-			    	echo "Not logged in. :(";
+			    	echo "Not logged in. :( with " . $username . " and " . $password;
 			    }
 
 /*			$imageUrl = $strJsonFileContents['imgurl'];

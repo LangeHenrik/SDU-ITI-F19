@@ -13,6 +13,30 @@ public function __construct() {
 	$usernameErr = "";
 }
 
+public function loginAPI($username,$password) {
+
+    $dbc = new Database();
+
+    $dbc->connectToDB();
+
+    $sql = "SELECT userID FROM user WHERE userName = '$username' AND userPass = '$password'";
+
+        $result = mysqli_query($dbc->connectToDB(),$sql);
+         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['active'];
+      
+        $count = mysqli_num_rows($result);
+        
+        if ($count == 1) {
+            echo "You're logged in, " . $username . "!";
+            return true;
+        } else { 
+            echo "Error occurred, you're not logged in.";
+            return false;
+        }
+
+}
+
 public function login($username,$password) {
 	$dbc = new Database();
 
@@ -241,7 +265,7 @@ $sqlusers = "SELECT userID, userName FROM user";
               //  array_push($userfetchArray, $row['userID'], $row['userName']);
 
                 $oneUser['ID'] = $row['userID'];
-                $oneUser['Name'] = $row['userName'];
+                $oneUser['username'] = $row['userName'];
                 $userObject[] = $oneUser;
 
                     //"username" . $row['userName']; 
