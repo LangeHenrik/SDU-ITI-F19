@@ -1,20 +1,17 @@
 <?php
-require_once "db_conn.php";
-
-session_start();
-
-if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
-	header("location: login.php");
-}
+	session_start();
+	
+	if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+		header("location: login.php");
+	}
 ?>
 
 <!DOCTYPE html>
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Image Heap</title>
-	
+	<title>Users</title>
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -33,15 +30,16 @@ if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
 	<![endif]-->
 
 </head>
+
 <body>
 		
 	<div id="fh5co-offcanvass">
-		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu </a>
+		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu  </a>
 		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php">Image Heap</a></h1>
 		<ul>
-			<li class="active"><a href="index.php">Home</a></li>
+			<li><a href="index.php">Home</a></li>
 			<li><a href="upload.php">Upload</a></li>
-			<li><a href="users.php">Users</a></li>
+			<li class="active"><a href="users.php">Users</a></li>
 			<li><a href="register.php">Register</a></li>
 		</ul>
 		<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
@@ -52,42 +50,52 @@ if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu</a>
+					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu </a>
 					<a class="navbar-brand" href="index.php">Image Heap</a>		
 				</div>
 			</div>
 		</div>
 	</header>
+	<!-- END .header -->
 	
 	<div id="fh5co-main">
 		<div class="container">
-
 			<div class="row">
-
-        <div id="fh5co-board" data-columns>
-			<?php
-				$stmt = $conn->prepare("SELECT * FROM images"); //sql select query
-				$stmt->execute();
-				while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-			?>
-        	<div class="item">
-        		<div class="animate-box">
-	        		<a href="<?php echo htmlspecialchars($row["source"]); ?>" 
-					class="image-popup fh5co-board-img" 
-					title="<?php if($row["title"] == ""){echo "[no title]";} else{echo $row["title"];}?>"><img src="<?php echo $row["source"]; ?>" 
-					alt=<?php echo htmlspecialchars($row["source"]);?>></a>
-        		</div>
-				<div class="fh5co-item-title"><?php if($row["title"] == ""){ echo "[no title]";} else{ echo htmlspecialchars($row["title"]);}?></div>
-        		<div class="fh5co-desc"><?php if($row["description"]== ""){ echo "[no description]";} else{echo htmlspecialchars($row["description"]);}?></div>
+					<h2>Users</h2>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<div class="row">
+						<table style="width:100%;">
+						<tr>
+							<th>Username</th>
+							<th>Name</th>
+							<th>Zip</th>
+							<th>City</th>
+							<th>E-mail</th>
+							<th>Phone number</th>
+						</tr>
+						<?php
+							require "db_conn.php";
+							$stmt=$conn->prepare("SELECT username, firstname, lastname, zip, city, email, phonenumber FROM users");
+							$stmt->execute();
+							while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+						?>
+						<tr>
+							<td><?php echo htmlspecialchars($row["username"]); ?></td>
+							<td><?php echo htmlspecialchars($row["firstname"] . " " . $row["lastname"]); ?></td>
+							<td><?php echo htmlspecialchars($row["zip"]); ?></td>
+							<td><?php echo htmlspecialchars($row["city"]); ?></td>
+							<td><?php echo htmlspecialchars($row["email"]); ?></td>
+							<td><?php echo htmlspecialchars($row["phonenumber"]); ?></td>
+						</tr>
+						<?php
+							}
+						?>
+					</div>
+					
+        		
         	</div>
-			<?php
-				}
-			?>
-        </div>
-        </div>
        </div>
-	</div>
-
+	</div> 
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -104,5 +112,6 @@ if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
 	
-	</body>
+</body>
+
 </html>
