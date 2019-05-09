@@ -1,14 +1,38 @@
 <?php
 class Picture extends Database {
 	
-	public function getAllPictures(){
-		$sql = "SELECT * FROM pictures";
+	public function uploadPicture(){
 
-		$stmt = $this->conn->prepare($sql);
-		$stmt->execute();
-		$pictures = $stmt->fetchAll();
+		$target_dir = "images/";
+		$target_file = $target_dir . basename($_FILES["file"]["name"]);
+		$i = 0;
 
-		return $pictures;
+		//change filename if it already exists
+		while (file_exists($target_file)) {
+			$i++;
+			$target_file = str_replace(".", "_" . $i . ".", $target_file);
+		}
+		
+		$sql = "INSERT INTO images(title,description,source,user_id) VALUES(:title,:description,:source,:user_id)";
+		
+		if($stmt = $this->conn->prepare($sql) and move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
+			
+			$stmt->bindParam(":title", $param_title, PDO::PARAM_STR);
+			$stmt->bindParam(":description", $param_description, PDO::PARAM_STR);
+			$stmt->bindParam(":source", $target_file, PDO::PARAM_STR); 
+			$stmt->bindParam(":user_id", $param_user_id, PDO::PARAM_STR); 
+	
+			$param_title = trim($_POST["title"]);
+			$param_description = trim($_POST["description"]);
+			$param_user_id = $_SESSION["user_id"];		
+				
+			if($stmt->execute()){
+				echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+			} else {
+				unlink($target_file);
+				echo "Sorry, there was an error uploading your file.";
+			}
+		}
 	}
 
 }
