@@ -14,14 +14,14 @@ if(session_status() == PHP_SESSION_NONE) {
 }
 
 if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
-    echo " <p class 'status'> Hello, " . $_SESSION['userName'] . "!  </p>";
+    echo " <p class 'status'>Welcome, " . $_SESSION['userName'] . "</p>";
     echo "<br>";
     $style = "";
     $stylein = "style='display:none;'";
 } else {
     session_unset();
     $style = "style='display:none;'";
-    echo " <p class = 'status'> Hello guest! </p> ";
+    echo " <p class = 'status'>Welcome, guest</p> ";
     echo "<br>";
     $stylein = "";
 }

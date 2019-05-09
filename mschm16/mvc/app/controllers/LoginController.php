@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
 
     } else if ($count == 0) {    
-        echo "<p class = 'status'>Username and password do not match. </p>";
+        echo "<p class='status'>Username and password do not match. </p>";
     } else { 
         echo "An error was encountered while passing data to database! The error was: " . $conn->error . "while calling SQL method: " . $sql;
     }
