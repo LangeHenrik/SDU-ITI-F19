@@ -11,7 +11,6 @@ class Database extends DB_Config
     public $conn;
 
     public function __construct() {
-
         try {
 
             $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
@@ -25,7 +24,7 @@ class Database extends DB_Config
     }
 
 /** @var  $user
- *
+ * from mysql info try to connect, error
  *
  *
  *        $user = 'root';

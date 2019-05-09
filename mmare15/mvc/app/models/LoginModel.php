@@ -4,6 +4,7 @@
 namespace models;
 use core\Database;
 use PDO;
+
 class LoginModel extends Database
 {
     public function checkCredentials($ausername, $apassword) {
