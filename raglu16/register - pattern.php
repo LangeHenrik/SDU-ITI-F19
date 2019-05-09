@@ -124,32 +124,27 @@
 	<!-- END .header -->
 	
 	<script type="text/javascript">
-	
 		function checkUsername() {
 			var username = document.getElementById("username").value;
 			var paragraph = document.getElementById("username_alert");
-			regex_Username = /[a-z]{1,255}$/g
+			regex_Username = /^([A-Za-z0-9]){1}([A-z0-9]|[-_]){0,255}$/g
 			
 			if(regex_Username.test(username)){
 				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
 			}else{
 				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
 			}
 		}
 		
 		function checkPassword() {
 			var password = document.getElementById("password").value;
 			var paragraph = document.getElementById("password_alert");
-			regex_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/g
+			regex_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/g
 			
 			if(regex_password.test(password)){
 				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
 			}else{
 				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
 			}
 		}
 		
@@ -158,96 +153,94 @@
 			var confirm_password = document.getElementById("confirm_password").value;
 			var paragraph = document.getElementById("confirm_password_alert");
 			
-			if(confirm_password === password){
+			if(confirm_password.equals(password)){
 				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
 			}else{
 				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
 			}
 		}
 		
 		function checkFirstName() {
 			var firstName = document.getElementById("firstname").value;
 			var paragraph = document.getElementById("firstname_alert");
-			regex_firstName = /[a-z]{1,255}$/g
+			regex_firstName = /^[A-Z]([a-z]{0,255})$/g
 			
 			if(regex_firstName.test(firstName)){
 				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
 			}else{
 				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
 			}
 		}
 		
 		function checkLastName() {
 			var lastName = document.getElementById("lastname").value;
 			var paragraph = document.getElementById("lastname_alert");
-			regex_lastName = /[a-z]{0,255}$/g
+			regex_lastName = /^[A-Z]([a-z]{0,255})$/g
 			
 			if(regex_lastName.test(lastName)){
 				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
 			}else{
 				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
-			}
-		}
-		
-		function checkZip() {
-			var zip = document.getElementById("zip").value;
-			var paragraph = document.getElementById("zip_alert");
-			regex_zip = /^[0-9]{4}$/g
-			
-			if(regex_zip.test(zip)){
-				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
-			}else{
-				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
-			}
-		}
-		
-		function checkCity() {
-			var city = document.getElementById("city").value;
-			var paragraph = document.getElementById("city_alert");
-			regex_city = /[a-z]{1,255}$/g
-			
-			if(regex_city.test(city)){
-				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
-			}else{
-				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
 			}
 		}
 		
 		function checkEmail() {
 			var email = document.getElementById("email").value;
 			var paragraph = document.getElementById("email_alert");
-			regex_email = /^([a-z]+[.]?[a-z]+)+@([a-z]+[.]?[a-z]+)+[.][a-z]{2,5}$/g
+			regex_email = /^([A-z]+[.]?[A-z]+)+@([A-z]+[.]?[A-z]+)+[.][a-z]{2,5}$/g
 			
 			if(regex_email.test(email)){
 				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
 			}else{
 				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
 			}
 		}
 		
 		function checkPhoneNumber() {
 			var phoneNumber = document.getElementById("phonenumber").value;
 			var paragraph = document.getElementById("phonenumber_alert");
-			regex_phoneNumber = /^[0-9]{8,30}$/g
+			regex_phoneNumber = /^[+][0-9]{8,30}$/g
 			
 			if(regex_phoneNumber.test(phoneNumber)){
 				paragraph.style.display = "none";
-				document.getElementById("buttonSubmit").disabled = false;
 			}else{
 				paragraph.style.display = "block";
-				document.getElementById("buttonSubmit").disabled = true;
+			}
+		}
+		
+		function checkZip() {
+			var zip = document.getElementById("zip").value;
+			var paragraph = document.getElementById("zip_alert");
+			regex_zip = /^[+][0-9]{8,30}$/g
+			
+			if(regex_zip.test(zip)){
+				paragraph.style.display = "none";
+			}else{
+				paragraph.style.display = "block";
+			}
+		}
+		
+		function checkCity() {
+			var city = document.getElementById("city").value;
+			var paragraph = document.getElementById("city_alert");
+			regex_city = /^(?=.[a-zA-Z ]{1,255}$)(^([A-Z]([a-z]*)+\s?)+$)/g
+			
+			if(regex_city.test(city)){
+				paragraph.style.display = "none";
+			}else{
+				paragraph.style.display = "block";
+			}
+		}
+		
+		function checkPhoneNumber() {
+			var phoneNumber = document.getElementById("phonenumber").value;
+			var paragraph = document.getElementById("phonenumber_alert");
+			regex_phoneNumber = /^[+][0-9]{8,30}$/g
+			
+			if(regex_phoneNumber.test(phoneNumber)){
+				paragraph.style.display = "none";
+			}else{
+				paragraph.style.display = "block";
 			}
 		}
 		
@@ -262,74 +255,73 @@
 					<form name="registerform" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 						<div class="row">
 							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="text" id="username" class="form-control" name="username" placeholder="Username" required oninput="checkUsername()">	
-								<div id="username_alert" style="display:none">
-									Please enter a username.
-								</div>
-							</div></div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input id="password" type="password" class="form-control" name="password" placeholder="Password" required oninput="checkPassword()">
-								<div id="password_alert" style="display:none">
-									Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
-								</div>
-							</div>
-							</div>
-							<div class="col-md-6">
-							</div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="password" id="confirm_password" class="form-control" name="confirm_password" placeholder="Confirm password" required oninput="checkConfirmPassword()">	
-								<div id="confirm_password_alert" style="display:none">
-									Password does not match.
-								</div>
-							</div></div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="text" id="firstname" class="form-control" name="firstname" placeholder="First name" required oninput="checkFirstName()">
-								<div id="firstname_alert" style="display:none">
-									First name must contain a character.
-								</div>
-							</div></div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="text" id="lastname" class="form-control" name="lastname" placeholder="Last name" required oninput="checkLastName()">
-								<div id="lastname_alert" style="display:none">
-									Last name must contain a character.
-								</div>
-							</div></div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="text" id="zip" class="form-control" name="zip" placeholder="Zip" required oninput="checkZip()">
-								<div id="zip_alert" style="display:none">
-									Zip must contain a 4 digit number.
-								</div>
-							</div></div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="text" id="city" class="form-control" name="city" placeholder="City" required oninput="checkCity()">
-								<div id="city_alert" style="display:none">
-									City must contain a character.
-								</div>
-							</div></div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="text" id="email" class="form-control" name="email" placeholder="E-mail" required oninput="checkEmail()">
-								<div id="email_alert" style="display:none">
-									Please enter a valid email.
-								</div>
-							</div></div>
-							<div class="col-md-6">
-							<div class="form-group" >
-								<input type="text" id="phonenumber" class="form-control" name="phonenumber" placeholder="Phone Number" required oninput="checkPhoneNumber()">
-								<div id="phonenumber_alert" style="display:none">
-									Please enter a valid phone number (at least 8 digits).
-								</div>
-							</div></div>
-							<div class="col-md-12">
-								<input type="submit" id="buttonSubmit" class="btn btn-primary" value="Register">
 								<div class="form-group">
+									<input type="text" class="form-control" name="username" placeholder="Username" required  
+									pattern="[a-z]{1,255}$" 
+									title="">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="password" class="form-control" name="password" placeholder="Password" required 
+									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}}" 
+									title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+								</div>
+							</div>
+							<div class="col-md-6">
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="password" class="form-control" name="confirm_password" placeholder="Confirm password" required  
+									pattern="[a-z]{1,255}$" 
+									title="jhgjk">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" name="firstname" placeholder="First name" required  
+									pattern="[a-z]{1,255}$" 
+									title="">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" name="lastname" placeholder="Last name" required  
+									pattern="[a-z]{1,255}$" 
+									title="">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" name="zip" placeholder="Zip" required  
+									pattern="[0-9]{4}$" 
+									title="">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" name="city" placeholder="City" required  
+									pattern="[a-z]{1,255}$" 
+									title="">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" name="email" placeholder="E-mail" required  
+									pattern="([a-z]+[.]?[a-z]+)+@([A-z]+[.]?[a-z]+)+[.][a-z]{2,5}$" 
+									title="">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control" name="phonenumber" placeholder="Phone Number" required  
+									pattern="[0-9]{8,30}$" 
+									title="">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary" value="Register">
 								</div>
 							</div>
 						</div>

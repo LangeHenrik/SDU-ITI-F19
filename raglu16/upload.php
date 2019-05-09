@@ -30,16 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 		}
 	}
 	
-	$sql = "INSERT INTO images(title,description,source) VALUES(:title,:description,:source)";
+	$sql = "INSERT INTO images(title,description,source,user_id) VALUES(:title,:description,:source,:user_id)";
 	
 	if($stmt = $conn->prepare($sql) and $uploadOk == 1){
 		
 		$stmt->bindParam(":title", $param_title, PDO::PARAM_STR);
 		$stmt->bindParam(":description", $param_description, PDO::PARAM_STR);
-		$stmt->bindParam(":source", $target_file, PDO::PARAM_STR);
+		$stmt->bindParam(":source", $target_file, PDO::PARAM_STR); 
+		$stmt->bindParam(":user_id", $param_user_id, PDO::PARAM_STR); 
 
 		$param_title = trim($_POST["title"]);
-		$param_description = trim($_POST["description"]);		
+		$param_description = trim($_POST["description"]);
+		$param_user_id = $_SESSION["user_id"];		
 			
 		if($stmt->execute()){
 			echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
@@ -52,25 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
+
+<head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title> </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
-
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
-
-	<!-- Google Webfonts -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<title>Upload</title>
 	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
@@ -89,12 +76,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
-	</head>
-	<body>
-		
+</head>
+
+<body>	
 	<div id="fh5co-offcanvass">
 		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
-		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php"> </a></h1>
+		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php">Image Heap</a></h1>
 		<ul>
 			<li><a href="index.php">Home</a></li>
 			<li class="active"><a href="upload.php">Upload</a></li>
@@ -110,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 			<div class="row">
 				<div class="col-md-12">
 					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <i class="icon-menu"></i></a>
-					<a class="navbar-brand" href="index.php"> </a>		
+					<a class="navbar-brand" href="index.php">Image Heap</a>		
 				</div>
 			</div>
 		</div>
@@ -126,11 +113,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 					<form name="registerform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
 						<div class="row">
 							<div class="form-group">
-								<input type="file" name="file" placeholder="Username" required>	
+								<input type="file" name="file" placeholder="file" required>	
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" name="title" placeholder="Title" required>	
+									<input type="text" class="form-control" name="title" placeholder="Title">	
 								</div>
 							</div>
 							<div class="col-md-8">
@@ -165,5 +152,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
 	
-	</body>
+</body>
+
 </html>
