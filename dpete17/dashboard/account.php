@@ -15,7 +15,7 @@
     
             $result = $stmt -> fetchAll();
     
-            $username = $result[0]['username'];
+            $_SESSION['username'] = $result[0]['username'];
     
             # images
             $sql = 'SELECT filename, header, content FROM image WHERE id IN(SELECT image_id FROM uploads WHERE account_id = :id) LIMIT 20;';
@@ -53,7 +53,7 @@
                 <li><a href="../action/logout.php">Logout</a></li>
             </ul>
             <?php 
-                echo "<h4>{$username}</h4>";
+                echo "<h4>{$_SESSION['username']}</h4>";
             ?>
         </header>
         <div class="dashboard-body">

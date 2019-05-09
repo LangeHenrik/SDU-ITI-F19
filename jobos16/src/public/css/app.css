@@ -1,0 +1,84 @@
+@import "bootstrap.min.css";
+
+body,
+html {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    background: lightgray;
+    min-height: 60px;
+}
+
+.navbar .navbar-brand {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bolder;
+    float: left;
+}
+
+.navbar .navbar-toggler {
+    display: none;
+}
+
+.navbar .navbar-collapse {
+    float: left;
+}
+
+.navbar ul.navbar-nav {
+    margin: 0;
+}
+
+.navbar ul.navbar-nav li {
+    display: inline;
+}
+
+.navbar ul.navbar-nav li a {
+    color: #000;
+    text-decoration: underline;
+    margin-right: 10px;
+}
+
+.card {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #000;
+    display: block;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.card .card-body {
+    padding: 20px;
+}
+
+h2.text-brand {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.btn {
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn a {
+    padding: 10px;
+}
+
+.btn-primary {
+    background: cornflowerblue;
+    color: #FFF;
+}

@@ -1,0 +1,63 @@
+form {
+  border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+
+.registerContainer a {
+  width: auto;
+  color: black;
+  background-color: dodgerblue;
+  box-shadow: 0 3px 0 darkblue;
+}
+
+.registerContainer a:hover{
+    background-color: gainsboro;
+}
+
+
+/* Though general styling for the link element - it is intended to make the cancel button red */
+.cancelContainer a {
+  background-color: red;
+  box-shadow: 0 3px 0 darkred;
+  color: white;
+  padding: 0.5em 1em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cancelContainer a:hover {
+  background-color: #ce0606;
+}
+
+.cancelContainer a:active {
+  box-shadow: none;
+  top: 3px;
+}
+

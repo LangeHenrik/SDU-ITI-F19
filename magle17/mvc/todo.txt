@@ -1,0 +1,12 @@
+TODO:
+Hash passwords, look at anott17 branch index.php
+
+database.media should be blobbed, evaluate on contains "." to change between pathed and base64
+or find template base64 and replace the fuckers
+
+
+
+$preparedLoginCheck = $this->$conn->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+		$preparedGetUsername = $this->$conn->prepare("SELECT * from users WHERE username = :username");
+		$prepareInsertUser = $this->$conn->prepare("INSERT INTO users (username, firstname, lastname, zip, city, email, phone, password) 
+			VALUES(:username, :firstname,:lastname,:zip,:city,:email,:phone,:password)");

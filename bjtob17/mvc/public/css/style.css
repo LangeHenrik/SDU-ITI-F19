@@ -1,0 +1,33 @@
+.cards .card {
+    margin-bottom: 10px;
+}
+
+#weather {
+    display:flex;
+}
+#weather div {
+    margin-left: 5px;
+}
+#weather.box {
+    padding: 2px;
+}
+
+/**
+ERROR
+ */
+.error {
+    background-color: hsl(348, 100%, 61%);
+    margin: 15px;
+    padding: 10px;
+}
+.error-inline {
+    background-color: hsl(348, 100%, 61%);
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.hidden {
+    display: none;
+}
+.error-border {
+    border: 2px solid hsl(348, 100%, 61%);
+}

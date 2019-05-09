@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+  <link rel="stylesheet" href="style.css"/> <!-- link to the stylesheet -->
+
+  <title> Login page </title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+  <header class="headerscale">
+    <a href="index.html">
+    <h1 style="text-align:center;">
+    <i class="fas fa-robot"></i>Portfolio Robottechnology<i class="fas fa-robot"></i>
+    </h1>
+    </a>
+  </header>
+
+    <nav class="navscale">
+      <div class="wrapper">
+        <ul>
+          <li><a class="active" href="loginpage.html">Login</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Sem1.html">1. semester</a></li>
+          <li><a href="Sem2.html">2. semester</a></li>
+          <li><a href="Sem3.html">3. semester</a></li>
+          <li><a href="Sem4.html">4. semester</a></li>
+        </ul>
+      </div>
+    </nav>
+
+<!-- Form action -->
+<form action="/action_page.php">
+  <div class="imgcontainer">
+    <img src="Assignment1/bighero.jpg" alt="profilpicture bigHero" class="bighero">
+  </div>
+
+  <div class="container" align="center">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" id="uname" required>
+    <!-- linebreak -->
+    <br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="psw" required>
+
+    <!-- linebreak -->
+    <br>
+
+    <button type="button" onclick="login()">Login</button>
+    <br> <!-- This button need an action - chech the array uname[] for a mach of pword and uname. if no mach - try again? -->
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+    <!-- linebreak -->
+    <br>
+    <button type="button"><a href="register.html">Register</a></button>
+  </div>
+</form>
+
+</body>
+
+<script src="main.js"></script>
+</html>

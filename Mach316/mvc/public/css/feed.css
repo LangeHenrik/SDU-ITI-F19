@@ -1,0 +1,101 @@
+.image-post {
+    margin-bottom: 5%;
+    padding-top: 0.5%;
+    width: 60%;
+    margin-left: 19%;
+    background-color: rgba(0,55,200,0.2);
+    border-radius: 5px;
+}
+
+.posts-container {
+
+}
+.image-wrapper{
+    text-align: center;
+    margin: 0.5%;
+}
+
+.header-feed{
+    text-align: center;
+}
+
+.img-feed-post {
+    width: 80%;
+}
+
+.main-content {
+}
+
+.comments {
+}
+
+.comment{
+    border-bottom: 1px solid white;
+    background-color: burlywood;
+}
+
+.image-information-wrapper{
+    border-bottom: 1px solid white;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.btn-submit-comment {
+    border: none;
+    border-radius: 0px;
+    font-size: 1vw;
+    background-color: white;
+    transition: 400ms ease-in-out;
+    padding: .7%;
+}
+.btn-submit-comment:hover {
+    cursor: pointer;
+    background-color: dimgrey;
+    color: white;
+}
+
+
+
+.comment-form {
+    margin-left: 2%;
+}
+
+.comment-form-wrapper{
+    border-bottom: 1px solid white;
+}
+
+.comment-author-name{
+    padding: 1%;
+}
+
+
+.comment-author-name > a{
+    color: white;
+    text-decoration: none;
+    transition: 100ms ease-in-out;
+}
+
+.comment-author-name > a:hover {
+    color: lightgoldenrodyellow;
+}
+
+.comment-text {
+    padding: 2%;
+}
+
+.comment-textarea {
+    resize: none;
+    border: none;
+    width: 95%;
+}
+.comment-textarea:focus {
+    outline: none;
+}
+.textarea-wrapper {
+        margin-top: 1%;
+}
+
+.image-wrapper{
+
+}
+

@@ -85,3 +85,33 @@ function checkCredentials($ausername, $apassword) {
     $conn = null;
 
 }
+
+function uploadImage($username, $path, $title, $description) {
+    $conn = getConnection();
+    $statement = $conn->prepare('insert into images (username, path, title, description) values (:username, :path, :title, :description);');
+
+    $statement->bindParam(':username', $username);
+    $statement->bindParam(':path', $path);
+    $statement->bindParam(':title', $title);
+    $statement->bindParam(':description', $description);
+
+    $statement->execute();
+
+
+    $conn = null;
+
+}
+
+function getImages() {
+    $conn = getConnection();
+    $statement = $conn->prepare('select * from images order by counter DESC LIMIT 20');
+
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $conn = null;
+
+
+
+    return $result;
+}

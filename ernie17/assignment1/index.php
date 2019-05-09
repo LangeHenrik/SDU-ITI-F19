@@ -37,12 +37,12 @@
 
 	# Check login input
 	if(isset($_POST["login-username"]) && isset($_POST["login-password"])) {
-		$inputUsername = htmlentities(filter_input(INPUT_POST, "login-username", FILTER_SANITIZE_STRING));
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "login-password", FILTER_SANITIZE_STRING));
+		$inputUsername = filter_input(INPUT_POST, "login-username", FILTER_SANITIZE_STRING);
+		$inputPassword = filter_input(INPUT_POST, "login-password", FILTER_SANITIZE_STRING);
 
 		foreach ($resultGetUsers as $value) {
 			#print_r("<br>username: " . $value["username"] . " password: " . $value["pass"]);
-			if ($inputUsername === $value["username"] && $inputPassword === $value["pass"]) {
+			if ($inputUsername === $value["username"] && password_verify($inputPassword, $value["pass"])) {
 				$_SESSION["username"] = $inputUsername;
 				$_SESSION["login"] = true;
 				header('location: pictures.php');
@@ -56,7 +56,7 @@
 
 	# Check register input
 	if(isset($_POST["register-username"])) {
-		$inputUsername = htmlentities(filter_input(INPUT_POST, "register-username", FILTER_SANITIZE_STRING));
+		$inputUsername = filter_input(INPUT_POST, "register-username", FILTER_SANITIZE_STRING);
 
 		foreach ($resultGetUsers as $value) {
 			if ($inputUsername === $value["username"]) {
@@ -65,19 +65,19 @@
 			}
 		}
 
-		$inputPassword = htmlentities(filter_input(INPUT_POST, "register-password", FILTER_SANITIZE_STRING));
-		$inputPasswordRepeat = htmlentities(filter_input(INPUT_POST, "register-password-repeat", FILTER_SANITIZE_STRING));
+		$inputPassword = filter_input(INPUT_POST, "register-password", FILTER_SANITIZE_STRING);
+		$inputPasswordRepeat = filter_input(INPUT_POST, "register-password-repeat", FILTER_SANITIZE_STRING);
 
 		if (!isset($_SESSION["registerResult"]) && $inputPassword !== $inputPasswordRepeat) {
 			$_SESSION["registerResult"] = "Passwords doesn't match!";
 		}
 
-		$inputFirstname = htmlentities(filter_input(INPUT_POST, "register-firstname", FILTER_SANITIZE_STRING));
-		$inputLastname = htmlentities(filter_input(INPUT_POST, "register-lastname", FILTER_SANITIZE_STRING));
-		$inputZip = htmlentities(filter_input(INPUT_POST, "register-zip", FILTER_SANITIZE_NUMBER_INT));
-		$inputCity = htmlentities(filter_input(INPUT_POST, "register-city", FILTER_SANITIZE_STRING));
-		$inputEmail = htmlentities(filter_input(INPUT_POST, "register-email", FILTER_SANITIZE_EMAIL));
-		$inputPhone = htmlentities(filter_input(INPUT_POST, "register-phone", FILTER_SANITIZE_NUMBER_INT));
+		$inputFirstname = filter_input(INPUT_POST, "register-firstname", FILTER_SANITIZE_STRING);
+		$inputLastname = filter_input(INPUT_POST, "register-lastname", FILTER_SANITIZE_STRING);
+		$inputZip = filter_input(INPUT_POST, "register-zip", FILTER_SANITIZE_NUMBER_INT);
+		$inputCity = filter_input(INPUT_POST, "register-city", FILTER_SANITIZE_STRING);
+		$inputEmail = filter_input(INPUT_POST, "register-email", FILTER_SANITIZE_EMAIL);
+		$inputPhone = filter_input(INPUT_POST, "register-phone", FILTER_SANITIZE_NUMBER_INT);
 
 		// If input => create new user
 		if (!isset($_SESSION["registerResult"])) {
@@ -85,9 +85,11 @@
 			 && $inputLastname !== "" && $inputZip !== "" && $inputCity !== ""
 			  && $inputEmail !== "" && $inputPhone !== "") {
 
+		  		$hashedPassword = password_hash($inputPassword, PASSWORD_DEFAULT);
+
 				try {
 					$stmtAddUser->bindparam(':username', $inputUsername);
-					$stmtAddUser->bindparam(':pass', $inputPassword);
+					$stmtAddUser->bindparam(':pass', $hashedPassword);
 					$stmtAddUser->bindparam(':firstname', $inputFirstname);
 					$stmtAddUser->bindparam(':lastname', $inputLastname);
 					$stmtAddUser->bindparam(':zip', $inputZip);

@@ -1,0 +1,87 @@
+body {
+  background-image: url("bg.jpg");
+  background-color: black;
+}
+h1, h2 {
+	min-width: 100;
+	text-align: center;
+  	color: blue;
+}
+
+h3 {
+	color: white;
+	text-align: center;
+}
+
+span.error {
+	color: red;
+}
+
+a { 
+	color: green;
+	 }
+
+p {
+  color: #FFFFFF
+  }
+
+p.imgdesc, p.postedby, p.intro, p.tagline {
+	text-align: center;
+}
+
+p.deleteimg {
+	text-align: center;
+	font-weight: bold;
+}
+
+p.success {
+	color: blue;
+}
+
+a.deletion {
+	color: red;
+}
+
+p.tagline {
+	font-style: italic;
+}
+
+div.imgs {
+	min-width: 100;
+	padding-left: 10%;
+	padding-right: 10%;
+	color: white;
+}
+
+div.logbutton {
+	min-width: 100;
+	max-width: 100;
+}
+
+img {
+	width: 100%;
+	border: '0';
+}
+
+label {
+	color: #FFF;
+}
+
+p.status {
+	color: red;
+	font-weight: bold;
+}
+
+input {
+	color: #000;
+}
+
+hr {
+	display: block;
+	border-style: inset;
+	border-width: 2px;
+}
+
+table, td, th {
+	font-color: white;
+}
