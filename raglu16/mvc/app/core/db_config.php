@@ -7,6 +7,3 @@ class DB_Config {
 	protected $dbname = 'raglu16';
 
 }
-	
-	
-	

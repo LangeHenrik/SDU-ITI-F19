@@ -3,7 +3,7 @@ require_once "db_conn.php";
 
 session_start();
 
-if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+if(!(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 	header("location: login.php");
 }
 ?>
@@ -44,7 +44,7 @@ if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
 			<li><a href="users.php">Users</a></li>
 			<li><a href="register.php">Register</a></li>
 		</ul>
-		<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+		<?php if((isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 			echo '<a href="logout.php" class="btn btn-primary">Logout</a>';
 		} ?>
 	</div>

@@ -4,11 +4,11 @@ session_start();
 
 require_once "db_conn.php";
 
-if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+if(!(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 	echo "You need to login to upload pictures.";
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
 	$target_dir = "images/";
 	$target_file = $target_dir . basename($_FILES["file"]["name"]);
 	$uploadOk = 1;
@@ -81,14 +81,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 <body>	
 	<div id="fh5co-offcanvass">
 		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu  </a>
-		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php">Image Heap</a></h1>
+		<h1 class="fh5co-logo"><a class="navbar-brand" href="../home/">Image Heap</a></h1>
 		<ul>
-			<li><a href="index.php">Home</a></li>
-			<li class="active"><a href="upload.php">Upload</a></li>
-			<li><a href="users.php">Users</a></li>
-			<li><a href="register.php">Register</a></li>
+			<li><a href="../home/">Home</a></li>
+			<li class="active"><a href="../upload/">Upload</a></li>
+			<li><a href="../users/">Users</a></li>
+			<li><a href="../register/">Register</a></li>
 		</ul>
-		<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+		<?php if((isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 			echo '<a href="logout.php" class="btn btn-primary">Logout</a>';
 		} ?>
 	</div>
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 			<div class="row">
 				<div class="col-md-12">
 					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu </a>
-					<a class="navbar-brand" href="index.php">Image Heap</a>		
+					<a class="navbar-brand" href="../home/">Image Heap</a>		
 				</div>
 			</div>
 		</div>

@@ -1,11 +1,4 @@
 <?php
-
-session_start();
-
-if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
-	header("location: index.php");
-}
-
 require_once "db_conn.php";
  
 $username = $password = "";
@@ -32,11 +25,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					if(password_verify($password, $hash)){
 						session_start();
 						
-						$_SESSION["loggedin"] = true;
+						$_SESSION["logged_in"] = true;
 						$_SESSION["user_id"] = $user_id;
 						$_SESSION["username"] = $username;                            
 						
-						header("location: index.php");
+						header("location: ../home/");
 					} else{
 						echo "The password you entered was not valid.";
 					}
@@ -83,14 +76,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 	<div id="fh5co-offcanvass">
 		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu </a>
-		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php">Image Heap</a></h1>
+		<h1 class="fh5co-logo"><a class="navbar-brand" href="../home/">Image Heap</a></h1>
 		<ul>
-			<li class="active"><a href="index.php">Home</a></li>
-			<li><a href="upload.php">Upload</a></li>
-			<li><a href="users.php">Users</a></li>
-			<li><a href="register.php">Register</a></li>
+			<li class="active"><a href="../home/">Home</a></li>
+			<li><a href="../upload/">Upload</a></li>
+			<li><a href="../users/">Users</a></li>
+			<li><a href="../register/">Register</a></li>
 		</ul>
-		<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+		<?php if((isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 			echo '<a href="logout.php" class="btn btn-primary">Logout</a>';
 		} ?>
 	</div>
@@ -100,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<div class="row">
 				<div class="col-md-12">
 					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu </a>
-					<a class="navbar-brand" href="index.php">Image Heap</a>		
+					<a class="navbar-brand" href="../home/">Image Heap</a>		
 				</div>
 			</div>
 		</div>
@@ -132,7 +125,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 							</div>
 						</div>
 					</form>
-					<p>Don't have an account? <a href="register.php">Register here</a></p>
+					<p>Don't have an account? <a href="../register/">Register here</a></p>
 				</div>
         		
         	</div>

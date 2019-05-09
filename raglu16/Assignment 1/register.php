@@ -107,7 +107,7 @@
 			<li><a href="users.php">Users</a></li>
 			<li class="active"><a href="register.php">Register</a></li>
 		</ul>
-		<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+		<?php if((isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 			echo '<a href="logout.php" class="btn btn-primary">Logout</a>';
 		} ?>
 	</div>

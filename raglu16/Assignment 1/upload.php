@@ -4,11 +4,11 @@ session_start();
 
 require_once "db_conn.php";
 
-if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+if(!(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 	echo "You need to login to upload pictures.";
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
 	$target_dir = "images/";
 	$target_file = $target_dir . basename($_FILES["file"]["name"]);
 	$uploadOk = 1;
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["loggedin"]) && $_S
 			<li><a href="users.php">Users</a></li>
 			<li><a href="register.php">Register</a></li>
 		</ul>
-		<?php if((isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+		<?php if((isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 			echo '<a href="logout.php" class="btn btn-primary">Logout</a>';
 		} ?>
 	</div>
