@@ -1,9 +1,34 @@
 <?php
     include "../app/views/partials/header.php";
+
+
 ?>
 
 
 <main>
+    <script>
+        function deleteImage(_id){
+
+
+            $.ajax({
+                url: '/sabah15/mvc/public/home/deleteImage',
+                type: 'POST',
+                data: { 'deleteId':_id },
+                success: function(response){
+
+                    if(response == 1){
+                        // Remove image source
+
+                        var image = document.getElementById(_id);
+                        image.parentNode.removeChild(image);
+                    }
+                }
+
+
+            });
+
+        }
+    </script>
     <?php
     if (isset($_SESSION['userId'])) {
         $userId = $_SESSION['userId'];
@@ -51,14 +76,14 @@
                     if (isset($_SESSION['userId'])) {
                         foreach ($viewbag["images"] as $image) {
                             echo '<div class="gallery">
-                                <form action="/sabah15/mvc/public/home/deleteImage/'.$image->idGallery.'" method="post" enctype="multipart/form-data">
+                                <!--<form action="/sabah15/mvc/public/home/deleteImage/'.$image->idGallery.'" method="post" enctype="multipart/form-data">-->
                                 <h2>' . $image->imageTitle . '</h2>
                                 <p>By:' . $image->userId . '</p>
-                                <img src="/sabah15/mvc/public/resources/gallery/' . $image->imageName . '">
+                                <img src="/sabah15/mvc/public/resources/gallery/' . $image->imageName . '" id='.$image->idGallery.'">
                                 <div class="desc">' . $image->imageDesc . '</div>
-                                <button type="submit" name="image-delete" value="' . $image->imageName . '">Delete</button>
+                                <button  onclick="deleteImage('.$image->idGallery.')" name="image-delete" type="submit" value="' . $image->imageName . '" >Delete</button>
                               </div>
-                            </form>';
+                            <!--</form>-->';
                         }
 
                     }

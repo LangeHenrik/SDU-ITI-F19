@@ -12,17 +12,18 @@
                 crossorigin="anonymous">
         </script>
 
-        <script>
+
+        <!--<script>
             $(document).ready(function() {
                 var postCount = 4;
                 $("#loadbtn").click(function() {
                     postCount = postCount + 4;
-                    $("#posts").load("load-posts.php", {
+                    $("#posts").load("/sabah15/mvc/public/home/loadMoreImages/", {
                         postNewCount: postCount
                     });
                 });
             });
-        </script>
+        </script>-->
 
 
     </head>

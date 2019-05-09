@@ -98,8 +98,7 @@ class GalleryService extends Database
     }
 
     public function loadImages(){
-        $postNewCount = 4;
-        $sql = "SELECT * FROM gallery ORDER BY idGallery DESC LIMIT $postNewCount;";
+        $sql = "SELECT * FROM gallery ORDER BY idGallery DESC;";
         $statement = $this->conn->prepare($sql);
         $statement->execute();
         return $this->fillImage($statement);

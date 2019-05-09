@@ -51,6 +51,7 @@ class HomeController extends Controller
 
 
 
+
     public function logout()
     {
         session_unset();
@@ -77,12 +78,18 @@ class HomeController extends Controller
         }
     }
 
-    public function deleteImage($idGallery)
+    public function deleteImage()
     {
         $galleryService = new GalleryService();
-        $galleryService->deleteImage($idGallery);
-        header("Location: /sabah15/mvc/public/home/");
+        if($galleryService->deleteImage($_POST["deleteId"])) {
+            echo 1;
+        }
+        else {
+            echo 0;
+        }
+        //header("Location: /sabah15/mvc/public/home/");
     }
+
 
 
     public function test()

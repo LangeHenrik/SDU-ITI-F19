@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <button class="buttonLoad" id="loadbtn">Click to load more images</button>
+            <!--<button class="buttonLoad" id="loadbtn">Click to load more images</button>-->
 
         </div>
         <div class="rightcolumn">
