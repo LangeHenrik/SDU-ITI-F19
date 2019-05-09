@@ -8,9 +8,7 @@ class LoginModel extends Database
 {
     public function checkCredentials($ausername, $apassword) {
 
-        return true;
-        /** @var
-         *         $statement = $this->conn->prepare('select username, password from users where username = :username');
+        $statement = $this->conn->prepare('select username, password from users where username = :username');
         $statement->bindParam(':username', $ausername);
         $statement->setFetchMode(PDO::FETCH_ASSOC);
         $statement->execute();
@@ -23,9 +21,6 @@ class LoginModel extends Database
         } else {
         return false;
         }
-         *
-         * $statement
-         */
 
     }
 }
