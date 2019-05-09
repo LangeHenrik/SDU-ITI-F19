@@ -26,8 +26,7 @@ class GalleryService extends Database
                     $imageDestination = "../public/resources/gallery/" . $imageFullName;
 
                     if (empty($imageTitle) || empty($imageDesc)) {
-                        //header("Location: ../index.php?upload=empty");
-                        exit();
+                        echo "Empty fields";
                     }
                     else {
                         $sql = "INSERT INTO gallery (idUsers, titleGallery, descGallery, imageNameGallery) VALUES (:userId, :titleGallery, :descGallery, :nameGallery);";
@@ -37,33 +36,46 @@ class GalleryService extends Database
                         $statement->bindParam(":titleGallery", $imageTitle);
                         $statement->bindParam(":descGallery", $imageDesc);
                         $statement->bindParam(":nameGallery", $imageFullName);
-                        //mysqli_stmt_bind_param($statement, "isss", $userId, $imageTitle, $imageDesc, $imageFullName);
-                        $statement->execute();
-                        //echo "hello";
 
-                        echo $imageFullName, "      ",$imageTempName, "     ", $imageDestination;
-                        //echo $imageDestination;
+                        $statement->execute();
+
                         move_uploaded_file($imageTempName, $imageDestination);
 
-                        //$imageUploadedId = $this->conn->lastInsertedId();
-                        //return $imageUploadedId;
-
+                        $imageUploadedId = $this->conn->lastInsertId();
+                        return $imageUploadedId;
                     }
                 }
                 else {
                     echo "File size too big!";
-                    exit();
                 }
             }
             else {
                 echo "You had " .$imageError. " error!";
-                exit();
             }
         }
         else {
             echo "You need to upload a proper file type!";
-            exit();
         }
+    }
+
+    public function APIImageUpload($userId, $imageTitle, $imageDesc, $imageFullName) {
+
+        $sql = "INSERT INTO gallery (idUsers, titleGallery, descGallery, imageNameGallery) VALUES (:userId, :titleGallery, :descGallery, :nameGallery);";
+        $statement = $this->conn->prepare($sql);
+
+        $statement->bindParam(":userId", $userId);
+        $statement->bindParam(":descGallery", $imageDesc);
+        $statement->bindParam(":titleGallery", $imageTitle);
+        $statement->bindParam(":nameGallery", $imageFullName);
+        $statement->execute();
+
+        $imageUploadedId = $this->conn->lastInsertId();
+
+        return $imageUploadedId;
+    }
+
+    public function APIBase64ToPath($newPath, $content){
+        file_put_contents($newPath, $content);
     }
 
     public function deleteImage($imageName){
