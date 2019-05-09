@@ -4,8 +4,6 @@ class APIController extends Controller {
 
 public function __construct() { 
 
-// echo "I am the API Controller!";
-
 }
 
 public function testMe() {
@@ -36,200 +34,59 @@ public function pictures($userID) {
 
 			}
 
-
-
 			if ($this->post()) {
 
+		$objectOfPics = $this->model('Pictures');
+		$objectOfUser = $this->model('User');
+
 		header("Content-Type:application/json");
-		if (isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD'] === 'POST')) {
 
-			$strJsonFileContents = file_get_contents("php://input");
-		//	echo json_decode($strJsonFileContents);
+	    if (isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD'] === 'POST')) {
+	        $strJsonFileContents = file_get_contents("php://input");
+	  
+	        $decoder = json_decode($strJsonFileContents, true);
+	        
+	        $postedby = $userID;
+	        $username = $decoder["username"];
+	        $password = $decoder["password"];
+	        $img_base64 = $decoder["image"];
+	        $imgtitle = $decoder["title"];
+	        $imgdesc = $decoder["description"];
 
-		//	print_r($strJsonFileContents);
+	        if($objectOfUser->loginAPI($username,$password)) {
+	                
+	              	$ext = 'png';
+	                $image_name = "Lmaobruh";
+	                $image_name_with_ext = $image_name.'.'.$ext;
 
-			$decoder = json_decode($strJsonFileContents, true);
+	                $path = '../app/models/uploads/'.$image_name_with_ext;
 
-				$username = $decoder["username"];
-				$password = $decoder["password"];
-				$postedby = $userID;
-				$imgname = $decoder["image"];
-				$imgtitle = $decoder["title"];
-				$imgdesc = $decoder["description"];
+	                $insertion_url = 'uploads/'.$image_name_with_ext;
 
+	                $decoded_img = base64_decode($img_base64);
+	                $insertCheck = $objectOfPics->uploadB64ThruAPI($postedby,$image_name_with_ext,$imgtitle,$imgdesc);
 
-
-				echo $imgname . " - ";
-
-			$objectOfUser = $this->model('User');
-			$objectOfPics = $this->model('Pictures');
-
-				echo "- test - ";
-
-				$decoded = base64_decode($imgname);
-
-					echo "Base64 found!";
-
-				$newname = $decoded . "converted";
-
-				$objectOfPics->getPostsAPI($imgname,$newname);
-				//	echo $decoded;
-
-			    if($objectOfUser->loginAPI($username,$password)) {
-			    	echo "Logged in!";
-
-			    	$objectOfPics->uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc);
-
-			    }
-			    else { 
-			    	echo "Not logged in. :( with " . $username . " and " . $password;
-			    }
-
-/*			$imageUrl = $strJsonFileContents['imgurl'];
-			$title = $strJsonFileContents['title'];
-			$description = $strJsonFileContents['desc'];
-			$username = $strJsonFileContents['username'];
-			$password = $strJsonFileContents['password']; */
+	                        $imgstring = $img_base64;
+	                        $imgstring = trim( str_replace('data:image/'.$ext.';base64,', "", $imgstring ) );
+	                        $imgstring = str_replace( ' ', '+', $imgstring );
+	                        $data = base64_decode( $imgstring );
+                      
+	                        $status = file_put_contents($path, $data );
 
 
-//			$strJsonFileContents = file_get_contents(dirname(__FILE__) . "/JSON.json");
-			
-//			echo dirname(__FILE__);
+	                        if($status){
+	                         echo "Successfully Uploaded";
+	                        }else{
+	                         echo "Upload failed";
+	                        }
+	                    
 
-// JJJ			echo json_encode($strJsonFileContents, JSON_PRETTY_PRINT);
-
-			// print_r($strJsonFileContents);
-
-//			$json = $_POST['json'];
-
-//			$array = json_decode($json, true);
-
-		//	print $array;
-
-/*			$input = json_decode($_POST['json'], true);
-			$imageUrl = $input['imgurl'];
-			$title = $input['title'];
-			$description = $input['desc'];
-			$username = $input['username'];
-			$password = $input['password'];*/
-
-				}
-			}
-		}
-	} 
-
-	//		if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-			// 
-
-		/*	$objectOfPics = $this->model('Pictures');
-			$objectOfUser = $this->model('User');
-
-
-//			$post = (array)json_decode(file_get_contents("php://input"));
-
-
-//                    if(isset($post['userID'])) {
-
-			$data = array(
-			  'userID'      => $userID,
-			  'image'    => 'logo.jpg',
-			  'imgtitle' => 'Test',
-			  'imgdesc' => 'test test'
-				);	
-			}
-
-                    	echo "JSON YES.";
-                        
- 					$options = array(
-					  'http' => array(
-					    'method'  => 'POST',
-					    'content' => json_encode( $data ),
-					    'header'=>  "Content-Type: application/json\r\n" .
-					                "Accept: application/json\r\n"
-					    )
-					);
-
-					$context  = stream_context_create( $options );
-					$result = file_get_contents( $url, false, $context );
-					$response = json_decode( $result );
-
- //                       $jsonReceived = json_decode($_POST['json'], true); //get object from json
-
-                    //    print_r($jsonReceived);
-                        
-                        $username = $jsonReceived["username"];
-                        $password = $jsonReceived["password"];
-        				$postedby = $userID;
-                        $image = $jsonReceived["image"];
-                        $imgtitle = $jsonReceived["imgtitle"];
-                        $imgdesc = $jsonReceived["imgdesc"];
-                        
-
-                        $onePost = array();
-                       
-						$objectOfUser = $this->model('User');
-                        if($objectOfUser->login($username,$password)) {
-                          //  $check = 'data:image/jpeg;base64,'
-   
-                      //      if (substr($tmpImg, 0, strlen($check)) == $check)//if contains check string
-//                            {
-  //                              $tmpImg = substr($tmpImg, strlen($check));
-    //                        }
-        				
-                            $send = $objectOfPics->uploadPic($userID, $image, $imgtitle, $imgdesc);	
-
-                            $onePost['ID'] = $postID;
-        
-                            echo json_encode($onePost);
-
-                        } else { 
-                        	echo "Not logged in.";
-                        	echo "Username: " . $username . " and password: " . $password;
-                        }
-          //          } else { 
-          //          	echo "JSON not set.";
-          //          	debug_print_backtrace();
-          //          } 
-
-                   
-
-                }
-     }
-
-		/*		$objectOfPics = $this->model('Pictures');
-				$objectOfUser = $this->model('User');
-
-				header('Content-Type: application/json');
-				$jsonFile = $_POST['json'];
-
-			 if(isset($_POST['json'])) {
-
-				$decoder = json_decode($jsonFile, true);
-
-				$username = $decoder["username"];
-				$password = $decoder["password"];
-				$postedby = $decoder["postedby"];
-				$imgname = $decoder["image"];
-				$imgtitle = $decoder["title"];
-				$imgdesc = $decoder["desc"];
-
-				header('Content-type: application/json');
-				echo json_encode($decoder);
-
-//				echo "USERNAME: " . $username;
-
-				if ($objectOfUser->login($username,$password)) { 
-				$posted = $objectOfPics->uploadPic($userID,$imgname,$imgtitle,$imgdesc);
-				
-				echo json_encode($posted);
-
-				echo "Upload done.";
-
-
-			} else {
-				echo "Couldn't log in with " . $username . "and " . $password;
-			} 
-
-		} else { 
-	echo "JSON not set."; */
+	                    echo "Picture uploaded successfully!";
+	        
+	        } else { 
+	            echo "Not logged in. 😞";
+	        }
+	    }
+	}
+	}
+}

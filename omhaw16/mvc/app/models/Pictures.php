@@ -5,25 +5,37 @@ require_once $pathroot . '/omhaw16/mvc/app/core/Database.php';
 
 class Pictures extends Database {
 
-
 public function uploadPicThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
 
-        $ext="png";
+    $ext= 'png';
 
-            $imgstr = $img_base64;
-            $imgstr = trim( str_replace('data:image/'.$ext.';base64,', "", $imgstr ) );
-                $imgstr = str_replace( ' ', '+', $imgstr );
-                $data = base64_decode( $imgstr );
+            $image_name = "Lmaobruh";
+            $image_name_with_ext = $image_name.'.'.$ext;
 
-//                $image_name = "LOOOOOOL";
-                $path = '../app/models/uploads/'.$imgname.'.'.$ext;
-                $status = file_put_contents($path, $data );
+            $path = '../app/models/uploads/'.$image_name_with_ext;
 
-        $dbc = new Database();
+            $insertion_url = $image_name_with_ext;
 
-        $dbc->connectToDB();
+            $decoded_img = base64_decode($img_base64);
+            $insertCheck = $this->uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc);
+            if ($insertCheck != null) {
+
+                    $imgstring = $img_base64;
+                    $imgstring = trim( str_replace('data:image/'.$ext.';base64,', "", $imgstring ) );
+                    $imgstring = str_replace( ' ', '+', $imgstring );
+                    $data = base64_decode( $imgstring );
+                    
+                    $status = file_put_contents($path, $data );
+
+                    if($status){
+
+                echo "Picture uploaded successfully!";
+            } else {
+                echo "Cannot upload...";
+            }
+
         
-        $sqlinsapi="INSERT INTO posts (postedby, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby','$imgname', '$imgtitle', '$imgdesc', NOW())";
+}
 }
 
 public function uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
@@ -46,8 +58,6 @@ public function uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
 
             $target_dir = $pathroot . "/omhaw16/mvc/app/models/uploads/";
             $target_file = $target_dir . $imgname;
-
-            echo $target_file;
 
             move_uploaded_file($imgname);
 
@@ -92,9 +102,6 @@ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-
-
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submitimg"])) {
