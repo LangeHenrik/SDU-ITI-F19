@@ -1,0 +1,108 @@
+body {
+  background-color: #111;
+}
+h1, h2, h3, p {
+	  color: #999;
+	  margin-left: 50px;
+}
+
+span.error {
+	color: red;
+}
+
+#nav {
+	display: inline-block;
+	list-style: none;
+}
+
+	#nav li {
+		float: left;
+		padding: 5px 10px;
+	}
+
+		#nav li a {
+			color: #999;
+			text-decoration: none;
+		}
+
+		#nav li a:hover {
+			color: #FFF;
+		}
+
+.postedby {
+	margin-bottom: 100px;
+}
+
+#loginnav, #logout, #submit, #submitregister {
+	color: #111;
+	background-color: #999;
+	border: none;
+	padding: 5px 10px;
+}
+
+p.deleteimg {
+	text-align: center;
+	font-weight: bold;
+	color: red;
+}
+
+p.success {
+	color: blue;
+}
+
+a.deletion {
+	color: red;
+}
+
+p.tagline {
+	font-style: italic;
+}
+
+div.imgs {
+	min-width: 100;
+	color: white;
+	padding-left: 50px;
+}
+
+div.logbutton {
+	min-width: 100;
+	max-width: 100;
+}
+
+img {
+	max-width: 50%;
+	border: '0';
+}
+
+label {
+	color: #FFF;
+}
+
+p.status {
+	color: #444;
+	font-weight: bold;
+}
+
+form {
+	margin-left: 50px;
+}
+
+hr {
+	color: #111;
+}
+
+button {
+	color: #222;
+}
+
+input {
+	color: #999;
+}
+
+table {
+	margin-left: 50px;
+}
+
+table, td, th {
+	color: #999;
+}
