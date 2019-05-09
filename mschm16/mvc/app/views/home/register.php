@@ -38,6 +38,8 @@
         echo "<br>";
         $stylereg = "style='display:none;'";
         echo " <p class = 'success'> You're already logged in! </p>";
+        header("Location: /mschm16/mvc/public/index.php");
+        exit;
     } else {
         $stylereg = "";
     }

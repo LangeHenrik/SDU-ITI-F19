@@ -124,7 +124,7 @@ public function getMyPosts($userID) {
 	$dbc->connectToDB();
     $sqlposts = "SELECT * FROM posts WHERE fk_userId = '$userID' ORDER BY postId DESC";
     $result = mysqli_query($dbc->connectToDB(),$sqlposts);
-
+    
     if ($result->num_rows > 0) {
 
         while ($row = $result->fetch_assoc()) {
@@ -146,10 +146,10 @@ public function showMyPosts($userID) {
 
     $dbc = new Database();
     $dbc->connectToDB();
-    $sqlposts = "SELECT * FROM posts WHERE fk_postId = '$userID' ORDER BY postId DESC";
+    $sqlposts = "SELECT * FROM posts WHERE fk_userId = '$userID' ORDER BY postId DESC";
     $result = mysqli_query($dbc->connectToDB(),$sqlposts);
-// if ($result->num_rows > 0) {
-    if ($result['num_rows'] > 0) {
+
+    if (!empty($result)) {
         while ($row = $result->fetch_assoc()) {
             echo "<div class = 'imgs'> <img border = '0' src='/mschm16/mvc/app/assets/img/" . $row['postImg'] . "' alt='" . $row['postName'] . "'> </div>";
             echo "<h2>" . $row['postName'] . "</h2>";
@@ -157,7 +157,7 @@ public function showMyPosts($userID) {
             echo "<p align='center'> <a class='deletion' href = /mschm16/mvc/app/controllers/DeletionController.php?postID=" . $row['postId'] . " > Delete image. </p>";
         }
     } else { 
-        echo "<p class = 'success'> Oopsie! You have no posts. Make one today! </p>";
+        echo "<p class = 'success'> No posts </p>";
     }
 }
 } // class end

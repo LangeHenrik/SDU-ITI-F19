@@ -7,6 +7,7 @@ $loggedin = 0;
 $loginuser = "";
 $loginpass = "";
 $usernameErr = "";
+$userID = '';
 
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -16,6 +17,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
     echo "<br>";
     $stylereg = "style='display:none;'";
     echo " <p class = 'success'> You're already logged in. </p>";
+    $userID = $_SESSION['userID'];
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,10 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
     $active = $row['active'];
+    $userID = $row['userId'];
     $count = mysqli_num_rows($result);
     
     if ($count == 1) {
-        echo "Welcome!";
+        echo "Welcome to the site";
         header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . "/mschm16/mvc/public/index.php" . $location);
         if(session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -50,15 +53,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
 
     } else if ($count == 0) {    
-        echo "<p class = 'status'> Log in failed. Username & password do not match. </p>";
+        echo "<p class = 'status'>Username and password do not match. </p>";
     } else { 
         echo "An error was encountered while passing data to database! The error was: " . $conn->error . "while calling SQL method: " . $sql;
     }
 
     if (!isset($_SESSION['login'])) { 
-        echo " You're a guest.";
+        echo " Welcome guest.";
     } else { 
-        echo " Hello user.";
+        echo " Welcome user.";
     } 
 }
 ?>

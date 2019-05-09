@@ -22,6 +22,13 @@
         $imgdesc = $_POST["imgdesc"];
         $hc->uploadPic($postedby,$imgname,$imgtitle,$imgdesc);
     }
+
+    if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+        
+    } else {
+        header("Location: /mschm16/mvc/app/views/home/login.php");
+        exit;
+    }
     ?>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">

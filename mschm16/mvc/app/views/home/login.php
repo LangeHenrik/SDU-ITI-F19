@@ -29,7 +29,9 @@
     if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         echo "<br>";
         $stylelog = "style='display:none;'";
-        echo " <p class = 'success'> You're already logged in! </p>";
+        echo " <p class = 'success'>Already logged in</p>";
+        header("Location: /mschm16/mvc/public/index.php");
+        exit;
     } else {
         $stylelog = "";
     }
@@ -50,7 +52,7 @@
     <br>
     <input type="submit" name="submit" id="submit" placeholder='Login'/>
     <br>
-    <p> Not registered yet? <a href="/mschm16/mvc/app/views/home/register.php"> Click here!</a> </p>
+    <p>Register as new user - <a href="/mschm16/mvc/app/views/home/register.php"> Click here!</a> </p>
 </div>
 </form>
     

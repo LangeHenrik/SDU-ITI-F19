@@ -40,22 +40,13 @@ span.error {
 	padding: 5px 10px;
 }
 
-p.deleteimg {
-	text-align: center;
-	font-weight: bold;
-	color: red;
+p.deleteimg, a.deletion {
+	color: #666;
+	text-decoration: none;
 }
 
 p.success {
-	color: blue;
-}
-
-a.deletion {
-	color: red;
-}
-
-p.tagline {
-	font-style: italic;
+	color: #1d1;
 }
 
 div.imgs {

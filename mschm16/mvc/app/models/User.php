@@ -208,8 +208,7 @@ public function showAllUsers() {
 
     if ($resultusernames->num_rows > 0) {
             while ($row = $resultusernames->fetch_assoc()) {
-
-                echo "<p> | ". $row['userName'] . " | </p>";
+                echo "<p>". $row['userName'] . "</p>";
             }
     }
 }

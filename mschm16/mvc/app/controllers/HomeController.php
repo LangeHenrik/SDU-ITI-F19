@@ -90,11 +90,11 @@ class HomeController extends Controller {
 			session_unset();
 			header('Location: /mschm16/mvc/public/home/index.php');
 		} else {
-			echo 'You can only log out with a post method';
+			echo 'log out with post method';
 		}
 	}
 	
 	public function loggedout() {
-		echo 'You are now logged out';
+		echo 'You are logged out';
 	}
 }

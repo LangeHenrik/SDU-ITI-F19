@@ -23,7 +23,9 @@
         $hc->getMyPosts($userID);
         $hc->showMyPosts($userID); 
     } else { 
-	    echo "<p class ='status'> You need to be logged in to view your posts. </p>";
+        echo "<p class ='status'> You need to be logged in to view your posts. </p>";
+        header("Location: /mschm16/mvc/app/views/home/login.php");
+        exit;
 	}
 ?>
 

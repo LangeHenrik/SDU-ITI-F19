@@ -21,27 +21,12 @@
   <?php 
     include $pathroot . '/mschm16/mvc/app/controllers/HomeController.php';
 
-    echo "<h1>Home</h1>";
-    
+    echo "<h1>Users</h1>";
     $hc = new HomeController();
-    $hc->getAllPosts();
+    $hc->showAllUsers();
   ?>
 
 </div>
 
-<!-- Ajax -->
-<script> 
-
-	function imgInfo(int) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("imgs").innerHTML = this.responseText;
-      }
-    };
-    xhttp.open("GET", "/mschm16/mvc/app/views/partials/getposts.php?q="+int, true);
-    xhttp.send();
-  }
-</script>
 </body>
 </html>
