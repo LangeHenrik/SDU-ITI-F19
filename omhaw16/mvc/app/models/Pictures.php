@@ -5,6 +5,41 @@ require_once $pathroot . '/omhaw16/mvc/app/core/Database.php';
 
 class Pictures extends Database {
 
+public function uploadThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
+
+    echo " - Upload template. - ";
+
+     $dbc = new Database();
+
+        $dbc->connectToDB();
+        
+        $sqlinsapi="INSERT INTO posts (postedby, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby','$imgname', '$imgtitle', '$imgdesc', NOW())";
+
+        if ($dbc->connectToDB()->query($sqlinsapi)) {
+
+            echo "Say yes! SQL done. - ";
+
+            $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
+
+            $imageFileType = strtolower(pathinfo($imgname, PATHINFO_EXTENSION));
+
+            $target_dir = $pathroot . "/omhaw16/mvc/app/models/uploads/";
+            $target_file = $target_dir . $imgname;
+
+            echo $target_file;
+
+            move_uploaded_file($imgname);
+
+            echo " - Picture uploaded!";
+
+
+            $dbc->connectToDB()->close();
+            } else {
+                echo "DB-upload not done. " . $dbc->connectToDB()->error();
+            }
+
+
+}
 
 public function uploadPic($postedby,$imgname,$imgtitle,$imgdesc) {
         $imgtitle = "";
@@ -34,6 +69,7 @@ $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
 $target_dir = $pathroot . "/omhaw16/mvc/app/models/uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
+
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
@@ -211,7 +247,7 @@ $sqlposts = "SELECT * FROM posts WHERE postedby = '$userID' ORDER BY postID DESC
                 echo "<div class = 'imgs'> <img align = centre width = 100% border = '0' src='/omhaw16/mvc/app/models/uploads/" . $row['imgName'] . "' alt='" . $row['imgTitle'] . "'> </div>";
                 echo "<h3>" . $row['imgTitle'] . "</h3>";
                 echo "<p class = 'imgdesc'>" . $row['imgDesc'] . "</p>";
-                echo "<p align='center'> <a class='deletion' href = /omhaw16/mvc/app/controllers/DeletionController.php?postID=" . $row['postID'] . " > Delete image. </p>";
+                echo "<p align='center'> <a class='deletion' href = /omhaw16/mvc/app/controllers/DeletionController.php?postID=" . $row['postID'] . " > Delete image. </a></p>";
 
                 echo "<hr>";
         }
