@@ -16,9 +16,14 @@ class HomeController extends Controller
     }
 
     public function portfolio() {
-        $galleryService = new GalleryService();
-        $images = $galleryService->loadImageFromUser($_SESSION['userId']);
-        return $this->view("home/portfolio", array("images"=>$images));
+        if (isset($_SESSION['userId'])) {
+            $galleryService = new GalleryService();
+            $images = $galleryService->loadImageFromUser($_SESSION['userId']);
+            return $this->view("home/portfolio", array("images" => $images));
+        }
+        else {
+            return $this->view("home/portfolio");
+        }
     }
 
     public function users(){
@@ -36,14 +41,10 @@ class HomeController extends Controller
         $mailuid = $_POST["mailuid"];
         $password = $_POST["pwd"];
         if ($loginService->login($mailuid, $password)) {
-            $galleryService = new GalleryService();
-            $images = $galleryService->loadImages();
-            return $this->view("home/index", array("images"=>$images) );
+            header("Location: /sabah15/mvc/public/home/");
         }
         else {
-            $galleryService = new GalleryService();
-            $images = $galleryService->loadImages();
-            return $this->view("home/index", array("images"=>$images) );
+            header("Location: /sabah15/mvc/public/home/");
         }
 
     }
@@ -59,15 +60,15 @@ class HomeController extends Controller
         return $this->view("home/index", array("images"=>$images) );
     }
 
-    public function addImage()
+    public function uploadImage()
     {
         $newImage = new GalleryService();
 
-        $userId = $_SESSION["id"];
+        $userId = $_SESSION["userId"];
 
         if ($this->post()) {
-            $imageTitle = $_POST["title"];
-            $imageDesc = $_POST["description"];
+            $imageTitle = $_POST["imagetitle"];
+            $imageDesc = $_POST["imagedesc"];
             $image = $_FILES["image"];
 
             $newImage->uploadImage($userId, $imageTitle, $imageDesc, $image);
@@ -80,6 +81,7 @@ class HomeController extends Controller
     {
         $galleryService = new GalleryService();
         $galleryService->deleteImage($idGallery);
+        header("Location: /sabah15/mvc/public/home/");
     }
 
 

@@ -1,6 +1,7 @@
 <?php
 
     require "../app/models/ImageModel.php";
+    require "../app/models/APIImageModel.php";
 
 class GalleryService extends Database
 {
@@ -12,6 +13,7 @@ class GalleryService extends Database
         $imageError = $image["error"];
         $imageSize = $image["size"];
 
+
         $imageTempExt = explode(".", $imageName);
         $imageExt = strtolower(end($imageTempExt));
 
@@ -21,27 +23,30 @@ class GalleryService extends Database
             if ($imageError === 0) {
                 if ($imageSize < 5000000) {
                     $imageFullName = $imageTitle . "." . uniqid("", false) . "." . $imageExt;
-                    $imageDestination = "/sabah15/mvc/public/resources/gallery/" . $imageFullName;
+                    $imageDestination = "../public/resources/gallery/" . $imageFullName;
 
                     if (empty($imageTitle) || empty($imageDesc)) {
-                        header("Location: ../index.php?upload=empty");
+                        //header("Location: ../index.php?upload=empty");
                         exit();
                     }
                     else {
                         $sql = "INSERT INTO gallery (idUsers, titleGallery, descGallery, imageNameGallery) VALUES (:userId, :titleGallery, :descGallery, :nameGallery);";
                         $statement = $this->conn->prepare($sql);
 
-                        $statement->bindParam(":userid", $userId);
+                        $statement->bindParam(":userId", $userId);
                         $statement->bindParam(":titleGallery", $imageTitle);
                         $statement->bindParam(":descGallery", $imageDesc);
                         $statement->bindParam(":nameGallery", $imageFullName);
                         //mysqli_stmt_bind_param($statement, "isss", $userId, $imageTitle, $imageDesc, $imageFullName);
                         $statement->execute();
+                        //echo "hello";
 
+                        echo $imageFullName, "      ",$imageTempName, "     ", $imageDestination;
+                        //echo $imageDestination;
                         move_uploaded_file($imageTempName, $imageDestination);
 
-                        $postId = $this->conn->lastInsertedId();
-                        return $postId;
+                        //$imageUploadedId = $this->conn->lastInsertedId();
+                        //return $imageUploadedId;
 
                     }
                 }
@@ -62,10 +67,10 @@ class GalleryService extends Database
     }
 
     public function deleteImage($imageName){
-        $sql = "DELETE FROM gallery WHERE imageNameGallery = :nameGallery;";
+        $sql = "DELETE FROM gallery WHERE idGallery = :imageId;";
         $statement = $this->conn->prepare($sql);
         //mysqli_stmt_bind_param($statement, "s", $imageName);
-        $statement->bindParam(":nameGallery", $imageName);
+        $statement->bindParam(":imageId", $imageName);
 
         $statement->execute();
         /*
@@ -74,8 +79,8 @@ class GalleryService extends Database
             return;
         }
         */
-        if (file_exists("/sabah15/mvc/public/resources/gallery/".$imageName)) {
-            unlink("/sabah15/mvc/public/resources/gallery/".$imageName);
+        if (file_exists("../public/resources/gallery/".$imageName)) {
+            unlink("../public/resources/gallery/".$imageName);
         }
 
     }

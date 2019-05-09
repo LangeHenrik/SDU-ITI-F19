@@ -38,7 +38,7 @@
         </div>';
     }
     else {
-        echo '<div class="row"><h1>Log in to upload images</h1></div>';
+        echo '<div class="row"><h1>Log in to upload images and to see your uploads</h1></div>';
     }
     ?>
     <div class="row">
@@ -48,20 +48,20 @@
                 <div class="flex-container">
                     <?php
 
-
-                    foreach ($viewbag["images"] as $image) {
-                        echo '<div class="gallery">
-                                <form action="/sabah15/mvc/public/home/deleteImage" method="post" enctype="multipart/form-data">
+                    if (isset($_SESSION['userId'])) {
+                        foreach ($viewbag["images"] as $image) {
+                            echo '<div class="gallery">
+                                <form action="/sabah15/mvc/public/home/deleteImage/'.$image->idGallery.'" method="post" enctype="multipart/form-data">
                                 <h2>' . $image->imageTitle . '</h2>
                                 <p>By:' . $image->userId . '</p>
                                 <img src="/sabah15/mvc/public/resources/gallery/' . $image->imageName . '">
                                 <div class="desc">' . $image->imageDesc . '</div>
-                                <button type="submit" name="image-delete" value="'.$image->imageName.'>Delete</button>
+                                <button type="submit" name="image-delete" value="' . $image->imageName . '">Delete</button>
                               </div>
                             </form>';
+                        }
+
                     }
-
-
 
 
 

@@ -6,7 +6,7 @@ class UserModel
     public $email;
     public $firstname;
     public $lastname;
-    public $telephone;
+    public $city;
 
 
     public function __construct($username, $email, $firstname, $lastname, $city)

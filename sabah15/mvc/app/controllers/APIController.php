@@ -15,4 +15,19 @@ class APIController extends Controller
         echo json_encode($usersJSON);
     }
 
+    public function pictures($user, $userId) {
+        $galleryService = new GalleryService();
+        $images = $galleryService->loadImageFromUser($userId);
+        $imagesJSON = array();
+        foreach ($images as $image) {
+            $obj = new StdClass();
+            $obj->image_id = $image->idGallery;
+            $obj->title = $image->imageTitle;
+            $obj->description = $image->imageDesc;
+            $obj->image = "/sabah15/mvc/public/resources/gallery/".$image->imageName;
+            array_push($imagesJSON, $obj);
+        }
+        echo json_encode($imagesJSON);
+    }
+
 }

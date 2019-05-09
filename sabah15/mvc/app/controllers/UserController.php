@@ -24,21 +24,24 @@ class UserController extends Controller
     {
         $signupService = new SignupService();
         if ($this->post()) {
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-            $repeatPassword = $_POST["repeatPassword"];
+            $username = $_POST["uid"];
+            $password = $_POST["pwd"];
+            $repeatPassword = $_POST["pwd-repeat"];
             $firstname = $_POST["firstname"];
             $lastname = $_POST["lastname"];
             $zip = $_POST["zip"];
             $city = $_POST["city"];
-            $email = $_POST["email"];
+            $email = $_POST["mail"];
             $phone = $_POST["phone"];
 
+            //echo $username,$password,$repeatPassword,$firstname,$lastname,$zip,$city,$email,$phone;
             if ($signupService->registerUser($username, $email, $password, $repeatPassword, $firstname, $lastname, $zip, $city, $phone)) {
-                return $this->view("home/signup");
+
+                header("Location: /sabah15/mvc/public/home/");
             }
             else {
-                return $this->view("home/signup");
+
+                header("Location: /sabah15/mvc/public/home/signup/");
             }
         }
     }
