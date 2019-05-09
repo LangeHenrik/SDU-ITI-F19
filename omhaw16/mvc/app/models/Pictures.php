@@ -5,46 +5,7 @@ require_once $pathroot . '/omhaw16/mvc/app/core/Database.php';
 
 class Pictures extends Database {
 
-public function uploadPicThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
-
-    $ext= 'png';
-
-            $image_name = "Lmaobruh";
-            $image_name_with_ext = $image_name.'.'.$ext;
-
-            $path = '../app/models/uploads/'.$image_name_with_ext;
-
-            $insertion_url = $image_name_with_ext;
-
-            $decoded_img = base64_decode($img_base64);
-            $insertCheck = $this->uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc);
-            if ($insertCheck != null) {
-
-                    $imgstring = $img_base64;
-                    $imgstring = trim( str_replace('data:image/'.$ext.';base64,', "", $imgstring ) );
-                    $imgstring = str_replace( ' ', '+', $imgstring );
-                    $data = base64_decode( $imgstring );
-
-                //    $extension = base64.substring(base64.indexOf('/') + 1, base64.indexOf(';base64'));
-
-                    echo $extension;
-
-                    $status = file_put_contents($path, $data );
-
-                    if($status){
-
-                echo "Picture uploaded to database successfully!";
-            } else {
-                echo "Cannot upload...";
-            }
-
-        
-}
-}
-
-public function uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
-
-    echo " - Upload template. - ";
+public function uploadDBThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
 
      $dbc = new Database();
 
@@ -54,7 +15,7 @@ public function uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
 
         if ($dbc->connectToDB()->query($sqlinsapi)) {
 
-            echo "Say yes! SQL done. - ";
+            echo " - Connected to SQL database! ";
 
             $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);
 
@@ -65,7 +26,9 @@ public function uploadB64ThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
 
             move_uploaded_file($imgname);
 
-            echo " - Picture uploaded!";
+            echo "Picture uploaded to database!";
+
+            echo mysqli_insert_id();
 
 
             $dbc->connectToDB()->close();
@@ -119,29 +82,25 @@ if(isset($_POST["submitimg"])) {
     }
 }
 
-// Check if file already exists
 if (file_exists($target_file)) {
     echo "<p class='status'> Sorry, file already exists. </p>";
     $uploadOk = 0;
 }
 
-// Check file size
 if ($_FILES["fileToUpload"]["size"] > 50000000) {
     echo "<p class='status'> Sorry, your file is too large. </p>";
     $uploadOk = 0;
 }
 
-// Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
     echo "<p class = 'status'> Sorry, only JPG, JPEG, PNG & GIF files are allowed.</p>";
     $uploadOk = 0;
 }
 
-// Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "<p class = 'status'> Sorry, your file was not uploaded. UploadOK = 0 by mistake. </p>";
-// if everything is ok, try to upload file
+
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "<p class = 'success'> The file ". basename($_FILES["fileToUpload"]["name"]). " has been uploaded. <p>";
@@ -150,27 +109,17 @@ if ($uploadOk == 0) {
 
         $dbc->connectToDB();
 
-/*              $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]); 
-       require $pathroot . '/omhaw16/mvc/app/core/serverconn.php';
-       // echo $sqlinsimg; */
-        
         $sqlinsimg="INSERT INTO posts (postedby, imgName, imgTitle, imgDesc, imgDate) VALUES('$postedby','$imgname', '$imgtitle', '$imgdesc', NOW())";
-        // echo $sqlinsimg;
-
-
- //       echo $sqlinsimg;
 
         if ($dbc->connectToDB()->query($sqlinsimg)) {
-        //    echo " Upload to database done! ";
+
             $dbc->connectToDB()->close();
             } else {
                 echo "DB-upload not done. " . $dbc->connectToDB()->error();
             }
 
-     //       echo "database stuff done.";
-
     } else {
-        // echo $_FILES["fileToUpload"];
+   
         echo "<p class='guide'> Target file: " . $target_file;
         echo $_FILES["tmp_name"];
         echo "Sorry, there was an error uploading your file.";
@@ -184,18 +133,12 @@ if ($uploadOk == 0) {
 
     public function getPostsAPI($base64_string, $output_file) {
 
-            // open the output file for writing
         $ifp = fopen( $output_file, 'wb' ); 
 
-        // split the string on commas
-        // $data[ 0 ] == "data:image/png;base64"
-        // $data[ 1 ] == <actual base64 string>
         $data = explode( ',', $base64_string );
 
-        // we could add validation here with ensuring count( $data ) > 1
         fwrite( $ifp, base64_decode( $data[ 1 ] ) );
 
-        // clean up the file resource
         fclose( $ifp ); 
 
         return $output_file; 
@@ -211,11 +154,6 @@ if ($uploadOk == 0) {
         $sqlposts = "SELECT * FROM posts INNER JOIN user ON postedby = userID ORDER BY postID DESC";
 
         $result = mysqli_query($dbc->connectToDB(),$sqlposts);
-    //    $result = $conn->query($sqlposts);
-    //    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //    $active = $row['active'];
-      
-//      $count = mysqli_num_rows($result);
         
         if ($result->num_rows > 0) {
 
@@ -237,10 +175,6 @@ if ($uploadOk == 0) {
 }
 
 }
-  
-// require 'serverconn.php'; HERE HERE HERE
-
-// require dirname(__DIR__) . '/app/core/serverconn.php';
 
     public function getMyPosts($userID) {
 	
@@ -254,8 +188,6 @@ session_start();
 
 $sqlposts = "SELECT * FROM posts WHERE postedby = '$userID' ORDER BY postID DESC";
 
-// if ($_SESSION['login'] == 1) {
-
         $result = mysqli_query($dbc->connectToDB(),$sqlposts);
 
         if ($result->num_rows > 0) {
@@ -267,7 +199,6 @@ $sqlposts = "SELECT * FROM posts WHERE postedby = '$userID' ORDER BY postID DESC
                 $onePost['title'] = $row['imgTitle'];
                 $onePost['description'] = $row['imgDesc'];
                 $onePost['image'] = $row['imgName'];
-                // $onePost['Date'] = $row['imgDate'];
 
                 $postObject[] = $onePost;
         } 
@@ -278,7 +209,6 @@ $sqlposts = "SELECT * FROM posts WHERE postedby = '$userID' ORDER BY postID DESC
 
         $dbc->connectToDB()->close();
 
-//	}
 }
 
 public function showMyPosts($userID) {
@@ -288,8 +218,6 @@ public function showMyPosts($userID) {
     $dbc->connectToDB();
 
 $sqlposts = "SELECT * FROM posts WHERE postedby = '$userID' ORDER BY postID DESC";
-
-// if ($_SESSION['login'] == 1) {
 
         $result = mysqli_query($dbc->connectToDB(),$sqlposts);
 

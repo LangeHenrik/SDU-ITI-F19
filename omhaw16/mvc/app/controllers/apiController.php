@@ -28,11 +28,7 @@ public function pictures($param,$userID) {
 				$objectOfPics = $this->model('Pictures');
 				$picJSON = $objectOfPics->getMyPosts($userID);
 
-//				echo json_encode($picJSON);	
-
 				echo json_encode($picJSON);
-//				echo json_encode($objectOfPics);
-
 			}
 
 			if ($this->post()) {
@@ -60,33 +56,32 @@ public function pictures($param,$userID) {
 	        if($objectOfUser->loginAPI($username,$password)) {
 
 	              	$ext = 'png';
-	                $image_name = uniqid();
-	                $image_name_with_ext = $image_name.'.'.$ext;
-	                // echo $image_name_with_ext;
+	                $filename = uniqid();
+	                $fullfilename = $filename.'.'.$ext;
 
-	                $path = '../app/models/uploads/'.$image_name_with_ext;
+	                $path = '../app/models/uploads/'.$fullfilename;
 
-	                $insertion_url = 'uploads/'.$image_name_with_ext;
+	             //   $insertionURL = 'uploads/'.$fullfilename;
 
 	                preg_match("/\b(jpg|JPG|png|PNG|gif|GIF|bmp|BMP)\b/", $img_base64, $output);
 
-	                $image_name_with_ext = $image_name.'.'. $output[0];
+	                $fullfilename = $filename .'.'. $output[0];
 
-	                echo $image_name_with_ext;
+	                echo " File name: " . 	$fullfilename;
 
-	                $decoded_img = base64_decode($img_base64);
-	                $insertCheck = $objectOfPics->uploadB64ThruAPI($postedby,$image_name_with_ext,$imgtitle,$imgdesc);
-
+	                $tryToUpload = $objectOfPics->uploadDBThruAPI($postedby,$fullfilename,$imgtitle,$imgdesc);
+  
 	                        $imgstring = $img_base64;
 	                        $imgstring = trim( str_replace('data:image/'.$ext.';base64,', "", $imgstring ) );
 	                        $imgstring = str_replace( ' ', '+', $imgstring );
 	                        $data = base64_decode( $imgstring );
                       
-	                        $status = file_put_contents($path, $data );
+	                        $didItUpload = file_put_contents($path, $data );
 
 
-	                        if($status){
-	                         echo "Uploaded to folder!";
+	                        if($didItUpload){
+	                         echo " Picture uploaded to folder! ";
+	                         echo "Thank you for using PhotoPost! :) ";
 	                        }else{
 	                         echo "Upload failed";
 	                        }
@@ -100,7 +95,7 @@ public function pictures($param,$userID) {
 	    }
 	}
 	} else {
-		echo "Provide parameter (e.g pictures/user) :)";
+		echo "Please provide parameter (e.g pictures/user) :)";
 	}
 }
 }

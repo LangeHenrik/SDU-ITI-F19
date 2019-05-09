@@ -6,7 +6,6 @@ require_once $pathroot . '/omhaw16/mvc/app/core/Database.php';
 class User extends Database {
 
 public function __construct() {
-	// $this->conn = new Database();
 	$loggedin = 0;
 	$loginuser = "";
 	$loginpass = "";
@@ -70,33 +69,21 @@ public function login($username,$password) {
         }
 
     if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
- //   echo "<br>";
 
     $stylelog = "style='display:none;'";
-    
-/*	echo "<p class = 'success'> You're already logged in! </p>" . $_SESSION['login'];
-	echo $_SESSION['userName'];
-	echo $_SESSION['userID'];
-*/
-//    echo " <p class = 'success'> You're already logged in. </p>";
 
     	return false;
     } else {
-    	// echo "Session status for Login " . $_SESSION['login'];
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     //   $loginuser = $_POST["user"];
-     //   $loginpass = $_POST["pw"];
 
         if (!preg_match("/^[a-zA-Z0-9]*$/",$_POST["user"])) {
-      //  $usernameErr = "User name contains illegal characters!";
+   
         $regexcheck = 0;
 
         return false;
     }  
-      //  $loginuser = $_POST["user"];
-      //  $loginpass = $_POST["pw"];
 
     	$dbc->connectToDB();
 
@@ -130,7 +117,7 @@ public function login($username,$password) {
             
           }  else if ($count == 0) {
                 
-          //      echo "<p class = 'status'> Log in failed. Username & password do not match. </p>";
+        
           	echo " - Problem!! Nothing found in DB. -";
 
           	return false;
@@ -221,9 +208,6 @@ public function login($username,$password) {
         $conpwErr = "Passwords don't match!";
     }
 
-/*       $pathroot = realpath($_SERVER["DOCUMENT_ROOT"]); 
-       require $pathroot . '/omhaw16/mvc/app/core/serverconn.php';
-*/
       if ($password === $confirmpw & !$regexcheck == 0) {
 
         $password = $this->test_input($password);
@@ -255,11 +239,6 @@ public function login($username,$password) {
         } else {
 
             echo "Username already exists. Please log in!";
-            // DEBUGGING ECHO's:
-            // echo $userregname;
-            // echo $result;
-            // echo $countname;
-            // echo $row;
 
         } 
         } else if ($regexcheck == 0) {
@@ -284,35 +263,20 @@ $sqlusers = "SELECT userID, userName FROM user";
         if ($resultusers->num_rows > 0) {
             while ($row = $resultusers->fetch_assoc()) {
 
-              //  array_push($userfetchArray, $row['userID'], $row['userName']);
-
-                $oneUser['ID'] = $row['userID'];
+                $oneUser['user_id'] = $row['userID'];
                 $oneUser['username'] = $row['userName'];
                 $userObject[] = $oneUser;
-
-                    //"username" . $row['userName']; 
-
-//              echo "<p><b> User ID: </b>" . $row['userID'];
-             /* echo "<br>";
-              echo "<br>"; */
-//              echo "<p> | ". $row['userName'] . " | </p>";
-
 
                 }
 
               return $userObject;
 
-              // echo "<br>";
-              // echo "<br>";
-              // echo "" . $row['userName'] . "";
 } else {
   echo "<p> <b> No users </b> </p>";
 }
 	}
 
     public function showAllUsers() {
-
-//        echo "Showing users.";
 
     $dbc = new Database();
 
@@ -328,67 +292,4 @@ $sqlusers = "SELECT userID, userName FROM user";
             }
         }
     }
-
-
-
-//        $userArray = $this->getAllUsers();
-
-//        print_r($userArray);
-
-//     foreach($userArray as $id => $username) {
-
-//                echo "$id => $username <br>";
-
-
-
-//         foreach($userArray as $id => $username) {
-//                print_r($username);
-            //echo $userArray['userID'][0];
-	
-	/* public function deletePost($postID) {
-
-	$dbc = new Database();
-	
-	$dbc->connectToDB();
-
-		$imgname = "";
-
-	$pathroot = realpath($_SERVER["DOCUMENT_ROOT"]);     
-
-	$imgpath = $pathroot . '/omhaw16/mvc/app/models/uploads/';
-
-	$sqlfind = "SELECT postID, imgName FROM posts WHERE postID = '$postID'";
-
-	$result = mysqli_query($dbc->connectToDB(),$sqlfind);
-       
-       if ($result->num_rows > 0) {
-
-       	$row = $result->fetch_assoc();
-
-        	$imgname = $row["imgName"];
-            echo $imgname;
-        	$fullpath = $imgpath . $imgname;
-            echo $fullpath;
-        	if (!unlink($fullpath)) {
-        		echo "Couldn't delete file.";
-        		echo $fullpath;
-        	} else {
-        		echo "File deleted.";
-        	}
-
-$sqldel = "DELETE FROM posts WHERE postID = '$postID'";
-
-if ($dbc->connectToDB()->query($sqldel)) {
-
-	$dbc->connectToDB()->close();
-	               header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . "/omhaw16/mvc/app/views/home/myposts.php" . $location);
-	exit;
-
-} else { 
-        		echo "Count not larger than 0";
-        	}
-        }
-
-	} */
-
 }
