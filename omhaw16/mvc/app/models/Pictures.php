@@ -24,12 +24,16 @@ public function uploadPicThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
                     $imgstring = trim( str_replace('data:image/'.$ext.';base64,', "", $imgstring ) );
                     $imgstring = str_replace( ' ', '+', $imgstring );
                     $data = base64_decode( $imgstring );
-                    
+
+                //    $extension = base64.substring(base64.indexOf('/') + 1, base64.indexOf(';base64'));
+
+                    echo $extension;
+
                     $status = file_put_contents($path, $data );
 
                     if($status){
 
-                echo "Picture uploaded successfully!";
+                echo "Picture uploaded to database successfully!";
             } else {
                 echo "Cannot upload...";
             }

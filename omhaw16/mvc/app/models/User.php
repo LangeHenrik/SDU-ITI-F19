@@ -13,6 +13,28 @@ public function __construct() {
 	$usernameErr = "";
 }
 
+public function checkUserByID($userID,$username) {
+
+    $dbc = new Database();
+
+    $dbc->connectToDB();
+
+    $sql = "SELECT userID FROM user WHERE userName = '$username' AND userID = '$userID'";
+
+    $result = mysqli_query($dbc->connectToDB(),$sql);
+         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $active = $row['active'];
+      
+        $count = mysqli_num_rows($result);
+        
+        if ($count == 1) {
+            return true;
+        } else { 
+            return false;
+        }
+
+}
+
 public function loginAPI($username,$password) {
 
     $dbc = new Database();
