@@ -27,7 +27,7 @@ class User extends Database {
         $this->_email = $result->email;
         $this->_phone_number = $result->phone_number;
     }
-  
+  $user->user
     public function __get($var){
     switch ($var){
       case 'id':

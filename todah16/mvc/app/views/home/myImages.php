@@ -12,7 +12,7 @@
    
     
     function deleteImage(_id){
-        console.log(_id);
+        
         
         $.ajax({
         url: '/todah16/mvc/public/service/delete',
@@ -23,7 +23,7 @@
        if(response ==1){
 	 // Remove image source
         
-	   var image = document.getElementById(_id);
+	   var image = document.getElementById("_id");
        image.parentNode.removeChild(image);
        } else{
 	   console.log('Invalid ID.');
