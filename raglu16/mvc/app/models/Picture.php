@@ -35,4 +35,29 @@ class Picture extends Database {
 		}
 	}
 
+	public function getUserPictures($userId){
+		$sql = "SELECT * FROM images WHERE user_id = :user_id";
+		
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindParam('user_id', $userId);
+		$stmt->execute;
+		$pictures = $stmt->fetchAll();
+
+		return $pictures;
+	}
+	
+	public function postPicture($title, $description, $image){
+		$sql = "INSERT INTO images (title, description, source, user_id) VALUES(:title, :description, :source, :user_id)";
+		
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindParam('title', $title);
+		$stmt->bindParam('description', $description);
+		$stmt->bindParam('source', $image);
+		$stmt->bindParam('user_id', $_SESSION['user_id']);
+		
+		$stmt->execute();
+		$user_id = $this->conn->lastInsertId();
+		
+		return $user_id;
+	}
 }
