@@ -1,0 +1,102 @@
+body {
+  background-color: #111;
+}
+h1, h2, h3, p {
+	  color: #999;
+	  margin-left: 50px;
+	  font-family: "Verdana", sans-serif;
+}
+
+span.error {
+	color: red;
+}
+
+#nav {
+	display: inline-block;
+	list-style: none;
+}
+
+	#nav li {
+		float: left;
+		padding: 5px 10px;
+	}
+
+		#nav li a {
+			color: #999;
+			text-decoration: none;
+			font-size: 1.5em;
+			font-family: "Verdana", sans-serif;
+		}
+
+		#nav li a:hover {
+			color: #FFF;
+		}
+
+.postedby {
+	margin-bottom: 100px;
+}
+
+#loginnav, #logout, #submit, #submitregister {
+	color: #111;
+	background-color: #999;
+	border: none;
+	padding: 5px 10px;
+}
+
+p.deleteimg, a.deletion {
+	color: #666;
+	text-decoration: none;
+}
+
+p.success {
+	color: #1d1;
+}
+
+div.imgs {
+	min-width: 100;
+	color: white;
+	padding-left: 50px;
+}
+
+div.logbutton {
+	min-width: 100;
+	max-width: 100;
+}
+
+img {
+	max-width: 50%;
+	border: '0';
+}
+
+label {
+	color: #FFF;
+}
+
+p.status {
+	color: #444;
+	font-weight: bold;
+}
+
+form {
+	margin-left: 50px;
+}
+
+hr {
+	color: #111;
+}
+
+button {
+	color: #222;
+}
+
+input {
+	color: #999;
+}
+
+table {
+	margin-left: 50px;
+}
+
+table, td, th {
+	color: #999;
+}
