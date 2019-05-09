@@ -12,6 +12,24 @@ public function __construct() {
 	$usernameErr = "";
 }
 
+public function loginAPI($username,$password) {
+    $dbc = new Database();
+    $dbc->connectToDB();
+    $sql = "SELECT userID FROM user WHERE userName = '$username' AND userPass = '$password'";
+    $result = mysqli_query($dbc->connectToDB(),$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $active = $row['active'];
+    $count = mysqli_num_rows($result);
+    
+    if ($count == 1) {
+        echo "Welcome, " . $username . "!";
+        return true;
+    } else { 
+        echo "Not logged in.";
+        return false;
+    }
+}
+
 public function login($username,$password) {
 	$dbc = new Database();
 	$dbc->connectToDB();
@@ -189,7 +207,7 @@ public function getAllUsers() {
     if ($resultusers->num_rows > 0) {
         while ($row = $resultusers->fetch_assoc()) {
             $oneUser['ID'] = $row['userId'];
-            $oneUser['Name'] = $row['userName'];
+            $oneUser['username'] = $row['userName'];
             $userObject[] = $oneUser;
 
         }

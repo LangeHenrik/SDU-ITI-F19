@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: 127.0.0.1
--- Genereringstid: 09. 05 2019 kl. 13:55:19
+-- Genereringstid: 09. 05 2019 kl. 18:29:49
 -- Serverversion: 5.6.17
 -- PHP-version: 5.5.12
 
@@ -44,7 +44,6 @@ INSERT INTO `posts` (`postId`, `postName`, `postImg`, `postText`, `fk_userId`) V
 (5, 'Ajax pic code', '0f8b2870896edcde8f6149fe2733faaf.jpg', 'code stuff', 1),
 (3, 'Colors', 'colors.jpg', 'Color desc', 2),
 (6, 'TestMoon', 'moon.png', 'Moon ', 1),
-(7, 'Starboi', 'star.png', 'Starboi desc ', 1),
 (8, 'Messi', 'messirooz.png', 'fc barcelona player ', 4);
 
 -- --------------------------------------------------------
