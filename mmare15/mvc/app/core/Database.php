@@ -9,6 +9,7 @@ require_once 'DB_Config.php';
 class Database extends DB_Config
 {
     public $conn;
+
     public function __construct() {
 
         try {
@@ -48,11 +49,12 @@ $port
  */
 
 
-    
+
 
     public function __destruct() {
         $this->conn = null;
     }
+
     function check_if_user_exist($username, $conn){
         $statement = $conn->prepare('SELECT *, count(*) as NUM FROM users where username = :username');
         $statement->bindParam(':username', $username);

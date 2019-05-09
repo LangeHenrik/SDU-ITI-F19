@@ -80,11 +80,28 @@
                                 document.getElementById("txtHint").innerHTML = this.responseText;
                             }
                         };
-                        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+                        xmlhttp.open("GET", "/mmare15/mvc/public/Ajax/ajax_call'" + str, true);
                         xmlhttp.send();
                     }
                 }
             </script>
+
+            <script type="text/javascript">
+                function showAjaxHint(str){
+                    $(document).ready(function(){
+                        $('a#button').click(function(){
+                            $.ajax({
+                                url: '/mmare15/mvc/public/Ajax/ajax_call',
+                                success: function (response) {
+                                    $('#container').html(response);
+                                }
+                            });
+                        });
+                    });
+                }
+            </script>
+
+
 
             <! -- Ajax functionality -->
             <span id="txtHint"></span></p>
