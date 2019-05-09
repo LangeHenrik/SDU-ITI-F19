@@ -99,7 +99,7 @@
 	
 	<body>	
 	<div id="fh5co-offcanvass">
-		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
+		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu  </a>
 		<h1 class="fh5co-logo"><a class="navbar-brand" href="index.php">Image Heap</a></h1>
 		<ul>
 			<li><a href="index.php">Home</a></li>
@@ -115,7 +115,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <i class="icon-menu"></i></a>
+					<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu </a>
 					<a class="navbar-brand" href="index.php">Image Heap</a>		
 				</div>
 			</div>
