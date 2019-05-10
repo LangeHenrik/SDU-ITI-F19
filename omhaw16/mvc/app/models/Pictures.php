@@ -28,7 +28,24 @@ public function uploadDBThruAPI($postedby,$imgname,$imgtitle,$imgdesc) {
 
             echo "Picture uploaded to database!";
 
-            echo mysqli_insert_id();
+            $sqlRetrieveID="SELECT postID FROM posts WHERE imgName = '$imgname'";
+
+            $result = mysqli_query($dbc->connectToDB(),$sqlRetrieveID);
+        
+        if ($result->num_rows > 0) {
+
+            while ($row = $result->fetch_assoc()) {
+
+                $latestID = array('image_id' => $row['postID']);
+                $encodedID = json_encode($latestID);
+
+                echo " " . $encodedID;
+
+                }
+
+            } else { 
+                echo "No post ID.";
+            }
 
 
             $dbc->connectToDB()->close();
