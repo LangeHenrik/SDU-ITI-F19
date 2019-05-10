@@ -16,7 +16,6 @@ class Router {
 		
 		require_once '../app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
-        /*echo '<pre>'; print_r($url); echo '</pre>';*/
 
 		if(isset($url[1])) {
 			if(method_exists($this->controller, $url[1])) {
@@ -41,32 +40,6 @@ class Router {
 		$url = explode('/', $url);
 		return array_slice($url, 4);
 	}
-
-	// private $_uri = array();
-	// private $_method = array();
-
-	// /**
-	//  * Builds a collection of internal URL's to look for
-	//  * @param type $_uri
-	//  */
-	// public function add($_uri, $_method = null){
-	// 	$this->_uri[] = '/' . trim($_uri, '/');
-	// 	if ($_method != null) {
-	// 		$this->_method[] = $_method;
-	// 	}
-	// }
-
-	// public function submit(){
-	// 	$uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
-	// 	foreach ($this->_uri as $key => $val) {
-	// 		if (preg_match("#^$val$#", $uriGetParam)) {
-	// 			$useMethod = $this->_method[$key];
-	// 			new $useMethod;
-
-	// 		}
-	// 	}
-	// }
-
 }
 	
 
