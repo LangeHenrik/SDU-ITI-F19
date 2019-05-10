@@ -1,4 +1,4 @@
-<form method="POST" action="/Henrik/mvc/public/user/login">
+<form method="POST" action="/mahes17/mvc/public/user/login">
     <label>username</label>
     <br/>
     <input type="text" name="username" id="username" />
