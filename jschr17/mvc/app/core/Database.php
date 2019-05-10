@@ -19,12 +19,6 @@ class Database extends DB_Config {
             $password,
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-
-			/*$this->conn1 = new PDO("mysql:host=" . $this->servername . ";dbname=" . $this->dbname,
-			$this->username,
-			$this->password,
-			array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));*/
-			
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 		}

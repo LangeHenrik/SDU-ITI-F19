@@ -72,13 +72,13 @@ function readimg(){
 
         //json encode array of images and return it
         $json = json_encode($image_list /*JSON_PRETTY_PRINT*/);
-        echo 'test1';
+        //echo 'test1';
         http_response_code(200);
-        echo 'test2';
+        //echo 'test2';
         //print_r($image_list);
         print_r($json);
         echo $json;
-        echo 'test3';
+        //echo 'test3';
         return($json);
 
     } else {

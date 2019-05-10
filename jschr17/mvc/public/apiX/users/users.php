@@ -1,4 +1,4 @@
-<?php/*
+<?php
 class Users{
     public $user_id;
     public $username;
@@ -10,7 +10,7 @@ class Users{
     }
 }
 
-*/
+
 
 
 //required headers
