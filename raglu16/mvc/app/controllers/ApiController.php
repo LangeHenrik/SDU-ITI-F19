@@ -24,7 +24,7 @@ class ApiController extends Controller {
 			
 			if($this->Model('User')->login($postContent->username, $postContent->password)){
 				
-				$this->Model('Picture')->postPicture($postContent->title, $postContent->description, $postContent->image);
+				$imageId = $this->Model('Picture')->postPicture($postContent->title, $postContent->description, $postContent->image);
 				$jsonImageId = json_encode($imageId);
 				echo '{"image_id": '.$jsonImageId.'}';
 			}
@@ -36,10 +36,6 @@ class ApiController extends Controller {
 			echo $jsonPictures;
 			
 		}
-	}
-	
-	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
-
 	}
 
 }

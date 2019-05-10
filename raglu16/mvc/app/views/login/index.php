@@ -1,6 +1,4 @@
 <?php
-require_once "db_conn.php";
- 
 $username = $password = "";
  
 if($_SERVER["REQUEST_METHOD"] == "POST"){

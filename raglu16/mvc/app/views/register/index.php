@@ -1,8 +1,4 @@
 <?php
-	session_start();
-	
-	require_once "db_conn.php";
-	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 		$sql = "SELECT user_id FROM users WHERE username = :username";
