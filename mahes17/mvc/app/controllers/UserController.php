@@ -6,7 +6,7 @@ class UserController extends Controller {
 		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			header('Location: /mahes17/mvc/public/picture/all');
 		} else {
-			$this->view('user/login');
+			$this->view('home/user');
 		}
 	}
 

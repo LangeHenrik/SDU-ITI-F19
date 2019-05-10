@@ -4,7 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="../public\api\css\login.css">
+	<link rel="stylesheet" href="../../public\api\css\login.css">
 </head>
 
 <body>
@@ -14,9 +15,12 @@
 	<h1>Login</h1>
 	<input name="username" type="text" class="inputcss" placeholder="Enter username"/><br>
 	<input name="password" type="password" class="inputcss" placeholder="Enter password"/><br>
-	<input type="submit" id="login_btn" class="button" value="Login"></br>
 
-	<p> <a href="../Register/"> Register </a> as user </p>
+
+	<button type="submit" href ="./users.php/" id="login_btn" class="button" value="Login"> Login </button> </br>
+
+	<p> <a href="Register"> Register </a> as user </p>
+
 </form>
 </div>
 

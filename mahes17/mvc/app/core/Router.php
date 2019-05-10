@@ -9,7 +9,7 @@ class Router {
 	function __construct () {
 		$url = $this->parseUrl();
 
-		if(file_exists('../app/controllers/' . $url[0] . 'Controller.php')) {
+		if(file_exists('C:\Users\malte\Documents\GitHub\SDU-ITI-F19\mahes17\Assignment2\mvc/app/controllers/' . $url[0] . 'Controller.php')) {
 			$this->controller = $url[0] . 'Controller';
 
 			unset($url[0]);
@@ -18,6 +18,7 @@ class Router {
 
 		require_once '../app/controllers/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
+
 
 		if(isset($url[1])) {
 			if(method_exists($this->controller, $url[1])) {

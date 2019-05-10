@@ -9,7 +9,7 @@ class showPicModel extends Database {
      public function showPic() {
 
 
-        if (isset($_SESSION['u_id'])) {
+        if (isset($_SESSION['user_id'])) {
             echo ' <section class="picture-links">
         <div class="wrapper">
           <h2>Pictures</h2> ';

@@ -17,7 +17,7 @@ class Login extends Database {
 
 		$result = $stmt -> fetch(PDO::FETCH_NUM);
 		if(empty($username)){
-			echo '<br> <div class="login_error">Wrong username/password combination!</div>';
+			echo '<br> <div class="login_error"> Wrong username/password combination!</div>';
 		}else if(password_verify($password, $result[0])){
 			$_SESSION['user'] = $username;
 			header("Location: users.php");

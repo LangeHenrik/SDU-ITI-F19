@@ -8,7 +8,7 @@ include_once 'menu.php';
 		<h2>Pictures</h2>
 		<?php
 			//check for user id
-			if (isset($_SESSION['u_id'])) {
+			if (isset($_SESSION['user_id'])) {
 
 
 
@@ -16,10 +16,10 @@ include_once 'menu.php';
 				?>
 
 				<div id="pictures">
-				
+
                 <?php
 
-if (isset($_SESSION['u_id'])) {
+if (isset($_SESSION['user_id'])) {
 	include ("../../controllers/PicturesController.php");
 }
 

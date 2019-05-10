@@ -4,7 +4,16 @@ class register extends Database {
 
     public function registerUser(){
 
-      require_once ("../Core/Database.php");
+      require_once ("C:\Users\malte\Documents\GitHub\SDU-ITI-F19\mahes17\Assignment2\mvc\app\Core\Database.php");
+
+        $_POST['username'] = "";
+        $_POST['password'] = "";
+        $_POST['firstName'] = "";
+        $_POST['lastName'] = "";
+        $_POST['zipcode'] = "";
+        $_POST['city'] = "";
+        $_POST['phoneNumber'] = "";
+        $_POST['email'] = "";
 
       $username_error = "";
       $password_error = "";
