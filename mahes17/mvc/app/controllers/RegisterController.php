@@ -3,9 +3,10 @@
 class RegisterController extends Controller {
 
 	public function index ($param) {
-
+/*
     include_once("..\models\Register.php");
-      $this->view('home/register', $viewbag);
+      $this->view('home/register', $viewbag); */
+			echo 'hi';
 	}
 
 public function user(){
