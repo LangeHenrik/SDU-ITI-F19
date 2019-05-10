@@ -5,20 +5,20 @@
 	<title>Users</title>
 
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="../css/icomoon.css">
+	<link rel="stylesheet" href="css/icomoon.css">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="../css/magnific-popup.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
 	<!-- Salvattore -->
-	<link rel="stylesheet" href="../css/salvattore.css">
+	<link rel="stylesheet" href="css/salvattore.css">
 	<!-- Theme Style -->
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 	<!-- Modernizr JS -->
-	<script src="../js/modernizr-2.6.2.min.js"></script>
+	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="../js/respond.min.js"></script>
+	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
 </head>
@@ -90,19 +90,19 @@
 	</div> 
 
 	<!-- jQuery -->
-	<script src="../js/jquery.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="../js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="../js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Magnific Popup -->
-	<script src="../js/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
 	<!-- Salvattore -->
-	<script src="../js/salvattore.min.js"></script>
+	<script src="js/salvattore.min.js"></script>
 	<!-- Main JS -->
-	<script src="../js/main.js"></script>
+	<script src="js/main.js"></script>
 	
 </body>
 
