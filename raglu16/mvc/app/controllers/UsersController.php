@@ -6,7 +6,7 @@ class UsersController extends Controller {
 		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 			$this->view('users/index');
 		} else {
-			$this->view('login/index');
+			header('Location: /raglu16/mvc/public/login/');
 		}
 	}
 	
