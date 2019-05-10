@@ -1,3 +1,54 @@
+<?php
+require_once "db_conn.php";
+
+if(!(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
+	echo "You need to login to upload pictures.";
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+	$target_dir = "images/";
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
+	$uploadOk = 1;
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	
+	$i = 0;
+	while (file_exists($target_file)) {
+		$i++;
+		$target_file = str_replace(".", "_" . $i . ".", $target_file);
+	}
+
+
+	if ($uploadOk == 0) {
+		echo "Sorry, your file was not uploaded.";
+	} else {
+		if (!move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+			echo "Sorry, there was an error uploading your file.";
+			$uploadOk = 0;
+		}
+	}
+	
+	$sql = "INSERT INTO images(title,description,image,user_id) VALUES(:title,:description,:image,:user_id)";
+	
+	if($stmt = $conn->prepare($sql) and $uploadOk == 1){
+		
+		$stmt->bindParam(":title", $param_title, PDO::PARAM_STR);
+		$stmt->bindParam(":description", $param_description, PDO::PARAM_STR);
+		$stmt->bindParam(":image", $target_file, PDO::PARAM_STR); 
+		$stmt->bindParam(":user_id", $param_user_id, PDO::PARAM_STR); 
+
+		$param_title = trim($_POST["title"]);
+		$param_description = trim($_POST["description"]);
+		$param_user_id = $_SESSION["user_id"];		
+			
+		if($stmt->execute()){
+			echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+		} else {
+			unlink($target_file);
+			echo "Sorry, there was an error uploading your file.";
+		}
+	}
+}
+?>
 <!DOCTYPE html>
 
 <head>
