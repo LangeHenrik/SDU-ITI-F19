@@ -13,13 +13,13 @@ class Picture extends Database {
 			$target_file = str_replace(".", "_" . $i . ".", $target_file);
 		}
 		
-		$sql = "INSERT INTO images(title,description,source,user_id) VALUES(:title,:description,:source,:user_id)";
+		$sql = "INSERT INTO images(title,description,image,user_id) VALUES(:title,:description,:image,:user_id)";
 		
 		if($stmt = $this->conn->prepare($sql) and move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
 			
 			$stmt->bindParam(":title", $param_title, PDO::PARAM_STR);
 			$stmt->bindParam(":description", $param_description, PDO::PARAM_STR);
-			$stmt->bindParam(":source", $target_file, PDO::PARAM_STR); 
+			$stmt->bindParam(":image", $target_file, PDO::PARAM_STR); 
 			$stmt->bindParam(":user_id", $param_user_id, PDO::PARAM_STR); 
 	
 			$param_title = trim($_POST["title"]);
@@ -35,24 +35,26 @@ class Picture extends Database {
 		}
 	}
 
+	//API
 	public function getUserPictures($userId){
 		$sql = "SELECT * FROM images WHERE user_id = :user_id";
 		
 		$stmt = $this->conn->prepare($sql);
 		$stmt->bindParam('user_id', $userId);
-		$stmt->execute;
+		$stmt->execute();
 		$pictures = $stmt->fetchAll();
 
 		return $pictures;
 	}
 	
+	//API
 	public function postPicture($title, $description, $image){
-		$sql = "INSERT INTO images (title, description, source, user_id) VALUES(:title, :description, :source, :user_id)";
+		$sql = "INSERT INTO images (title, description, image, user_id) VALUES(:title, :description, :image, :user_id)";
 		
 		$stmt = $this->conn->prepare($sql);
 		$stmt->bindParam('title', $title);
 		$stmt->bindParam('description', $description);
-		$stmt->bindParam('source', $image);
+		$stmt->bindParam('image', $image);
 		$stmt->bindParam('user_id', $_SESSION['user_id']);
 		
 		$stmt->execute();

@@ -1,3 +1,54 @@
+<?php
+require_once "db_conn.php";
+
+if(!(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
+	echo "You need to login to upload pictures.";
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+	$target_dir = "images/";
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
+	$uploadOk = 1;
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	
+	$i = 0;
+	while (file_exists($target_file)) {
+		$i++;
+		$target_file = str_replace(".", "_" . $i . ".", $target_file);
+	}
+
+
+	if ($uploadOk == 0) {
+		echo "Sorry, your file was not uploaded.";
+	} else {
+		if (!move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+			echo "Sorry, there was an error uploading your file.";
+			$uploadOk = 0;
+		}
+	}
+	
+	$sql = "INSERT INTO images(title,description,image,user_id) VALUES(:title,:description,:image,:user_id)";
+	
+	if($stmt = $conn->prepare($sql) and $uploadOk == 1){
+		
+		$stmt->bindParam(":title", $param_title, PDO::PARAM_STR);
+		$stmt->bindParam(":description", $param_description, PDO::PARAM_STR);
+		$stmt->bindParam(":image", $target_file, PDO::PARAM_STR); 
+		$stmt->bindParam(":user_id", $param_user_id, PDO::PARAM_STR); 
+
+		$param_title = trim($_POST["title"]);
+		$param_description = trim($_POST["description"]);
+		$param_user_id = $_SESSION["user_id"];		
+			
+		if($stmt->execute()){
+			echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+		} else {
+			unlink($target_file);
+			echo "Sorry, there was an error uploading your file.";
+		}
+	}
+}
+?>
 <!DOCTYPE html>
 
 <head>
@@ -5,20 +56,20 @@
 	<title>Upload</title>
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="../css/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="../css/icomoon.css">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="../css/magnific-popup.css">
 	<!-- Salvattore -->
-	<link rel="stylesheet" href="css/salvattore.css">
+	<link rel="stylesheet" href="../css/salvattore.css">
 	<!-- Theme Style -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="../js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
+	<script src="../js/respond.min.js"></script>
 	<![endif]-->
 
 </head>
@@ -83,19 +134,19 @@
 	</div>
 
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	<script src="../js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="../js/jquery.waypoints.min.js"></script>
 	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/jquery.magnific-popup.min.js"></script>
 	<!-- Salvattore -->
-	<script src="js/salvattore.min.js"></script>
+	<script src="../js/salvattore.min.js"></script>
 	<!-- Main JS -->
-	<script src="js/main.js"></script>
+	<script src="../js/main.js"></script>
 	
 </body>
 
