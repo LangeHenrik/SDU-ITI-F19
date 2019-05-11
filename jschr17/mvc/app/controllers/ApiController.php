@@ -4,7 +4,7 @@ class ApiController extends Controller {
 	
 	public function __construct() {
 		header("Content-Type: application/json, charset=UTF-8");
-		echo 'apicontroller constructed';
+		echo 'apicontroller constructed. ';
 	}
 	
 	public function pictures ($designation = 'user', $designation_id = 1) {
@@ -25,7 +25,7 @@ class ApiController extends Controller {
 
 	//function to be used when the api for getting user accounts is in use.
 	public function users() {
-		echo 'user method entered';
+		echo 'user method entered. ';
 		/*
 		$method = $_SERVER['REQUEST_METHOD'];
 		$request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
