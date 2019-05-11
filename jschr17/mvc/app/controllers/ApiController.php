@@ -7,37 +7,75 @@ class ApiController extends Controller {
 		echo 'apicontroller constructed. ';
 	}
 	
-	public function pictures ($designation = 'user', $designation_id = 1) {
-		if ($this->get){
+	// function for managing calls to api/pictures
+	public function pictures ($usr = 'user', $userid = 1) {
+		$method = $_SERVER['REQUEST_METHOD'];
+		$request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 
-		} else if ($this->post){
-			
+		if($method == 'GET'){
+			$this->getUserPictures($userid);
+		} elseif ($method == 'POST'){
+			$this->postUserPicture($userid);
 		}
-		echo "someone is looking for " .$designation. " " . $designation_id;
-		
-		
+		/*echo "someone is looking for " .$usr. " " . $id;
 		$pictures = $this->Model('Picture')->all();
 		$jsonPictures = json_encode($pictures);
-		echo $jsonPictures;
-		
+		echo $jsonPictures;*/
 	}
 	
+	private function postUserPicture($userid){
+		echo ' postuserpicture method entered. ';
+		$data = file_get_contents("php://input");
+		$json = json_decode($data, true);
+		extract($json);
+
+		$image = base64_decode($json['image']);
+		$title = $json['title'];
+		$description = $json['description'];
+		$username = $json['username'];
+		$password = $json['password'];
+
+		include_once(__DIR__ . '/../models/Picture.php');
+		postValues($userid, $image, $title, 
+			$description, $username, $password);
+	}
+
+	private function getUserPictures($userid){
+		include_once(__DIR__ . '/../models/Picture.php');
+		$fetched = fetchImages($userid); //array of image array and the amount of images
+		$images_size = $fetched[1];
+		$images = $fetched[0];
+		echo json_encode('size of images array: ' . $images_size);
+		//check amount of images found
+		if ($images_size > 0){
+			$image_list = array();
+			//echo json_encode(print_r($images));
+			//print_r($images);
+			foreach ($images as $img) {
+				$image = new Image(
+					$img[1], // index of image
+					$img[3], // index of title
+					$img[4]  // index of description
+				);
+				array_push($image_list, $image);
+			}
+			//json encode array of images and return it
+			$json = json_encode($image_list /*JSON_PRETTY_PRINT*/);
+			http_response_code(200);
+			echo $json;
+		} else {
+			http_response_code(404); //find correct response code
+			echo json_encode('no images found.');		
+		}
+	}
 
 	//function to be used when the api for getting user accounts is in use.
 	public function users() {
 		echo 'user method entered. ';
-		/*
+		
 		$method = $_SERVER['REQUEST_METHOD'];
 		$request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
-		switch ($method) {
-			case 'GET':
-				read();
-				break;
-			default:
-				echo 'Default switch case';
-				break;
-		}*/
-		if($this->get){
+		if($method == 'GET'){
 			include_once(__DIR__ . '/../models/readuser.php');
 			$dbarray = read(); 
 			$userList_size = $dbarray[1];
@@ -48,7 +86,6 @@ class ApiController extends Controller {
 			if ($userList_size > 0) {
 				//print userlist to see what happens
 				//echo json_encode(print_r($userList)); //prints all user data including passwords
-
 				foreach ($userList as $usr) {
 					//for each tuple make new user object with the information
 					$user = new Users($usr[0], $usr[1]);
@@ -69,6 +106,18 @@ class ApiController extends Controller {
 		
 		
 	}
+}
+class Image {
+    public $image;
+    public $title;
+    public $description;
+
+    //constructor
+    public function __construct($image, string $title, string $description){
+        $this->image = $image;
+        $this->title = $title;
+        $this->description = $description;
+    }
 }
 
 class Users{
