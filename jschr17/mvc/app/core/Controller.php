@@ -12,7 +12,10 @@ class Controller {
 	public function view($view, $viewbag = []) {
 	    if($view == 'gallery_upload' || $view == 'load-pictures' || $view == 'logout'){
 	        $this->controllers($view);
-        } else {
+		} else if ($view == 'api') { // block for testing out why the f.... i can't seem to get contact with the apicontroller
+			echo 'api view requested... it shouldnt get requested...';
+			$this->controllers('ApiController');
+		} else {
             require_once '../app/views/home/' . $view . '.php';
         }
     }

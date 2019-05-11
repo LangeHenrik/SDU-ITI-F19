@@ -4,6 +4,7 @@ class ApiController extends Controller {
 	
 	public function __construct() {
 		header("Content-Type: application/json, charset=UTF-8");
+		echo 'apicontroller constructed';
 	}
 	
 	public function pictures ($designation = 'user', $designation_id = 1) {
