@@ -1,0 +1,206 @@
+body {
+    background-image: linear-gradient(to right, darkslategrey , black);
+}
+
+input[type=text] { 
+    width: 150px;
+    margin: 0 auto;
+}
+
+input[type=password] { 
+    width: 150px;
+    margin: 0 auto;
+}
+
+input[type=button] {
+    background-color: #333; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+form input[type=button] {
+    background-color: #333; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+/*hovering submit button*/
+form input[type=submit]:hover {
+    background-color: rgba(245, 245, 245, 0.781);
+    color:green;
+}
+
+/*hovering submit button*/
+form input[type=button]:hover {
+    background-color: rgba(245, 245, 245, 0.781);
+    color:green;
+}
+
+/*hovering submit button*/
+#signup input[type=button]:hover {
+    background-color: rgba(245, 245, 245, 0.781);
+    color:green;
+}
+
+input[type=submit] {
+    background-color: blue; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 150px;
+    margin: 0 auto;
+  }
+
+label {
+    color: white;
+    font-weight: bold;
+    
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li input {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+h1 {
+    font-size: 40px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+h2 {
+    font-size: 20px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+/*Hjemmesidets titel: Instakham photos*/
+#headertitle {
+    color: white;
+    font-size: 40px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 139, 0.418);
+}
+
+#headertitle h1 { 
+    font-size: 28px;
+    margin: 100;
+    margin-left: 1%;
+}
+
+/* #mobileScale {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) } */
+
+#content {
+    width: 200px;
+    margin: auto;
+}
+
+/* #content h1 {
+    margin: 100;
+    margin-right: -50%;
+    font-size: 30px;
+} */
+
+
+
+label {
+    color: white;
+}
+
+#content p {
+    color: white;
+}
+
+#posts {
+    width: 1100px;
+    margin: auto;
+}
+
+/*Pictures with header and description*/
+
+div.gallery {
+    margin: 50px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: rgb(104, 104, 104);
+  }
+  
+  /* div.gallery:hover {
+    border: 1px solid #777;
+  } */
+  
+  div.gallery img {
+    height: auto;
+    width: 1000px;
+  }
+  
+  div.header {
+    color: white;
+    text-align: center;
+  }
+
+  div.desc {
+    color: whitesmoke;
+    padding: 15px;
+    text-align: center;
+  }
