@@ -138,7 +138,7 @@ h2 {
     color: white;
 }
 
-/*Hjemmesidets titel*/
+/*title of website*/
 #headertitle {
     color: white;
     font-size: 40px;
@@ -148,7 +148,6 @@ h2 {
     list-style-type: none;
     padding: 0;
     overflow: hidden;
-    /* background-color: rgba(0, 0, 139, 0.418); */
     background-color: rgb(146, 21, 21)
 }
 
@@ -177,17 +176,12 @@ label {
 }
 
 /*Pictures with header and description*/
-
 div.gallery {
     margin: 50px;
     border: 1px solid #ccc;
     float: left;
     background-color: rgb(104, 104, 104);
 }
-  
-/* div.gallery:hover {
-border: 1px solid #777;
-} */
 
 div.gallery img {
     height: auto;

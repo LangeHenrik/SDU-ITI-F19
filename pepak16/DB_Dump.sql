@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 09, 2019 at 06:48 PM
+-- Generation Time: May 13, 2019 at 12:22 AM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
@@ -69,7 +69,9 @@ CREATE TABLE `user_post` (
 INSERT INTO `user_post` (`user_post_id`, `user_post_time`, `user_post_header`, `user_post_description`, `user_post_url`, `post_by`) VALUES
 (2, '2019-05-09 01:02:30', 'Wallpaper', 'i want to share wallpapers with you guys\r\n', 0x75706c6f6164732f7562756e74755f6c6f636b73637265656e5f77616c6c70617065722e6a7067, 1),
 (73, '2019-05-09 16:33:17', 'Amazing Linux wallpaper', 'amazing stuff!!', 0x75706c6f6164732f5562756e74752d57616c6c7061706572732d31352e6a7067, 2),
-(75, '2019-05-09 16:35:35', 'I really liked this picture', 'want to show it to you guysssss', 0x75706c6f6164732f343233373734362d6261636b67726f756e64732e6a7067, 2);
+(75, '2019-05-09 16:35:35', 'I really liked this picture', 'want to show it to you guysssss', 0x75706c6f6164732f343233373734362d6261636b67726f756e64732e6a7067, 2),
+(81, '2019-05-11 19:52:30', 'black hole', 'The first ever picture captured of a black hole! :O', 0x75706c6f6164732f356364373237666563643362302e6a706567, 2),
+(110, '2019-05-12 22:18:54', 'McLaren car', 'I really love this car, nice design and amazing technologies!', 0x75706c6f6164732f356364383962636538643066652e77656270, 6);
 
 --
 -- Indexes for dumped tables
@@ -105,7 +107,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_post`
 --
 ALTER TABLE `user_post`
-  MODIFY `user_post_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `user_post_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

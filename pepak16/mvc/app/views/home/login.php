@@ -4,7 +4,6 @@
         <title>Login page</title>
         <?php
             require_once $_SERVER["DOCUMENT_ROOT"].'/pepak16/mvc/app/views/partials/top.php';
-            //include '../partials/top.php';
             $homecontroller = new HomeController();
         ?>
     </head>
@@ -16,16 +15,11 @@
 			if (isset($_POST['submit'])) {
                 $loginid = $homecontroller->login($username,$password);
 				if ($loginid) {
-                        //if ($hashed_password == $password) {
                             $_SESSION["logged_in"] = true;
                             $_SESSION["username"] = $username;
                             $_SESSION["userid"] = $loginid;
-                            //echo 'You are now logged in';
                             $warningtext = "";
-                            //header('Location: /pepak16/mvc/app/views/home/success_page.php');
                             header('Location: /pepak16/mvc/public');
-                        //}
-                    
                 } else {
 					$warningtext = "Wrong info.. Please try again.";
 				}

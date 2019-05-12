@@ -8,7 +8,7 @@ class Database extends DB_Config {
 	
 	public function __construct() {
 		try {
-			//remember there the variables username and password are separated by commas!
+			//remember that the variables: username and password are separated by commas!
 			$this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
 			$this->username,
 			$this->password,

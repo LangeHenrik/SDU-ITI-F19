@@ -4,14 +4,9 @@
     <?php
         require_once $_SERVER["DOCUMENT_ROOT"].'/pepak16/mvc/app/views/partials/top.php';
         $homecontroller = new HomeController();
-        
-        // if ($_SESSION["logged_in"] == true) {
-        //     echo 'logged in is trueeee';
-        // } else {
-        //     echo 'logged in is FALSE';
-        // }
+
     ?>
-    <title>Assignment 1 - Persha</title>
+    <title>Assignment 2 - Persha</title>
 
     
 
@@ -38,17 +33,14 @@
                 $file_tmp = $_FILES['image']['tmp_name'];
                 $file_type = $_FILES['image']['type'];
                 $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-                //chmod("uploads/", 755); 
+
                 if(empty($errors)==true && $file_tmp != null) {
-                    //$file_dest = "uploads/".$file_name;
+
                     $file_dest = $_SERVER['DOCUMENT_ROOT']."/pepak16/mvc/app/uploads/".$file_name;
                     move_uploaded_file($file_tmp,$file_dest);
-                    // $file_dest = "uploads/".$file_name;
-                    // echo $file_dest;
+
                     $file_dest = "uploads/".$file_name;
-                    // if ($_SESSION["userid"] != null) {
-                    //     $useridwithcomma = $_SESSION["userid"] + ",";
-                    // }
+
                     $homecontroller->postAPicture($header,$desc,$file_dest,$_SESSION["userid"]);
                     $successtext = "Uploaded successfully!";
                     echo $_FILES["post_image"]["error"];
@@ -90,14 +82,6 @@
         $controllerObject = new HomeController();
         $allPosts = $controllerObject->showAllPosts();
 
-        // // AJAX
-        // echo "<p style=\"color: white;\"><span id=\"txtHint\"></span></p>";
-        
-        // echo '<span id="defaultpage">';
-        
-        
-        
-        //if ($_POST['search'] == "") {
             foreach ($allPosts as $post) {
                 $imagedir = '../../'.$post[4];
                 echo    '<div class="gallery">

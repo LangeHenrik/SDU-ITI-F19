@@ -7,24 +7,13 @@ class User extends Database {
 
 	public function getUserIdByUsername($username) {
 		$this->dbConnection = new Database();
-		// $this->dbConnection = new Database();
         $sql = 'SELECT user_id FROM user WHERE user_name = :domain_name';
 		$pdo = $this->dbConnection->getConn();
 		$stmt = $pdo->prepare($sql);
         $stmt->bindParam(':domain_name', $username);
-        //$stmt->bindParam(':domain_pass', $password);
         $stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_NUM);
-		// foreach ($result as $f) {
-		// 	return $f[0];
-		// }
-		//echo $result[0][0];
         return $result[0][0];
-        // if ($result[0] == NULL) {
-        //     return false;
-        // } else {
-        //     return true;
-        // }
 	}
 
 	public function fetchAllPosts() {
@@ -67,7 +56,6 @@ class User extends Database {
 		} else {
 			return false;
 		}
-		//return true;
 	}
 	
 	function insertPost($hd,$dc,$url,$postedbyid) {
@@ -75,7 +63,6 @@ class User extends Database {
 		$sql = "INSERT INTO user_post (user_post_time, user_post_header, user_post_description, user_post_url, post_by) VALUES (now(), :domain_header, :domain_desc, :domain_url, :postbyid); SELECT LAST_INSERT_ID();";
 		$pdo = $this->dbConnection->getConn();
 		$stmt = $pdo->prepare($sql);
-		//$stmt->bindParam(':domain_id', uniqid());
 		$stmt->bindParam(':domain_header', $hd);
 		$stmt->bindParam(':domain_desc', $dc);
 		$stmt->bindParam(':domain_url', $url);
@@ -83,11 +70,6 @@ class User extends Database {
 		$stmt->execute();
 		$lastId = $pdo->lastInsertId();
 		return $lastId;
-		// $id = $stmt->fetchAll();
-		// return $id[0][0];
-		//$pictureid = $stmt->fetchAll(PDO::FETCH_NUM);
-		//return $pictureid[0][0];
-          
 	}
 
 	function getUsers() {
@@ -112,10 +94,3 @@ class User extends Database {
 	}
 
 }
-
-// $test = new User();
-
-// $array = $test->fetchUserPosts(1);
-// foreach ($array as $a) {
-// 	echo $a[1];
-// }

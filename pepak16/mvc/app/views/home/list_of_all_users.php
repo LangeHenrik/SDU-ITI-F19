@@ -4,7 +4,6 @@
         <title>Userlist Page</title>
         <?php
             require_once $_SERVER["DOCUMENT_ROOT"].'/pepak16/mvc/app/views/partials/top.php';
-            //include '../partials/top.php';
             $homecontroller = new HomeController();
             $_SESSION["disable_searchbar"] = true;
         ?>
