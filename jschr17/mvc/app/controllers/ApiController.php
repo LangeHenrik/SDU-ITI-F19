@@ -48,18 +48,13 @@ class ApiController extends Controller {
 		//check amount of images found
 		if (sizeof($images) > 0){
 			$image_list = array();
-			echo json_encode("entering foerach to go through images and set them up. ");
 			$it = 1;
 			foreach ($images as $img) {
-				echo json_encode("loop iteration: ". $it++ . ". \\");
 				$image = new Image(
 					base64_encode($img[1]), // index of image
 					$img[3], // index of title
 					$img[4]  // index of description
 				);
-				echo 'image blob is: ' . json_encode(base64_encode($img[1]));
-				echo 'image title is: ' . json_encode($img[3]);
-				echo 'image description is: ' . json_encode($img[4]);
 				array_push($image_list, $image);
 			}
 			//json encode array of images and return it
