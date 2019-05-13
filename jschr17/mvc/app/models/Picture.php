@@ -120,23 +120,23 @@ function fetchImages($userid){
 	$img = array();		//create return array
 	$images = array();	//create image array
 	try {
-        echo json_encode("trying to set up database connection. //");
+        echo json_encode("trying to set up database connection. \\");
         //database connection
         $database = new Database;
         $db = $database->getConn();
 
-        echo json_encode("trying to get images from db. //");
+        echo json_encode("trying to get images from db. \\");
         //connect to database
         $query = $db->prepare("SELECT * FROM images WHERE user_id = ". $userid); // get $user from the URL given (2 is the id): GET localhost:8080/xx/mvc/public/api/pictures/user/2
         $query->execute();
 
-        $images_size = $query->rowCount();
+        //$images_size = $query->rowCount();
 
         //get list of user images
 		$images = $query->fetchAll();
-        array_push($img, $images, $images_size);
-        echo json_encode(' // the size of the returned array from fetchImages is: ' . sizeof($img) . '.// and the images are: ');
-        echo json_encode($images);
+    array_push($img, $images/*, $images_size*/);
+        echo json_encode('the size of the returned array from fetchImages is: ' . sizeof($img) . ' and the images are: ');
+        echo json_encode($images) . '\\';
     } catch(Exception $e){
         echo json_encode('Exception in database connection');
 	}
