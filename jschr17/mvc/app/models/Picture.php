@@ -58,11 +58,11 @@ function uploadImage($blob, $title, $desc, $user_id, $conn){
 
     $sql2 = 'INSERT INTO images(image, title, description, user_id) VALUES (?, ?, ?, ?);';
     $stmt2 = $conn->prepare($sql2);
-    $user_id_chosen = $user_id[0];
+    //$user_id_chosen = $user_id[0];
     if(!$stmt2 = $conn->prepare($sql2)){
         echo "SQL statement failed 2";
     } else {
-        $stmt2->execute([$blob, $title, $desc, $user_id_chosen]);
+        $stmt2->execute([$blob, $title, $desc, $user_id]);
         $last_id = $conn->lastInsertId();
         echo '{"image_id": "'. $last_id .'" }';
     }
@@ -110,8 +110,9 @@ function matchUsernameAndId($user_id, $username, $conn){
 
     $sql = "SELECT username FROM users WHERE user_id = :param_user_id";
     $stmt = $conn->prepare($sql);
-    $user_id_chosen = $user_id[0];
-    $stmt->bindParam(':param_user_id', $user_id_chosen);
+    //print_r($user_id);
+    //$user_id_chosen = $user_id[0];
+    $stmt->bindParam(':param_user_id', $user_id);
     $stmt->execute();
 
     $gotUsername = $stmt->fetch(PDO::FETCH_ASSOC);
