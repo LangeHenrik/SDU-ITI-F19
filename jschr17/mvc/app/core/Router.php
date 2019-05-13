@@ -9,7 +9,7 @@ class Router {
 	function __construct () {
 		$url = $this->parseUrl();
 		
-		if(file_exists('../app/controllers/' . ucfirst(strtolower($url[0])) . 'Controller.php')) {
+		if(file_exists('../app/controllers/' . ucfirst(strtolower($url[0])) . 'Controller.php')) { // makes sure to format the controlle name as all lower case with first letter uppercase
 			$this->controller = ucfirst(strtolower($url[0])) . 'Controller';
 			unset($url[0]);
 		}
