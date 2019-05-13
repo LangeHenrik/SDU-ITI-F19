@@ -27,7 +27,7 @@ class ApiController extends Controller {
 		/*echo ' postuserpicture method entered. ';*/
 		$data = file_get_contents("php://input");
 		$json = json_decode($data, true);
-		extract($json);
+		//extract($json);
 		//echo $json;
 
 		$image = base64_decode($json['image']);

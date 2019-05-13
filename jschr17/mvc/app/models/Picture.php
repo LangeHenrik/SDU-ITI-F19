@@ -11,29 +11,9 @@ class Picture extends Database {
 
 function postValues($userid, $image, $title,
 	$description, $username, $password){
-    /*echo $userid;
-    echo ' ';
-    //echo $image;
-    echo ' ';
-    echo $title;
-    echo ' ';
-    echo $description;
-    echo ' ';
-    echo $username;
-    echo ' ';
-    echo $password;*/
+
     $database = new Database();
 	$conn = $database->getConn();
-	/*
-    $data = file_get_contents("php://input");
-    $json = json_decode($data, true);
-	extract($json);
-	
-    $image = base64_decode($json['image']);
-    $title = $json['title'];
-    $description = $json['description'];
-    $username = $json['username'];
-    $password = $json['password'];*/
 
     $userBool = checkUser($username, $password, $conn);
     $matchBool = matchUsernameAndId($userid, $username, $conn);
@@ -45,15 +25,6 @@ function postValues($userid, $image, $title,
     }
 }
 
-/*function returnImgId($conn){
-    $sql = "SELECT user_id FROM images ORDER BY image_id DESC LIMIT 1";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $got_user_id = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //echo $got_user_id['user_id'];
-}*/
-
 function uploadImage($blob, $title, $desc, $user_id, $conn){
 
     $sql2 = 'INSERT INTO images(image, title, description, user_id) VALUES (?, ?, ?, ?);';
@@ -64,7 +35,7 @@ function uploadImage($blob, $title, $desc, $user_id, $conn){
     } else {
         $stmt2->execute([$blob, $title, $desc, $user_id]);
         $last_id = $conn->lastInsertId();
-        echo '{"image_id": "'. $last_id .'" }';
+        echo '{"image_id": "'. $last_id .'"}';
     }
 }
 
