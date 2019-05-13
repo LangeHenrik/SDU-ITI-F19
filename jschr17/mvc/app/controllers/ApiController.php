@@ -28,6 +28,7 @@ class ApiController extends Controller {
 		$data = file_get_contents("php://input");
 		$json = json_decode($data, true);
 		extract($json);
+		//echo $json;
 
 		$image = base64_decode($json['image']);
 		$title = $json['title'];
@@ -36,7 +37,9 @@ class ApiController extends Controller {
 		$password = $json['password'];
 
 		include_once(__DIR__ . '/../models/Picture.php');
-		postValues($userid, $image, $title, 
+		preg_match('/(^\d{1,})(?=\D)/', $userid, $matches);
+		//print_r($matches);
+		postValues($matches, $image, $title,
 			$description, $username, $password);
 	}
 
