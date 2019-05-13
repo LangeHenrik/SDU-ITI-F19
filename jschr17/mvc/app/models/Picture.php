@@ -135,11 +135,10 @@ function fetchImages($userid){
         //get list of user images
 		$images = $query->fetchAll();
         array_push($img, $images, $images_size);
-        echo json_encode(' // the size of the returned array from fetchImages is: ' . sizeof($img) . '.// ');
+        echo json_encode(' // the size of the returned array from fetchImages is: ' . sizeof($img) . '.// and the images are: ');
+        echo json_encode($images);
     } catch(Exception $e){
-        echo 'test13';
         echo json_encode('Exception in database connection');
 	}
-    echo 'test14';
 	return $img;
 }

@@ -43,9 +43,16 @@ class ApiController extends Controller {
 	private function getUserPictures($userid){
 		include_once(__DIR__ . '/../models/Picture.php');
 		$fetched = fetchImages($userid); //array of image array and the amount of images
-		echo json_encode('The returned array from fetchImages is: ' . json_encode($fetched) . ". //");
+		echo json_encode('The returned array from fetchImages is: . //');
+		echo json_encode($fetched);
 		$images_size = $fetched[1];
+		echo "images size is: ";
+		echo json_encode($images_size);
+
 		$images = $fetched[0];
+		echo "images are: ";
+		echo json_encode($images);
+
 		echo json_encode('size of images array: ' . $images_size . ".// ");
 		//check amount of images found
 		if ($images_size > 0){
@@ -59,7 +66,9 @@ class ApiController extends Controller {
 					$img[3], // index of title
 					$img[4]  // index of description
 				);
-				echo json_encode("image for this iteration is: " . json_encode($image) . ".// ");
+				echo "image for this iteration is: ";
+				echo json_encode($image);
+
 				array_push($image_list, $image);
 			}
 			//json encode array of images and return it
