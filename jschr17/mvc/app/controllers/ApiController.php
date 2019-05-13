@@ -80,7 +80,7 @@ class ApiController extends Controller {
 			$dbarray = read(); 
 			$userList_size = $dbarray[1];
 			$userList = $dbarray[0];
-
+			$users = array();
 			echo json_encode('size of userlist array: ' . $userList_size /*$userList->sizeof*/);
 			//check amount of users found
 			if ($userList_size > 0) {
