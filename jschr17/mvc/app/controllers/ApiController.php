@@ -4,7 +4,7 @@ class ApiController extends Controller {
 	
 	public function __construct() {
 		header("Content-Type: application/json, charset=UTF-8");
-		echo 'apicontroller constructed. ';
+		/*echo 'apicontroller constructed. ';*/
 	}
 	
 	// function for managing calls to api/pictures
@@ -24,7 +24,7 @@ class ApiController extends Controller {
 	}
 	
 	private function postUserPicture($userid){
-		echo ' postuserpicture method entered. ';
+		/*echo ' postuserpicture method entered. ';*/
 		$data = file_get_contents("php://input");
 		$json = json_decode($data, true);
 		extract($json);
@@ -71,7 +71,7 @@ class ApiController extends Controller {
 
 	//function to be used when the api for getting user accounts is in use.
 	public function users() {
-		echo 'user method entered. ';
+		/*echo 'user method entered. ';*/
 		
 		$method = $_SERVER['REQUEST_METHOD'];
 		$request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
@@ -81,7 +81,7 @@ class ApiController extends Controller {
 			$userList_size = $dbarray[1];
 			$userList = $dbarray[0];
 			$users = array();
-			echo json_encode('size of userlist array: ' . $userList_size /*$userList->sizeof*/);
+			//echo json_encode('size of userlist array: ' . $userList_size /*$userList->sizeof*/);
 			//check amount of users found
 			if ($userList_size > 0) {
 				//print userlist to see what happens
@@ -93,7 +93,7 @@ class ApiController extends Controller {
 					array_push($users, $user);
 				}
 				//json encode array of users and return it
-				$json = json_encode($users, JSON_PRETTY_PRINT);
+				$json = json_encode($users /*, JSON_PRETTY_PRINT*/);
 				http_response_code(200);
 				echo($json);
 			} else {

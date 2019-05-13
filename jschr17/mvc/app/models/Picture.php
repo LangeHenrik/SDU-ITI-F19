@@ -9,8 +9,11 @@ class Picture extends Database {
 	}
 }
 
-function postValues($userid, $image, $title, 
+function postValues($userid, $image, $title,
 	$description, $username, $password){
+    echo 'test1';
+    echo ' ';
+    echo $userid;
     $database = new Database();
 	$conn = $database->getConn();
 	/*
@@ -29,6 +32,7 @@ function postValues($userid, $image, $title,
 
     if($userBool === $matchBool){
         uploadImage($image, $title, $description, $userid, $conn);
+        echo 'test2';
         returnImgId($conn);
     } else{
         return 'Something went wrong';
@@ -55,19 +59,25 @@ function uploadImage($blob, $title, $desc, $user_id, $conn){
 }
 
 function checkUser($username, $password, $conn){
+    echo 'test3';
     $sql_username = "SELECT username FROM users WHERE username = :param_username";
     $stmt1 = $conn->prepare($sql_username);
     if ($conn->prepare($sql_username)) {
-        $stmt1->bindParam(':param_username', $param_username);
+        echo 'test4';
         $param_username = $username;
+        $stmt1->bindParam(':param_username', $param_username);
+
         if ($stmt1->execute()) {
+            echo 'test5';
             // Store result
             $username_values = $stmt1->fetchAll();
             $got_username = '';
             foreach ($username_values as $_username) {
+                echo 'test6';
                 $got_username = $_username['username'];
             }
             if ($param_username === $got_username) {
+                echo 'test7';
                 $sql_password = "SELECT password FROM users WHERE username = :param_username";
                 $stmt2 = $conn->prepare($sql_password);
                 $stmt2->bindParam(':param_username', $param_username);
@@ -78,6 +88,7 @@ function checkUser($username, $password, $conn){
                     $got_hashed_password = $hashed_password['password'];
                 }
                 if (password_verify($password, $got_hashed_password)) {
+                    echo 'test8';
                     return true;
                 } else return false;
             }
@@ -86,6 +97,7 @@ function checkUser($username, $password, $conn){
 }
 
 function matchUsernameAndId($user_id, $username, $conn){
+    echo 'test9';
     $sql = "SELECT username FROM users WHERE user_id = :param_user_id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':param_user_id', $user_id);
@@ -94,17 +106,21 @@ function matchUsernameAndId($user_id, $username, $conn){
     $gotUsername = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($gotUsername['username'] !== $username){
+                echo 'test10';
                 return false;
             } else{
+                echo 'test15';
                 return true;
             }
 }
 
 function fetchImages($userid){
+    echo 'test11';
 	echo json_encode("user id should be: " . $userid);
 	$img = array();		//create return array
 	$images = array();	//create image array
 	try {
+        echo 'test12';
         //database connection
         $database = new Database;
         $db = $database->getConn();
@@ -119,7 +135,9 @@ function fetchImages($userid){
 		$images = $query->fetchAll();
 		array_push($img, $images, $images_size);
     } catch(Exception $e){
+        echo 'test13';
         echo json_encode('Exception in database connection');
 	}
+    echo 'test14';
 	return $img;
 }
