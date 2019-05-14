@@ -1,14 +1,11 @@
 <?php
 
-class PictureController extends Controller {
+class PictureController extends Controller
+{
 
-	public function index ($param) {
-
+	public function index()
+	{
+		$viewbag = $this->model('Picture')->getAllPictures();
+		$this->view('picture/index', $viewbag);
 	}
-
-	public function all(){
-		$viewbag['pictures'] = $this->model('Picture')->getAllPictures();
-		$this->view('picture/all', $viewbag);
-	}
-
 }

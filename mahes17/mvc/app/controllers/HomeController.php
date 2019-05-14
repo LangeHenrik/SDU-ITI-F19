@@ -1,37 +1,40 @@
 <?php
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
-	public function index ($param) {
-
-		$viewbag['parameter'] = $param;
-
-		$this->view('home/login', $viewbag);
+	public function index()
+	{
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+			header('Location: /mikkp17/mvc/public/picture');
+		} else {
+			$this->view('home/index');
+		}
 	}
 
-	public function test(){
-		echo 'Test';
-	}
-
-	public function other ($param1 = 'first parameter', $param2 = 'second parameter') {
+	public function other($param1 = 'first parameter', $param2 = 'second parameter')
+	{
 		$user = $this->model('User');
 		$user->name = $param1;
 		$viewbag['username'] = $user->name;
 		$this->view('home/index', $viewbag);
 	}
 
-	public function restricted () {
+	public function restricted()
+	{
 		echo 'Welcome - you must be logged in';
 	}
 
-	public function login() {
+	public function login()
+	{
 		$_SESSION['logged_in'] = true;
 		$this->view('home/login');
 	}
 
-	public function logout() {
+	public function logout()
+	{
 
-		if($this->post()) {
+		if ($this->post()) {
 			session_unset();
 			header('Location: /mvc/public/home/loggedout');
 		} else {
@@ -39,13 +42,8 @@ class HomeController extends Controller {
 		}
 	}
 
-	public function loggedout(){
-
-		if($this->post()) {
-			session_unset();
-			echo 'You are now logged out!';
-		}
-
+	public function loggedout()
+	{
+		echo 'You are now logged out';
 	}
-
 }

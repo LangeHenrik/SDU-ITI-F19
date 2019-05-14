@@ -11,7 +11,7 @@
 <body>
 <div class="login">
 
-<form class="loginForm" method="post">
+<form class = "loginform" method="POST" action="/mahes17/mvc/public/user/login">
 	<h1>Login</h1>
 	<input name="username" type="text" class="inputcss" placeholder="Enter username"/><br>
 	<input name="password" type="password" class="inputcss" placeholder="Enter password"/><br>
@@ -19,7 +19,7 @@
 
 	<button type="submit" href ="./users.php/" id="login_btn" class="button" value="Login"> Login </button> </br>
 
-	<p> <a href="Register"> Register </a> as user </p>
+	<p> <a href="user/register"> Register </a> as user </p>
 
 </form>
 </div>
