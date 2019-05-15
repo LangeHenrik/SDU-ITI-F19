@@ -48,7 +48,7 @@ class Picture extends Database
 				$stmt->bindParam(':user', $_SESSION['user']);
 				$stmt->execute();
 
-				header('Location: /mikkp17/mvc/public/picture');
+				header('Location: /mahes17/mvc/public/picture');
 			}
 		}
 	}

@@ -3,9 +3,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Login</title>
-	<link rel="stylesheet" href="api/css/login.css">
-	<link rel="stylesheet" href="../api/css/login.css">
+	<title>Login here</title>
+	<link rel="stylesheet" href="/mahes17/mvc/public/api/css/login.css">
 </head>
 
 <body>

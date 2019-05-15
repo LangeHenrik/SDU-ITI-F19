@@ -6,7 +6,7 @@ class UserController extends Controller
 	public function index()
 	{
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
-			header('Location: /mikkp17/mvc/public/picture');
+			header('Location: /mahes17/mvc/public/picture');
 		} else {
 			$this->view('user/login');
 		}
@@ -15,7 +15,7 @@ class UserController extends Controller
 	public function login()
 	{
 		if ($this->model('User')->login($_POST['username'], $_POST['password'])) {
-			header('Location: /mikkp17/mvc/public/picture');
+			header('Location: /mahes17/mvc/public/picture');
 		} else {
 			$this->view('user/login');
 			echo "Wrong username or password! Try again.";
@@ -25,7 +25,7 @@ class UserController extends Controller
 	public function logout()
 	{
 		session_unset();
-		header('Location: /mikkp17/mvc/public/user');
+		header('Location: /mahes17/mvc/public/user');
 	}
 
 	public function signUp()

@@ -14,7 +14,7 @@ function getHint(str) {
                 document.getElementById("hint").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/mikkp17/mvc/public/users/ajax/" + str, true);
+        xmlhttp.open("GET", "/mahes17/mvc/public/users/ajax/" + str, true);
         xmlhttp.send();
         document.getElementById("hint").innerHTML = "Loading...";
     }

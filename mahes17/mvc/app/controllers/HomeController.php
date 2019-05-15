@@ -6,7 +6,7 @@ class HomeController extends Controller
 	public function index()
 	{
 		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
-			header('Location: /mikkp17/mvc/public/picture');
+			header('Location: /mahes17/mvc/public/picture');
 		} else {
 			$this->view('home/index');
 		}

@@ -14,7 +14,7 @@ class User extends Database
 			if (password_verify($password, $users[0]['password'])) {
 				$_SESSION['logged_in'] = true;
 				$_SESSION['user'] = $username;
-				header('Location: /mikkp17/mvc/public/login');
+				header('Location: /mahes17/mvc/public/login');
 			}
 		}
 		return false;
@@ -24,7 +24,7 @@ class User extends Database
 	{
 		session_unset();
 		session_destroy();
-		header('Location: /mikkp17/mvc/public/home');
+		header('Location: /mahes17/mvc/public/home');
 	}
 
 	public function getAllUsers()
@@ -85,7 +85,7 @@ class User extends Database
 
 		$_SESSION['logged_in'] = true;
 		$_SESSION['user'] = $username;
-		header('Location: /mikkp17/mvc/public/login');
+		header('Location: /mahes17/mvc/public/login');
 	}
 
 	public function ajax($request)
