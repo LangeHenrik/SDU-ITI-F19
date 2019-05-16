@@ -3,8 +3,8 @@
 class ApiController extends Controller {
 	
 	public function __construct() {
-		header("Content-Type: application/json, charset=UTF-8");
-		/*echo 'apicontroller constructed. ';*/
+		//header("Content-Type: application/json, charset=UTF-8");
+        header("Content-Type: application/x-www-form-urlencoded");
 	}
 	
 	// function for managing calls to api/pictures
@@ -24,21 +24,41 @@ class ApiController extends Controller {
 	}
 	
 	private function postUserPicture($userid){
+	   // echo 'userid: '.$userid;
 		/*echo ' postuserpicture method entered. ';*/
-		$data = file_get_contents("php://input");
-		$json = json_decode($data, true);
-		//extract($json);
-		//echo $json;
+		//$data = file_get_contents("php://input");
+        parse_str(file_get_contents("php://input"), $data);
+        print_r($data);
 
-		$image = base64_decode($json['image']);
-		$title = $json['title'];
-		$description = $json['description'];
-		$username = $json['username'];
-		$password = $json['password'];
+		$check = 'data:image/jpeg;base64,';
+
+        $image = $data['image'];
+        $title = $data['title'];
+        $description = $data["description"];
+        $username = $data["username"];
+        $password = $data["password"];
+
+        if (strpos($image, $check) !== false){
+            $image = str_replace($check, "", $image);
+        }
+
+        //var_dump($data);
+        //$json = json_decode($data, true);
+        ////extract($json);
+        //echo $json;
+        //$image = /*base64_decode(*/$json['image']/*)*/;
+        /*$title = $json['title'];
+        $description = $json['description'];
+        $username = $json['username'];
+        $password = $json['password'];*/
+
+        /*echo $data['image'];
+        echo $data['title'];
+        echo $data['description'];
+        echo $data['username'];
+        echo $data['password'];*/
 
 		include_once(__DIR__ . '/../models/Picture.php');
-		//preg_match('/(^\d{1,})(?=\D)/', $userid, $matches);
-		//print_r($matches);
 		postValues($userid, $image, $title,
 			$description, $username, $password);
 	}
@@ -54,7 +74,7 @@ class ApiController extends Controller {
 			$it = 1;
 			foreach ($images as $img) {
 				$image = new Image(
-					base64_encode($img[1]), // index of image
+                base64_encode($img[1]), // index of image
 					$img[3], // index of title
 					$img[4]  // index of description
 				);
@@ -72,6 +92,7 @@ class ApiController extends Controller {
 
 	//function to be used when the api for getting user accounts is in use.
 	public function users() {
+
 		/*echo 'user method entered. ';*/
 		
 		$method = $_SERVER['REQUEST_METHOD'];
@@ -101,17 +122,14 @@ class ApiController extends Controller {
 				http_response_code(404); //find correct response code
 				echo json_encode('no users found.');
 			}
-		} 
-
-		
-		
-		
+		}
 	}
 }
 class Image {
     public $image;
     public $title;
     public $description;
+    public $user_id;
 
     //constructor
     public function __construct($image, string $title, string $description){

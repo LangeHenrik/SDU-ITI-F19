@@ -11,31 +11,43 @@ class Picture extends Database {
 
 function postValues($userid, $image, $title,
 	$description, $username, $password){
-
     $database = new Database();
 	$conn = $database->getConn();
 
     $userBool = checkUser($username, $password, $conn);
     $matchBool = matchUsernameAndId($userid, $username, $conn);
 
+   /* echo 'username: ' . $userid;
+    echo 'image: ' . $image;
+    echo $title;
+    echo $description;
+    echo $username;
+    echo $password;*/
+
     if($userBool === $matchBool){
         uploadImage($image, $title, $description, $userid, $conn);
     } else{
-        return 'Something went wrong';
+        echo 'Something went wrong';
     }
 }
 
 function uploadImage($blob, $title, $desc, $user_id, $conn){
-
     $sql2 = 'INSERT INTO images(image, title, description, user_id) VALUES (?, ?, ?, ?);';
     $stmt2 = $conn->prepare($sql2);
     //$user_id_chosen = $user_id[0];
     if(!$stmt2 = $conn->prepare($sql2)){
         echo "SQL statement failed 2";
     } else {
-        $stmt2->execute([$blob, $title, $desc, $user_id]);
+        $blob_decode = base64_decode($blob);
+        $stmt2->execute([$blob_decode, $title, $desc, $user_id]);
         $last_id = $conn->lastInsertId();
+
+        $arr = array();
+        array_push($arr, $last_id);
+        //echo $arr;
         echo '{"image_id": "'. $last_id .'"}';
+        return '{"image_id": "'. $last_id .'"}';
+        //echo json_encode($last_id);
     }
 }
 

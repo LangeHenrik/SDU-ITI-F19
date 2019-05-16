@@ -1,6 +1,7 @@
 <?php
 
-include_once ('C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php');
+include_once(__DIR__ . '/../core/Database.php');
+//include_once ('C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php');
 $database = new Database();
 $conn = $database->getConn();
 
