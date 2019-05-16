@@ -6,7 +6,6 @@ function restricted ($controller, $method) {
 		'HomeController' => array('restricted'),
 		'ApiController' => array()
 	);
-	//$restricted_urls_2 = array('SignupController' => array('restricted'));
 
 	if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 		return false;
