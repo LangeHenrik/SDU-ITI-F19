@@ -80,7 +80,7 @@
     $desc_18 = "";
     $desc_19 = "";
 
-require_once'db_config.php';
+require_once 'db_config.php';
 
 // connect to the database
 $link = new PDO("mysql:host=$DB_servername;dbname=$DB_name", $DB_username, $DB_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

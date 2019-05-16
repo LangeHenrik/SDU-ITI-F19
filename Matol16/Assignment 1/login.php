@@ -1,12 +1,11 @@
 <?php
-    require_once'db_config.php';
+    require_once 'db_config.php';
     $error_username = "";
     $error_password = "";
     $username = "";
     $password = "";
 
     // connect to the database
-
 
 
     //checking if user exist and whether the password is correct
@@ -19,14 +18,17 @@
         $prepStm->execute();
         $prepStm->setFetchMode(PDO::FETCH_ASSOC);
         $result = $prepStm->fetchColumn(2);
+
         print_r($result);
 
 
     }catch(PDOException $e){
         echo "Error:" .$e->getMessage();
     }
+        echo (trim($_POST["pass_1"]));
+        echo hash($hashAlgo,(trim($_POST["pass_1"])));
 
-        if (($result) != md5(trim($_POST["pass_1"]))) {
+        if (($result) != hash($hashAlgo,(trim($_POST["pass_1"])))) {
             $error_password = "Either the username does not exist, or you used a wrong password!";
 
         }
@@ -35,7 +37,7 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['id'] = $IDresult;
             $_SESSION['username'] = $username;
-            header("location: home.php");
+            header("location: homec.php");
         }
     }
 
@@ -44,11 +46,11 @@
 <html>
 	<head>
 		<title>Login Page </title>
-		<link rel="stylesheet" type="text/css" href="register.css">
+		<link rel="stylesheet" type="text/css" href="../MVC/public/css/register.css">
 	</head>
 	<body>
 
-    </div>
+
 		<div id="frm">
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <div class="form-group <?php echo (!empty($error_username)) ? 'has-error' : ''; ?>" >

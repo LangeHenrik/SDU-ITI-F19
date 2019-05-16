@@ -1,5 +1,5 @@
 <?php
-require_once'db_config.php';
+require_once 'db_config.php';
 
 
 session_start();
@@ -21,7 +21,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="indexStyle.css">
+    <link rel="stylesheet" type="text/css" href="../MVC/public/css/indexStyle.css">
 
 </head>
 <body>
