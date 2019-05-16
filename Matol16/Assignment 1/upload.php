@@ -1,5 +1,5 @@
 <?php
-require_once'db_config.php';
+require_once 'db_config.php';
 $header = "";
 $error_header = "";
 $link = "";
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="register.css">
+    <link rel="stylesheet" type="text/css" href="../MVC/public/css/register.css">
     <script src="myscripts.js"></script>
 </head>
 <body>

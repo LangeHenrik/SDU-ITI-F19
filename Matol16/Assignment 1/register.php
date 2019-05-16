@@ -1,5 +1,5 @@
 <?php
-require_once'db_config.php';
+require_once 'db_config.php';
     // Defining and initializing variables as empty
     $username = "";
     $pass_1 = "";
@@ -21,10 +21,9 @@ require_once'db_config.php';
     $error_email = "";
     $error_ph_number = "";
     $amountOfErrors = 0;
-
 	// connect to the database
 
-	
+
 	$link = new PDO("mysql:host=$DB_servername;dbname=$DB_name", $DB_username, $DB_password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	
 	if($link == false){
@@ -121,10 +120,10 @@ require_once'db_config.php';
 
 
 
-
 		// saving user to database
 		if($amountOfErrors == 0){
-			$password = md5($pass_1); //encrypting password
+
+		    $password = hash($hashAlgo, $pass_1); // Hashing password
 			$name = $name_1 . " " . $name_2;
 			$stmt = $link->prepare("INSERT INTO accounts ( username, password, name, zip, city, email, ph_number) VALUES (:username, :password, :name, :zip, :city, :email, :ph_number)");
 			$stmt->bindParam(':username', $username);
@@ -143,7 +142,7 @@ require_once'db_config.php';
 <html>
 	<head>
 		<title>Login Page </title>
-		<link rel="stylesheet" type="text/css" href="register.css">
+		<link rel="stylesheet" type="text/css" href="../MVC/public/css/register.css">
 	</head>
 	<body>
 
