@@ -8,8 +8,12 @@ include '../app/views/partials/menu.php';
     <label for="imageTitle">Image title</label><br>
     <input type="text" name="imageTitle"><br>
     <label for="imageDescription">Image description</label><br>
-    <input type="text" name="imageDescription"><br>
+    <input type="text" name="imageDescription">
+    <br>
     <label for="image">Image file</label><br>
-    <input type="file" name="image"><br>
+    <br>
+    <input type="file" name="image">
+    <br>
+    <br>
     <input type="submit" value="Upload" name="upload">
 </form>

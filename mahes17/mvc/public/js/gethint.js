@@ -1,5 +1,4 @@
 function getHint(str) {
-    console.log("Test");
     if (str.length === 0) {
         document.getElementById("hint").innerHTML = "";
         return;
