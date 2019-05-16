@@ -27,9 +27,4 @@ function read()
 
     
 }
-
-//notes
-//json_encode($object)
-//foreach($object as $key => $value) {...}
-//print_r($object)
 ?>

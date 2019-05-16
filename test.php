@@ -124,6 +124,7 @@
         $result = file_get_contents($url, false, $context);
         echo $result;
         $picturePostResult = json_decode($result);
+        print_r($picturePostResult);
         echo $picturePostResult->image_id;
         //TESTING GET USER IMAGES API
         $picturesJson = file_get_contents($url);

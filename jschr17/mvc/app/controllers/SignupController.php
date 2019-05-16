@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__ . '/../models/User.php');
-//require 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19_2\jschr17\mvc\app\models\User.php';
 
 class SignupController extends Controller {
 

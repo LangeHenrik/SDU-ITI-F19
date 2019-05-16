@@ -1,66 +1,34 @@
 <?php
 class User extends Database {
 
-
-
-/*	protected $username = '';
-    protected $password = '';
-    protected $confirm_password = '';
-    protected $firstname = '';
-    protected $lastname = '';
-    protected $zipcode = '';
-    protected $city = '';
-    protected $email = '';
-    protected $phonenumber = '';
-    protected $username_err = '';
-    protected $password_err = '';
-    protected $confirm_password_err = '';
-    protected $firstname_err = '';
-    protected $lastname_err = '';
-    protected $zipcode_err = '';
-    protected $city_err = '';
-    protected $email_err = '';
-    protected $phonenumber_err = ''; */
-
-    public function __construct(){
-        //parent::__construct();
-    }
-
     function setUsername($username) {
         this::$username = $username;
     }
 
-
-
-
     public function checkInput(){
+        $conn = parent::getConn();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (empty(trim($_POST["username"]))) {
                 $username_err = "Please enter a username.";
             } else {
-                $sql = "SELECT id FROM users WHERE username = ?";
+                $sql = "SELECT id FROM users WHERE username = :param_username";
+                $stmt = $conn->prepare($sql);
+                $param_username = trim($_POST["username"]);
+                $stmt->bindParam(':param_username', $param_username);
 
-                if ($stmt = mysqli_prepare(parent::getConn(), $sql)) {
-                    mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-                    $param_username = trim($_POST["username"]);
-
-                    if (mysqli_stmt_execute($stmt)) {
-
-                        mysqli_stmt_store_result($stmt);
-
-                        if (mysqli_stmt_num_rows($stmt) == 1) {
+                if ($stmt->execute()) {
+                    echo 'test';
+                        $stmt->fetchAll();
+                        print_r($stmt);
+                        $nr_rows = $stmt->rowCount();
+                        $username_err = $nr_rows;
+                        if ($stmt->rowCount() === 1) {
                             $username_err = "This username is already taken.";
                         } else {
                             $username = trim($_POST["username"]);
                         }
-                    } else {
-                        echo "Oops! Something went wrong. Please try again later.";
-                    }
                 }
-
-                mysqli_stmt_close($stmt);
             }
 
             if (empty(trim($_POST["password"]))) {
@@ -132,8 +100,11 @@ class User extends Database {
 
                 $sql = "INSERT INTO users (username, password, firstname, lastname, zip, city, email, phonenumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-                if ($stmt = mysqli_prepare(parent::getConn(), $sql)) {
-                    mysqli_stmt_bind_param($stmt, "ssssssss", $param_username, $param_password, $param_firstname, $param_lastname, $param_zipcode, $param_city, $param_email, $param_phonenumber);
+                $conn = parent::getConn();
+
+                if ($stmt = $conn->prepare($sql)) {
+
+                    //mysqli_stmt_bind_param($stmt, "ssssssss", $param_username, $param_password, $param_firstname, $param_lastname, $param_zipcode, $param_city, $param_email, $param_phonenumber);
 
                     $param_username = $username;
                     $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
@@ -144,23 +115,16 @@ class User extends Database {
                     $param_email = $email;
                     $param_phonenumber = $phonenumber;
 
-                    if (mysqli_stmt_execute($stmt)) {
+                    $stmt->bindParam($param_username, $param_password, $param_firstname, $param_lastname, $param_zipcode, $param_city, $param_email, $param_phonenumber);
+
+                    if ($stmt->execute()) {
                         // Redirect to login page
                         header("location: index");
                     } else {
                         echo "Something went wrong. Please try again later.";
                     }
                 }
-                mysqli_stmt_close($stmt);
             }
             parent::__destruct();
     }
-
-
-/*
-$username = $password = $confirm_password = $firstname = $lastname = $zipcode = $city = $email = $phonenumber = "";
-$username_err = $password_err = $confirm_password_err = $firstname_err = $lastname_err = $zipcode_err = $city_err = $email_err = $phonenumber_err = "";
-$data = self::__construct();
-$conn = Database();
-*/
 }
