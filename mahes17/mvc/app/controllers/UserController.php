@@ -39,7 +39,7 @@ class UserController extends Controller
 		$passwordRegex = "/^(?=.+\d).{8,}$/i";
 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			//Checks if the entered username is empty / valid
+			//Checks username
 			if (empty($_POST["username"])) {
 				$error .= "Username required\n";
 			} else if (!preg_match($usernameRegex, $_POST["username"])) {

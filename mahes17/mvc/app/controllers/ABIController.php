@@ -1,9 +1,10 @@
 <?php
 
-class APIController extends Controller
+class ABIController extends Controller
 {
-    public function index()
-    { }
+    public function index(){
+        echo 'API index';
+    }
 
     public function users()
     {

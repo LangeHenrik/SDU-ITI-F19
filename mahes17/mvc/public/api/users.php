@@ -2,9 +2,17 @@
 
 
 require_once("../../app/Core/database.php");
+require_once("../../app/Core\Controller.php");
 
 class getUsersAPI extends Database
 {
+  public function users(){
+    include_once("../../app/models/user.php");
+    $users = $this->model('User')->getUsersAPI();
+    header("Content-Type:application/json");
+    $user = $users[0]['username'];
+    echo json_encode($users);
+  }
 
     public function getUsers()
     {

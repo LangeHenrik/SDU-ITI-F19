@@ -117,7 +117,7 @@ class User extends Database
 
 	public function getUsersAPI()
 	{
-		$sql = "SELECT user_id, username FROM users ORDER BY user_id";
+		$sql = "SELECT * FROM users ORDER BY user_id";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
