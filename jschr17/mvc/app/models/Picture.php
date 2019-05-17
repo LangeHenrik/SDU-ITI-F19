@@ -17,14 +17,7 @@ function postValues($userid, $image, $title,
     $userBool = checkUser($username, $password, $conn);
     $matchBool = matchUsernameAndId($userid, $username, $conn);
 
-   /* echo 'username: ' . $userid;
-    echo 'image: ' . $image;
-    echo $title;
-    echo $description;
-    echo $username;
-    echo $password;*/
-
-    if($userBool === $matchBool){
+    if($userBool and $matchBool){
         uploadImage($image, $title, $description, $userid, $conn);
     } else{
         echo 'Something went wrong';
@@ -32,41 +25,39 @@ function postValues($userid, $image, $title,
 }
 
 function uploadImage($blob, $title, $desc, $user_id, $conn){
-    $sql2 = 'INSERT INTO images(image, title, description, user_id) VALUES (?, ?, ?, ?);';
+    $sql2 = 'INSERT INTO images(image, title, description, user_id) VALUES (:image, :title, :description, :user_id);';
     $stmt2 = $conn->prepare($sql2);
     //$user_id_chosen = $user_id[0];
     if(!$stmt2 = $conn->prepare($sql2)){
         echo "SQL statement failed 2";
     } else {
         $blob_decode = base64_decode($blob);
-        $stmt2->execute([$blob_decode, $title, $desc, $user_id]);
+        $stmt2->bindParam(':image', $blob);
+        $stmt2->bindParam(':title', $title);
+        $stmt2->bindParam(':description', $desc);
+        $stmt2->bindParam(':user_id', $user_id);
+
+        $stmt2->execute();
         $last_id = $conn->lastInsertId();
 
-        $arr = array();
-        array_push($arr, $last_id);
-        //echo $arr;
-        echo '{"image_id": "'. $last_id .'"}';
-        return '{"image_id": "'. $last_id .'"}';
-        //echo json_encode($last_id);
+        $return['image_id'] = $last_id;
+        echo json_encode($return);
     }
 }
 
 function checkUser($username, $password, $conn){
-
     $sql_username = "SELECT username FROM users WHERE username = :param_username";
     $stmt1 = $conn->prepare($sql_username);
     if ($conn->prepare($sql_username)) {
-
+        
         $param_username = $username;
         $stmt1->bindParam(':param_username', $param_username);
 
         if ($stmt1->execute()) {
-
             // Store result
             $username_values = $stmt1->fetchAll();
             $got_username = '';
             foreach ($username_values as $_username) {
-
                 $got_username = $_username['username'];
             }
             if ($param_username === $got_username) {
@@ -110,7 +101,6 @@ function matchUsernameAndId($user_id, $username, $conn){
 }
 
 function fetchImages($userid){
-	$img = array();		//create return array
 	$images = array();	//create image array
 	try {
         //database connection
@@ -125,9 +115,8 @@ function fetchImages($userid){
 
         //get list of user images
 		$images = $query->fetchAll();
-        array_push($img, $images, $images_size);
     } catch(Exception $e){
         echo json_encode('Exception in database connection');
-	}
-	return $img;
+    }
+	return $images;
 }

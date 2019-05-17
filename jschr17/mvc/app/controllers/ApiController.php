@@ -17,46 +17,16 @@ class ApiController extends Controller {
 		} elseif ($method == 'POST'){
 			$this->postUserPicture($userid);
 		}
-		/*echo "someone is looking for " .$usr. " " . $id;
-		$pictures = $this->Model('Picture')->all();
-		$jsonPictures = json_encode($pictures);
-		echo $jsonPictures;*/
 	}
 	
 	private function postUserPicture($userid){
-	   // echo 'userid: '.$userid;
-		/*echo ' postuserpicture method entered. ';*/
-		//$data = file_get_contents("php://input");
-        parse_str(file_get_contents("php://input"), $data);
-        print_r($data);
+		$json = json_decode($_POST['json']);
 
-		$check = 'data:image/jpeg;base64,';
-
-        $image = $data['image'];
-        $title = $data['title'];
-        $description = $data["description"];
-        $username = $data["username"];
-        $password = $data["password"];
-
-        if (strpos($image, $check) !== false){
-            $image = str_replace($check, "", $image);
-        }
-
-        //var_dump($data);
-        //$json = json_decode($data, true);
-        ////extract($json);
-        //echo $json;
-        //$image = /*base64_decode(*/$json['image']/*)*/;
-        /*$title = $json['title'];
-        $description = $json['description'];
-        $username = $json['username'];
-        $password = $json['password'];*/
-
-        /*echo $data['image'];
-        echo $data['title'];
-        echo $data['description'];
-        echo $data['username'];
-        echo $data['password'];*/
+		$image = filter_var($json->image, FILTER_SANITIZE_STRING); //filters a variable with a filter, the filter removes tags and removes/encodes special characters in a string
+		$title = filter_var($json->title, FILTER_SANITIZE_STRING);
+		$description = filter_var($json->description, FILTER_SANITIZE_STRING);
+		$username = filter_var($json->username, FILTER_SANITIZE_STRING);
+		$password = filter_var($json->password, FILTER_SANITIZE_STRING);
 
 		include_once(__DIR__ . '/../models/Picture.php');
 		postValues($userid, $image, $title,
@@ -65,23 +35,19 @@ class ApiController extends Controller {
 
 	private function getUserPictures($userid){
 		include_once(__DIR__ . '/../models/Picture.php');
-		$fetched = fetchImages($userid); //array of image array and the amount of images
-		$images_size = $fetched[1];
-		$images = $fetched[0];
-		//check amount of images found
-		if (sizeof($images) > 0){
+		$fetched = fetchImages($userid); //array of image tuples
+		if (sizeof($fetched) > 0){
 			$image_list = array();
-			$it = 1;
-			foreach ($images as $img) {
+			foreach ($fetched as $img) {
 				$image = new Image(
-                base64_encode($img[1]), // index of image
-					$img[3], // index of title
-					$img[4]  // index of description
+                	$img[image], // index 1 of image
+					$img[title], // index 3 of title
+					$img[description]  // index 4 of description
 				);
 				array_push($image_list, $image);
 			}
 			//json encode array of images and return it
-			$json = json_encode($image_list /*JSON_PRETTY_PRINT*/);
+			$json = json_encode($image_list);
 			http_response_code(200);
 			echo $json;
 		} else {
@@ -91,10 +57,7 @@ class ApiController extends Controller {
 	}
 
 	//function to be used when the api for getting user accounts is in use.
-	public function users() {
-
-		/*echo 'user method entered. ';*/
-		
+	public function users() {		
 		$method = $_SERVER['REQUEST_METHOD'];
 		$request = explode("/", substr(@$_SERVER['PATH_INFO'], 1));
 		if($method == 'GET'){
@@ -103,11 +66,9 @@ class ApiController extends Controller {
 			$userList_size = $dbarray[1];
 			$userList = $dbarray[0];
 			$users = array();
-			//echo json_encode('size of userlist array: ' . $userList_size /*$userList->sizeof*/);
+
 			//check amount of users found
 			if ($userList_size > 0) {
-				//print userlist to see what happens
-				//echo json_encode(print_r($userList)); //prints all user data including passwords
 				foreach ($userList as $usr) {
 					//for each tuple make new user object with the information
 					$user = new Users($usr[0], $usr[1]);
@@ -128,14 +89,13 @@ class ApiController extends Controller {
 class Image {
     public $image;
     public $title;
-    public $description;
-    public $user_id;
+	public $description;
 
     //constructor
     public function __construct($image, string $title, string $description){
         $this->image = $image;
         $this->title = $title;
-        $this->description = $description;
+		$this->description = $description;
     }
 }
 
