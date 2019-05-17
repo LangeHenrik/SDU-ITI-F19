@@ -1,12 +1,11 @@
 <?php
-require_once 'C:\Users\goope\Documents\GitHub\SDU-ITI-F19\jschr17\mvc\app\core\Database.php';
+include_once(__DIR__ . '/../../core/Database.php');
 
 $database = new Database();
 $conn = $database->getConn();
 
 $username = $password = $confirm_password = $firstname = $lastname = $zipcode = $city = $email = $phonenumber = "";
 $username_err = $password_err = $confirm_password_err = $firstname_err = $lastname_err = $zipcode_err = $city_err = $email_err = $phonenumber_err = "";
-//$param_username = '';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -19,15 +18,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $stmt1->bindParam(':param_username', $param_username, PDO::PARAM_STR);
 
-            //mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            //$param_username = $username;
-            //$param_username = trim($_POST["username"]);
             if($stmt1->execute()){
 
                 $row = $stmt1->fetch();
-
-                //mysqli_stmt_store_result($stmt);
                 
                 if($row == 1){
                     $username_err = "This username is already taken.";
@@ -38,8 +31,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
-
-        //mysqli_stmt_close($stmt);
     }
 
     if(empty(trim($_POST["password"]))){
@@ -115,9 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "INSERT INTO users (username, password, firstname, lastname, zipcode, city, email, phonenumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
          $stmt2 = $conn->prepare($sql);
         if($conn->prepare($sql)){
-            /*$stmt2->bindParam();
-            mysqli_stmt_bind_param($stmt, "ssssssss", $param_username, $param_password, $param_firstname, $param_lastname, $param_zipcode, $param_city, $param_email, $param_phonenumber);
-*/
+
             $param_username = $username;
 			$param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
 			$param_firstname = $firstname;
@@ -134,9 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "Something went wrong. Please try again later.";
             }
         }
-        //mysqli_stmt_close($stmt);
     }
-    //mysqli_close($link4);
     $database->__destruct();
 }
 ?>

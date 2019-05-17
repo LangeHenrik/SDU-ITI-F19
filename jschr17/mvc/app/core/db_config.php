@@ -1,12 +1,20 @@
 <?php
 class DB_Config {
-	protected $servername = 'localhost';
-	protected $username = 'root';
-	protected $password = 'master070';
-	protected $dbname = 'MVC_Data';
+    //LOCAL DATABASE (HeidiSQL)
+	protected $servername1 = 'localhost';
+	protected $username1 = 'root';
+	protected $password1 = 'master070';
+	protected $dbname1 = 'MVC_Data';
+
+
+	//ONLINE DATABSE (remotemysql)
+    protected $servername2 = 'remotemysql.com';
+    protected $username2 = 'DrDtoLDkRk';
+    protected $password2 = '7ZPwZjfx9K';
+    protected $dbname2 = 'DrDtoLDkRk';
 
     public function getDBName(){
-        return $this->dbname;
+        return $this->dbname2;
     }
 
     /**
@@ -14,7 +22,7 @@ class DB_Config {
      */
     public function getServername()
     {
-        return $this->servername;
+        return $this->servername2;
     }
 
     /**
@@ -22,7 +30,7 @@ class DB_Config {
      */
     public function getUsername()
     {
-        return $this->username;
+        return $this->username2;
     }
 
     /**
@@ -30,7 +38,7 @@ class DB_Config {
      */
     public function getPassword()
     {
-        return $this->password;
+        return $this->password2;
     }
 
 

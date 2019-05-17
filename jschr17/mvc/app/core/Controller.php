@@ -10,9 +10,9 @@ class Controller {
     }
 	
 	public function view($view, $viewbag = []) {
-	    if($view == 'gallery_upload' || $view == 'load-pictures'){
+	    if($view == 'gallery_upload' || $view == 'load-pictures' || $view == 'logout'){
 	        $this->controllers($view);
-        } else {
+		} else {
             require_once '../app/views/home/' . $view . '.php';
         }
     }
