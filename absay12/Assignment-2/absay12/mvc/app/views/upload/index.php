@@ -1,7 +1,8 @@
+<?php include '../app/views/partials/header.php'; ?>
+<?php include '../app/views/partials/nav.php'; ?>
 <div class="after_nav">
     <h1>Upload a image!</h1>
     </div>
-    
 <div class="row col100">
   <div>
     <form action="" method="post" enctype="multipart/form-data">
@@ -14,8 +15,7 @@
     <textarea name="pictureDesc" rows="5" cols="50"></textarea>
     <input class="form-submit-button" type="submit" value="Upload Image" name="submit">
 </form>
-  </div>
 </div>
-
-</body> 
+</div>
+</body>
 </html>

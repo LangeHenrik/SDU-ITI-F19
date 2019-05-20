@@ -131,10 +131,6 @@ textarea:focus {
 	opacity: 0.8;
 }
 
-.container {
- width: 100%;
- margin-left: 150px;
-}
 .container img {
     float: left;
     width: 250px;
@@ -186,4 +182,21 @@ span{
 }
 #searchResults{
   padding: 30px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }

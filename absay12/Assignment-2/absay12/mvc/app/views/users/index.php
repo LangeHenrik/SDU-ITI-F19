@@ -1,4 +1,5 @@
-<?php include '../app/views/partials/menu.php'; ?>
+<?php include '../app/views/partials/header.php'; ?>
+<?php include '../app/views/partials/nav.php'; ?>
 
 <?php 
 echo '<table id = "customers">
