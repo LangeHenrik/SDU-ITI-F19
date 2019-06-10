@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MySQL & PHP</title>
+    <meta charset="utf-8">
+    <style>
+      body { font-family: 'Noto Serif'; }
+      h1, h2, h3 {
+        font-family: 'Linux Libertine';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Hack'; font-size: 0.8em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# MySQL & PHP
+
+SDU, Internet Technology, Summer 2019
+
+*Jack Henschel*
+
+---
+
+## Databases / SQL
+
+* Database is an organized collection of data
+* Database Management System (DBMS) is the software that interacts with the database, applications and end users
+* DBMS manages the data and the organization of the data in Schemas
+* Sorted by indexes
+* Tables are ordered by column names and row ids
+* Each Schema consists of one or multiple tables
+* Structured Query Language (SQL) is the language used to communicate with a database
+* Most RDBMS use SQL, but the syntax varies
+
+Examples:
+```mysql
+> SHOW DATABASES;
+information_schema
+mysql
+app
+> USE DATABASE app;
+> SHOW TABLES;
+users
+images
+> SELECT name, birthdate FROM users WHERE id = 2;
+Anton, 1999-09-09
+```
+
+---
+
+### Data Types
+MySQL / MariaDB support different datatypes (cell types) for storing different kinds of information:
+
+* Boolean: `TinyInt`, `Boolean`
+* Integer: `SmallInt`, `MediumInt`, `Int` (`Integer`), `BigInt`
+* Decimal: `Dec`, `Float`, `Double`
+* Characters: `Char`, `VarChar`, ...
+* Binary Data: `TinyBlob`, `MediumBlob`, `Blob`, `LongBlob`
+* Text: `Text`, `LongText`, ...
+* Time and Date: `TimeStamp`, `Date`, `DateTime`, `Time`, `Year`
+
+Choose the appropriate data type for the use-case!
+
+???
+
+e.g. instead of using a string to store a date, choose timestamp
+
+---
+
+### SQL Commands
+
+* `CREATE`: creates a new database, table, view, ...
+* `DROP`: deletes a database, table, view, ...
+* `ALTER`: used to modify the structure of an existing table (`ADD`, `RENAME`, `DROP` ...)
+* `INSERT`: add a new row to a table
+* `UPDATE`: modify an existing entry (row) in the table
+* `SELECT`: query information from a table
+* `JOIN`: query information present in multiple tables
+
+---
+
+### Migrations
+
+* Migrations are a set of files that contain the SQL that makes up the database.
+* They are ordered (e.g. version or date) and have to be applied in this order
+* They initialize or upgrade the database to a new version
+* The database has a migrations table that remembers which migrations are already on
+* They don't contain data, just structure
+
+---
+
+### SQL Injections
+
+User Input is dangerous!
+When concatenating SQL statements and user-input together, the user can break out of the SQL clause!
+
+```php
+$sql = 'SELECT * FROM users WHERE username = ' . $_POST["username"];
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+```
+
+Malicious username: `abc'); DROP TABLE users;--`
+
+Database input needs to be sanitized or use of "Prepared Statements" (separates SQL statements from data):
+
+```php
+$sql = 'SELECT * FROM users WHERE username = :username';
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':username', $_POST["username"]);
+$stmt->execute();
+```
+
+---
+
+    </textarea>
+    <script src="./remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+          ratio: '16:9',
+          highlightStyle: 'monokai',
+      });
+    </script>
+  </body>
+</html>

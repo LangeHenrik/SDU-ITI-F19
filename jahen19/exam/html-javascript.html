@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML & JavaScript</title>
+    <meta charset="utf-8">
+    <style>
+      body { font-family: 'Noto Serif'; }
+      h1, h2, h3 {
+        font-family: 'Linux Libertine';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Hack'; font-size: 0.8em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# HTML & JavaScript
+
+SDU, Internet Technology, Summer 2019
+
+*Jack Henschel*
+
+---
+
+## HTML
+
+Hyper Text Markup Language
+
+HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
+
+Consists of elements and attributes:
+
+```html
+<element attribute="value">
+  Content
+</element>
+```
+
+The DOM (Document Object Model) represents the logical tree by which HTML elements are connected:
+```
+            <html>
+            /   \
+      <head>    <body>
+     /         /  |  \
+<title>  <main> <nav> <footer>
+            |
+ ...       <p>     ...
+```
+
+---
+
+### HTML Features
+
+Initial main feature of HTML: linking to other resources on the web (Hypertext!)
+
+```html
+<a href="http://info.cern.ch" title="home of the first website">
+    Explore the first website on the world web
+</a>
+```
+
+While HTML itself is text-only, it can embed other multimedia sources:
+
+```html
+<!-- Images -->
+<img src="image.jpg" alt="description" title="hover description"/>
+<!-- Videos -->
+<video width="320" height="240" autoplay>
+  <source src="movie.mp4" type="video/mp4">
+</video>
+<!-- Other Websites! -->
+<iframe src="http://example.com"></iframe>
+```
+
+HTML elements can further by structured by adding IDs (unique identifier for page element) and Classes:
+
+```html
+<div id="username" class="bold-green">Foobar</div>
+```
+
+These can later be used to access and modify the element(s).
+
+---
+
+### Forms and Inputs
+
+Used to collect user input in a structured manner
+
+Consist of one or multiple Input elements which can have different types:
+* Text
+* Password
+* Submit
+* Checkbox
+* Dropdown (Select)
+* ... many more
+
+Inputs have different attributes to control their behavior: `required`, `placeholder`, `range` ...
+```html
+<form action="user.php" method="POST">
+    <input type="text" placeholder="Username" required/>
+    <input type="password" required/>
+    <input type="file" name="file"/>
+    <input type="submit">
+</form>
+```
+
+---
+
+## JavaScript
+
+High-level, interpreted programming language that conforms to the ECMAScript specification.
+
+Dynamic typing, prototype-based object-orientation and first-class functions.
+
+Curly-bracket language -> C-style comments, function declarations, For and while loops, if-else Statements, ...
+
+Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web.
+
+Enables interactive web pages by allowing to manipulate the DOM after HTML and CSS are loaded and displayed: responsive content, dynamic loading, manipulating elements, checking form content before submission, ...
+
+---
+
+### Triggers
+
+Javascript functions are called after the DOM has loaded, or upon certain events (triggers): `onClick`, `onMouseDown`, `onLoad` ...
+```html
+<button id="button" onclick="call(event, this)"></button>
+
+<script>
+
+document.getElementById("button").addEventListener("click", call(event, this));
+
+function call(ev, obj) {
+    console.log(ev, obj);
+}
+</script>
+```
+
+---
+
+### DOM Manipulation
+
+Javascript can query specific elements by ID, Class and/or HTML tag:
+```js
+document.getElementById('idA'); // exactly one
+document.getElementsByClassName('classA'); // more than one
+document.getElementsByTagName('div'); // more than one
+document.querySelector('.classA.classB'); // combination of selectors, exactly one
+document.querySelectorAll('.classA.classB'); // combination of selectors, multiple
+```
+
+Afterwards, the attributes and content of these elements can be changed:
+```js
+var user = document.getElementById("user");
+
+user.innerHTML = "Foo Bar";
+user.style.color = "red";
+```
+
+Also the structure of the DOM tree can be manipulated:
+```js
+document.createElement("div")
+element.appendChild(otherelement)
+element.cloneNode(true)
+element.insertBefore(newElement, existingElement)
+```
+
+---
+
+### Variables
+No explicit types (types are inferred on declaration)
+-> assigning a new value of a different type will simply change the type
+
+Datatypes: Strings, Integers, Floating point numbers, Arrays, Functions, Objects
+
+```js
+var hello = "world"; // can be changed at any time (including type)
+const foo = "bar"; // can not be altered
+let i = 0; // scope is limited to the block, statement or expression
+```
+
+---
+
+### Example: form validation
+
+```html
+<form onsubmit="return checkForm()" method="post" action="./password.php" >
+    <input type="password" name="password" id="password"/>
+    <br>
+    <input type="submit" name="submit" id="submit"/>
+</form>
+<script>
+function checkForm() {
+    var password = document.getElementById("password").value;
+    var regex = new RegExp("/([a-zA-Z0-9]{8,})/g"); // letters a-z, A-Z and 0-9, at least 8 characters
+    if(regex.test(password)) {
+        alert("Password does not conform to pattern"); // bad
+        return false; // preventing the browser from posting the form
+    } else {
+        return true;
+    }
+}
+</script>
+```
+
+---
+
+    </textarea>
+    <script src="./remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+          ratio: '16:9',
+          highlightStyle: 'monokai',
+      });
+    </script>
+  </body>
+</html>

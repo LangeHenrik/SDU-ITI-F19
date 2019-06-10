@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MVC</title>
+    <meta charset="utf-8">
+    <style>
+      body { font-family: 'Noto Serif'; }
+      h1, h2, h3 {
+        font-family: 'Linux Libertine';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Hack'; font-size: 0.8em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# MVC
+
+SDU, Internet Technology, Summer 2019
+
+*Jack Henschel*
+
+---
+
+## MVC
+
+.center[![MVC Image](./mvc.png)]
+
+???
+
+Split functionality into a Model, a View and a Controller
+
+"View" generates the HTML for the client (no HTML anywhere else!)
+
+Views are made up of many partials views (templates) such as Menus, Navbars, Footers, ...
+
+Model contains (or has access to) the data in the database (only part that communicates with the database)
+
+Model manages the hierarchical relationships between the objects
+
+Controller is the heart of the application
+
+Receives the request from the client, initiates the necessary queries to the Model, forwards the data to the view and sends back the HTML to the client
+
+Typically the data is passed from the Controller to the View via a "Viewbag" (associative array or object)
+
+The Service contains code that does not belong into any other category
+
+Such as communicating or exposing an API, generic algorithms, ...
+
+---
+
+### Router
+
+Router handles the matching between the incoming request and which controller to call (when there are multiple controllers)
+e.g. `example.com/home` -> `homeController`
+
+Three methods for routing:
+* Annotate controller methods with routing rules: `@Url("home/login")`
+* Manually list all routes in the router: `array( "home/login" => $homeController->login() )`
+* Automate the router using reflection: call a class / method based on its name (derived from URL)
+
+Problems: Users can call any function in any class / Users can try to reach a class or function that does not exist
+
+-> sanitize and restrict user input, set defaults
+
+```php
+$url = explode('/', $_SERVER["REQUEST_URI"]);
+if( class_exists($url[0]) && method_exists($url[1])) {
+  call_user_func_array( [new $url[0], $url[1]] );
+} Else {
+  logout();
+}
+```
+
+---
+
+## API: Application Programming Interface
+a set of functions and procedures allowing the creation of applications that access the features or data of an operating system, application, or other service
+
+-> A way to expose data and functionality in a structured format from one application to others
+
+### REST: Representational State Transfer
+
+A uniform way of cross application communication
+
+Usually uses JSON, but can use XML
+
+URLs define resources
+
+HTTP verbs define actions:
+* GET gets data (idempotent)
+* POST uploads new data
+* PUT changes existing data (idempotent)
+* DELETE removes existing data (idempotent)
+
+
+---
+
+    </textarea>
+    <script src="./remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+          ratio: '16:9',
+          highlightStyle: 'monokai',
+      });
+    </script>
+  </body>
+</html>

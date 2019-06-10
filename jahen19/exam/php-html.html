@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PHP & HTML</title>
+    <meta charset="utf-8">
+    <style>
+      body { font-family: 'Noto Serif'; }
+      h1, h2, h3 {
+        font-family: 'Linux Libertine';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Hack'; font-size: 0.8em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# PHP & HTML
+
+SDU, Internet Technology, Summer 2019
+
+*Jack Henschel*
+
+---
+
+## HTML
+
+Hyper Text Markup Language
+
+HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
+
+Consists of elements and attributes:
+
+```html
+<element attribute="value">
+  Content
+</element>
+```
+
+The DOM (Document Object Model) represents the logical tree by which HTML elements are connected:
+```
+            <html>
+            /   \
+      <head>    <body>
+     /         /  |  \
+<title>  <main> <nav> <footer>
+            |
+ ...       <p>     ...
+```
+
+???
+Similar to XML
+
+`<html>` is the root of the tree, all other elements are stored as childs
+
+---
+
+### Forms and Inputs
+
+Used to collect user input in a structured manner
+
+Consist of one or multiple Input elements which can have different types:
+* Text
+* Password
+* Submit
+* Checkbox
+* Dropdown (Select)
+* ... many more
+
+Inputs have different attributes to control their behavior: `required`, `placeholder`, `range` ...
+```html
+<form action="user.php" method="POST">
+    <input type="text" placeholder="Username" required/>
+    <input type="password" required/>
+    <input type="file" name="file"/>
+    <input type="submit"/>
+</form>
+```
+
+???
+This will later be important when we talk about PHP
+
+When sending a form with the submit button, the input fields and their values will be transferred to the server
+
+PHP will then pick up these values
+
+---
+
+## PHP
+PHP: Hypertext Preprocessor is a general purpose programming language mainly focused on web development.
+
+It runs on the server (backend) and creates the content (HTML) that gets sent to the client.
+
+-> Client never sees PHP source code!
+
+```php
+<h1><?php echo 'Hello World'; ?></h1>
+```
+
+Client HTML:
+```html
+<h1>Hello World</h1>
+```
+
+---
+
+### Variables
+Like Javascript, PHP is dynamically typed. Unlike JS, variables are denoted with a dollar sign `$`.
+
+(Primitive) Datatypes: Integer, Double, String and Boolean
+
+For double quoted strings: variable interpolation
+```php
+$user = '"Name"';
+echo "Hello $user";
+```
+
+Generally: PHP is pass-by-value
+
+For primitives, copies are made
+
+For objects, the value is a reference
+
+---
+
+
+### PHP Arrays
+Arrays in PHP can either be accessed via key-value pairs or via index:
+
+```php
+$array = array(
+    "key" => "value",
+    "foo" => 3,
+    "x"
+    );
+
+echo $array['key']; // value
+echo $array[2]; // x
+
+$array[] = "y"; // add new item
+$array["bar"] = 4; // add new key-value pair
+unset($array["bar"]); // remove key
+isset($array["bar"]); // check if element is present
+print_r($array); // print out the entire array
+```
+
+---
+
+### Functions
+
+Does not supports function overloading (function with same name but different signatures)
+```php
+function foobar($str) {
+    echo 'Foo: ' . $str;
+}
+
+function foobar($str1, $str2) { // not allowed
+    echo 'Foo: ' . $str1 . ' Bar: ' . $str2;
+}
+```
+
+Supports default arguments for functions (some arguments may be left unspecified)
+```php
+function foobar($str1, $str2 = 'World') {
+    echo 'Foo: ' . $str1 . ' Bar: ' . $str2;
+}
+foobar('Hello') // ok
+```
+
+Supports function overriding (function with same name and same signature replaces the implementation in parent class)
+
+---
+
+### Classes and Objects
+
+Like most modern languages: Interfaces, Classes and Objects
+
+```php
+interface Person {
+    public function getName();
+}
+
+class Student {
+    private $name;
+    function __construct($name) {
+		$this->name = $name;
+	}
+	function __destruct() {
+		// destructor
+	}
+    function __tostring() {
+        return $this->name;
+    }
+}
+
+$jack = new Student('jack');
+echo $jack;
+```
+
+PHP does not have garbage collection
+For each object, PHP counts the references
+When a reference is removed, and there are no more references to the object, the destructor is called
+
+Magic methods start with `__`, special functionality is associated with them
+
+???
+
+`__constructor` automatically runs when a new instance of the object is created
+
+`__destructor` is called when the reference counter hits zero (before the object is removed)
+
+`__tostring` is one of the "magic methods" - it gets called whenever a string representation of an object is required
+
+---
+
+### Superglobals
+Predefined Global Variables: "superglobals" (for communicating with the server application, always accessible):
+
+* `$GLOBALS`: lists all global variables
+* `$_SERVER`: holds information about headers, paths, and script locations (`SERVER_NAME`, `HTTP_HOST`, ...)
+* `$_ENV`: associative array of variables passed to the current script via the environment method
+* `$_REQUEST`: associative array that by default contains the contents of `$_GET`, `$_POST` and `$_COOKIE`
+* `$_POST`: collects form data after submitting an HTML form with method="post"
+* `$_GET`: collects form data after submitting an HTML form with method="get".
+* `$_FILES`: associative array of items uploaded to the current script via the HTTP POST method
+* `$_COOKIE`: associative array of variables passed to the current script via HTTP Cookies
+* `$_SESSION`: associative array containing session variables available to the current script
+
+---
+
+### PHP Sessions
+The superglobal `$_SESSION` contains information about a specific client.
+PHP automatically sets a cookie to uniquely identify a client and select the right session.
+(The user does however not have access to the data attached to a session)
+
+```php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ( isset($_SESSION["logged_in"] && $_SESSION["logged_in"] ) {
+    echo 'Hello ' . $_SESSION["username"];
+}
+```
+
+???
+
+PHP has a really nice feature that makes it easy to identify users during a browsing session
+
+this makes is super simple to implement a login state, for example
+
+---
+
+### User Input
+User Input is always dangerous! Need to sanitize it: `filter_input(INPUT_GET, "email", FILTER_VALIDATE_EMAIL)`
+
+### Combining different PHP scripts
+Promotes code-reuse and helps keep the source code tidy
+
+```php
+include 'myFile.php'; // creates warning if it fails
+include_once 'myFile.php'; // only includes if not included before
+require 'myFile.php'; // throws fatal error if it fails
+require_once 'myFile.php'; // only includes if not included before
+```
+
+
+---
+
+    </textarea>
+    <script src="./remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+          ratio: '16:9',
+          highlightStyle: 'monokai',
+      });
+    </script>
+  </body>
+</html>

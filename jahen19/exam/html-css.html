@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML & CSS</title>
+    <meta charset="utf-8">
+    <style>
+      body { font-family: 'Noto Serif'; }
+      h1, h2, h3 {
+        font-family: 'Linux Libertine';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Hack'; font-size: 0.8em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# HTML & CSS
+
+SDU, Internet Technology, Summer 2019
+
+*Jack Henschel*
+
+---
+
+## HTML
+
+Hyper Text Markup Language
+
+HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
+
+Consists of elements and attributes:
+
+```html
+<element attribute="value">
+  Content
+</element>
+```
+
+The DOM (Document Object Model) represents the logical tree by which HTML elements are connected:
+```
+            <html>
+            /   \
+      <head>    <body>
+     /         /  |  \
+<title>  <main> <nav> <footer>
+            |
+ ...       <p>     ...
+```
+
+---
+
+### HTML Features
+
+Initial main feature of HTML: linking to other resources on the web (Hypertext!)
+
+```html
+<a href="http://info.cern.ch" title="home of the first website">
+    Explore the first website on the world web
+</a>
+```
+
+While HTML itself is text-only, it can embed other multimedia sources:
+
+```html
+<!-- Images -->
+<img src="image.jpg" alt="description" title="hover description"/>
+<!-- Videos -->
+<video width="320" height="240" autoplay>
+  <source src="movie.mp4" type="video/mp4">
+</video>
+<!-- Other Websites! -->
+<iframe src="http://example.com"></iframe>
+```
+
+HTML elements can further by structured by adding IDs (unique identifier for page element) and Classes:
+
+```html
+<div id="username" class="bold-green">Foobar</div>
+```
+
+These can later be used to access and modify the element(s).
+
+---
+
+### Forms and Inputs
+
+Used to collect user input in a structured manner
+
+Consist of one or multiple Input elements which can have different types:
+* Text
+* Password
+* Submit
+* Checkbox
+* Dropdown (Select)
+* ... many more
+
+Inputs have different attributes to control their behavior: `required`, `placeholder`, `range` ...
+```html
+<form action="user.php" method="POST">
+    <input type="text" placeholder="Username" required/>
+    <input type="password" required/>
+    <input type="file" name="file"/>
+    <input type="submit">
+</form>
+```
+
+---
+
+## CSS
+
+Cascading Style Sheets -> defines how the HTML looks
+
+Syntax:
+```html
+<element class="class" id="id">
+    <subelement>content</subelement>
+</element>
+```
+
+```css
+element.class#id subelement {
+    color: blue;
+}
+```
+Access the element "subelement" with parent "element", class "class" and ID "id" -> make the text color blue.
+
+CSS also has pseudo-classes to access elements with specific types or states:
+```css
+input[type="text"] { border-radius: 5px; }
+a:hover { color: lightblue; }
+```
+
+---
+
+### Specificity
+
+A score (rank) that determines which style declarations are ultimately applied to an element (if there are conflicts between multiple rules)
+
+Specificity Hierarchy:
+
+1. Inline styles (attached directly to the element): `<h1 style="color: #ff;">`
+2. IDs: `#foobar`
+3. Classes, attributes and pseudo-classes: `.classes, [attributes], :hover, :focus` etc.
+4. Elements and pseudo-elements:  `h1, div, :before, :after`
+
+When two rules have equal specificity, the latest (closest) rule wins.
+
+---
+
+### Properties
+
+CSS can style a lot of properties:
+* Padding: inner space between content and border
+* Margins: outer distance between border and other elements
+* Border: edge of the element
+* Display: `block`, `inline`, `inline-block` (textflow)
+* Position: `absolute`, `relative`, `fixed`
+* Colors: `background-color: #ff`, `border-color: rgba(0.5, 123, 123, 123)`
+* Box Sizes: `width`, `height`, `min-width`, `max-width`, ...
+* Shapes: `skew`, `rotate`, `border-radius`, ...
+* Transitions and Animations
+* Fonts and Styles: `font-family`, `font-size`, `font-style` ...
+
+---
+
+### Images
+Set background images: `element { background-image: url("bg.png"); }`
+
+Overflow (if image is bigger than element):
+* `scroll`
+* `hidden`
+* `auto`
+* `visible`
+
+Object-fit (how the image is fitted into the element):
+* `fill`: image is stretched to fit
+* `contain`: image scales inside element with aspect ratio intact
+* `cover`: image scales to fill element with aspect ratio intact
+* `scale-down`: like contain, but only scales down
+* `none`: image is not resized
+
+---
+
+
+    </textarea>
+    <script src="./remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+          ratio: '16:9',
+          highlightStyle: 'monokai',
+      });
+    </script>
+  </body>
+</html>
