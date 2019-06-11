@@ -71,7 +71,7 @@ Problems: Users can call any function in any class / Users can try to reach a cl
 $url = explode('/', $_SERVER["REQUEST_URI"]);
 if( class_exists($url[0]) && method_exists($url[1])) {
   call_user_func_array( [new $url[0], $url[1]] );
-} Else {
+} else {
   logout();
 }
 ```

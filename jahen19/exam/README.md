@@ -41,7 +41,7 @@ The DOM (Document Object Model) represents the logical tree by which HTML elemen
 
 The initial main feature of HTML: linking to other resources on the web (Hypertext!)
 ```
-<a href="http://info.cern.ch" title="home of the first website">Explore the first website on the world web</a>
+<a href="http://info.cern.ch" title="home of the first website">Explore the first website on the world wide web</a>
 ```
 
 While HTML itself is text-only, it can embed other multimedia sources:

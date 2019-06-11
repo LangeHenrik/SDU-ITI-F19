@@ -58,7 +58,7 @@ Initial main feature of HTML: linking to other resources on the web (Hypertext!)
 
 ```html
 <a href="http://info.cern.ch" title="home of the first website">
-    Explore the first website on the world web
+    Explore the first website on the world wide web
 </a>
 ```
 
@@ -205,6 +205,28 @@ function checkForm() {
 }
 </script>
 ```
+
+---
+
+### Prototypes
+
+Every object references its prototype object (parent)
+
+Prototypes can be changed after the object is created
+
+Inheritance can be implemented using Prototypes:
+
+```js
+var Person = function(name) {
+    this.name = name;
+}
+
+var Student = Object.create(Person);
+
+var Jack = Object.create(Student);
+```
+
+
 
 ---
 
