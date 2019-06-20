@@ -19,7 +19,7 @@ class: center, middle
 
 # MVC
 
-SDU, Internet Technology, Summer 2019
+SDU, Internet Technology, 2019-06-21
 
 *Jack Henschel*
 
@@ -27,23 +27,61 @@ SDU, Internet Technology, Summer 2019
 
 ## MVC
 
-.center[![MVC Image](./mvc.png)]
-
-???
+.center[<img src="./mvc.png" alt="MVC Image" width="60%"/>]
 
 Split functionality into a Model, a View and a Controller
 
-"View" generates the HTML for the client (no HTML anywhere else!)
+???
+
+Software Architecture Pattern
+
+Commonly used for web development and UIs in general
+
+Divides an application into three interconnected parts to separate internal representations of information from the ways information is presented to and accepted from the user
+
+The MVC design pattern decouples these major components allowing for code reuse and parallel development.
+
+**High cohesion**: MVC enables logical grouping of related actions on a controller together. The views for a specific model are also grouped together.
+
+**Loose coupling**: The very nature of the MVC framework is such that there is low coupling among models, views or controllers
+
+**Ease of modification**: Because of the separation of responsibilities, future development or modification is easier
+
+---
+
+## MVC: View
+
+.center[<img src="./mvc.png" alt="MVC Image" width="60%"/>]
+
+The View generates the HTML for the client (no HTML anywhere else!)
 
 Views are made up of many partials views (templates) such as Menus, Navbars, Footers, ...
 
-Model contains (or has access to) the data in the database (only part that communicates with the database)
+???
+
+---
+
+## MVC: Model
+
+.center[<img src="./mvc.png" alt="MVC Image" width="60%"/>]
+
+Model contains (has access to) the data in the database (only part that communicates with the database)
 
 Model manages the hierarchical relationships between the objects
+
+???
+
+---
+
+## MVC: Controller
+
+.center[<img src="./mvc.png" alt="MVC Image" width="60%"/>]
 
 Controller is the heart of the application
 
 Receives the request from the client, initiates the necessary queries to the Model, forwards the data to the view and sends back the HTML to the client
+
+???
 
 Typically the data is passed from the Controller to the View via a "Viewbag" (associative array or object)
 
@@ -56,16 +94,52 @@ Such as communicating or exposing an API, generic algorithms, ...
 ### Router
 
 Router handles the matching between the incoming request and which controller to call (when there are multiple controllers)
-e.g. `example.com/home` -> `homeController`
+e.g. `example.com/home` &rarr; `homeController`
 
 Three methods for routing:
 * Annotate controller methods with routing rules: `@Url("home/login")`
 * Manually list all routes in the router: `array( "home/login" => $homeController->login() )`
 * Automate the router using reflection: call a class / method based on its name (derived from URL)
 
+---
+
+### Reflection
+
+```php
+$URL = 'user';
+$ACTION = 'login';
+$VAL = 'foobar';
+
+class userRouter {
+    private $username;
+
+    public function login($username) {
+        $this->username = $username;
+        echo "Successfully logged in";
+    }
+
+    public function logout() {
+        $this->username = NULL;
+    }
+}
+
+// instantiation by class (hard-coded)
+$route = new userRouter();
+
+// instantiation by name using the reflection object (dynamic)
+$route = new ReflectionClass($URL + 'Router');
+
+// call function $ACTION of object $route
+call_user_func(array($route, $ACTION));
+// same, but different
+$route->{$ACTION}($VAL);
+```
+
+???
+
 Problems: Users can call any function in any class / Users can try to reach a class or function that does not exist
 
--> sanitize and restrict user input, set defaults
+&rarr; sanitize and restrict user input, set defaults
 
 ```php
 $url = explode('/', $_SERVER["REQUEST_URI"]);
@@ -78,10 +152,10 @@ if( class_exists($url[0]) && method_exists($url[1])) {
 
 ---
 
-## API: Application Programming Interface
-a set of functions and procedures allowing the creation of applications that access the features or data of an operating system, application, or other service
+### API: Application Programming Interface
+Set of functions and procedures allowing the creation of applications that access the features or data of an operating system, application, or other service
 
--> A way to expose data and functionality in a structured format from one application to others
+&rarr; A way to expose data and functionality in a structured format from one application to others
 
 ### REST: Representational State Transfer
 
@@ -97,8 +171,13 @@ HTTP verbs define actions:
 * PUT changes existing data (idempotent)
 * DELETE removes existing data (idempotent)
 
-
 ---
+
+### Sources
+
+* Lectures Slides "Internet Technology", Summer 2019, Henrik Lange, SDU
+* W3Schools HTML & PHP References, https://www.w3schools.com/
+* PHP Manual, The PHP Group, https://www.php.net/manual/en/
 
     </textarea>
     <script src="./remark-latest.min.js">

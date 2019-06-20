@@ -19,7 +19,7 @@ class: center, middle
 
 # HTML & JavaScript
 
-SDU, Internet Technology, Summer 2019
+SDU, Internet Technology, 2019-06-21
 
 *Jack Henschel*
 
@@ -29,7 +29,7 @@ SDU, Internet Technology, Summer 2019
 
 Hyper Text Markup Language
 
-HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
+Enables creating structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
 
 Consists of elements and attributes:
 
@@ -43,12 +43,17 @@ The DOM (Document Object Model) represents the logical tree by which HTML elemen
 ```
             <html>
             /   \
-      <head>    <body>
-     /         /  |  \
-<title>  <main> <nav> <footer>
+      <head>     <body>
+     /          /  |  \
+<title>   <main> <nav> <footer>
             |
  ...       <p>     ...
 ```
+
+???
+Similar to XML (extensible markup language)
+
+`<html>` is the root of the tree, all other elements are stored as childs
 
 ---
 
@@ -103,7 +108,7 @@ Inputs have different attributes to control their behavior: `required`, `placeho
     <input type="text" placeholder="Username" required/>
     <input type="password" required/>
     <input type="file" name="file"/>
-    <input type="submit">
+    <input type="submit"/>
 </form>
 ```
 
@@ -111,15 +116,19 @@ Inputs have different attributes to control their behavior: `required`, `placeho
 
 ## JavaScript
 
-High-level, interpreted programming language that conforms to the ECMAScript specification.
+High-level, interpreted programming language that conforms to the ECMAScript specification
 
-Dynamic typing, prototype-based object-orientation and first-class functions.
+Dynamic typing, prototype-based object-orientation and first-class functions
 
-Curly-bracket language -> C-style comments, function declarations, For and while loops, if-else Statements, ...
+Curly-bracket language &rarr; C-style comments, function declarations, For and while loops, if-else Statements, ...
 
-Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web.
+Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web
 
 Enables interactive web pages by allowing to manipulate the DOM after HTML and CSS are loaded and displayed: responsive content, dynamic loading, manipulating elements, checking form content before submission, ...
+
+???
+
+HTML, CSS and JavaScript are the only languages a browser understands!
 
 ---
 
@@ -145,11 +154,11 @@ function call(ev, obj) {
 
 Javascript can query specific elements by ID, Class and/or HTML tag:
 ```js
-document.getElementById('idA'); // exactly one
-document.getElementsByClassName('classA'); // more than one
-document.getElementsByTagName('div'); // more than one
-document.querySelector('.classA.classB'); // combination of selectors, exactly one
-document.querySelectorAll('.classA.classB'); // combination of selectors, multiple
+document.getElementById("idA"); // exactly one
+document.getElementsByClassName("classA"); // more than one
+document.getElementsByTagName("div"); // more than one
+document.querySelector("p.classA"); // combination of selectors, exactly one
+document.querySelectorAll(".classA.classB"); // combination of selectors, multiple
 ```
 
 Afterwards, the attributes and content of these elements can be changed:
@@ -172,7 +181,17 @@ element.insertBefore(newElement, existingElement)
 
 ### Variables
 No explicit types (types are inferred on declaration)
--> assigning a new value of a different type will simply change the type
+&rarr; assigning a new value of a different type will simply change the type
+
+```js
+> var hello = "world";
+> typeof hello
+"string"
+> hello = 42;
+42
+> typeof hello
+"number"
+```
 
 Datatypes: Strings, Integers, Floating point numbers, Arrays, Functions, Objects
 
@@ -206,6 +225,44 @@ function checkForm() {
 </script>
 ```
 
+???
+
+Regular Expressions:
+
+Modifiers:
+* g : global match
+* i : case-insensitive match
+* m : multiline match
+
+Expression:
+* [abc] : match any character mentioned
+* [^abc] : find any character NOT mentioned
+* [0-9] : match any char between values
+* (a|b) : find any alternative (a or b)
+
+Quantifiers:
+* n+ : one or more
+* n* : zero or more
+* n? : zero or one
+* n{x} : x occurrences
+* n{x,y} : between x and y occurrences
+* n{x,} : at least x occurrences
+* n$ : any string that ends with n
+* ^n : any string that starts with n
+* ?!n : any string that does not end with n
+
+Metacharacters:
+* . : single character, except newline or line terminator
+* \w : a word char
+* \W : non-word char
+* \d : digit
+* \D : non-digit
+* \s : whitespace
+* \S : non-whitespace
+* \n : newline character
+* \r : carriage return character
+* \t : tab character
+
 ---
 
 ### Prototypes
@@ -226,9 +283,17 @@ var Student = Object.create(Person);
 var Jack = Object.create(Student);
 ```
 
+???
 
+All JavaScript objects inherit properties and methods from a prototype.
 
 ---
+
+### Sources
+
+* Lectures Slides "Internet Technology", Summer 2019, Henrik Lange, SDU
+* Mozilla Developer Network (MDN) Web Docs, https://developer.mozilla.org
+* W3Schools HTML & JavaScript References, https://www.w3schools.com/
 
     </textarea>
     <script src="./remark-latest.min.js">

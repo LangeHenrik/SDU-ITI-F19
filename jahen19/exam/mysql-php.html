@@ -19,7 +19,7 @@ class: center, middle
 
 # MySQL & PHP
 
-SDU, Internet Technology, Summer 2019
+SDU, Internet Technology, 2019-06-21
 
 *Jack Henschel*
 
@@ -65,6 +65,11 @@ MySQL / MariaDB support different datatypes (cell types) for storing different k
 
 Choose the appropriate data type for the use-case!
 
+Also supports math operators and comparators to work with the above datatypes:
+
+`+, -, *, /, <, >, >=, <=, =, !=, ABS(), CEIL(), FLOOR(), EXP(), LIKE, BETWEEN, STRCMP(a,b)...`
+
+
 ???
 
 e.g. instead of using a string to store a date, choose timestamp
@@ -81,15 +86,45 @@ e.g. instead of using a string to store a date, choose timestamp
 * `SELECT`: query information from a table
 * `JOIN`: query information present in multiple tables
 
+.center[![SQL JOIN](./sql-join.jpg)]
+
+???
+
+SQL is a very powerful language
+
+Queries can become very long and convoluted
+
+**JOIN types**
+
+**(INNER) JOIN**: Returns records that have matching values in both tables
+**LEFT (OUTER) JOIN**: Returns all records from the left table, and the matched records from the right table
+**RIGHT (OUTER) JOIN**: Returns all records from the right table, and the matched records from the left table
+**FULL (OUTER) JOIN**: Return all records when there is a match in either left or right table
+
+
+
+
+
+
+
+
 ---
 
 ### Migrations
 
-* Migrations are a set of files that contain the SQL that makes up the database.
-* They are ordered (e.g. version or date) and have to be applied in this order
-* They initialize or upgrade the database to a new version
-* The database has a migrations table that remembers which migrations are already on
-* They don't contain data, just structure
+Set of files that contain the SQL that makes up the database
+
+Ordered (e.g. version or date) and have to be applied in this order
+
+Initialize or upgrade the database to a new version
+
+Database has a migrations table that remembers which migrations were already applied
+
+Don't contain data, just structure
+
+???
+
+Migrations can contain minimal data to get the application up and running
 
 ---
 
@@ -99,21 +134,36 @@ User Input is dangerous!
 When concatenating SQL statements and user-input together, the user can break out of the SQL clause!
 
 ```php
-$sql = 'SELECT * FROM users WHERE username = ' . $_POST["username"];
+$sql = "SELECT * FROM users WHERE username = '" . $_POST["username"] "' ";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 ```
 
-Malicious username: `abc'); DROP TABLE users;--`
+Malicious username: `abc'; DROP TABLE users;--`
 
 Database input needs to be sanitized or use of "Prepared Statements" (separates SQL statements from data):
 
 ```php
-$sql = 'SELECT * FROM users WHERE username = :username';
+$sql = "SELECT * FROM users WHERE username = ':username'";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':username', $_POST["username"]);
 $stmt->execute();
 ```
+
+???
+
+Attacker can end the current string with a string delimiter, end the current SQL clause with a semicolon and runs his own query
+
+-> delete or extract data!
+
+comment at the end of the statement to make sure the entire SQL statement is valid
+
+### Sources
+
+* Lectures Slides "Internet Technology", Summer 2019, Henrik Lange, SDU
+* W3Schools SQL & PHP References, https://www.w3schools.com/
+* PHP Manual, The PHP Group, https://www.php.net/manual/en/
+
 
 ---
 

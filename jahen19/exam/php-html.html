@@ -19,7 +19,7 @@ class: center, middle
 
 # PHP & HTML
 
-SDU, Internet Technology, Summer 2019
+SDU, Internet Technology, 2019-06-21
 
 *Jack Henschel*
 
@@ -29,7 +29,7 @@ SDU, Internet Technology, Summer 2019
 
 Hyper Text Markup Language
 
-HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
+Enables creating structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
 
 Consists of elements and attributes:
 
@@ -44,14 +44,14 @@ The DOM (Document Object Model) represents the logical tree by which HTML elemen
             <html>
             /   \
       <head>    <body>
-     /         /  |  \
-<title>  <main> <nav> <footer>
+     /          /  |  \
+<title>   <main> <nav> <footer>
             |
  ...       <p>     ...
 ```
 
 ???
-Similar to XML
+Similar to XML (extensible markup language)
 
 `<html>` is the root of the tree, all other elements are stored as childs
 
@@ -84,16 +84,16 @@ This will later be important when we talk about PHP
 
 When sending a form with the submit button, the input fields and their values will be transferred to the server
 
-PHP will then pick up these values
+PHP will then automatically pick up these values for us
 
 ---
 
 ## PHP
-PHP: Hypertext Preprocessor is a general purpose programming language mainly focused on web development.
+PHP: Hypertext Preprocessor is a general purpose programming language mainly focused on web development
 
-It runs on the server (backend) and creates the content (HTML) that gets sent to the client.
+Runs on the server (backend) and creates the content (HTML) that gets sent to the client
 
--> Client never sees PHP source code!
+&rarr; Client never sees PHP source code!
 
 ```php
 <h1><?php echo 'Hello World'; ?></h1>
@@ -109,19 +109,43 @@ Client HTML:
 ### Variables
 Like Javascript, PHP is dynamically typed. Unlike JS, variables are denoted with a dollar sign `$`.
 
-(Primitive) Datatypes: Integer, Double, String and Boolean
+Scalar Data Types:
+* Integer: represents non-fractional numeric values
+* Float/Double: represents fractions
+* String: Sequence of bytes, double quotes supports variable interpolation.
+* Boolean: contains case insensitive TRUE or FALSE values
 
-For double quoted strings: variable interpolation
-```php
-$user = '"Name"';
-echo "Hello $user";
-```
+Compound Data Types:
+* Array: associates value to keys
+* Object: element derived from a class
+
+Special Data Types:
+* Resource: used to refer external resource data (file resource, database resource ...)
+* NULL: case-insensitive PHP constant, represents no value
+
+???
+
+Eight primitive data types classified into 3 types:
 
 Generally: PHP is pass-by-value
 
 For primitives, copies are made
 
 For objects, the value is a reference
+
+**Scalar data types** contain only a single value
+
+**Double data type** supports fractions with more decimal digits
+
+**String** is enclosed by a pair of single or double quotes -> string interpolation
+
+**Boolean**: Zero represents FALSE and any non-zero value represents boolean TRUE.
+
+**Compound data type** (as per its name) will have a group of data, either of the same or of different types
+
+**Array**: actually an ordered map. A map is a type that associates values to keys. Can be treated as an array, list (vector), hash table, dictionary, collection, stack, queue, and probably more. As array values can be other arrays, trees and multidimensional arrays are also possible. **More about this on the next slide**
+
+**Objects**: have a collection of properties and functions (class methods) set with it
 
 ---
 
@@ -150,7 +174,7 @@ print_r($array); // print out the entire array
 
 ### Functions
 
-Does not supports function overloading (function with same name but different signatures)
+Does not support function overloading (function with same name but different signatures)
 ```php
 function foobar($str) {
     echo 'Foo: ' . $str;
@@ -190,7 +214,7 @@ class Student {
 	function __destruct() {
 		// destructor
 	}
-    function __tostring() {
+    function __toString() {
         return $this->name;
     }
 }
@@ -199,41 +223,61 @@ $jack = new Student('jack');
 echo $jack;
 ```
 
-PHP does not have garbage collection
-For each object, PHP counts the references
+Garbage collection: For each object, PHP counts the references
+
 When a reference is removed, and there are no more references to the object, the destructor is called
 
-Magic methods start with `__`, special functionality is associated with them
+---
 
-???
+### Magic methods
 
-`__constructor` automatically runs when a new instance of the object is created
+Start with `__`, special functionality is associated with them
 
-`__destructor` is called when the reference counter hits zero (before the object is removed)
+* `__construct` automatically runs when a new instance of the object is created
 
-`__tostring` is one of the "magic methods" - it gets called whenever a string representation of an object is required
+* `__destruct` is called when the reference counter hits zero (before the object is removed)
+
+* `__toString` is called whenever a string representation of an object is required
+
+Other magic methods in PHP classes:
+
+`__call(), __callStatic(), __get(), __set(), __isset(), __unset(), __sleep(), __wakeup(), __invoke(), __set_state(), __clone(), __debugInfo()`
 
 ---
 
 ### Superglobals
-Predefined Global Variables: "superglobals" (for communicating with the server application, always accessible):
+Predefined Global Variables: "superglobals" (for communicating with the server application):
 
 * `$GLOBALS`: lists all global variables
+
 * `$_SERVER`: holds information about headers, paths, and script locations (`SERVER_NAME`, `HTTP_HOST`, ...)
+
 * `$_ENV`: associative array of variables passed to the current script via the environment method
+
 * `$_REQUEST`: associative array that by default contains the contents of `$_GET`, `$_POST` and `$_COOKIE`
+
 * `$_POST`: collects form data after submitting an HTML form with method="post"
-* `$_GET`: collects form data after submitting an HTML form with method="get".
+
+* `$_GET`: collects form data after submitting an HTML form with method="get"
+
 * `$_FILES`: associative array of items uploaded to the current script via the HTTP POST method
+
 * `$_COOKIE`: associative array of variables passed to the current script via HTTP Cookies
+
 * `$_SESSION`: associative array containing session variables available to the current script
+
+???
+
+**super globals** are always accessible
 
 ---
 
 ### PHP Sessions
 The superglobal `$_SESSION` contains information about a specific client.
+
 PHP automatically sets a cookie to uniquely identify a client and select the right session.
-(The user does however not have access to the data attached to a session)
+
+*User does not have access to the data attached to a session*
 
 ```php
 if (session_status() == PHP_SESSION_NONE) {
@@ -254,7 +298,15 @@ this makes is super simple to implement a login state, for example
 ---
 
 ### User Input
-User Input is always dangerous! Need to sanitize it: `filter_input(INPUT_GET, "email", FILTER_VALIDATE_EMAIL)`
+Gets a specific external variable by name and filters it
+
+```php
+filter_input(int $type, string $variable_name, int $filter = FILTER_DEFAULT)
+
+filter_input(INPUT_GET, "email", FILTER_VALIDATE_EMAIL)
+```
+
+Various filters available to validate and sanitize user input
 
 ### Combining different PHP scripts
 Promotes code-reuse and helps keep the source code tidy
@@ -266,8 +318,17 @@ require 'myFile.php'; // throws fatal error if it fails
 require_once 'myFile.php'; // only includes if not included before
 ```
 
+???
+
+User Input is always dangerous! Need to sanitize it
 
 ---
+
+### Sources
+
+* Lectures Slides "Internet Technology", Summer 2019, Henrik Lange, SDU
+* W3Schools HTML & PHP References, https://www.w3schools.com/
+* PHP Manual, The PHP Group, https://www.php.net/manual/en/
 
     </textarea>
     <script src="./remark-latest.min.js">

@@ -19,7 +19,7 @@ class: center, middle
 
 # HTML & CSS
 
-SDU, Internet Technology, Summer 2019
+SDU, Internet Technology, 2019-06-21
 
 *Jack Henschel*
 
@@ -29,7 +29,7 @@ SDU, Internet Technology, Summer 2019
 
 Hyper Text Markup Language
 
-HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
+Enables creating structured documents by denoting structural semantics for text such as headings, paragraphs, lists, quotes ...
 
 Consists of elements and attributes:
 
@@ -43,12 +43,17 @@ The DOM (Document Object Model) represents the logical tree by which HTML elemen
 ```
             <html>
             /   \
-      <head>    <body>
-     /         /  |  \
-<title>  <main> <nav> <footer>
+      <head>     <body>
+     /          /  |  \
+<title>   <main> <nav> <footer>
             |
  ...       <p>     ...
 ```
+
+???
+Similar to XML (extensible markup language)
+
+`<html>` is the root of the tree, all other elements are stored as childs
 
 ---
 
@@ -103,7 +108,7 @@ Inputs have different attributes to control their behavior: `required`, `placeho
     <input type="text" placeholder="Username" required/>
     <input type="password" required/>
     <input type="file" name="file"/>
-    <input type="submit">
+    <input type="submit"/>
 </form>
 ```
 
@@ -111,7 +116,7 @@ Inputs have different attributes to control their behavior: `required`, `placeho
 
 ## CSS
 
-Cascading Style Sheets -> defines how the HTML looks
+Cascading Style Sheets &rarr; defines how the HTML looks
 
 Syntax:
 ```html
@@ -125,7 +130,7 @@ element.class#id subelement {
     color: blue;
 }
 ```
-Access the element "subelement" with parent "element", class "class" and ID "id" -> make the text color blue.
+Access the element "subelement" with parent "element", class "class" and ID "id" &rarr; make the text color blue.
 
 CSS also has pseudo-classes to access elements with specific types or states:
 ```css
@@ -146,20 +151,34 @@ Specificity Hierarchy:
 3. Classes, attributes and pseudo-classes: `.classes, [attributes], :hover, :focus` etc.
 4. Elements and pseudo-elements:  `h1, div, :before, :after`
 
+Calculation rule:
+
+> *Start at 0, add 1000 for style attribute, add 100 for each ID, add 10 for each attribute, class or pseudo-class, add 1 for each element name or pseudo-element.*
+
 When two rules have equal specificity, the latest (closest) rule wins.
+
+???
 
 ---
 
 ### Properties
 
 CSS can style a lot of properties:
-* Display: `block`, `inline`, `inline-block` (textflow)
+* Display: `block`, `inline`, `inline-block`, ... (textflow)
 * Position: `absolute`, `relative`, `fixed`
-* Colors: `background-color: #ff`, `border-color: rgba(0.5, 123, 123, 123)`
+* Colors: `background-color: #ff; border-color: rgba(0.5, 123, 123, 123);`
 * Box Sizes: `width`, `height`, `min-width`, `max-width`, ...
 * Shapes: `skew`, `rotate`, `border-radius`, ...
 * Transitions and Animations
 * Fonts and Styles: `font-family`, `font-size`, `font-style` ...
+
+???
+
+display: block; Displays an element as a block element: starts on a new line, and takes up the whole width
+
+display: inline; Displays an element as an inline element: Any height and width properties will have no effect, no line-break before the element
+
+display: inline-block: Displays an element as an inline-level block container: The element itself is formatted as an inline element, but you can apply height and width values
 
 ---
 
@@ -192,7 +211,23 @@ Object-fit (how the image is fitted into the element):
 * `scale-down`: like contain, but only scales down
 * `none`: image is not resized
 
+???
+
+**scroll**: Content is clipped if necessary to fit the padding box, browser always displays scrollbars
+
+**hidden**: Content is clipped if necessary to fit the padding box. No scrollbars are provided, and no support for allowing the user to scroll (such as by dragging or using a scroll wheel) is allowed.
+
+**visible**: Content is not clipped and may be rendered outside the padding box.
+
+**auto**: If content fits inside the padding box, it looks the same as visible, but still establishes a new block formatting context. Desktop browsers provide scrollbars if content overflows.
+
 ---
+
+### Sources
+
+* Lectures Slides "Internet Technology", Summer 2019, Henrik Lange, SDU
+* Mozilla Developer Network (MDN) Web Docs, https://developer.mozilla.org
+* W3Schools HTML & CSS References, https://www.w3schools.com/
 
 
     </textarea>
