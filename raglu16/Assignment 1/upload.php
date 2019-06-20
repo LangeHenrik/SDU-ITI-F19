@@ -30,13 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_SESSION["logged_in"]) && $_
 		}
 	}
 	
-	$sql = "INSERT INTO images(title,description,source,user_id) VALUES(:title,:description,:source,:user_id)";
+	$sql = "INSERT INTO images(title,description,image,user_id) VALUES(:title,:description,:image,:user_id)";
 	
 	if($stmt = $conn->prepare($sql) and $uploadOk == 1){
 		
 		$stmt->bindParam(":title", $param_title, PDO::PARAM_STR);
 		$stmt->bindParam(":description", $param_description, PDO::PARAM_STR);
-		$stmt->bindParam(":source", $target_file, PDO::PARAM_STR); 
+		$stmt->bindParam(":image", $target_file, PDO::PARAM_STR); 
 		$stmt->bindParam(":user_id", $param_user_id, PDO::PARAM_STR); 
 
 		$param_title = trim($_POST["title"]);
