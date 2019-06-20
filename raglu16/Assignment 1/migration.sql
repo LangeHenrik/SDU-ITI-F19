@@ -8,13 +8,13 @@ CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `description` text,
-  `source` BLOB NOT NULL,
+  `image` BLOB NOT NULL,
   `user_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table raglu16.images: 22 rows
-INSERT INTO `images` (`id`, `title`, `description`, `source`, `user_id`) VALUES
+INSERT INTO `images` (`id`, `title`, `description`, `image`, `user_id`) VALUES
 	(1, 'dog', 'this is a dog', 'images/DSC_3230.JPG', '1'),
 	(2, 'also a dog', 'this is also a dog', 'images/DSC_1450.JPG', '1'),
 	(3, '', '', 'images/DSC_0067.JPG', '1'),
