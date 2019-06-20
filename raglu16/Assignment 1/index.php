@@ -72,10 +72,10 @@ if(!(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true)){
 			?>
         	<div class="item">
         		<div class="animate-box">
-	        		<a href="<?php echo htmlspecialchars($row["source"]); ?>" 
+	        		<a href="<?php echo htmlspecialchars($row["image"]); ?>" 
 					class="image-popup fh5co-board-img" 
-					title="<?php if($row["title"] == ""){echo "[no title]";} else{echo $row["title"];}?>"><img src="<?php echo $row["source"]; ?>" 
-					alt=<?php echo htmlspecialchars($row["source"]);?>></a>
+					title="<?php if($row["title"] == ""){echo "[no title]";} else{echo $row["title"];}?>"><img src="<?php echo $row["image"]; ?>" 
+					alt=<?php echo htmlspecialchars($row["image"]);?>></a>
         		</div>
 				<div class="fh5co-item-title"><?php if($row["title"] == ""){ echo "[no title]";} else{ echo htmlspecialchars($row["title"]);}?></div>
         		<div class="fh5co-desc"><?php if($row["description"]== ""){ echo "[no description]";} else{echo htmlspecialchars($row["description"]);}?></div>
