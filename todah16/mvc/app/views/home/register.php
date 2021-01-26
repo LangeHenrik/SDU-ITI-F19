@@ -50,58 +50,10 @@
     
 <body>
 <!-- action = "includes/register.inc.php" -->
-    <main>
-        <form name="registration" action="/todah16/mvc/public/service/register" onsubmit="return validateForm()" method="post">
-        
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" id="uname">
-            
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="psw">
-            
-            <label for="psw_repeat"><b>Repeat password</b></label>
-            <input type="password" placeholder="Enter Password Again"   id="psw_repeat">
-            
-            <label for="fname"><b>First name</b></label>
-            <input type="text" placeholder="Enter first name" name="fname" id="fname">
-            
-            <label for="lname"><b>Last name</b></label>
-            <input type="text" placeholder="Enter last name" name="lname" id="lname">
-            
-            <label for="zip"><b>Zip code</b></label>
-            <input type="text" placeholder="Enter Zipcode" name="zip" id="zip">
-            
-            <label for="city"><b>City</b></label>
-            <input type="text" placeholder="Enter City" name="city" id="city">
-            
-            <label for="e-mail"><b>E-mail</b></label>
-            <input type="text" placeholder="Enter E-mail" name="e-mail" id="e-mail">
-            
-            <label for="phone_number"><b>Phonenumber</b></label>
-            <input type="text" placeholder="Enter Phonenumber" name="phone_number" id="phone_number">
-            
-            
-            <input type="submit" name="register-submit" id="register_submit">
-            <div id ="errors" class = "error">
-                
-            </div>
-            
-            
-            </div>
-            
-        <div id="unamemsg" style="color:Red;display:none">Not a valid name</div>    
-            
-            
-        </form> 
-            
-    </main>    
-
-    
-    <script>
+      <script>
         
         
-private function validateForm() {
+function validateForm() {
   
   var user_name = document.getElementById("uname").value;
   var password = document.getElementById("psw").value;
@@ -214,6 +166,55 @@ private function validateForm() {
         
     
     </script>
+    
+        <form name="registration" action="/todah16/mvc/public/service/register" onsubmit="return validateForm()" method="post">
+        
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id="uname">
+            
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw">
+            
+            <label for="psw_repeat"><b>Repeat password</b></label>
+            <input type="password" placeholder="Enter Password Again"   id="psw_repeat">
+            
+            <label for="fname"><b>First name</b></label>
+            <input type="text" placeholder="Enter first name" name="fname" id="fname">
+            
+            <label for="lname"><b>Last name</b></label>
+            <input type="text" placeholder="Enter last name" name="lname" id="lname">
+            
+            <label for="zip"><b>Zip code</b></label>
+            <input type="text" placeholder="Enter Zipcode" name="zip" id="zip">
+            
+            <label for="city"><b>City</b></label>
+            <input type="text" placeholder="Enter City" name="city" id="city">
+            
+            <label for="e-mail"><b>E-mail</b></label>
+            <input type="text" placeholder="Enter E-mail" name="e-mail" id="e-mail">
+            
+            <label for="phone_number"><b>Phonenumber</b></label>
+            <input type="text" placeholder="Enter Phonenumber" name="phone_number" id="phone_number">
+            
+            
+            <input type="submit" name="register-submit" id="register_submit">
+            <div id ="errors" class = "error">
+                
+            </div>
+            
+            
+            </div>
+            
+          
+            
+            
+        </form> 
+            
+      
+
+    
+  
     
     
 </body>
